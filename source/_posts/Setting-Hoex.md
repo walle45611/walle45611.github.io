@@ -133,3 +133,58 @@ tags:
     ```bash
     hexo clean && hexo deploy
     ```
+
+- 使用 `github action` 工具部署，記得是要把整個專案上傳到 repo 中，再使用 `github action`，可以使用 `github` 的頁面設定，這樣就可以使用 `github pages`，以下是 `github action` 的設定 yml，我比較喜歡這個部署工具，因為在不同電腦上打包的檔案可能在不同平台上不能使用 [參考連結](https://hexo.io/docs/github-pages#Useful-links)
+
+    ```yml
+    name: Pages
+
+    on:
+        push:
+            branches:
+            - main # default branch
+
+    jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v4
+            with:
+            token: ${{ secrets.GITHUB_TOKEN }}
+            # If your repository depends on submodule, please see: https://github.com/actions/checkout
+            submodules: recursive
+        - name: Use Node.js 20
+            uses: actions/setup-node@v4
+            with:
+            # Examples: 20, 18.19, >=16.20.2, lts/Iron, lts/Hydrogen, *, latest, current, node
+            # Ref: https://github.com/actions/setup-node#supported-version-syntax
+            node-version: "20"
+        - name: Cache NPM dependencies
+            uses: actions/cache@v4
+            with:
+            path: node_modules
+            key: ${{ runner.OS }}-npm-cache
+            restore-keys: |
+                ${{ runner.OS }}-npm-cache
+        - name: Install Dependencies
+            run: npm install
+        - name: Build
+            run: npm run build
+        - name: Upload Pages artifact
+            uses: actions/upload-pages-artifact@v3
+            with:
+            path: ./public
+    deploy:
+        needs: build
+        permissions:
+        pages: write
+        id-token: write
+        environment:
+        name: github-pages
+        url: ${{ steps.deployment.outputs.page_url }}
+        runs-on: ubuntu-latest
+        steps:
+        - name: Deploy to GitHub Pages
+            id: deployment
+            uses: actions/deploy-pages@v4
+    ```

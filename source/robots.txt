@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /categories/
+Allow: /tags/ 
+Disallow: /vendors/
+Disallow: /fonts/
+Disallow: /fancybox/
+Sitemap: https://walle45611.github.io/sitemap.xml
+

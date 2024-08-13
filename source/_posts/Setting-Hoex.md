@@ -157,7 +157,7 @@ categories:
 
 - 使用 `GitHub Action` 請先將 repo pages 的設定調整 `source` 選項到 `Github Action` 如下圖：
 
-    <iframe src="https://ntubedutw-my.sharepoint.com/personal/11146001_ntub_edu_tw/_layouts/15/embed.aspx?UniqueId=31f1978e-e718-4d1e-918f-85e83f2388cb" width="640" height="360" frameborder="0" scrolling="no" allowfullscreen title="Github-Pages-Setting-1"></iframe>
+  ![https://imgur.com/a/zMJQucl]
 
 - 使用 `github action` 工具部署，記得是要把整個專案上傳到 repo 中，再使用 `github action`，可以使用 `github` 的頁面設定，這樣就可以使用 `github pages`，以下是 `github action` 的設定 yml： [參考連結](https://hexo.io/docs/github-pages#Useful-links)
   

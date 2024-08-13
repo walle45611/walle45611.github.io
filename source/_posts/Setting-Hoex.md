@@ -1,7 +1,9 @@
 ---
 title: 快入使用 Hexo 建置自己的 Blog
 date: 2024-08-12 18:52:26
-tags:
+tags: hexo
+categories: 
+    - "hexo 設定"
 ---
 
 ## 關於 Hoex 的思考
@@ -113,13 +115,19 @@ tags:
 
 ## 部署專案
 
-- 安裝 `hexo-deployer-git`：
+- 使用 `hexo deploy` 工具部署專案。第一次會先詢問 GitHub 的使用者名稱和帳號，如果是 Mac 使用者，請記得先在 GitHub 申請 OAuth Token：
+
+    ```bash
+    hexo clean && hexo deploy
+    ```
+
+  - 安裝 `hexo-deployer-git`：
 
     ```bash
     npm install hexo-deployer-git --save
     ```
 
-- 設定 `_config.yml`：
+    - 設定 `_config.yml`：
 
     ```yml
     deploy:
@@ -128,11 +136,6 @@ tags:
         branch: main
     ```
 
-- 使用 `hexo deploy` 工具部署專案。第一次會先詢問 GitHub 的使用者名稱和帳號，如果是 Mac 使用者，請記得先在 GitHub 申請 OAuth Token：
-
-    ```bash
-    hexo clean && hexo deploy
-    ```
 
 - 使用 `github action` 工具部署，記得是要把整個專案上傳到 repo 中，再使用 `github action`，可以使用 `github` 的頁面設定，這樣就可以使用 `github pages`，以下是 `github action` 的設定 yml，我比較喜歡這個部署工具，因為在不同電腦上打包的檔案可能在不同平台上不能使用 [參考連結](https://hexo.io/docs/github-pages#Useful-links)
 

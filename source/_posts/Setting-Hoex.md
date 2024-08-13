@@ -19,10 +19,9 @@ categories:
 - **Hoex** 提供了一個簡潔且高效的寫作環境，非常適合專注於內容創作。相比之下，過去使用的 Jekyll 需要更多的配置和維護，而 Hoex 更加輕量且易於使用。
 - **NPM 生態系統**：Hoex 的使用方式與 NPM 密切相關，這使得整個工具鏈非常現代且方便，尤其對於熟悉前端開發的人來說，能快速上手並整合其他工具。
 
-<!-- more -->
-
 總結來說，**Hoex** 為我提供了簡單而專注的寫作體驗，加上它與 NPM 的兼容性，使得整個寫作流程更加順暢和現代化。這讓我覺得比起以往的工具，Hoex 更加適合我現在的寫作需求。以下這篇文章將講解如何使用 Hexo 來建立自己的 Blog。
 
+<!-- more -->
 
 ## 安裝
 
@@ -99,6 +98,22 @@ categories:
   - `scheme: Gemini` : 一開始我想說為什麼別人的文章與文章的分隔都很好看，我才發現 scheme 可以更改...
   - `excerpt_description: true`：如果文章太長，可以在文章的適當位置加上 `<!--more-->`，這樣就會從該處截斷文章顯示在首頁，避免因為文章過長而導致首頁只有一篇文章的情況。
 
+## 架上 robots.txt 防止爬蟲
+
+- 以下是 robots.txt 檔案
+
+  ```text
+    User-agent: *
+    Allow: /
+    Allow: /archives/
+    Allow: /categories/
+    Allow: /tags/ 
+    Disallow: /vendors/
+    Disallow: /fonts/
+    Disallow: /fancybox/
+    Sitemap: https://walle45611.github.io/sitemap.xml
+  ```
+
 ## 開發
 
 - 開啟新文章使用預設的命令：
@@ -114,6 +129,10 @@ categories:
     ```
 
 ## 部署專案
+
+- 創建 `github pages`，需要在 github 上創建一個 repo 名稱為 `<username>.github.io`。
+
+- 部署可以分成兩種部署方式，使用 `hexo deploy` 部署的方式或使用 `github action`，我更傾向使用 `github action`，因為不知道 `github pages` 是使用什麼平台部署的，所以為了不要造成部署的有平台不同的問題，選擇在 `github action` 上 build 專案。
 
 - 使用 `hexo deploy` 工具部署專案。第一次會先詢問 GitHub 的使用者名稱和帳號，如果是 Mac 使用者，請記得先在 GitHub 申請 OAuth Token：
 
@@ -136,9 +155,12 @@ categories:
         branch: main
     ```
 
+- 使用 `GitHub Action` 請先將 repo pages 的設定調整 `source` 選項到 `Github Action` 如下圖：
 
-- 使用 `github action` 工具部署，記得是要把整個專案上傳到 repo 中，再使用 `github action`，可以使用 `github` 的頁面設定，這樣就可以使用 `github pages`，以下是 `github action` 的設定 yml，我比較喜歡這個部署工具，因為在不同電腦上打包的檔案可能在不同平台上不能使用 [參考連結](https://hexo.io/docs/github-pages#Useful-links)
+    <iframe src="https://ntubedutw-my.sharepoint.com/personal/11146001_ntub_edu_tw/_layouts/15/embed.aspx?UniqueId=31f1978e-e718-4d1e-918f-85e83f2388cb" width="640" height="360" frameborder="0" scrolling="no" allowfullscreen title="Github-Pages-Setting-1"></iframe>
 
+- 使用 `github action` 工具部署，記得是要把整個專案上傳到 repo 中，再使用 `github action`，可以使用 `github` 的頁面設定，這樣就可以使用 `github pages`，以下是 `github action` 的設定 yml： [參考連結](https://hexo.io/docs/github-pages#Useful-links)
+  
     ```yml
     name: Pages
 

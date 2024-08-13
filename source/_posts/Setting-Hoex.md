@@ -6,7 +6,7 @@ categories:
     - "hexo 設定"
 ---
 
-## 關於 Hoex 的思考
+## 關於 Hexo 的思考
 
 我長時間以來一直在尋找適合我的文章編輯軟體，並嘗試了多種工具，包括：
 
@@ -14,12 +14,12 @@ categories:
 - **HackMD**：針對 Markdown 編輯的工具，非常適合協作，但在個人寫作方面稍顯不足。
 - **Jekyll**：雖然強大且靈活，但需要一定的技術基礎，對於想要快速進行寫作的人來說，門檻較高。
 
-近期，我發現了 **Hoex** 這款工具，它似乎更適合我目前的需求：
+近期，我發現了 **Hexo** 這款工具，它似乎更適合我目前的需求：
 
-- **Hoex** 提供了一個簡潔且高效的寫作環境，非常適合專注於內容創作。相比之下，過去使用的 Jekyll 需要更多的配置和維護，而 Hoex 更加輕量且易於使用。
-- **NPM 生態系統**：Hoex 的使用方式與 NPM 密切相關，這使得整個工具鏈非常現代且方便，尤其對於熟悉前端開發的人來說，能快速上手並整合其他工具。
+- **Hexo** 提供了一個簡潔且高效的寫作環境，非常適合專注於內容創作。相比之下，過去使用的 Jekyll 需要更多的配置和維護，而 Hexo 更加輕量且易於使用。
+- **NPM 生態系統**：Hexo 的使用方式與 NPM 密切相關，這使得整個工具鏈非常現代且方便，尤其對於熟悉前端開發的人來說，能快速上手並整合其他工具。
 
-總結來說，**Hoex** 為我提供了簡單而專注的寫作體驗，加上它與 NPM 的兼容性，使得整個寫作流程更加順暢和現代化。這讓我覺得比起以往的工具，Hoex 更加適合我現在的寫作需求。以下這篇文章將講解如何使用 Hexo 來建立自己的 Blog。
+總結來說，**Hexo** 為我提供了簡單而專注的寫作體驗，加上它與 NPM 的兼容性，使得整個寫作流程更加順暢和現代化。這讓我覺得比起以往的工具，**Hexo** 更加適合我現在的寫作需求。以下這篇文章將講解如何使用 **Hexo** 來建立自己的 Blog。
 
 <!-- more -->
 
@@ -59,11 +59,11 @@ categories:
   - 比較重要的路徑檔案有 `_config.yml`、`source/_posts`：
     - `_source/_posts` 是儲存已發佈文章的地方。
     - `_config.yml` [詳細官網參數設定](https://hexo.io/zh-cn/docs/configuration)：
-      - 語言設定：在預設文件的第 11 行有 `language` 的選項，
+      - 語言設定：在預設文件的第 11 行有 `language` 的選項，很重要的一點是 `zh-TW` 一定是要這樣寫大小寫不能錯誤
 
         ```yml
         language:
-            - zh-tw  
+            - zh-TW 
         ```
 
       - SEO 優化：在第 6-8 行左右設定 `description`、`subtitle`、`title`，
@@ -130,9 +130,9 @@ categories:
 
 ## 部署專案
 
-- 創建 `github pages`，需要在 github 上創建一個 repo 名稱為 `<username>.github.io`。
+- 創建 `GitHub Pages`，需要在 github 上創建一個 repo 名稱為 `<username>.github.io`。
 
-- 部署可以分成兩種部署方式，使用 `hexo deploy` 部署的方式或使用 `github action`，我更傾向使用 `github action`，因為不知道 `github pages` 是使用什麼平台部署的，所以為了不要造成部署的有平台不同的問題，選擇在 `github action` 上 build 專案。
+- 部署可以分成兩種部署方式，使用 `hexo deploy` 部署的方式或使用 `GitHub Action`，我更傾向使用 `GitHub **Action**`，因為不知道 `GitHub Pages` 是使用什麼平台部署的，所以為了不要造成部署的有平台不同的問題，選擇在 `GitHub Action` 上 build 專案。
 
 - 使用 `hexo deploy` 工具部署專案。第一次會先詢問 GitHub 的使用者名稱和帳號，如果是 Mac 使用者，請記得先在 GitHub 申請 OAuth Token：
 
@@ -155,11 +155,11 @@ categories:
         branch: main
     ```
 
-- 使用 `GitHub Action` 請先將 repo pages 的設定調整 `source` 選項到 `Github Action` 如下圖：
+- 使用 `GitHub Action` 請先將 repo pages 的設定調整 `source` 選項到 `GitHub Action` 如下圖：
 
   ![GithubAction](https://i.imgur.com/2gYt4Pv.png)
 
-- 使用 `github action` 工具部署，記得是要把整個專案上傳到 repo 中，再使用 `github action`，可以使用 `github` 的頁面設定，這樣就可以使用 `github pages`，以下是 `github action` 的設定 yml： [參考連結](https://hexo.io/docs/github-pages#Useful-links)
+- 使用 `GitHub Action` 工具部署，記得是要把整個專案上傳到 repo 中，再使用 `GitHub action`，可以使用 `GitHub` 的頁面設定，這樣就可以使用 `GitHub Pages`，以下是 `GitHub action` 的設定 yml： [參考連結](https://hexo.io/docs/github-pages#Useful-links)
   
     ```yml
     name: Pages
@@ -201,7 +201,7 @@ categories:
             path: ./public
     deploy:
         needs: build
-        permissions:
+        permissions:****
         pages: write
         id-token: write
         environment:

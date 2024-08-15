@@ -11,6 +11,8 @@ categories: 刷題
 
 * 我的想法是 dfs 走過的所有點的連通分量加總就可以知道是不是連通圖了，再減去 1 是為了題目所要的描述，他需要加上幾條邊才能使得變成連通圖 (Connected graph)，因為如果不是連通圖 `connect` > 1。
 
+<!--more-->
+
 ```c++
 #include <bits/stdc++.h>
 

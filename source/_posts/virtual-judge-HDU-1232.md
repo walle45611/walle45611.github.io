@@ -1,5 +1,5 @@
 ---
-title: 
+title: virtual-judge 刷題紀錄 08/15
 date: 2024-08-15 18:31:40
 tags: [virtual-judge, Algorithm, dfs]
 categories: 刷題

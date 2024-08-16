@@ -8,8 +8,6 @@ tags:
 
 * 因為有個困擾就是，我常常因為要切不同框架撰寫前後端，所以有時候用的 vscode extension 都會不同，這個問提困擾我很舊，因為每次打開 vscode 就很久，直到有天我發現可以使用 vscode profile 去切割不同的開發環境所需要的 extension，從此我的 vscode 開啟速比以前為管理前快多了...。
 
-* [官方文件](https://code.visualstudio.com/docs/editor/profiles)
-
 * 我的習慣是我 `Default` profile 會用來作為其他 profile 的 base 所以我會裝一些常用的工具在 `Default` profile 這樣就可以複製到新的 profile 上然後繼續裝上自己需要使用的 extension。
 
 <!--more-->
@@ -27,4 +25,5 @@ tags:
 
 ## 結論
 
-大概就這樣而已了，這篇文章是為了要告訴不知道 profile 去管理自己的 vscode extension 的朋友們，因為有時候看到大家的 vscode 開啟都需要很久的時間，所以想說寫個文章讓大家知道這個小技巧
+* 大概就這樣而已了，這篇文章是為了要告訴不知道 profile 去管理自己的 vscode extension 的朋友們，因為有時候看到大家的 vscode 開啟都需要很久的時間，所以想說寫個文章讓大家知道這個小技巧
+* [官方文件](https://code.visualstudio.com/docs/editor/profiles)

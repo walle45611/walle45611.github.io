@@ -1,7 +1,8 @@
 ---
 title: 利用 vscode profile 分開不同開發環境的 vscode extension 
 date: 2024-08-16 13:50:59
-tags:
+tags: Vscode
+categories: Editor
 ---
 
 ## 前情提要

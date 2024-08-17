@@ -53,7 +53,7 @@ favicon:
     medium: /images/favicon-32x32-next.png
     apple_touch_icon: /images/apple-touch-icon-next.png
     safari_pinned_tab: /images/logo.svg
-    #android_manifest: /manifest.json
+    android_manifest: /manifest.json
 
 # Custom Logo (Warning: Do not support scheme Mist)
 custom_logo: #/uploads/custom-logo.png
@@ -139,7 +139,7 @@ sidebar:
 # Sidebar Avatar
 avatar:
     # Replace the default image and set the url here.
-    url: #/images/avatar.gif
+    url: https://github.com/walle45611.png
     # If true, the avatar will be displayed in circle.
     rounded: false
     # If true, the avatar will be rotated with the cursor.
@@ -153,12 +153,12 @@ site_state: true
 # Key is the link label showing to end users.
 # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
 social:
-    #GitHub: https://github.com/yourname || fab fa-github
-    #E-Mail: mailto:yourname@gmail.com || fa fa-envelope
+    GitHub: https://github.com/walle45611 || fab fa-github
+    E-Mail: mailto:walle4561@gmail.com || fa fa-envelope
     #Weibo: https://weibo.com/yourname || fab fa-weibo
     #Twitter: https://twitter.com/yourname || fab fa-twitter
     #FB Page: https://www.facebook.com/yourname || fab fa-facebook
-    #StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow
+    StackOverflow: https://stackoverflow.com/users/14378891/walle || fab fa-stack-overflow
     #YouTube: https://youtube.com/yourname || fab fa-youtube
     Instagram: https://www.instagram.com/walle4561 || fab fa-instagram
     #Skype: skype:yourname?call|chat || fab fa-skype
@@ -166,7 +166,7 @@ social:
 social_icons:
     enable: true
     icons_only: false
-    transition: false
+    transition: true
 
 # Blog rolls
 links_settings:
@@ -404,7 +404,7 @@ bookmark:
 
 # `Follow me on GitHub` banner in the top-right corner.
 github_banner:
-    enable: true
+    enable: false
     permalink: https://github.com/walle45611
 
 # ---------------------------------------------------------------

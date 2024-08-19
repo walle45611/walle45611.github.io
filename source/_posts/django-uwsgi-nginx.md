@@ -4,13 +4,16 @@ date: 2024-08-18 16:37:49
 tags: [Django , container]
 ---
 
+![test](https://i.imgur.com/fufoJmK.png)
+
+<!--more-->
+
 ## 前情提要
 
 在部署 Django 專案時，雖然可以使用 `python manage.py runserver` 指令來啟動伺服器，但這樣的做法在處理靜態檔案時效能不佳，尤其是在面對大量訪問時，效能瓶頸會更加明顯。實務上，我們常使用反向代理（reverse proxy）來提升效能，並避免直接使用 Django 的開發伺服器。Nginx 作為反向代理，不僅可以處理靜態檔案，還能分流請求，提升應用的安全性與效能。
 
 此外，與 .NET Core 可以透過編譯並打包成單一可部署檔案的方式不同，在 Python 環境下，我們需要借助像 uWSGI 這類的工具，作為 Nginx 與 Django 之間的橋樑，以實現高效的應用程式部署。
 
-<!--more-->
 
 ## 開始實踐
 

@@ -5,7 +5,7 @@ tags: [virtual-judge, Algorithm, binary-search]
 categories: 刷題
 ---
 
-![image](https://imgur.com/LLJNmPR.png)
+![1. blog image](https://imgur.com/LLJNmPR.png)
 
 * [P2249 題目連結](https://www.luogu.com.cn/problem/P2249)
 * 這題解題思路主要是使用二分搜尋法來解決問題。透過不斷縮小範圍來尋找目標數字的位置，當找到相同的數字時，即可將其所在的中間位置輸出。

@@ -4,7 +4,7 @@ date: 2024-08-18 16:37:49
 tags: [Django , container]
 ---
 
-![test](https://i.imgur.com/fufoJmK.png)
+![1. blog image](https://i.imgur.com/fufoJmK.png)
 
 <!--more-->
 

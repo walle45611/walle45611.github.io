@@ -5,7 +5,7 @@ tags: [Algorithm, Tree]
 categories: 資料結構
 ---
 
-![圖 1. : Blog Image ](https://imgur.com/Sm9aRdD)
+![圖 1. : Blog Image ](https://imgur.com/Sm9aRdD.png)
 
 ## Tree 討論
 

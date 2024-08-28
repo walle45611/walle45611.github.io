@@ -71,11 +71,11 @@ categories: IT 技術
 
     * 輸出內容 :
 
-    ```text
-    Name                  Enabled
-    ----                  -------
-    OpenSSH-Server-In-TCP    True
-    ```
+        ```text
+        Name                  Enabled
+        ----                  -------
+        OpenSSH-Server-In-TCP    True
+        ```
 
 6. 可以先手動連線一下
 

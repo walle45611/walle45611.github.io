@@ -5,9 +5,11 @@ tags: [Windows, Guacamole]
 categories: IT 技術
 ---
 
-## 前情提要
+
 
 ![圖 1. : Blog Image](https://imgur.com/X7H6aOq.png)
+
+## 前情提要
 
 我最近有遇到一個問題就是我 Windows 10 要使用 share devices 然後給外包廠商上傳檔案在 Guacamole 那麼我知道 Guacamole 有 SFTP 的服務可以串接讓外包廠商上傳檔案，但是中間一直連線失敗有點弄到快爆氣哈哈哈...，但是後面發現滿蠢的哈哈哈哈，廢話不多說開始吧。
 

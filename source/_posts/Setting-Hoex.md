@@ -2,8 +2,7 @@
 title: 快入使用 Hexo 建置自己的 Blog
 date: 2024-08-12 18:52:26
 tags: hexo
-categories: 
-    - "hexo 設定"
+categories: IT 技術
 ---
 
 ## 關於 Hexo 的思考

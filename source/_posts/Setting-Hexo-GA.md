@@ -2,8 +2,7 @@
 title: 快速使用 Hexo 搭配 Google Analytics (GA)
 date: 2024-08-14 00:27:38
 tags: hexo
-categories: 
-    - "hexo 設定"
+categories: IT 技術
 ---
 
 ## Google Analytics 簡介

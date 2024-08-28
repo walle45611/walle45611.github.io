@@ -2,6 +2,7 @@
 title: Direct Image 的性質與應用
 date: 2024-08-22 14:45:05
 tags: [數學, 集合論, 函數]
+categories: 數學
 mathjax: true
 ---
 

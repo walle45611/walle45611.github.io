@@ -6,10 +6,9 @@ categories: 資料結構
 mathjax: true
 ---
 
+![圖 1. : Blog Image](https://imgur.com/6Yyz7mV.png)
 
 ## Binary Tree 和 Tree 的討論
-
-![圖 1. : Blog Image](https://imgur.com/6Yyz7mV.png)
 
 所有的樹是可以表示成二元樹的 (樹轉二元樹)，所以有很多人會把 Tree 跟 Binary Tree 搞混，有很重要的重點就是，樹不可以為空，但是 Binary Tree 可以為空，除此之外樹是沒有順序之分。
 

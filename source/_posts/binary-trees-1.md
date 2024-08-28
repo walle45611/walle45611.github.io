@@ -17,6 +17,7 @@ mathjax: true
 * Tree 和 Binary Tree degree 也有不同，因為 Tree Node's $degree >= 0$，但是 Binary Tree Node's $0 <= degree <=2$。
 
 * 像是以下這個圖就是一個例子，在 Binary Tree 中這兩個是不同的樹，但是在樹裡面就是相同的樹。
+
 ![圖 2. : different tree from binary tree](https://imgur.com/lNmehwp.png)
 
 ## Binary Tree 定義

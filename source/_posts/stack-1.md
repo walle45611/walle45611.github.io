@@ -52,8 +52,6 @@ mathjax: true
 
 * A stack has the LIFO (Last-In-First-Out) property. When inserting an element, we perform the operation from the top, which is called "push." Similarly, when removing an element, we also operate from the top, which is called "pop." Thus, both push and pop operations are performed at the top of the stack.
 
-* 那麼書上有題到可以用一維陣列去簡單的實作這個資料行別，是可以沒有錯，但是會遇到很多的，問題以下會娓娓道來。
-
 ## Stack ADT
 
 **結構** : Stack
@@ -61,7 +59,7 @@ mathjax: true
 
 ### 函數定義
 
-以下是最小的操作步驟也就是說你的一個 Stack 需要這些操作才能正常運作，當然你的ADT可ㄧ有很多自定義的操作，但是以 `horowitz` 的書中是這樣寫的。
+以下是最小的操作步驟也就是說你的一個 Stack 需要這些操作才能正常運作，當然你的 ADT 可ㄧ有很多自定義的操作，但是以 `horowitz` 的書中是這樣寫的，那麼這些操作的複雜度也都是 $O(1)$。
 
 * **Stack CreateS(max_stack_size)** :
     建立一個空的 stack 且最大容量為 max_satck_size 之 value。
@@ -124,81 +122,193 @@ $$\dfrac{1}{n+1}\binom{2n}{n}$$
 
 ![圖 4. : 108 台大資工資料結構與演算法](https://imgur.com/jrJIbqR.png)
 
-## Implementation code
+## Implementation code by 1-dim Array
 
-* 使用一維陣列實作 stack，那麼這些操作的複雜度也都是 $O(1)$ 如果不算 `display` 的話。
+```cpp
+#include <bits/stdc++.h>
 
-    ```cpp
-    #include <bits/stdc++.h>
+using namespace std;
 
-    using namespace std;
+#define MAX_SIZE 100  // 定義 Stack 的最大容量
 
-    #define MAX_SIZE 100  // 定義 Stack 的最大容量
+template <typename T>
+class Stack {
+private:
+    T arr[MAX_SIZE];  // 一維陣列來儲存 Stack 元素
+    int top;          // 指向 Stack 的頂端
 
-    template <typename T>
-    class Stack {
-    private:
-        T arr[MAX_SIZE];  // 一維陣列來儲存 Stack 元素
-        int top;          // 指向 Stack 的頂端
+public:
+    // 建構函式初始化 Stack
+    Stack() {
+    top = -1;  // 初始時 Stack 是空的
+    }
 
-    public:
-        // 建構函式初始化 Stack
-        Stack() {
-        top = -1;  // 初始時 Stack 是空的
-        }
+    // 判斷 Stack 是否為空
+    bool isEmpty() {
+    return top == -1;
+    }
 
-        // 判斷 Stack 是否為空
-        bool isEmpty() {
-        return top == -1;
-        }
+    // 判斷 Stack 是否已滿
+    bool isFull() {
+    return top == MAX_SIZE - 1;
+    }
 
-        // 判斷 Stack 是否已滿
-        bool isFull() {
-        return top == MAX_SIZE - 1;
-        }
+    // Push 操作，將元素 push Stack
+    void push(T value) {
+    if (isFull()) {
+        cout << "Stack overflow, cannot push " << value << endl;
+        return;
+    }
+    arr[++top] = value;
+    }
 
-        // Push 操作，將元素推入 Stack
-        void push(T value) {
-        if (isFull()) {
-            cout << "Stack overflow, cannot push " << value << endl;
-            return;
-        }
-        arr[++top] = value;
-        }
+    // Pop 操作，將元素從 Stack pop
+    T pop() {
+    if (isEmpty()) {
+        cout << "Stack underflow, cannot pop" << endl;
+        return T();  // 回傳預設值
+    }
+    return arr[top--];
+    }
 
-        // Pop 操作，將元素從 Stack 彈出
-        T pop() {
+    // Peek 操作，查看 Stack top
+    T peek() {
+    if (isEmpty()) {
+        cout << "Stack is empty" << endl;
+        return T();  // 回傳預設值
+    }
+    return arr[top];
+    }
+
+    // 顯示 Stack 內容
+    void display() {
+    if (isEmpty()) {
+        cout << "Stack is empty" << endl;
+        return;
+    }
+    cout << "Stack elements: ";
+    for (int i = 0; i <= top; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    }
+};
+
+int main() {
+Stack<int> intStack;  // 創建一個整數型別的 Stack
+
+intStack.push(10);
+intStack.push(20);
+intStack.push(30);
+
+intStack.display();
+
+cout << "Top element is: " << intStack.peek() << endl;
+
+cout << "Popped element is: " << intStack.pop() << endl;
+
+intStack.display();
+
+Stack<string> stringStack;  // 創建一個字串型別的 Stack
+
+stringStack.push("Hello");
+stringStack.push("World");
+
+stringStack.display();
+
+cout << "Top element is: " << stringStack.peek() << endl;
+
+cout << "Popped element is: " << stringStack.pop() << endl;
+
+stringStack.display();
+}
+```
+
+## Implementation code by link list
+
+```cpp
+#include <bits/stdc++.h>
+
+using namespace std;
+
+// 節點結構
+template <typename T>
+class Node {
+public:
+    T data;        // 節點儲存的數據
+    Node* next;    // 指向下一個節點的指標
+
+    Node(T value) : data(value), next(nullptr) {}
+};
+
+// Stack 類別
+template <typename T>
+class Stack {
+private:
+    Node<T>* top;  // 指向 Stack top
+
+public:
+    // 建構函式初始化 Stack
+    Stack() : top(nullptr) {}
+
+    // 判斷 Stack 是否為空
+    bool isEmpty() {
+        return top == nullptr;
+    }
+
+    // Push 操作，將元素 push Stack
+    void push(T value) {
+        Node<T>* newNode = new Node<T>(value);
+        newNode->next = top;
+        top = newNode;
+    }
+
+    // Pop
+    T pop() {
         if (isEmpty()) {
             cout << "Stack underflow, cannot pop" << endl;
             return T();  // 回傳預設值
         }
-        return arr[top--];
-        }
+        Node<T>* temp = top;
+        T poppedValue = top->data;
+        top = top->next;
+        delete temp;
+        return poppedValue;
+    }
 
-        // Peek 操作，查看 Stack 頂端的元素
-        T peek() {
+    // Peek 操作，查看 Stack top
+    T peek() {
         if (isEmpty()) {
             cout << "Stack is empty" << endl;
             return T();  // 回傳預設值
         }
-        return arr[top];
-        }
+        return top->data;
+    }
 
-        // 顯示 Stack 內容
-        void display() {
+    // 顯示 Stack 內容
+    void display() {
         if (isEmpty()) {
             cout << "Stack is empty" << endl;
             return;
         }
+        Node<T>* current = top;
         cout << "Stack elements: ";
-        for (int i = 0; i <= top; i++) {
-            cout << arr[i] << " ";
+        while (current != nullptr) {
+            cout << current->data << " ";
+            current = current->next;
         }
         cout << endl;
-        }
-    };
+    }
 
-    int main() {
+    // 解構函式清除 Stack 所有節點
+    ~Stack() {
+        while (!isEmpty()) {
+            pop();
+        }
+    }
+};
+
+int main() {
     Stack<int> intStack;  // 創建一個整數型別的 Stack
 
     intStack.push(10);
@@ -225,5 +335,5 @@ $$\dfrac{1}{n+1}\binom{2n}{n}$$
     cout << "Popped element is: " << stringStack.pop() << endl;
 
     stringStack.display();
-    }
-    ```
+}
+```

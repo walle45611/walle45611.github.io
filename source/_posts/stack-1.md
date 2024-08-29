@@ -6,7 +6,9 @@ categories: 資料結構
 mathjax: true
 ---
 
-## Stacks 基本的介紹
+![圖 1. : Blog Image](https://imgur.com/2Xe4Tou.png)
+
+## Stack 基本的介紹
 
 當談到資料結構時，Stack 是一個不可忽視的重要概念。即使在日常程式設計中不常使用它，理解 Stack 的原理仍然對其他應用場景大有助益。Stack 的經典應用之一是深度優先搜尋 (DFS)，它利用系統堆疊來記錄每次函數的調用過程。透過理解 Stack 的運作方式，我們能更好地掌握各種遞迴操作和函數調用的細節。接下來，我們將深入探討 Stack 的基本原理及其應用。
 

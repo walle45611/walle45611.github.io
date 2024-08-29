@@ -1,7 +1,7 @@
 ---
 title: 資料結構-樹篇
 date: 2024-08-26 15:15:34
-tags: [Algorithm, Tree]
+tags: [Data structures, Tree]
 categories: 資料結構
 ---
 

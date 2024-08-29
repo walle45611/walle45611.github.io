@@ -6,7 +6,7 @@ categories: 數學
 mathjax: true
 ---
 
-![1. blog image](https://imgur.com/XpRufSg.png)
+![1. Blog Image](https://imgur.com/XpRufSg.png)
 
 ## 前言
 

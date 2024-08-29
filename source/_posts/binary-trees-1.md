@@ -1,7 +1,7 @@
 ---
 title: 資料結構-二元樹篇-1
 date: 2024-08-26 23:31:59
-tags: [Algorithm, Binary Tree]
+tags: [Data structures, Binary Tree]
 categories: 資料結構
 mathjax: true
 ---
@@ -26,9 +26,9 @@ mathjax: true
 
 ## Binary Tree ADT
 
-**結構**: `Binary_Tree` (簡寫為 `BinTree`)
+**結構** : `Binary_Tree` (簡寫為 `BinTree`)
 
-**物件**: 一組有限的節點，可以是空的，或包含根節點、左子樹，以及右子樹。
+**物件** : 一組有限的節點，可以是空的，或包含根節點、左子樹，以及右子樹。
 
 $$
 \forall bt, bt1, bt2 \in \text{BinTree}, \; item \in \text{element}
@@ -42,7 +42,7 @@ $$
     建立一個空的二元樹
 
 * **Boolean IsEmpty(bt)** :
-    if (bt == 空二叉樹) 則返回 TRUE，否則返回 FALSE
+    if (bt == 空二元樹) 則返回 TRUE，否則返回 FALSE
 
 * **BinTree MakeBT(bt1, item, bt2)** :
     建立一個二元樹，左子樹為 `bt1`，右子樹為 `bt2`，根節點包含資料項 `item`
@@ -81,7 +81,7 @@ $$
 
     ![圖 7. : Strict binary tree](https://imgur.com/0dtk7qI.png)
 
-## Binary Tree 的個 Lemma
+## Binary Tree 的 4 個 Lemma
 
 以下會介紹 Binary Tree 的 4 個 Lemma 其中有兩個屬於 Maxiumm number of nodes 的證明，和一個 Relation between number of leaf node and nodes of degree 2，和一個是從 Maxiumm number of nodes 變化出來的特別針對於 complete binary tree。
 
@@ -188,6 +188,60 @@ $\forall \, T \, \text{is a nonempty Binary Tree}$, if $n_0$ is leaf nodes and $
 ### 總結
 
 * Lemma 2 可以得知一個 full binary tree 他就會有 $2^k-1$ 個 nodes，這個應該滿好理解就不說了，在 `horowitz` 書中有寫到第 195 頁底下。
+
+## Binary Tree 的最小高度推導
+
+### Q1. 若二元樹有 $n$ 個節點，最小高度是多少？
+
+一棵**滿二元樹**擁有 $n$ 個節點時，高度是最小的。滿二元樹是指所有層次都被完全填滿的一棵二元樹。
+
+對於滿二元樹，其節點數 $n$ 與高度 $h$ 的關係是：
+
+$$
+n = 2^h - 1
+$$
+
+這可以解釋為，高度為 $h$ 的滿二元樹，其節點數量是 $2^h - 1$。
+
+反過來，最小高度 $h$ 與節點數 $n$的關係為：
+
+$$
+h = \lceil  \, \log_2(n+1)  \, \rceil
+$$
+
+因此，如果有 $n$ 個節點，二元樹的**最小高度**為：
+
+$$
+h_{\text{min}} = \lceil  \, \log_2(n+1)  \, \rceil
+$$
+
+這公式表明了給定 $n$ 個節點時的最小高度，對應於每一層節點都儘量填滿的情況。
+
+### Q2. 若有 $n$ 個葉節點，最小高度是多少？
+
+假設我們有 $n$ 個葉節點，我們要構造一棵高度最小的二元樹。在二元樹中，葉節點的數量決定了樹的最小高度。最小高度的二元樹是一棵滿二元樹，其中所有的葉節點都位於最後一層或倒數第二層。
+
+若我們將 $l$ 代表葉節點的數量，滿二元樹的葉節點數與高度 $h$ 的關係為 :
+
+$$
+2^{h-1} \leq l < 2^h
+$$
+
+這表示高度 $h$ 的二元樹最多可以容納 $2^{h-1}$ 到 $2^h - 1$ 個葉節點。
+
+對於最小高度，我們取 :
+
+$$
+h_{\text{min}} = \lceil \, \log_2 l \, \rceil + 1
+$$
+
+因此，若有 $n$ 個葉節點，二元樹的**最小高度**為：
+
+$$
+h_{\text{min}} = \lceil \, \log_2 n \, \rceil + 1
+$$
+
+這表示給定 $n$ 個葉節點，最小高度是 $\lceil \log_2 n \rceil$ 再加一層 root node。
 
 ## Binary Tree representations
 

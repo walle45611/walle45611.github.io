@@ -19,7 +19,7 @@ A WAN mini port is a software driver for Windows XP (and later versions) that al
 
 WAN mini ports are typically installed automatically when a computer is connected to a WAN, such as through a DSL or cable modem. WAN mini ports are also automatically installed when you connect to a virtual private network (VPN). Each WAN mini port can be configured separately using the Windows Device Manager.
 
-* 簡單總結一下這個其實就是說你需要連接到 WAN windows 呢他會幫你安裝 WAN Miniport Driver，會是連接到 VPN 他也會自動安裝此 Driver。
+* 簡單總結一下這個其實就是說你需要連接到 WAN windows 呢他會幫你安裝 WAN Miniport Driver，或是連接到 VPN 他也會自動安裝此 Driver。
 
 ## 開始除錯
 

@@ -367,12 +367,12 @@ codeblock:
         dark: prism-dark
     # Add copy button on codeblock
     copy_button:
-        enable: false
+        enable: true
         # Available values: default | flat | mac
         style:
     # Fold code block
     fold:
-        enable: false
+        enable: true
         height: 500
 
 back2top:

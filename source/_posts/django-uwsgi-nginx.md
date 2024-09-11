@@ -5,7 +5,7 @@ tags: [Django , container]
 categories: IT 技術
 ---
 
-![1. Blog Image](https://i.imgur.com/fufoJmK.png)
+![圖 1. : Blog Image](https://i.imgur.com/fufoJmK.png)
 
 <!--more-->
 

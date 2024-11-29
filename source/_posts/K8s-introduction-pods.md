@@ -5,6 +5,10 @@ tags: k8s
 categories: [IT 技術,k8s,container]
 ---
 
+![圖 1. : Blog Image](https://imgur.com/tulZWKO.png)
+
+<!--more-->
+
 ## Pod 是什麼
 
 Pod 是可以在 K8s 創建和管理的最小單位。

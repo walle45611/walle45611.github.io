@@ -1,5 +1,5 @@
 ---
-title: 第四至第六章 - 組織全景、領導與規劃
+title: ISO27001 第四至第六章 - 組織全景、領導與規劃
 date: 2024-12-01
 categories:
   - ISMS

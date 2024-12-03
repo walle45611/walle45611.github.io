@@ -2,7 +2,7 @@
 title: ISO27001 第四至第六章 - 組織全景、領導與規劃
 date: 2024-12-01
 categories:
-  - ISMS
+  - ISO27001
 tags:
   - 資訊安全管理
   - ISMS
@@ -11,6 +11,8 @@ tags:
 ---
 
 ![圖 1. : Blog Image](https://imgur.com/EUKBYfy.png)
+
+<!--more-->
 
 # 第四至第六章 - 組織全景、領導與規劃
 
@@ -27,8 +29,6 @@ tags:
 
 **附註**  
 確定這些議題旨在建立組織的外部與內部背景。
-
-<!--more-->
 
 ---
 

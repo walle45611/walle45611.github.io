@@ -7,6 +7,8 @@ tags: [Concurrency, Critical Section, Priority Inversion]
 
 ![圖 1. : Blog Image](https://imgur.com/UkVANiR.png)
 
+<!--more-->
+
 - Where several processes access and manipulate the same data concurrently, and the outcome of the execution depends on the particular order in which the access takes place, is called a race condition.
   - 當多個 process 同時訪問和操作相同的數據，而執行結果取決於訪問操作的特定順序時，這種情況稱為競爭條件（race condition）。
 - 重點單字：`process synchronization` 和 `coordination`

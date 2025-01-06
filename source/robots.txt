@@ -1,13 +1,8 @@
-User-agent: Googlebot
-Allow: /
-
 User-agent: *
 Allow: /
 Allow: /archives/
 Allow: /categories/
 Allow: /tags/
-Disallow: /vendors/
-Disallow: /fonts/
 Disallow: /fancybox/
 
 Sitemap: https://blog.walle4561.com/sitemap.xml

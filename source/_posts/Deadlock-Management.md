@@ -1,12 +1,8 @@
 ---
 title: Deadlock Management
 date: 2025-01-06
-tags:
-  - Operating System
-  - Deadlock
-  - Resource Management
-categories:
-  - Computer Science
+tags: [Operating System,Deadlock,Resource Management]
+categories: [Operating System]
 mathjax: true
 ---
 

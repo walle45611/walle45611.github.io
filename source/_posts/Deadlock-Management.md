@@ -1,14 +1,23 @@
 ---
-title: Deadlock Management
-date: 2025-01-06
-tags: [Operating System,Deadlock,Resource Management]
-categories: [Operating System]
+title: 作業系統-死結管理
+tags:
+  - Operating System
+  - Deadlock
+  - Resource Management
+categories:
+  - Operating System
 mathjax: true
+abbrlink: 3cd8
+date: 2025-01-06 00:00:00
 ---
 
-![圖 1. : Blog Image](https://imgur.com/VbrcmEY.png)
+## 前情提要
+
+這篇文章主要探討了 死結管理（Deadlock Management） 的核心概念與解決方法。今天的內容涵蓋了死結的定義、發生條件，以及處理死結的不同方法，包括 預防（Prevention）、避免（Avoidance） 和 檢測與恢復（Detection and Recovery）。此外，還詳細介紹了 Banker’s Algorithm 和 資源分配圖（Resource-Allocation Graph） 的應用，以及如何選擇適當策略來處理系統中的死結問題，希望透過這篇文章幫助讀者全面了解死結管理的理論基礎與實務應用。
 
 <!--more-->
+
+![圖 1. : Blog Image](https://imgur.com/VbrcmEY.png)
 
 ## 系統模型 (System Model)
 

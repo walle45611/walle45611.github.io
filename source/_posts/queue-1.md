@@ -1,18 +1,25 @@
 ---
 title: 資料結構-Queue篇-1
-date: 2024-09-09 11:58:09
-tags: [Data structures,queue]
+tags:
+  - Data structures
+  - queue
 categories: 資料結構
 mathjax: true
+abbrlink: '1059'
+date: 2024-09-09 11:58:09
 ---
+
+## 前情提要
+
+這篇文章是資料結構系列的第三篇，主要探討 Queue（佇列） 的定義、抽象資料型別（ADT）、以及不同的實作方式。今天的內容包括 線性隊列 的問題與解決方法、 環形隊列（Circular Queue） 的兩種實現，以及 鏈結串列實作的 Queue。文章還透過具體的範例程式碼展示了如何操作隊列中的新增（enqueue）和刪除（dequeue），幫助讀者更深入地理解隊列的運作與應用場景。
+
+<!--more-->
 
 ![圖 1. : Blog Image](https://imgur.com/lHiUPLR.png)
 
 ## Queue 的定義
 
 * A queue is an ordered list in which all insertions take place at one end and all deletions take place at the opposite end. Given a queue $Q = (a_0, a_1, \dotsb, a_{n-1})$, $a_0$ 我們稱之為 front element, $a_{n-1}$ 我們稱之為 rear element，那麼 Queue 有 $\text{First-In-First-Out (FIFO)}$ 的性質。
-
-<!--more-->
 
 ## Queue ADT
 

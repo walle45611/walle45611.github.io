@@ -1,18 +1,22 @@
 ---
 title: Direct Image 的性質與應用
-date: 2024-08-22 14:45:05
-tags: [數學, 集合論, 函數]
+tags:
+  - 數學
+  - 集合論
+  - 函數
 categories: 數學
 mathjax: true
+abbrlink: eeca
+date: 2024-08-22 14:45:05
 ---
-
-![1. Blog Image](https://imgur.com/XpRufSg.png)
 
 ## 前言
 
 在集合論中，直接像（Direct Image）是函數在兩個集合之間映射時所產生的一個重要概念。它描述了如何從一個集合 $A$ 的子集經過函數映射到另一個集合 $B$ 的子集中。本篇文章將探討直接像的定義與性質，並說明其在數學中的應用。
 
 <!--more-->
+
+![1. Blog Image](https://imgur.com/XpRufSg.png)
 
 ## 定義
 

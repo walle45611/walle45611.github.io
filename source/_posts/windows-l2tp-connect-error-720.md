@@ -1,17 +1,20 @@
 ---
 title: Windows 10 L2TP VPN 連線錯誤
-date: 2024-08-30 13:47:12
-tags: [VPN, Windows]
+tags:
+  - VPN
+  - Windows
 categories: IT 技術
+abbrlink: c07f
+date: 2024-08-30 13:47:12
 ---
-
-![圖 1. : Blog Image](https://imgur.com/TpAWGlJ.png)
 
 ## 前情提要
 
 今天在補習班的時候，突然有同事說 VPN 連線失敗，我想說慘了是不是真的掛掉了 Radius 還是 Cisco Router 上的設定有問題，然後我試了一下我的帳號可以，那麼我就開始排除錯誤，還好問題不大。
 
 <!--more-->
+
+![圖 1. : Blog Image](https://imgur.com/TpAWGlJ.png)
 
 ## WAN mini port definition
 

@@ -1,20 +1,21 @@
 ---
 title: 簡單認識 LDAP：讓網路認證更輕量
-date: 2024-08-30
 tags:
   - LDAP
 categories:
   - IT 技術
   - LDAP
+abbrlink: d737
+date: 2024-08-30 00:00:00
 ---
-
-![圖 1. : Blog Image](https://imgur.com/pZv36P7.png)
 
 ## LDAP 的起源
 
 你可能聽過 LDAP 這個詞，但它到底是什麼？讓我們從頭說起。LDAP 的前身是 X.500 Directory Service，這是一個在應用層運行的複雜協定。由於 X.500 的封包大小會隨著資料量的不同而變化，因此管理起來有些麻煩。為了解決這個問題，LDAP 應運而生，它是一個更輕量的版本，只有一個簡單的協定定義，因此在運作上更為靈活。
 
 <!--more-->
+
+![圖 1. : Blog Image](https://imgur.com/pZv36P7.png)
 
 LDAP 是一個基於訊息的協定，採用主從式架構，定義於 [RFC2251](https://www.ietf.org/rfc/rfc2251.txt) 中。它的非同步特性意味著用戶端可以同時發出多個請求，而伺服器則可以根據重要性來回應，不需要按順序進行，這讓系統運行更加有效率。
 

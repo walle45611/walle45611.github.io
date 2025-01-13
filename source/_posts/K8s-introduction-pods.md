@@ -1,13 +1,21 @@
 ---
 title: K8s 中的 Pod 是什麼
-date: 2024-11-28 10:09:29
 tags: k8s
-categories: [IT 技術,k8s,container]
+categories:
+  - IT 技術
+  - k8s
+  - container
+abbrlink: 4fb7
+date: 2024-11-28 10:09:29
 ---
 
-![圖 1. : Blog Image](https://imgur.com/tulZWKO.png)
+## 前情提要
+
+這篇文章詳細介紹了 Kubernetes（K8s） 中的核心概念之一 —— Pod，包括它的定義、生命週期、資源管理與限制，以及相關操作指令。Pod 是 K8s 中創建和管理的最小單位，文章重點說明了 Pod 的組成、運行邏輯，以及如何在 K8s 中部署應用程式。同時還提供了配置 Pod 資源限制的範例 YAML 文件與實操步驟，並總結了一些常用的 kubectl 指令，幫助讀者更好地理解和運用 Pod 的功能。
 
 <!--more-->
+
+![圖 1. : Blog Image](https://imgur.com/tulZWKO.png)
 
 ## Pod 是什麼
 

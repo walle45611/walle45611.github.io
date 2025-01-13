@@ -141,7 +141,7 @@ avatar:
     # Replace the default image and set the url here.
     url: https://github.com/walle45611.png
     # If true, the avatar will be displayed in circle.
-    rounded: false
+    rounded: true
     # If true, the avatar will be rotated with the cursor.
     rotated: false
 
@@ -184,11 +184,11 @@ toc:
     # Automatically add list number to toc.
     number: true
     # If true, all words will placed on next lines if header width longer then sidebar width.
-    wrap: false
+    wrap: true
     # If true, all level of TOC in a post will be displayed, rather than the activated part of it.
     expand_all: false
     # Maximum heading depth of generated toc.
-    max_depth: 6
+    max_depth: 10
 
 # ---------------------------------------------------------------
 # Footer Settings
@@ -342,7 +342,7 @@ text_align:
     mobile: justify
 
 # Reduce padding / margin indents on devices with narrow width.
-mobile_layout_economy: false
+mobile_layout_economy: true
 
 # Browser header panel color.
 theme_color:

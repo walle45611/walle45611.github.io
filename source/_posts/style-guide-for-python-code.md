@@ -1,17 +1,19 @@
 ---
 title: Python 程式碼風格指南
-date: 2024-09-10 14:38:19
-tags: [Python]
+tags:
+  - Python
 categories: IT 技術
+abbrlink: 815d
+date: 2024-09-10 14:38:19
 ---
 
-![圖 1. : Blog Image](https://imgur.com/DDM5EXN.png)
-
-## 介紹
+## 前情提要
 
 PEP8 是在撰寫 Python 中的一些寫作規範標準，也就是說不遵照也不會出錯誤，那我也很常在想到底怎麼樣寫才是對的，然後看書看一看然後想說我都沒有看過 Python PEP8 相關的規定，我就突然跑去官方網站開始看，因為我想說看了也會對之後要寫專案的時候比較有幫助，所以就順便寫下了這邊篇 Blog。
 
 <!--more-->
+
+![圖 1. : Blog Image](https://imgur.com/DDM5EXN.png)
 
 ## PEP 257
 

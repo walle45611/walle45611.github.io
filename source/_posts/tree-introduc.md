@@ -1,17 +1,20 @@
 ---
 title: 資料結構-樹篇
-date: 2024-08-26 15:15:34
-tags: [Data structures, Tree]
+tags:
+  - Data structures
+  - Tree
 categories: 資料結構
+abbrlink: '8e82'
+date: 2024-08-26 15:15:34
 ---
-
-![圖 1. : Blog Image ](https://imgur.com/Sm9aRdD.png)
 
 ## Tree 討論
 
 最近因為在補習班上資料結構，所以想說寫一下 blog 有參考幾本 bible 分別有 `clrs`、 `horowitz` 這兩本書來撰寫這篇 blog，內容可能跟 `horowitz` 的內容比較接近，因為 `clrs` 這本還是 algo 說的比較多哈哈哈。
 
 <!--more-->
+
+![圖 1. : Blog Image ](https://imgur.com/Sm9aRdD.png)
 
 ### Tree 定義
 

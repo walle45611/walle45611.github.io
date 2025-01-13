@@ -1,13 +1,26 @@
 ---
 title: Race Condition and Synchronization in Process Management
-date: 2025-01-04
-categories: [Operating System]
-tags: [Concurrency, Critical Section, Priority Inversion]
+categories:
+  - Operating System
+tags:
+  - Concurrency
+  - Critical Section
+  - Priority Inversion
+abbrlink: 40a5
+date: 2025-01-04 00:00:00
 ---
 
-![圖 1. : Blog Image](https://imgur.com/UkVANiR.png)
+## 前情提要
+
+這篇文章深入探討了 競爭條件（Race Condition） 與 同步（Synchronization） 在操作系統進程管理中的核心概念。從基本的臨界區問題（Critical-Section Problem）出發，逐步介紹了解決該問題的各種方法，包括硬體支持（如 Test-and-Set 和 Compare-and-Swap）、軟體解法（如 Peterson's Solution）、互斥鎖（Mutex Lock）以及信號量（Semaphore）的應用。
+
+此外，文章還涵蓋了多種經典的同步問題，如 生產者-消費者問題（Producer-Consumer Problem）、讀者-寫者問題（Readers-Writers Problem） 以及 哲學家進餐問題（Dining-Philosophers Problem），並通過具體範例程式碼與圖示說明了這些問題的解決方案。
+
+最後，文章討論了 活性（Liveness） 與 優先級倒置（Priority Inversion） 的相關議題，強調了系統在設計同步機制時需要考慮公平性和效率，提供了一個全面的進程同步和資源管理指引。
 
 <!--more-->
+
+![圖 1. : Blog Image](https://imgur.com/UkVANiR.png)
 
 - Where several processes access and manipulate the same data concurrently, and the outcome of the execution depends on the particular order in which the access takes place, is called a race condition.
   - 當多個 process 同時訪問和操作相同的數據，而執行結果取決於訪問操作的特定順序時，這種情況稱為競爭條件（race condition）。

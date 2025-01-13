@@ -1,10 +1,19 @@
 ---
 title: 資料結構-二元樹篇-1
-date: 2024-08-26 23:31:59
-tags: [Data structures, Binary Tree]
+tags:
+  - Data structures
+  - Binary Tree
 categories: 資料結構
 mathjax: true
+abbrlink: 714d
+date: 2024-08-26 23:31:59
 ---
+
+## 前情提要
+
+這篇文章是資料結構系列的第二篇，主要討論 Binary Tree（二元樹） 的基礎概念與相關理論。今天整理了 Binary Tree 的定義、基本性質、常見類型，以及一些重要的數學性質與推導，像是節點數、樹的高度等。此外，也介紹了二元樹的實現方式（陣列與鏈結串列）和走訪方法，並分享了一些經典範例題的解法，希望幫助讀者快速掌握二元樹的核心知識。
+
+<!--more-->
 
 ![圖 1. : Blog Image](https://imgur.com/6Yyz7mV.png)
 
@@ -12,7 +21,6 @@ mathjax: true
 
 所有的樹是可以表示成二元樹的 (樹轉二元樹)，所以有很多人會把 Tree 跟 Binary Tree 搞混，有很重要的重點就是，樹不可以為空，但是 Binary Tree 可以為空，除此之外樹是沒有順序之分。
 
-<!--more-->
 
 * Tree 和 Binary Tree degree 也有不同，因為 Tree Node's $degree >= 0$，但是 Binary Tree Node's $0 <= degree <=2$。
 

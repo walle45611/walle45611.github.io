@@ -1,13 +1,12 @@
 ---
 title: 使用 Docker 部署 Django：結合 uWSGI 和 Nginx 提升效能
-date: 2024-08-18 16:37:49
-tags: [Django , container]
+tags:
+  - Django
+  - container
 categories: IT 技術
+abbrlink: '1079'
+date: 2024-08-18 16:37:49
 ---
-
-![圖 1. : Blog Image](https://i.imgur.com/fufoJmK.png)
-
-<!--more-->
 
 ## 前情提要
 
@@ -15,6 +14,9 @@ categories: IT 技術
 
 此外，與 .NET Core 可以透過編譯並打包成單一可部署檔案的方式不同，在 Python 環境下，我們需要借助像 uWSGI 這類的工具，作為 Nginx 與 Django 之間的橋樑，以實現高效的應用程式部署。
 
+<!--more-->
+
+![圖 1. : Blog Image](https://i.imgur.com/fufoJmK.png)
 
 ## 開始實踐
 

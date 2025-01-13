@@ -1,9 +1,18 @@
 ---
 title: RESTful 和 API 關係介紹
-date: 2024-09-12 13:39:35
-tags: [RESTful, API]
+tags:
+  - RESTful
+  - API
 categories: IT 技術
+abbrlink: f35e
+date: 2024-09-12 13:39:35
 ---
+
+## 前情提要
+
+這篇文章主要介紹了 API 與 RESTful 架構 的概念，探討了 API 的基本原理、客戶端與資源的角色，以及如何利用 RESTful 架構設計高效且易於擴展的 API。文中詳細說明了 REST 的架構風格（如統一介面、無狀態、分層架構等），並且闡述了 RESTful API 的運作方式及其優勢，例如可擴展性、靈活性和獨立性。此外，文章還提供了 URI 設計的最佳實踐，幫助讀者更好地理解如何設計一個符合 RESTful 概念的 API。
+
+<!--more-->
 
 ![圖 1. : Blog Image](https://imgur.com/ihJNO9r.png)
 

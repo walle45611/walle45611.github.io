@@ -1,19 +1,20 @@
 ---
 title: 在 Windows 上正確設定 OpenSSH Server 和 Guacamole SFTP
-date: 2024-08-27 14:45:03
-tags: [Windows, Guacamole]
+tags:
+  - Windows
+  - Guacamole
 categories: IT 技術
+abbrlink: 16f9
+date: 2024-08-27 14:45:03
 ---
-
-
-
-![圖 1. : Blog Image](https://imgur.com/X7H6aOq.png)
 
 ## 前情提要
 
 我最近有遇到一個問題就是我 Windows 10 要使用 share devices 然後給外包廠商上傳檔案在 Guacamole 那麼我知道 Guacamole 有 SFTP 的服務可以串接讓外包廠商上傳檔案，但是中間一直連線失敗有點弄到快爆氣哈哈哈...，但是後面發現滿蠢的哈哈哈哈，廢話不多說開始吧。
 
 <!--more-->
+
+![圖 1. : Blog Image](https://imgur.com/X7H6aOq.png)
 
 ## Windows 10 / Windows Server 2019 安裝內建的 OpenSSH 工具
 

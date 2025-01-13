@@ -1,17 +1,23 @@
 ---
 title: DOMjudge 安裝指南
-categories: [競賽系統]
-tags: [DOMjudge, 安裝, Linux, Shell Script]
-date: 2024-10-22
+categories:
+  - 競賽系統
+tags:
+  - DOMjudge
+  - 安裝
+  - Linux
+  - Shell Script
+abbrlink: 82ab
+date: 2024-10-22 00:00:00
 ---
-
-![圖 1. : Blog Image](https://imgur.com/YJsR9lN.png)
 
 ## 簡介
 
 DOMjudge 是一個開源的程式設計競賽管理系統，通常用於各類程式設計競賽，例如 ACM ICPC。本篇文章將介紹如何透過自動化 Shell 腳本來在 Ubuntu 系統上安裝 DOMjudge 競賽系統。我們會逐步解釋每個步驟，幫助讀者了解整個過程的每一個細節。
 
 <!--more-->
+
+![圖 1. : Blog Image](https://imgur.com/YJsR9lN.png)
 
 ### 安裝 DOMServer 流程
 

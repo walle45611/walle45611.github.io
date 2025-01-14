@@ -1,61 +1,63 @@
-name: Pages
+name: Deploy to Cloudflare Pages
 
 on:
-    push:
-        branches:
-            - main # default branch
+  push:
+    branches:
+      - main
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v4
-              with:
-                  token: ${{ secrets.GITHUB_TOKEN }}
-                  # If your repository depends on submodule, please see: https://github.com/actions/checkout
-                  submodules: recursive
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          submodules: recursive 
 
-            - name: Set up Pandoc
-              run: sudo apt-get install -y pandoc
+      - name: Set up Pandoc
+        run: sudo apt-get install -y pandoc
 
-            - name: Use Node.js 20
-              uses: actions/setup-node@v4
-              with:
-                  # Examples: 20, 18.19, >=16.20.2, lts/Iron, lts/Hydrogen, *, latest, current, node
-                  node-version: "20"
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
 
-            - name: Cache NPM dependencies
-              uses: actions/cache@v4
-              with:
-                  path: node_modules
-                  key: ${{ runner.OS }}-npm-cache
-                  restore-keys: |
-                      ${{ runner.OS }}-npm-cache
+      - name: Cache NPM dependencies
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-npm-cache
+          restore-keys: |
+            ${{ runner.OS }}-npm-cache
 
-            - name: Install Dependencies
-              run: npm ci
+      - name: Install Dependencies
+        run: npm ci
 
-            - name: Replace google-analytics.njk
-              run: cp ${{ github.workspace }}/google-analytics.njk ${{ github.workspace }}/node_modules/hexo-theme-next/layout/_third-party/analytics/google-analytics.njk
+      - name: Replace google-analytics.njk
+        run: cp ${{ github.workspace }}/google-analytics.njk ${{ github.workspace }}/node_modules/hexo-theme-next/layout/_third-party/analytics/google-analytics.njk
 
-            - name: Build
-              run: npm run build
+      - name: Build
+        run: npm run build
 
-            - name: Upload Pages artifact
-              uses: actions/upload-pages-artifact@v3
-              with:
-                  path: ./public
+      - name: Upload Pages artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: site
+          path: ./public
 
-    deploy:
-        needs: build
-        permissions:
-            pages: write
-            id-token: write
-        environment:
-            name: github-pages
-            url: ${{ steps.deployment.outputs.page_url }}
-        runs-on: ubuntu-latest
-        steps:
-            - name: Deploy to GitHub Pages
-              id: deployment
-              uses: actions/deploy-pages@v4
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Pages artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: site
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }} 
+          projectName: blog
+          directory: ./site 

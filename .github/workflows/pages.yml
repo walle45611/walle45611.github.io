@@ -33,7 +33,7 @@ jobs:
                       ${{ runner.OS }}-npm-cache
 
             - name: Install Dependencies
-              run: npm install
+              run: npm ci
 
             - name: Replace google-analytics.njk
               run: cp ${{ github.workspace }}/google-analytics.njk ${{ github.workspace }}/node_modules/hexo-theme-next/layout/_third-party/analytics/google-analytics.njk

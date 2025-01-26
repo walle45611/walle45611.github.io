@@ -6,7 +6,7 @@ tags: Vim
 categories: Editor
 ---
 
-## LazyVim 和 Oh My Tmux 設定過成
+## LazyVim 和 Oh My Tmux 設定過程
 
 我嘗試了一些方式安裝 Neovim，但是要不是就是安裝很繁雜，
 後來我覺得直接用 LazyVim 安裝最快了，然後搭配 tmux 感覺就是工作效率翻倍，

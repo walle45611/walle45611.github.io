@@ -8,7 +8,7 @@ categories: Editor
 
 ## LazyVim 和 Oh My Tmux 設定過程
 
-我嘗試了一些方式安裝 Neovim，但是要不是就是安裝很繁雜，
+我嘗試了一些方式安裝 Neovim，大部分找到的都偏複雜，
 後來我覺得直接用 LazyVim 安裝最快了，然後搭配 tmux 感覺就是工作效率翻倍，
 但是我覺得還是要熟悉 Vim 才會有這樣的感覺，然後搭配著 Tmux 的功能讓頁面可以快速切換，
 總體來說我覺得這樣的搭配也算好用。
@@ -26,65 +26,68 @@ LazyVim 是基於 Neovim 的一個優化配置框架，能夠簡化插件管理�
 ### **安裝 Neovim 與基礎工具**
 
 1. **安裝 Neovim**
-   - macOS：
 
-     ```bash
-     brew install neovim
-     ```
+    - macOS：
 
-   - Ubuntu/Debian：
+        ```bash
+        brew install neovim
+        ```
 
-     ```bash
-     sudo apt install neovim
-     ```
+    - Ubuntu/Debian：
+
+        ```bash
+        sudo apt install neovim
+        ```
 
 2. **確認 Neovim 版本**（建議 0.8 以上）：
 
-   ```bash
-   nvim --version
-   ```
+    ```bash
+    nvim --version
+    ```
 
 3. **安裝必要工具**：
-   - **Node.js**（用於補全與語法檢查）：
-     - macOS：
 
-       ```bash
-       brew install node
-       ```
+    - **Node.js**（用於補全與語法檢查）：
 
-     - Ubuntu/Debian：
+        - macOS：
 
-       ```bash
-       sudo apt install nodejs npm
-       ```
+            ```bash
+            brew install node
+            ```
 
-   - **Ripgrep**：支援 Telescope 的模糊搜尋。
+        - Ubuntu/Debian：
 
-     ```bash
-     brew install ripgrep
-     ```
+            ```bash
+            sudo apt install nodejs npm
+            ```
+
+    - **Ripgrep**：支援 Telescope 的模糊搜尋。
+
+        ```bash
+        brew install ripgrep
+        ```
 
 ### **Clone LazyVim 配置**
 
 1. 刪除舊有的 Neovim 配置：
 
-   ```bash
-   rm -rf ~/.config/nvim
-   ```
+    ```bash
+    rm -rf ~/.config/nvim
+    ```
 
 2. Clone LazyVim：
 
-   ```bash
-   git clone https://github.com/LazyVim/starter ~/.config/nvim
-   ```
+    ```bash
+    git clone https://github.com/LazyVim/starter ~/.config/nvim
+    ```
 
 3. 啟動 Neovim：
 
-   ```bash
-   nvim
-   ```
+    ```bash
+    nvim
+    ```
 
-   第一次啟動會自動安裝所有插件。
+    第一次啟動會自動安裝所有插件。
 
 ---
 
@@ -96,29 +99,29 @@ LazyVim 是基於 Neovim 的一個優化配置框架，能夠簡化插件管理�
 
 1. **Clone Oh My Tmux 倉庫**：
 
-   ```bash
-   git clone https://github.com/gpakosz/.tmux.git ~/.tmux
-   ln -s -f ~/.tmux/.tmux.conf ~/
-   cp ~/.tmux/.tmux.conf.local ~/
-   ```
+    ```bash
+    git clone https://github.com/gpakosz/.tmux.git ~/.tmux
+    ln -s -f ~/.tmux/.tmux.conf ~/
+    cp ~/.tmux/.tmux.conf.local ~/
+    ```
 
 2. **自定義配置**（可選）：
    編輯 `~/.tmux.conf.local`，根據個人需求調整 tmux 配置。例如：
 
-   ```bash
-    tmux_conf_theme_left_separator_main='\uE0B0'
-    tmux_conf_theme_left_separator_sub='\uE0B1'      
-    tmux_conf_theme_right_separator_main='\uE0B2'
-    tmux_conf_theme_right_separator_sub='\uE0B3'
+    ```bash
+     tmux_conf_theme_left_separator_main='\uE0B0'
+     tmux_conf_theme_left_separator_sub='\uE0B1'
+     tmux_conf_theme_right_separator_main='\uE0B2'
+     tmux_conf_theme_right_separator_sub='\uE0B3'
     ```
 
 3. **啟動 tmux**：
 
-   ```bash
-   tmux
-   ```
+    ```bash
+    tmux
+    ```
 
-   若配置成功，你將看到 Oh My Tmux 的自定義界面。
+    若配置成功，你將看到 Oh My Tmux 的自定義界面。
 
 ---
 
@@ -168,12 +171,13 @@ vim.g.snacks_animate = false
 
 1. 啟動 Neovim，執行：
 
-   ```vim
-   :Lazy sync
-   ```
+    ```vim
+    :Lazy sync
+    ```
 
 2. 測試功能：
-   - 確認禁用插件是否生效，例如 `neo-tree` 不應再加載。
-   - 測試語法高亮與模糊搜尋是否正常運行。
+
+    - 確認禁用插件是否生效，例如 `neo-tree` 不應再加載。
+    - 測試語法高亮與模糊搜尋是否正常運行。
 
 3. 啟動 tmux，確認 Oh My Tmux 配置是否生效。

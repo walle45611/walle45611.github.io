@@ -62,7 +62,7 @@ $$
     if (IsEmpty(bt)) 則返回錯誤，否則返回 bt 根節點中的資料
 
 * **BinTree Rchild(bt)** :
-    if (IsEmpty(bt)) 則返回錯誤，否則返回 bt 的右子樹
+    if (IsEmpty(bt)) 則返回錯誤，否則返回 bt 的右子樹 
 
 ## Binary Tree Types
 

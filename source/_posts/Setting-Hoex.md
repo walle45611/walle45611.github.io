@@ -1,12 +1,13 @@
 ---
 title: 快入使用 Hexo 建置自己的 Blog
-date: 2024-08-12 18:52:26
 tags:
   - Hexo
   - Web Development
   - Static Site
   - Blog
 categories: Web Development
+abbrlink: 7a6b
+date: 2024-08-12 18:52:26
 ---
 
 ## 關於 Hexo 的思考

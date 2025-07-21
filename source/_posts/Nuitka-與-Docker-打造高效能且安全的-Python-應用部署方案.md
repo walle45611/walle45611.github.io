@@ -1,8 +1,12 @@
 ---
 title: Nuitka 與 Docker 打造高效能且安全的 Python 應用部署方案
-date: 2025-07-22 02:07:06
-tags: [Python, Docker, DevOps]
+tags:
+    - Python
+    - Docker
+    - DevOps
 categories: DevOps
+abbrlink: 111f
+date: 2025-07-22 02:07:06
 ---
 
 ## 前言
@@ -10,6 +14,8 @@ categories: DevOps
 在現代軟體開發中，Python 應用的部署一直面臨著多重挑戰：程式碼安全性、執行效能、以及部署複雜度。傳統的解決方案如 PyInstaller 雖然廣泛使用，但在設定複雜度和效能方面仍有不足。
 
 本文將深入探討 **Nuitka 編譯器與 Docker 容器化技術的結合**，這個創新方案不僅能有效保護程式碼，更能在容器環境中實現驚人的效能提升和部署優化。
+
+<!--more-->
 
 ## 認識 Nuitka：真正的 Python 編譯器
 

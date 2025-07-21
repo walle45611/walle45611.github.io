@@ -1,11 +1,12 @@
 ---
 title: 刷題紀錄 leetcode-3106
-date: 2024-08-15 12:20:29
 tags:
   - LeetCode
   - Algorithm
   - String
 categories: Programming
+abbrlink: cbef
+date: 2024-08-15 12:20:29
 ---
 
 ## 解題程式

@@ -1,12 +1,10 @@
 ---
 title: ISO27001 第四至第六章 - 組織全景、領導與規劃
-categories:
-  - ISO27001
 tags:
-  - 資訊安全管理
-  - ISMS
-  - 領導力
-  - 規劃
+  - Information Security
+  - Management
+  - ISO27001
+categories: System Administration
 abbrlink: cc2a
 date: 2024-12-01 00:00:00
 ---

@@ -1,12 +1,7 @@
 ---
 title: DOMjudge 安裝指南
-categories:
-  - 競賽系統
-tags:
-  - DOMjudge
-  - 安裝
-  - Linux
-  - Shell Script
+tags: [System Administration, Installation, Linux]
+categories: System Administration
 abbrlink: 82ab
 date: 2024-10-22 00:00:00
 ---

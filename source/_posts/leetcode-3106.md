@@ -1,8 +1,11 @@
 ---
 title: 刷題紀錄 leetcode-3106
 date: 2024-08-15 12:20:29
-tags: [leetcode, Algorithm, string]
-categories: 刷題
+tags:
+  - LeetCode
+  - Algorithm
+  - String
+categories: Programming
 ---
 
 ## 解題程式

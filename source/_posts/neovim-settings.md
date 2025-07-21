@@ -2,8 +2,8 @@
 title: LazyVim 設定過程筆記
 abbrlink: 50b
 date: 2025-01-26 15:38:15
-tags: Vim
-categories: Editor
+tags: [Editor, Vim, Development Tools]
+categories: Development Tools
 ---
 
 ## LazyVim 和 Oh My Tmux 設定過程

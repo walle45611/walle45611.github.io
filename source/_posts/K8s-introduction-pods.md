@@ -1,10 +1,7 @@
 ---
 title: K8s 中的 Pod 是什麼
-tags: k8s
-categories:
-  - IT 技術
-  - k8s
-  - container
+tags: [Kubernetes, DevOps, Container]
+categories: DevOps
 abbrlink: 4fb7
 date: 2024-11-28 10:09:29
 ---

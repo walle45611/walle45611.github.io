@@ -1,10 +1,10 @@
 ---
 title: virtual-judge 刷題紀錄 08/21
 tags:
-  - virtual-judge
+  - Virtual Judge
   - Algorithm
   - binary-search
-categories: 刷題
+categories: Programming
 abbrlink: 3fea
 date: 2024-08-20 18:32:04
 ---

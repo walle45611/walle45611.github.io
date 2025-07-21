@@ -1,10 +1,10 @@
 ---
 title: Direct Image 的性質與應用
 tags:
-  - 數學
-  - 集合論
-  - 函數
-categories: 數學
+  - Mathematics
+  - Set Theory
+  - Function
+categories: Computer Science
 mathjax: true
 abbrlink: eeca
 date: 2024-08-22 14:45:05

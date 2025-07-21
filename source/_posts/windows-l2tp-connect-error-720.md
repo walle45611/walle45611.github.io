@@ -1,9 +1,11 @@
 ---
 title: Windows 10 L2TP VPN 連線錯誤
 tags:
+  - Network
   - VPN
   - Windows
-categories: IT 技術
+  - Troubleshooting
+categories: System Administration
 abbrlink: c07f
 date: 2024-08-30 13:47:12
 ---

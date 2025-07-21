@@ -1,9 +1,10 @@
 ---
 title: 資料結構-Stack篇-1
 tags:
-  - Data structures
+  - Data Structures
+  - Algorithm
   - Stack
-categories: 資料結構
+categories: Computer Science
 mathjax: true
 abbrlink: '5682'
 date: 2024-08-28 17:32:30

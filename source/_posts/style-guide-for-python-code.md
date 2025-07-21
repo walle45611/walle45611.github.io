@@ -1,8 +1,7 @@
 ---
 title: Python 程式碼風格指南
-tags:
-  - Python
-categories: IT 技術
+tags: [Python, Code Style, Software Engineering]
+categories: Development Tools
 abbrlink: 815d
 date: 2024-09-10 14:38:19
 ---

@@ -1,9 +1,11 @@
 ---
 title: RESTful 和 API 關係介紹
 tags:
-  - RESTful
+  - Web Development
   - API
-categories: IT 技術
+  - REST
+  - Software Architecture
+categories: Web Development
 abbrlink: f35e
 date: 2024-09-12 13:39:35
 ---

@@ -1,10 +1,10 @@
 ---
 title: virtual-judge 刷題紀錄 08/15
 tags:
-  - virtual-judge
+  - Virtual Judge
   - Algorithm
   - dfs
-categories: 刷題
+categories: Programming
 abbrlink: ceb
 date: 2024-08-15 18:31:40
 ---

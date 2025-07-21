@@ -1,11 +1,11 @@
 ---
 title: 作業系統-競爭條件與同步
-categories:
-  - Operating System
 tags:
+  - Operating System
   - Concurrency
   - Critical Section
-  - Priority Inversion
+  - Synchronization
+categories: System Administration
 abbrlink: 40a5
 date: 2025-01-04 00:00:00
 ---

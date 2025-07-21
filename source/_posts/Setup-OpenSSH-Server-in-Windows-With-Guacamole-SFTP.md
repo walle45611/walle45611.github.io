@@ -1,9 +1,11 @@
 ---
 title: 在 Windows 上正確設定 OpenSSH Server 和 Guacamole SFTP
 tags:
+  - System Administration
   - Windows
-  - Guacamole
-categories: IT 技術
+  - Network
+  - SSH
+categories: System Administration
 abbrlink: 16f9
 date: 2024-08-27 14:45:03
 ---

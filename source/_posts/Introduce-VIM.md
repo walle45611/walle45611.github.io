@@ -1,8 +1,8 @@
 ---
 title: 快速上手 Vim 快捷鍵
 date: 2024-08-14 21:26:37
-tags: Vim
-categories: [IT 技術,Editor]
+tags: [Editor, Vim, Development Tools]
+categories: Development Tools
 ---
 
 ## 使用 VIM 的好處

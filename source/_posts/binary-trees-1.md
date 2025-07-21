@@ -1,9 +1,10 @@
 ---
 title: 資料結構-二元樹篇-1
 tags:
-  - Data structures
+  - Data Structures
+  - Algorithm
   - Binary Tree
-categories: 資料結構
+categories: Computer Science
 mathjax: true
 abbrlink: 714d
 date: 2024-08-26 23:31:59

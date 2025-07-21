@@ -1,9 +1,10 @@
 ---
 title: 資料結構-Queue篇-1
 tags:
-  - Data structures
-  - queue
-categories: 資料結構
+  - Data Structures
+  - Algorithm
+  - Queue
+categories: Computer Science
 mathjax: true
 abbrlink: '1059'
 date: 2024-09-09 11:58:09

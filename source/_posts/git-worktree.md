@@ -1,14 +1,8 @@
 ---
 title: 使用 Git Worktree 提高開發效率與維持線性 Commit Log
 date: "2025-02-20"
-categories:
-    - Git
-    - 開發流程
-    - 軟體工程
-tags:
-    - Git Worktree
-    - Git Flow
-    - 開發效率
+tags: [Version Control, Git, Development Tools]
+categories: Development Tools
 abbrlink: "4e9"
 ---
 

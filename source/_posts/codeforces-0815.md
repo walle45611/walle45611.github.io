@@ -1,10 +1,11 @@
 ---
 title: codeforces 刷題紀錄 08/15
 tags:
-  - codeforces
+  - CodeForces
   - Algorithm
-  - dfs
-categories: 刷題
+  - DFS
+  - Graph Theory
+categories: Programming
 abbrlink: 15cb
 date: 2024-08-15 15:33:27
 ---

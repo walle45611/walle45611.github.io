@@ -1,9 +1,7 @@
 ---
 title: 使用 Docker 部署 Django：結合 uWSGI 和 Nginx 提升效能
-tags:
-  - Django
-  - container
-categories: IT 技術
+tags: [Python, Django, Docker, DevOps]
+categories: DevOps
 abbrlink: '1079'
 date: 2024-08-18 16:37:49
 ---

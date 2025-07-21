@@ -1,9 +1,10 @@
 ---
 title: 資料結構-樹篇
 tags:
-  - Data structures
+  - Data Structures
+  - Algorithm
   - Tree
-categories: 資料結構
+categories: Computer Science
 abbrlink: '8e82'
 date: 2024-08-26 15:15:34
 ---
@@ -46,7 +47,7 @@ date: 2024-08-26 15:15:34
 
 ### List Representation
 
-* 可以使用括號來做表示 *(A (B (E (K, L), F), C(G), D(H(M), I, J)))* 以 (圖1) 為例。
+* 可以使用括號來做表示 *(A (B (E (K, L), F), C(G), D(H(M), I, J)))* 以 (圖2) 為例。
   * 這種寫法比較清晰，大部分的書和刷題的題目會使用這樣的結構當作樹的結構。
 
 * 也可以使用以下方法 *(A(B, C(E, F), D))* 下圖為資料結構中真實的樣子，以該樹的 degree 為三，所以要開四格一格為自己的資料如下圖：

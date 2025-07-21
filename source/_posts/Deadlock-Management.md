@@ -4,8 +4,7 @@ tags:
   - Operating System
   - Deadlock
   - Resource Management
-categories:
-  - Operating System
+categories: System Administration
 mathjax: true
 abbrlink: 3cd8
 date: 2025-01-06 00:00:00

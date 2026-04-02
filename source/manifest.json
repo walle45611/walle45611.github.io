@@ -1,0 +1,21 @@
+{
+    "name": "Walle Blog",
+    "short_name": "Walle Blog",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "background_color": "#222222",
+    "theme_color": "#222222",
+    "icons": [
+        {
+            "src": "/images/favicon-32x32-next.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/favicon-16x16-next.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        }
+    ]
+}

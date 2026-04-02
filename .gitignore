@@ -6,3 +6,8 @@ node_modules/
 public/
 .deploy*/
 _multiconfig.yml
+
+# Development tools
+.codex/
+.github/prompts/
+.github/skills/

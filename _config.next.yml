@@ -14,7 +14,7 @@ cache:
     enable: true
 
 # Remove unnecessary files after hexo generate.
-minify: false
+minify: true
 
 # Define custom file paths.
 # Create your custom files in site directory `source/_data` and uncomment needed files below.
@@ -76,9 +76,9 @@ creative_commons:
 open_graph:
     enable: true
     options:
-        #twitter_card: <twitter:card>
-        #twitter_id: <twitter:creator>
-        #twitter_site: <twitter:site>
+        twitter_card: summary_large_image
+        twitter_id: walle4561
+        twitter_site: walle4561
         #twitter_image: <twitter:image>
         #google_plus: <g+:profile_link>
         #fb_admins: <fb:admin_id>
@@ -283,7 +283,7 @@ follow_me:
 # Related popular posts
 # Dependencies: https://github.com/sergeyzwezdin/hexo-related-posts
 related_posts:
-    enable: true
+    enable: false
     icon: fa fa-signs-post
     params:
         maxCount: 5

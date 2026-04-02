@@ -1,2 +1,43 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7412528508334178"
      crossorigin="anonymous"></script>
+
+{# Schema.org Structured Data (JSON-LD) for SEO #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  {% if page.title %}
+  "@type": "BlogPosting",
+  "headline": "{{ page.title | striptags | replace('"', '\\"') }}",
+  "description": "{{ page.description or page.excerpt or 'Blog post' | striptags | truncate(150) | replace('"', '\\"') }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ config.author }}",
+    "url": "{{ config.url }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ config.title }}",
+    "url": "{{ config.url }}"
+  },
+  "datePublished": "{{ date(page.date, 'YYYY-MM-DD') }}",
+  "dateModified": "{{ date(page.updated or page.date, 'YYYY-MM-DD') }}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ page.permalink or config.url }}"
+  },
+  "inLanguage": "{{ config.language }}"
+  {% else %}
+  "@type": "Blog",
+  "name": "{{ config.title }}",
+  "description": "{{ config.description }}",
+  "url": "{{ config.url }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ config.author }}",
+    "url": "{{ config.url }}"
+  },
+  "inLanguage": "{{ config.language }}",
+  "keywords": "{{ config.keywords }}"
+  {% endif %}
+}
+</script>

@@ -6,7 +6,7 @@
 title: Walle Blog
 subtitle: "Welcome to my blog!"
 description: "技術分享、刷題日常"
-keywords:
+keywords: Hexo, 部落格, 技術分享, 演算法, 資料結構, 系統管理, DevOps, 程式設計, Computer Science, Algorithm
 author: Walle
 language: zh-TW
 timezone: Asia/Taipei
@@ -111,5 +111,18 @@ deploy:
 
 sitemap:
     path: sitemap.xml
-    tags: false
-    categories: false
+    tags: true
+    categories: true
+
+# Feed (RSS/Atom)
+feed:
+    type: atom
+    path: atom.xml
+    limit: 20
+    hub:
+    content: true
+    content_limit: 140
+    content_limit_delim: ' '
+    order_by: -date
+    icon: icon.png
+    autodiscovery: true

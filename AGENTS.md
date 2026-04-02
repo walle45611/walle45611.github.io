@@ -11,7 +11,7 @@ Use the npm scripts defined in `package.json`:
 - `npm run clean`: remove cached/generated Hexo output before a rebuild.
 - `npm run deploy`: publish using the configured Hexo deploy target.
 
-CI builds on Node.js 20 in [`.github/workflows/pages.yml`](/Users/heguowei/project/blog/.github/workflows/pages.yml), and the repo includes `.nvmrc`; match that version locally when possible.
+CI builds on Node.js 24.4.1 in [`.github/workflows/pages.yml`](/Users/heguowei/project/blog/.github/workflows/pages.yml), and the repo includes `.nvmrc`; match that version locally when possible.
 
 ## Coding Style & Naming Conventions
 Follow [`.editorconfig`](/Users/heguowei/project/blog/.editorconfig): 4-space indentation, LF line endings, UTF-8. Keep Markdown and YAML changes minimal and readable. Preserve existing Hexo front matter keys such as:

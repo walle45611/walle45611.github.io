@@ -1,6 +1,23 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7412528508334178"
      crossorigin="anonymous"></script>
 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const path = window.location.pathname;
+  const isListPage =
+    path === '/' ||
+    path.startsWith('/page/') ||
+    path === '/archives/' ||
+    path.startsWith('/archives/') ||
+    path === '/tags/' ||
+    path.startsWith('/tags/') ||
+    path === '/categories/' ||
+    path.startsWith('/categories/');
+
+  if (isListPage && window.CONFIG) CONFIG.enableMath = false;
+});
+</script>
+
 {# Schema.org Structured Data (JSON-LD) for SEO #}
 <script type="application/ld+json">
 {

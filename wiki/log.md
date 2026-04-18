@@ -18,3 +18,10 @@
 - created: `wiki/summaries/openclaw-ai-agent-operating-principles.md`, `wiki/concepts/context-engineering.md`
 - updated: `wiki/concepts/harness-engineering.md`, `wiki/index.md`, `wiki/log.md`
 - notes: 補齊 OpenClaw 視角的 agent 執行細節，整合 system prompt/工具閉環/記憶與壓縮機制，並新增 context engineering 概念頁與安全治理重點。
+
+## [2026-04-19] ingest | MicroK8s 完整部署指南：從安裝到生產級應用
+
+- source: `raw/MicroK8s 完整部署指南：從安裝到生產級應用.md`
+- created: `wiki/summaries/microk8s-production-deployment-guide.md`, `wiki/concepts/microk8s-production-readiness.md`, `wiki/concepts/kubernetes-gitops-delivery.md`
+- updated: `wiki/index.md`, `wiki/log.md`
+- notes: 新增 Kubernetes/MicroK8s 主題，整理生產可用性條件與 GitOps 交付鏈（Helm、Argo CD、Sealed Secrets、Image Updater），並補齊摘要與概念雙向連結。

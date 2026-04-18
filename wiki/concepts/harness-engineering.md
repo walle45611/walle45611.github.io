@@ -11,6 +11,7 @@
 3. 工具與權限同時定義了能力上限與安全下限；安全性與便利性通常是可調但互相牽制的 trade-off。
 4. 對 agent 友善的工具介面不必與人類習慣一致；可摘要、可結構化、低噪音的介面通常更利於任務完成。
 5. 工作流設計（如 planner/generator/evaluator 或生成-驗證迴圈）是把模型輸出轉成可交付結果的關鍵中介層。
+6. 真正穩定的治理通常需要「harness 層硬控制」與「模型層軟約束」並用；只靠 prompt 指示不足以覆蓋高風險場景。
 
 ## Working Heuristics
 
@@ -18,6 +19,8 @@
 - 規則檔寫成導航地圖，不要塞滿百科式細節。
 - 編輯或執行類任務優先形成「輸出 -> 檢查 -> 回饋 -> 重試」閉環。
 - 設計工具時優先思考模型如何節省上下文，而非只思考人類操作便利。
+- 高權限工具（檔案刪除、外部執行、帳戶操作）預設加人工核准與最小權限。
+- 以隔離環境承載 agent（專用機、獨立帳號、獨立憑證），控制失誤半徑。
 
 ## Open Questions
 
@@ -27,8 +30,10 @@
 
 ## Related Concepts
 
+- [context-engineering](./context-engineering.md)
 - [verbalized-feedback-learning](./verbalized-feedback-learning.md)
 
 ## Sources
 
 - [harness-engineering-language-models-need-human-guidance](../summaries/harness-engineering-language-models-need-human-guidance.md)
+- [openclaw-ai-agent-operating-principles](../summaries/openclaw-ai-agent-operating-principles.md)

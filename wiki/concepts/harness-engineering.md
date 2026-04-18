@@ -1,0 +1,34 @@
+# Harness Engineering
+
+## Current View
+
+在目前知識庫中，harness engineering 可定義為：透過規則、工具與工作流程的設計，系統性地約束並放大語言模型在多輪任務中的可用行為。它不等於 prompt wording，而是涵蓋整個 agent 執行環境的行為工程。
+
+## Stable Conclusions
+
+1. AI agent 的最終表現是「模型能力 × harness 設計」的共同結果，不能只歸因於模型參數大小。
+2. 規則檔（如 `agents.md`、`CLAUDE.md`）可作為認知框架，雖非硬約束，仍常對效率與穩定性有明顯影響。
+3. 工具與權限同時定義了能力上限與安全下限；安全性與便利性通常是可調但互相牽制的 trade-off。
+4. 對 agent 友善的工具介面不必與人類習慣一致；可摘要、可結構化、低噪音的介面通常更利於任務完成。
+5. 工作流設計（如 planner/generator/evaluator 或生成-驗證迴圈）是把模型輸出轉成可交付結果的關鍵中介層。
+
+## Working Heuristics
+
+- 先定義「第一步」與「完成條件」，再讓模型展開推理與工具調用。
+- 規則檔寫成導航地圖，不要塞滿百科式細節。
+- 編輯或執行類任務優先形成「輸出 -> 檢查 -> 回饋 -> 重試」閉環。
+- 設計工具時優先思考模型如何節省上下文，而非只思考人類操作便利。
+
+## Open Questions
+
+- 不同模型族（如小模型/大模型）對同一套 harness 的敏感度差異仍需更多跨模型實證。
+- 規則檔長度、語氣與結構如何影響正確率，尚缺穩定可泛化的設計原則。
+- 長期運作 agent 的記憶整理與自我修復流程，哪些機制最能避免能力衰退，仍在發展中。
+
+## Related Concepts
+
+- [verbalized-feedback-learning](./verbalized-feedback-learning.md)
+
+## Sources
+
+- [harness-engineering-language-models-need-human-guidance](../summaries/harness-engineering-language-models-need-human-guidance.md)

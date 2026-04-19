@@ -25,3 +25,10 @@
 - created: `wiki/summaries/microk8s-production-deployment-guide.md`, `wiki/concepts/microk8s-production-readiness.md`, `wiki/concepts/kubernetes-gitops-delivery.md`
 - updated: `wiki/index.md`, `wiki/log.md`
 - notes: 新增 Kubernetes/MicroK8s 主題，整理生產可用性條件與 GitOps 交付鏈（Helm、Argo CD、Sealed Secrets、Image Updater），並補齊摘要與概念雙向連結。
+
+## [2026-04-20] ingest | Cloudflare Worker AI Pricing
+
+- source: `raw/Cloudflare Worker AI Pricing.md`
+- created: `wiki/summaries/cloudflare-workers-ai-pricing.md`, `wiki/concepts/cloudflare-workers-ai-pricing-model.md`, `wiki/concepts/neuron-based-ai-cost-metering.md`
+- updated: `wiki/index.md`, `wiki/log.md`
+- notes: 建立 Workers AI 計價主題，整理 daily 免費額度與超額神經元計費規則，並抽出 pricing model 與 neuron-based metering 兩條可持續累積的概念軸線。

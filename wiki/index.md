@@ -6,6 +6,7 @@
 - [harness-engineering-language-models-need-human-guidance](./summaries/harness-engineering-language-models-need-human-guidance.md): 李一駿助教以實作案例與近期研究說明 harness engineering 的核心：透過規則、工具與工作流設計，讓模型在多輪任務中更穩定完成目標。
 - [how-to-learn-anything-faster-using-modern-research](/Users/heguowei/Library/Mobile Documents/iCloud~md~obsidian/Documents/Knowledge Vault/wiki/summaries/how-to-learn-anything-faster-using-modern-research.md): Justin Sung 以六條過時學習規則整理現代學習研究的實務含義，涵蓋練習設計、deep processing、筆記、困難學習與直覺形成。
 - [microk8s-production-deployment-guide](./summaries/microk8s-production-deployment-guide.md): 整理 MicroK8s 從安裝、插件、節點治理到 Argo CD/Sealed Secrets/Image Updater 的可重複部署流程與生產化邊界。
+- [cloudflare-workers-ai-pricing](./summaries/cloudflare-workers-ai-pricing.md): 彙整 Workers AI 的神經元計價規則、免費額度、UTC 日切重置與跨模型 token-neuron 成本換算重點。
 
 ## Concepts
 
@@ -15,3 +16,5 @@
 - [effective-learning](/Users/heguowei/Library/Mobile Documents/iCloud~md~obsidian/Documents/Knowledge Vault/wiki/concepts/effective-learning.md): 目前知識庫對高效學習的初始整合頁，聚焦深層處理、變化練習、回饋品質與直覺校正條件。
 - [microk8s-production-readiness](./concepts/microk8s-production-readiness.md): 統整 MicroK8s 在生產環境的適用條件、基礎元件基線與多節點運維重點。
 - [kubernetes-gitops-delivery](./concepts/kubernetes-gitops-delivery.md): 統整 Helm、Argo CD、Image Updater 與 Sealed Secrets 在 Kubernetes 上形成的 GitOps 交付鏈。
+- [cloudflare-workers-ai-pricing-model](./concepts/cloudflare-workers-ai-pricing-model.md): 聚焦 Workers AI 的 daily quota、超額計費與超限失敗行為如何影響成本與可用性治理。
+- [neuron-based-ai-cost-metering](./concepts/neuron-based-ai-cost-metering.md): 整理以 neurons 作為跨模型統一成本度量的判讀方式與實務管控啟發。

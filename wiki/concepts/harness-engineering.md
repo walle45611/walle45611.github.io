@@ -12,12 +12,14 @@
 4. 對 agent 友善的工具介面不必與人類習慣一致；可摘要、可結構化、低噪音的介面通常更利於任務完成。
 5. 工作流設計（如 planner/generator/evaluator 或生成-驗證迴圈）是把模型輸出轉成可交付結果的關鍵中介層。
 6. 真正穩定的治理通常需要「harness 層硬控制」與「模型層軟約束」並用；只靠 prompt 指示不足以覆蓋高風險場景。
+7. 在 AI coding 情境中，將「架構規劃」與「代碼執行」分層，通常比單模型端到端直譯需求更能控制效能與技術債風險。
 
 ## Working Heuristics
 
 - 先定義「第一步」與「完成條件」，再讓模型展開推理與工具調用。
 - 規則檔寫成導航地圖，不要塞滿百科式細節。
 - 編輯或執行類任務優先形成「輸出 -> 檢查 -> 回饋 -> 重試」閉環。
+- 先要求模型產生含效能/複雜度約束的計畫，再交由執行型模型產碼與修正。
 - 設計工具時優先思考模型如何節省上下文，而非只思考人類操作便利。
 - 高權限工具（檔案刪除、外部執行、帳戶操作）預設加人工核准與最小權限。
 - 以隔離環境承載 agent（專用機、獨立帳號、獨立憑證），控制失誤半徑。
@@ -27,6 +29,7 @@
 - 不同模型族（如小模型/大模型）對同一套 harness 的敏感度差異仍需更多跨模型實證。
 - 規則檔長度、語氣與結構如何影響正確率，尚缺穩定可泛化的設計原則。
 - 長期運作 agent 的記憶整理與自我修復流程，哪些機制最能避免能力衰退，仍在發展中。
+- 「高精準執行模型」與「高抽象規劃模型」的分工邊界如何量化，仍缺公開、可重現 benchmark。
 
 ## Related Concepts
 
@@ -37,3 +40,4 @@
 
 - [harness-engineering-language-models-need-human-guidance](../summaries/harness-engineering-language-models-need-human-guidance.md)
 - [openclaw-ai-agent-operating-principles](../summaries/openclaw-ai-agent-operating-principles.md)
+- [codex-vs-claude-vibecoding-observations](../summaries/codex-vs-claude-vibecoding-observations.md)

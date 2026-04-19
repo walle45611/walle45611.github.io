@@ -32,3 +32,17 @@
 - created: `wiki/summaries/cloudflare-workers-ai-pricing.md`, `wiki/concepts/cloudflare-workers-ai-pricing-model.md`, `wiki/concepts/neuron-based-ai-cost-metering.md`
 - updated: `wiki/index.md`, `wiki/log.md`
 - notes: 建立 Workers AI 計價主題，整理 daily 免費額度與超額神經元計費規則，並抽出 pricing model 與 neuron-based metering 兩條可持續累積的概念軸線。
+
+## [2026-04-20] ingest | Codex 还是 Claude？分享一下我的VibeCoding编程观察
+
+- source: `raw/Codex 还是 Claude？分享一下我的VibeCoding编程观察.md`
+- created: `wiki/summaries/codex-vs-claude-vibecoding-observations.md`
+- updated: `wiki/concepts/harness-engineering.md`, `wiki/index.md`, `wiki/log.md`
+- notes: 新增 AI coding 實戰觀察摘要，將模型比較回寫到 harness 工程脈絡，補強「先架構規劃、後執行產碼」的分層工作流與風險取捨。
+
+## [2026-04-20] ingest | How to sync Obsidian 4 FREE · Syncthing vs Autosync
+
+- source: `raw/How to sync Obsidian 4 FREE · Syncthing vs AutosyncPricing.md`
+- created: `wiki/summaries/sync-obsidian-for-free.md`
+- updated: `wiki/index.md`, `wiki/log.md`
+- notes: 整理 Obsidian 免費同步方案，比較 Syncthing 與雲端同步工具的實務差異、風險（同步非備份、避免混用），並建立初步摘要結構。

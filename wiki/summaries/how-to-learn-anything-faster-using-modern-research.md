@@ -1,6 +1,6 @@
 # How to Learn Anything Faster Using Modern Research
 
-- source: `raw/How to Learn Anything Faster Using Modern Research.md`
+- source: https://www.youtube.com/watch?v=TEDCHgZKXSY
 - original title: How to Learn Anything Faster Using Modern Research
 - author: Justin Sung
 - published: 2026-03-30

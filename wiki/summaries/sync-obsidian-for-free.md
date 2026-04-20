@@ -1,9 +1,10 @@
 # 摘要：如何免費同步 Obsidian
 
-- **來源標題**：How to sync Obsidian 4 FREE · Syncthing vs Autosync
-- **來源連結**：[https://www.youtube.com/watch?v=t3cy132eeUU](https://www.youtube.com/watch?v=t3cy132eeUU)
-- **作者**：[[DJ Lensing]]
-- **日期**：2022-09-22
+- source: https://www.youtube.com/watch?v=t3cy132eeUU
+- original title: How to sync Obsidian 4 FREE · Syncthing vs Autosync
+- speaker: DJ Lensing
+- published: 2022-09-22
+- type: YouTube transcript summary
 
 ## 核心主張
 

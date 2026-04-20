@@ -5,6 +5,6 @@
 2. `wiki/` 目錄是你的專屬工作區，你可以自由建立、更新、交叉連結這裡的檔案，root 包含 `AGENTS.md`、`raw/`、`wiki/`。`wiki/` 主要包含：`wiki/log.md`、`wiki/index.md`、`wiki/rules/`、`wiki/summaries/`、`wiki/concepts/`。
 3. 建立新檔案時，檔名必須全面使用小寫與連字號 (kebab-case)，例如 `azure-cli-commands.md` 或 `concept-data-hazards.md`。
 
-**動態工作流觸發條件 (Lazy Load)：**
+IMPORTANT **動態工作流觸發條件 (Lazy Load)：**
 
 為了保持你的推理效率並減少 Token 浪費，請勿預判或猜測工作流的細節。請根據人類當下指派的任務，先去讀 `wiki/rules/router-rule.md` 作業規範後再開始實際動作。

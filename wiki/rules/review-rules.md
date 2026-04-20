@@ -6,9 +6,12 @@
 ## 執行步驟 (SOP)
 
 ### 1. 讀取資料
-- 先閱讀 `wiki/index.md`。
-- 從 `wiki/index.md` 的 `Summaries` 區塊確認使用者詢問的日期與對應 summary 條目。
-- 依照 `## Summaries` 條目中的日期與路徑，打開對應的 `wiki/summaries/...` 頁面。
+- 如果是確切的時間或是期間少於等於 5 天的區間請使用以下的規則取得資料
+	- 先閱讀 `wiki/index.md`。
+	- 從 `wiki/index.md` 的 `Summaries` 區塊確認使用者詢問的日期與對應 summary 條目。
+	- 依照 `## Summaries` 條目中的日期與路徑，打開對應的 `wiki/summaries/...` 頁面。
+- 如果時間大於 5 天以上的時間區間請使用以下的規則取得資料
+	- 讀取時間區間內的  `wiki/assets/daily/<日期>.md`，日期格式範例 `2026-05-21` 為檔案名稱。
 
 ### 2. 找不到資料時
 - 如果系統提供的資料中沒有該日期的紀錄，請直接回覆：

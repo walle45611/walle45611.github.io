@@ -8,9 +8,7 @@
 ### 1. 讀取資料
 - 先閱讀 `wiki/index.md`。
 - 從 `wiki/index.md` 的 `Summaries` 區塊確認使用者詢問的日期與對應 summary 條目。
-- 依照 `Summaries` 條目中的日期與路徑，打開對應的 `wiki/summaries/...` 頁面。
-- 對每個 summary，優先讀取摘要頁內自己的 `source link`；若沒有 `source link`，再回退到摘要頁內的 `source`。
-- 重點不是回顧 `log.md` 的操作紀錄，而是透過 `index.md` 找到該日期對應的 summaries，再根據摘要內容整理回顧。
+- 依照 `## Summaries` 條目中的日期與路徑，打開對應的 `wiki/summaries/...` 頁面。
 
 ### 2. 找不到資料時
 - 如果系統提供的資料中沒有該日期的紀錄，請直接回覆：

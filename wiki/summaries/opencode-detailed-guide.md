@@ -19,7 +19,12 @@
 
 ## 相關概念
 - [[opencode]]
-- [[claude-code]]
 - [[ai-coding-tools]]
-- [[mcp]] (Model Context Protocol)
-- [[agent-skills]]
+- Claude Code
+- MCP (Model Context Protocol)
+- Agent Skills
+
+## 與目前知識庫的關係
+
+- 目前已能連回 [[opencode]] 與 [[ai-coding-tools]] 兩個既有概念頁。
+- Claude Code、MCP、Agent Skills 在本頁中屬重要名詞，但知識庫尚未建立對應獨立頁面，暫先保留為缺頁候選而不使用損壞連結。

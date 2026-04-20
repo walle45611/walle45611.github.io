@@ -21,5 +21,6 @@
 - [kubernetes-gitops-delivery](./concepts/kubernetes-gitops-delivery.md): 統整 Helm、Argo CD、Image Updater 與 Sealed Secrets 在 Kubernetes 上形成的 GitOps 交付鏈。
 - [cloudflare-workers-ai-pricing-model](./concepts/cloudflare-workers-ai-pricing-model.md): 聚焦 Workers AI 的 daily quota、超額計費與超限失敗行為如何影響成本與可用性治理。
 - [neuron-based-ai-cost-metering](./concepts/neuron-based-ai-cost-metering.md): 整理以 neurons 作為跨模型統一成本度量的判讀方式與實務管控啟發。
+- [obsidian-sync-strategies](./concepts/obsidian-sync-strategies.md): 統整 Obsidian 免費同步方案的選型邏輯，聚焦同步與備份的邊界、避免混用，以及 Syncthing 與雲端同步工具的取捨。
 - [opencode](./concepts/opencode.md): 統整 OpenCode 作為開源版 Claude Code 的核心定位、優勢與進階 Agent 特性。
 - [ai-coding-tools](./concepts/ai-coding-tools.md): 統整 AI 程式碼輔助工具的發展趨勢與知識庫中的代表性工具。

@@ -4,6 +4,12 @@
 - fixed: 修正 index.md 與 effective-learning.md 中的絕對路徑問題（引用了其他 vault 的路徑）；修正 opencode.md 與 ai-coding-tools.md 中的損壞 wikilinks（指向不存在的頁面如 claude-code、mcp）
 - gaps: claude-code、mcp 等概念尚未建立獨立頁面；部分 summary 頁面未被概念頁引用
 
+## [2026-04-20] lint | wiki health check
+
+- checked: sync-obsidian-for-free.md, opencode-detailed-guide.md, obsidian-sync-strategies.md, index.md
+- fixed: 移除 opencode-detailed-guide.md 中指向不存在頁面的損壞 wikilinks；為 sync-obsidian-for-free.md 補建 obsidian-sync-strategies 概念頁並更新 index.md
+- gaps: claude-code、mcp、agent-skills 仍屬缺頁候選，目前僅在 OpenCode 主題中被提及，尚無足夠來源支撐獨立概念頁
+
 ## [2026-04-18] ingest | How to Learn Anything Faster Using Modern Research
 
 - source: `raw/How to Learn Anything Faster Using Modern Research.md`

@@ -1,11 +1,9 @@
 # 摘要：如何免費同步 Obsidian
 
-- source: `raw/How to sync Obsidian 4 FREE · Syncthing vs AutosyncPricing.md`
-- source link: [https://www.youtube.com/watch?v=t3cy132eeUU](https://www.youtube.com/watch?v=t3cy132eeUU)
-- original title: How to sync Obsidian 4 FREE · Syncthing vs Autosync
-- speaker: DJ Lensing
-- published: 2022-09-22
-- type: YouTube transcript summary
+- **來源標題**：How to sync Obsidian 4 FREE · Syncthing vs Autosync
+- **來源連結**：[https://www.youtube.com/watch?v=t3cy132eeUU](https://www.youtube.com/watch?v=t3cy132eeUU)
+- **作者**：[[DJ Lensing]]
+- **日期**：2022-09-22
 
 ## 核心主張
 
@@ -27,8 +25,4 @@ Obsidian 本身免費，但官方 Sync 是付費服務。若預算有限，可�
 ## 對知識庫的啟示
 
 - 這份來源確立了 Obsidian 同步的基礎認知：同步方案的選擇取決於對便利性、隱私性與技術複雜度的權衡。
-- 目前已整理為 [[obsidian-sync-strategies]] 概念頁，作為後續累積同步策略、衝突處理與備份邊界的入口。
-
-## 相關概念
-
-- [[obsidian-sync-strategies]]
+- 未來可視需求建立 [[sync-obsidian]] 概念頁，整理各類同步方案的實務邊界與衝突處理指南。

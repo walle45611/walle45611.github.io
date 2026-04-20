@@ -1,3 +1,10 @@
+## [2026-04-21] ingest | Cloudflare Pull consumers
+
+- source: `raw/Cloudflare Pull consumers.md`
+- created: `wiki/summaries/cloudflare-pull-consumers.md`, `wiki/concepts/cloudflare-queue-consumer-modes.md`
+- updated: `wiki/index.md`, `wiki/log.md`
+- notes: 新增 Cloudflare Queues pull consumer 主題，整理 pull 與 push 的選型差異、`lease_id`/ack/retry 流程與 `visibility_timeout` 的操作邊界。
+
 ## [2026-04-20] lint | wiki health check
 
 - checked: index.md, effective-learning.md, opencode.md, ai-coding-tools.md

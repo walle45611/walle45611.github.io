@@ -2,6 +2,7 @@
 
 ## Summaries
 
+- [cloudflare-pull-consumers](./summaries/cloudflare-pull-consumers.md) · 2026-04-21: 整理 Cloudflare Queues pull consumer 的啟用方式、ack/retry 機制、`lease_id` 與 `visibility_timeout` 邊界，以及 pull 與 push 消費模式的選型差異。
 - [sync-obsidian-for-free](./summaries/sync-obsidian-for-free.md) · 2026-04-20: 整理 Obsidian 免費同步方案，比較 Syncthing 與雲端同步工具 (Autosync/Dropsync) 的適用情境與風險。
 - [openclaw-ai-agent-operating-principles](./summaries/openclaw-ai-agent-operating-principles.md) · 2026-04-19: 以 OpenClaw 拆解 AI agent 的執行閉環，涵蓋 system prompt 組裝、工具調用、記憶檔、排程與上下文壓縮，以及對應的安全風險與防禦。
 - [harness-engineering-language-models-need-human-guidance](./summaries/harness-engineering-language-models-need-human-guidance.md) · 2026-04-19: 李一駿助教以實作案例與近期研究說明 harness engineering 的核心：透過規則、工具與工作流設計，讓模型在多輪任務中更穩定完成目標。
@@ -13,6 +14,7 @@
 
 ## Concepts
 
+- [cloudflare-queue-consumer-modes](./concepts/cloudflare-queue-consumer-modes.md): 統整 Cloudflare Queues 中 push 與 pull consumer 的選型邏輯，聚焦誰控制消費節奏、如何處理 ack/retry，以及 `visibility_timeout` 的運維含義。
 - [context-engineering](./concepts/context-engineering.md): 聚焦 context window 管理的核心方法：按需載入、子代理摘要、記憶檢索、compaction 與 pruning 的取捨。
 - [harness-engineering](./concepts/harness-engineering.md): 目前知識庫對 AI agent 駕馭工程的整合頁，聚焦規則檔、工具邊界與生成-評估回饋迴圈的設計原則。
 - [verbalized-feedback-learning](./concepts/verbalized-feedback-learning.md): 整理自然語言回饋如何在多輪流程中改變 agent 行為，及其與檢查工具、評量設計、長期學習的關係。

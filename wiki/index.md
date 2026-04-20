@@ -2,14 +2,14 @@
 
 ## Summaries
 
-- [sync-obsidian-for-free](./summaries/sync-obsidian-for-free.md) · 2022-09-22: 整理 Obsidian 免費同步方案，比較 Syncthing 與雲端同步工具 (Autosync/Dropsync) 的適用情境與風險。
-- [openclaw-ai-agent-operating-principles](./summaries/openclaw-ai-agent-operating-principles.md) · 2026-03-09: 以 OpenClaw 拆解 AI agent 的執行閉環，涵蓋 system prompt 組裝、工具調用、記憶檔、排程與上下文壓縮，以及對應的安全風險與防禦。
-- [harness-engineering-language-models-need-human-guidance](./summaries/harness-engineering-language-models-need-human-guidance.md) · 2026-04-13: 李一駿助教以實作案例與近期研究說明 harness engineering 的核心：透過規則、工具與工作流設計，讓模型在多輪任務中更穩定完成目標。
-- [how-to-learn-anything-faster-using-modern-research](./summaries/how-to-learn-anything-faster-using-modern-research.md) · 2026-03-30: Justin Sung 以六條過時學習規則整理現代學習研究的實務含義，涵蓋練習設計、deep processing、筆記、困難學習與直覺形成。
-- [microk8s-production-deployment-guide](./summaries/microk8s-production-deployment-guide.md) · 2025-08-08: 整理 MicroK8s 從安裝、插件、節點治理到 Argo CD/Sealed Secrets/Image Updater 的可重複部署流程與生產化邊界。
-- [cloudflare-workers-ai-pricing](./summaries/cloudflare-workers-ai-pricing.md) · 2026-04-04: 彙整 Workers AI 的神經元計價規則、免費額度、UTC 日切重置與跨模型 token-neuron 成本換算重點。
-- [codex-vs-claude-vibecoding-observations](./summaries/codex-vs-claude-vibecoding-observations.md) · 2026-03-29: 以量化交易案例比較 Codex/GPT 與 Claude 的編程風格差異，提煉「架構規劃與執行分層」的實務工作流。
-- [opencode-detailed-guide](./summaries/opencode-detailed-guide.md) · 2026-01-17: 技術爬爬蝦關於 OpenCode 的攻略，介紹其作為開源版 Claude Code 的優勢、免費模型接入與 MCP/Agent Skills 支援。
+- [sync-obsidian-for-free](./summaries/sync-obsidian-for-free.md) · 2026-04-20: 整理 Obsidian 免費同步方案，比較 Syncthing 與雲端同步工具 (Autosync/Dropsync) 的適用情境與風險。
+- [openclaw-ai-agent-operating-principles](./summaries/openclaw-ai-agent-operating-principles.md) · 2026-04-19: 以 OpenClaw 拆解 AI agent 的執行閉環，涵蓋 system prompt 組裝、工具調用、記憶檔、排程與上下文壓縮，以及對應的安全風險與防禦。
+- [harness-engineering-language-models-need-human-guidance](./summaries/harness-engineering-language-models-need-human-guidance.md) · 2026-04-19: 李一駿助教以實作案例與近期研究說明 harness engineering 的核心：透過規則、工具與工作流設計，讓模型在多輪任務中更穩定完成目標。
+- [how-to-learn-anything-faster-using-modern-research](./summaries/how-to-learn-anything-faster-using-modern-research.md) · 2026-04-18: Justin Sung 以六條過時學習規則整理現代學習研究的實務含義，涵蓋練習設計、deep processing、筆記、困難學習與直覺形成。
+- [microk8s-production-deployment-guide](./summaries/microk8s-production-deployment-guide.md) · 2026-04-19: 整理 MicroK8s 從安裝、插件、節點治理到 Argo CD/Sealed Secrets/Image Updater 的可重複部署流程與生產化邊界。
+- [cloudflare-workers-ai-pricing](./summaries/cloudflare-workers-ai-pricing.md) · 2026-04-20: 彙整 Workers AI 的神經元計價規則、免費額度、UTC 日切重置與跨模型 token-neuron 成本換算重點。
+- [codex-vs-claude-vibecoding-observations](./summaries/codex-vs-claude-vibecoding-observations.md) · 2026-04-20: 以量化交易案例比較 Codex/GPT 與 Claude 的編程風格差異，提煉「架構規劃與執行分層」的實務工作流。
+- [opencode-detailed-guide](./summaries/opencode-detailed-guide.md) · 2026-04-20: 技術爬爬蝦關於 OpenCode 的攻略，介紹其作為開源版 Claude Code 的優勢、免費模型接入與 MCP/Agent Skills 支援。
 
 ## Concepts
 

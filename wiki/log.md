@@ -1,3 +1,9 @@
+## [2026-04-20] lint | wiki health check
+
+- checked: index.md, effective-learning.md, opencode.md, ai-coding-tools.md
+- fixed: 修正 index.md 與 effective-learning.md 中的絕對路徑問題（引用了其他 vault 的路徑）；修正 opencode.md 與 ai-coding-tools.md 中的損壞 wikilinks（指向不存在的頁面如 claude-code、mcp）
+- gaps: claude-code、mcp 等概念尚未建立獨立頁面；部分 summary 頁面未被概念頁引用
+
 ## [2026-04-18] ingest | How to Learn Anything Faster Using Modern Research
 
 - source: `raw/How to Learn Anything Faster Using Modern Research.md`

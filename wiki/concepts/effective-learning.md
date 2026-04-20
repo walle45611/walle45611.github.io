@@ -27,4 +27,4 @@
 
 ## Sources
 
-- [how-to-learn-anything-faster-using-modern-research](/Users/heguowei/Library/Mobile Documents/iCloud~md~obsidian/Documents/Knowledge Vault/wiki/summaries/how-to-learn-anything-faster-using-modern-research.md)
+- [how-to-learn-anything-faster-using-modern-research](../summaries/how-to-learn-anything-faster-using-modern-research.md)

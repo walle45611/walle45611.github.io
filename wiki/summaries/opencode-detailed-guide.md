@@ -1,6 +1,7 @@
 # OpenCode 詳細攻略
 
 - source: `raw/OpenCode详细攻略，开源版Claude Code，免费模型与神级插件  ai 科技 计算机 编程 coding.md`
+- source link: [https://www.youtube.com/watch?v=JYVTUU9ClUA](https://www.youtube.com/watch?v=JYVTUU9ClUA)
 - original title: "OpenCode详细攻略，开源版Claude Code，免费模型与神级插件  #ai #科技 #计算机 #编程 #coding"
 - speaker: 技术爬爬虾 TechShrimp
 - published: 2026-01-17

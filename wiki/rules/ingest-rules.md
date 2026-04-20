@@ -47,6 +47,28 @@
 - 與既有知識庫內容的一致、補強、衝突或空缺
 - 指向相關概念頁的連結
 
+其中來源欄位採以下規則：
+
+- 若來源來自 vault 內 `raw/`，摘要頁必須明確寫出 `- source: \`raw/...\``` 
+- 若對應 `raw/...` 已記錄外部原始網址，摘要頁必須另外寫出 `- source link: <external url>`
+- 優先保留 `raw/` 下的原始相對路徑，不要只寫模糊標題
+- 不可把 `raw/` 來源省略後只留在 `wiki/log.md`；summary 本身就要能獨立指出原始來源
+- `source` 與 `source link` 的用途不同：`source` 是 vault 內素材位置，`source link` 是外部網站、影片或文件的真正出處
+- 若來源不是本地 `raw/` 檔，而是外部文章或網址，也要在摘要頁保留可追溯的來源識別資訊
+
+建議最小格式：
+
+```md
+# <source title>
+
+- source: `raw/example-source.md`
+- source link: https://example.com/original-source
+- original title: <original title>
+- author: <author or not specified>
+- published: <date or not specified>
+- type: <source type>
+```
+
 ### 2. 概念整合
 
 若新來源補強、修正或擴展某個既有主題，更新 `wiki/concepts/` 下對應概念頁。
@@ -112,6 +134,7 @@
 2. 若來源含數據、版本、時間點、適用條件，應保留。
 3. 不要把聊天中的推測寫成已確認事實。
 4. 若使用者有特別關心角度，優先反映在摘要與概念整合中。
+5. 摘要頁必須保留可追溯的原始來源欄位，讓後續 review / query 不必再回頭猜測或重建來源路徑。
 
 ## 何時停止
 

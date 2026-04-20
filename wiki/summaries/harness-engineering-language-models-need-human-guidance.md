@@ -1,6 +1,7 @@
 # Harness Engineering：有時候語言模型不是不夠聰明，只是沒有人類好好引導
 
 - source: `raw/Harness Engineering：有時候語言模型不是不夠聰明，只是沒有人類好好引導.md`
+- source link: [https://www.youtube.com/watch?v=R6fZR_9kmIw&t=5012s](https://www.youtube.com/watch?v=R6fZR_9kmIw&t=5012s)
 - original title: Harness Engineering：有時候語言模型不是不夠聰明，只是沒有人類好好引導
 - speaker: 李一駿助教（課程素材由 Hung-yi Lee 團隊發布）
 - published: 2026-04-13

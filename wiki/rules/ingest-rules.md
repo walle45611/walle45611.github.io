@@ -47,14 +47,6 @@
 - 與既有知識庫內容的一致、補強、衝突或空缺
 - 指向相關概念頁的連結
 
-並且 summaries 頁面的最一開始留下以下內容，並且 source 是原本 raw 讀取的 source 而不是相對路徑：
-
-- source:
-- original title:
-- speaker:
-- published:
-- type:
-
 ### 2. 概念整合
 
 若新來源補強、修正或擴展某個既有主題，更新 `wiki/concepts/` 下對應概念頁。

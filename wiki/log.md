@@ -40,6 +40,13 @@
 - updated: `wiki/concepts/harness-engineering.md`, `wiki/index.md`, `wiki/log.md`
 - notes: 新增 AI coding 實戰觀察摘要，將模型比較回寫到 harness 工程脈絡，補強「先架構規劃、後執行產碼」的分層工作流與風險取捨。
 
+## [2026-04-20] ingest | OpenCode详细攻略，开源版Claude Code，免费模型与神级插件
+
+- source: `raw/OpenCode详细攻略，开源版Claude Code，免费模型与神级插件  ai 科技 计算机 编程 coding.md`
+- created: `wiki/summaries/opencode-detailed-guide.md`, `wiki/concepts/opencode.md`, `wiki/concepts/ai-coding-tools.md`
+- updated: `wiki/index.md`, `wiki/log.md`
+- notes: 新增 OpenCode 工具教學摘要，建立 OpenCode 與 AI Coding Tools 概念頁面，強調其作為開源版 Claude Code 的地位與 MCP/Agent Skills 支援。
+
 ## [2026-04-20] ingest | How to sync Obsidian 4 FREE · Syncthing vs Autosync
 
 - source: `raw/How to sync Obsidian 4 FREE · Syncthing vs AutosyncPricing.md`

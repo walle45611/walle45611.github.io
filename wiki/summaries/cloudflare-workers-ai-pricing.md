@@ -1,6 +1,6 @@
 # Cloudflare Worker AI Pricing
 
-- source: https://developers.cloudflare.com/workers-ai/platform/pricing/
+- source: `raw/Cloudflare Worker AI Pricing.md`
 - original title: Cloudflare Worker AI Pricing
 - author: (not specified)
 - published: 2026-04-04

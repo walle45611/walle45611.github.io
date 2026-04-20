@@ -1,6 +1,6 @@
 # MicroK8s 完整部署指南：從安裝到生產級應用
 
-- source: https://blog.walle4561.com/20250808/ecf5/#more
+- source: `raw/MicroK8s 完整部署指南：從安裝到生產級應用.md`
 - original title: MicroK8s 完整部署指南：從安裝到生產級應用
 - author: Walle
 - published: 2025-08-08

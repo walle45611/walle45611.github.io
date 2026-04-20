@@ -9,6 +9,7 @@
 - [microk8s-production-deployment-guide](./summaries/microk8s-production-deployment-guide.md): 整理 MicroK8s 從安裝、插件、節點治理到 Argo CD/Sealed Secrets/Image Updater 的可重複部署流程與生產化邊界。
 - [cloudflare-workers-ai-pricing](./summaries/cloudflare-workers-ai-pricing.md): 彙整 Workers AI 的神經元計價規則、免費額度、UTC 日切重置與跨模型 token-neuron 成本換算重點。
 - [codex-vs-claude-vibecoding-observations](./summaries/codex-vs-claude-vibecoding-observations.md): 以量化交易案例比較 Codex/GPT 與 Claude 的編程風格差異，提煉「架構規劃與執行分層」的實務工作流。
+- [opencode-detailed-guide](./summaries/opencode-detailed-guide.md): 技術爬爬蝦關於 OpenCode 的攻略，介紹其作為開源版 Claude Code 的優勢、免費模型接入與 MCP/Agent Skills 支援。
 
 ## Concepts
 
@@ -20,3 +21,5 @@
 - [kubernetes-gitops-delivery](./concepts/kubernetes-gitops-delivery.md): 統整 Helm、Argo CD、Image Updater 與 Sealed Secrets 在 Kubernetes 上形成的 GitOps 交付鏈。
 - [cloudflare-workers-ai-pricing-model](./concepts/cloudflare-workers-ai-pricing-model.md): 聚焦 Workers AI 的 daily quota、超額計費與超限失敗行為如何影響成本與可用性治理。
 - [neuron-based-ai-cost-metering](./concepts/neuron-based-ai-cost-metering.md): 整理以 neurons 作為跨模型統一成本度量的判讀方式與實務管控啟發。
+- [opencode](./concepts/opencode.md): 統整 OpenCode 作為開源版 Claude Code 的核心定位、優勢與進階 Agent 特性。
+- [ai-coding-tools](./concepts/ai-coding-tools.md): 統整 AI 程式碼輔助工具的發展趨勢與知識庫中的代表性工具。

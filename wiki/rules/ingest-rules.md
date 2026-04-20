@@ -110,6 +110,7 @@
 - `summaries/` 下新增或更新的頁面條目
 - `concepts/` 下新增的概念頁條目
 - 必要時更新一行描述，讓後續查詢能先靠 index 找路，再深入讀頁面
+- `Summaries` 條目應優先帶上該 summary 的日期，格式建議為 `- [slug](path) · YYYY-MM-DD: description`
 
 條目描述應短、資訊密度高，方便快速掃描。
 

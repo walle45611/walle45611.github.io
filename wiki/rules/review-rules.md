@@ -6,12 +6,11 @@
 ## 執行步驟 (SOP)
 
 ### 1. 讀取資料
-- 先閱讀 `wiki/log.md`。
-- 從 `wiki/log.md` 確認使用者詢問的日期與對應紀錄。
-- 特別注意每筆紀錄中的 `source` 與 `created` 欄位。
-- 若 `created` 中有 `wiki/summaries/...`，應優先使用這些摘要內容進行整理。
-- 對每個 summary，優先讀取摘要頁內自己的 `source link`；若沒有 `source link`，再回退到摘要頁內的 `source`，最後才回退使用 `wiki/log.md` 中的 `source`。
-- 重點不是只看 `log.md`，而是透過 `log.md` 找到對應日期新增的 summaries，再根據它們總結。
+- 先閱讀 `wiki/index.md`。
+- 從 `wiki/index.md` 的 `Summaries` 區塊確認使用者詢問的日期與對應 summary 條目。
+- 依照 `Summaries` 條目中的日期與路徑，打開對應的 `wiki/summaries/...` 頁面。
+- 對每個 summary，優先讀取摘要頁內自己的 `source link`；若沒有 `source link`，再回退到摘要頁內的 `source`。
+- 重點不是回顧 `log.md` 的操作紀錄，而是透過 `index.md` 找到該日期對應的 summaries，再根據摘要內容整理回顧。
 
 ### 2. 找不到資料時
 - 如果系統提供的資料中沒有該日期的紀錄，請直接回覆：
@@ -42,5 +41,5 @@
 - 結尾不要主動發問，除非使用者原本有要求。
 
 ## 補充說明
-若某日紀錄中包含 `source`、`created`、`updated`、`notes` 等欄位，應優先以 `created` 裡的 `wiki/summaries/...` 作為主要摘要來源；`wiki/concepts/...` 僅作為輔助理解。
-若需要回覆原始來源，應優先使用摘要頁內的 `source link`；若摘要頁沒有，才回退到摘要頁或 `log.md` 中記錄的 `source`。無論哪種情況，都不要反推、改寫或自行構造不存在的來源網址。
+若 `index.md` 的 `Summaries` 已帶日期，應以該區塊作為時間回顧的主入口；`wiki/concepts/...` 僅作為輔助理解。
+若需要回覆原始來源，應優先使用摘要頁內的 `source link`；若摘要頁沒有，才回退到摘要頁內的 `source`。無論哪種情況，都不要反推、改寫或自行構造不存在的來源網址。

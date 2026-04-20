@@ -7,4 +7,4 @@
 
 IMPORTANT **動態工作流觸發條件 (Lazy Load)：**
 
-為了保持你的推理效率並減少 Token 浪費，請勿預判或猜測工作流的細節。請根據人類當下指派的任務，先去讀 `wiki/rules/router-rule.md` 作業規範後再開始實際動作。
+為了保持你的推理效率並減少 Token 浪費，請勿預判或猜測工作流的細節。請根據人類當下指派的任務，先去讀 `wiki/rules/router-rules.md` 作業規範後再開始實際動作。

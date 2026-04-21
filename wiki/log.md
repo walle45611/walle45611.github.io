@@ -1,3 +1,10 @@
+## [2026-04-22] ingest | AI agent design patterns
+
+- source: `raw/AI agent design patterns.md`
+- created: `wiki/summaries/ai-agent-design-patterns.md`, `wiki/concepts/agent-design-patterns.md`
+- updated: `wiki/concepts/harness-engineering.md`, `wiki/index.md`, `wiki/log.md`
+- notes: 新增 AI agent design patterns 摘要，整理 single / sequential / parallel 三種 workflow pattern 的取捨，並補上 agent workflow 拓撲的概念入口。
+
 ## [2026-04-22] ingest | LLM-Wiki-Worker
 
 - source: `raw/LLM-Wiki-Worker.md`

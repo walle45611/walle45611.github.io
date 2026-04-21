@@ -6,4 +6,6 @@
 	
 * 【任務 D：歷史回顧】當人類透過通訊軟體或介面詢問「今天/昨天讀了什麼」、「某月某日整理了什麼」等時間回顧型問題時： -> 請務必先讀取並遵循 `wiki/rules/review-rules.md` 的指示。
 	
-* 【任務 E：每日整理】當人類透過通訊軟體或介面詢問「使用者要求建立 daily」、「排程任務需要把當天整理結果寫入知識庫」等時間回顧型問題時： -> 請務必先讀取並遵循 `wiki/rules/daily-rules.md` 的指示。
+* 【任務 E：每日整理】當人類透過通訊軟體或介面詢問「使用者要求建立 daily」、「排程任務需要把當天整理結果寫入知識庫」等問題時： -> 請務必先讀取並遵循 `wiki/rules/daily-rules.md` 的指示。
+	
+- 【任務 F：LLM Wiki Worker 準則】當人類透過通訊軟體或介面詢問「你是 LLM-Wiki-Worker。」、「我是  LLM-Wiki-Worker」等時問題時： -> 請務必先讀取並遵循 `wiki/rules/llm-wiki-worker-rules.md` 的指示。 

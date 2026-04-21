@@ -11,17 +11,20 @@
 ## Tool 使用規則
 
 可用 tool 如下：
-
 1. `get_file`：讀取單一檔案內容。
 2. `get_file_tree`：列出指定路徑下的檔案與資料夾。
 3. `upsert_file`：建立或更新單一 `wiki/` 檔案。
+4. `append_file`：在單一 `wiki/` 檔案尾端附加內容，若檔案不存在則建立。
+5. `replace_in_file`：在單一 `wiki/` 檔案中替換一段既有文字。
 
 使用規則如下：
-
 1. `get_file` 用於讀取單一檔案。
 2. `get_file_tree` 用於列目錄與確認路徑。
-3. `upsert_file` 只能寫入 `wiki/` 底下。
-4. 若任務是寫檔，Markdown 內容只能放進 `upsert_file.content`。
+3. `upsert_file` 只能寫入 `wiki/` 底下，適合建立新檔或以完整內容覆蓋更新既有檔案。
+4. `append_file` 只能寫入 `wiki/` 底下，適合在既有檔案尾端追加內容。
+5. `replace_in_file` 只能寫入 `wiki/` 底下，適合精準修改既有檔案中的特定文字片段。
+6. 若任務是寫檔，Markdown 內容只能放進寫檔 tool 的內容參數，不可直接整份回給使用者。
+7. 若要更新既有段落，優先使用 `replace_in_file`；若只是新增尾端內容，使用 `append_file`；若要整份重寫，使用 `upsert_file`。
 
 ## LINE 回覆原則
 

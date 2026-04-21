@@ -8,6 +8,7 @@ created: 2026-04-22
 description: 這個專案的起點很單純：我們每天都會看到很多有價值的內容，可能是一篇網頁文章、也可能是一支 YouTube 影片。當下看完覺得很有收穫，就先存進筆記裡，想著「之後一定用得到」。  但真實情況是，過了一段時間後，記憶只剩下一個模糊印象： 你知道自己「好像看過這件事」，卻說不清在哪裡看到、重點是什麼、當初為什麼重要。  LLM-Wiki Worker 就是為了解決這個而生。 - LLM-Wiki-Worker/.gitignore at main · walle45611/LLM-Wiki-Worker
 tags:
   - clippings
+  - github
 ---
 ## LLM-Wiki Worker
 

@@ -90,4 +90,9 @@
 - checked: index.md, summaries, concepts, log.md
 - fixed: none
 - gaps: claude-code, mcp, agent-skills concepts missing; consider creating concept pages for these.
-- notes: No contradictions or isolated pages detected. All summaries reference existing concepts. Index and log are up-to-date.
+- notes: No contradictions or isolated pages detected. All summaries reference existing concepts. Index and log are up-to-date.## [2026-04-21] lint | wiki health check
+
+- checked: index.md, summaries, concepts, log.md
+- fixed: none
+- gaps: claude-code, mcp, agent-skills concepts missing; consider creating concept pages for these.
+- notes: No contradictions or isolated pages detected. All summaries reference existing concepts. No outdated content identified.

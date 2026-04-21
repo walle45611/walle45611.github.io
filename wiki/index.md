@@ -15,6 +15,7 @@
 - [obsidian-sync-strategies](./concepts/obsidian-sync-strategies.md): 統整 Obsidian 免費同步方案的選型邏輯，聚焦同步與備份的邊界、避免混用，以及 Syncthing 與雲端同步工具的取捨。
 - [opencode](./concepts/opencode.md): 統整 OpenCode 作為開源版 Claude Code 的核心定位、優勢與進階 Agent 特性。
 - [ai-coding-tools](./concepts/ai-coding-tools.md): 統整 AI 程式碼輔助工具的發展趨勢與知識庫中的代表性工具。
+- [nuitka-and-docker-deployment](./concepts/nuitka-and-docker-deployment.md): 統整 Nuitka 與 Docker 部署方案，說明高效能與安全部署實務。
 ## Summaries
 
 - [cloudflare-pull-consumers](./summaries/cloudflare-pull-consumers.md) · 2026-04-21: 整理 Cloudflare Queues pull consumer 的啟用方式、ack/retry 機制、`lease_id` 與 `visibility_timeout` 邊界，以及 pull 與 push 消費模式的選型差異。
@@ -27,6 +28,7 @@
 - [microk8s-production-deployment-guide](./summaries/microk8s-production-deployment-guide.md) · 2026-04-19: 整理 MicroK8s 從安裝、插件、節點治理到 Argo CD/Sealed Secrets/Image Updater 的可重複部署流程與生產化邊界。
 - [cloudflare-workers-ai-pricing](./summaries/cloudflare-workers-ai-pricing.md) · 2026-04-20: 彙整 Workers AI 的神經元計價規則、免費額度、UTC 日切重置與跨模型 token-neuron 成本換算重點。
 - [codex-vs-claude-vibecoding-observations](./summaries/codex-vs-claude-vibecoding-observations.md) · 2026-04-20: 以量化交易案例比較 Codex/GPT 與 Claude 的編程風格差異，提煉「架構規劃與執行分層」的實務工作流。
-- [opencode-detailed-guide](./summaries/opencode-detailed-guide.md) · 2026-04-20: 技術爬爬蝦關於 OpenCode 的攻略，介紹其作為開源版 Claude Code 的優勢、免費模型接入與 MCP/Agent Skills 支援。
+- [opencode-detailed-guide](./summaries/opencode-detailed-guide.md) · 2026-04-20: 技術爬爬蝦關於 OpenCode 的攻略，介紹其作為開源版 Claude Code 的核心定位、免費模型接入與 MCP/Agent Skills 支援。
 - [lin-zai-xue](./summaries/lin-zai-xue.md) · 2026-04-21: 林宅血案的事件概述、主要人物、相關概念與參考來源。
 - [choose-a-design-pattern-for-your-agentic-ai-system-cloud-architecture-center](./summaries/choose-a-design-pattern-for-your-agentic-ai-system-cloud-architecture-center.md) · 2026-04-22: 整理 Choose a design pattern for your agentic AI system 文章，提供 pattern 選擇框架與比較矩陣。
+- [nuitka-and-docker-for-high-performance-and-secure-python-deployment](./summaries/nuitka-and-docker-for-high-performance-and-secure-python-deployment.md) · 2026-04-22: 介紹 Nuitka 與 Docker 結合的高效能與安全部署方案。

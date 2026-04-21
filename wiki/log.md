@@ -78,3 +78,9 @@
 - basis: [[wiki/summaries/cloudflare-pull-consumers.md]]
 - updated: wiki/assets/daily/2026-04-21.md
 - notes: 1 summary, 1 topic.
+## [2026-04-21] ingest | 林宅血案
+
+- source: `raw/林宅血案 - 維基百科，自由的百科全書.md`
+- created: `wiki/summaries/lin-zai-xue.md`
+- updated: `wiki/index.md`
+- notes: 新增林宅血案摘要頁，整理案件概述、主要人物、相關概念與參考來源。

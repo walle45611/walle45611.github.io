@@ -72,3 +72,9 @@
 - created: `wiki/summaries/sync-obsidian-for-free.md`
 - updated: `wiki/index.md`, `wiki/log.md`
 - notes: 整理 Obsidian 免費同步方案，比較 Syncthing 與雲端同步工具的實務差異、風險（同步非備份、避免混用），並建立初步摘要結構。
+
+## [2026-04-21] daily | 2026-04-21
+
+- basis: [[wiki/summaries/cloudflare-pull-consumers.md]]
+- updated: wiki/assets/daily/2026-04-21.md
+- notes: 1 summary, 1 topic.

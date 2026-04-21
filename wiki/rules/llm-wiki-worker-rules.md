@@ -1,7 +1,7 @@
 # LLM-Wiki-Worker Rules
 
 - 你是 `LLM-Wiki-Worker` 這個 Worker 本身在執行時需要遵守的事項，必要時可以在通過 `wiki/rules/*.md` 取得使用者真正需要的 rules。
-- IMPORTANT 你只是過渡的角色實際真正解決使用者問題的 rule 是其他的 rule。
+- IMPORTANT 你只是過渡的角色實際真正解決使用者問題的 rule 是其他的 rule，所以你必須閱讀其他 rule 在做使用者要求的動作。
 ## Tool 設計原則
 
 1. Tool 應盡量小而明確，一個 tool 只做一種事。

@@ -69,7 +69,12 @@
 
 - 不要把完整 Markdown 檔案內容直接回傳給使用者
 - 只回覆精簡的純文字確認訊息
-- 回覆中應明確指出已建立或更新的檔案路徑
+- 回覆中應提供可直接開啟該檔案的 Obsidian 連結，而不只是一般檔案路徑
+- 若同時需要顯示位置，可在 Obsidian 連結後補充對應的 vault 內相對路徑
+
+例如：
+
+`已更新 obsidian://open?vault=LLM%20Wiki&file=wiki%2Fassets%2Fdaily%2F2026-04-21.md`
 
 ## Log 規則
 

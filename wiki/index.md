@@ -12,7 +12,6 @@
 - [codex-vs-claude-vibecoding-observations](./summaries/codex-vs-claude-vibecoding-observations.md) · 2026-04-20: 以量化交易案例比較 Codex/GPT 與 Claude 的編程風格差異，提煉「架構規劃與執行分層」的實務工作流。
 - [opencode-detailed-guide](./summaries/opencode-detailed-guide.md) · 2026-04-20: 技術爬爬蝦關於 OpenCode 的攻略，介紹其作為開源版 Claude Code 的優勢、免費模型接入與 MCP/Agent Skills 支援。
 - [lin-zai-xue](./summaries/lin-zai-xue.md) · 2026-04-21: 林宅血案的事件概述、主要人物、相關概念與參考來源。
-- [shuxue-jisuan](./summaries/shuxue-jisuan.md) · 2026-04-21: 簡單算術示例，列出 5+5=10 與 5+5=11。
 
 ## Concepts
 

@@ -34,7 +34,7 @@
 - date: <日期>
 - timezone: Asia/Taipei
 - generated_at: <日期>
--  basis: <參考到的檔案或是依據>
+-  basis: <參考到的檔案或是依據>，可以使用此格式 [[為檔案的位置]]
 
 ## Summary
 

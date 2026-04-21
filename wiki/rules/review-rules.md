@@ -51,6 +51,21 @@
 - 不可憑空推論未提供的細節。
 - 結尾不要主動發問，除非使用者原本有要求。
 
+### 5. Log 規則
+- 若這次回顧流程屬於實際執行的 Worker / 排程 / 系統任務，完成後必須同步更新 `wiki/log.md`。
+- log 必須記錄這次回顧任務的時間範圍、使用了哪些關鍵頁面，以及任務輸出或結果。
+- 若本次只是單純聊天查詢、沒有要求寫入知識庫檔案或執行系統流程，則不應為了查詢回覆額外改寫 `wiki/log.md`。
+
+建議 review log 格式：
+
+```md
+## [YYYY-MM-DD] review | <date-range-or-question>
+
+- pages-read: <key pages>
+- output: <reply summary or generated artifact>
+- notes: <time range, gaps, or follow-up>
+```
+
 ## 補充說明
 若 `index.md` 的 `Summaries` 已帶日期，則它是「單日 / 短區間」回顧的主入口，且該日期預設代表 `created`。
 `wiki/assets/daily/...` 是「長區間」回顧的主入口，適合拿來做多日聚合，不應反過來取代單日查詢時的 summary 細節。

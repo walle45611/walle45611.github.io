@@ -71,9 +71,23 @@
 - 只回覆精簡的純文字確認訊息
 - 回覆中應明確指出已建立或更新的檔案路徑
 
-例如：
+## Log 規則
 
-`已更新 wiki/assets/daily/2026-04-21.md`
+在 `wiki/assets/daily/YYYY-MM-DD.md` 成功建立或更新後：
+
+1. 必須同步更新 `wiki/log.md`。
+2. log 必須記錄這次 daily 任務已執行，並指出更新的 daily 檔案路徑與依據來源。
+3. 若 daily 檔未成功寫入，禁止先聲稱 log 已完成。
+
+建議 daily log 格式：
+
+```md
+## [YYYY-MM-DD] daily | <date-or-topic>
+
+- basis: <key pages>
+- updated: <daily file path>
+- notes: <summary count, linkage, or gaps>
+```
 
 ## 失敗處理
 
@@ -88,3 +102,4 @@
 1. 直接說明問題
 2. 不得捏造內容
 3. 若 `upsert_file` 未成功，禁止聲稱檔案已建立或更新
+4. 若 daily 寫入未成功，禁止更新 `wiki/log.md` 後再假裝整體流程已完成

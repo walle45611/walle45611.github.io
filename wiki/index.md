@@ -31,4 +31,4 @@
 - [opencode-detailed-guide](./summaries/opencode-detailed-guide.md) · 2026-04-20: 技術爬爬蝦關於 OpenCode 的攻略，介紹其作為開源版 Claude Code 的核心定位、免費模型接入與 MCP/Agent Skills 支援。
 - [lin-zai-xue](./summaries/lin-zai-xue.md) · 2026-04-21: 林宅血案的事件概述、主要人物、相關概念與參考來源。
 - [choose-a-design-pattern-for-your-agentic-ai-system-cloud-architecture-center](./summaries/choose-a-design-pattern-for-your-agentic-ai-system-cloud-architecture-center.md) · 2026-04-22: 整理 Choose a design pattern for your agentic AI system 文章，提供 pattern 選擇框架與比較矩陣。
-- [nuitka-and-docker-for-high-performance-and-secure-python-deployment](./summaries/nuitka-and-docker-for-high-performance-and-secure-python-deployment.md) · 2026-04-22: 介紹 Nuitka 與 Docker 結合的高效能與安全部署方案。
+- [nuitka-and-docker-for-high-performance-and-secure-python-deployment](./summaries/nuitka-and-docker-for-high-performance-and-secure-python-deployment.md) · 2026-04-22: 介紹 Nuitka 與 Docker 結合的高效能與安全部署方案。- [postgresql-books](./summaries/postgresql-books.md) · 2026-04-22

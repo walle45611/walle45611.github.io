@@ -123,3 +123,8 @@
 - created: `wiki/summaries/choose-a-design-pattern-for-your-agentic-ai-system-cloud-architecture-center.md`
 - updated: `wiki/index.md`, `wiki/log.md`
 - notes: 新增 Choose a design pattern for your agentic AI system 摘要，補充 agentic AI system pattern taxonomy。
+## [2026-04-22] lint | wiki health check
+- checked: index.md, summaries, concepts, log.md
+- fixed: none
+- gaps: none
+- notes: No contradictions or isolated pages detected. All summaries reference existing concepts. No outdated content identified.

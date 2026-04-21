@@ -1,20 +1,4 @@
 # Wiki Index
-
-## Summaries
-
-- [cloudflare-pull-consumers](./summaries/cloudflare-pull-consumers.md) · 2026-04-21: 整理 Cloudflare Queues pull consumer 的啟用方式、ack/retry 機制、`lease_id` 與 `visibility_timeout` 邊界，以及 pull 與 push 消費模式的選型差異。
-- [llm-wiki-worker](./summaries/llm-wiki-worker.md) · 2026-04-22: 整理 LLM-Wiki-Worker 如何以 `raw/`/`wiki/` 分層、router rules、Cloudflare Queue 與 LINE webhook 建立可持續維護的知識庫 agent 流程。
-- [ai-agent-design-patterns](./summaries/ai-agent-design-patterns.md) · 2026-04-22: 整理 single agent、sequential agent、parallel agent 三種基礎 agent workflow 的適用條件，以及 control、latency、cost 之間的取捨。
-- [sync-obsidian-for-free](./summaries/sync-obsidian-for-free.md) · 2026-04-20: 整理 Obsidian 免費同步方案，比較 Syncthing 與雲端同步工具 (Autosync/Dropsync) 的適用情境與風險。
-- [openclaw-ai-agent-operating-principles](./summaries/openclaw-ai-agent-operating-principles.md) · 2026-04-19: 以 OpenClaw 拆解 AI agent 的執行閉環，涵蓋 system prompt 組裝、工具調用、記憶檔、排程與上下文壓縮，以及對應的安全風險與防禦。
-- [harness-engineering-language-models-need-human-guidance](./summaries/harness-engineering-language-models-need-human-guidance.md) · 2026-04-19: 李一駿助教以實作案例與近期研究說明 harness engineering 的核心：透過規則、工具與工作流設計，讓模型在多輪任務中更穩定完成目標。
-- [how-to-learn-anything-faster-using-modern-research](./summaries/how-to-learn-anything-faster-using-modern-research.md) · 2026-04-18: Justin Sung 以六條過時學習規則整理現代學習研究的實務含義，涵蓋練習設計、deep processing、筆記、困難學習與直覺形成。
-- [microk8s-production-deployment-guide](./summaries/microk8s-production-deployment-guide.md) · 2026-04-19: 整理 MicroK8s 從安裝、插件、節點治理到 Argo CD/Sealed Secrets/Image Updater 的可重複部署流程與生產化邊界。
-- [cloudflare-workers-ai-pricing](./summaries/cloudflare-workers-ai-pricing.md) · 2026-04-20: 彙整 Workers AI 的神經元計價規則、免費額度、UTC 日切重置與跨模型 token-neuron 成本換算重點。
-- [codex-vs-claude-vibecoding-observations](./summaries/codex-vs-claude-vibecoding-observations.md) · 2026-04-20: 以量化交易案例比較 Codex/GPT 與 Claude 的編程風格差異，提煉「架構規劃與執行分層」的實務工作流。
-- [opencode-detailed-guide](./summaries/opencode-detailed-guide.md) · 2026-04-20: 技術爬爬蝦關於 OpenCode 的攻略，介紹其作為開源版 Claude Code 的優勢、免費模型接入與 MCP/Agent Skills 支援。
-- [lin-zai-xue](./summaries/lin-zai-xue.md) · 2026-04-21: 林宅血案的事件概述、主要人物、相關概念與參考來源。
-
 ## Concepts
 
 - [agentic-knowledge-base-maintenance](./concepts/agentic-knowledge-base-maintenance.md): 統整知識庫型 agent 的維護基線，聚焦 `raw/`/`wiki/` 分層、規則路由、背景執行管線與對外輸出分離。
@@ -31,4 +15,18 @@
 - [obsidian-sync-strategies](./concepts/obsidian-sync-strategies.md): 統整 Obsidian 免費同步方案的選型邏輯，聚焦同步與備份的邊界、避免混用，以及 Syncthing 與雲端同步工具的取捨。
 - [opencode](./concepts/opencode.md): 統整 OpenCode 作為開源版 Claude Code 的核心定位、優勢與進階 Agent 特性。
 - [ai-coding-tools](./concepts/ai-coding-tools.md): 統整 AI 程式碼輔助工具的發展趨勢與知識庫中的代表性工具。
+## Summaries
+
+- [cloudflare-pull-consumers](./summaries/cloudflare-pull-consumers.md) · 2026-04-21: 整理 Cloudflare Queues pull consumer 的啟用方式、ack/retry 機制、`lease_id` 與 `visibility_timeout` 邊界，以及 pull 與 push 消費模式的選型差異。
+- [llm-wiki-worker](./summaries/llm-wiki-worker.md) · 2026-04-22: 整理 LLM-Wiki-Worker 如何以 `raw/`/`wiki/` 分層、router rules、Cloudflare Queue 與 LINE webhook 建立可持續維護的知識庫 agent 流程。
+- [ai-agent-design-patterns](./summaries/ai-agent-design-patterns.md) · 2026-04-22: 整理 single agent、sequential agent、parallel agent 三種基礎 agent workflow 的適用條件，以及 control、latency、cost 之間的取捨。
+- [sync-obsidian-for-free](./summaries/sync-obsidian-for-free.md) · 2026-04-20: 整理 Obsidian 免費同步方案，比較 Syncthing 與雲端同步工具 (Autosync/Dropsync) 的適用情境與風險。
+- [openclaw-ai-agent-operating-principles](./summaries/openclaw-ai-agent-operating-principles.md) · 2026-04-19: 以 OpenClaw 拆解 AI agent 的執行閉環，涵蓋 system prompt 組裝、工具調用、記憶檔、排程與上下文壓縮，以及對應的安全風險與防禦。
+- [harness-engineering-language-models-need-human-guidance](./summaries/harness-engineering-language-models-need-human-guidance.md) · 2026-04-19: 李一駿助教以實作案例與近期研究說明 harness engineering 的核心：透過規則、工具與工作流設計，讓模型在多輪任務中更穩定完成目標。
+- [how-to-learn-anything-faster-using-modern-research](./summaries/how-to-learn-anything-faster-using-modern-research.md) · 2026-04-18: Justin Sung 以六條過時學習規則整理現代學習研究的實務含義，涵蓋練習設計、deep processing、筆記、困難學習與直覺形成。
+- [microk8s-production-deployment-guide](./summaries/microk8s-production-deployment-guide.md) · 2026-04-19: 整理 MicroK8s 從安裝、插件、節點治理到 Argo CD/Sealed Secrets/Image Updater 的可重複部署流程與生產化邊界。
+- [cloudflare-workers-ai-pricing](./summaries/cloudflare-workers-ai-pricing.md) · 2026-04-20: 彙整 Workers AI 的神經元計價規則、免費額度、UTC 日切重置與跨模型 token-neuron 成本換算重點。
+- [codex-vs-claude-vibecoding-observations](./summaries/codex-vs-claude-vibecoding-observations.md) · 2026-04-20: 以量化交易案例比較 Codex/GPT 與 Claude 的編程風格差異，提煉「架構規劃與執行分層」的實務工作流。
+- [opencode-detailed-guide](./summaries/opencode-detailed-guide.md) · 2026-04-20: 技術爬爬蝦關於 OpenCode 的攻略，介紹其作為開源版 Claude Code 的優勢、免費模型接入與 MCP/Agent Skills 支援。
+- [lin-zai-xue](./summaries/lin-zai-xue.md) · 2026-04-21: 林宅血案的事件概述、主要人物、相關概念與參考來源。
 - [choose-a-design-pattern-for-your-agentic-ai-system-cloud-architecture-center](./summaries/choose-a-design-pattern-for-your-agentic-ai-system-cloud-architecture-center.md) · 2026-04-22: 整理 Choose a design pattern for your agentic AI system 文章，提供 pattern 選擇框架與比較矩陣。

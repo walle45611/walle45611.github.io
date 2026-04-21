@@ -23,6 +23,7 @@
 - 設計工具時優先思考模型如何節省上下文，而非只思考人類操作便利。
 - 高權限工具（檔案刪除、外部執行、帳戶操作）預設加人工核准與最小權限。
 - 以隔離環境承載 agent（專用機、獨立帳號、獨立憑證），控制失誤半徑。
+- 在知識庫型 agent 中，把唯讀來源層與可寫 wiki 層分離，能讓規則與工具邊界更可執行。
 
 ## Open Questions
 
@@ -35,9 +36,11 @@
 
 - [context-engineering](./context-engineering.md)
 - [verbalized-feedback-learning](./verbalized-feedback-learning.md)
+- [agentic-knowledge-base-maintenance](./agentic-knowledge-base-maintenance.md)
 
 ## Sources
 
 - [harness-engineering-language-models-need-human-guidance](../summaries/harness-engineering-language-models-need-human-guidance.md)
 - [openclaw-ai-agent-operating-principles](../summaries/openclaw-ai-agent-operating-principles.md)
 - [codex-vs-claude-vibecoding-observations](../summaries/codex-vs-claude-vibecoding-observations.md)
+- [llm-wiki-worker](../summaries/llm-wiki-worker.md)

@@ -1,3 +1,10 @@
+## [2026-04-22] ingest | LLM-Wiki-Worker
+
+- source: `raw/LLM-Wiki-Worker.md`
+- created: `wiki/summaries/llm-wiki-worker.md`, `wiki/concepts/agentic-knowledge-base-maintenance.md`
+- updated: `wiki/concepts/harness-engineering.md`, `wiki/concepts/context-engineering.md`, `wiki/index.md`, `wiki/log.md`
+- notes: 新增 LLM-Wiki-Worker 專案摘要，抽出知識庫型 agent 維護模式，補上 raw/wiki 分層、規則路由、queue 背景執行與聊天輸出分離的整合脈絡。
+
 ## [2026-04-21] ingest | Cloudflare Pull consumers
 
 - source: `raw/Cloudflare Pull consumers.md`

@@ -109,10 +109,6 @@ Lint 的重點是檢查整體結構與一致性，不是逐字重寫所有頁面
 - gaps: <missing pages, missing sources, unresolved conflicts>
 ```
 
-## 輸出規則
-
-1. 最終輸出格式請依 `wiki/rules/output-rules.md`。
-
 ## 完成條件
 
 一次 lint 至少應回答以下問題：

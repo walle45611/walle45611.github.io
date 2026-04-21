@@ -1,17 +1,3 @@
-## [2026-04-22] ingest | AI agent design patterns
-
-- source: `raw/AI agent design patterns.md`
-- created: `wiki/summaries/ai-agent-design-patterns.md`, `wiki/concepts/agent-design-patterns.md`
-- updated: `wiki/concepts/harness-engineering.md`, `wiki/index.md`, `wiki/log.md`
-- notes: 新增 AI agent design patterns 摘要，整理 single / sequential / parallel 三種 workflow pattern 的取捨，並補上 agent workflow 拓撲的概念入口。
-
-## [2026-04-22] ingest | LLM-Wiki-Worker
-
-- source: `raw/LLM-Wiki-Worker.md`
-- created: `wiki/summaries/llm-wiki-worker.md`, `wiki/concepts/agentic-knowledge-base-maintenance.md`
-- updated: `wiki/concepts/harness-engineering.md`, `wiki/concepts/context-engineering.md`, `wiki/index.md`, `wiki/log.md`
-- notes: 新增 LLM-Wiki-Worker 專案摘要，抽出知識庫型 agent 維護模式，補上 raw/wiki 分層、規則路由、queue 背景執行與聊天輸出分離的整合脈絡。
-
 ## [2026-04-21] ingest | Cloudflare Pull consumers
 
 - source: `raw/Cloudflare Pull consumers.md`
@@ -104,22 +90,10 @@
 - checked: index.md, summaries, concepts, log.md
 - fixed: none
 - gaps: claude-code, mcp, agent-skills concepts missing; consider creating concept pages for these.
-- notes: No contradictions or isolated pages detected. All summaries reference existing concepts. Index and log are up-to-date.## [2026-04-21] lint | wiki health check
+- notes: No contradictions or isolated pages detected. All summaries reference existing concepts. Index and log are up-to-date.
+## [2026-04-21] ingest | 數學計算
 
-- checked: index.md, summaries, concepts, log.md
-- fixed: none
-- gaps: claude-code, mcp, agent-skills concepts missing; consider creating concept pages for these.
-- notes: No contradictions or isolated pages detected. All summaries reference existing concepts. No outdated content identified.
-
-## [2026-04-22] lint | wiki health check
-
-- checked: index.md, summaries, concepts, log.md
-- fixed: none
-- gaps: claude-code, mcp, agent-skills concepts missing; consider creating concept pages for these.
-- notes: No contradictions or isolated pages detected. All summaries reference existing concepts. No outdated content identified.
-## [2026-04-22] ingest | Choose a design pattern for your agentic AI system
-
-- source: `raw/Choose a design pattern for your agentic AI system    Cloud Architecture Center.md`
-- created: `wiki/summaries/choose-a-design-pattern-for-your-agentic-ai-system-cloud-architecture-center.md`
-- updated: `wiki/index.md`, `wiki/log.md`
-- notes: 新增 Choose a design pattern for your agentic AI system 摘要，補充 agentic AI system pattern taxonomy。
+- source: `raw/數學計算.md`
+- created: `wiki/summaries/shuxue-jisuan.md`
+- updated: `wiki/index.md`
+- notes: 新增簡易數學計算摘要，列出兩個算式 5+5=10 與 5+5=11，提示可能為錯誤或示例。

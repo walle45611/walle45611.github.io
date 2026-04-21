@@ -19,7 +19,6 @@
 - 工具輸出預設做截斷、摘要或分段讀取，避免原文大量灌入。
 - 針對會等待的流程使用排程（cron/heartbeat）而非同步阻塞等待。
 - 每次壓縮後檢查是否保留安全與授權條件，避免規則在摘要中消失。
-- 若任務目標是維護知識庫，應優先讓 agent 讀取已整理的 wiki 層，避免每次查詢都回頭重掃原始素材。
 
 ## Open Questions
 
@@ -30,10 +29,8 @@
 ## Related Concepts
 
 - [harness-engineering](./harness-engineering.md)
-- [agentic-knowledge-base-maintenance](./agentic-knowledge-base-maintenance.md)
 
 ## Sources
 
 - [openclaw-ai-agent-operating-principles](../summaries/openclaw-ai-agent-operating-principles.md)
 - [harness-engineering-language-models-need-human-guidance](../summaries/harness-engineering-language-models-need-human-guidance.md)
-- [llm-wiki-worker](../summaries/llm-wiki-worker.md)

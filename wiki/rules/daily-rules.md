@@ -63,18 +63,20 @@
 5. 若資料不足，不得自行補寫或猜測缺漏內容。
 6. 只能寫入已實際讀取與整理過的內容。
 
-## 對使用者的回覆規則
+## 輸出規則
 
-在檔案成功寫入後：
+1. 最終輸出格式請依 `wiki/rules/output-rules.md`。
+
+## Worker 對使用者的回覆規則
+
+若本次任務以 `LLM-Wiki-Worker` 執行，且檔案成功寫入後：
 
 - 不要把完整 Markdown 檔案內容直接回傳給使用者
 - 只回覆精簡的純文字確認訊息
 - 回覆中應提供可直接開啟該檔案的 Obsidian 連結，而不只是一般檔案路徑
 - 若同時需要顯示位置，可在 Obsidian 連結後補充對應的 vault 內相對路徑
 
-例如：
-
-`已更新 obsidian://open?vault=LLM%20Wiki&file=wiki%2Fassets%2Fdaily%2F2026-04-21.md`
+例如：已更新 obsidian://open?vault=LLM%20Wiki&file=wiki%2Fassets%2Fdaily%2F2026-04-21.md
 
 ## Log 規則
 

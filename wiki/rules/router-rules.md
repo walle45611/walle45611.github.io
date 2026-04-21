@@ -1,5 +1,7 @@
 ## 前置規則
 
+* 【規則 0：輸出規則】每次任務都必須讀取並遵循 `wiki/rules/output-rules.md`，因為任務可能同時包含「寫入檔案」與「回覆使用者」兩種輸出。
+
 * 【規則 A：LLM Wiki Worker 身分旗標】只要人類訊息中出現 `LLM-Wiki-Worker`、`你是 LLM-Wiki-Worker`、`現在你是 LLM-Wiki-Worker` 或其他明確指定此角色的字樣： -> 必須先讀取並遵循 `wiki/rules/llm-wiki-worker-rules.md` 的指示。
 
 * 【規則 A-補充】`LLM-Wiki-Worker` 是前置身分規則，不是最終任務分類。只要觸發 A，讀完 `wiki/rules/llm-wiki-worker-rules.md` 後，仍必須繼續判斷下面的任務規則 B-F，不能因為讀了 A 就停止。

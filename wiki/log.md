@@ -128,3 +128,9 @@
 - fixed: none
 - gaps: none
 - notes: No contradictions or isolated pages detected. All summaries reference existing concepts. No outdated content identified.
+## [2026-04-22] ingest | PostgreSQL Books
+
+- source: `raw/PostgreSQL Books.md`
+- created: `wiki/summaries/postgresql-books.md`
+- updated: `wiki/index.md`
+- notes: Added summary of PostgreSQL books list.

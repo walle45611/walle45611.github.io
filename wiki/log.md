@@ -117,3 +117,9 @@
 - fixed: none
 - gaps: claude-code, mcp, agent-skills concepts missing; consider creating concept pages for these.
 - notes: No contradictions or isolated pages detected. All summaries reference existing concepts. No outdated content identified.
+## [2026-04-22] ingest | Choose a design pattern for your agentic AI system
+
+- source: `raw/Choose a design pattern for your agentic AI system    Cloud Architecture Center.md`
+- created: `wiki/summaries/choose-a-design-pattern-for-your-agentic-ai-system-cloud-architecture-center.md`
+- updated: `wiki/index.md`, `wiki/log.md`
+- notes: 新增 Choose a design pattern for your agentic AI system 摘要，補充 agentic AI system pattern taxonomy。

@@ -91,3 +91,9 @@
 - fixed: none
 - gaps: claude-code, mcp, agent-skills concepts missing; consider creating concept pages for these.
 - notes: No contradictions or isolated pages detected. All summaries reference existing concepts. Index and log are up-to-date.
+## [2026-04-21] ingest | 數學計算
+
+- source: `raw/數學計算.md`
+- created: `wiki/summaries/shuxue-jisuan.md`
+- updated: `wiki/index.md`
+- notes: 新增簡易數學計算摘要，列出兩個算式 5+5=10 與 5+5=11，提示可能為錯誤或示例。

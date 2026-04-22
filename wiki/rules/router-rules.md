@@ -2,7 +2,7 @@
 
 * 【規則 0：輸出規則】每次任務都必須讀取並遵循 `wiki/rules/output-rules.md`，因為任務可能同時包含「寫入檔案」與「回覆使用者」兩種輸出。
 
-* 【規則 1：Log 規則】每次任務都必須更新 `wiki/log.md`，或屬於 Worker、webhook、agent、排程等系統自動執行流程： -> 必須先讀取並遵循 `wiki/rules/log-rules.md`
+* 【規則 1：Log 規則】每次任務都必須更新 `wiki/log.md`，或屬於 Worker、webhook、agent、排程等系統自動執行流程： -> 必須先讀取並遵循 `wiki/rules/log-rules`
 
 ## 任務規則
 

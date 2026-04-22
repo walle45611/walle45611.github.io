@@ -140,3 +140,8 @@
 - source: `raw/Introducing ChatGPT Images 2.0.md`
 - created: `wiki/summaries/introducing-chatgpt-images-2-0.md`
 - notes: 新增 ChatGPT Images 2.0 摘要，說明模式提升文字渲染、語言支援、思考模式與長寬比彈性。
+## [2026-04-22] ingest | Codex for (almost) everything
+
+- source: `raw/Codex for (almost) everything.md`
+- created: `wiki/summaries/codex-for-almost-everything.md`
+- notes: Added summary for Codex for (almost) everything

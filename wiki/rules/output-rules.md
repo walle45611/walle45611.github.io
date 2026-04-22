@@ -56,7 +56,6 @@ pre-formatted fixed-width code block written in the Python programming language
 >Block quotation continued
 >Block quotation continued
 >The last line of the block quotation
-**>The second expandable block quotation started right after the previous
 >It is separated from the previous block quotation by an empty bold entity
 >Expandable block quotation continued
 >Hidden by default part of the expandable block quotation started

@@ -134,3 +134,9 @@
 - created: `wiki/summaries/postgresql-books.md`
 - updated: `wiki/index.md`
 - notes: Added summary of PostgreSQL books list.
+
+## [2026-04-22] ingest | Introducing ChatGPT Images 2.0
+
+- source: `raw/Introducing ChatGPT Images 2.0.md`
+- created: `wiki/summaries/introducing-chatgpt-images-2-0.md`
+- notes: 新增 ChatGPT Images 2.0 摘要，說明模式提升文字渲染、語言支援、思考模式與長寬比彈性。

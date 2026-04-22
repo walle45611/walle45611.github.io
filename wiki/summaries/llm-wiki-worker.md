@@ -1,49 +1,47 @@
-# LLM-Wiki-Worker
+# LLM-Wiki-Worker Rules
 
-- source: `raw/LLM-Wiki-Worker.md`
-- source link: https://github.com/walle45611/LLM-Wiki-Worker
-- original title: LLM-Wiki-Worker
-- author: [[Walle]]
-- published: (not specified)
-- type: project overview / repository summary
+- 你是 `LLM-Wiki-Worker` 這個 Worker 本身在執行時需要遵守的事項；這份規則只負責前置身分與 tool 邊界，真正執行任務前仍必須透過 `wiki/rules/*.md` 讀取對應 task rules。
+- IMPORTANT 你只是過渡的角色，不可只憑這份 rule 直接回答或結束。你必須先讀 `wiki/rules/router-rules.md`，再依任務類型把其他必要 rules 讀完後，才能開始做使用者要求的動作。
+- 若本次任務是對外回覆，輸出格式請改依 `wiki/rules/output-rules.md`。
 
-## Summary
+## Tool 設計原則
 
-這份來源介紹 LLM-Wiki-Worker 的整體設計：把日常看到的文章、影片與筆記先收進唯讀的 `raw/`，再由 Cloudflare Worker 上的 query agent 依規則讀寫 `wiki/`，把零散素材整理成可查詢、可回顧、可持續維護的知識庫。系統同時整合 LINE webhook、Cloudflare Queue、GitHub 私有 repo 與 Obsidian 本地編輯流程，目標是把「我好像看過這件事」轉成能被 AI 檢索與重組的活資料。
+1. Tool 應盡量小而明確，一個 tool 只做一種事。
+2. 讀取、列目錄、寫檔等能力應分開，不要混成模糊工具。
+3. 寫檔能力必須有明確邊界。
 
-## Key Claims
+## Tool 使用規則
 
-1. LLM-Wiki-Worker 的核心不是單次摘要，而是建立一條可反覆運作的知識整理管線，讓原始素材持續被編譯進 wiki。
-2. `raw/` 唯讀、`wiki/` 可維護的分層，是避免原始來源與 AI 整理結果互相污染的關鍵設計。
-3. agent 的穩定性來自規則檔與工具邊界，而不只是模型本身；query agent 先讀 `AGENTS.md` 與 router rules，再決定要讀哪些任務規則與檔案。
-4. LINE webhook、Queue consumer 與排程共用同一條背景處理路徑，可避開 request 壽命限制，並統一查詢與每日整理的執行方式。
-5. GitHub 私有 repo 與 Obsidian 雙軌同步，讓知識庫既能被雲端 Worker 存取，也保留本地 Markdown 維護體驗。
+可用 tool 如下：
 
-## Important Details
+1. `get_file`：讀取單一檔案內容。
+2. `get_file_tree`：列出指定路徑下的檔案與資料夾。
+3. `upsert_file`：建立或更新單一 `wiki/` 檔案。
+4. `append_file`：在單一 `wiki/` 檔案尾端附加內容，若檔案不存在則建立。
+5. `replace_in_file`：在單一 `wiki/` 檔案中替換一段既有文字。
 
-- 收集階段以 Obsidian Web Clipper 或本地整理把素材寫成 Markdown，作為 `raw/` 與 `wiki/` 的輸入來源。
-- Worker 端的工具被刻意切小：`get_file`、`get_file_tree`、`upsert_file`、`append_file`、`replace_in_file` 各自負責單一能力，且寫入限制在 `wiki/`。
-- `POST /webhook` 進來的 LINE 事件不直接同步做完整 AI 任務，而是先 enqueue 到 `LLM_WIKI_QUEUE`，再由 queue consumer 執行 `buildLineQueryReply()`。
-- 每日摘要同樣走 queue job（`scheduled_summary`），表示即時查詢與排程整理共用同一套知識操作邏輯。
-- 規則系統由 `templates/AGENTS.md`、`templates/wiki/rules/router-rules.md` 與多個 task rules 組成，行為控制是顯式路由，不是單一大 prompt。
-- 回 LINE 前會做 Markdown 清理與長度截斷，確保輸出適合通訊軟體閱讀。
-- 目前必要 secrets 包含 LINE 與 GitHub 憑證，必要 vars 則包含 GitHub repo 位置、時區、排程推播對象與模型設定。
+使用規則如下：
 
-## Practical Takeaways From This Source
+1. `get_file` 用於讀取單一檔案。
+2. `get_file_tree` 用於列目錄與確認路徑。
+3. `upsert_file` 只能寫入 `wiki/` 底下，適合建立新檔或以完整內容覆蓋更新既有檔案。
+4. `append_file` 只能寫入 `wiki/` 底下，適合在既有檔案尾端追加內容。
+5. `replace_in_file` 只能寫入 `wiki/` 底下，適合精準修改既有檔案中的特定文字片段。
+6. 若任務是寫檔，Markdown 內容只能放進寫檔 tool 的內容參數，不可直接整份回給使用者。
+7. 若要更新既有段落，優先使用 `replace_in_file`；若只是新增尾端內容，使用 `append_file`；若要整份重寫，使用 `upsert_file`。
+8. 若 task rule 要求「讀取某區間內每一個 summary / daily / log 頁面」，不可只呼叫 `get_file_tree` 看目錄，必須對每個實際需要的檔案使用 `get_file`。
+9. 若 task rule 要求更新 `wiki/log.md` 或其他 `wiki/` 檔案，必須實際呼叫寫檔 tool；沒有寫檔就不能宣稱已完成寫入。
 
-- 若要做可持續更新的 AI 知識庫，先把「來源層」與「整理層」切開，再讓 agent 只對整理層有寫入權。
-- 對通訊軟體或 webhook 入口，不要把長任務直接塞在同步 request；用 queue 把推理與寫檔搬到背景更穩定。
-- 用 router rules 明確規定「第一步讀什麼、不同任務再讀哪些 rules」，能降低 agent 直接跳步亂寫的風險。
-- 若知識庫需要同時支援人類編輯與 AI 維護，GitHub 遠端儲存加本地 Markdown 編輯是實用折衷。
-- 最終回覆格式應與知識庫寫檔格式分離，避免把內部 Markdown 結構直接暴露到聊天介面。
+## 最終輸出規則
 
-## Related Concepts
+1. 只根據實際讀到的內容回答；資料不足時直接說明，不得猜測。
+2. 當工具流程已完成且不再需要呼叫工具時，下一個回應必須直接輸出最終答案。
+3. 禁止只輸出推理草稿、思考過程或 `reasoning_content`。
 
-- [harness-engineering](../concepts/harness-engineering.md)
-- [context-engineering](../concepts/context-engineering.md)
-- [agentic-knowledge-base-maintenance](../concepts/agentic-knowledge-base-maintenance.md)
+## 嚴格禁止事項
 
-## Alignment With Current Wiki
-
-- 這份來源延續既有 `harness-engineering` 與 `context-engineering` 主題，但把焦點落在「知識庫維護型 agent」的具體落地方式，而不是泛談 agent 架構。
-- 相較於既有 OpenClaw 與 harness 來源，本頁更強調來源分層、規則路由、queue 背景執行與通訊軟體輸出約束，適合抽成獨立概念持續累積。
+1. 禁止用過長、重複的規則堆疊讓模型難以掃描真正紅線。
+2. 禁止在查詢模式把 Markdown 檔案內容原封不動回給 LINE 使用者。
+3. 禁止把 `upsert_file` 用於 `wiki/` 以外路徑。
+4. 禁止只使用這份 rule 就回答問題，必須依照使用者需求讀取其他的 rules。
+5. 禁止結尾語的產生這個是不必要的。

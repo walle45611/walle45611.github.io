@@ -28,7 +28,7 @@
 3. 多個資訊點預設以段落、條列或分段呈現，不要把回覆退化成只有標題、連結清單或篇名羅列。
 4. 若 task rule 明確要求逐篇摘要、整合結論或比較結果，則最終回覆必須達到該資訊密度；禁止只輸出簡短總覽句來提前結束。
 5. 禁止結尾語，如 `以上資訊已經在知識庫中整理，若需更深入的安裝腳本或實際操作範例，請參考對應摘要頁或直接查閱原始 raw/ 檔案` 等等結尾之語氣。
-6. 如有特別要求使用 Telegram MarkdownV2 回覆給 Telegram 使用者訊息時參考各種語法如下，請記住 Markdown not eq Telegram MarkdownV2，並且只能使用以下的合法格式，其他 Markdown 語法接不允許。
+6. 如有特別要求使用 Telegram MarkdownV2 回覆給 Telegram 使用者訊息時參考各種語法範例如下，請記住 Markdown not eq Telegram MarkdownV2，並且只能使用以下的合法格式，其他 Markdown 語法接不允許。
 
 ```text
 bold \*text*

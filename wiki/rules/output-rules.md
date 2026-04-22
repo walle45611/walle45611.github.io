@@ -28,50 +28,25 @@
 3. 多個資訊點預設以段落、條列或分段呈現，不要把回覆退化成只有標題、連結清單或篇名羅列。
 4. 若 task rule 明確要求逐篇摘要、整合結論或比較結果，則最終回覆必須達到該資訊密度；禁止只輸出簡短總覽句來提前結束。
 5. 禁止結尾語，如 `以上資訊已經在知識庫中整理，若需更深入的安裝腳本或實際操作範例，請參考對應摘要頁或直接查閱原始 raw/ 檔案` 等等結尾之語氣。
-6. 如有特別要求使用 Telegram MarkdownV2 回覆給 Telegram 使用者訊息時參考各種語法範例如下，請記住 Markdown not eq Telegram MarkdownV2，並且只能使用以下的合法格式，其他 Markdown 語法接不允許。
-
-```text
-bold \*text*
-_italic \*text_
-__underline__
-~strikethrough~
-||spoiler||
-bold _italic bold ~italic bold strikethrough ||italic bold strikethrough spoiler||~ __underline italic bold___ bold*
-[inline URL](http://www.example.com/)
-[inline mention of a user](tg://user?id=123456789)
-![👍](tg://emoji?id=5368324170671202286)
-![22:45 tomorrow](tg://time?unix=1647531900&format=wDT)
-![22:45 tomorrow](tg://time?unix=1647531900&format=t)
-![22:45 tomorrow](tg://time?unix=1647531900&format=r)
-![22:45 tomorrow](tg://time?unix=1647531900)
-`inline fixed-width code`
-`​`​`
-pre-formatted fixed-width code block
-`​`​`
-`​`​`python
-pre-formatted fixed-width code block written in the Python programming language
-`​`​`
->Block quotation started
->Block quotation continued
->Block quotation continued
->Block quotation continued
->The last line of the block quotation
->It is separated from the previous block quotation by an empty bold entity
->Expandable block quotation continued
->Hidden by default part of the expandable block quotation started
->Expandable block quotation continued
->The last line of the expandable block quotation with the expandability mark||
-```
-- Please note:
-	- Any character with code between 1 and 126 inclusively can be escaped anywhere with a preceding '' character, in which case it is treated as an ordinary character and not a part of the markup. This implies that '' character usually must be escaped with a preceding '' character.
-	- Inside `pre` and `code` entities, all ‘`’ and '' characters must be escaped with a preceding '' character.
-	- Inside the `(...)` part of the inline link and custom emoji definition, all ‘)’ and '' must be escaped with a preceding '' character.
-	- In all other places characters ‘_’, ‘*’, ‘[’, ‘]’, ‘(’, ‘)’, ‘~’, ‘`’, ‘>’, ‘#’, ‘+’, ‘-’, ‘=’, ‘|’, ‘{’, ‘}’, ‘.’, ‘!’ must be escaped with the preceding character ''.
-	- In case of ambiguity between `italic` and `underline` entities `__` is always greedily treated from left to right as beginning or end of an `underline` entity, so instead of `___italic underline___` use `___italic underline_**__`, adding an empty bold entity as a separator.
-	- A valid emoji must be provided as an alternative value for the custom emoji. The emoji will be shown instead of the custom emoji in places where a custom emoji cannot be displayed (e.g., system notifications) or if the message is forwarded by a non-premium user. It is recommended to use the emoji from the emoji field of the custom emoji sticker.
-	- Custom emoji entities can only be used by bots that purchased additional usernames on Fragment.
-	- See date-time entity formatting for more details about supported date-time formats.
-	- 並且禁止使用標題 `#` 和表格，這都是回覆使用者不被允許的。
+6. 如有特別要求使用 Telegram MarkdownV2 回覆給 Telegram 使用者訊息時參考各種規範如下，請記住 Markdown not eq Telegram MarkdownV2，並且只能使用以下的合法格式，其他 Markdown 語法接不允許。
+	- 規則：
+		- 只輸出最終訊息內容，不要額外解釋。
+		- 可使用：粗體、斜體、底線、刪除線、劇透、行內連結、行內程式碼、程式碼區塊、引用。
+		- 禁止使用標題 `#`、表格、HTML，避免複雜巢狀格式。
+		- 優先使用簡單格式：粗體、條列、連結、程式碼區塊、引用。
+		- 優先使用條列，不要使用數字編號，避免 `1.` 這類格式錯誤。
+	- 跳脫規則：
+		- 在一般文字中，以下字元必須加上反斜線 `\` 跳脫： `_ * [ ] ( ) ~` > # + - = | { } . !`
+		- 例如：
+		    - `AGENTS.md` → `AGENTS\.md`
+		    - `1.` → `1\.`
+	- 其他規則：
+		- 在程式碼與程式碼區塊內，反引號與反斜線必須正確跳脫。
+		- 在連結的 URL 區段 `(...)` 內，`)` 和 `\` 必須正確跳脫。
+		- 若格式不確定，請改用純文字，不要輸出無效的 MarkdownV2。
+	- 最重要原則：
+		- 合法可送出，比格式華麗更重要。
+		- 不確定就保守輸出。
 
 ## 3. 同時有寫檔與回覆時
 

@@ -38,6 +38,7 @@
 			- 粗體使用 `*書寫文字*` 此格式
 	- 跳脫規則：
 		- IMPORTANT 在一般文字中，以下字元必須加上反斜線 `\` 跳脫： `_ * [ ] ( ) ~  > # + - = | { } . !`
+		-  `can't parse entities: Character '(' is reserved and must be escaped with the preceding '\\'`
 		- 例如：
 		    - `AGENTS.md` → `AGENTS\.md`
 		    - `1.` → `1\.`

@@ -35,8 +35,7 @@
 		- 嚴禁 禁止使用標題 `#`、表格、HTML，避免複雜巢狀格式。
 		- 優先使用 emoji 1️⃣、2️⃣、✅ 等等符號，不要使用數字編號，避免 `1.` 這類格式錯誤。
 		- 優先使用簡單格式：連結、程式碼區塊、粗體。
-			- 粗體使用 `*書寫文字*` 以下為錯誤示範之修正：
-				- `* 1️⃣ *OpenClaw 相關內容摘要*` → `*1️⃣ OpenClaw 相關內容摘要*`
+			
 	- 跳脫規則：
 		- IMPORTANT 在一般文字中，以下字元必須加上反斜線 `\` 跳脫： `_ * [ ] ( ) ~  > # + - = | { } . !`
 		-  `can't parse entities: Character '(' is reserved and must be escaped with the preceding '\\'`

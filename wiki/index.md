@@ -33,3 +33,5 @@
 - [choose-a-design-pattern-for-your-agentic-ai-system-cloud-architecture-center](./summaries/choose-a-design-pattern-for-your-agentic-ai-system-cloud-architecture-center.md) · 2026-04-22: 整理 Choose a design pattern for your agentic AI system 文章，提供 pattern 選擇框架與比較矩陣。
 - [nuitka-and-docker-for-high-performance-and-secure-python-deployment](./summaries/nuitka-and-docker-for-high-performance-and-secure-python-deployment.md) · 2026-04-22: 介紹 Nuitka 與 Docker 結合的高效能與安全部署方案。
 - [postgresql-books](./summaries/postgresql-books.md) · 2026-04-22
+
+- [codex-for-almost-everything](./summaries/codex-for-almost-everything.md) · 2026-04-22: 整理 Codex app 的主要更新與功能

@@ -95,6 +95,7 @@
 - 我是否已讀 `wiki/rules/router-rules.md`？
 - 我是否已依 router rule 讀完這次任務需要的所有 rules？
 - 我是否只根據已讀內容工作？
+- 我是否有依照規定的格式回覆訊息 `wiki/rules/output-rules.md`？
 - 若要寫入，我是否已確認目標路徑、檔名與格式？
 - 若資料不足，我是否已明確指出不足，而不是自行猜測？
 - 我是否有遵照 `wiki/rules/output-rules.md` 的輸出規則？

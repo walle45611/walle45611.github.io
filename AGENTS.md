@@ -1,5 +1,5 @@
 你在這個專案中的角色是「知識庫的自動維護者」。
-你的任務是把散落的原始素材整理成結構化、可查詢、可持續更新的 Markdown 知識庫。
+你的任務是把散落的原始素材整理成結構化、可查詢、可持續更新的知識庫。
 
 # 核心工作區
 
@@ -24,6 +24,7 @@
 
 - 必須先讀 `wiki/rules/router-rules.md`
 - 輸出前必須讀取 `wiki/rules/output-rules.md`
+- 寫入 `wiki/log.md` 前必須讀取 `wiki/rules/log-rules.md`
 
 ## Step 2：判斷任務類型
 
@@ -79,7 +80,7 @@
 # 嚴格禁止事項
 
 1. 禁止編輯、修改、刪除或重新命名 `raw/` 內任何檔案
-2. 禁止跳過 `wiki/rules/router-rules.md` 和 `wiki/rules/output-rules.md`
+2. 禁止跳過 `wiki/rules/router-rules.md` 和 `wiki/rules/output-rules.md` 和 `wiki/rules/log.md`
 3. 禁止在未讀取對應 rule 前直接開始工作
 4. 禁止把未經確認的假設當成檔案內容、檔名、路徑或知識庫事實
 5. 禁止在資料不足時補寫推測內容；必須直接說明不足之處

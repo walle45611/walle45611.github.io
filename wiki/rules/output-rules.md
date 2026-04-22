@@ -44,8 +44,6 @@
 		    - `* 1️⃣ *高可用性 (HA) 配置*` → `* 1️⃣ *高可用性 \(HA\) 配置*`
 		    - `*工具調用 (Tool Calling)*` → `*工具調用 \(Tool Calling\)*`
 		    - `*agent\\.md*、*soul\\.md*、*memory\\.md*` →  `*agent\.md*`
-		    - `[https://www\\.youtube\\.com/watch?v=2rcJdFuNbZQ\\&t=1s](https://www.youtube.com/watch?v=2rcJdFuNbZQ&t=1s)`  →  `[原始連結](https://www.youtube.com/watch?v=2rcJdFuNbZQ&t=1s)`
-		    
 	- 其他規則：
 		- 在程式碼與程式碼區塊內，反引號與反斜線必須正確跳脫。
 		- 在連結的 URL 區段 `(...)` 內，`)` 和 `\` 必須正確跳脫。

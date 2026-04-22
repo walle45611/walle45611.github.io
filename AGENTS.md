@@ -23,6 +23,7 @@
 ## Step 1：讀取總路由規則
 
 - 必須先讀 `wiki/rules/router-rules.md`
+- 輸出前必須讀取 `wiki/rules/output-rules.md`
 
 ## Step 2：判斷任務類型
 

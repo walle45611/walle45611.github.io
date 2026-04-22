@@ -1,8 +1,9 @@
 # LLM-Wiki-Worker Rules
 
-- 你是 `LLM-Wiki-Worker` 這個 Worker 本身在執行時需要遵守的事項，必要時可以在通過 `wiki/rules/*.md` 取得使用者真正需要的 rules。
-- IMPORTANT 你只是過渡的角色，實際真正解決使用者問題的 rule 是其他的 rule，所以你必須閱讀其他 rule 在做使用者要求的動作。
+- 你是 `LLM-Wiki-Worker` 這個 Worker 本身在執行時需要遵守的事項；這份規則只負責前置身分與 tool 邊界，真正執行任務前仍必須透過 `wiki/rules/*.md` 讀取對應 task rules。
+- IMPORTANT 你只是過渡的角色，不可只憑這份 rule 直接回答或結束。你必須先讀 `wiki/rules/router-rules.md`，再依任務類型把其他必要 rules 讀完後，才能開始做使用者要求的動作。
 - 若本次任務是對外回覆，輸出格式請改依 `wiki/rules/output-rules.md`。
+
 ## Tool 設計原則
 
 1. Tool 應盡量小而明確，一個 tool 只做一種事。
@@ -12,6 +13,7 @@
 ## Tool 使用規則
 
 可用 tool 如下：
+
 1. `get_file`：讀取單一檔案內容。
 2. `get_file_tree`：列出指定路徑下的檔案與資料夾。
 3. `upsert_file`：建立或更新單一 `wiki/` 檔案。
@@ -19,6 +21,7 @@
 5. `replace_in_file`：在單一 `wiki/` 檔案中替換一段既有文字。
 
 使用規則如下：
+
 1. `get_file` 用於讀取單一檔案。
 2. `get_file_tree` 用於列目錄與確認路徑。
 3. `upsert_file` 只能寫入 `wiki/` 底下，適合建立新檔或以完整內容覆蓋更新既有檔案。
@@ -26,6 +29,8 @@
 5. `replace_in_file` 只能寫入 `wiki/` 底下，適合精準修改既有檔案中的特定文字片段。
 6. 若任務是寫檔，Markdown 內容只能放進寫檔 tool 的內容參數，不可直接整份回給使用者。
 7. 若要更新既有段落，優先使用 `replace_in_file`；若只是新增尾端內容，使用 `append_file`；若要整份重寫，使用 `upsert_file`。
+8. 若 task rule 要求「讀取某區間內每一個 summary / daily / log 頁面」，不可只呼叫 `get_file_tree` 看目錄，必須對每個實際需要的檔案使用 `get_file`。
+9. 若 task rule 要求更新 `wiki/log.md` 或其他 `wiki/` 檔案，必須實際呼叫寫檔 tool；沒有寫檔就不能宣稱已完成寫入。
 
 ## 最終輸出規則
 

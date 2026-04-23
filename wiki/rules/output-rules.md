@@ -28,23 +28,50 @@
 3. 多個資訊點預設以段落、條列或分段呈現，不要把回覆退化成只有標題、連結清單或篇名羅列。
 4. 若 task rule 明確要求逐篇摘要、整合結論或比較結果，則最終回覆必須達到該資訊密度；禁止只輸出簡短總覽句來提前結束。
 5. 禁止結尾語，如 `以上資訊已經在知識庫中整理，若需更深入的安裝腳本或實際操作範例，請參考對應摘要頁或直接查閱原始 raw/ 檔案` 等等結尾之語氣。
-6. 如有特別要求使用 Telegram 回覆給使用者訊息時參考各種規範如下，只輸出 JSON，不要輸出 Markdown、不要輸出 Telegram MarkdownV2、不要輸出解釋文字。
+6. 如有特別要求使用 JSON 回覆給使用者訊息時參考各種規範如下，只輸出 JSON，不要輸出 Markdown、不要輸出 Telegram MarkdownV2、不要輸出解釋文字。
 	- 輸出格式如下：  
 		```json
-		{  
-			"blocks": [  
-				{ "type": "heading", "text": "..." },  
-				{ "type": "paragraph", "text": "..." },  
-				{  
-					"type": "bullet_list",  
-					"items": [  
-				{ "label": "...", "text": "..." }  
-			]  
-			},  
-				{ "type": "link", "text": "...", "url": "..." },  
-				{ "type": "code_block", "language": "...", "text": "..." },  
-				{ "type": "quote", "text": "..." }  
-			]  
+		{
+		  "blocks": [
+		    {
+		      "type": "heading",
+		      "text": "OpenClaw 相關內容摘要"
+		    },
+		    {
+		      "type": "paragraph",
+		      "text": "OpenClaw 是 AI agent 的執行框架，主要負責組裝 prompt、調用工具以及轉發輸入與輸出。"
+		    },
+		    {
+		      "type": "heading",
+		      "text": "核心運作機制"
+		    },
+		    {
+		      "type": "bullet_list",
+		      "items": [
+		        {
+		          "label": "System Prompt 組裝",
+		          "text": "由多個本地檔案組成，包含身份設定與工具手冊。"
+		        },
+		        {
+		          "label": "工具調用",
+		          "text": "這是 agent 執行任務的核心，特別是 execute 類高權限工具。"
+		        },
+		        {
+		          "label": "自動化執行",
+		          "text": "透過 heartbeat 與 cron job 讓 agent 可定期主動執行任務。"
+		        }
+		      ]
+		    },
+		    {
+		      "type": "heading",
+		      "text": "原始連結"
+		    },
+		    {
+		      "type": "link",
+		      "text": "YouTube 影片",
+		      "url": "https://www.youtube.com/watch?v=2rcJdFuNbZQ&t=1s"
+		    }
+		  ]
 		}
 		```
 	1. 只可使用以下 block type：  

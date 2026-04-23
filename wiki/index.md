@@ -20,6 +20,7 @@
 
 - [cloudflare-pull-consumers](./summaries/cloudflare-pull-consumers.md) · 2026-04-21: 整理 Cloudflare Queues pull consumer 的啟用方式、ack/retry 機制、`lease_id` 與 `visibility_timeout` 邊界，以及 pull 與 push 消費模式的選型差異。
 - [llm-wiki-worker](./summaries/llm-wiki-worker.md) · 2026-04-22: 整理 LLM-Wiki-Worker 如何以 `raw/`/`wiki/` 分層、router rules、Cloudflare Queue 與 LINE webhook 建立可持續維護的知識庫 agent 流程。
+- [llm-wiki-worker-project](./summaries/llm-wiki-worker-project.md) · 2026-04-23: 整理 LLM-Wiki-Worker 開源專案的架構、流程、技術組件與目錄結構。
 - [ai-agent-design-patterns](./summaries/ai-agent-design-patterns.md) · 2026-04-22: 整理 single agent、sequential agent、parallel agent 三種基礎 agent workflow 的適用條件，以及 control、latency、cost 之間的取捨。
 - [sync-obsidian-for-free](./summaries/sync-obsidian-for-free.md) · 2026-04-20: 整理 Obsidian 免費同步方案，比較 Syncthing 與雲端同步工具 (Autosync/Dropsync) 的適用情境與風險。
 - [openclaw-ai-agent-operating-principles](./summaries/openclaw-ai-agent-operating-principles.md) · 2026-04-19: 以 OpenClaw 拆解 AI agent 的執行閉環，涵蓋 system prompt 組裝、工具調用、記憶檔、排程與上下文壓縮，以及對應的安全風險與防禦。

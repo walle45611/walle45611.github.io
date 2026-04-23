@@ -1,19 +1,5 @@
-## [2026-04-23] lint | wiki health check
+## [2026-04-23] social | Harness Engineering & LLM Wiki Worker synergy
 
-- checked: index.md, summaries, concepts, log.md
-- fixed: none
-- gaps: none
-- notes: No contradictions or isolated pages detected. All summaries reference existing concepts. No outdated content identified.
-
-## [2026-04-23] ingest | LLM-Wiki-Worker 開源專案
-
-- source: `raw/LLM-Wiki-Worker 開源專案.md`
-- created: `wiki/summaries/llm-wiki-worker-project.md`
-- updated: `wiki/index.md`
-- notes: 建立了專案摘要頁面並更新索引，將專案架構與流程正式納入知識庫。
-
-## [2026-04-23] daily | 2026-04-23
-
-- basis: [[wiki/summaries/llm-wiki-worker-project.md]]
-- updated: wiki/assets/daily/2026-04-23.md
-- notes: 1 summary processed.
+- pages-read: wiki/rules/social-post-rules.md, wiki/rules/output-rules.md, wiki/rules/log-rules.md
+- output: social post draft for Harness Engineering
+- notes: Created a post emphasizing that good context can yield great results even with a mediocre model, highlighting the synergy between Harness Engineering and LLM Wiki Worker.

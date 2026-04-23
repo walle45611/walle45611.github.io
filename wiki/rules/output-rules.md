@@ -84,11 +84,13 @@
 	  
 	2. 不要輸出其他欄位。  
 	3. 不要輸出表格。  
-	4. 不要輸出 Markdown 語法。  
-	5. 若內容原本是清單，請改放入 bullet_list.items。  
-	6. 若有原始連結，請使用 link block。  
-	7. 若有檔名、指令或程式碼，請視情況放入 paragraph 或 code_block。  
-	8. 請輸出合法 JSON。
+	4. 不要輸出 Markdown 語法。
+	5. 若內容是網址，請使用 link block，不要使用 paragraph block。
+	6. 若內容原本是清單，請改放入 bullet_list.items。  
+	7. 若有原始連結，請使用 link block。  
+	8. 若有檔名、指令或程式碼，請視情況放入 paragraph 或 code_block。  
+	9. 請輸出合法 JSON。
+	10. 請只輸出符合 schema 的 JSON。
 ## 3. 同時有寫檔與回覆時
 
 若同一次任務同時包含「修改檔案」與「回覆使用者」，則：

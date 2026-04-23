@@ -145,3 +145,10 @@
 - source: `raw/Codex for (almost) everything.md`
 - created: `wiki/summaries/codex-for-almost-everything.md`
 - notes: Added summary for Codex for (almost) everything
+
+## [2026-04-23] lint | wiki health check
+
+- checked: index.md, summaries, concepts, log.md
+- fixed: none
+- gaps: none
+- notes: No contradictions or isolated pages detected. All summaries reference existing concepts. No outdated content identified.

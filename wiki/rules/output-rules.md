@@ -63,6 +63,10 @@
 		      ]
 		    },
 		    {
+		      "type": "quote",
+		      "text": "OpenClaw 的重點是把工具調用流程標準化，讓 agent 能穩定執行。"
+		    },
+		    {
 		      "type": "heading",
 		      "text": "原始連結"
 		    },
@@ -70,6 +74,37 @@
 		      "type": "link",
 		      "text": "YouTube 影片",
 		      "url": "https://www.youtube.com/watch?v=2rcJdFuNbZQ&t=1s"
+		    }
+		  ]
+		}
+		```
+	- 粗體示例（heading 與 bullet_list.label 會以粗體顯示）：  
+		```json
+		{
+		  "blocks": [
+		    {
+		      "type": "heading",
+		      "text": "這行會顯示成粗體標題"
+		    },
+		    {
+		      "type": "bullet_list",
+		      "items": [
+		        {
+		          "label": "重點",
+		          "text": "label 會以粗體呈現，text 為一般文字。"
+		        }
+		      ]
+		    }
+		  ]
+		}
+		```
+	- quote 示例：  
+		```json
+		{
+		  "blocks": [
+		    {
+		      "type": "quote",
+		      "text": "這是一段引用文字，可用於摘要中的原話或結論。"
 		    }
 		  ]
 		}

@@ -7,7 +7,7 @@
 - published: 2026-04-23
 - type: article
 
-Microsoft Entra 是一系列身份與網路存取產品，旨在協助組織實施零信任 (Zero Trust) 安全策略。它涵蓋了從基礎身份管理到 AI 代理程式安全存取的完整生態系。
+Microsoft Entra 是一系列身份與網路存取產品，旨在協助組織實施零信任 (Zero Trust) 安全策略。它涵蓋了從基礎身份管理到 AI 代理程式安全存取的完整生態系。詳見 [Microsoft Entra](./../concepts/microsoft-entra.md)。
 
 ## 核心產品分類
 

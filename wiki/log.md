@@ -1,5 +1,5 @@
-## [2026-04-23] social | Harness Engineering & LLM Wiki Worker synergy
+## [2026-04-23] social | Harness Engineering: Context vs Model
 
-- pages-read: wiki/rules/social-post-rules.md, wiki/rules/output-rules.md, wiki/rules/log-rules.md
-- output: social post draft for Harness Engineering
-- notes: Created a post emphasizing that good context can yield great results even with a mediocre model, highlighting the synergy between Harness Engineering and LLM Wiki Worker.
+- pages-read: user prompt
+- output: social post draft
+- notes: Emphasized the importance of good context (Prompt Engineering) over model intelligence, linking to LLM Wiki Worker concept.

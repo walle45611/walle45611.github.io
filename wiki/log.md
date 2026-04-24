@@ -7,4 +7,4 @@
 
 - basis: [[wiki/summaries/what-is-microsoft-entra.md]], [[wiki/summaries/introducing-gpt-5-5.md]]
 - updated: wiki/assets/daily/2026-04-24.md
-- notes: 2 summaries processed. Linkage between Entra Agent ID and GPT-5.5 agentic capabilities noted.
+- notes: 整理了 2 篇內容，涵蓋 Microsoft Entra 與 GPT-5.5，並觀察到 Agent ID 與 Agentic AI 的關聯。

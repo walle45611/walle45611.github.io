@@ -1,4 +1,4 @@
-## [2026-04-24] social | GPT-5.5 and Developer Workflow
+## [2026-04-25] social | GPT-5.5 and Developer Workflow
 
 - pages-read: user prompt
 - output: social post draft
@@ -14,3 +14,8 @@
 - created: `wiki/summaries/lora-and-qlora-fine-tuning-explained-in-depth.md`, `wiki/concepts/parameter-efficient-fine-tuning.md`, `wiki/concepts/model-quantization.md`
 - updated: `wiki/index.md`, `wiki/log.md`
 - notes: 整理 LoRA / QLoRA 的參數高效微調、rank/alpha/dropout 與量化取捨，並新增 PEFT 與 model quantization 概念頁。
+## [2026-04-25] daily | 2026-04-25
+
+- basis: [[wiki/summaries/lora-and-qlora-fine-tuning-explained-in-depth.md]]
+- updated: wiki/assets/daily/2026-04-25.md
+- notes: 1 summary processed.

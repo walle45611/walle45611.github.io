@@ -8,6 +8,8 @@
 - [harness-engineering](./concepts/harness-engineering.md): 目前知識庫對 AI agent 駕馭工程的整合頁，聚焦規則檔、工具邊界與生成-評估回饋迴圈的設計原則。
 - [verbalized-feedback-learning](./concepts/verbalized-feedback-learning.md): 整理自然語言回饋如何在多輪流程中改變 agent 行為，及其與檢查工具、評量設計、長期學習的關係。
 - [effective-learning](./concepts/effective-learning.md): 目前知識庫對高效學習的初始整合頁，聚焦深層處理、變化練習、回饋品質與直覺校正條件。
+- [parameter-efficient-fine-tuning](./concepts/parameter-efficient-fine-tuning.md): 統整 PEFT、LoRA 與 QLoRA 的微調思路，聚焦只訓練部分參數時的容量、層覆蓋與超參數取捨。
+- [model-quantization](./concepts/model-quantization.md): 整理模型量化如何透過降低數值精度節省記憶體，並說明它在 QLoRA 中的角色與取捨。
 - [microk8s-production-readiness](./concepts/microk8s-production-readiness.md): 統整 MicroK8s 在生產環境的適用條件、基礎元件基線與多節點運維重點。
 - [kubernetes-gitops-delivery](./concepts/kubernetes-gitops-delivery.md): 統整 Helm、Argo CD、Image Updater 與 Sealed Secrets 在 Kubernetes 上形成的 GitOps 交付鏈。
 - [cloudflare-workers-ai-pricing-model](./concepts/cloudflare-workers-ai-pricing-model.md): 聚焦 Workers AI 的 daily quota、超額計費與超限失敗行為如何影響成本與可用性治理。
@@ -19,6 +21,7 @@
 - [nuitka-and-docker-deployment](./concepts/nuitka-and-docker-deployment.md): 統整 Nuitka 與 Docker 部署方案，說明高效能與安全部署實務。
 ## Summaries
 
+- [lora-and-qlora-fine-tuning-explained-in-depth](./summaries/lora-and-qlora-fine-tuning-explained-in-depth.md) · 2026-04-25: 整理 LoRA / QLoRA 的參數高效微調原理、rank/alpha/dropout 與量化取捨。
 - [cloudflare-pull-consumers](./summaries/cloudflare-pull-consumers.md) · 2026-04-21: 整理 Cloudflare Queues pull consumer 的啟用方式、ack/retry 機制、`lease_id` 與 `visibility_timeout` 邊界，以及 pull 與 push 消費模式的選型差異。
 - [llm-wiki-worker](./summaries/llm-wiki-worker.md) · 2026-04-22: 整理 LLM-Wiki-Worker 如何以 `raw/`/`wiki/` 分層、router rules、Cloudflare Queue 與 LINE webhook 建立可持續維護的知識庫 agent 流程。
 - [llm-wiki-worker-project](./summaries/llm-wiki-worker-project.md) · 2026-04-23: 整理 LLM-Wiki-Worker 開源專案的架構、流程、技術組件與目錄結構。

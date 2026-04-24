@@ -11,6 +11,7 @@ AI 程式碼輔助工具（AI Coding Tools / AI Coding Agents）是利用大型�
 ## 知識庫中的相關工具與概念
 
 - **[opencode](./opencode.md)**: 被譽為開源版 Claude Code，支援免費接入頂級模型與 MCP 等高階特性。
+- **GPT-5.5**: OpenAI 的最新旗艦模型，在代理式編碼 (Agentic Coding) 與科學研究領域展現了極高的自主性與效率。
 - **Claude Code**: Anthropic 官方推出的終端機 AI 程式碼代理。
 
 ## 關聯資源

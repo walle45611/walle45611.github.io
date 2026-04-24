@@ -37,3 +37,4 @@
 - [postgresql-books](./summaries/postgresql-books.md) · 2026-04-22
 - [codex-for-almost-everything](./summaries/codex-for-almost-everything.md) · 2026-04-22: 整理 Codex app 的主要更新與功能
 - [what-is-microsoft-entra](./summaries/what-is-microsoft-entra.md) · 2026-04-24: 整理 Microsoft Entra 產品家族，涵蓋身份管理、零信任存取、外部 ID 及 AI Agent ID 等核心組件。
+- [introducing-gpt-5-5](./summaries/introducing-gpt-5-5.md) · 2026-04-24: 整理 OpenAI GPT-5.5 發布資訊，聚焦其在代理式編碼、知識工作與科學研究領域的突破性能力與效率提升。

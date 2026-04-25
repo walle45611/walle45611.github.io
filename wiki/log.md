@@ -16,6 +16,6 @@
 - notes: 整理 LoRA / QLoRA 的參數高效微調、rank/alpha/dropout 與量化取捨，並新增 PEFT 與 model quantization 概念頁。
 ## [2026-04-25] daily | 2026-04-25
 
-- basis: [[wiki/summaries/lora-and-qlora-fine-tuning-explained-in-depth.md]]
+- basis: [[wiki/summaries/lora-and-qlora-fine-tuning-explained-in-depth.md]], [[wiki/summaries/what-is-microsoft-entra.md]], [[wiki/summaries/introducing-gpt-5-5.md]]
 - updated: wiki/assets/daily/2026-04-25.md
-- notes: 1 summary processed.
+- notes: 3 summaries processed.

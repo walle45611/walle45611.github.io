@@ -19,3 +19,9 @@
 - basis: [[wiki/summaries/lora-and-qlora-fine-tuning-explained-in-depth.md]], [[wiki/summaries/what-is-microsoft-entra.md]], [[wiki/summaries/introducing-gpt-5-5.md]]
 - updated: wiki/assets/daily/2026-04-25.md
 - notes: 3 summaries processed.
+
+## [2026-04-26] daily | 2026-04-26 summary
+
+- basis: [[wiki/summaries/introducing-gpt-5-5.md]], [[wiki/summaries/what-is-microsoft-entra.md]], [[wiki/summaries/lin-zai-xue.md]]
+- updated: wiki/assets/daily/2026-04-26.md
+- notes: 3 summaries processed.

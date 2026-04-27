@@ -25,3 +25,9 @@
 - basis: [[wiki/summaries/introducing-gpt-5-5.md]], [[wiki/summaries/what-is-microsoft-entra.md]], [[wiki/summaries/lin-zai-xue.md]]
 - updated: wiki/assets/daily/2026-04-26.md
 - notes: 3 summaries processed.
+
+## [2026-04-27] daily | 2026-04-27 summary
+
+- basis: [[wiki/summaries/introducing-gpt-5-5.md]], [[wiki/summaries/what-is-microsoft-entra.md]]
+- updated: wiki/assets/daily/2026-04-27.md
+- notes: 2 summaries processed.

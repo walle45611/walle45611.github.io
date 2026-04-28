@@ -14,7 +14,6 @@
 - created: `wiki/summaries/lora-and-qlora-fine-tuning-explained-in-depth.md`, `wiki/concepts/parameter-efficient-fine-tuning.md`, `wiki/concepts/model-quantization.md`
 - updated: `wiki/index.md`, `wiki/log.md`
 - notes: 整理 LoRA / QLoRA 的參數高效微調、rank/alpha/dropout 與量化取捨，並新增 PEFT 與 model quantization 概念頁。
-<<<<<<< HEAD
 
 ## [2026-04-28] ingest | vLLM + Gemma 4 + LoRA：我踩過的兩個坑
 
@@ -39,3 +38,16 @@
 - basis: [[wiki/summaries/introducing-gpt-5-5.md]], [[wiki/summaries/what-is-microsoft-entra.md]]
 - updated: wiki/assets/daily/2026-04-27.md
 - notes: 2 summaries processed.
+
+## [2026-04-28] ingest | AI 能自我修正嗎？從 decoding、workflow 到 reasoning 的技術發展整理
+
+- source: `raw/AI 能自我修正嗎？從 decoding、workflow 到 reasoning 的技術發展整理.md`
+- created: `wiki/summaries/ai-self-correction-decoding-workflow-reasoning.md`, `wiki/concepts/self-correction-in-language-models.md`
+- updated: `wiki/concepts/harness-engineering.md`, `wiki/concepts/verbalized-feedback-learning.md`, `wiki/index.md`, `wiki/log.md`
+- notes: 整理自我修正從 decoding、workflow 到 reasoning 的三層技術路線，補上 external feedback 與 verification 算力成本的知識脈絡。
+
+## [2026-04-28] lint | wiki health check
+
+- checked: `wiki/index.md`, `wiki/log.md`, `wiki/concepts/harness-engineering.md`, `wiki/concepts/verbalized-feedback-learning.md`, `wiki/concepts/self-correction-in-language-models.md`, `wiki/summaries/ai-self-correction-decoding-workflow-reasoning.md`
+- fixed: 移除 `wiki/log.md` 殘留的 merge conflict marker，補上新 summary / concept 的索引與交叉連結，確保 ingest 與 index 同步。
+- gaps: 這次 lint 以新來源相關頁面與 `wiki/log.md` 結構修復為主，尚未全面巡檢所有 summary / concept 的孤立頁與重複內容。

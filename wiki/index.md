@@ -6,6 +6,7 @@
 - [cloudflare-queue-consumer-modes](./concepts/cloudflare-queue-consumer-modes.md): 統整 Cloudflare Queues 中 push 與 pull consumer 的選型邏輯，聚焦誰控制消費節奏、如何處理 ack/retry，以及 `visibility_timeout` 的運維含義。
 - [context-engineering](./concepts/context-engineering.md): 聚焦 context window 管理的核心方法：按需載入、子代理摘要、記憶檢索、compaction 與 pruning 的取捨。
 - [harness-engineering](./concepts/harness-engineering.md): 目前知識庫對 AI agent 駕馭工程的整合頁，聚焦規則檔、工具邊界與生成-評估回饋迴圈的設計原則。
+- [self-correction-in-language-models](./concepts/self-correction-in-language-models.md): 統整語言模型如何透過 decoding、workflow 與 reasoning 訓練進行自我修正，聚焦外部回饋、算力成本與能力邊界。
 - [verbalized-feedback-learning](./concepts/verbalized-feedback-learning.md): 整理自然語言回饋如何在多輪流程中改變 agent 行為，及其與檢查工具、評量設計、長期學習的關係。
 - [effective-learning](./concepts/effective-learning.md): 目前知識庫對高效學習的初始整合頁，聚焦深層處理、變化練習、回饋品質與直覺校正條件。
 - [parameter-efficient-fine-tuning](./concepts/parameter-efficient-fine-tuning.md): 統整 PEFT、LoRA 與 QLoRA 的微調思路，聚焦只訓練部分參數時的容量、層覆蓋與超參數取捨。
@@ -22,6 +23,7 @@
 - [nuitka-and-docker-deployment](./concepts/nuitka-and-docker-deployment.md): 統整 Nuitka 與 Docker 部署方案，說明高效能與安全部署實務。
 ## Summaries
 
+- [ai-self-correction-decoding-workflow-reasoning](./summaries/ai-self-correction-decoding-workflow-reasoning.md) · 2026-04-28: 整理語言模型自我修正從 contrastive decoding、workflow verification 到 RL reasoning 的技術路線與主要爭議。
 - [vllm-gemma-4-lora-two-pitfalls](./summaries/vllm-gemma-4-lora-two-pitfalls.md) · 2026-04-28: 整理 vLLM 對 Gemma 4 runtime LoRA 與 CUDA wheel 相容性的兩個坑。
 - [lora-and-qlora-fine-tuning-explained-in-depth](./summaries/lora-and-qlora-fine-tuning-explained-in-depth.md) · 2026-04-25: 整理 LoRA / QLoRA 的參數高效微調原理、rank/alpha/dropout 與量化取捨。
 - [cloudflare-pull-consumers](./summaries/cloudflare-pull-consumers.md) · 2026-04-21: 整理 Cloudflare Queues pull consumer 的啟用方式、ack/retry 機制、`lease_id` 與 `visibility_timeout` 邊界，以及 pull 與 push 消費模式的選型差異。

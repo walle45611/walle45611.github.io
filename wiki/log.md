@@ -51,3 +51,10 @@
 - checked: `wiki/index.md`, `wiki/log.md`, `wiki/concepts/harness-engineering.md`, `wiki/concepts/verbalized-feedback-learning.md`, `wiki/concepts/self-correction-in-language-models.md`, `wiki/summaries/ai-self-correction-decoding-workflow-reasoning.md`
 - fixed: 移除 `wiki/log.md` 殘留的 merge conflict marker，補上新 summary / concept 的索引與交叉連結，確保 ingest 與 index 同步。
 - gaps: 這次 lint 以新來源相關頁面與 `wiki/log.md` 結構修復為主，尚未全面巡檢所有 summary / concept 的孤立頁與重複內容。
+
+## [2026-04-29] ingest | 專案管理考前複習筆記講義
+
+- source: `raw/專案管理-期中筆記.md`
+- created: `wiki/summaries/project-management-midterm-notes.md`
+- updated: `wiki/index.md`, `wiki/log.md`
+- notes: 歸檔自寫專案管理考前講義，補上 Obsidian 屬性，保留錯題優先順序、時程計算與敏捷考點的複習結構。

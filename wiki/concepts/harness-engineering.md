@@ -13,14 +13,12 @@
 5. 工作流設計（如 planner/generator/evaluator 或生成-驗證迴圈）是把模型輸出轉成可交付結果的關鍵中介層。
 6. 真正穩定的治理通常需要「harness 層硬控制」與「模型層軟約束」並用；只靠 prompt 指示不足以覆蓋高風險場景。
 7. 在 AI coding 情境中，將「架構規劃」與「代碼執行」分層，通常比單模型端到端直譯需求更能控制效能與技術債風險。
-8. 在自我修正任務中，來自檢查器、搜尋、執行器或 checklist 的 external feedback，通常比單純要求模型自我反思更穩定。
 
 ## Working Heuristics
 
 - 先定義「第一步」與「完成條件」，再讓模型展開推理與工具調用。
 - 規則檔寫成導航地圖，不要塞滿百科式細節。
 - 編輯或執行類任務優先形成「輸出 -> 檢查 -> 回饋 -> 重試」閉環。
-- 驗證流程若要增加算力，先和同算力預算下的多樣 sampling / majority vote 比較，再決定是否值得加入昂貴 verification。
 - 依任務性質選擇 workflow pattern：簡單工具使用可用 single agent，固定步驟可改成 sequential，多個獨立子任務則考慮 parallel + aggregator。
 - 先要求模型產生含效能/複雜度約束的計畫，再交由執行型模型產碼與修正。
 - 設計工具時優先思考模型如何節省上下文，而非只思考人類操作便利。
@@ -41,7 +39,6 @@
 - [verbalized-feedback-learning](./verbalized-feedback-learning.md)
 - [agentic-knowledge-base-maintenance](./agentic-knowledge-base-maintenance.md)
 - [agent-design-patterns](./agent-design-patterns.md)
-- [self-correction-in-language-models](./self-correction-in-language-models.md)
 
 ## Sources
 
@@ -50,4 +47,3 @@
 - [ai-agent-design-patterns](../summaries/ai-agent-design-patterns.md)
 - [codex-vs-claude-vibecoding-observations](../summaries/codex-vs-claude-vibecoding-observations.md)
 - [llm-wiki-worker](../summaries/llm-wiki-worker.md)
-- [ai-self-correction-decoding-workflow-reasoning](../summaries/ai-self-correction-decoding-workflow-reasoning.md)

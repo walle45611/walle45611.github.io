@@ -11,6 +11,7 @@
 3. 回饋內容的可執行性與可驗證性，通常比語氣強弱更影響改進效果。
 4. 迴圈式流程（生成 -> 評估 -> 回饋 -> 再生成）是 verbalized feedback 發揮作用的主要結構。
 5. 在長期 agent 場景，verbalized feedback 可結合 skill 檔、記憶整理或持續微調，形成累積式能力演進。
+6. 由工具、checklist、錯誤訊息或搜尋結果帶來的 external feedback，通常比模型單靠 internal self-reflection 更穩定。
 
 ## Working Heuristics
 
@@ -18,6 +19,7 @@
 - 讓回饋直接對應任務成功條件，而不是只給抽象評語。
 - 若任務可執行檢查，優先把工具回傳訊息納入迴圈回饋。
 - 當上下文過長時，先摘要再進下一輪，維持回饋資訊密度。
+- 反思提示詞會影響模型的 confidence 與修正傾向；肯定式與質疑式 wording 應依模型特性調整。
 
 ## Open Questions
 
@@ -28,7 +30,9 @@
 ## Related Concepts
 
 - [harness-engineering](./harness-engineering.md)
+- [self-correction-in-language-models](./self-correction-in-language-models.md)
 
 ## Sources
 
 - [harness-engineering-language-models-need-human-guidance](../summaries/harness-engineering-language-models-need-human-guidance.md)
+- [ai-self-correction-decoding-workflow-reasoning](../summaries/ai-self-correction-decoding-workflow-reasoning.md)

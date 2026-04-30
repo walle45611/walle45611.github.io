@@ -58,3 +58,9 @@
 - created: `wiki/summaries/project-management-midterm-notes.md`
 - updated: `wiki/index.md`, `wiki/log.md`
 - notes: 歸檔自寫專案管理考前講義，補上 Obsidian 屬性，保留錯題優先順序、時程計算與敏捷考點的複習結構。
+
+## [2026-04-29] daily | 2026-04-29 summary
+
+- basis: [[wiki/summaries/project-management-midterm-notes.md]]
+- updated: [[wiki/assets/daily/2026-04-29.md]]
+- notes: 1 summary processed.

@@ -77,3 +77,20 @@
 - checked: `wiki/index.md`, `wiki/log.md`, `wiki/concepts/ai-coding-tools.md`, `wiki/concepts/harness-engineering.md`, `wiki/summaries/andrej-karpathy-from-vibe-coding-to-agentic-engineering.md`
 - fixed: 無，`git diff --check` 通過且新 summary 與索引、概念頁連結一致
 - gaps: 目前未看到明顯結構問題
+
+## [2026-04-30] daily | 2026-04-30 summary
+
+- basis: [[wiki/summaries/andrej-karpathy-from-vibe-coding-to-agentic-engineering.md]]
+- updated: `wiki/assets/daily/2026-04-30.md`
+- notes: 1 summary processed; 內容聚焦 vibe coding、agentic engineering、software 3.0 與 agent-first 文件。
+
+## [2026-04-30] lint | daily format normalization
+
+- checked: `wiki/assets/daily/2026-04-18.md`, `wiki/assets/daily/2026-04-19.md`, `wiki/assets/daily/2026-04-20.md`, `wiki/assets/daily/2026-04-21.md`, `wiki/assets/daily/2026-04-24.md`, `wiki/assets/daily/2026-04-25.md`, `wiki/assets/daily/2026-04-26.md`, `wiki/assets/daily/2026-04-27.md`, `wiki/assets/daily/2026-04-29.md`, `wiki/assets/daily/2026-04-30.md`
+- fixed: 將 2026-04-18、2026-04-19、2026-04-20 的 `date`、`generated_at`、`basis` 統一為目前 daily 格式
+- gaps: 2026-04-21 與 2026-04-24 之後的 daily 未見明顯格式錯誤；舊版內容結構差異屬歷史格式，不影響可讀性
+
+## [2026-04-30] docs | daily rules optimization
+
+- updated: `wiki/rules/daily-rules.md`
+- notes: 簡化 daily 選材、模板、寫入與回覆規則，讓當日 summary 的整理格式更一致

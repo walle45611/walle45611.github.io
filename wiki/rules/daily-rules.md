@@ -2,109 +2,68 @@
 
 ## 任務目標
 
-任務目標是建立或更新 `wiki/assets/daily/YYYY-MM-DD.md`
+建立或更新 `wiki/assets/daily/YYYY-MM-DD.md`，把當日已歸檔的 summary 整理成可快速瀏覽的日報。
 
-## 輸入資料
+## 選材流程
 
-在寫入 daily 檔案前，必須先取得以下資訊：
+寫入 daily 前，先做這三步：
 
-1. 從 `wiki/index.md` 的 `Summaries` 區塊確認當日有哪些 summary 條目。
-2. 依照 `## Summaries` 條目中的日期與路徑，打開對應的 `wiki/summaries/...` 頁面。
-3. 這類情況應以 `wiki/summaries/...` 為主，因為需要較細的逐篇資訊。
+1. 讀 `wiki/index.md` 的 `## Summaries`，找出日期對應到當日的 summary。
+2. 打開這些 `wiki/summaries/...` 頁面，只根據已寫好的 summary 內容整理。
+3. 若同一天有多篇 summary，以 summary 頁為主，不回頭重掃 `raw/`。
 
 ## 輸出路徑
 
-輸出檔案路徑必須固定為：
+固定寫入：
 
 `wiki/assets/daily/YYYY-MM-DD.md`
 
-例如：
+## Daily 模板
 
-- `wiki/assets/daily/2026-04-17.md`
-- `wiki/assets/daily/2026-04-21.md`
-
-## 檔案格式
-
-輸出內容必須是合法的 Markdown。
-
-輸出檔案盡可能要包含以下內容：
+輸出必須是合法 Markdown，並盡量維持這個結構：
 
 ```md
 # Daily Digest <日期>
 
-- date: <日期>
+- date: <YYYY-MM-DD>
 - timezone: Asia/Taipei
-- generated_at: <日期>
--  basis: <參考到的檔案或是依據>，可以使用此格式 [[為檔案的位置]]
+- generated_at: <YYYY-MM-DD>
+- basis: [[wiki/summaries/...]], [[wiki/summaries/...]]
 
 ## Summary
 
-- 日期開場白  
-  例如：`📅 這是您在 使用者傳入的時間可能是範圍或是某天 的知識庫攝取紀錄：`
-- 閱讀總覽  
-  例如：`📚 共整理了 2 篇內容。`
-- 逐篇摘要  
-  每篇包含：
-  - 主題名稱
-  - `source link`
-  - 1 句話核心概念
-  - 3 到 5 個重點
-- 知識串聯（可選）  
-  若同一天或同一區間內幾篇內容有明顯關聯，可補上一句整體觀察。
+📅 這是您在 <日期> 的知識庫攝取紀錄：
+
+📚 共整理了 <N> 篇內容。
+
+- <主題名稱>
+  - source: `raw/...`  # 若來源來自 raw
+  - source link: <外部原始來源網址>
+  - 1 句話核心概念：<一句話摘要>
+  - 3 到 5 個重點：
+    - <重點 1>
+    - <重點 2>
+    - <重點 3>
+
+## 知識串聯
+
+<可選，寫一段當日內容之間的共同觀察>
 ```
 
-- 其中 `source link` 應優先代表外部原始來源網址；若同時需要本地素材位置，可額外附上 `source: raw/...`。
+## 寫作準則
 
-## 寫入規則
+1. `source link` 優先放外部原始來源網址。
+2. 若來源來自 `raw/`，要另外保留 `source: raw/...`。
+3. `basis` 優先用 `[[wiki/summaries/...]]`，必要時可加 `[[wiki/index.md]]`。
+4. 僅寫入已實際讀取與整理過的內容，不補寫、不猜測。
+5. 同一天的 daily 只更新同一份檔案，不新增重複檔。
 
-1. 最終檔案必須使用 `upsert_file` 寫入。
-2. 寫入路徑必須位於 `wiki/assets/daily/` 之下。
-3. 檔案內容可以使用一般 Markdown 語法。
-4. 同一天的 daily 應更新同一份檔案，不應建立多份重複檔案。
-5. 若資料不足，不得自行補寫或猜測缺漏內容。
-6. 只能寫入已實際讀取與整理過的內容。
+## 寫入與回覆
 
-## 輸出規則
-
-1. 最終輸出格式請依 `wiki/rules/output-rules.md`。
-
-## 對使用者的回覆規則
-
-若本次任務成功寫入檔案後：
-
-- 此為必要動作，回覆內容應為當次 daily 的重點摘要（可直接對應 daily 檔案內容）
-- 而不是只是回覆「daily 已完成」或是「已更新 daily」，這樣的回覆不夠資訊量且無法對應到實際檔案內容。
-
-## Log 規則
-
-在 `wiki/assets/daily/YYYY-MM-DD.md` 成功建立或更新後：
-
-1. 必須同步更新 `wiki/log.md`。
-2. `wiki/log.md` 的共通更新方式請依 `wiki/rules/log-rules.md`。
-3. log 必須記錄這次 daily 任務已執行，並指出更新的 daily 檔案路徑與依據來源。
-4. 若 daily 檔未成功寫入，禁止先聲稱 log 已完成。
-
-建議 daily log 格式：
-
-```md
-## [YYYY-MM-DD] daily | <date-or-topic>
-
-- basis: <key pages>
-- updated: <daily file path>
-- notes: <summary count, linkage, or gaps>
-```
+1. 寫檔用 `upsert_file`。
+2. 成功寫入後，同步更新 `wiki/log.md`，並記錄 basis、updated path、summary 數量或連結情況。
+3. 對使用者的最終回覆要能直接對應 daily 內容，不能只說「已完成」。
 
 ## 失敗處理
 
-若出現以下情況：
-
-- 目標日期不明確
-- 必要來源資料不足
-- 檔案寫入失敗
-
-則必須：
-
-1. 直接說明問題
-2. 不得捏造內容
-3. 若 `upsert_file` 未成功，禁止聲稱檔案已建立或更新
-4. 若 daily 寫入未成功，禁止更新 `wiki/log.md` 後再假裝整體流程已完成
+若目標日期不明、來源不足或寫入失敗，直接說明原因，不要捏造內容，也不要先假裝 log 已完成。

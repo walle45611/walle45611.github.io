@@ -64,3 +64,16 @@
 - basis: [[wiki/summaries/project-management-midterm-notes.md]]
 - updated: [[wiki/assets/daily/2026-04-29.md]]
 - notes: 1 summary processed.
+
+## [2026-04-30] ingest | Andrej Karpathy: From Vibe Coding to Agentic Engineering
+
+- source: `raw/Andrej Karpathy From Vibe Coding to Agentic Engineering.md`
+- created: `wiki/summaries/andrej-karpathy-from-vibe-coding-to-agentic-engineering.md`
+- updated: `wiki/concepts/ai-coding-tools.md`, `wiki/concepts/harness-engineering.md`, `wiki/index.md`, `wiki/log.md`
+- notes: 整理 Karpathy 對 vibe coding、agentic engineering、software 3.0 與 agent-native 文件的觀察，並把這條演進線接回 AI coding 與 harness 工程脈絡。
+
+## [2026-04-30] lint | wiki health check
+
+- checked: `wiki/index.md`, `wiki/log.md`, `wiki/concepts/ai-coding-tools.md`, `wiki/concepts/harness-engineering.md`, `wiki/summaries/andrej-karpathy-from-vibe-coding-to-agentic-engineering.md`
+- fixed: 無，`git diff --check` 通過且新 summary 與索引、概念頁連結一致
+- gaps: 目前未看到明顯結構問題

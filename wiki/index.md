@@ -23,6 +23,7 @@
 - [nuitka-and-docker-deployment](./concepts/nuitka-and-docker-deployment.md): 統整 Nuitka 與 Docker 部署方案，說明高效能與安全部署實務。
 ## Summaries
 
+- [andrej-karpathy-from-vibe-coding-to-agentic-engineering](./summaries/andrej-karpathy-from-vibe-coding-to-agentic-engineering.md) · 2026-04-30: 整理 Karpathy 從 vibe coding 走向 agentic engineering 的觀察，聚焦 software 3.0、agent-first 文件與 understanding 的瓶頸。
 - [project-management-midterm-notes](./summaries/project-management-midterm-notes.md) · 2026-04-29: 歸檔自寫專案管理考前複習講義，整理錯題優先順序、組織管理、時程計算與敏捷常考觀念。
 - [ai-self-correction-decoding-workflow-reasoning](./summaries/ai-self-correction-decoding-workflow-reasoning.md) · 2026-04-28: 整理語言模型自我修正從 contrastive decoding、workflow verification 到 RL reasoning 的技術路線與主要爭議。
 - [vllm-gemma-4-lora-two-pitfalls](./summaries/vllm-gemma-4-lora-two-pitfalls.md) · 2026-04-28: 整理 vLLM 對 Gemma 4 runtime LoRA 與 CUDA wheel 相容性的兩個坑。

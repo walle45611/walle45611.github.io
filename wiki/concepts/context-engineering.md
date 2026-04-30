@@ -37,3 +37,4 @@
 - [openclaw-ai-agent-operating-principles](../summaries/openclaw-ai-agent-operating-principles.md)
 - [harness-engineering-language-models-need-human-guidance](../summaries/harness-engineering-language-models-need-human-guidance.md)
 - [llm-wiki-worker](../summaries/llm-wiki-worker.md)
+- [andrej-karpathy-from-vibe-coding-to-agentic-engineering](../summaries/andrej-karpathy-from-vibe-coding-to-agentic-engineering.md)

@@ -5,6 +5,7 @@ AI 程式碼輔助工具（AI Coding Tools / AI Coding Agents）是利用大型�
 ## 發展趨勢
 
 - **從副駕駛 (Copilot) 到自主代理 (Agent)**：早期工具主要提供行級補全；新一代工具（如 Claude Code、[opencode](./opencode.md)）已能透過終端機執行指令、讀寫檔案、呼叫子代理（Subagent）來完成更複雜的專案任務。
+- **從 Vibe Coding 到 Agentic Engineering**：當模型在日常任務上變得更穩定後，工作重心開始從「把 code 寫出來」移到「把需求、上下文、安裝與部署流程包裝成 agent 可直接消化的文字與結構」。
 - **標準化協定**：開始支援如 MCP (Model Context Protocol) 這樣的標準協定，讓工具能更安全地與外部環境、本地工具或資料庫互動。
 - **開源平替方案興起**：隨著閉源商業工具（如 Claude Code）可能帶來的地域限制、費用或封號風險，開源且可自定義模型的平替方案（如 [opencode](./opencode.md)）逐漸受到歡迎。
 
@@ -17,3 +18,4 @@ AI 程式碼輔助工具（AI Coding Tools / AI Coding Agents）是利用大型�
 ## 關聯資源
 - [opencode-detailed-guide](../summaries/opencode-detailed-guide.md)
 - [codex-vs-claude-vibecoding-observations](../summaries/codex-vs-claude-vibecoding-observations.md)
+- [andrej-karpathy-from-vibe-coding-to-agentic-engineering](../summaries/andrej-karpathy-from-vibe-coding-to-agentic-engineering.md)

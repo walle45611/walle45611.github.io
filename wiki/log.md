@@ -9,3 +9,9 @@
 - basis: [[wiki/index.md]]
 - updated: wiki/assets/daily/2026-05-26.md
 - notes: 0 summaries processed. 今日無新知識攝取紀錄。
+
+## [2026-05-29] daily | 2026-05-29 summary
+
+- basis: [[wiki/index.md]]
+- updated: wiki/assets/daily/2026-05-29.md
+- notes: 0 summaries processed. 今日無新知識攝取紀錄。

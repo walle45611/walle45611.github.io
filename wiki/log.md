@@ -1,22 +1,18 @@
-## [2026-04-25] social | GPT-5.5 and Developer Workflow
+## [2026-05-22] daily | 2026-05-22 summary
 
-- pages-read: user prompt
-- output: social post draft
-- notes: Created a Threads-style post focusing on the transition from manual Vim editing to full AI automation with GPT-5.5.
-## [2026-04-24] daily | 2026-04-24 summary
+- basis: [[wiki/summaries/introducing-chatgpt-images-2-0.md]], [[wiki/summaries/introducing-gpt-5-5.md]]
+- updated: wiki/assets/daily/2026-05-22.md
+- notes: 2 summaries processed. 內容聚焦 OpenAI 最新模型功能與代理能力演進。
 
-- basis: [[wiki/summaries/what-is-microsoft-entra.md]], [[wiki/summaries/introducing-gpt-5-5.md]]
-- updated: wiki/assets/daily/2026-04-24.md
-- notes: 整理了 2 篇內容，涵蓋 Microsoft Entra 與 GPT-5.5，並觀察到 Agent ID 與 Agentic AI 的關聯。
-## [2026-04-25] ingest | LoRA & QLoRA Fine-tuning Explained In-Depth
+## [2026-05-26] daily | 2026-05-26 summary
 
-- source: `raw/LoRA & QLoRA Fine-tuning Explained In-Depth.md`
-- created: `wiki/summaries/lora-and-qlora-fine-tuning-explained-in-depth.md`, `wiki/concepts/parameter-efficient-fine-tuning.md`, `wiki/concepts/model-quantization.md`
-- updated: `wiki/index.md`, `wiki/log.md`
-- notes: 整理 LoRA / QLoRA 的參數高效微調、rank/alpha/dropout 與量化取捨，並新增 PEFT 與 model quantization 概念頁。
+- basis: [[wiki/index.md]]
+- updated: wiki/assets/daily/2026-05-26.md
+- notes: 0 summaries processed. 今日無新知識攝取紀錄。
 
-## [2026-04-28] ingest | vLLM + Gemma 4 + LoRA：我踩過的兩個坑
+## [2026-05-29] daily | 2026-05-29 summary
 
+<<<<<<< HEAD
 - source: `raw/vLLM + Gemma 4 + LoRA：我踩過的兩個坑.md`
 - created: `wiki/summaries/vllm-gemma-4-lora-two-pitfalls.md`, `wiki/concepts/llm-serving-compatibility.md`
 - updated: `wiki/concepts/parameter-efficient-fine-tuning.md`, `wiki/index.md`, `wiki/log.md`
@@ -114,3 +110,8 @@
 - checked: `wiki/index.md`, `wiki/log.md`, `wiki/concepts/context-engineering.md`, `wiki/concepts/long-context-position-effects.md`, `wiki/summaries/lost-in-the-middle-how-language-models-use-long-context-explained.md`
 - fixed: 補上新 summary / concept 的索引與交叉連結，並把長 context 的位置效應正式接回 `context-engineering`。
 - gaps: 這次 lint 聚焦新來源相關頁面與索引一致性，尚未全面巡檢其他 summaries 對 RAG / retrieval 排序的交叉連結。
+=======
+- basis: [[wiki/index.md]]
+- updated: wiki/assets/daily/2026-05-29.md
+- notes: 0 summaries processed. 今日無新知識攝取紀錄。
+>>>>>>> origin/main

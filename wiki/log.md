@@ -94,3 +94,23 @@
 
 - updated: `wiki/rules/daily-rules.md`
 - notes: 簡化 daily 選材、模板、寫入與回覆規則，讓當日 summary 的整理格式更一致
+
+## [2026-05-14] ingest | What is the ROUGE metric?
+
+- source: `raw/What is the ROUGE metric?.md`
+- created: `wiki/summaries/what-is-the-rouge-metric.md`, `wiki/concepts/nlp-evaluation-metrics.md`
+- updated: `wiki/index.md`, `wiki/log.md`
+- notes: 整理 Hugging Face 對 ROUGE 的說明，補上 summarization evaluation、ROUGE 變體、precision/recall/F1 與 reference-overlap 指標限制的知識脈絡。
+
+## [2026-05-15] ingest | Lost in the Middle: How Language Models use Long Context - Explained!
+
+- source: `raw/Lost in the Middle How Language Models use Long Context - Explained!.md`
+- created: `wiki/summaries/lost-in-the-middle-how-language-models-use-long-context-explained.md`, `wiki/concepts/long-context-position-effects.md`
+- updated: `wiki/concepts/context-engineering.md`, `wiki/index.md`, `wiki/log.md`
+- notes: 整理 Lost in the Middle 的長 context 位置效應，補上 RAG 排序品質、top-k 擴張限制與 query-aware contextualization 的知識脈絡。
+
+## [2026-05-15] lint | wiki health check
+
+- checked: `wiki/index.md`, `wiki/log.md`, `wiki/concepts/context-engineering.md`, `wiki/concepts/long-context-position-effects.md`, `wiki/summaries/lost-in-the-middle-how-language-models-use-long-context-explained.md`
+- fixed: 補上新 summary / concept 的索引與交叉連結，並把長 context 的位置效應正式接回 `context-engineering`。
+- gaps: 這次 lint 聚焦新來源相關頁面與索引一致性，尚未全面巡檢其他 summaries 對 RAG / retrieval 排序的交叉連結。

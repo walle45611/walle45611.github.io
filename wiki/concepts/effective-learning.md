@@ -25,6 +25,10 @@
 - 不同學科與任務型態下，deep processing 的最佳實作形式可能差異很大，後續需要更多來源細化。
 - 目前只有單一二手來源整理 deliberate practice、筆記、困難學習與直覺形成，仍需更多原始研究或不同作者觀點來校正。
 
+## Related Concepts
+
+- [ai-assisted-research-workflows](./ai-assisted-research-workflows.md)
+
 ## Sources
 
 - [how-to-learn-anything-faster-using-modern-research](../summaries/how-to-learn-anything-faster-using-modern-research.md)

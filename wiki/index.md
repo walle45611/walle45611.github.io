@@ -10,6 +10,7 @@
 - [self-correction-in-language-models](./concepts/self-correction-in-language-models.md): 統整語言模型如何透過 decoding、workflow 與 reasoning 訓練進行自我修正，聚焦外部回饋、算力成本與能力邊界。
 - [verbalized-feedback-learning](./concepts/verbalized-feedback-learning.md): 整理自然語言回饋如何在多輪流程中改變 agent 行為，及其與檢查工具、評量設計、長期學習的關係。
 - [effective-learning](./concepts/effective-learning.md): 目前知識庫對高效學習的初始整合頁，聚焦深層處理、變化練習、回饋品質與直覺校正條件。
+- [ai-assisted-research-workflows](./concepts/ai-assisted-research-workflows.md): 統整 AI 輔助研究中從文獻檢索、矩陣比較到驗證與責任邊界的工作流程設計。
 - [parameter-efficient-fine-tuning](./concepts/parameter-efficient-fine-tuning.md): 統整 PEFT、LoRA 與 QLoRA 的微調思路，聚焦只訓練部分參數時的容量、層覆蓋與超參數取捨。
 - [llm-serving-compatibility](./concepts/llm-serving-compatibility.md): 統整模型、adapter、runtime 與 CUDA wheel 的相容性檢查，聚焦 serving 可用性與 native extension 載入邊界。
 - [model-quantization](./concepts/model-quantization.md): 整理模型量化如何透過降低數值精度節省記憶體，並說明它在 QLoRA 中的角色與取捨。
@@ -51,3 +52,4 @@
 - [codex-for-almost-everything](./summaries/codex-for-almost-everything.md) · 2026-04-22: 整理 Codex app 的主要更新與功能
 - [what-is-microsoft-entra](./summaries/what-is-microsoft-entra.md) · 2026-04-24: 整理 Microsoft Entra 產品家族，涵蓋身份管理、零信任存取、外部 ID 及 AI Agent ID 等核心組件。
 - [introducing-gpt-5-5](./summaries/introducing-gpt-5-5.md) · 2026-04-24: 整理 OpenAI GPT-5.5 發布資訊，聚焦其在代理式編碼、知識工作與科學研究領域的突破性能力與效率提升。
+- [ai-assisted-research-workflow](./summaries/ai-assisted-research-workflow.md) · 2026-06-02: 整理 AI 輔助研究從文獻檢索、文獻矩陣到驗證與模擬審查的流程，強調判斷與責任不能外包。

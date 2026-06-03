@@ -22,3 +22,10 @@
 - created: `wiki/summaries/ai-assisted-research-workflow.md`, `wiki/concepts/ai-assisted-research-workflows.md`
 - updated: `wiki/concepts/effective-learning.md`, `wiki/concepts/agentic-knowledge-base-maintenance.md`, `wiki/index.md`, `wiki/log.md`
 - notes: 整理 AI 輔助研究從文獻檢索、文獻矩陣到驗證與模擬審查的流程，補上「判斷不能外包」與可追溯研究歷程的概念頁。
+
+## 2026-06-03
+- **Task**: 執行每日整理 (Daily Digest)
+- **Action**: 建立 `wiki/assets/daily/2026-06-03.md`
+- **Basis**: `[[wiki/summaries/ai-assisted-research-workflow.md]]`
+- **Summary Count**: 1 篇
+- **Status**: Success

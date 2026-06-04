@@ -29,3 +29,5 @@
 - **Basis**: `[[wiki/summaries/ai-assisted-research-workflow.md]]`
 - **Summary Count**: 1 篇
 - **Status**: Success
+
+- [2026-06-04] 執行 Daily Rules：建立 `wiki/assets/daily/2026-06-04.md`。Basis: `[[wiki/summaries/ai-assisted-research-workflow.md]]`。共整理 1 篇內容。

@@ -31,3 +31,9 @@
 - **Status**: Success
 
 - [2026-06-04] 執行 Daily Rules：建立 `wiki/assets/daily/2026-06-04.md`。Basis: `[[wiki/summaries/ai-assisted-research-workflow.md]]`。共整理 1 篇內容。
+
+## [2026-06-08] daily | 2026-06-08 summary
+
+- basis: [[wiki/index.md]]
+- updated: wiki/assets/daily/2026-06-08.md
+- notes: 0 summaries processed. 今日無新知識攝取紀錄。

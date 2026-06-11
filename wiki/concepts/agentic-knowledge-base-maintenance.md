@@ -30,7 +30,6 @@
 
 - [harness-engineering](./harness-engineering.md)
 - [context-engineering](./context-engineering.md)
-- [ai-assisted-research-workflows](./ai-assisted-research-workflows.md)
 
 ## Sources
 

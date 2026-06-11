@@ -5,16 +5,13 @@
 - [agent-design-patterns](./concepts/agent-design-patterns.md): 統整 single、sequential、parallel 等基礎 agent workflow pattern 的選型邏輯，聚焦 control、latency、cost 與責任分工的 trade-off。
 - [cloudflare-queue-consumer-modes](./concepts/cloudflare-queue-consumer-modes.md): 統整 Cloudflare Queues 中 push 與 pull consumer 的選型邏輯，聚焦誰控制消費節奏、如何處理 ack/retry，以及 `visibility_timeout` 的運維含義。
 - [context-engineering](./concepts/context-engineering.md): 聚焦 context window 管理的核心方法：按需載入、子代理摘要、記憶檢索、compaction 與 pruning 的取捨。
-- [long-context-position-effects](./concepts/long-context-position-effects.md): 統整長輸入中的位置效應，聚焦 lost-in-the-middle、RAG 排序品質、top-k 擴張限制與 query-aware contextualization。
 - [harness-engineering](./concepts/harness-engineering.md): 目前知識庫對 AI agent 駕馭工程的整合頁，聚焦規則檔、工具邊界與生成-評估回饋迴圈的設計原則。
 - [self-correction-in-language-models](./concepts/self-correction-in-language-models.md): 統整語言模型如何透過 decoding、workflow 與 reasoning 訓練進行自我修正，聚焦外部回饋、算力成本與能力邊界。
 - [verbalized-feedback-learning](./concepts/verbalized-feedback-learning.md): 整理自然語言回饋如何在多輪流程中改變 agent 行為，及其與檢查工具、評量設計、長期學習的關係。
 - [effective-learning](./concepts/effective-learning.md): 目前知識庫對高效學習的初始整合頁，聚焦深層處理、變化練習、回饋品質與直覺校正條件。
-- [ai-assisted-research-workflows](./concepts/ai-assisted-research-workflows.md): 統整 AI 輔助研究中從文獻檢索、矩陣比較到驗證與責任邊界的工作流程設計。
 - [parameter-efficient-fine-tuning](./concepts/parameter-efficient-fine-tuning.md): 統整 PEFT、LoRA 與 QLoRA 的微調思路，聚焦只訓練部分參數時的容量、層覆蓋與超參數取捨。
 - [llm-serving-compatibility](./concepts/llm-serving-compatibility.md): 統整模型、adapter、runtime 與 CUDA wheel 的相容性檢查，聚焦 serving 可用性與 native extension 載入邊界。
 - [model-quantization](./concepts/model-quantization.md): 整理模型量化如何透過降低數值精度節省記憶體，並說明它在 QLoRA 中的角色與取捨。
-- [nlp-evaluation-metrics](./concepts/nlp-evaluation-metrics.md): 統整 NLP 自動評估指標的選型邏輯，聚焦 ROUGE、reference overlap、precision/recall/F1 與生成品質代理指標的限制。
 - [microk8s-production-readiness](./concepts/microk8s-production-readiness.md): 統整 MicroK8s 在生產環境的適用條件、基礎元件基線與多節點運維重點。
 - [kubernetes-gitops-delivery](./concepts/kubernetes-gitops-delivery.md): 統整 Helm、Argo CD、Image Updater 與 Sealed Secrets 在 Kubernetes 上形成的 GitOps 交付鏈。
 - [cloudflare-workers-ai-pricing-model](./concepts/cloudflare-workers-ai-pricing-model.md): 聚焦 Workers AI 的 daily quota、超額計費與超限失敗行為如何影響成本與可用性治理。
@@ -26,8 +23,6 @@
 - [nuitka-and-docker-deployment](./concepts/nuitka-and-docker-deployment.md): 統整 Nuitka 與 Docker 部署方案，說明高效能與安全部署實務。
 ## Summaries
 
-- [lost-in-the-middle-how-language-models-use-long-context-explained](./summaries/lost-in-the-middle-how-language-models-use-long-context-explained.md) · 2026-05-15: 整理 Weaviate 對 Lost in the Middle 論文的解說，聚焦長 context 的位置效應、RAG 排序品質與 query-aware contextualization。
-- [what-is-the-rouge-metric](./summaries/what-is-the-rouge-metric.md) · 2026-05-14: 整理 Hugging Face 對 ROUGE 評估指標的說明，涵蓋 ROUGE-1、ROUGE-2、ROUGE-L、ROUGE-LSUM 以及 precision/recall/F1 的使用限制。
 - [andrej-karpathy-from-vibe-coding-to-agentic-engineering](./summaries/andrej-karpathy-from-vibe-coding-to-agentic-engineering.md) · 2026-04-30: 整理 Karpathy 從 vibe coding 走向 agentic engineering 的觀察，聚焦 software 3.0、agent-first 文件與 understanding 的瓶頸。
 - [project-management-midterm-notes](./summaries/project-management-midterm-notes.md) · 2026-04-29: 歸檔自寫專案管理考前複習講義，整理錯題優先順序、組織管理、時程計算與敏捷常考觀念。
 - [ai-self-correction-decoding-workflow-reasoning](./summaries/ai-self-correction-decoding-workflow-reasoning.md) · 2026-04-28: 整理語言模型自我修正從 contrastive decoding、workflow verification 到 RL reasoning 的技術路線與主要爭議。
@@ -52,4 +47,3 @@
 - [codex-for-almost-everything](./summaries/codex-for-almost-everything.md) · 2026-04-22: 整理 Codex app 的主要更新與功能
 - [what-is-microsoft-entra](./summaries/what-is-microsoft-entra.md) · 2026-04-24: 整理 Microsoft Entra 產品家族，涵蓋身份管理、零信任存取、外部 ID 及 AI Agent ID 等核心組件。
 - [introducing-gpt-5-5](./summaries/introducing-gpt-5-5.md) · 2026-04-24: 整理 OpenAI GPT-5.5 發布資訊，聚焦其在代理式編碼、知識工作與科學研究領域的突破性能力與效率提升。
-- [ai-assisted-research-workflow](./summaries/ai-assisted-research-workflow.md) · 2026-06-02: 整理 AI 輔助研究從文獻檢索、文獻矩陣到驗證與模擬審查的流程，強調判斷與責任不能外包。

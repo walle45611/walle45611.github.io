@@ -49,3 +49,9 @@
 - basis: [[wiki/index.md]]
 - updated: wiki/assets/daily/2026-06-13.md
 - notes: 0 summaries processed. 今日無新知識攝取紀錄。
+
+## [2026-06-17] daily | 2026-06-17 summary
+
+- basis: [[wiki/index.md]]
+- updated: wiki/assets/daily/2026-06-17.md
+- notes: 0 summaries processed. 今日無新知識攝取紀錄。

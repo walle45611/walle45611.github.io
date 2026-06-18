@@ -55,3 +55,4 @@
 - basis: [[wiki/index.md]]
 - updated: wiki/assets/daily/2026-06-17.md
 - notes: 0 summaries processed. 今日無新知識攝取紀錄。
+- [2026-06-18] 執行 Daily Digest 任務。整理了 2 篇 summary (`ai-assisted-research-workflow.md`, `introducing-gpt-5-5.md`) 並寫入 `wiki/assets/daily/2026-06-18.md`。

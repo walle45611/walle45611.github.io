@@ -62,3 +62,5 @@
 - basis: [[wiki/index.md]]
 - updated: wiki/assets/daily/2026-06-19.md
 - notes: 0 summaries processed. 今日無新知識攝取紀錄。
+
+- [2026-06-20] 執行 Daily Rules：建立 `wiki/assets/daily/2026-06-20.md`。Basis: `[[wiki/summaries/ai-assisted-research-workflow.md]]`, `[[wiki/summaries/introducing-gpt-5-5.md]]`。共整理 2 篇內容。

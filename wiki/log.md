@@ -71,3 +71,9 @@
 - basis: [[wiki/summaries/ai-assisted-research-workflow.md]], [[wiki/summaries/introducing-gpt-5-5.md]]
 - updated: wiki/assets/daily/2026-06-26.md
 - notes: 整理 2 篇內容。聚焦 AI 輔助研究流程與 GPT-5.5 的代理能力。
+
+## [2026-06-27] daily | 2026-06-27 summary
+
+- basis: [[wiki/index.md]]
+- updated: wiki/assets/daily/2026-06-27.md
+- notes: 0 summaries processed. 今日無新知識攝取紀錄。

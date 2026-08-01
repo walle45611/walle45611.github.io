@@ -45,6 +45,52 @@
 - updated: `wiki/concepts/effective-learning.md`, `wiki/index.md`, `wiki/log.md`
 - notes: 新增社交英文與 small talk 主題，整理回應、問候、深聊與低風險寒暄的語用差異，並補上與學習主題的交叉連結。
 
+## [2026-06-12] daily | 2026-06-12 summary
+
+- basis: [[wiki/index.md]]
+- updated: wiki/assets/daily/2026-06-12.md
+- notes: 0 summaries processed. 今日無新知識攝取紀錄。
+
+## [2026-06-13] daily | 2026-06-13 summary
+
+- basis: [[wiki/index.md]]
+- updated: wiki/assets/daily/2026-06-13.md
+- notes: 0 summaries processed. 今日無新知識攝取紀錄。
+
+## [2026-06-17] daily | 2026-06-17 summary
+
+- basis: [[wiki/index.md]]
+- updated: wiki/assets/daily/2026-06-17.md
+- notes: 0 summaries processed. 今日無新知識攝取紀錄。
+- [2026-06-18] 執行 Daily Digest 任務。整理了 2 篇 summary (`ai-assisted-research-workflow.md`, `introducing-gpt-5-5.md`) 並寫入 `wiki/assets/daily/2026-06-18.md`。
+
+## [2026-06-19] daily | 2026-06-19 summary
+
+- basis: [[wiki/index.md]]
+- updated: wiki/assets/daily/2026-06-19.md
+- notes: 0 summaries processed. 今日無新知識攝取紀錄。
+
+- [2026-06-20] 執行 Daily Rules：建立 `wiki/assets/daily/2026-06-20.md`。Basis: `[[wiki/summaries/ai-assisted-research-workflow.md]]`, `[[wiki/summaries/introducing-gpt-5-5.md]]`。共整理 2 篇內容。
+
+
+## [2026-06-26] daily | 2026-06-26 summary
+
+- basis: [[wiki/summaries/ai-assisted-research-workflow.md]], [[wiki/summaries/introducing-gpt-5-5.md]]
+- updated: wiki/assets/daily/2026-06-26.md
+- notes: 整理 2 篇內容。聚焦 AI 輔助研究流程與 GPT-5.5 的代理能力。
+
+## [2026-06-27] daily | 2026-06-27 summary
+
+- basis: [[wiki/index.md]]
+- updated: wiki/assets/daily/2026-06-27.md
+- notes: 0 summaries processed. 今日無新知識攝取紀錄。
+
+## [2026-07-01] daily | 2026-07-01 summary
+
+- basis: [[wiki/index.md]]
+- updated: wiki/assets/daily/2026-07-01.md
+- notes: 0 summaries processed. 今日無新知識攝取紀錄。
+
 ## [2026-07-11] ingest | Stanford CME295 Transformers & LLMs | Autumn 2025 | Lecture 8 - LLM Evaluation
 
 - source: `raw/Stanford CME295 Transformers & LLMs  Autumn 2025  Lecture 8 - LLM Evaluation.md`

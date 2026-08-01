@@ -8,9 +8,9 @@
 
 寫入 daily 前，先做這三步：
 
-1. 讀 `wiki/index.md` 的 `## Summaries`，找出日期對應到當日的 summary。
+1. 讀 `wiki/index.md` 的 `## Summaries`，依條目日期找出當日收錄的 summary；該日期的語義是 `ingested_at`，代表歸檔日，不代表來源發布日或 raw 剪藏建立日。
 2. 打開這些 `wiki/summaries/...` 頁面，只根據已寫好的 summary 內容整理。
-3. 若同一天有多篇 summary，以 summary 頁為主，不回頭重掃 `raw/`。
+3. 若同一天有多篇 summary，以 summary 頁為主，不回頭重掃 `raw/`；同一 summary 不因 daily 重建而重複收錄。
 
 ## 輸出路徑
 
@@ -52,9 +52,9 @@
 
 ## 寫作準則
 
-1. `source link` 優先放外部原始來源網址。
+1. `source link` 優先放外部原始來源網址；若 summary 沒有外部連結，不得自行補網址，可省略該欄位。
 2. 若來源來自 `raw/`，要另外保留 `source: raw/...`。
-3. `basis` 優先用 `[[wiki/summaries/...]]`，必要時可加 `[[wiki/index.md]]`。
+3. `basis` 優先用 `[[wiki/summaries/...]]`，必要時可加 `[[wiki/index.md]]`；若當日沒有 summary，使用 `[[wiki/index.md]]` 並明確記錄 0 篇。
 4. 僅寫入已實際讀取與整理過的內容，不補寫、不猜測。
 5. 同一天的 daily 只更新同一份檔案，不新增重複檔。
 

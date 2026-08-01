@@ -11,6 +11,7 @@ NLP evaluation metrics are automatic measures used to compare model outputs agai
 3. Different ROUGE variants measure different kinds of overlap: unigram overlap, bigram overlap, ordered subsequence similarity, or whole-summary sequence similarity.
 4. Recall-only evaluation can reward overly long outputs, so precision and F1 should be checked together with recall.
 5. Automatic metrics should be treated as proxies. A higher score does not necessarily prove better factuality, readability, or usefulness.
+6. LLM evaluation should combine reference-based metrics with judge-based, executable, or task-specific checks when the target is open-ended quality, factuality, safety, or agent success.
 
 ## Working Heuristics
 
@@ -19,12 +20,15 @@ NLP evaluation metrics are automatic measures used to compare model outputs agai
 - Compare models with the same reference set and preprocessing assumptions; otherwise metric differences may reflect evaluation setup rather than model quality.
 - Do not use a single automatic metric as the only decision signal for user-facing generation quality.
 - When a workflow includes verification or revision, evaluate both final output quality and the cost of reaching it.
+- For LLM-as-a-Judge, inspect rationale quality, structured output validity, bias under answer reordering, and correlation with a human-rated calibration set.
 
 ## Related Concepts
 
 - [self-correction-in-language-models](./self-correction-in-language-models.md)
 - [harness-engineering](./harness-engineering.md)
+- [llm-evaluation](./llm-evaluation.md)
 
 ## Sources
 
 - [what-is-the-rouge-metric](../summaries/what-is-the-rouge-metric.md)
+- [stanford-cme295-lecture-8-llm-evaluation](../summaries/stanford-cme295-lecture-8-llm-evaluation.md)

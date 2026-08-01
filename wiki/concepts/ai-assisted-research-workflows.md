@@ -37,6 +37,7 @@
 - [effective-learning](./effective-learning.md)
 - [harness-engineering](./harness-engineering.md)
 - [agentic-knowledge-base-maintenance](./agentic-knowledge-base-maintenance.md)
+- [writing-style-and-plain-english](./writing-style-and-plain-english.md)
 
 ## Sources
 

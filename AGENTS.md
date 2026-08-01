@@ -80,9 +80,9 @@
 # 嚴格禁止事項
 
 1. 禁止編輯、修改、刪除或重新命名 `raw/` 內任何檔案
-2. 禁止跳過 `wiki/rules/router-rules.md` 和 `wiki/rules/output-rules.md` 和 `wiki/rules/log.md`
+2. 禁止跳過 `wiki/rules/router-rules.md` 和 `wiki/rules/output-rules.md`；若任務規則要求留下紀錄，也不得跳過 `wiki/rules/log-rules.md` 與 `wiki/log.md`
 3. 禁止在未讀取對應 rule 前直接開始工作
-4. 禁止在沒有寫入 `wiki/log.md` 前結束工作
+4. 若本次任務依 `wiki/rules/log-rules.md` 或其他 task rule 必須更新 log，禁止在沒有寫入 `wiki/log.md` 前結束工作；純人工查詢且未要求留痕時不強制寫入
 5. 禁止把未經確認的假設當成檔案內容、檔名、路徑或知識庫事實
 6. 禁止在資料不足時補寫推測內容；必須直接說明不足之處
 7. 禁止為了省步驟而省略必要的讀檔、查路徑或規則確認流程
@@ -96,7 +96,7 @@
 - 我是否已讀 `wiki/rules/router-rules.md`？
 - 我是否已依 router rule 讀完這次任務需要的所有 rules？
 - 我是否只根據已讀內容工作？
-- 我是否確保寫入 `wiki/log.md`?
+- 我是否依 task rule 判斷是否需要寫入 `wiki/log.md`？若需要，是否已確實寫入？
 - 我是否有依照規定的格式回覆訊息 `wiki/rules/output-rules.md`？
 - 若要寫入，我是否已確認目標路徑、檔名與格式？
 - 若資料不足，我是否已明確指出不足，而不是自行猜測？

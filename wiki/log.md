@@ -1,96 +1,72 @@
-## [2026-04-25] social | GPT-5.5 and Developer Workflow
+## [2026-05-22] daily | 2026-05-22 summary
 
-- pages-read: user prompt
-- output: social post draft
-- notes: Created a Threads-style post focusing on the transition from manual Vim editing to full AI automation with GPT-5.5.
-## [2026-04-24] daily | 2026-04-24 summary
+- basis: [[wiki/summaries/introducing-chatgpt-images-2-0.md]], [[wiki/summaries/introducing-gpt-5-5.md]]
+- updated: wiki/assets/daily/2026-05-22.md
+- notes: 2 summaries processed. 內容聚焦 OpenAI 最新模型功能與代理能力演進。
 
-- basis: [[wiki/summaries/what-is-microsoft-entra.md]], [[wiki/summaries/introducing-gpt-5-5.md]]
-- updated: wiki/assets/daily/2026-04-24.md
-- notes: 整理了 2 篇內容，涵蓋 Microsoft Entra 與 GPT-5.5，並觀察到 Agent ID 與 Agentic AI 的關聯。
-## [2026-04-25] ingest | LoRA & QLoRA Fine-tuning Explained In-Depth
+## [2026-05-26] daily | 2026-05-26 summary
 
-- source: `raw/LoRA & QLoRA Fine-tuning Explained In-Depth.md`
-- created: `wiki/summaries/lora-and-qlora-fine-tuning-explained-in-depth.md`, `wiki/concepts/parameter-efficient-fine-tuning.md`, `wiki/concepts/model-quantization.md`
-- updated: `wiki/index.md`, `wiki/log.md`
-- notes: 整理 LoRA / QLoRA 的參數高效微調、rank/alpha/dropout 與量化取捨，並新增 PEFT 與 model quantization 概念頁。
+- basis: [[wiki/index.md]]
+- updated: wiki/assets/daily/2026-05-26.md
+- notes: 0 summaries processed. 今日無新知識攝取紀錄。
 
-## [2026-04-28] ingest | vLLM + Gemma 4 + LoRA：我踩過的兩個坑
+## [2026-05-29] daily | 2026-05-29 summary
 
-- source: `raw/vLLM + Gemma 4 + LoRA：我踩過的兩個坑.md`
-- created: `wiki/summaries/vllm-gemma-4-lora-two-pitfalls.md`, `wiki/concepts/llm-serving-compatibility.md`
-- updated: `wiki/concepts/parameter-efficient-fine-tuning.md`, `wiki/index.md`, `wiki/log.md`
-- notes: 整理 Gemma 4 runtime LoRA 支援與 CUDA wheel 相容性兩個坑，補上 LLM serving compatibility 概念，並把 LoRA 與實際 serving 條件拆開記錄。
-## [2026-04-25] daily | 2026-04-25
+- basis: [[wiki/index.md]]
+- updated: wiki/assets/daily/2026-05-29.md
+- notes: 0 summaries processed. 今日無新知識攝取紀錄。
 
-- basis: [[wiki/summaries/lora-and-qlora-fine-tuning-explained-in-depth.md]], [[wiki/summaries/what-is-microsoft-entra.md]], [[wiki/summaries/introducing-gpt-5-5.md]]
-- updated: wiki/assets/daily/2026-04-25.md
-- notes: 3 summaries processed.
+## [2026-06-02] ingest | 當 AI 讓資料爆炸，研究該怎麼做？－ 從文獻蒐集到建立 AI 輔助研究流程
 
-## [2026-04-26] daily | 2026-04-26 summary
+- source: `raw/當 AI 讓資料爆炸，研究該怎麼做？－ 從文獻蒐集到建立 AI 輔助研究流程.md`
+- created: `wiki/summaries/ai-assisted-research-workflow.md`, `wiki/concepts/ai-assisted-research-workflows.md`
+- updated: `wiki/concepts/effective-learning.md`, `wiki/concepts/agentic-knowledge-base-maintenance.md`, `wiki/index.md`, `wiki/log.md`
+- notes: 整理 AI 輔助研究從文獻檢索、文獻矩陣到驗證與模擬審查的流程，補上「判斷不能外包」與可追溯研究歷程的概念頁。
 
-- basis: [[wiki/summaries/introducing-gpt-5-5.md]], [[wiki/summaries/what-is-microsoft-entra.md]], [[wiki/summaries/lin-zai-xue.md]]
-- updated: wiki/assets/daily/2026-04-26.md
-- notes: 3 summaries processed.
+## 2026-06-03
+- **Task**: 執行每日整理 (Daily Digest)
+- **Action**: 建立 `wiki/assets/daily/2026-06-03.md`
+- **Basis**: `[[wiki/summaries/ai-assisted-research-workflow.md]]`
+- **Summary Count**: 1 篇
+- **Status**: Success
 
-## [2026-04-27] daily | 2026-04-27 summary
+- [2026-06-04] 執行 Daily Rules：建立 `wiki/assets/daily/2026-06-04.md`。Basis: `[[wiki/summaries/ai-assisted-research-workflow.md]]`。共整理 1 篇內容。
 
-- basis: [[wiki/summaries/introducing-gpt-5-5.md]], [[wiki/summaries/what-is-microsoft-entra.md]]
-- updated: wiki/assets/daily/2026-04-27.md
-- notes: 2 summaries processed.
+## [2026-06-08] daily | 2026-06-08 summary
 
-## [2026-04-28] ingest | AI 能自我修正嗎？從 decoding、workflow 到 reasoning 的技術發展整理
+- basis: [[wiki/index.md]]
+- updated: wiki/assets/daily/2026-06-08.md
+- notes: 0 summaries processed. 今日無新知識攝取紀錄。
 
-- source: `raw/AI 能自我修正嗎？從 decoding、workflow 到 reasoning 的技術發展整理.md`
-- created: `wiki/summaries/ai-self-correction-decoding-workflow-reasoning.md`, `wiki/concepts/self-correction-in-language-models.md`
-- updated: `wiki/concepts/harness-engineering.md`, `wiki/concepts/verbalized-feedback-learning.md`, `wiki/index.md`, `wiki/log.md`
-- notes: 整理自我修正從 decoding、workflow 到 reasoning 的三層技術路線，補上 external feedback 與 verification 算力成本的知識脈絡。
+## [2026-06-09] ingest | 20分鐘學完所有社交英文句💬 - 問候、回應、深聊、閒聊
 
-## [2026-04-28] lint | wiki health check
+- source: `raw/20分鐘學完所有社交英文句💬 - 問候、回應、深聊、閒聊.md`
+- created: `wiki/summaries/social-english-greetings-responses-deep-talk-small-talk.md`, `wiki/concepts/social-english-and-small-talk.md`
+- updated: `wiki/concepts/effective-learning.md`, `wiki/index.md`, `wiki/log.md`
+- notes: 新增社交英文與 small talk 主題，整理回應、問候、深聊與低風險寒暄的語用差異，並補上與學習主題的交叉連結。
 
-- checked: `wiki/index.md`, `wiki/log.md`, `wiki/concepts/harness-engineering.md`, `wiki/concepts/verbalized-feedback-learning.md`, `wiki/concepts/self-correction-in-language-models.md`, `wiki/summaries/ai-self-correction-decoding-workflow-reasoning.md`
-- fixed: 移除 `wiki/log.md` 殘留的 merge conflict marker，補上新 summary / concept 的索引與交叉連結，確保 ingest 與 index 同步。
-- gaps: 這次 lint 以新來源相關頁面與 `wiki/log.md` 結構修復為主，尚未全面巡檢所有 summary / concept 的孤立頁與重複內容。
+## [2026-07-11] ingest | Stanford CME295 Transformers & LLMs | Autumn 2025 | Lecture 8 - LLM Evaluation
 
-## [2026-04-29] ingest | 專案管理考前複習筆記講義
+- source: `raw/Stanford CME295 Transformers & LLMs  Autumn 2025  Lecture 8 - LLM Evaluation.md`
+- created: `wiki/summaries/stanford-cme295-lecture-8-llm-evaluation.md`, `wiki/concepts/llm-evaluation.md`
+- updated: `wiki/concepts/nlp-evaluation-metrics.md`, `wiki/index.md`, `wiki/log.md`
+- notes: 整理 LLM 評估的人工評分、reference-based metrics、LLM-as-a-Judge、factuality、agent failure modes 與 benchmark selection，並將新內容連回既有 NLP 評估指標頁。
 
-- source: `raw/專案管理-期中筆記.md`
-- created: `wiki/summaries/project-management-midterm-notes.md`
-- updated: `wiki/index.md`, `wiki/log.md`
-- notes: 歸檔自寫專案管理考前講義，補上 Obsidian 屬性，保留錯題優先順序、時程計算與敏捷考點的複習結構。
+## [2026-07-11] lint | wiki health check
 
-## [2026-04-29] daily | 2026-04-29 summary
+- checked: `wiki/index.md`, `wiki/log.md`, `wiki/concepts/`, `wiki/summaries/`, relative Markdown links, index coverage
+- fixed: 補上 `introducing-chatgpt-images-2-0` 索引條目；修正 Microsoft Entra、LLM-Wiki-Worker、GPT-5.5 與學習摘要中的錯誤相對或舊 Vault 絕對連結。
+- gaps: `Claude Code`、`MCP`、`Agent Skills` 仍是缺頁候選；未發現需要新來源才能判定的跨頁矛盾。
 
-- basis: [[wiki/summaries/project-management-midterm-notes.md]]
-- updated: [[wiki/assets/daily/2026-04-29.md]]
-- notes: 1 summary processed.
+## [2026-08-02] ingest | 未歸檔 raw 來源
 
-## [2026-04-30] ingest | Andrej Karpathy: From Vibe Coding to Agentic Engineering
+- source: `raw/Academic Style.md`, `raw/How to write in plain English.md`, `raw/Codex rate card.md`, `raw/llm-wiki.md`
+- created: `wiki/summaries/academic-style.md`, `wiki/summaries/how-to-write-in-plain-english.md`, `wiki/summaries/codex-rate-card.md`, `wiki/summaries/llm-wiki.md`, `wiki/concepts/writing-style-and-plain-english.md`
+- updated: `wiki/concepts/agentic-knowledge-base-maintenance.md`, `wiki/concepts/ai-coding-tools.md`, `wiki/concepts/ai-assisted-research-workflows.md`, `wiki/index.md`, `wiki/log.md`
+- notes: 完成 4 份未歸檔 raw 來源的摘要、概念整合、索引與交叉連結；Codex rate card 保留方案遷移與定價可能變動的來源邊界。
 
-- source: `raw/Andrej Karpathy From Vibe Coding to Agentic Engineering.md`
-- created: `wiki/summaries/andrej-karpathy-from-vibe-coding-to-agentic-engineering.md`
-- updated: `wiki/concepts/ai-coding-tools.md`, `wiki/concepts/harness-engineering.md`, `wiki/index.md`, `wiki/log.md`
-- notes: 整理 Karpathy 對 vibe coding、agentic engineering、software 3.0 與 agent-native 文件的觀察，並把這條演進線接回 AI coding 與 harness 工程脈絡。
+## [2026-08-02] lint | rules consistency repair
 
-## [2026-04-30] lint | wiki health check
-
-- checked: `wiki/index.md`, `wiki/log.md`, `wiki/concepts/ai-coding-tools.md`, `wiki/concepts/harness-engineering.md`, `wiki/summaries/andrej-karpathy-from-vibe-coding-to-agentic-engineering.md`
-- fixed: 無，`git diff --check` 通過且新 summary 與索引、概念頁連結一致
-- gaps: 目前未看到明顯結構問題
-
-## [2026-04-30] daily | 2026-04-30 summary
-
-- basis: [[wiki/summaries/andrej-karpathy-from-vibe-coding-to-agentic-engineering.md]]
-- updated: `wiki/assets/daily/2026-04-30.md`
-- notes: 1 summary processed; 內容聚焦 vibe coding、agentic engineering、software 3.0 與 agent-first 文件。
-
-## [2026-04-30] lint | daily format normalization
-
-- checked: `wiki/assets/daily/2026-04-18.md`, `wiki/assets/daily/2026-04-19.md`, `wiki/assets/daily/2026-04-20.md`, `wiki/assets/daily/2026-04-21.md`, `wiki/assets/daily/2026-04-24.md`, `wiki/assets/daily/2026-04-25.md`, `wiki/assets/daily/2026-04-26.md`, `wiki/assets/daily/2026-04-27.md`, `wiki/assets/daily/2026-04-29.md`, `wiki/assets/daily/2026-04-30.md`
-- fixed: 將 2026-04-18、2026-04-19、2026-04-20 的 `date`、`generated_at`、`basis` 統一為目前 daily 格式
-- gaps: 2026-04-21 與 2026-04-24 之後的 daily 未見明顯格式錯誤；舊版內容結構差異屬歷史格式，不影響可讀性
-
-## [2026-04-30] docs | daily rules optimization
-
-- updated: `wiki/rules/daily-rules.md`
-- notes: 簡化 daily 選材、模板、寫入與回覆規則，讓當日 summary 的整理格式更一致
+- checked: `AGENTS.md`, `wiki/rules/router-rules.md`, `wiki/rules/output-rules.md`, `wiki/rules/log-rules.md`, `wiki/rules/ingest-rules.md`, `wiki/rules/daily-rules.md`, `wiki/rules/query-rules.md`, `wiki/rules/review-rules.md`, `wiki/rules/social-post-rules.md`
+- fixed: 明確限定 JSON 僅在使用者要求時使用；統一純人工查詢的 log 判定；限制 query 自動回寫；區分 `source_created` 與 `ingested_at`；補強 daily 去重、空日報、來源連結與社群貼文實際發送邊界。
+- gaps: 既有 summary 與 index 尚未全面回填 `ingested_at`，目前保留舊 index 日期作為相容值。

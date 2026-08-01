@@ -17,7 +17,7 @@
 
 1. `raw/` 是唯讀來源區，只能讀，不能改、不能移、不能重新命名。
 2. `wiki/` 是工作區，所有整理、整合、修訂都只能發生在這裡。
-3. 新檔名一律使用小寫 kebab-case。
+3. 新建的 `wiki/` 頁面檔名一律使用小寫 kebab-case；`raw/` 原始檔名不得為了符合此規則而改名。
 4. 先整合既有頁面，再決定是否新建頁面；避免每個來源都生成孤立新頁。
 5. 摘要必須保留來源邊界；跨來源結論應寫進概念頁，不要混在單一來源摘要裡假裝是原文觀點。
 6. 如果新來源與舊內容矛盾，要明確標註矛盾與來源，不可偷偷覆蓋舊說法。
@@ -55,6 +55,7 @@
 - 不可把 `raw/` 來源省略後只留在 `wiki/log.md`；summary 本身就要能獨立指出原始來源
 - `source` 與 `source link` 的用途不同：`source` 是 vault 內素材位置，`source link` 是外部網站、影片或文件的真正出處
 - 若來源不是本地 `raw/` 檔，而是外部文章或網址，也要在摘要頁保留可追溯的來源識別資訊
+- 新建或更新 summary 時，應區分 `source_created`（來源或剪藏建立日期）與 `ingested_at`（收錄進 wiki 的日期）；index 與按日回顧使用 `ingested_at`。
 
 建議最小格式：
 
@@ -66,6 +67,8 @@
 - original title: <original title>
 - author: <author or not specified>
 - published: <date or not specified>
+- source_created: <source or clipping date, or not specified>
+- ingested_at: <YYYY-MM-DD>
 - type: <source type>
 ```
 
@@ -111,7 +114,7 @@
 2. `summary` 條目必須寫在 `## Summaries` 標題下，不能寫到其他區塊。
 3. `concept` 條目必須寫在 `## Concepts` 標題下，不能混入 `## Summaries`。
 4. `## Summaries` 區塊中的每個 summary 條目都必須使用固定格式：`- [slug](./summaries/slug.md) · YYYY-MM-DD: description`
-5. 上述格式中的日期必須使用該 summary 被收錄進 LLM Wiki 的日期，也就是 `created`，不可改用來源原始發布日期。
+5. 上述格式中的日期必須使用該 summary 被收錄進 LLM Wiki 的日期，也就是 `ingested_at`，不可改用來源原始發布日期或 `source_created`。
 6. 若 `wiki/index.md` 尚未有 `## Summaries` 或 `## Concepts` 區塊，必須先補齊區塊，再插入條目。
 7. 若對應條目已存在，應更新原條目，不要重複新增。
 8. 不可只在 `wiki/log.md` 記錄 summary 變更而省略 `wiki/index.md`。

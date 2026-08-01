@@ -15,7 +15,12 @@ AI 程式碼輔助工具（AI Coding Tools / AI Coding Agents）是利用大型�
 - **GPT-5.5**: OpenAI 的最新旗艦模型，在代理式編碼 (Agentic Coding) 與科學研究領域展現了極高的自主性與效率。
 - **Claude Code**: Anthropic 官方推出的終端機 AI 程式碼代理。
 
+## Usage and Cost Governance
+
+Codex 的 credits 可能依 workspace 適用的 rate card，以 token 類型或 message / pull request 平均值計算。方案遷移、模型、fast mode、任務大小與輸出量都會影響實際消耗；定價頁的數字具有時間性，使用前應確認原始文件與目前方案。
+
 ## 關聯資源
 - [opencode-detailed-guide](../summaries/opencode-detailed-guide.md)
 - [codex-vs-claude-vibecoding-observations](../summaries/codex-vs-claude-vibecoding-observations.md)
 - [andrej-karpathy-from-vibe-coding-to-agentic-engineering](../summaries/andrej-karpathy-from-vibe-coding-to-agentic-engineering.md)
+- [codex-rate-card](../summaries/codex-rate-card.md)

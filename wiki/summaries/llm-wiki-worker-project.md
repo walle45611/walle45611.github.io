@@ -35,5 +35,5 @@ LLM-Wiki-Worker 旨在解決「資訊收集後難以回溯與利用」的問題�
 
 ## 相關概念連結
 
-- [agentic-knowledge-base-maintenance](./agentic-knowledge-base-maintenance.md)
-- [llm-wiki-worker](./llm-wiki-worker.md)
+- [agentic-knowledge-base-maintenance](../concepts/agentic-knowledge-base-maintenance.md)
+- [llm-wiki-worker](../summaries/llm-wiki-worker.md)

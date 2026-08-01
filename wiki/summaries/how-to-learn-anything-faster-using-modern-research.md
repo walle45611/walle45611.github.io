@@ -45,7 +45,7 @@
 
 ## Related Concepts
 
-- [effective-learning](/Users/heguowei/Library/Mobile Documents/iCloud~md~obsidian/Documents/Knowledge Vault/wiki/concepts/effective-learning.md)
+- [effective-learning](../concepts/effective-learning.md)
 
 ## Alignment With Current Wiki
 

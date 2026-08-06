@@ -437,11 +437,7 @@ fn post_meta(article: &Article) -> String {
 }
 
 fn render_page(title: &str, description: &str, pathname: &str, body: &str, page_type: &str) -> String {
-    let full_title = if title == "Walle Blog" {
-        title.to_string()
-    } else {
-        format!("{title} | Walle Blog")
-    };
+    let _ = title;
     format!(
         r#"<!doctype html>
 <html lang="en">
@@ -478,16 +474,16 @@ fn render_page(title: &str, description: &str, pathname: &str, body: &str, page_
   </body>
 </html>
 "#,
-        escape_html(&full_title),
+        escape_html("Walle Blog"),
         escape_html(description),
         page_url(pathname),
         SITE_URL,
         page_type,
-        escape_html(&full_title),
+        escape_html("Walle Blog"),
         escape_html(description),
         page_url(pathname),
-	    critical_styles(),
-            analytics_markup(),
+        critical_styles(),
+        analytics_markup(),
         body
     )
 }

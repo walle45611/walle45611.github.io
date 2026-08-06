@@ -1,0 +1,23 @@
+# Build outputs
+/dist/
+/target/
+/site-builder/target/
+
+# Rust artifacts
+**/target/
+
+# Legacy/nonessential files from previous setup
+.DS_Store
+/node_modules
+/.openai
+/.wrangler
+/.git
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files
+.env*

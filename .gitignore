@@ -35,5 +35,17 @@ Temporary Items
 *.icloud
 
 .obsidian
-# End of https://www.toptal.com/developers/gitignore/api/macos
 
+# Rust build artifacts
+/target/
+**/target/
+
+# Legacy/nonessential site artifacts
+/sites/.DS_Store
+/sites/node_modules/
+/sites/dist/
+/sites/.openai/
+/sites/.wrangler/
+/sites/.git/
+
+# End of https://www.toptal.com/developers/gitignore/api/macos

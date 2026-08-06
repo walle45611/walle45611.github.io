@@ -3,7 +3,6 @@ title: 專案管理考前複習筆記講義
 aliases:
   - 專案管理-期中筆記
 created: 2026-04-29
-source: raw/專案管理-期中筆記.md
 type: self-authored study note
 tags:
   - project-management

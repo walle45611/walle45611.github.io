@@ -1,0 +1,166 @@
+{
+  "source": "../raw",
+  "selector": "blog: true, tags: [blog], or legacy blog.walle4561.com source",
+  "articles": [
+    {
+      "file": "vLLM + Gemma 4 + LoRA：我踩過的兩個坑.md",
+      "sha256": "90ce9284ea0b69f7714b75bdf3f296cc8983541399e9bcc56a1d0b281e2914d8",
+      "route": "/articles/posts/vllm-gemma-4-lora-我踩過的兩個坑/"
+    },
+    {
+      "file": "MicroK8s 完整部署指南：從安裝到生產級應用.md",
+      "sha256": "5b03539af9c62241107cc6b4d86517966d5bd51918f5a6d2c18a8b38c91cdd9b",
+      "route": "/articles/posts/microk8s-完整部署指南-從安裝到生產級應用/"
+    },
+    {
+      "file": "Nuitka 與 Docker 打造高效能且安全的 Python 應用部署方案.md",
+      "sha256": "0da18c71cff0f7d510c902672d0343611a7e8fb4160e70146d5ca38c04b1662d",
+      "route": "/articles/posts/nuitka-與-docker-打造高效能且安全的-python-應用部署方案/"
+    },
+    {
+      "file": "複雜度計算.md",
+      "sha256": "0ffc5ccd1e97c1818e7f93b08a73515033867ab57ff81f36e32023a5b27cadea",
+      "route": "/articles/posts/複雜度計算/"
+    },
+    {
+      "file": "git-worktree.md",
+      "sha256": "5a0c425ffc189f9fb3c80b79bd7a80dbfef6048cbc06877e2a2be8e9c9182368",
+      "route": "/articles/posts/git-worktree/"
+    },
+    {
+      "file": "neovim-settings.md",
+      "sha256": "0642687f384e55ec4f740b70eb80770ae62eb0a88f3195b1cacb93a7d2009991",
+      "route": "/articles/posts/neovim-settings/"
+    },
+    {
+      "file": "deadlock-management.md",
+      "sha256": "3da3a746bc66bf608bc70dbfd6d7186f3565e04379889b2fc561720981934fb6",
+      "route": "/articles/posts/deadlock-management/"
+    },
+    {
+      "file": "race-condition-and-synchronization.md",
+      "sha256": "d903d550d12f5d621c81a83a35f9109a164db688171ce83f13ee3d6204c44a5c",
+      "route": "/articles/posts/race-condition-and-synchronization/"
+    },
+    {
+      "file": "isms-context-leadership-planning.md",
+      "sha256": "d705e5de5b5b99246c4b65885295800b6008af6f24bbbbd74bcbb63f0dbc39bd",
+      "route": "/articles/posts/isms-context-leadership-planning/"
+    },
+    {
+      "file": "k8s-introduction-pods.md",
+      "sha256": "236c7a7fff2744ef1e1e215f4db137ed1924365e22761e981800642a762bf66a",
+      "route": "/articles/posts/k8s-introduction-pods/"
+    },
+    {
+      "file": "domjudge-install-guide.md",
+      "sha256": "a50dba215ac7ed05e00f4f3954ab4338f0a9a8ca383e5f67e59a746cfca9e4b8",
+      "route": "/articles/posts/domjudge-install-guide/"
+    },
+    {
+      "file": "rest-with-api.md",
+      "sha256": "40a6020b58062bd88bfcba4ab9fe22919fe5f89521272153d19b1ec241e32d6b",
+      "route": "/articles/posts/rest-with-api/"
+    },
+    {
+      "file": "style-guide-for-python-code.md",
+      "sha256": "46d14ae97bf922b19f74fce7a26951b509901f230df4761713d3146e740fa217",
+      "route": "/articles/posts/style-guide-for-python-code/"
+    },
+    {
+      "file": "queue-1.md",
+      "sha256": "7ebbb474b5f3b68a45e1d3412b78ef9c3912c21e349d531316ae3569b2ce8db0",
+      "route": "/articles/posts/queue-1/"
+    },
+    {
+      "file": "windows-l2tp-connect-error-720.md",
+      "sha256": "18cc2f7816b6c267c061e35f7f7029fd76f9ba918ca55b84f2c809ad5a070d9c",
+      "route": "/articles/posts/windows-l2tp-connect-error-720/"
+    },
+    {
+      "file": "induction-ldap.md",
+      "sha256": "d9287d8dc3ddbd92d548ad13f99dd336430ff733eeb6476f331fdfb5331dcb20",
+      "route": "/articles/posts/induction-ldap/"
+    },
+    {
+      "file": "stack-1.md",
+      "sha256": "e1e3d4978c7144b86edb1bfb226c484d8bec202bb06db862a2bdbe3fe63d267d",
+      "route": "/articles/posts/stack-1/"
+    },
+    {
+      "file": "setup-openssh-server-in-windows-with-guacamole-sftp.md",
+      "sha256": "a1f00688878afa76191ed7befba29d8d1eccf8be7d40783e6fc86a90eecc232c",
+      "route": "/articles/posts/setup-openssh-server-in-windows-with-guacamole-sftp/"
+    },
+    {
+      "file": "binary-trees-1.md",
+      "sha256": "b8963dfebd60724aa57a8d7727a295bf998e1ad93f8ed2b65cbf317bc17384a0",
+      "route": "/articles/posts/binary-trees-1/"
+    },
+    {
+      "file": "tree-introduc.md",
+      "sha256": "a816ad30412c9c0ac9c0582c750530cd8b92188367a1240255524390a09cbf34",
+      "route": "/articles/posts/tree-introduc/"
+    },
+    {
+      "file": "direct-image.md",
+      "sha256": "d7025e602b041d2f98d358b972cbca10461fba8eee4d78e182c92a7b09efa1f3",
+      "route": "/articles/posts/direct-image/"
+    },
+    {
+      "file": "uva-1586-227.md",
+      "sha256": "b89486d025c39f447675c1118760fe708b5ced9653d1257c9bec854d219d9f0c",
+      "route": "/articles/posts/uva-1586-227/"
+    },
+    {
+      "file": "virtual-judge-p2249.md",
+      "sha256": "57a345af33fc0c8526e0f4082a9bed7a59a0ff556cb1f8166a0d6614e335e66c",
+      "route": "/articles/posts/virtual-judge-p2249/"
+    },
+    {
+      "file": "django-uwsgi-nginx.md",
+      "sha256": "401ad0c12c1ec81b546e0cc087f48237630ac7a9a9e0ceec83650d0283b55351",
+      "route": "/articles/posts/django-uwsgi-nginx/"
+    },
+    {
+      "file": "uva-272-340-0816.md",
+      "sha256": "1290d116740c52df1c36a195b7ed08236eca960804f4021d12173305b23f242c",
+      "route": "/articles/posts/uva-272-340-0816/"
+    },
+    {
+      "file": "vscode-extension-profile.md",
+      "sha256": "fa5a6ebca8a548a3cf8327ecad29db6f73d0623ab441f352e245e27e460607c9",
+      "route": "/articles/posts/vscode-extension-profile/"
+    },
+    {
+      "file": "codeforces-0815.md",
+      "sha256": "02c82b15a7f3a940a49cbe85f8fe8b464fdc25d9aa4604c21fc4720eaf6ee4c0",
+      "route": "/articles/posts/codeforces-0815/"
+    },
+    {
+      "file": "virtual-judge-hdu-1232.md",
+      "sha256": "b33552b7e1d38862fc635b0f66e209ddda8d48156a6fe6bbb9fddd2d42a82b10",
+      "route": "/articles/posts/virtual-judge-hdu-1232/"
+    },
+    {
+      "file": "leetcode-3106.md",
+      "sha256": "e0f0b0228bd65cc296838f3d6fad631d389f4fad3e65dbf802eb3b1a18147a3c",
+      "route": "/articles/posts/leetcode-3106/"
+    },
+    {
+      "file": "introduce-vim.md",
+      "sha256": "eee4a61c479a1cf76d92d4e98ca9533b6f42d784fce7616715cd4331f50191fe",
+      "route": "/articles/posts/introduce-vim/"
+    },
+    {
+      "file": "setting-hexo-ga.md",
+      "sha256": "766a07ae11ab92225079963054092109d7582eac580ff4d5bfdd4f7eae40d3ef",
+      "route": "/articles/posts/setting-hexo-ga/"
+    },
+    {
+      "file": "setting-hoex.md",
+      "sha256": "ebf36fdbdd71e62abfc2a41bf8b79f771619faa8ebd00a791b0145ef53c802f5",
+      "route": "/articles/posts/setting-hoex/"
+    }
+  ]
+}

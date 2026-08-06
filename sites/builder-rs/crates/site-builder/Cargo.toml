@@ -1,0 +1,23 @@
+[package]
+name = "site-builder"
+description = "LLM Wiki static site builder (Rust)."
+authors = ["LLM Wiki"]
+edition.workspace = true
+version.workspace = true
+license.workspace = true
+
+[dependencies]
+sha2.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+serde_yaml.workspace = true
+regex.workspace = true
+unicode-normalization.workspace = true
+renderer-wasm = { path = "../renderer-wasm" }
+
+[dev-dependencies]
+tempfile = "3"
+
+[[bin]]
+name = "site-builder"
+path = "src/main.rs"

@@ -116,3 +116,23 @@
 - checked: `AGENTS.md`, `wiki/rules/router-rules.md`, `wiki/rules/output-rules.md`, `wiki/rules/log-rules.md`, `wiki/rules/ingest-rules.md`, `wiki/rules/daily-rules.md`, `wiki/rules/query-rules.md`, `wiki/rules/review-rules.md`, `wiki/rules/social-post-rules.md`
 - fixed: 明確限定 JSON 僅在使用者要求時使用；統一純人工查詢的 log 判定；限制 query 自動回寫；區分 `source_created` 與 `ingested_at`；補強 daily 去重、空日報、來源連結與社群貼文實際發送邊界。
 - gaps: 既有 summary 與 index 尚未全面回填 `ingested_at`，目前保留舊 index 日期作為相容值。
+
+## [2026-08-03] ingest | Blog Repo 文章納入 LLM Wiki
+
+- source: `blog/source/_posts/`（32 篇文章）
+- created: 29 篇 Blog article summary、`wiki/concepts/blog-knowledge-migration.md`
+- updated: `wiki/summaries/vllm-gemma-4-lora-two-pitfalls.md`, `wiki/summaries/microk8s-production-deployment-guide.md`, `wiki/summaries/nuitka-and-docker-for-high-performance-and-secure-python-deployment.md`, `wiki/index.md`, `wiki/log.md`
+- notes: 保留 Blog Repo 作為原始文章來源，將 32 篇文章以可追溯摘要納入 LLM Wiki；未修改 Blog Repo，也未讀取或修改 `raw/`。
+
+## [2026-08-04] rules | raw source import policy
+
+- requested-by: user
+- updated: `AGENTS.md`, `wiki/rules/ingest-rules.md`, `wiki/log.md`
+- notes: `raw/` 維持既有檔案不可變；僅在使用者明確要求匯入或建立原始來源，且目標路徑尚不存在時，允許新增檔案。
+
+## [2026-08-04] ingest | legacy Blog originals into raw
+
+- source: `/Users/heguowei/project/blog/source/_posts/`（32 篇）
+- created: `raw/` 新增 29 篇帶有 `blog: true` 的原始文章；另有 3 篇既有 raw 原文以標題比對保留、不覆寫
+- updated: 29 篇既有 Blog summary 的 `source` 改指向新 raw 路徑；`wiki/log.md`
+- notes: Blog Repo 保留不變；Sites 建置直接讀取 raw metadata，不再保存文章副本。

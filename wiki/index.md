@@ -27,14 +27,44 @@
 - [social-english-and-small-talk](./concepts/social-english-and-small-talk.md): 統整社交英文與 small talk 的語用功能，聚焦問候、回應、接話、追問與低風險寒暄開場。
 - [llm-evaluation](./concepts/llm-evaluation.md): 統整 LLM 輸出、事實性、agent 工作流與 benchmark 的評估層次、偏誤與選型原則。
 - [writing-style-and-plain-english](./concepts/writing-style-and-plain-english.md): 整合 plain English 的讀者導向寫作與 academic style 的作者位置、hedging、脈絡及證據支撐。
+- [blog-knowledge-migration](./concepts/blog-knowledge-migration.md): 記錄舊 Blog Repo 文章納入 LLM Wiki 的來源邊界、摘要集合與後續維護方式。
 ## Summaries
 
+- [blog-algorithm-complexity](./summaries/blog-algorithm-complexity.md) · 2026-08-03: 整理漸進符號、複雜度、遞迴關係、Stirling 公式與 Master Theorem。
+- [blog-binary-trees-1](./summaries/blog-binary-trees-1.md) · 2026-08-03: 整理 Binary Tree 的定義、性質、表示法與走訪實作。
+- [blog-codeforces-0815](./summaries/blog-codeforces-0815.md) · 2026-08-03: 整理 Codeforces 中 DFS 圖論遍歷與矩陣處理的刷題紀錄。
+- [blog-deadlock-management](./summaries/blog-deadlock-management.md) · 2026-08-03: 整理死結條件、預防、避免、檢測恢復、Banker’s Algorithm 與資源分配圖。
+- [blog-direct-image](./summaries/blog-direct-image.md) · 2026-08-03: 整理集合論中直接像的定義與集合運算性質。
+- [blog-django-uwsgi-nginx](./summaries/blog-django-uwsgi-nginx.md) · 2026-08-03: 整理以 Docker、uWSGI 與 Nginx 部署 Django 的流程。
+- [blog-domjudge-install-guide](./summaries/blog-domjudge-install-guide.md) · 2026-08-03: 整理 Ubuntu 上 DOMServer、Judgehost、資料庫與服務設定。
+- [blog-git-worktree](./summaries/blog-git-worktree.md) · 2026-08-03: 整理以 Git Worktree 並行處理 Hotfix、新功能與線性歷史的流程。
+- [blog-induction-ldap](./summaries/blog-induction-ldap.md) · 2026-08-03: 整理 LDAP 的背景、目錄結構、帳號管理與 SSO 應用。
+- [blog-introduce-vim](./summaries/blog-introduce-vim.md) · 2026-08-03: 整理 Vim 模式、快捷鍵與鍵盤導向編輯方式。
+- [blog-isms-context-leadership-planning](./summaries/blog-isms-context-leadership-planning.md) · 2026-08-03: 整理 ISO 27001 第四至第六章的情境、領導與規劃要求。
+- [blog-k8s-introduction-pods](./summaries/blog-k8s-introduction-pods.md) · 2026-08-03: 整理 Kubernetes Pod 的定義、生命週期、資源限制與操作。
+- [blog-leetcode-3106](./summaries/blog-leetcode-3106.md) · 2026-08-03: 整理 LeetCode 3106 的 cyclic 字元距離與貪心更新思路。
+- [blog-neovim-settings](./summaries/blog-neovim-settings.md) · 2026-08-03: 整理 LazyVim、Neovim、Oh My Tmux 與插件設定流程。
+- [blog-queue-1](./summaries/blog-queue-1.md) · 2026-08-03: 整理 Queue 的 FIFO、ADT、Circular Queue 與鏈結串列實作。
+- [blog-race-condition-and-synchronization](./summaries/blog-race-condition-and-synchronization.md) · 2026-08-03: 整理競爭條件、臨界區、鎖、信號量與經典同步問題。
+- [blog-rest-with-api](./summaries/blog-rest-with-api.md) · 2026-08-03: 整理 API、Resource、Client 與 REST 架構約束及 URI 設計。
+- [blog-setting-hexo-ga](./summaries/blog-setting-hexo-ga.md) · 2026-08-03: 整理 Hexo/NexT、Google Analytics 與 GitHub Actions 的歷史設定。
+- [blog-setting-hexo](./summaries/blog-setting-hexo.md) · 2026-08-03: 整理 Hexo 初始化、NexT、robots、開發與 GitHub Pages 部署流程。
+- [blog-setup-openssh-server-in-windows-with-guacamole-sftp](./summaries/blog-setup-openssh-server-in-windows-with-guacamole-sftp.md) · 2026-08-03: 整理 Windows OpenSSH、服務、防火牆與 Guacamole SFTP 設定。
+- [blog-stack-1](./summaries/blog-stack-1.md) · 2026-08-03: 整理 Stack 的 LIFO 概念、應用與陣列/鏈結串列實作。
+- [blog-style-guide-for-python-code](./summaries/blog-style-guide-for-python-code.md) · 2026-08-03: 整理 Python PEP 257、PEP 8、命名、縮排與排版規範。
+- [blog-tree-introduc](./summaries/blog-tree-introduc.md) · 2026-08-03: 整理 Tree 的遞迴定義、術語與兩種表示法。
+- [blog-uva-1586-227](./summaries/blog-uva-1586-227.md) · 2026-08-03: 整理 UVA 227 模擬與 UVA 1586 化學式解析的刷題紀錄。
+- [blog-uva-272-340-0816](./summaries/blog-uva-272-340-0816.md) · 2026-08-03: 整理 UVA 輸入終止、位置命中與數字命中的解題思路。
+- [blog-virtual-judge-hdu-1232](./summaries/blog-virtual-judge-hdu-1232.md) · 2026-08-03: 整理以 DFS 計算連通分量與新增邊數的解題思路。
+- [blog-virtual-judge-p2249](./summaries/blog-virtual-judge-p2249.md) · 2026-08-03: 整理排序數列中以二分搜尋找首次出現位置的方法。
+- [blog-vscode-extension-profile](./summaries/blog-vscode-extension-profile.md) · 2026-08-03: 整理用 VS Code Profile 分離不同開發環境 extensions 的方式。
+- [blog-windows-l2tp-connect-error-720](./summaries/blog-windows-l2tp-connect-error-720.md) · 2026-08-03: 整理 Windows L2TP VPN 720 錯誤的 WAN Miniport 與連線排錯脈絡。
 - [lost-in-the-middle-how-language-models-use-long-context-explained](./summaries/lost-in-the-middle-how-language-models-use-long-context-explained.md) · 2026-05-15: 整理 Weaviate 對 Lost in the Middle 論文的解說，聚焦長 context 的位置效應、RAG 排序品質與 query-aware contextualization。
 - [what-is-the-rouge-metric](./summaries/what-is-the-rouge-metric.md) · 2026-05-14: 整理 Hugging Face 對 ROUGE 評估指標的說明，涵蓋 ROUGE-1、ROUGE-2、ROUGE-L、ROUGE-LSUM 以及 precision/recall/F1 的使用限制。
 - [andrej-karpathy-from-vibe-coding-to-agentic-engineering](./summaries/andrej-karpathy-from-vibe-coding-to-agentic-engineering.md) · 2026-04-30: 整理 Karpathy 從 vibe coding 走向 agentic engineering 的觀察，聚焦 software 3.0、agent-first 文件與 understanding 的瓶頸。
 - [project-management-midterm-notes](./summaries/project-management-midterm-notes.md) · 2026-04-29: 歸檔自寫專案管理考前複習講義，整理錯題優先順序、組織管理、時程計算與敏捷常考觀念。
 - [ai-self-correction-decoding-workflow-reasoning](./summaries/ai-self-correction-decoding-workflow-reasoning.md) · 2026-04-28: 整理語言模型自我修正從 contrastive decoding、workflow verification 到 RL reasoning 的技術路線與主要爭議。
-- [vllm-gemma-4-lora-two-pitfalls](./summaries/vllm-gemma-4-lora-two-pitfalls.md) · 2026-04-28: 整理 vLLM 對 Gemma 4 runtime LoRA 與 CUDA wheel 相容性的兩個坑。
+- [vllm-gemma-4-lora-two-pitfalls](./summaries/vllm-gemma-4-lora-two-pitfalls.md) · 2026-08-03: 整理 vLLM 對 Gemma 4 runtime LoRA 與 CUDA wheel 相容性的兩個坑，並連回 Blog source。
 - [lora-and-qlora-fine-tuning-explained-in-depth](./summaries/lora-and-qlora-fine-tuning-explained-in-depth.md) · 2026-04-25: 整理 LoRA / QLoRA 的參數高效微調原理、rank/alpha/dropout 與量化取捨。
 - [cloudflare-pull-consumers](./summaries/cloudflare-pull-consumers.md) · 2026-04-21: 整理 Cloudflare Queues pull consumer 的啟用方式、ack/retry 機制、`lease_id` 與 `visibility_timeout` 邊界，以及 pull 與 push 消費模式的選型差異。
 - [llm-wiki-worker](./summaries/llm-wiki-worker.md) · 2026-04-22: 整理 LLM-Wiki-Worker 如何以 `raw/`/`wiki/` 分層、router rules、Cloudflare Queue 與 LINE webhook 建立可持續維護的知識庫 agent 流程。
@@ -44,13 +74,13 @@
 - [openclaw-ai-agent-operating-principles](./summaries/openclaw-ai-agent-operating-principles.md) · 2026-04-19: 以 OpenClaw 拆解 AI agent 的執行閉環，涵蓋 system prompt 組裝、工具調用、記憶檔、排程與上下文壓縮，以及對應的安全風險與防禦。
 - [harness-engineering-language-models-need-human-guidance](./summaries/harness-engineering-language-models-need-human-guidance.md) · 2026-04-19: 李一駿助教以實作案例與近期研究說明 harness engineering 的核心：透過規則、工具與工作流設計，讓模型在多輪任務中更穩定完成目標。
 - [how-to-learn-anything-faster-using-modern-research](./summaries/how-to-learn-anything-faster-using-modern-research.md) · 2026-04-18: Justin Sung 以六條過時學習規則整理現代學習研究的實務含義，涵蓋練習設計、deep processing、筆記、困難學習與直覺形成。
-- [microk8s-production-deployment-guide](./summaries/microk8s-production-deployment-guide.md) · 2026-04-19: 整理 MicroK8s 從安裝、插件、節點治理到 Argo CD/Sealed Secrets/Image Updater 的可重複部署流程與生產化邊界。
+- [microk8s-production-deployment-guide](./summaries/microk8s-production-deployment-guide.md) · 2026-08-03: 整理 MicroK8s 從安裝、插件、節點治理到 Argo CD/Sealed Secrets/Image Updater 的可重複部署流程與生產化邊界，並連回 Blog source。
 - [cloudflare-workers-ai-pricing](./summaries/cloudflare-workers-ai-pricing.md) · 2026-04-20: 彙整 Workers AI 的神經元計價規則、免費額度、UTC 日切重置與跨模型 token-neuron 成本換算重點。
 - [codex-vs-claude-vibecoding-observations](./summaries/codex-vs-claude-vibecoding-observations.md) · 2026-04-20: 以量化交易案例比較 Codex/GPT 與 Claude 的編程風格差異，提煉「架構規劃與執行分層」的實務工作流。
 - [opencode-detailed-guide](./summaries/opencode-detailed-guide.md) · 2026-04-20: 技術爬爬蝦關於 OpenCode 的攻略，介紹其作為開源版 Claude Code 的核心定位、免費模型接入與 MCP/Agent Skills 支援。
 - [lin-zai-xue](./summaries/lin-zai-xue.md) · 2026-04-21: 林宅血案的事件概述、主要人物、相關概念與參考來源。
 - [choose-a-design-pattern-for-your-agentic-ai-system-cloud-architecture-center](./summaries/choose-a-design-pattern-for-your-agentic-ai-system-cloud-architecture-center.md) · 2026-04-22: 整理 Choose a design pattern for your agentic AI system 文章，提供 pattern 選擇框架與比較矩陣。
-- [nuitka-and-docker-for-high-performance-and-secure-python-deployment](./summaries/nuitka-and-docker-for-high-performance-and-secure-python-deployment.md) · 2026-04-22: 介紹 Nuitka 與 Docker 結合的高效能與安全部署方案。
+- [nuitka-and-docker-for-high-performance-and-secure-python-deployment](./summaries/nuitka-and-docker-for-high-performance-and-secure-python-deployment.md) · 2026-08-03: 介紹 Nuitka 與 Docker 結合的高效能與安全部署方案，並連回 Blog source。
 - [postgresql-books](./summaries/postgresql-books.md) · 2026-04-22
 - [codex-for-almost-everything](./summaries/codex-for-almost-everything.md) · 2026-04-22: 整理 Codex app 的主要更新與功能
 - [what-is-microsoft-entra](./summaries/what-is-microsoft-entra.md) · 2026-04-24: 整理 Microsoft Entra 產品家族，涵蓋身份管理、零信任存取、外部 ID 及 AI Agent ID 等核心組件。

@@ -35,11 +35,3 @@ jobs:
       - name: Run Rust tests
         run: cargo test --workspace
         working-directory: ./sites/builder-rs
-
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: walle45611-github-io
-          directory: ./sites/dist/client

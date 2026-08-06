@@ -15,6 +15,6 @@ pub fn render_markdown(markdown: &str) -> String {
     render_markdown_to_html(markdown)
 }
 
-fn comrak_options() -> ComrakOptions {
+fn comrak_options() -> ComrakOptions<'static> {
     ComrakOptions::default()
 }

@@ -108,15 +108,30 @@ fn load_config() -> BuilderConfig {
     let styles_path = project_root.join("sites").join("styles.css");
     let favicon_path = project_root.join("sites").join("public").join("favicon.svg");
     let manifest_path = project_root.join("sites").join("content-manifest.json");
+    let raw_dir = raw_dir.map(|dir| resolve_existing_path(dir, &project_root, "raw"));
 
     BuilderConfig {
-        _project_root: project_root,
-        raw_dir: raw_dir.unwrap_or(raw_default),
+        _project_root: project_root.clone(),
+        raw_dir: raw_dir.unwrap_or_else(|| resolve_existing_path(raw_default, &project_root, "raw")),
         out_dir: out_dir.unwrap_or(out_default),
         manifest_path,
         styles_path,
         favicon_path,
     }
+}
+
+fn resolve_existing_path(candidate: PathBuf, project_root: &Path, fallback_name: &str) -> PathBuf {
+    let fallback1 = project_root.join(fallback_name);
+    let fallback2 = project_root.parent().map(|parent| parent.join(fallback_name));
+    let fallback3 = PathBuf::from(fallback_name);
+    let fallback2 = fallback2.unwrap_or_else(|| project_root.to_path_buf());
+    let candidate_for_default = candidate.clone();
+    for path in [candidate, fallback1, fallback2, fallback3].into_iter() {
+        if path.exists() {
+            return path;
+        }
+    }
+    candidate_for_default
 }
 
 fn print_usage_and_exit(code: i32) -> ! {
@@ -438,7 +453,8 @@ fn render_page(title: &str, description: &str, pathname: &str, body: &str, page_
     <link rel="canonical" href="{}">
     <link rel="alternate" type="application/rss+xml" title="Walle Blog RSS" href="{}/feed.xml">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="/styles.css">
+	    <link rel="preload" href="/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	    <noscript><link rel="stylesheet" href="/styles.css"></noscript>
     <meta property="og:type" content="{}">
     <meta property="og:title" content="{}">
     <meta property="og:description" content="{}">

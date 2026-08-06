@@ -322,11 +322,9 @@ fn render_sitemap(articles: &[Article]) -> String {
         })
         .collect::<String>();
     format!(
-        r#"<?xml version="1.0" encoding="UTF-8"?>"#
-            .to_string()
-            + "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">"
-            + &entries
-            + "</urlset>"
+        "{}<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">{}</urlset>",
+        r#"<?xml version="1.0" encoding="UTF-8"?>"#,
+        entries
     )
 }
 
@@ -479,7 +477,7 @@ fn render_page(title: &str, description: &str, pathname: &str, body: &str, page_
 fn analytics_markup() -> String {
     format!(
         r#"<script async src="https://www.googletagmanager.com/gtag/js?id={}"></script>
-    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","{}");</script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag("js",new Date());gtag("config","{}");</script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={}" crossorigin="anonymous"></script>"#,
         GA_ID, GA_ID, ADSENSE_CLIENT
     )

@@ -29,7 +29,7 @@ jobs:
         working-directory: ./sites/builder-rs
 
       - name: Generate static site
-        run: cargo run -p site-builder --release -- --raw-dir "$GITHUB_WORKSPACE/raw" --out-dir "$GITHUB_WORKSPACE/sites/dist/client"
+        run: cargo run -p site-builder --release -- --project-dir "$GITHUB_WORKSPACE" --raw-dir "$GITHUB_WORKSPACE/raw" --out-dir "$GITHUB_WORKSPACE/sites/dist/client"
         working-directory: ./sites/builder-rs
 
       - name: Run Rust tests

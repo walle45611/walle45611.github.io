@@ -453,8 +453,9 @@ fn render_page(title: &str, description: &str, pathname: &str, body: &str, page_
     <link rel="canonical" href="{}">
     <link rel="alternate" type="application/rss+xml" title="Walle Blog RSS" href="{}/feed.xml">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-	    <link rel="preload" href="/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-	    <noscript><link rel="stylesheet" href="/styles.css"></noscript>
+    <style>{}</style>
+		    <link rel="preload" href="/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		    <noscript><link rel="stylesheet" href="/styles.css"></noscript>
     <meta property="og:type" content="{}">
     <meta property="og:title" content="{}">
     <meta property="og:description" content="{}">
@@ -485,9 +486,35 @@ fn render_page(title: &str, description: &str, pathname: &str, body: &str, page_
         escape_html(&full_title),
         escape_html(description),
         page_url(pathname),
-        analytics_markup(),
+	    critical_styles(),
+            analytics_markup(),
         body
     )
+}
+
+fn critical_styles() -> &'static str {
+    r#"
+:root {
+  color-scheme: light;
+  --ink: #111;
+  --muted: #5f5f5f;
+  --line: #d7d7d7;
+  --paper: #fff;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.7; }
+.site-header,
+.site-main,
+.site-footer { margin: 0 auto; max-width: 900px; padding-left: 1.4rem; padding-right: 1.4rem; }
+.site-header { border-bottom: 1px solid var(--line); padding-top: 2.4rem; padding-bottom: 1.4rem; }
+.site-title { font-size: 1.8rem; font-weight: 700; text-decoration: none; }
+.site-description { color: var(--muted); margin: 0.25rem 0 0; }
+.site-nav { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
+.site-nav a { font-size: 0.88rem; }
+.site-main { padding-bottom: 5rem; padding-top: 3.5rem; }
+.site-footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 0.78rem; padding-bottom: 2rem; padding-top: 1.2rem; }
+"#
 }
 
 fn analytics_markup() -> String {

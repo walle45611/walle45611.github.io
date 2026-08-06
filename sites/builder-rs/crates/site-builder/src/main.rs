@@ -48,7 +48,7 @@ struct ContentArticleManifest {
 
 #[derive(Debug, Clone)]
 struct BuilderConfig {
-    project_root: PathBuf,
+    _project_root: PathBuf,
     raw_dir: PathBuf,
     out_dir: PathBuf,
     manifest_path: PathBuf,
@@ -110,7 +110,7 @@ fn load_config() -> BuilderConfig {
     let manifest_path = project_root.join("sites").join("content-manifest.json");
 
     BuilderConfig {
-        project_root,
+        _project_root: project_root,
         raw_dir: raw_dir.unwrap_or(raw_default),
         out_dir: out_dir.unwrap_or(out_default),
         manifest_path,
@@ -615,12 +615,17 @@ fn strip_markdown(value: &str) -> String {
 }
 
 fn excerpt_for_summary(body: &str) -> String {
-    let summary = Regex::new(r"(?is)##\s*Summary\s*\n([\s\S]*?)(?=\n##\s|$)")
-        .expect("regex");
-    let summary = summary
-        .captures(body)
-        .and_then(|cap| cap.get(1))
-        .map(|m| m.as_str().trim().to_string())
+    let heading = Regex::new(r"(?im)^##\s*Summary\s*$").expect("regex");
+    let next_heading = Regex::new(r"(?im)^##\s+").expect("regex");
+
+    let summary = heading
+        .find(body)
+        .map(|start| {
+            let after_heading = &body[start.end()..];
+            let next = next_heading.find(after_heading);
+            let end = next.map_or(after_heading.len(), |m| m.start());
+            after_heading[..end].trim().to_string()
+        })
         .filter(|text| !text.is_empty())
         .unwrap_or_else(|| {
             body.split_once("<!--more-->")

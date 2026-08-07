@@ -449,14 +449,17 @@ fn render_page(title: &str, description: &str, pathname: &str, body: &str, page_
     <link rel="canonical" href="{}">
     <link rel="alternate" type="application/rss+xml" title="Walle Blog RSS" href="{}/feed.xml">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#ffffff">
     <style>{}</style>
-		    <link rel="preload" href="/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-		    <noscript><link rel="stylesheet" href="/styles.css"></noscript>
+    <link rel="preload" href="/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/styles.css"></noscript>
     <meta property="og:type" content="{}">
     <meta property="og:title" content="{}">
     <meta property="og:description" content="{}">
     <meta property="og:url" content="{}">
-    {}
   </head>
   <body>
     <header class="site-header">
@@ -467,10 +470,11 @@ fn render_page(title: &str, description: &str, pathname: &str, body: &str, page_
         <a href="/articles/">Archive</a>
         <a href="/about/">About</a>
         <a href="/feed.xml">RSS</a>
-      </nav>
-    </header>
+    </nav>
+  </header>
     <main class="site-main">{}</main>
     <footer class="site-footer">Walle Blog · Notes for later.</footer>
+    {}
   </body>
 </html>
 "#,
@@ -483,8 +487,8 @@ fn render_page(title: &str, description: &str, pathname: &str, body: &str, page_
         escape_html(description),
         page_url(pathname),
         critical_styles(),
-        analytics_markup(),
-        body
+        body,
+        analytics_markup()
     )
 }
 
@@ -500,6 +504,7 @@ fn critical_styles() -> &'static str {
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.7; }
+.site-header { min-height: 8.5rem; }
 .site-header,
 .site-main,
 .site-footer { margin: 0 auto; max-width: 900px; padding-left: 1.4rem; padding-right: 1.4rem; }
@@ -510,15 +515,68 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 .site-nav a { font-size: 0.88rem; }
 .site-main { padding-bottom: 5rem; padding-top: 3.5rem; }
 .site-footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 0.78rem; padding-bottom: 2rem; padding-top: 1.2rem; }
+.prose img,
+.prose iframe {
+  width: 100%;
+  max-width: 100%;
+  min-height: 12rem;
+  display: block;
+}
 "#
 }
 
 fn analytics_markup() -> String {
     format!(
-        r#"<script async src="https://www.googletagmanager.com/gtag/js?id={}"></script>
-    <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag("js",new Date());gtag("config","{}");</script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={}" crossorigin="anonymous"></script>"#,
-        GA_ID, GA_ID, ADSENSE_CLIENT
+        r#"<script>
+(function () {{
+  function loadScript(src, withCrossOrigin) {{
+    var tag = document.createElement("script");
+    tag.async = true;
+    tag.src = src;
+    tag.referrerPolicy = "strict-origin-when-cross-origin";
+    if (withCrossOrigin) {{
+      tag.crossOrigin = "anonymous";
+    }}
+    document.head.appendChild(tag);
+  }}
+
+  function boot() {{
+    if (window.__walleAnalyticsBooted) {{
+      return;
+    }}
+    window.__walleAnalyticsBooted = true;
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {{
+      window.dataLayer.push(arguments);
+    }}
+    window.gtag = window.gtag || gtag;
+    window.gtag("js", new Date());
+    window.gtag("config", "{ga}");
+
+    loadScript("https://www.googletagmanager.com/gtag/js?id={ga}");
+    loadScript("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ads}", true);
+  }}
+
+  if (document.readyState === "complete") {{
+    if ("requestIdleCallback" in window) {{
+      window.requestIdleCallback(boot, {{ timeout: 1200 }});
+    }} else {{
+      window.setTimeout(boot, 900);
+    }}
+    return;
+  }}
+  window.addEventListener("load", function () {{
+    if ("requestIdleCallback" in window) {{
+      window.requestIdleCallback(boot, {{ timeout: 1200 }});
+    }} else {{
+      window.setTimeout(boot, 900);
+    }}
+  }}, {{ once: true }});
+}})();
+</script>"#,
+        ga = GA_ID,
+        ads = ADSENSE_CLIENT
     )
 }
 

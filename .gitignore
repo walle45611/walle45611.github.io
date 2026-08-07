@@ -51,3 +51,10 @@ Cargo.lock
 *.pdb
 
 # End of https://www.toptal.com/developers/gitignore/api/rust,macos
+
+# Local workspace metadata
+.obsidian/
+
+# Generated site outputs
+sites/builder-rs/sites/
+sites/sites/

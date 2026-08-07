@@ -16,5 +16,16 @@ pub fn render_markdown(markdown: &str) -> String {
 }
 
 fn comrak_options() -> ComrakOptions<'static> {
-    ComrakOptions::default()
+    let mut options = ComrakOptions::default();
+    options.extension.strikethrough = true;
+    options.extension.table = true;
+    options.extension.tasklist = true;
+    options.extension.autolink = true;
+    options.extension.superscript = true;
+    options.extension.header_ids = Some("".to_string());
+    options.parse.smart = true;
+    options.render.unsafe_ = true;
+    options.render.github_pre_lang = true;
+    options.extension.footnotes = true;
+    options
 }

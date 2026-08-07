@@ -439,7 +439,7 @@ fn post_meta(article: &Article) -> String {
 fn render_page(title: &str, description: &str, pathname: &str, body: &str, page_type: &str) -> String {
     let _ = title;
     format!(
-        r#"<!doctype html>
+        r##"<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -477,16 +477,16 @@ fn render_page(title: &str, description: &str, pathname: &str, body: &str, page_
     {}
   </body>
 </html>
-"#,
+"##,
         escape_html("Walle Blog"),
         escape_html(description),
         page_url(pathname),
         SITE_URL,
+        critical_styles(),
         page_type,
         escape_html("Walle Blog"),
         escape_html(description),
         page_url(pathname),
-        critical_styles(),
         body,
         analytics_markup()
     )

@@ -106,13 +106,17 @@ fn load_config() -> BuilderConfig {
     let out_default = project_root.join("sites").join("dist").join("client");
 
     let styles_path = project_root.join("sites").join("styles.css");
-    let favicon_path = project_root.join("sites").join("public").join("favicon.svg");
+    let favicon_path = project_root
+        .join("sites")
+        .join("public")
+        .join("favicon.svg");
     let manifest_path = project_root.join("sites").join("content-manifest.json");
     let raw_dir = raw_dir.map(|dir| resolve_existing_path(dir, &project_root, "raw"));
 
     BuilderConfig {
         _project_root: project_root.clone(),
-        raw_dir: raw_dir.unwrap_or_else(|| resolve_existing_path(raw_default, &project_root, "raw")),
+        raw_dir: raw_dir
+            .unwrap_or_else(|| resolve_existing_path(raw_default, &project_root, "raw")),
         out_dir: out_dir.unwrap_or(out_default),
         manifest_path,
         styles_path,
@@ -122,7 +126,9 @@ fn load_config() -> BuilderConfig {
 
 fn resolve_existing_path(candidate: PathBuf, project_root: &Path, fallback_name: &str) -> PathBuf {
     let fallback1 = project_root.join(fallback_name);
-    let fallback2 = project_root.parent().map(|parent| parent.join(fallback_name));
+    let fallback2 = project_root
+        .parent()
+        .map(|parent| parent.join(fallback_name));
     let fallback3 = PathBuf::from(fallback_name);
     let fallback2 = fallback2.unwrap_or_else(|| project_root.to_path_buf());
     let candidate_for_default = candidate.clone();
@@ -152,11 +158,19 @@ Options:
 fn detect_project_root(cwd: &Path) -> PathBuf {
     let site_builder = cwd.file_name().and_then(|s| s.to_str()) == Some("site-builder");
     if site_builder {
-        return cwd.parent().and_then(|p| p.parent()).unwrap_or(cwd).to_path_buf();
+        return cwd
+            .parent()
+            .and_then(|p| p.parent())
+            .unwrap_or(cwd)
+            .to_path_buf();
     }
 
     if cwd.ends_with("builder-rs") {
-        return cwd.parent().map(PathBuf::from).unwrap_or_else(|| cwd.to_path_buf());
+        return cwd
+            .parent()
+            .and_then(|p| p.parent())
+            .map(PathBuf::from)
+            .unwrap_or_else(|| cwd.to_path_buf());
     }
 
     cwd.to_path_buf()
@@ -178,7 +192,12 @@ fn read_articles(raw_dir: &Path) -> std::io::Result<Vec<Article>> {
         if front_matter.is_empty() || !has_blog_marker(&front_matter) {
             continue;
         }
-        let slug = slug_for(path.file_name().and_then(|s| s.to_str()).unwrap_or_default(), &front_matter);
+        let slug = slug_for(
+            path.file_stem()
+                .and_then(|s| s.to_str())
+                .unwrap_or_default(),
+            &front_matter,
+        );
         let title = front_matter_value_str(&front_matter, "title")
             .filter(|s| !s.trim().is_empty())
             .unwrap_or_else(|| first_heading(&body).unwrap_or_else(|| "Untitled".to_string()));
@@ -189,11 +208,16 @@ fn read_articles(raw_dir: &Path) -> std::io::Result<Vec<Article>> {
             .and_then(|value| date_only(&value));
         let description = front_matter_value_str(&front_matter, "description");
         let summary_excerpt = excerpt_for_summary(&body);
-        let excerpt_raw = description.filter(|v| !v.trim().is_empty()).unwrap_or(summary_excerpt);
+        let excerpt_raw = description
+            .filter(|v| !v.trim().is_empty())
+            .unwrap_or(summary_excerpt);
         let excerpt = clip_excerpt(&excerpt_raw);
         let body_html = render_markdown_to_html(&body);
         let hash = sha256_hex(raw.as_bytes());
-        let source_file = path.file_name().map(|s| s.to_string_lossy().to_string()).unwrap_or_default();
+        let source_file = path
+            .file_name()
+            .map(|s| s.to_string_lossy().to_string())
+            .unwrap_or_default();
         let route = format!("/articles/posts/{slug}/");
 
         articles.push(Article {
@@ -230,11 +254,11 @@ fn build_site(config: &BuilderConfig, articles: &[Article]) -> std::io::Result<(
     }
     fs::create_dir_all(&config.out_dir)?;
 
+    write_output(&config.out_dir.join("index.html"), &render_home(articles))?;
     write_output(
-        &config.out_dir.join("index.html"),
-        &render_home(articles),
+        &config.out_dir.join("articles/index.html"),
+        &render_archive(articles),
     )?;
-    write_output(&config.out_dir.join("articles/index.html"), &render_archive(articles))?;
     write_output(&config.out_dir.join("about/index.html"), &render_about())?;
     write_output(
         &config.out_dir.join("404.html"),
@@ -272,7 +296,10 @@ fn build_site(config: &BuilderConfig, articles: &[Article]) -> std::io::Result<(
         &config.out_dir.join("ads.txt"),
         "google.com, pub-7412528508334178, DIRECT, f08c47fec0942fa0\n",
     )?;
-    write_output(&config.out_dir.join("sitemap.xml"), &render_sitemap(articles))?;
+    write_output(
+        &config.out_dir.join("sitemap.xml"),
+        &render_sitemap(articles),
+    )?;
     write_output(
         &config.out_dir.join("_headers"),
         "/styles.css\n  Cache-Control: public, max-age=3600\n",
@@ -294,8 +321,8 @@ fn build_site(config: &BuilderConfig, articles: &[Article]) -> std::io::Result<(
         articles: manifest_articles,
     };
 
-    let manifest_json = serde_json::to_string_pretty(&manifest)
-        .unwrap_or_else(|_| "{}".to_string());
+    let manifest_json =
+        serde_json::to_string_pretty(&manifest).unwrap_or_else(|_| "{}".to_string());
     write_output(&config.manifest_path, &(manifest_json + "\n"))?;
 
     Ok(())
@@ -328,18 +355,19 @@ fn render_feed(articles: &[Article]) -> String {
 }
 
 fn render_sitemap(articles: &[Article]) -> String {
-    let mut urls = vec!["/".to_string(), "/articles/".to_string(), "/about/".to_string()];
+    let mut urls = vec![
+        "/".to_string(),
+        "/articles/".to_string(),
+        "/about/".to_string(),
+    ];
     urls.extend(articles.iter().map(|a| a.route.clone()));
     let entries = urls
         .into_iter()
-        .map(|pathname| {
-            format!("<url><loc>{}</loc></url>", page_url(&pathname))
-        })
+        .map(|pathname| format!("<url><loc>{}</loc></url>", page_url(&pathname)))
         .collect::<String>();
     format!(
         "{}<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">{}</urlset>",
-        r#"<?xml version="1.0" encoding="UTF-8"?>"#,
-        entries
+        r#"<?xml version="1.0" encoding="UTF-8"?>"#, entries
     )
 }
 
@@ -350,12 +378,24 @@ fn render_home(articles: &[Article]) -> String {
     body.push_str(r#"<div class="section-heading"><h2>Recent posts</h2><a href="/articles/">All posts</a></div>"#);
     body.push_str(&list);
     body.push_str("</section>");
-    render_page("Walle Blog", "Notes on software, systems, and language models.", "/", &body, "website")
+    render_page(
+        "Walle Blog",
+        "Notes on software, systems, and language models.",
+        "/",
+        &body,
+        "website",
+    )
 }
 
 fn render_archive(articles: &[Article]) -> String {
     let list = render_post_list(articles, true);
-    render_page("Archive", "All published posts.", "/articles/", &list, "website")
+    render_page(
+        "Archive",
+        "All published posts.",
+        "/articles/",
+        &list,
+        "website",
+    )
 }
 
 fn render_about() -> String {
@@ -370,17 +410,14 @@ fn render_about() -> String {
       <p>I use this blog to think in public: to keep notes on things I am building, questions I am working through, and ideas worth returning to.</p>
     </div>
   </article>"#;
-    render_page(
-        "About",
-        "About Walle Blog.",
-        "/about/",
-        body,
-        "website",
-    )
+    render_page("About", "About Walle Blog.", "/about/", body, "website")
 }
 
 fn render_post(article: &Article) -> String {
-    let deck = format!(r#"<p class="post-deck">{}</p>"#, escape_html(&article.excerpt));
+    let deck = format!(
+        r#"<p class="post-deck">{}</p>"#,
+        escape_html(&article.excerpt)
+    );
     let body = format!(
         r#"<article class="post" lang="zh-Hant">
     <header class="post-header">
@@ -406,7 +443,11 @@ fn render_post(article: &Article) -> String {
 }
 
 fn render_post_list(articles: &[Article], compact: bool) -> String {
-    let class_name = if compact { "post-list compact" } else { "post-list" };
+    let class_name = if compact {
+        "post-list compact"
+    } else {
+        "post-list"
+    };
     let mut out = String::new();
     out.push_str(r#"<ol class=""#);
     out.push_str(class_name);
@@ -433,10 +474,19 @@ fn post_meta(article: &Article) -> String {
         Some(value) => format!(r#"<time datetime="{}">{}</time>"#, value, value),
         None => "<span>Undated</span>".to_string(),
     };
-    format!("<div class=\"post-meta\">{} · {}</div>", date, article.kind_label)
+    format!(
+        "<div class=\"post-meta\">{} · {}</div>",
+        date, article.kind_label
+    )
 }
 
-fn render_page(title: &str, description: &str, pathname: &str, body: &str, page_type: &str) -> String {
+fn render_page(
+    title: &str,
+    description: &str,
+    pathname: &str,
+    body: &str,
+    page_type: &str,
+) -> String {
     let _ = title;
     format!(
         r##"<!doctype html>
@@ -626,7 +676,8 @@ fn has_blog_marker(front_matter: &HashMap<String, Value>) -> bool {
     }
 
     let source = front_matter_value_str(front_matter, "source").unwrap_or_default();
-    source.starts_with("http://blog.walle4561.com") || source.starts_with("https://blog.walle4561.com")
+    source.starts_with("http://blog.walle4561.com")
+        || source.starts_with("https://blog.walle4561.com")
 }
 
 fn bool_from_value(value: Option<&Value>) -> bool {
@@ -657,7 +708,9 @@ fn tags_from_value(value: Option<&Value>) -> Vec<String> {
 }
 
 fn front_matter_value_str(front_matter: &HashMap<String, Value>, key: &str) -> Option<String> {
-    front_matter.get(key).and_then(|value| value.as_str().map(ToString::to_string))
+    front_matter
+        .get(key)
+        .and_then(|value| value.as_str().map(ToString::to_string))
 }
 
 fn slug_for(file_name: &str, front_matter: &HashMap<String, Value>) -> String {
@@ -744,7 +797,8 @@ fn clip_excerpt(input: &str) -> String {
 
 fn date_only(value: &str) -> Option<String> {
     let re = Regex::new(r"(\d{4})[-/]?(\d{2})[-/]?(\d{2})").expect("regex");
-    re.captures(value).map(|cap| format!("{}-{}-{}", &cap[1], &cap[2], &cap[3]))
+    re.captures(value)
+        .map(|cap| format!("{}-{}-{}", &cap[1], &cap[2], &cap[3]))
 }
 
 fn sha256_hex(bytes: &[u8]) -> String {
@@ -772,9 +826,7 @@ fn escape_html(value: &str) -> String {
 }
 
 fn default_styles() -> String {
-    String::from(
-        ":root { color-scheme: light; }\n",
-    )
+    String::from(":root { color-scheme: light; }\n")
 }
 
 #[cfg(test)]
@@ -810,7 +862,10 @@ mod tests {
     #[test]
     fn detects_legacy_blog_source() {
         let mut fm = HashMap::new();
-        fm.insert("source".to_string(), Value::String("https://blog.walle4561.com/2026".into()));
+        fm.insert(
+            "source".to_string(),
+            Value::String("https://blog.walle4561.com/2026".into()),
+        );
         assert!(has_blog_marker(&fm));
     }
 

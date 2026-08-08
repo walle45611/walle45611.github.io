@@ -136,3 +136,9 @@
 - created: `raw/` 新增 29 篇帶有 `blog: true` 的原始文章；另有 3 篇既有 raw 原文以標題比對保留、不覆寫
 - updated: 29 篇既有 Blog summary 的 `source` 改指向新 raw 路徑；`wiki/log.md`
 - notes: Blog Repo 保留不變；Sites 建置直接讀取 raw metadata，不再保存文章副本。
+
+## [2026-08-08] daily | 2026-08-08 summary
+
+- basis: [[wiki/index.md]]
+- updated: wiki/assets/daily/2026-08-08.md
+- notes: 0 summaries processed. 今日無新知識攝取紀錄。

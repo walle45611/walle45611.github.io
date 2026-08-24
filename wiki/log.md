@@ -178,3 +178,9 @@
 - basis: [[wiki/index.md]]
 - updated: wiki/assets/daily/2026-08-24.md
 - notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-08-24 的已歸檔 summary，因此今日無新知識攝取紀錄。
+
+## [2026-08-24] daily | reviewed-source supplement
+
+- basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
+- updated: wiki/assets/daily/2026-08-24.md
+- notes: 0 summaries processed. 在不改變正式 summary count 的前提下，新增今日實際查詢與閱讀紀錄；整理 Context7 MCP vs CLI + Skills、Docker daemon socket 權限，以及 Daily Rules 執行流程，並保留可驗證來源連結。

@@ -172,3 +172,9 @@
 - basis: [[wiki/index.md]]
 - updated: wiki/assets/daily/2026-08-23.md
 - notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-08-23 的已歸檔 summary，因此今日無新知識攝取紀錄。
+
+## [2026-08-24] daily | 2026-08-24 summary
+
+- basis: [[wiki/index.md]]
+- updated: wiki/assets/daily/2026-08-24.md
+- notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-08-24 的已歸檔 summary，因此今日無新知識攝取紀錄。

@@ -15,6 +15,7 @@
 7. 在 AI coding 情境中，將「架構規劃」與「代碼執行」分層，通常比單模型端到端直譯需求更能控制效能與技術債風險。
 8. 在自我修正任務中，來自檢查器、搜尋、執行器或 checklist 的 external feedback，通常比單純要求模型自我反思更穩定。
 9. 當工具與文件開始以 agent 為第一目標時，harness 的一部分也變成把安裝、部署與操作流程包裝成 agent 可直接消化的輸入，而不是只讓人類照著手動操作。
+10. 在數學等可形式化驗證的領域，harness 可以把人類提出或改寫問題、AI 生成候選解法、社群協作與形式化檢查串成可擴展的研究迴圈；驗證器讓回饋可被執行，而非只依賴模型自評。
 
 ## Working Heuristics
 
@@ -28,6 +29,7 @@
 - 高權限工具（檔案刪除、外部執行、帳戶操作）預設加人工核准與最小權限。
 - 以隔離環境承載 agent（專用機、獨立帳號、獨立憑證），控制失誤半徑。
 - 在知識庫型 agent 中，把唯讀來源層與可寫 wiki 層分離，能讓規則與工具邊界更可執行。
+- 在可形式化驗證的任務中，將外部 proof checker 或 executable test 放進 generation-verification 迴圈，並清楚區分「擴大題目覆蓋率」與「深入解決高難度問題」。
 
 ## Open Questions
 
@@ -42,6 +44,7 @@
 - [verbalized-feedback-learning](./verbalized-feedback-learning.md)
 - [agentic-knowledge-base-maintenance](./agentic-knowledge-base-maintenance.md)
 - [agent-design-patterns](./agent-design-patterns.md)
+- [ai-assisted-research-workflows](./ai-assisted-research-workflows.md)
 - [self-correction-in-language-models](./self-correction-in-language-models.md)
 
 ## Sources
@@ -53,3 +56,4 @@
 - [llm-wiki-worker](../summaries/llm-wiki-worker.md)
 - [ai-self-correction-decoding-workflow-reasoning](../summaries/ai-self-correction-decoding-workflow-reasoning.md)
 - [andrej-karpathy-from-vibe-coding-to-agentic-engineering](../summaries/andrej-karpathy-from-vibe-coding-to-agentic-engineering.md)
+- [[tao-princeton-lecture-mathematical-thinking-and-ai]]

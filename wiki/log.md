@@ -190,3 +190,10 @@
 - basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
 - updated: wiki/assets/daily/2026-08-25.md
 - notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-08-25 的已歸檔 summary；另在不改變正式 summary count 的前提下整理今日已實際核對的 tmux `mouse` option、Docker Compose `--profile` / `up --build` 參數層級，以及 Daily Rules 來源邊界，並保留可驗證來源連結。
+
+## [2026-08-25] ingest | 【陶哲軒在普林斯頓的演講】這不只是一場數學演講：數學天才到底怎麼思考？
+
+- source: `raw/【陶哲軒在普林斯頓的演講】這不只是一場數學演講：數學天才到底怎麼思考？.md`
+- created: `wiki/summaries/tao-princeton-lecture-mathematical-thinking-and-ai.md`
+- updated: `wiki/concepts/ai-assisted-research-workflows.md`, `wiki/concepts/harness-engineering.md`, `wiki/index.md`, `wiki/log.md`
+- notes: 將演講整理為數學研究從單題深度走向 AI 輔助廣度探索的來源摘要，保留形式化驗證、Erdős 問題案例、AI 約 1–2% 成功率與逐字稿統計數字變動的證據邊界。

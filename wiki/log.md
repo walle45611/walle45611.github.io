@@ -197,3 +197,10 @@
 - created: `wiki/summaries/tao-princeton-lecture-mathematical-thinking-and-ai.md`
 - updated: `wiki/concepts/ai-assisted-research-workflows.md`, `wiki/concepts/harness-engineering.md`, `wiki/index.md`, `wiki/log.md`
 - notes: 將演講整理為數學研究從單題深度走向 AI 輔助廣度探索的來源摘要，保留形式化驗證、Erdős 問題案例、AI 約 1–2% 成功率與逐字稿統計數字變動的證據邊界。
+
+## [2026-08-25] ingest | How I Use AI to Learn Things
+
+- source: `raw/How I Use AI to Learn Things.md`
+- created: `wiki/summaries/how-i-use-ai-to-learn-things.md`
+- updated: `wiki/concepts/effective-learning.md`, `wiki/concepts/harness-engineering.md`, `wiki/index.md`, `wiki/log.md`
+- notes: 將作者的個人化 AI 教學 demo 整理成 probe、plan、teach 與 quiz feedback 閉環，保留其個人方法、工程依賴、視覺化代理失敗與尚無控制實驗的證據邊界。

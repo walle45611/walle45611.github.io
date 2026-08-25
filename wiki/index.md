@@ -30,6 +30,7 @@
 - [blog-knowledge-migration](./concepts/blog-knowledge-migration.md): 記錄舊 Blog Repo 文章納入 LLM Wiki 的來源邊界、摘要集合與後續維護方式。
 ## Summaries
 
+- [how-i-use-ai-to-learn-things](./summaries/how-i-use-ai-to-learn-things.md) · 2026-08-25: 整理以 probe、plan、teach 與測驗回饋建立個人化 AI 學習系統的方法與限制。
 - [tao-princeton-lecture-mathematical-thinking-and-ai](./summaries/tao-princeton-lecture-mathematical-thinking-and-ai.md) · 2026-08-25: 整理陶哲軒從普林斯頓經驗談數學研究的深度/廣度轉向、AI 輔助與形式化驗證。
 - [blog-algorithm-complexity](./summaries/blog-algorithm-complexity.md) · 2026-08-03: 整理漸進符號、複雜度、遞迴關係、Stirling 公式與 Master Theorem。
 - [blog-binary-trees-1](./summaries/blog-binary-trees-1.md) · 2026-08-03: 整理 Binary Tree 的定義、性質、表示法與走訪實作。

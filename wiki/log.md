@@ -204,3 +204,10 @@
 - created: `wiki/summaries/how-i-use-ai-to-learn-things.md`
 - updated: `wiki/concepts/effective-learning.md`, `wiki/concepts/harness-engineering.md`, `wiki/index.md`, `wiki/log.md`
 - notes: 將作者的個人化 AI 教學 demo 整理成 probe、plan、teach 與 quiz feedback 閉環，保留其個人方法、工程依賴、視覺化代理失敗與尚無控制實驗的證據邊界。
+
+## [2026-08-26] ingest | 從模型部署到 Agent Harness：Qwen 3.8 27B 與 DGX Spark 實機示範
+
+- source: `raw/從模型部署到 Agent Harness：Qwen 3.8 27B 與 DGX Spark 實機示範.md`
+- created: `wiki/summaries/qwen-3-8-27b-dgx-spark-agent-harness.md`, `wiki/concepts/local-llm-deployment.md`
+- updated: `wiki/concepts/harness-engineering.md`, `wiki/concepts/context-engineering.md`, `wiki/concepts/llm-serving-compatibility.md`, `wiki/concepts/model-quantization.md`, `wiki/index.md`, `wiki/log.md`
+- notes: 將直播整理為地端模型部署與 Agent Harness 的來源摘要，保留 Qwen 版本標示不一致、講者個人 tok/s/記憶體觀察、假資料去識別化示範，以及模型位置與 sandbox 隔離必須分開治理的證據邊界。

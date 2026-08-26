@@ -7,6 +7,7 @@
 - [context-engineering](./concepts/context-engineering.md): 聚焦 context window 管理的核心方法：按需載入、子代理摘要、記憶檢索、compaction 與 pruning 的取捨。
 - [long-context-position-effects](./concepts/long-context-position-effects.md): 統整長輸入中的位置效應，聚焦 lost-in-the-middle、RAG 排序品質、top-k 擴張限制與 query-aware contextualization。
 - [harness-engineering](./concepts/harness-engineering.md): 目前知識庫對 AI agent 駕馭工程的整合頁，聚焦規則檔、工具邊界與生成-評估回饋迴圈的設計原則。
+- [local-llm-deployment](./concepts/local-llm-deployment.md): 統整地端與私有雲 LLM 部署的模型容量、推論引擎、資料邊界、硬體 POC 與 sandbox 隔離取捨。
 - [self-correction-in-language-models](./concepts/self-correction-in-language-models.md): 統整語言模型如何透過 decoding、workflow 與 reasoning 訓練進行自我修正，聚焦外部回饋、算力成本與能力邊界。
 - [verbalized-feedback-learning](./concepts/verbalized-feedback-learning.md): 整理自然語言回饋如何在多輪流程中改變 agent 行為，及其與檢查工具、評量設計、長期學習的關係。
 - [effective-learning](./concepts/effective-learning.md): 目前知識庫對高效學習的初始整合頁，聚焦深層處理、變化練習、回饋品質與直覺校正條件。
@@ -30,6 +31,7 @@
 - [blog-knowledge-migration](./concepts/blog-knowledge-migration.md): 記錄舊 Blog Repo 文章納入 LLM Wiki 的來源邊界、摘要集合與後續維護方式。
 ## Summaries
 
+- [qwen-3-8-27b-dgx-spark-agent-harness](./summaries/qwen-3-8-27b-dgx-spark-agent-harness.md) · 2026-08-26: 整理 Qwen 27B 在 DGX Spark 的地端部署、推論引擎、Agent Harness、去識別化示範與 sandbox 安全邊界。
 - [how-i-use-ai-to-learn-things](./summaries/how-i-use-ai-to-learn-things.md) · 2026-08-25: 整理以 probe、plan、teach 與測驗回饋建立個人化 AI 學習系統的方法與限制。
 - [tao-princeton-lecture-mathematical-thinking-and-ai](./summaries/tao-princeton-lecture-mathematical-thinking-and-ai.md) · 2026-08-25: 整理陶哲軒從普林斯頓經驗談數學研究的深度/廣度轉向、AI 輔助與形式化驗證。
 - [blog-algorithm-complexity](./summaries/blog-algorithm-complexity.md) · 2026-08-03: 整理漸進符號、複雜度、遞迴關係、Stirling 公式與 Master Theorem。

@@ -11,6 +11,10 @@ LLM serving compatibility 指的是模型、adapter、inference runtime 與本�
 3. CUDA 相容性不能只看 `torch.cuda.is_available()`，還要驗證 native extension 是否能載入。
 4. wheel 若對應到較新的 CUDA ABI，可能在 driver 與 PyTorch 看似正常的機器上仍然失敗。
 5. 官方安裝 recipe 常常是版本約束的一部分，不只是安裝建議。
+6. 權重之外的 tokenizer、config、tool parser、模型格式與 MTP metadata 也是 serving contract；缺少其中一項，模型可能載入卻無法正常工具使用。
+7. 推論引擎、容器 image 與硬體架構必須一起匹配；在 ARM 或 unified-memory 平台上，image 是否存在與是否能在目標架構執行是獨立檢查項。
+8. OpenAI-compatible endpoint 能把本地 serving 暴露給區域網路上的 harness，但 endpoint 的網路暴露、認證與工具權限仍需另外治理。
+9. 模型支援 MTP 或 tool use，不代表所有 inference engine 都能使用；模型、runtime 與 parser 三者要用實際 smoke test 驗證。
 
 ## Working Heuristics
 
@@ -18,6 +22,9 @@ LLM serving compatibility 指的是模型、adapter、inference runtime 與本�
 - Debug CUDA 問題時，直接測 native extension import，比只看 GPU 可用性更可靠。
 - 把 runtime、PyTorch、CUDA wheel 當成一組版本矩陣來檢查。
 - 特定模型家族若有官方 recipe，優先照 recipe 驗證可用性。
+- 先從 model card 建立檔案、格式、引擎、CUDA/架構與 tool parser 的 compatibility checklist。
+- 在目標硬體上至少測一次普通生成、工具呼叫、OpenAI-compatible endpoint 與長 context/併發配置。
+- 對 Docker 部署確認 image 架構、啟停、cache 位置與清理方式，避免一次性試驗污染主機環境。
 
 ## Open Questions
 
@@ -27,8 +34,11 @@ LLM serving compatibility 指的是模型、adapter、inference runtime 與本�
 ## Related Concepts
 
 - [parameter-efficient-fine-tuning](./parameter-efficient-fine-tuning.md)
+- [local-llm-deployment](./local-llm-deployment.md)
+- [model-quantization](./model-quantization.md)
 - [vllm-gemma-4-lora-two-pitfalls](../summaries/vllm-gemma-4-lora-two-pitfalls.md)
 
 ## Sources
 
 - [vllm-gemma-4-lora-two-pitfalls](../summaries/vllm-gemma-4-lora-two-pitfalls.md)
+- [qwen-3-8-27b-dgx-spark-agent-harness](../summaries/qwen-3-8-27b-dgx-spark-agent-harness.md)

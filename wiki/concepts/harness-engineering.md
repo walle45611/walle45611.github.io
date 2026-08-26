@@ -17,6 +17,9 @@
 9. 當工具與文件開始以 agent 為第一目標時，harness 的一部分也變成把安裝、部署與操作流程包裝成 agent 可直接消化的輸入，而不是只讓人類照著手動操作。
 10. 在數學等可形式化驗證的領域，harness 可以把人類提出或改寫問題、AI 生成候選解法、社群協作與形式化檢查串成可擴展的研究迴圈；驗證器讓回饋可被執行，而非只依賴模型自評。
 11. 在個人化學習中，harness 可以把理解探測、教學規劃、事實查證、視覺化、測驗回饋與學習紀錄串成一個閉環，讓模型根據學習者狀態調整教學，而不是只輸出一次性的解釋。
+12. 可用的部署 stack 不只包含模型，還包含 inference engine、相容端點、工具與 skills、tool parser、權限和隔離環境；任一層都會改變 agent 的實際能力與風險。
+13. 地端或私有模型可以縮小資料外流範圍，但不能取代 harness 層的網路政策、最小權限、工具審查與 sandbox/VM/container 隔離。
+14. 對能由固定程式或 CPU 工具完成的工作，讓模型負責選擇與編排、讓可重複工具負責執行，通常比讓模型自由生成整段操作更容易驗證。
 
 ## Working Heuristics
 
@@ -32,6 +35,8 @@
 - 在知識庫型 agent 中，把唯讀來源層與可寫 wiki 層分離，能讓規則與工具邊界更可執行。
 - 在可形式化驗證的任務中，將外部 proof checker 或 executable test 放進 generation-verification 迴圈，並清楚區分「擴大題目覆蓋率」與「深入解決高難度問題」。
 - 對個人化教學流程分開設計 probe、plan、teach 三階段，並在 teach 中加入週期性 quiz、外部查證與持久化 learning log，讓「理解」可以被反覆檢查。
+- 將 model 的資料邊界與 harness 的執行邊界分開 threat-model；不要因為模型在本地就省略工具、憑證與網路出口檢查。
+- 對正式 serving 同時驗證 endpoint、tool parser、模型格式、硬體架構與 isolation；不要只確認模型檔案能載入。
 
 ## Open Questions
 
@@ -49,6 +54,8 @@
 - [ai-assisted-research-workflows](./ai-assisted-research-workflows.md)
 - [effective-learning](./effective-learning.md)
 - [self-correction-in-language-models](./self-correction-in-language-models.md)
+- [local-llm-deployment](./local-llm-deployment.md)
+- [llm-serving-compatibility](./llm-serving-compatibility.md)
 
 ## Sources
 
@@ -61,3 +68,4 @@
 - [andrej-karpathy-from-vibe-coding-to-agentic-engineering](../summaries/andrej-karpathy-from-vibe-coding-to-agentic-engineering.md)
 - [[tao-princeton-lecture-mathematical-thinking-and-ai]]
 - [[how-i-use-ai-to-learn-things]]
+- [qwen-3-8-27b-dgx-spark-agent-harness](../summaries/qwen-3-8-27b-dgx-spark-agent-harness.md)

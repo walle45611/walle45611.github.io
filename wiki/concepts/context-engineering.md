@@ -12,6 +12,8 @@
 4. 記憶系統可用檢索式路徑（如 chunk + 相似度排序）補足長期歷史，但召回品質不保證完美。
 5. 壓縮（compact/pruning）能延長續航，但也可能遺失關鍵約束；關鍵規則需放在穩定注入區。
 6. 在 RAG 或多文件 prompt 中，relevant information 的位置本身就是變數；長 context 常出現前後高、中段低的利用率落差，不能假設模型會平均讀懂所有片段。
+7. context window 與 KV cache 會共同消耗部署記憶體；把 window 開得更大不保證模型更有效，也可能壓縮權重、併發與系統保留空間。
+8. 把固定工作交給 skills、結構化工具或可重複程式，可以減少模型自由生成與上下文負擔，但工具輸出、權限與錯誤結果仍要納入 context 設計。
 
 ## Working Heuristics
 
@@ -22,6 +24,7 @@
 - 每次壓縮後檢查是否保留安全與授權條件，避免規則在摘要中消失。
 - 若任務目標是維護知識庫，應優先讓 agent 讀取已整理的 wiki 層，避免每次查詢都回頭重掃原始素材。
 - 若依賴檢索拼接 context，先做 ranking、re-ranking 或 cutoff，再決定是否增加 top-k，避免把關鍵片段埋進中段噪音。
+- 以目標請求長度和併發量測試 context/KV cache 的記憶體預算，不要只依照模型標稱的最大 window 配置。
 
 ## Open Questions
 
@@ -34,6 +37,7 @@
 - [harness-engineering](./harness-engineering.md)
 - [agentic-knowledge-base-maintenance](./agentic-knowledge-base-maintenance.md)
 - [long-context-position-effects](./long-context-position-effects.md)
+- [local-llm-deployment](./local-llm-deployment.md)
 
 ## Sources
 
@@ -42,3 +46,4 @@
 - [llm-wiki-worker](../summaries/llm-wiki-worker.md)
 - [andrej-karpathy-from-vibe-coding-to-agentic-engineering](../summaries/andrej-karpathy-from-vibe-coding-to-agentic-engineering.md)
 - [lost-in-the-middle-how-language-models-use-long-context-explained](../summaries/lost-in-the-middle-how-language-models-use-long-context-explained.md)
+- [qwen-3-8-27b-dgx-spark-agent-harness](../summaries/qwen-3-8-27b-dgx-spark-agent-harness.md)

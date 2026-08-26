@@ -211,3 +211,9 @@
 - created: `wiki/summaries/qwen-3-8-27b-dgx-spark-agent-harness.md`, `wiki/concepts/local-llm-deployment.md`
 - updated: `wiki/concepts/harness-engineering.md`, `wiki/concepts/context-engineering.md`, `wiki/concepts/llm-serving-compatibility.md`, `wiki/concepts/model-quantization.md`, `wiki/index.md`, `wiki/log.md`
 - notes: 將直播整理為地端模型部署與 Agent Harness 的來源摘要，保留 Qwen 版本標示不一致、講者個人 tok/s/記憶體觀察、假資料去識別化示範，以及模型位置與 sandbox 隔離必須分開治理的證據邊界。
+
+## [2026-08-26] daily | 2026-08-26 summary and reviewed-source supplement
+
+- basis: [[wiki/summaries/qwen-3-8-27b-dgx-spark-agent-harness.md]]
+- updated: wiki/assets/daily/2026-08-26.md
+- notes: 1 summary processed. 正式 Daily 整理今日已歸檔的 Qwen 27B / DGX Spark / Agent Harness 來源；另在不改變 summary count 的前提下，補充今日實際查詢或重新核對的 Pi SDK／AGENTS.md／Skills、本地 provider、DeepSeek-V4 CSA/HCA/mHC、DGX Spark／Gemma 4／vLLM、Tailscale userspace networking，以及本地 GPU clock 與投資報酬試算紀錄，並保留可驗證來源連結。

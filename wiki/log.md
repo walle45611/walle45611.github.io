@@ -217,3 +217,9 @@
 - basis: [[wiki/summaries/qwen-3-8-27b-dgx-spark-agent-harness.md]]
 - updated: wiki/assets/daily/2026-08-26.md
 - notes: 1 summary processed. 正式 Daily 整理今日已歸檔的 Qwen 27B / DGX Spark / Agent Harness 來源；另在不改變 summary count 的前提下，補充今日實際查詢或重新核對的 Pi SDK／AGENTS.md／Skills、本地 provider、DeepSeek-V4 CSA/HCA/mHC、DGX Spark／Gemma 4／vLLM、Tailscale userspace networking，以及本地 GPU clock 與投資報酬試算紀錄，並保留可驗證來源連結。
+
+## [2026-08-27] daily | 2026-08-27 summary and reviewed-source supplement
+
+- basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
+- updated: wiki/assets/daily/2026-08-27.md
+- notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-08-27 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理今日實際核對的台灣普通汽車駕照年齡與小型車報考經歷要求，並保留交通部公路監理法規來源連結。

@@ -116,7 +116,6 @@
 - checked: `AGENTS.md`, `wiki/rules/router-rules.md`, `wiki/rules/output-rules.md`, `wiki/rules/log-rules.md`, `wiki/rules/ingest-rules.md`, `wiki/rules/daily-rules.md`, `wiki/rules/query-rules.md`, `wiki/rules/review-rules.md`, `wiki/rules/social-post-rules.md`
 - fixed: 明確限定 JSON 僅在使用者要求時使用；統一純人工查詢的 log 判定；限制 query 自動回寫；區分 `source_created` 與 `ingested_at`；補強 daily 去重、空日報、來源連結與社群貼文實際發送邊界。
 - gaps: 既有 summary 與 index 尚未全面回填 `ingested_at`，目前保留舊 index 日期作為相容值。
-
 ## [2026-08-03] ingest | Blog Repo 文章納入 LLM Wiki
 
 - source: `blog/source/_posts/`（32 篇文章）
@@ -223,3 +222,9 @@
 - basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
 - updated: wiki/assets/daily/2026-08-27.md
 - notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-08-27 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理今日實際核對的台灣普通汽車駕照年齡與小型車報考經歷要求，並保留交通部公路監理法規來源連結。
+
+## [2026-08-28] daily | 2026-08-28 summary and reviewed-source supplement
+
+- basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
+- updated: wiki/assets/daily/2026-08-28.md
+- notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-08-28 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理今日實際查詢或重新核對的 Parallels Desktop 27.0.0 (58628) 官方發布與下載資訊、Coherence／App Store Edition 功能差異、第三方 activation／破解頁面的來源風險，以及 27.0.0 發布後的早期論壇 troubleshooting 訊號，並保留官方與可驗證來源連結。

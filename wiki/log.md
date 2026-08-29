@@ -228,3 +228,9 @@
 - basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
 - updated: wiki/assets/daily/2026-08-28.md
 - notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-08-28 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理今日實際查詢或重新核對的 Parallels Desktop 27.0.0 (58628) 官方發布與下載資訊、Coherence／App Store Edition 功能差異、第三方 activation／破解頁面的來源風險，以及 27.0.0 發布後的早期論壇 troubleshooting 訊號，並保留官方與可驗證來源連結。
+
+## [2026-08-29] daily | 2026-08-29 summary and reviewed-source supplement
+
+- basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
+- updated: wiki/assets/daily/2026-08-29.md
+- notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-08-29 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理本次實際核對的 Daily Rules、Wiki Index 與既有 Daily log。當日未確認到其他已實際查詢或閱讀的公開網站，因此未自行補列外部來源。

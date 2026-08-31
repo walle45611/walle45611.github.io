@@ -240,3 +240,9 @@
 - basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
 - updated: wiki/assets/daily/2026-08-30.md
 - notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-08-30 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理本次實際查詢或重新核對的 NIST DLMF exponential function、TLA+／TLC formal specification 與 model checking、ORCID biography 欄位，以及 Daily Rules／Wiki Index／log repository 狀態，並保留可驗證來源連結。
+
+## [2026-08-31] daily | 2026-08-31 summary and reviewed-source supplement
+
+- basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
+- updated: wiki/assets/daily/2026-08-31.md
+- notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-08-31 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理本次實際核對的 Daily Rules、Wiki Index 與既有 Wiki log。未能驗證當日其他公開網站查詢或閱讀紀錄，因此未自行補列外部來源。

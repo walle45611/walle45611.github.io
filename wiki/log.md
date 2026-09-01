@@ -97,7 +97,6 @@
 - created: `wiki/summaries/stanford-cme295-lecture-8-llm-evaluation.md`, `wiki/concepts/llm-evaluation.md`
 - updated: `wiki/concepts/nlp-evaluation-metrics.md`, `wiki/index.md`, `wiki/log.md`
 - notes: 整理 LLM 評估的人工評分、reference-based metrics、LLM-as-a-Judge、factuality、agent failure modes 與 benchmark selection，並將新內容連回既有 NLP 評估指標頁。
-
 ## [2026-07-11] lint | wiki health check
 
 - checked: `wiki/index.md`, `wiki/log.md`, `wiki/concepts/`, `wiki/summaries/`, relative Markdown links, index coverage
@@ -251,3 +250,9 @@
 
 - updated: `wiki/rules/ingest-rules.md`, `wiki/log.md`
 - notes: 新增 Git 同步規則；每次 ingest／歸檔後只提交本次任務變更並推送 upstream，失敗時須明確回報，成功時提供 commit hash。
+
+## [2026-09-01] daily | 2026-09-01 summary and reviewed-source supplement
+
+- basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
+- updated: wiki/assets/daily/2026-09-01.md
+- notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-01 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理今日可驗證的 ScholarOne Profile／Keywords／稱謂欄位、OOV／tokenizer vocabulary、Turnitin AI Writing Report 低分與 false-positive 說明、GPTZero detector 使用方式，以及今日閱讀的 clinical LLM / TCM abstract。私人 ScholarOne session URL 與無法驗證的瀏覽紀錄未保存。

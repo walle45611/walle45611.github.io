@@ -14,10 +14,6 @@
   box-sizing: border-box;
 }
 
-html {
-  font-size: 17px;
-}
-
 body {
   background: var(--paper);
   color: var(--ink);
@@ -48,7 +44,6 @@ a {
 }
 
 .site-title {
-  font-family: var(--serif);
   font-size: 1.8rem;
   font-weight: 700;
   text-decoration: none;
@@ -265,18 +260,6 @@ h1 {
 }
 
 @media (max-width: 600px) {
-  html {
-    font-size: 16px;
-  }
-
-  .site-header {
-    padding-top: 1.5rem;
-  }
-
-  .site-main {
-    padding-top: 2.5rem;
-  }
-
   .post-list.compact .post-item {
     display: block;
   }

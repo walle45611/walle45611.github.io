@@ -147,6 +147,16 @@
 - notes: <key effect on the wiki>
 ```
 
+## Git 同步規則
+
+每次 ingest／歸檔完成後，必須同步版本庫：
+
+1. 只 stage 並 commit 本次歸檔實際建立或更新的檔案，不得夾帶任務開始前已存在的無關變更或未追蹤檔案。
+2. commit 訊息應簡潔描述本次歸檔內容。
+3. commit 後推送到目前分支的 upstream；若遠端已有新提交，先安全整合遠端變更（優先使用 rebase），再推送。
+4. 若 commit、rebase 或 push 失敗，必須在最終回覆中說明失敗步驟與原因，不得聲稱歸檔流程已完整完成。
+5. 最終回覆應附上成功推送的 commit hash。
+
 ## 品質要求
 
 1. 摘要要壓縮冗言，但不能壓掉關鍵條件、限制與不確定性。
@@ -169,6 +179,7 @@
 4. `wiki/index.md` 已更新。
 5. 若本次有新增或更新任何 `wiki/summaries/*.md`，則 `wiki/index.md` 的 `## Summaries` 區塊中必須已有對應條目，且格式正確。
 6. `wiki/log.md` 已追加紀錄。
+7. 本次歸檔變更已 commit 並成功 push 到 upstream。
 
 ## 不要做的事
 

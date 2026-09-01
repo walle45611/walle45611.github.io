@@ -246,3 +246,8 @@
 - basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
 - updated: wiki/assets/daily/2026-08-31.md
 - notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-08-31 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理本次實際核對的 Daily Rules、Wiki Index 與既有 Wiki log。未能驗證當日其他公開網站查詢或閱讀紀錄，因此未自行補列外部來源。
+
+## [2026-09-01] maintenance | 歸檔後自動 commit 與 push
+
+- updated: `wiki/rules/ingest-rules.md`, `wiki/log.md`
+- notes: 新增 Git 同步規則；每次 ingest／歸檔後只提交本次任務變更並推送 upstream，失敗時須明確回報，成功時提供 commit hash。

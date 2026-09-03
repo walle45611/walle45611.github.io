@@ -262,3 +262,9 @@
 - basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
 - updated: wiki/assets/daily/2026-09-02.md
 - notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-02 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理今日複習的 Multi-Head Attention head 維度與 tensor slicing、scaled dot-product attention 的 `1/sqrt(d_k)` 尺度理由、standard deviation / variance 關係，以及 Word2Vec 的 context / static embeddings，並重新核對 PyTorch、NeurIPS、NIST 與 TensorFlow 官方或原始來源。補充紀錄不宣稱是完整瀏覽器歷史。
+
+## [2026-09-03] daily | 2026-09-03 summary and reviewed-source supplement
+
+- basis: [[wiki/index.md]]
+- updated: wiki/assets/daily/2026-09-03.md
+- notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-03 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理本次實際核對的 Daily Rules、Wiki Index 與既有 Wiki log。未能驗證今日其他公開網站查詢或閱讀紀錄，因此未自行補列外部來源。

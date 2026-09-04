@@ -268,3 +268,9 @@
 - basis: [[wiki/index.md]]
 - updated: wiki/assets/daily/2026-09-03.md
 - notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-03 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理本次實際核對的 Daily Rules、Wiki Index 與既有 Wiki log。未能驗證今日其他公開網站查詢或閱讀紀錄，因此未自行補列外部來源。
+
+## [2026-09-04] daily | 2026-09-04 summary and reviewed-source supplement
+
+- basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
+- updated: wiki/assets/daily/2026-09-04.md
+- notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-04 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理本次實際查詢或重新核對的 Daily Rules、Wiki Index、NeurIPS《Attention Is All You Need》與 TensorFlow Transformer 教學，聚焦原始 sinusoidal positional encoding、embedding + position encoding、even/odd dimension 的 sine/cosine 配對與多頻率表示。補充紀錄不宣稱是完整瀏覽器歷史。

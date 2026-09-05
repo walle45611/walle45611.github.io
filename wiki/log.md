@@ -274,3 +274,9 @@
 - basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
 - updated: wiki/assets/daily/2026-09-04.md
 - notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-04 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理本次實際查詢或重新核對的 Daily Rules、Wiki Index、NeurIPS《Attention Is All You Need》與 TensorFlow Transformer 教學，聚焦原始 sinusoidal positional encoding、embedding + position encoding、even/odd dimension 的 sine/cosine 配對與多頻率表示。補充紀錄不宣稱是完整瀏覽器歷史。
+
+## [2026-09-05] daily | 2026-09-05 summary and reviewed-source supplement
+
+- basis: [[wiki/index.md]]
+- updated: wiki/assets/daily/2026-09-05.md
+- notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-05 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理今日可確認並重新核對的雄果蠅完整 CNS connectome（AI 郵報、Google Research、HHMI Janelia、Nature）與 Miro 協作白板官方資料。私人 session、credentials 與未公開稿件細節未寫入公開 repository；補充紀錄不宣稱是完整瀏覽器歷史。

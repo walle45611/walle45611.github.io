@@ -286,3 +286,9 @@
 - basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
 - updated: wiki/assets/daily/2026-09-06.md
 - notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-06 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理今日可確認並重新核對的 Parallels Desktop 27、CrossOver licensing／教育優惠／Office 365 compatibility、Porting Kit／Homebrew、VMware Fusion Windows 11 ARM network driver、RoPE 原始論文、明志科技大學 VPN 與 Apple Trade In 頁面。補充紀錄只涵蓋可驗證的公開來源，不宣稱是完整瀏覽器歷史，亦未保存私人帳號或敏感資訊。
+
+## [2026-09-07] daily | 2026-09-07 summary and reviewed-source supplement
+
+- basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
+- updated: wiki/assets/daily/2026-09-07.md
+- notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-07 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理今日討論並重新核對的 remote-access VPN hairpin、Cisco hairpin/NAT 官方說明、Tailscale subnet router、route injection 與本地 LAN / subnet route 重疊時的路由選擇。公開 Daily 未保存內網 IP、VPN public endpoint、帳號或其他敏感網路細節，補充紀錄亦不宣稱是完整瀏覽器歷史。

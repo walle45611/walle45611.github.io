@@ -292,3 +292,15 @@
 - basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
 - updated: wiki/assets/daily/2026-09-07.md
 - notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-07 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理今日討論並重新核對的 remote-access VPN hairpin、Cisco hairpin/NAT 官方說明、Tailscale subnet router、route injection 與本地 LAN / subnet route 重疊時的路由選擇。公開 Daily 未保存內網 IP、VPN public endpoint、帳號或其他敏感網路細節，補充紀錄亦不宣稱是完整瀏覽器歷史。
+
+## [2026-09-06] ingest | 三份待歸檔來源
+
+- source: `raw/徐天音：系统，UIUC，教授，最佳论文，Agent Infra，云计算，形式化验证，容错，纯粹，好导师.md`, `raw/(3) Stanford CME295 Transformers & LLMs  Autumn 2025  Lecture 1 - Transformer.md`, `raw/EP123｜別部署 AI，部署它寫的程式：《Life 3.0》作者 Max Tegmark 的 vericoding（IPAM 2026）.md`
+- created: `wiki/summaries/tianyin-xu-agent-infrastructure-formal-methods.md`, `wiki/summaries/stanford-cme295-lecture-1-transformer.md`, `wiki/summaries/max-tegmark-vericoding-ipam-2026.md`, `wiki/concepts/formal-verification-for-ai-generated-software.md`, `wiki/concepts/transformer-attention-fundamentals.md`
+- updated: `wiki/concepts/harness-engineering.md`, `wiki/concepts/ai-assisted-research-workflows.md`, `wiki/concepts/context-engineering.md`, `wiki/index.md`, `wiki/log.md`
+- notes: 建立三篇來源摘要、兩個概念頁，補齊雙向連結與索引；保留 SREGym 數字、建模成本的口述邊界，以及 vericoding 只有簡介與章節的限制。既有 raw 內容未修改。
+
+## [2026-09-07] maintenance | Git 同步整合
+
+- updated: `wiki/log.md`
+- notes: 整合遠端 2026-09-01 至 2026-09-07 日報與本地三份來源素材及相關知識庫更新；保留雙方既有 log，將本地 ingest 紀錄附加於遠端紀錄尾端。既有 raw 內容未修改。

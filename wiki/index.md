@@ -1,6 +1,9 @@
 # Wiki Index
 ## Concepts
 
+- [formal-verification-for-ai-generated-software](./concepts/formal-verification-for-ai-generated-software.md): 整合 model checking、vericoding、SDD 與需求規格的保證邊界。
+- [transformer-attention-fundamentals](./concepts/transformer-attention-fundamentals.md): 整理 attention 資料流與 Transformer 基礎，區分模型機制和上下文管理。
+
 - [agentic-knowledge-base-maintenance](./concepts/agentic-knowledge-base-maintenance.md): 統整知識庫型 agent 的維護基線，聚焦 `raw/`/`wiki/` 分層、規則路由、背景執行管線與對外輸出分離。
 - [agent-design-patterns](./concepts/agent-design-patterns.md): 統整 single、sequential、parallel 等基礎 agent workflow pattern 的選型邏輯，聚焦 control、latency、cost 與責任分工的 trade-off。
 - [cloudflare-queue-consumer-modes](./concepts/cloudflare-queue-consumer-modes.md): 統整 Cloudflare Queues 中 push 與 pull consumer 的選型邏輯，聚焦誰控制消費節奏、如何處理 ack/retry，以及 `visibility_timeout` 的運維含義。
@@ -30,6 +33,10 @@
 - [writing-style-and-plain-english](./concepts/writing-style-and-plain-english.md): 整合 plain English 的讀者導向寫作與 academic style 的作者位置、hedging、脈絡及證據支撐。
 - [blog-knowledge-migration](./concepts/blog-knowledge-migration.md): 記錄舊 Blog Repo 文章納入 LLM Wiki 的來源邊界、摘要集合與後續維護方式。
 ## Summaries
+
+- [tianyin-xu-agent-infrastructure-formal-methods](./summaries/tianyin-xu-agent-infrastructure-formal-methods.md) · 2026-09-06: 整理徐天音訪談的問題導向研究、Agent Infra、SREGym 與形式化驗證邊界。
+- [stanford-cme295-lecture-1-transformer](./summaries/stanford-cme295-lecture-1-transformer.md) · 2026-09-06: 整理 tokenization、詞向量、RNN、attention 與原始 encoder-decoder Transformer。
+- [max-tegmark-vericoding-ipam-2026](./summaries/max-tegmark-vericoding-ipam-2026.md) · 2026-09-06: 整理 vericoding 的生成—證明—檢查方向，保留二手影片簡介的來源限制。
 
 - [qwen-3-8-27b-dgx-spark-agent-harness](./summaries/qwen-3-8-27b-dgx-spark-agent-harness.md) · 2026-08-26: 整理 Qwen 27B 在 DGX Spark 的地端部署、推論引擎、Agent Harness、去識別化示範與 sandbox 安全邊界。
 - [how-i-use-ai-to-learn-things](./summaries/how-i-use-ai-to-learn-things.md) · 2026-08-25: 整理以 probe、plan、teach 與測驗回饋建立個人化 AI 學習系統的方法與限制。

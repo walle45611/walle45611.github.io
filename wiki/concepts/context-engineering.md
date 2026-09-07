@@ -47,3 +47,7 @@
 - [andrej-karpathy-from-vibe-coding-to-agentic-engineering](../summaries/andrej-karpathy-from-vibe-coding-to-agentic-engineering.md)
 - [lost-in-the-middle-how-language-models-use-long-context-explained](../summaries/lost-in-the-middle-how-language-models-use-long-context-explained.md)
 - [qwen-3-8-27b-dgx-spark-agent-harness](../summaries/qwen-3-8-27b-dgx-spark-agent-harness.md)
+
+## 2026-09-06：與 Attention 機制的區分
+
+[[stanford-cme295-lecture-1-transformer]] 與 [[transformer-attention-fundamentals]] 補上模型層背景：attention 依 query-key 權重聚合 value，產生每個位置的上下文化表示；這與將對話改寫成短摘要、按需檢索或裁剪工具輸出的 context 管理不同。模型具有 attention，也不代表它能可靠使用任意長度或任意位置的資訊。

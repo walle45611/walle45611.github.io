@@ -47,3 +47,7 @@
 
 - [ai-assisted-research-workflow](../summaries/ai-assisted-research-workflow.md)
 - [[tao-princeton-lecture-mathematical-thinking-and-ai]]
+
+## 2026-09-06：問題定義與建模責任
+
+[[tianyin-xu-agent-infrastructure-formal-methods]] 強調研究從真實問題出發，並以 AI 輔助形式化建模說明加速與責任可以分開：模型協助產生形式描述，人仍需理解系統、定義需求與故障假設。延伸見 [[formal-verification-for-ai-generated-software]] 與 [[harness-engineering]]。訪談中的建模時間對照屬個案，不是可泛化的生產力測量。

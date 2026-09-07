@@ -69,3 +69,7 @@
 - [[tao-princeton-lecture-mathematical-thinking-and-ai]]
 - [[how-i-use-ai-to-learn-things]]
 - [qwen-3-8-27b-dgx-spark-agent-harness](../summaries/qwen-3-8-27b-dgx-spark-agent-harness.md)
+
+## 2026-09-06：可恢復操作與形式化驗證
+
+[[tianyin-xu-agent-infrastructure-formal-methods]] 補充了 agent 介面的另一個要求：容忍錯誤、給出回饋，並支援 undo／恢復。[[max-tegmark-vericoding-ipam-2026]] 的二手簡介則提出生成程式與證明、交外部檢查器把關的方向。兩者整合於 [[formal-verification-for-ai-generated-software]]；需區分驗證模型、檢查證明與確保真實需求正確，不能把通過檢查解讀成無條件可靠。

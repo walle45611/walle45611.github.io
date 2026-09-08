@@ -304,3 +304,9 @@
 
 - updated: `wiki/log.md`
 - notes: 整合遠端 2026-09-01 至 2026-09-07 日報與本地三份來源素材及相關知識庫更新；保留雙方既有 log，將本地 ingest 紀錄附加於遠端紀錄尾端。既有 raw 內容未修改。
+
+## [2026-09-08] daily | 2026-09-08 summary and reviewed-source supplement
+
+- basis: [[wiki/index.md]]
+- updated: wiki/assets/daily/2026-09-08.md
+- notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-08 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理今日可確認的 Gray code 與自然二進位序列辨識、使用者提供的 BeApe 菜單組合與價格計算，以及本次實際核對的 Daily Rules／Wiki Index／Wiki log。公開來源保留 MathWorks、Wikipedia 與 GitHub 連結；餐廳菜單因未確認官方來源網址而未自行補 source link。補充紀錄不宣稱是完整瀏覽器歷史。

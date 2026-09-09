@@ -310,3 +310,9 @@
 - basis: [[wiki/index.md]]
 - updated: wiki/assets/daily/2026-09-08.md
 - notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-08 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理今日可確認的 Gray code 與自然二進位序列辨識、使用者提供的 BeApe 菜單組合與價格計算，以及本次實際核對的 Daily Rules／Wiki Index／Wiki log。公開來源保留 MathWorks、Wikipedia 與 GitHub 連結；餐廳菜單因未確認官方來源網址而未自行補 source link。補充紀錄不宣稱是完整瀏覽器歷史。
+
+## [2026-09-09] daily | 2026-09-09 summary and reviewed-source supplement
+
+- basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
+- updated: wiki/assets/daily/2026-09-09.md
+- notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-09 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理今日可確認並重新核對的 OpenSpec / Pi core workflows 與 integration paths、UQx IELTS Academic Test Preparation，以及陽明交通大學 116 學年度碩士班甄試重要日程。補充紀錄只涵蓋可驗證的公開來源與本次實際核對內容，不宣稱是完整瀏覽器歷史。

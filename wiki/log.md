@@ -316,3 +316,9 @@
 - basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
 - updated: wiki/assets/daily/2026-09-09.md
 - notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-09 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理今日可確認並重新核對的 OpenSpec / Pi core workflows 與 integration paths、UQx IELTS Academic Test Preparation，以及陽明交通大學 116 學年度碩士班甄試重要日程。補充紀錄只涵蓋可驗證的公開來源與本次實際核對內容，不宣稱是完整瀏覽器歷史。
+
+## [2026-09-10] daily | 2026-09-10 summary and reviewed-source supplement
+
+- basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
+- updated: wiki/assets/daily/2026-09-10.md
+- notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-10 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理今日可確認並重新核對的 iCloud Drive 分享連結與 View Only 權限，以及本次 Daily Rules／Wiki Index／Wiki log repository 核對。補充紀錄只涵蓋可驗證的公開來源，不宣稱是完整瀏覽器歷史，且未保存私人影像、帳號、session、credentials 或其他敏感內容。

@@ -37,3 +37,7 @@ Model quantization reduces numeric precision of model weights or activations to 
 
 - [lora-and-qlora-fine-tuning-explained-in-depth](../summaries/lora-and-qlora-fine-tuning-explained-in-depth.md)
 - [qwen-3-8-27b-dgx-spark-agent-harness](../summaries/qwen-3-8-27b-dgx-spark-agent-harness.md)
+
+## KV Cache 量化
+
+[[deepseek-v4-1-flash-kv-cache-compression]] 補充了與權重量化不同的對象：歷史 K/V 的儲存精度。估算時除了位元數，也要計入 scale 等格式開銷，並區分儲存與運算精度；來源中約 900 bytes/token 是作者對特定全局 KV 配置的反推，不是整個請求的快取總量。低精度是否可用仍需模型、引擎與工作負載驗證。參見 [[transformer-attention-fundamentals]] 與 [[local-llm-deployment]]。

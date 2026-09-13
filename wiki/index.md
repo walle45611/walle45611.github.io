@@ -34,6 +34,10 @@
 - [blog-knowledge-migration](./concepts/blog-knowledge-migration.md): 記錄舊 Blog Repo 文章納入 LLM Wiki 的來源邊界、摘要集合與後續維護方式。
 ## Summaries
 
+- [how-inference-engines-work-agent-loops](./summaries/how-inference-engines-work-agent-loops.md) · 2026-09-14: 整理推論請求生命週期、連續批次、分頁與前綴快取，以及 agent 多輪負載的排程取捨。
+
+- [deepseek-v4-1-flash-kv-cache-compression](./summaries/deepseek-v4-1-flash-kv-cache-compression.md) · 2026-09-14: 整理 KV Cache 容量與讀取成本、跨層共享及量化，保留 V4.1-Flash 二手解說與數字估算的限制。
+
 - [tianyin-xu-agent-infrastructure-formal-methods](./summaries/tianyin-xu-agent-infrastructure-formal-methods.md) · 2026-09-06: 整理徐天音訪談的問題導向研究、Agent Infra、SREGym 與形式化驗證邊界。
 - [stanford-cme295-lecture-1-transformer](./summaries/stanford-cme295-lecture-1-transformer.md) · 2026-09-06: 整理 tokenization、詞向量、RNN、attention 與原始 encoder-decoder Transformer。
 - [max-tegmark-vericoding-ipam-2026](./summaries/max-tegmark-vericoding-ipam-2026.md) · 2026-09-06: 整理 vericoding 的生成—證明—檢查方向，保留二手影片簡介的來源限制。

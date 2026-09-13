@@ -340,3 +340,17 @@
 - basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
 - updated: wiki/assets/daily/2026-09-13.md
 - notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-13 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理今日可確認並重新核對的成功大學資訊工程研究所碩士班修業規定與 2026 畢業學分檢查公告，以及本次 Daily Rules／Wiki Index／Wiki log repository 核對。補充紀錄只涵蓋目前可驗證的公開來源，不宣稱是完整瀏覽器歷史。
+
+## [2026-09-14] ingest | KV Cache 壓縮來源與同步檢查
+
+- source: `raw/图解 KV Cache——DS V4.1-Flash的制胜秘密.md`
+- created: `wiki/summaries/deepseek-v4-1-flash-kv-cache-compression.md`
+- updated: `wiki/concepts/transformer-attention-fundamentals.md`, `wiki/concepts/local-llm-deployment.md`, `wiki/concepts/model-quantization.md`, `wiki/index.md`, `wiki/log.md`
+- notes: 已快轉整合遠端 9/8–9/13 日報；68 份 raw Markdown 中找到 1 份未歸檔來源並補上摘要及概念連結。區分作者估算、未核對的模型數據、全局與局部快取，以及 K/V 重用和完整 attention 計算成本；既有 raw 內容未修改。
+
+## [2026-09-14] ingest | 第二份推論引擎素材
+
+- source: `raw/LLM 推理引擎到底是怎么工作的：从一个 token 到 KV 缓存、连续批处理，再到 Agent Loop 如何把 GPU 榨干.md`
+- created: `wiki/summaries/how-inference-engines-work-agent-loops.md`
+- updated: `wiki/summaries/deepseek-v4-1-flash-kv-cache-compression.md`, `wiki/concepts/local-llm-deployment.md`, `wiki/concepts/transformer-attention-fundamentals.md`, `wiki/index.md`, `wiki/log.md`
+- notes: 使用者提醒應有兩篇後重新掃描，素材由前次 68 份增至 69 份；讀取第二篇並補上來源摘要、概念整合與兩篇互鏈。保留示例數字與前綴快取條件，兩篇 raw 均未修改。

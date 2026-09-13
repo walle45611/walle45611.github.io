@@ -40,3 +40,11 @@ Local LLM deployment 指的是把開放權重模型與 serving stack 放在本�
 ## Sources
 
 - [qwen-3-8-27b-dgx-spark-agent-harness](../summaries/qwen-3-8-27b-dgx-spark-agent-harness.md)
+
+## KV Cache 的容量與讀取成本
+
+依 [[deepseek-v4-1-flash-kv-cache-compression]] 的拆解，可分別檢查每筆 KV 大小、保留條數與獨立層副本。稀疏讀取不必然縮小常駐快取；分頁、前綴共享與卸載分別處理配置浪費、重複資料與儲存位置。模型架構決定的共享方式也不能一律視為推論引擎開關。
+
+容量測試宜記錄可容納 token 數、上下文與併發，延遲測試則分開觀察 prefill、decode 及前綴命中情況。文章中的特定模型數據尚待官方來源核實，不作為本地實測。機制背景見 [[transformer-attention-fundamentals]]，精度取捨見 [[model-quantization]]。
+
+[[how-inference-engines-work-agent-loops]] 另補上排程層：continuous batching 動態更新請求組合，chunked prefill 分攤長輸入並與 decode 分享預算，prefix caching 復用相同前綴。應分開觀察 TTFT、輸出間隔、總吞吐與命中率；改善批次利用率或重複 prefill，不等於每個請求都同幅加速。

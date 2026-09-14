@@ -354,3 +354,9 @@
 - created: `wiki/summaries/how-inference-engines-work-agent-loops.md`
 - updated: `wiki/summaries/deepseek-v4-1-flash-kv-cache-compression.md`, `wiki/concepts/local-llm-deployment.md`, `wiki/concepts/transformer-attention-fundamentals.md`, `wiki/index.md`, `wiki/log.md`
 - notes: 使用者提醒應有兩篇後重新掃描，素材由前次 68 份增至 69 份；讀取第二篇並補上來源摘要、概念整合與兩篇互鏈。保留示例數字與前綴快取條件，兩篇 raw 均未修改。
+
+## [2026-09-14] daily | 2026-09-14 summary and reviewed-source supplement
+
+- basis: [[wiki/summaries/how-inference-engines-work-agent-loops.md]], [[wiki/summaries/deepseek-v4-1-flash-kv-cache-compression.md]]
+- updated: wiki/assets/daily/2026-09-14.md
+- notes: 2 summaries processed. 正式 Daily 整理推論引擎排程／Agent Loop 與 KV Cache 壓縮兩篇已歸檔內容；另在不改變正式 summary count 的前提下，整理今日可確認的來源 X 連結、講者投影片 reference、GitHub repository 核對，以及 NVIDIA DGX Spark 官方硬體規格與 Roofline／FLOP-FLOPS 複習。補充紀錄只涵蓋本次可驗證的公開來源，不宣稱是完整瀏覽器歷史；未取得足以核實特定 Gemma 4 31B 模型規格的官方頁面，因此未寫入未確認數據。

@@ -360,3 +360,9 @@
 - basis: [[wiki/summaries/how-inference-engines-work-agent-loops.md]], [[wiki/summaries/deepseek-v4-1-flash-kv-cache-compression.md]]
 - updated: wiki/assets/daily/2026-09-14.md
 - notes: 2 summaries processed. 正式 Daily 整理推論引擎排程／Agent Loop 與 KV Cache 壓縮兩篇已歸檔內容；另在不改變正式 summary count 的前提下，整理今日可確認的來源 X 連結、講者投影片 reference、GitHub repository 核對，以及 NVIDIA DGX Spark 官方硬體規格與 Roofline／FLOP-FLOPS 複習。補充紀錄只涵蓋本次可驗證的公開來源，不宣稱是完整瀏覽器歷史；未取得足以核實特定 Gemma 4 31B 模型規格的官方頁面，因此未寫入未確認數據。
+
+## [2026-09-15] daily | 2026-09-15 summary and reviewed-source supplement
+
+- basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
+- updated: wiki/assets/daily/2026-09-15.md
+- notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-15 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理今日可確認並重新核對的 Better BibTeX auto-export／citation key、Microsoft Word 手寫簽名與數位簽章、Outlook Reply／Reply All／Forward 與附件行為，以及 Word for Mac 表格中的 Tab／多階層清單操作。補充紀錄只涵蓋可驗證的公開來源與目前可確認的今日閱讀內容，不宣稱是完整瀏覽器歷史，且未保存私人郵件、附件、帳號或其他敏感資訊。

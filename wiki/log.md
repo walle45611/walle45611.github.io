@@ -366,3 +366,9 @@
 - basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
 - updated: wiki/assets/daily/2026-09-15.md
 - notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-15 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理今日可確認並重新核對的 Better BibTeX auto-export／citation key、Microsoft Word 手寫簽名與數位簽章、Outlook Reply／Reply All／Forward 與附件行為，以及 Word for Mac 表格中的 Tab／多階層清單操作。補充紀錄只涵蓋可驗證的公開來源與目前可確認的今日閱讀內容，不宣稱是完整瀏覽器歷史，且未保存私人郵件、附件、帳號或其他敏感資訊。
+
+## [2026-09-16] daily | 2026-09-16 summary and reviewed-source supplement
+
+- basis: [[wiki/index.md]]
+- updated: wiki/assets/daily/2026-09-16.md
+- notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-16 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理本次實際核對的 Daily Rules、Wiki Index、Wiki log 與今日 Daily 目標路徑。未能從目前可存取紀錄可靠驗證 2026-09-16 另有其他公開網站查詢或閱讀，因此未自行補列來源；補充紀錄不宣稱是完整瀏覽器歷史，且未保存私人帳號、session、credentials 或其他敏感資訊。

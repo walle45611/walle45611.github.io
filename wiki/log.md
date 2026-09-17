@@ -98,7 +98,6 @@
 - updated: `wiki/concepts/nlp-evaluation-metrics.md`, `wiki/index.md`, `wiki/log.md`
 - notes: 整理 LLM 評估的人工評分、reference-based metrics、LLM-as-a-Judge、factuality、agent failure modes 與 benchmark selection，並將新內容連回既有 NLP 評估指標頁。
 ## [2026-07-11] lint | wiki health check
-
 - checked: `wiki/index.md`, `wiki/log.md`, `wiki/concepts/`, `wiki/summaries/`, relative Markdown links, index coverage
 - fixed: 補上 `introducing-chatgpt-images-2-0` 索引條目；修正 Microsoft Entra、LLM-Wiki-Worker、GPT-5.5 與學習摘要中的錯誤相對或舊 Vault 絕對連結。
 - gaps: `Claude Code`、`MCP`、`Agent Skills` 仍是缺頁候選；未發現需要新來源才能判定的跨頁矛盾。
@@ -197,7 +196,6 @@
 - notes: 將演講整理為數學研究從單題深度走向 AI 輔助廣度探索的來源摘要，保留形式化驗證、Erdős 問題案例、AI 約 1–2% 成功率與逐字稿統計數字變動的證據邊界。
 
 ## [2026-08-25] ingest | How I Use AI to Learn Things
-
 - source: `raw/How I Use AI to Learn Things.md`
 - created: `wiki/summaries/how-i-use-ai-to-learn-things.md`
 - updated: `wiki/concepts/effective-learning.md`, `wiki/concepts/harness-engineering.md`, `wiki/index.md`, `wiki/log.md`
@@ -372,3 +370,9 @@
 - basis: [[wiki/index.md]]
 - updated: wiki/assets/daily/2026-09-16.md
 - notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-16 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理本次實際核對的 Daily Rules、Wiki Index、Wiki log 與今日 Daily 目標路徑。未能從目前可存取紀錄可靠驗證 2026-09-16 另有其他公開網站查詢或閱讀，因此未自行補列來源；補充紀錄不宣稱是完整瀏覽器歷史，且未保存私人帳號、session、credentials 或其他敏感資訊。
+
+## [2026-09-17] daily | 2026-09-17 summary and reviewed-source supplement
+
+- basis: [[wiki/index.md]]
+- updated: wiki/assets/daily/2026-09-17.md
+- notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-17 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理今日可確認並重新核對的 AMD Ryzen AI Max+ 395 x86-64 / Zen 5 架構、Kubernetes HPA 與 workload autoscaling 配置邊界，以及 Research Methods 課程定位與臺大 OCW 參考。保留今日使用的 YouTube URL，但因無法重新擷取影片 metadata，未猜測正式標題或授課來源；私人電子郵件內容未寫入公開 repository，補充紀錄不宣稱是完整瀏覽器歷史。

@@ -98,6 +98,7 @@
 - updated: `wiki/concepts/nlp-evaluation-metrics.md`, `wiki/index.md`, `wiki/log.md`
 - notes: 整理 LLM 評估的人工評分、reference-based metrics、LLM-as-a-Judge、factuality、agent failure modes 與 benchmark selection，並將新內容連回既有 NLP 評估指標頁。
 ## [2026-07-11] lint | wiki health check
+
 - checked: `wiki/index.md`, `wiki/log.md`, `wiki/concepts/`, `wiki/summaries/`, relative Markdown links, index coverage
 - fixed: 補上 `introducing-chatgpt-images-2-0` 索引條目；修正 Microsoft Entra、LLM-Wiki-Worker、GPT-5.5 與學習摘要中的錯誤相對或舊 Vault 絕對連結。
 - gaps: `Claude Code`、`MCP`、`Agent Skills` 仍是缺頁候選；未發現需要新來源才能判定的跨頁矛盾。
@@ -196,6 +197,7 @@
 - notes: 將演講整理為數學研究從單題深度走向 AI 輔助廣度探索的來源摘要，保留形式化驗證、Erdős 問題案例、AI 約 1–2% 成功率與逐字稿統計數字變動的證據邊界。
 
 ## [2026-08-25] ingest | How I Use AI to Learn Things
+
 - source: `raw/How I Use AI to Learn Things.md`
 - created: `wiki/summaries/how-i-use-ai-to-learn-things.md`
 - updated: `wiki/concepts/effective-learning.md`, `wiki/concepts/harness-engineering.md`, `wiki/index.md`, `wiki/log.md`

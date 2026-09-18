@@ -378,3 +378,9 @@
 - basis: [[wiki/index.md]]
 - updated: wiki/assets/daily/2026-09-17.md
 - notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-17 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理今日可確認並重新核對的 AMD Ryzen AI Max+ 395 x86-64 / Zen 5 架構、Kubernetes HPA 與 workload autoscaling 配置邊界，以及 Research Methods 課程定位與臺大 OCW 參考。保留今日使用的 YouTube URL，但因無法重新擷取影片 metadata，未猜測正式標題或授課來源；私人電子郵件內容未寫入公開 repository，補充紀錄不宣稱是完整瀏覽器歷史。
+
+## [2026-09-18] daily | 2026-09-18 summary and reviewed-source supplement
+
+- basis: [[wiki/index.md]]
+- updated: wiki/assets/daily/2026-09-18.md
+- notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-18 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理今日可確認並重新核對的 Clarivate Web of Science / SCIE / SSCI / JCR quartile、成大資工／政大資科／陽明交大資工推甄與面試準備來源、IBM Agentic AI 定義，以及英文片語 `full of yourself` / `take my leave`。官方招生頁與歷年考生經驗分開標註，community source 不視為當年度官方題庫；補充紀錄不宣稱是完整瀏覽器歷史。

@@ -396,3 +396,9 @@
 - basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
 - updated: wiki/assets/daily/2026-09-20.md
 - notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-20 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理本次實際核對的 GitHub repository、Daily Rules、Wiki Index、Wiki log 與今日 Daily 目標路徑。未能從目前可存取紀錄可靠驗證 2026-09-20 另有其他公開網站查詢或閱讀，因此未自行補列來源；補充紀錄不宣稱是完整瀏覽器歷史，且未保存帳號、session、credentials 或其他敏感資訊。
+
+## [2026-09-21] daily | 2026-09-21 summary and reviewed-source supplement
+
+- basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
+- updated: wiki/assets/daily/2026-09-21.md
+- notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-21 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理今日可確認並重新核對的陽明交大資工丁組 116 學年度官方職能、CSIT 服務範圍，以及歷年丁／戊組面試與性向測驗心得。重點包含丁組的 Linux／Git／Mail／網路與系統維運，以及戊組的 Python generator、SQL、mutable/immutable、microservice、thread safety、bit count、JSON/AJAX、SOAP/REST 等題型；歷年 community experience 與 116 學年度官方資訊分開標註，不把考古心得視為今年官方題庫。補充紀錄不宣稱是完整瀏覽器歷史。

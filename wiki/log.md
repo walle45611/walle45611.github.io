@@ -408,3 +408,10 @@
 - basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
 - updated: wiki/assets/daily/2026-09-22.md
 - notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-22 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理本次實際核對的 Daily Rules、Wiki Index、Wiki log、前一日 Daily 與執行前 repository commit history。未能從目前可存取紀錄可靠驗證 2026-09-22 另有其他非 GitHub 公開網站查詢或閱讀，因此未自行補列來源；補充紀錄不宣稱是完整瀏覽器歷史，且未保存帳號、session、credentials 或其他敏感資訊。
+
+## [2026-09-22] ingest | 容器網路、JavaScript Event Loop 與 DeepSeekMath／GRPO
+
+- source: `raw/Container Networking From Scratch - Kristen Jacobs, Oracle.md`, `raw/JavaScript Visualized - Event Loop, Web APIs, (Micro)task Queue.md`, `raw/DeepSeekMath 與 GRPO 精華版｜數學推理強化學習入門.md`
+- created: `wiki/summaries/container-networking-from-scratch.md`, `wiki/summaries/javascript-visualized-event-loop.md`, `wiki/summaries/deepseekmath-grpo-introduction.md`, `wiki/concepts/container-networking.md`, `wiki/concepts/javascript-event-loop.md`
+- updated: `wiki/concepts/microk8s-production-readiness.md`, `wiki/concepts/cloudflare-queue-consumer-modes.md`, `wiki/concepts/self-correction-in-language-models.md`, `wiki/index.md`, `wiki/log.md`
+- notes: 比對 raw 與摘要來源欄位後整理三份未歸檔來源；建立三篇摘要、兩個概念頁，補上既有概念、索引與雙向連結。保留容器網路教學年代及設定邊界、瀏覽器排程範圍，以及 DeepSeekMath 只有簡介的證據限制；未修改 raw，未補充外部論文內容。

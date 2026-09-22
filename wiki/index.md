@@ -1,6 +1,9 @@
 # Wiki Index
 ## Concepts
 
+- [container-networking](./concepts/container-networking.md): 整理 namespace、veth、bridge、跨節點路由與 overlay 的分層及排錯邊界。
+- [javascript-event-loop](./concepts/javascript-event-loop.md): 整理瀏覽器 call stack、task 與 microtask 排程，區分計時到期與實際執行。
+
 - [formal-verification-for-ai-generated-software](./concepts/formal-verification-for-ai-generated-software.md): 整合 model checking、vericoding、SDD 與需求規格的保證邊界。
 - [transformer-attention-fundamentals](./concepts/transformer-attention-fundamentals.md): 整理 attention 資料流與 Transformer 基礎，區分模型機制和上下文管理。
 
@@ -33,6 +36,10 @@
 - [writing-style-and-plain-english](./concepts/writing-style-and-plain-english.md): 整合 plain English 的讀者導向寫作與 academic style 的作者位置、hedging、脈絡及證據支撐。
 - [blog-knowledge-migration](./concepts/blog-knowledge-migration.md): 記錄舊 Blog Repo 文章納入 LLM Wiki 的來源邊界、摘要集合與後續維護方式。
 ## Summaries
+
+- [container-networking-from-scratch](./summaries/container-networking-from-scratch.md) · 2026-09-22: 整理四階段容器網路實驗、封包觀察與 2018 年教學設定的適用限制。
+- [javascript-visualized-event-loop](./summaries/javascript-visualized-event-loop.md) · 2026-09-22: 整理瀏覽器非同步 API、timer、microtask 與 5→1→3→4→2 的執行順序。
+- [deepseekmath-grpo-introduction](./summaries/deepseekmath-grpo-introduction.md) · 2026-09-22: 收錄 DeepSeekMath 7B 與 GRPO 簡介，保留無逐字稿及缺少公式、數據的限制。
 
 - [how-inference-engines-work-agent-loops](./summaries/how-inference-engines-work-agent-loops.md) · 2026-09-14: 整理推論請求生命週期、連續批次、分頁與前綴快取，以及 agent 多輪負載的排程取捨。
 

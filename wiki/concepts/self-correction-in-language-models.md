@@ -21,6 +21,10 @@
 - 評估 self-correction 時，不只看最終答案，也要檢查中間 reasoning path 是否真的更正確。
 - 若模型過度固執或過度搖擺，反思提示詞本身就是可調控制桿，會改變 confidence 與 critic score 的平衡。
 
+## Related Training Source: DeepSeekMath and GRPO
+
+新收錄的影片簡介以 DeepSeekMath 7B 為例，提到數學預訓練資料、程式碼模型能力延續，以及 GRPO 的組內相對回饋與相對 PPO 的記憶體需求改善。素材沒有逐字稿或量測；這只補充 reasoning 訓練的名詞與來源入口，不能據此確認自我修正成效，也不取代本頁對 RL 能力邊界的爭議。
+
 ## Open Questions
 
 - 何種任務最適合用 training-free sampling / decoding 逼出既有 reasoning，而不必進入 RL 訓練，仍缺穩定選型原則。
@@ -37,3 +41,4 @@
 ## Sources
 
 - [ai-self-correction-decoding-workflow-reasoning](../summaries/ai-self-correction-decoding-workflow-reasoning.md)
+- [deepseekmath-grpo-introduction](../summaries/deepseekmath-grpo-introduction.md)

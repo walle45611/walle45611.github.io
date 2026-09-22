@@ -24,10 +24,17 @@
 - 對不同硬體條件下的 HA 故障恢復時間，仍缺少跨來源量化資料。
 - 在長期升級週期中，Snap 通道策略與版本相容性治理仍需更多實證。
 
+## Networking Foundation
+
+容器網路演講補上 namespace、veth、bridge、直接路由與 overlay 的原理。這有助於將部署元件的健康狀態與實際 Pod／節點連通性分開檢查；其 2018 年教學設定不代表目前 MicroK8s 的網路預設。
+
 ## Related Concepts
+
+- [container-networking](./container-networking.md)
 
 - [kubernetes-gitops-delivery](./kubernetes-gitops-delivery.md)
 
 ## Sources
 
 - [microk8s-production-deployment-guide](../summaries/microk8s-production-deployment-guide.md)
+- [container-networking-from-scratch](../summaries/container-networking-from-scratch.md)

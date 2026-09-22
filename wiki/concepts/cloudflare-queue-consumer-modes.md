@@ -23,10 +23,17 @@
 - 不同負載型態下，push 與 pull 在成本、延遲與操作複雜度上的折衷仍需更多實務案例。
 - 多個並行 pull consumer 與上游 autoscaling 之間的最佳協調策略，還需要更多來源補充。
 
+## Scope Distinction
+
+瀏覽器的 task／microtask 是 runtime 內的 callback 排程；本頁的 Cloudflare Queue 則涉及訊息投遞、ack 與 retry。兩者都使用 queue 一詞，但不能把 event loop 的清空順序套用為分散式訊息的處理保證。
+
 ## Related Concepts
+
+- [javascript-event-loop](./javascript-event-loop.md)
 
 - [context-engineering](./context-engineering.md)
 
 ## Sources
 
 - [cloudflare-pull-consumers](../summaries/cloudflare-pull-consumers.md)
+- [javascript-visualized-event-loop](../summaries/javascript-visualized-event-loop.md)

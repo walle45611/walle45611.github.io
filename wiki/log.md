@@ -415,3 +415,9 @@
 - created: `wiki/summaries/container-networking-from-scratch.md`, `wiki/summaries/javascript-visualized-event-loop.md`, `wiki/summaries/deepseekmath-grpo-introduction.md`, `wiki/concepts/container-networking.md`, `wiki/concepts/javascript-event-loop.md`
 - updated: `wiki/concepts/microk8s-production-readiness.md`, `wiki/concepts/cloudflare-queue-consumer-modes.md`, `wiki/concepts/self-correction-in-language-models.md`, `wiki/index.md`, `wiki/log.md`
 - notes: 比對 raw 與摘要來源欄位後整理三份未歸檔來源；建立三篇摘要、兩個概念頁，補上既有概念、索引與雙向連結。保留容器網路教學年代及設定邊界、瀏覽器排程範圍，以及 DeepSeekMath 只有簡介的證據限制；未修改 raw，未補充外部論文內容。
+
+## [2026-09-22] maintenance | 修正 Cloudflare Pages Action
+
+- updated: `.github/workflows/pages.yml`, `wiki/log.md`
+- notes: 將無法解析的 cloudflare/pages-action@v1 替換為官方文件使用的 cloudflare/wrangler-action@v4，改以 pages deploy 指定原有 sites/dist/client 與 walle45611-github-io；沿用既有 secrets。YAML 解析與 git diff --check 通過，部署結果另由 GitHub Actions 驗證。
+- source: https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/

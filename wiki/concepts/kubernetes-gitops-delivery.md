@@ -24,10 +24,18 @@
 - 多 registry 與多環境（dev/staging/prod）下，Image Updater 規則如何標準化仍待補充。
 - Sealed Secrets 與外部祕密管理系統（例如 Vault）混合架構的取捨仍需更多案例。
 
+## Design Rationale
+
+設計原則演講補上宣告式同步的理由：保存期望狀態，讓元件持續比對與收斂，而不是把一次操作成功視為工作結束。這與既有 GitOps 交付鏈相呼應；演講本身並未介紹 Argo CD，也未驗證本頁工具設定。
+
 ## Related Concepts
+
+- [kubernetes-design-principles](./kubernetes-design-principles.md)
 
 - [microk8s-production-readiness](./microk8s-production-readiness.md)
 
 ## Sources
 
 - [microk8s-production-deployment-guide](../summaries/microk8s-production-deployment-guide.md)
+
+- [kubernetes-design-principles-understand-the-why](../summaries/kubernetes-design-principles-understand-the-why.md)

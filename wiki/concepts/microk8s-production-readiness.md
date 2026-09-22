@@ -28,7 +28,13 @@
 
 容器網路演講補上 namespace、veth、bridge、直接路由與 overlay 的原理。這有助於將部署元件的健康狀態與實際 Pod／節點連通性分開檢查；其 2018 年教學設定不代表目前 MicroK8s 的網路預設。
 
+## Design Rationale
+
+設計原則演講以共同 API、元件各自收斂及 PVC／PV 分離需求與實作解釋 Kubernetes。這補強部署基線的理解，但元件依最後狀態運作不代表控制面中斷時仍具完整服務能力，不能取代 HA；儲存抽象也不保證目標叢集必然滿足需求。
+
 ## Related Concepts
+
+- [kubernetes-design-principles](./kubernetes-design-principles.md)
 
 - [container-networking](./container-networking.md)
 
@@ -38,3 +44,5 @@
 
 - [microk8s-production-deployment-guide](../summaries/microk8s-production-deployment-guide.md)
 - [container-networking-from-scratch](../summaries/container-networking-from-scratch.md)
+
+- [kubernetes-design-principles-understand-the-why](../summaries/kubernetes-design-principles-understand-the-why.md)

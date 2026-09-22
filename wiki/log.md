@@ -433,3 +433,9 @@
 - basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
 - updated: wiki/assets/daily/2026-09-24.md
 - notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-24 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理本次實際核對的 Daily Rules、Wiki Index、Wiki log、今日 Daily 目標路徑與執行前 repository commit history。未能從目前可存取紀錄可靠驗證 2026-09-24 除上述 GitHub 核對外另有其他公開網站查詢或閱讀，因此未自行補列來源；補充紀錄不宣稱是完整瀏覽器歷史，且未保存私人帳號、session、credentials、私人通訊或其他敏感資訊。
+## [2026-09-23] ingest | Kubernetes Design Principles: Understand the Why
+
+- source: `raw/Kubernetes Design Principles Understand the Why - Saad Ali, Google.md`
+- created: `wiki/summaries/kubernetes-design-principles-understand-the-why.md`, `wiki/concepts/kubernetes-design-principles.md`
+- updated: `wiki/concepts/kubernetes-gitops-delivery.md`, `wiki/concepts/microk8s-production-readiness.md`, `wiki/index.md`, `wiki/log.md`
+- notes: 比對 raw 與 summary 來源欄位後，確認僅此一篇尚未收錄；另三個未追蹤 raw 已於 2026-09-22 收錄，不重複整理。依本地完整逐字稿整理四項設計原則，補齊概念雙向連結；保留 2018 年背景，限制無單點故障、儲存可攜性及最終一致性說法的解讀範圍。未修改 raw，未新增外部資料。

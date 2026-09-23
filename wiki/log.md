@@ -421,3 +421,9 @@
 - updated: `.github/workflows/pages.yml`, `wiki/log.md`
 - notes: 將無法解析的 cloudflare/pages-action@v1 替換為官方文件使用的 cloudflare/wrangler-action@v4，改以 pages deploy 指定原有 sites/dist/client 與 walle45611-github-io；沿用既有 secrets。YAML 解析與 git diff --check 通過，部署結果另由 GitHub Actions 驗證。
 - source: https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/
+
+## [2026-09-23] daily | 2026-09-23 summary and reviewed-source supplement
+
+- basis: [[wiki/index.md]], [[wiki/rules/daily-rules.md]]
+- updated: wiki/assets/daily/2026-09-23.md
+- notes: 0 summaries processed. `wiki/index.md` 的 `## Summaries` 中沒有 2026-09-23 的已歸檔 summary；另在不改變正式 summary count 的前提下，整理本次實際核對的 Daily Rules、Wiki Index、Wiki log、今日 Daily 目標路徑與執行前 repository commit history。未能從目前可存取紀錄可靠驗證 2026-09-23 另有其他公開網站查詢或閱讀，因此未自行補列來源；私人電子郵件／附件內容未寫入公開 repository，補充紀錄不宣稱是完整瀏覽器歷史。

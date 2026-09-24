@@ -30,6 +30,7 @@ struct Article {
     kind: String,
     kind_label: String,
     route_kind: String,
+    topic_section: Option<String>,
 }
 
 #[derive(Debug, Clone, Serialize)]
@@ -50,6 +51,8 @@ struct ContentArticleManifest {
 struct BuilderConfig {
     _project_root: PathBuf,
     raw_dir: PathBuf,
+    vault_posts_dir: PathBuf,
+    vault_assets_dir: PathBuf,
     out_dir: PathBuf,
     manifest_path: PathBuf,
     styles_path: PathBuf,
@@ -58,10 +61,22 @@ struct BuilderConfig {
 
 fn main() {
     let config = load_config();
-    let articles = read_articles(&config.raw_dir).unwrap_or_else(|err| {
+    let mut articles = read_articles(&config.raw_dir).unwrap_or_else(|err| {
         eprintln!("failed to read raw posts: {err}");
         std::process::exit(1);
     });
+    if config.vault_posts_dir.exists() {
+        let vault_articles = read_articles(&config.vault_posts_dir).unwrap_or_else(|err| {
+            eprintln!("failed to read vault posts: {err}");
+            std::process::exit(1);
+        });
+        for mut article in vault_articles {
+            articles.retain(|old| old.slug != article.slug);
+            article.source_file = format!("vault-posts/{}", article.source_file);
+            articles.push(article);
+        }
+        sort_articles(&mut articles);
+    }
     if let Err(err) = build_site(&config, &articles) {
         eprintln!("build failed: {err}");
         std::process::exit(1);
@@ -117,6 +132,11 @@ fn load_config() -> BuilderConfig {
         _project_root: project_root.clone(),
         raw_dir: raw_dir
             .unwrap_or_else(|| resolve_existing_path(raw_default, &project_root, "raw")),
+        vault_posts_dir: project_root.join("sites").join("vault-posts"),
+        vault_assets_dir: project_root
+            .join("sites")
+            .join("public")
+            .join("vault-assets"),
         out_dir: out_dir.unwrap_or(out_default),
         manifest_path,
         styles_path,
@@ -232,9 +252,16 @@ fn read_articles(raw_dir: &Path) -> std::io::Result<Vec<Article>> {
             kind: "post".to_string(),
             kind_label: "Post".to_string(),
             route_kind: "posts".to_string(),
+            topic_section: front_matter_value_str(&front_matter, "topic_section"),
         });
     }
 
+    sort_articles(&mut articles);
+
+    Ok(articles)
+}
+
+fn sort_articles(articles: &mut [Article]) {
     articles.sort_by(|a, b| {
         match (&a.date, &b.date) {
             (Some(a_date), Some(b_date)) => b_date.cmp(a_date),
@@ -244,8 +271,6 @@ fn read_articles(raw_dir: &Path) -> std::io::Result<Vec<Article>> {
         }
         .then_with(|| a.title.cmp(&b.title))
     });
-
-    Ok(articles)
 }
 
 fn build_site(config: &BuilderConfig, articles: &[Article]) -> std::io::Result<()> {
@@ -258,6 +283,12 @@ fn build_site(config: &BuilderConfig, articles: &[Article]) -> std::io::Result<(
     write_output(
         &config.out_dir.join("articles/index.html"),
         &render_archive(articles),
+    )?;
+    write_output(
+        &config
+            .out_dir
+            .join("topics/data-structures-algorithms/index.html"),
+        &render_data_structures_topic(articles),
     )?;
     write_output(&config.out_dir.join("about/index.html"), &render_about())?;
     write_output(
@@ -305,6 +336,12 @@ fn build_site(config: &BuilderConfig, articles: &[Article]) -> std::io::Result<(
         "/styles.css\n  Cache-Control: public, max-age=3600\n",
     )?;
     fs::copy(&config.favicon_path, config.out_dir.join("favicon.svg"))?;
+    if config.vault_assets_dir.exists() {
+        copy_tree(
+            &config.vault_assets_dir,
+            &config.out_dir.join("vault-assets"),
+        )?;
+    }
 
     let manifest_articles = articles
         .iter()
@@ -316,8 +353,8 @@ fn build_site(config: &BuilderConfig, articles: &[Article]) -> std::io::Result<(
         .collect::<Vec<_>>();
 
     let manifest = ContentManifest {
-        source: "../raw".to_string(),
-        selector: "blog: true, tags: [blog], or legacy blog.walle4561.com source".to_string(),
+        source: "../raw + vault-posts".to_string(),
+        selector: "blog: true, tags: [blog], or legacy blog.walle4561.com source; vault posts override matching slugs".to_string(),
         articles: manifest_articles,
     };
 
@@ -325,6 +362,21 @@ fn build_site(config: &BuilderConfig, articles: &[Article]) -> std::io::Result<(
         serde_json::to_string_pretty(&manifest).unwrap_or_else(|_| "{}".to_string());
     write_output(&config.manifest_path, &(manifest_json + "\n"))?;
 
+    Ok(())
+}
+
+fn copy_tree(source: &Path, destination: &Path) -> std::io::Result<()> {
+    fs::create_dir_all(destination)?;
+    for entry in fs::read_dir(source)? {
+        let entry = entry?;
+        let path = entry.path();
+        let target = destination.join(entry.file_name());
+        if path.is_dir() {
+            copy_tree(&path, &target)?;
+        } else if path.is_file() {
+            fs::copy(path, target)?;
+        }
+    }
     Ok(())
 }
 
@@ -358,6 +410,7 @@ fn render_sitemap(articles: &[Article]) -> String {
     let mut urls = vec![
         "/".to_string(),
         "/articles/".to_string(),
+        "/topics/data-structures-algorithms/".to_string(),
         "/about/".to_string(),
     ];
     urls.extend(articles.iter().map(|a| a.route.clone()));
@@ -394,6 +447,32 @@ fn render_archive(articles: &[Article]) -> String {
         "All published posts.",
         "/articles/",
         &list,
+        "website",
+    )
+}
+
+fn render_data_structures_topic(articles: &[Article]) -> String {
+    let data = articles
+        .iter()
+        .filter(|a| a.topic_section.as_deref() == Some("data-structures"))
+        .cloned()
+        .collect::<Vec<_>>();
+    let algorithms = articles
+        .iter()
+        .filter(|a| a.topic_section.as_deref() == Some("algorithms"))
+        .cloned()
+        .collect::<Vec<_>>();
+    let body = format!(
+        "<section class=\"intro\"><h1>資料結構與演算法</h1><p>依照 My vault 的主題總覽整理，共 {} 篇文章。</p></section><section><h2>資料結構</h2>{}</section><section><h2>演算法</h2>{}</section>",
+        data.len() + algorithms.len(),
+        render_post_list(&data, true),
+        render_post_list(&algorithms, true)
+    );
+    render_page(
+        "資料結構與演算法",
+        "依照 My vault 整理的資料結構與演算法筆記。",
+        "/topics/data-structures-algorithms/",
+        &body,
         "website",
     )
 }
@@ -487,7 +566,24 @@ fn render_page(
     body: &str,
     page_type: &str,
 ) -> String {
-    let _ = title;
+    let page_title = if title == "Walle Blog" {
+        title.to_string()
+    } else {
+        format!("{title} | Walle Blog")
+    };
+    let math_markup = if page_type == "article" && body.contains('$') {
+        r#"<script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>"#
+    } else {
+        ""
+    };
     format!(
         r##"<!doctype html>
 <html lang="en">
@@ -510,6 +606,7 @@ fn render_page(
     <meta property="og:title" content="{}">
     <meta property="og:description" content="{}">
     <meta property="og:url" content="{}">
+    {}
   </head>
   <body>
     <header class="site-header">
@@ -518,6 +615,7 @@ fn render_page(
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="/">Home</a>
         <a href="/articles/">Archive</a>
+        <a href="/topics/data-structures-algorithms/">資料結構與演算法</a>
         <a href="/about/">About</a>
         <a href="/feed.xml">RSS</a>
     </nav>
@@ -528,15 +626,16 @@ fn render_page(
   </body>
 </html>
 "##,
-        escape_html("Walle Blog"),
+        escape_html(&page_title),
         escape_html(description),
         page_url(pathname),
         SITE_URL,
         critical_styles(),
         page_type,
-        escape_html("Walle Blog"),
+        escape_html(title),
         escape_html(description),
         page_url(pathname),
+        math_markup,
         body,
         analytics_markup()
     )

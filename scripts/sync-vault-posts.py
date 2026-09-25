@@ -3,9 +3,11 @@
 
 import argparse
 import hashlib
+import html
 import json
 import re
 import shutil
+import struct
 from pathlib import Path
 
 
@@ -19,6 +21,29 @@ CALLOUT_NAMES = {
     "important": "重點", "example": "範例", "question": "問題",
 }
 DISPLAY_MATH = re.compile(r"(?ms)^\$\$[ \t]*\n(.*?)^\$\$[ \t]*$")
+
+
+def image_dimensions(content: bytes, suffix: str) -> tuple[int, int]:
+    """Read dimensions from the PNG/JPEG formats used by Vault blog images."""
+    if suffix.lower() == ".png" and content.startswith(b"\x89PNG\r\n\x1a\n"):
+        return struct.unpack(">II", content[16:24])
+    if suffix.lower() in {".jpg", ".jpeg"} and content.startswith(b"\xff\xd8"):
+        offset = 2
+        while offset + 4 < len(content):
+            if content[offset] != 0xFF:
+                offset += 1
+                continue
+            marker = content[offset + 1]
+            offset += 2
+            if marker in {0xD8, 0xD9, 0x01} or 0xD0 <= marker <= 0xD7:
+                continue
+            length = int.from_bytes(content[offset : offset + 2], "big")
+            if marker in {0xC0, 0xC1, 0xC2, 0xC3, 0xC5, 0xC6, 0xC7, 0xC9, 0xCA, 0xCB, 0xCD, 0xCE, 0xCF}:
+                height = int.from_bytes(content[offset + 3 : offset + 5], "big")
+                width = int.from_bytes(content[offset + 5 : offset + 7], "big")
+                return width, height
+            offset += length
+    raise ValueError(f"Unsupported or invalid blog image: {suffix}")
 
 
 def split_blog_properties(note: str, source: Path) -> tuple[dict[str, str], str]:
@@ -113,6 +138,11 @@ def convert_obsidian_format(body: str) -> str:
             if fence and fence.group(1)[0] == fence_char and len(fence.group(1)) >= fence_width:
                 fenced = False
             continue
+        if "<img " in line:
+            if output and output[-1].strip():
+                output.append("")
+            output.extend((line, ""))
+            continue
 
         heading = HEADING.match(line)
         if heading:
@@ -139,7 +169,7 @@ def convert_obsidian_format(body: str) -> str:
     return "\n".join(output).strip()
 
 
-def export(vault: Path, site: Path) -> None:
+def export(vault: Path, build_dir: Path) -> None:
     dashboard = vault / "00_Dashboard" / "資料結構和演算法 Overview.md"
     overview = dashboard.read_text(encoding="utf-8")
     def link_targets(content: str) -> list[str]:
@@ -165,8 +195,8 @@ def export(vault: Path, site: Path) -> None:
         slugs.add(slug)
         articles[name] = (source, properties, body)
 
-    posts_dir = site / ".generated" / "vault-posts"
-    assets_dir = site / ".generated" / "vault-assets"
+    posts_dir = build_dir / "vault-posts"
+    assets_dir = build_dir / "vault-assets"
     posts_dir.mkdir(parents=True, exist_ok=True)
     assets_dir.mkdir(parents=True, exist_ok=True)
     expected_posts = set()
@@ -185,14 +215,16 @@ def export(vault: Path, site: Path) -> None:
             asset = vault / reference
             if not asset.is_file():
                 raise FileNotFoundError(f"Missing asset in {name}: {asset}")
-            digest = hashlib.sha256(asset.read_bytes()).hexdigest()[:20]
+            content = asset.read_bytes()
+            digest = hashlib.sha256(content).hexdigest()[:20]
             asset_name = f"{digest}{asset.suffix.lower()}"
             target = assets_dir / asset_name
             if not target.exists():
                 shutil.copyfile(asset, target)
             expected_assets.add(asset_name)
-            alt = asset.stem.replace("[", r"\[").replace("]", r"\]")
-            return f"![{alt}](/vault-assets/{asset_name})"
+            width, height = image_dimensions(content, asset.suffix)
+            alt = html.escape(asset.stem, quote=True)
+            return f'<img src="/vault-assets/{asset_name}" alt="{alt}" width="{width}" height="{height}" decoding="async">'
 
         body = normalize_display_math(convert_obsidian_format(EMBED.sub(replace_embed, body)))
 
@@ -232,7 +264,8 @@ def export(vault: Path, site: Path) -> None:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--vault", type=Path, default=Path(__file__).resolve().parent.parent / "raw" / "my-vault")
-    parser.add_argument("--site", type=Path, default=Path(__file__).resolve().parent)
+    root = Path(__file__).resolve().parents[1]
+    parser.add_argument("--vault", type=Path, default=root / "raw" / "my-vault")
+    parser.add_argument("--build-dir", type=Path, default=root / ".build" / "site")
     args = parser.parse_args()
-    export(args.vault, args.site)
+    export(args.vault, args.build_dir)

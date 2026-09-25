@@ -480,3 +480,10 @@
 - updated: `wiki/index.md`、既有摘要的歸檔導覽、`AGENTS.md`、`sites/README.md`、`sites/stage-blog-sources.py`、`.gitignore`。
 - removed: `wiki/concepts/blog-knowledge-migration.md` 及指向該頁的現行連結；歷史 log 保留。
 - notes: 核對 387 份 Markdown 來源（My vault 的 325 篇 Note、17 篇 Dashboard 與 45 篇 Web Clipper），其中 74 份已有摘要，新增 313 份；來源涵蓋率與相對 Markdown 連結檢查通過。依使用者要求，My vault 筆記與摘要納入公開 Git；`Assets/` 只追蹤 Blog 文章實際引用的 172 個檔案。含有上傳金鑰的插件設定、裝置工作區狀態、暫存垃圾桶及本機代理設定不加入 Git。新摘要依來源文字與章節整理；原文為準，沒有另行查證其技術主張。
+
+## [2026-09-26] lint | 精簡 sites 建置目錄與修正首頁版面位移來源
+
+- checked: `sites/` 的追蹤檔、約 952 MB 本機產物、Cloudflare Pages 工作流程、首頁與文章頁的輸出。
+- fixed: 維護腳本移至 `scripts/`；網站暫存、成品、manifest 與 Cargo target 統一改為根目錄 `.build/`，不再追蹤產生的 manifest；清除舊的重複輸出及本機建置快取。首頁 CSS 改為首次繪製前載入正式樣式，移除重複的精簡樣式；Vault 文章圖片加入原始寬高。
+- verified: 新路徑仍產生 68 篇文章與 172 個附件；首頁與樣式內容在目錄重整後的雜湊與重整前相同，CLS 修正後本機首頁使用單一正式樣式。歸檔檢查、Rust 測試、fmt、Clippy、附件挑選與輸出資源檢查通過。
+- gaps: 本機瀏覽器未提供 Lighthouse CLS 數值；部署後需以首頁重新量測，不能將程式修正直接視為 CLS 已低於目標。

@@ -134,28 +134,23 @@ fn load_config() -> BuilderConfig {
         .unwrap_or_else(|| detect_project_root(&cwd));
 
     let raw_default = project_root.join("raw");
-    let out_default = project_root.join("sites").join("dist").join("client");
+    let build_root = project_root.join(".build").join("site");
+    let out_default = build_root.join("client");
 
     let styles_path = project_root.join("sites").join("styles.css");
     let favicon_path = project_root
         .join("sites")
         .join("public")
         .join("favicon.svg");
-    let manifest_path = project_root.join("sites").join("content-manifest.json");
+    let manifest_path = build_root.join("content-manifest.json");
     let raw_dir = raw_dir.map(|dir| resolve_existing_path(dir, &project_root, "raw"));
 
     BuilderConfig {
         _project_root: project_root.clone(),
         raw_dir: raw_dir
             .unwrap_or_else(|| resolve_existing_path(raw_default, &project_root, "raw")),
-        vault_posts_dir: project_root
-            .join("sites")
-            .join(".generated")
-            .join("vault-posts"),
-        vault_assets_dir: project_root
-            .join("sites")
-            .join(".generated")
-            .join("vault-assets"),
+        vault_posts_dir: build_root.join("vault-posts"),
+        vault_assets_dir: build_root.join("vault-assets"),
         out_dir: out_dir.unwrap_or(out_default),
         manifest_path,
         styles_path,
@@ -187,7 +182,7 @@ Usage:
 
 Options:
   --raw-dir      Path to raw markdown source (default: <project>/raw)
-  --out-dir      Output path for static files (default: <project>/sites/dist/client)
+  --out-dir      Output path for static files (default: <project>/.build/site/client)
   --project-dir  Project root for relative references
 "
     );
@@ -653,9 +648,7 @@ fn render_page(
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous">
     <meta name="color-scheme" content="light">
     <meta name="theme-color" content="#ffffff">
-    <style>{}</style>
-    <link rel="preload" href="/styles.css?v=5" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/styles.css?v=5"></noscript>
+    <link rel="stylesheet" href="/styles.css?v=6">
     <meta property="og:type" content="{}">
     <meta property="og:title" content="{}">
     <meta property="og:description" content="{}">
@@ -684,7 +677,6 @@ fn render_page(
         escape_html(description),
         page_url(pathname),
         SITE_URL,
-        critical_styles(),
         page_type,
         escape_html(title),
         escape_html(description),
@@ -693,40 +685,6 @@ fn render_page(
         body,
         analytics_markup()
     )
-}
-
-fn critical_styles() -> &'static str {
-    r#"
-:root {
-  color-scheme: light;
-  --ink: #111;
-  --muted: #5f5f5f;
-  --line: #d7d7d7;
-  --paper: #fff;
-  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
-}
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.7; }
-.site-header { min-height: 8.5rem; }
-.site-header,
-.site-main,
-.site-footer { margin: 0 auto; max-width: 900px; padding-left: 1.4rem; padding-right: 1.4rem; }
-.site-header { border-bottom: 1px solid var(--line); padding-top: 2.4rem; padding-bottom: 1.4rem; }
-.site-title { font-size: 1.8rem; font-weight: 700; text-decoration: none; }
-.site-description { color: var(--muted); margin: 0.25rem 0 0; }
-.site-nav { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
-.site-nav a { font-size: 0.88rem; }
-.site-main { padding-bottom: 5rem; padding-top: 3.5rem; }
-.site-footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 0.78rem; padding-bottom: 2rem; padding-top: 1.2rem; }
-.prose img,
-.prose iframe {
-  display: block;
-  height: auto;
-  margin: 1rem auto;
-  max-height: min(70vh, 560px);
-  max-width: min(100%, 640px);
-}
-"#
 }
 
 fn analytics_markup() -> String {

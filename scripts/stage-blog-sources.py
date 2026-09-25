@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 VAULT = ROOT / "raw/my-vault"
-MANIFEST = ROOT / "sites/content-manifest.json"
+MANIFEST = ROOT / ".build/site/content-manifest.json"
 EMBEDS = re.compile(r"!\[\[(.*?)\]\]")
 
 

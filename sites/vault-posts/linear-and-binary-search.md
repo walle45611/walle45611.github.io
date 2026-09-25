@@ -2,7 +2,7 @@
 title: "Linear Search and Binary Search"
 slug: linear-and-binary-search
 topic_section: data-structures
-description: "My vault 資料結構筆記：Linear Search and Binary Search。"
+description: "Linear Search and Binary Search的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/Linear Search and Binary Search.md"

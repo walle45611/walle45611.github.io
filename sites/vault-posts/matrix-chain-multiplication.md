@@ -2,7 +2,7 @@
 title: "Matrix-chain Multiplication"
 slug: matrix-chain-multiplication
 topic_section: algorithms
-description: "My vault 演算法筆記：Matrix-chain Multiplication。"
+description: "Matrix-chain Multiplication的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/Matrix-chain Multiplication.md"

@@ -2,7 +2,7 @@
 title: "互斥集合 (Disjoint Sets)"
 slug: disjoint-sets
 topic_section: data-structures
-description: "My vault 資料結構筆記：互斥集合 (Disjoint Sets)。"
+description: "互斥集合 (Disjoint Sets)的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/互斥集合 (Disjoint Sets).md"

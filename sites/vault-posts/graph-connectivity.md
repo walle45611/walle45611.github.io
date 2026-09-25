@@ -2,7 +2,7 @@
 title: "Graph Connectivity"
 slug: graph-connectivity
 topic_section: algorithms
-description: "My vault 演算法筆記：Graph Connectivity。"
+description: "Graph Connectivity的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/Graph Connectivity.md"

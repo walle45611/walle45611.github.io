@@ -2,7 +2,7 @@
 title: "單一起點最短路徑"
 slug: single-source-shortest-paths
 topic_section: algorithms
-description: "My vault 演算法筆記：單一起點最短路徑。"
+description: "單一起點最短路徑的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/Single-Source Shortest Paths Problem.md"

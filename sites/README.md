@@ -47,8 +47,16 @@ cargo run -p site-builder --release -- --project-dir ../.. --raw-dir ../../raw -
 ```
 
 The exporter reads links under `# 資料結構` and `# 演算法` in
-`00_Dashboard/資料結構和演算法 Overview.md`, converts Obsidian image embeds,
-copies required assets, and leaves My vault and existing `raw/` files untouched.
+`00_Dashboard/資料結構和演算法 Overview.md`. Each published source note in
+`Note/Research/` has `blog: true`, `blog_title`, `blog_date`, and `blog_url`
+properties. The exporter takes the title, date, and URL slug from those source
+properties, strips them from the article body, converts Obsidian image embeds,
+and copies required assets. A missing or duplicate publication setting stops
+the export before any article is written.
+`00_Dashboard/blog-articles.base` lists the published notes and URLs in
+Obsidian. The dashboard controls article order; the properties make publication
+status and the live URL visible in the source note. Existing `raw/` files are
+untouched.
 Commit the generated posts and assets with the site changes so CI can build
 without access to the local vault. The empty `Rod-Cutting Problem` note is
 skipped until it has content.

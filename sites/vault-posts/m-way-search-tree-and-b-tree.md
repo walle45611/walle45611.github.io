@@ -2,7 +2,7 @@
 title: "多路搜尋樹與 B-Tree"
 slug: m-way-search-tree-and-b-tree
 topic_section: data-structures
-description: "My vault 資料結構筆記：多路搜尋樹與 B-Tree。"
+description: "多路搜尋樹與 B-Tree的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/M-Way(Degree) Search tree And B-Tree.md"

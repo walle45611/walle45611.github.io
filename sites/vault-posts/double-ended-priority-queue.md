@@ -2,7 +2,7 @@
 title: "雙端堆或是雙端優先隊列 (Double-ended Heap OR  double-ended priority queue，DEPQ)"
 slug: double-ended-priority-queue
 topic_section: data-structures
-description: "My vault 資料結構筆記：雙端堆或是雙端優先隊列 (Double-ended Heap OR  double-ended priority queue，DEPQ)。"
+description: "雙端堆或是雙端優先隊列 (Double-ended Heap OR  double-ended priority queue，DEPQ)的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/雙端堆或是雙端優先隊列 (Double-ended Heap OR  double-ended priority queue，DEPQ).md"

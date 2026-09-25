@@ -2,7 +2,7 @@
 title: "鏈結串列（Linked List）"
 slug: linked-list
 topic_section: data-structures
-description: "My vault 資料結構筆記：鏈結串列（Linked List）。"
+description: "鏈結串列（Linked List）的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/Link List.md"

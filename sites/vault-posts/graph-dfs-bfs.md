@@ -2,7 +2,7 @@
 title: "圖論基礎：DFS 與 BFS"
 slug: graph-dfs-bfs
 topic_section: data-structures
-description: "My vault 資料結構筆記：圖論基礎：DFS 與 BFS。"
+description: "圖論基礎：DFS 與 BFS的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/Graph 基本定義和 DFS 還有 BFS.md"

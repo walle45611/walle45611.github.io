@@ -2,7 +2,7 @@
 title: "Reduction & Problem Types"
 slug: reductions-and-problem-types
 topic_section: algorithms
-description: "My vault 演算法筆記：Reduction & Problem Types。"
+description: "Reduction & Problem Types的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/Reduction & Problem Types.md"

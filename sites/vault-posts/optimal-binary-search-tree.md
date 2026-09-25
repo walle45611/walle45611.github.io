@@ -2,7 +2,7 @@
 title: "OBST (Optimal Binary Search Tree)"
 slug: optimal-binary-search-tree
 topic_section: algorithms
-description: "My vault 演算法筆記：OBST (Optimal Binary Search Tree)。"
+description: "OBST (Optimal Binary Search Tree)的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/OBST (Optimal Binary Search Tree).md"

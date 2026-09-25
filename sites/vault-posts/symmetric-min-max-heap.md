@@ -2,7 +2,7 @@
 title: "對稱最小最大堆積 (Symmetric Min-Max Heap，SMMH)"
 slug: symmetric-min-max-heap
 topic_section: data-structures
-description: "My vault 資料結構筆記：對稱最小最大堆積 (Symmetric Min-Max Heap，SMMH)。"
+description: "對稱最小最大堆積 (Symmetric Min-Max Heap，SMMH)的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/對稱最小最大堆積 (Symmetric Min-Max Heap，SMMH).md"

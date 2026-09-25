@@ -2,7 +2,7 @@
 title: "AVL 樹：平衡條件與旋轉"
 slug: avl-tree
 topic_section: data-structures
-description: "My vault 資料結構筆記：AVL 樹：平衡條件與旋轉。"
+description: "AVL 樹：平衡條件與旋轉的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/Adelson-Velsky and Landis tree(AVL Tree).md"

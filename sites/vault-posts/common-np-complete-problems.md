@@ -2,7 +2,7 @@
 title: "常見 NP 完全問題"
 slug: common-np-complete-problems
 topic_section: algorithms
-description: "My vault 演算法筆記：常見 NP 完全問題。"
+description: "常見 NP 完全問題的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/NP-C常見的問題.md"

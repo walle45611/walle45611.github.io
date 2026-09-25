@@ -2,7 +2,7 @@
 title: "K-means Clustering"
 slug: k-means-clustering
 topic_section: algorithms
-description: "My vault 演算法筆記：K-means Clustering。"
+description: "K-means Clustering的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/K-means Clustering.md"

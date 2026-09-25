@@ -2,7 +2,7 @@
 title: "堆積 (Heap)"
 slug: heap
 topic_section: data-structures
-description: "My vault 資料結構筆記：堆積 (Heap)。"
+description: "堆積 (Heap)的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/堆積 (Heap).md"

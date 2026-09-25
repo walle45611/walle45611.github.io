@@ -2,7 +2,7 @@
 title: "堆疊 (Stack)"
 slug: stack-1
 topic_section: data-structures
-description: "My vault 資料結構筆記：堆疊 (Stack)。"
+description: "堆疊 (Stack)的重點整理。"
 date: 2024-08-28
 blog: true
 vault_source: "Note/Research/堆疊 (Stack).md"

@@ -2,7 +2,7 @@
 title: "左偏堆（Leftist Heap）"
 slug: leftist-heap
 topic_section: data-structures
-description: "My vault 資料結構筆記：左偏堆（Leftist Heap）。"
+description: "左偏堆（Leftist Heap）的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/Leftist heap or min Leftist Tree.md"

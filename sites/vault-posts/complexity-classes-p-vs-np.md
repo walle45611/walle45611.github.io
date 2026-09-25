@@ -2,7 +2,7 @@
 title: "複雜度類別：P 與 NP"
 slug: complexity-classes-p-vs-np
 topic_section: algorithms
-description: "My vault 演算法筆記：複雜度類別：P 與 NP。"
+description: "複雜度類別：P 與 NP的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/Complexity Classes and P vs NP.md"

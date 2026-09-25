@@ -2,7 +2,7 @@
 title: "二元樹 (Binary Tree)"
 slug: binary-trees-1
 topic_section: data-structures
-description: "My vault 資料結構筆記：二元樹 (Binary Tree)。"
+description: "二元樹 (Binary Tree)的重點整理。"
 date: 2024-08-26
 blog: true
 vault_source: "Note/Research/二元樹 (Binary Tree).md"

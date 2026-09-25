@@ -2,7 +2,7 @@
 title: "二項樹、二項堆與費波那契堆"
 slug: binomial-and-fibonacci-heaps
 topic_section: data-structures
-description: "My vault 資料結構筆記：二項樹、二項堆與費波那契堆。"
+description: "二項樹、二項堆與費波那契堆的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/Binomial Tree 和 Binomial Heap 和 Fibonacci Heaps.md"

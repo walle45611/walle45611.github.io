@@ -2,7 +2,7 @@
 title: "最小最大堆積 (Min-Max Heap)"
 slug: min-max-heap
 topic_section: data-structures
-description: "My vault 資料結構筆記：最小最大堆積 (Min-Max Heap)。"
+description: "最小最大堆積 (Min-Max Heap)的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/最小最大堆積 (Min-Max Heap).md"

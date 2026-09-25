@@ -2,7 +2,7 @@
 title: "排序演算法"
 slug: sorting-algorithms
 topic_section: data-structures
-description: "My vault 資料結構筆記：排序演算法。"
+description: "排序演算法的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/Sorting Algo.md"

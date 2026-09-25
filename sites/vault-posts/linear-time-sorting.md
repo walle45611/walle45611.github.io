@@ -2,7 +2,7 @@
 title: "線性時間排序演算法"
 slug: linear-time-sorting
 topic_section: data-structures
-description: "My vault 資料結構筆記：線性時間排序演算法。"
+description: "線性時間排序演算法的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/Linear-time sorting algo.md"

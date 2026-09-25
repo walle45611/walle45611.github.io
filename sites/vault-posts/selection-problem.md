@@ -2,7 +2,7 @@
 title: "Selection Problem"
 slug: selection-problem
 topic_section: algorithms
-description: "My vault 演算法筆記：Selection Problem。"
+description: "Selection Problem的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/Selection Problem.md"

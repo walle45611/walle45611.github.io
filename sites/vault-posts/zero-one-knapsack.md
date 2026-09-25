@@ -2,7 +2,7 @@
 title: "0/1 背包問題"
 slug: zero-one-knapsack
 topic_section: algorithms
-description: "My vault 演算法筆記：0/1 背包問題。"
+description: "0/1 背包問題的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/01 背包問題 (01 Knapsack Problem).md"

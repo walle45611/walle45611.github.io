@@ -2,7 +2,7 @@
 title: "LCS vs. Minimum Edit Distance"
 slug: lcs-and-edit-distance
 topic_section: algorithms
-description: "My vault 演算法筆記：LCS vs. Minimum Edit Distance。"
+description: "LCS vs. Minimum Edit Distance的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/LCS vs. Minimum Edit Distance.md"

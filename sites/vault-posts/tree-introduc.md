@@ -2,7 +2,7 @@
 title: "樹（Tree）"
 slug: tree-introduc
 topic_section: data-structures
-description: "My vault 資料結構筆記：樹（Tree）。"
+description: "樹（Tree）的重點整理。"
 date: 2024-08-26
 blog: true
 vault_source: "Note/Research/樹（Tree）.md"

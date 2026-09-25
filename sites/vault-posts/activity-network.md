@@ -2,7 +2,7 @@
 title: "活動網路（Activity Network）"
 slug: activity-network
 topic_section: data-structures
-description: "My vault 資料結構筆記：活動網路（Activity Network）。"
+description: "活動網路（Activity Network）的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/Activity Network.md"

@@ -2,7 +2,7 @@
 title: "引線二元樹 (Threaded Binary Tree)"
 slug: threaded-binary-tree
 topic_section: data-structures
-description: "My vault 資料結構筆記：引線二元樹 (Threaded Binary Tree)。"
+description: "引線二元樹 (Threaded Binary Tree)的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/引線二元樹 (Threaded Binary Tree).md"

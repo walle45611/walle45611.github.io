@@ -2,7 +2,7 @@
 title: "Splay Trees"
 slug: splay-trees
 topic_section: data-structures
-description: "My vault 資料結構筆記：Splay Trees。"
+description: "Splay Trees的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/Splay Trees.md"

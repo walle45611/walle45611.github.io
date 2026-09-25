@@ -2,7 +2,7 @@
 title: "所有點對最短路徑"
 slug: all-pairs-shortest-paths
 topic_section: algorithms
-description: "My vault 演算法筆記：所有點對最短路徑。"
+description: "所有點對最短路徑的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/All-Pair Shortest Path Problem.md"

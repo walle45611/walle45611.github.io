@@ -2,7 +2,7 @@
 title: "延伸二元樹 (Extended Binary Tree)"
 slug: extended-binary-tree
 topic_section: data-structures
-description: "My vault 資料結構筆記：延伸二元樹 (Extended Binary Tree)。"
+description: "延伸二元樹 (Extended Binary Tree)的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/延伸二元樹 (Extended Binary Tree).md"

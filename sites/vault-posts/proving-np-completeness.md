@@ -2,7 +2,7 @@
 title: "Proving NP-Completeness"
 slug: proving-np-completeness
 topic_section: algorithms
-description: "My vault 演算法筆記：Proving NP-Completeness。"
+description: "Proving NP-Completeness的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/Proving NP-Completeness.md"

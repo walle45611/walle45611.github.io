@@ -2,7 +2,7 @@
 title: "陣列記憶體位址計算"
 slug: array-memory-address
 topic_section: data-structures
-description: "My vault 資料結構筆記：陣列記憶體位址計算。"
+description: "陣列記憶體位址計算的重點整理。"
 date: 2026-09-24
 blog: true
 vault_source: "Note/Research/Array 記憶體位址計算全攻略.md"

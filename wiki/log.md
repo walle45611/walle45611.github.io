@@ -446,3 +446,8 @@
 - created: `wiki/summaries/michael-kerrisk-understanding-linux-user-namespaces.md`, `wiki/concepts/linux-user-namespaces.md`
 - updated: `wiki/concepts/container-networking.md`, `wiki/index.md`, `wiki/log.md`
 - notes: 比對 74 份 raw Markdown 與 summary 來源欄位，確認僅此份尚無摘要；整理 UID/GID 映射、capabilities 與 namespace 權限歸屬，補上容器網路概念的雙向連結。保留 2023 年演講與自動逐字稿的限制；既有 raw 檔未修改。
+## [2026-09-25] daily | 2026-09-25 summary and reviewed-source supplement
+
+- basis: [[wiki/summaries/michael-kerrisk-understanding-linux-user-namespaces.md]]
+- updated: wiki/assets/daily/2026-09-25.md
+- notes: 1 summary processed. 正式 Daily 整理 Linux user namespace 的 UID/GID mapping、capabilities 與權限邊界；補充紀錄包含本次核對的 Daily Rules、Wiki Index、summary、Wiki log、repository commit history 與 summary 保存的 YouTube 原始來源連結。

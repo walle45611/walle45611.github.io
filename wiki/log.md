@@ -487,3 +487,15 @@
 - fixed: 維護腳本移至 `scripts/`；網站暫存、成品、manifest 與 Cargo target 統一改為根目錄 `.build/`，不再追蹤產生的 manifest；清除舊的重複輸出及本機建置快取。首頁 CSS 改為首次繪製前載入正式樣式，移除重複的精簡樣式；Vault 文章圖片加入原始寬高。
 - verified: 新路徑仍產生 68 篇文章與 172 個附件；首頁與樣式內容在目錄重整後的雜湊與重整前相同，CLS 修正後本機首頁使用單一正式樣式。歸檔檢查、Rust 測試、fmt、Clippy、附件挑選與輸出資源檢查通過。
 - gaps: 本機瀏覽器未提供 Lighthouse CLS 數值；部署後需以首頁重新量測，不能將程式修正直接視為 CLS 已低於目標。
+
+## [2026-09-26] lint | SQL Overview 移除刷題回連
+
+- checked: 原始 My vault 與 `raw/my-vault/00_Dashboard/SQL Overview.md` 的內容，以及 SQL 摘要與主題導覽。
+- fixed: 原始 My vault 的 `00_Dashboard/SQL Overview.md` 移除指向 `刷題 Overview` 的末行；資料庫與 SQL 語句分類保留。
+- gaps: 依 `raw/` 既有檔案不可改寫的規則，`raw/my-vault/` 副本未同步；其對應摘要仍以舊副本為來源。
+
+## [2026-09-26] lint | 資料庫與刷題總覽分工修正
+
+- checked: 原始 My vault 的 `00_Dashboard/`、四篇 SQL 題解與 Oracle Database 19c 安裝筆記。
+- fixed: 原始 My vault 新增 `00_Dashboard/database-overview.md`，只收資料庫安裝與管理筆記；移除原始 `SQL Overview.md`，刷題總覽保留 SQL 題號分類且不再連往 SQL Overview。
+- gaps: 依 `raw/` 既有來源不可改寫的規則，LLM Wiki 的舊 `raw/my-vault/00_Dashboard/SQL Overview.md` 與相應摘要仍是舊版；未將原始 Vault 的刪除同步至 `raw/`。

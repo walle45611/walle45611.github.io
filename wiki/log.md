@@ -506,3 +506,9 @@
 - fixed: Rust `site-builder` 直接讀取 My vault 的 Blog metadata 並轉換文章與圖片；新增 `sync-vault`、`archive`、`stage-assets` 指令，移除 `scripts/` 的四支 Python 腳本及部署流程中的 Python 步驟。RSS 改由 `rss` crate 產生完整 item 與符合 RSS 格式的發佈日期。
 - verified: 68 篇轉換文章及 172 個附件與舊流程的雜湊一致；387 份來源的歸檔檢查為 missing=0、changed=0；Rust 測試、Clippy 與 RSS XML 解析通過。
 - gaps: `sync-vault` 涉及覆寫 `raw/my-vault/`，本次僅以暫存目錄測試鏡像邏輯，未執行實際來源同步。
+
+## [2026-09-26] lint | RSS 與 sitemap 改用現行 Blog 網域
+
+- checked: 已部署的 `https://blog.walle4561.com/feed.xml` 可解析，但舊版文章連結指向已回傳 404 的 `walle-blog.walle4561.chatgpt.site`；確認現行 Blog 文章網址回傳 200。
+- fixed: 網站公開網址常數改為 `https://blog.walle4561.com`，供 RSS、sitemap 與頁面 canonical 使用。
+- verified: 本機建置的 RSS XML 可解析，文章連結與 sitemap 不再包含舊網域；Rust 測試通過。

@@ -14,7 +14,7 @@ use unicode_normalization::UnicodeNormalization;
 mod maintenance;
 mod vault;
 
-const SITE_URL: &str = "https://walle-blog.walle4561.chatgpt.site";
+const SITE_URL: &str = "https://blog.walle4561.com";
 const GA_ID: &str = "G-G0PYR1QYT5";
 const ADSENSE_CLIENT: &str = "ca-pub-7412528508334178";
 

@@ -333,7 +333,7 @@ fn build_site(config: &BuilderConfig, articles: &[Article]) -> std::io::Result<(
     )?;
     write_output(
         &config.out_dir.join("_headers"),
-        "/styles.css\n  Cache-Control: public, max-age=3600\n",
+        "/styles.css\n  Cache-Control: public, max-age=0, must-revalidate\n",
     )?;
     fs::copy(&config.favicon_path, config.out_dir.join("favicon.svg"))?;
     if config.vault_assets_dir.exists() {
@@ -600,8 +600,8 @@ fn render_page(
     <meta name="color-scheme" content="light">
     <meta name="theme-color" content="#ffffff">
     <style>{}</style>
-    <link rel="preload" href="/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/styles.css"></noscript>
+    <link rel="preload" href="/styles.css?v=2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/styles.css?v=2"></noscript>
     <meta property="og:type" content="{}">
     <meta property="og:title" content="{}">
     <meta property="og:description" content="{}">
@@ -666,10 +666,11 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
 .site-footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 0.78rem; padding-bottom: 2rem; padding-top: 1.2rem; }
 .prose img,
 .prose iframe {
-  width: 100%;
-  max-width: 100%;
-  min-height: 12rem;
   display: block;
+  height: auto;
+  margin: 1rem auto;
+  max-height: min(70vh, 560px);
+  max-width: min(100%, 640px);
 }
 "#
 }

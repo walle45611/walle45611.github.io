@@ -600,8 +600,8 @@ fn render_page(
     <meta name="color-scheme" content="light">
     <meta name="theme-color" content="#ffffff">
     <style>{}</style>
-    <link rel="preload" href="/styles.css?v=2" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/styles.css?v=2"></noscript>
+    <link rel="preload" href="/styles.css?v=3" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/styles.css?v=3"></noscript>
     <meta property="og:type" content="{}">
     <meta property="og:title" content="{}">
     <meta property="og:description" content="{}">

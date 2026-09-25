@@ -1,6 +1,6 @@
 # Git Worktree 與線性 Commit Log
 
-- source: `raw/git-worktree.md`
+- source: `raw/my-vault/Note/Tech/git-worktree.md`
 - original title: 使用 Git Worktree 提高開發效率與維持線性 Commit Log
 - author: Walle
 - published: 2025-02-20

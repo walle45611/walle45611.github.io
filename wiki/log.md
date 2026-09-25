@@ -451,3 +451,18 @@
 - basis: [[wiki/summaries/michael-kerrisk-understanding-linux-user-namespaces.md]]
 - updated: wiki/assets/daily/2026-09-25.md
 - notes: 1 summary processed. 正式 Daily 整理 Linux user namespace 的 UID/GID mapping、capabilities 與權限邊界；補充紀錄包含本次核對的 Daily Rules、Wiki Index、summary、Wiki log、repository commit history 與 summary 保存的 YouTube 原始來源連結。
+
+## [2026-09-26] maintenance | My vault 與 Blog 來源整合
+
+- source: 原始 My vault、原 `raw/` 來源檔。
+- created: `raw/my-vault/Note/Blog/` 中 25 篇原 Vault 尚無的 Blog 筆記、`raw/my-vault/00_Dashboard/blog-overview.md`、`scripts/sync-my-vault.py`、`scripts/stage-blog-sources.py`。
+- updated: 原始 My vault 中 3 篇既有筆記的發佈 metadata；`raw/my-vault/` 副本、`raw/web-clipper/` 來源分類、`AGENTS.md`、`wiki/rules/ingest-rules.md`、`sites/` 建置流程及 wiki 來源路徑。
+- notes: 保留原始 My vault 為主要來源；資料結構與演算法 40 篇不在 wiki 或 sites 另存正文。移除舊 `legacy-blog` 分類，舊 Blog 已有對應 Vault 筆記者使用原筆記，其餘整理入 Note。網站本機產生 68 篇文章與 172 張文章圖片；公開 Git 僅選取 Blog 必需的筆記、圖片與 Dashboard，完整 Vault 副本與 Obsidian 插件配置留在本機/iCloud。
+
+## [2026-09-26] maintenance | 依主題重整 Vault 筆記與總覽
+
+- updated: 原始 My vault 及 `raw/my-vault/Note/Research/`、`raw/my-vault/Note/Tech/`、`00_Dashboard/` 主題總覽、wiki 摘要來源路徑、`sites/stage-blog-sources.py`。
+- notes: 將 25 篇新增文章由暫時的 Blog 類別分入 Research（8 篇）與 Tech（17 篇），並將 6 篇 Reading 筆記分入 Research（4 篇）與 Tech（2 篇）；已移除 `Note/Blog/`、`Note/Reading/` 和單獨的 Blog Dashboard。刷題筆記連入資料結構與演算法總覽；競爭條件及死結管理連入既有作業系統總覽；其他筆記連入相應主題總覽。重新同步後原始 My vault 的 2,906 份檔案與 `raw/my-vault/` 逐檔相同，網站本機產生 68 篇文章。
+- source check: 另發現既有專案管理摘要所指的 `raw/專案管理-期中筆記.md` 原檔並不存在；已在摘要標記待回補，未自行杜撰來源。
+- metadata view: 原始 My vault 的 `00_Dashboard/blog-articles.base` 已改由 `blog == true` 篩選，涵蓋 Research 與 Tech；YAML 解析通過。
+- final adjustment: 依使用者後續要求，移除多餘的 `00_Dashboard/blog-articles.base`；刷題總覽與六篇文章的發佈標題改用核對後的題號，並修正 UVA 272 的題目連結文字。網站主題頁另列「刷題」段落。

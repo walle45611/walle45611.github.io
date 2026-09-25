@@ -1,6 +1,6 @@
 # 當 AI 讓資料爆炸，研究該怎麼做？－ 從文獻蒐集到建立 AI 輔助研究流程
 
-- source: `raw/當 AI 讓資料爆炸，研究該怎麼做？－ 從文獻蒐集到建立 AI 輔助研究流程.md`
+- source: `raw/web-clipper/當 AI 讓資料爆炸，研究該怎麼做？－ 從文獻蒐集到建立 AI 輔助研究流程.md`
 - source link: https://www.youtube.com/watch?v=uIl_OpFgwfI
 - original title: 當 AI 讓資料爆炸，研究該怎麼做？－ 從文獻蒐集到建立 AI 輔助研究流程
 - author: [[國立陽明交通大學圖書館]]

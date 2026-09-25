@@ -1,6 +1,6 @@
 # 使用 Docker 部署 Django：uWSGI 與 Nginx
 
-- source: `raw/django-uwsgi-nginx.md`
+- source: `raw/my-vault/Note/Tech/django-uwsgi-nginx.md`
 - original title: 使用 Docker 部署 Django：結合 uWSGI 和 Nginx 提升效能
 - author: Walle
 - published: 2024-08-18

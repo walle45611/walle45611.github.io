@@ -1,6 +1,6 @@
 # Virtual Judge：HDU-1232
 
-- source: `raw/virtual-judge-hdu-1232.md`
+- source: `raw/my-vault/Note/Research/virtual-judge-hdu-1232.md`
 - original title: virtual-judge 刷題紀錄 08/15
 - author: Walle
 - published: 2024-08-15

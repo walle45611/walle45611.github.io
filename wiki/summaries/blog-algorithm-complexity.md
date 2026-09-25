@@ -1,6 +1,6 @@
 # 資料結構：複雜度計算
 
-- source: `raw/複雜度計算.md`
+- source: `raw/my-vault/Note/Research/複雜度計算.md`
 - original title: 資料結構-複雜度計算
 - author: Walle
 - published: 2025-06-23

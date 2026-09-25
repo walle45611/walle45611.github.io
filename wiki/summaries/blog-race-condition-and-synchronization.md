@@ -1,6 +1,6 @@
 # 作業系統：競爭條件與同步
 
-- source: `raw/race-condition-and-synchronization.md`
+- source: `raw/my-vault/Note/Tech/race-condition-and-synchronization.md`
 - original title: 作業系統-競爭條件與同步
 - author: Walle
 - published: 2025-01-04

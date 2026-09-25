@@ -1,6 +1,6 @@
 # Stanford CME295 Transformers & LLMs｜Autumn 2025｜Lecture 8 - LLM Evaluation
 
-- source: `raw/Stanford CME295 Transformers & LLMs  Autumn 2025  Lecture 8 - LLM Evaluation.md`
+- source: `raw/web-clipper/Stanford CME295 Transformers & LLMs  Autumn 2025  Lecture 8 - LLM Evaluation.md`
 - source link: https://www.youtube.com/watch?v=8fNP4N46RRo
 - original title: Stanford CME295 Transformers & LLMs | Autumn 2025 | Lecture 8 - LLM Evaluation
 - author: [[Stanford Online]]

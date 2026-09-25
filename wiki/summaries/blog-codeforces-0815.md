@@ -1,6 +1,6 @@
 # Codeforces 刷題紀錄 08/15
 
-- source: `raw/codeforces-0815.md`
+- source: `raw/my-vault/Note/Research/codeforces-0815.md`
 - original title: codeforces 刷題紀錄 08/15
 - author: Walle
 - published: 2024-08-15

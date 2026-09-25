@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export My vault's data-structures and algorithms notes as blog snapshots."""
+"""Build temporary blog pages from tagged notes in raw/my-vault."""
 
 import argparse
 import hashlib
@@ -139,21 +139,23 @@ def convert_obsidian_format(body: str) -> str:
 def export(vault: Path, site: Path) -> None:
     dashboard = vault / "00_Dashboard" / "資料結構和演算法 Overview.md"
     overview = dashboard.read_text(encoding="utf-8")
-    names = re.findall(r"\[\[([^\]]+)\]\]", overview)
-    algorithm_names = set(re.findall(r"\[\[([^\]]+)\]\]", overview.split("# 演算法", 1)[1]))
+    def link_targets(content: str) -> list[str]:
+        return [name.split("|", 1)[0].split("#", 1)[0] for name in re.findall(r"\[\[([^\]]+)\]\]", content)]
+
+    names = link_targets(overview)
+    algorithm_names = set(link_targets(overview.split("# 演算法", 1)[1]))
+    problem_names = set(link_targets(overview.split("### 刷題", 1)[1])) if "### 刷題" in overview else set()
     if len(names) != len(set(names)):
         raise ValueError("Dashboard has duplicate note links")
 
     articles = {}
     slugs = set()
-    for name in names:
-        source = vault / "Note" / "Research" / f"{name}.md"
+    for source in sorted((vault / "Note").rglob("*.md")):
+        name = source.stem
         note = source.read_text(encoding="utf-8")
-        if not note.strip():
-            if name == "Rod-Cutting Problem":
-                print(f"Skipped empty source note: {source}")
-                continue
-            raise ValueError(f"Empty source note: {source}")
+        frontmatter = re.match(r"\A---\r?\n(.*?)\r?\n---\r?\n", note, re.S)
+        if not frontmatter or not re.search(r"(?m)^blog:\s*true\s*$", frontmatter.group(1)):
+            continue
         properties, body = split_blog_properties(note, source)
         slug = properties["slug"]
         if slug in slugs:
@@ -161,16 +163,14 @@ def export(vault: Path, site: Path) -> None:
         slugs.add(slug)
         articles[name] = (source, properties, body)
 
-    posts_dir = site / "vault-posts"
-    assets_dir = site / "public" / "vault-assets"
+    posts_dir = site / ".generated" / "vault-posts"
+    assets_dir = site / ".generated" / "vault-assets"
     posts_dir.mkdir(parents=True, exist_ok=True)
     assets_dir.mkdir(parents=True, exist_ok=True)
     expected_posts = set()
     expected_assets = set()
 
-    for name in names:
-        if name not in articles:
-            continue
+    for name in articles:
         source, properties, body = articles[name]
 
         def replace_embed(match: re.Match[str]) -> str:
@@ -198,20 +198,24 @@ def export(vault: Path, site: Path) -> None:
             raise ValueError(f"TikZ remains in source note: {source}")
         slug = properties["slug"]
         title = properties["title"]
-        topic_section = "algorithms" if name in algorithm_names else "data-structures"
+        topic_section = (
+            "problem-solving" if name in problem_names else
+            "algorithms" if name in algorithm_names else
+            "data-structures" if name in names else None
+        )
         description = f"{title}的重點整理。"
         date = properties["date"]
-        frontmatter = (
-            "---\n"
-            f"title: {json.dumps(title, ensure_ascii=False)}\n"
-            f"slug: {slug}\n"
-            f"topic_section: {topic_section}\n"
-            f"description: {json.dumps(description, ensure_ascii=False)}\n"
-            f"date: {date}\n"
-            "blog: true\n"
-            f"vault_source: {json.dumps(str(source.relative_to(vault)), ensure_ascii=False)}\n"
-            "---\n\n"
-        )
+        frontmatter = "".join([
+            "---\n",
+            f"title: {json.dumps(title, ensure_ascii=False)}\n",
+            f"slug: {slug}\n",
+            f"topic_section: {topic_section}\n" if topic_section else "",
+            f"description: {json.dumps(description, ensure_ascii=False)}\n",
+            f"date: {date}\n",
+            "blog: true\n",
+            f"vault_source: {json.dumps(str(source.relative_to(vault)), ensure_ascii=False)}\n",
+            "---\n\n",
+        ])
         target = posts_dir / f"{slug}.md"
         target.write_text(frontmatter + body + "\n", encoding="utf-8")
         expected_posts.add(target.name)
@@ -227,7 +231,7 @@ def export(vault: Path, site: Path) -> None:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--vault", type=Path, required=True)
+    parser.add_argument("--vault", type=Path, default=Path(__file__).resolve().parent.parent / "raw" / "my-vault")
     parser.add_argument("--site", type=Path, default=Path(__file__).resolve().parent)
     args = parser.parse_args()
     export(args.vault, args.site)

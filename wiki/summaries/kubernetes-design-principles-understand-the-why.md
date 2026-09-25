@@ -1,6 +1,6 @@
 # Kubernetes Design Principles: Understand the Why
 
-- source: `raw/Kubernetes Design Principles Understand the Why - Saad Ali, Google.md`
+- source: `raw/web-clipper/Kubernetes Design Principles Understand the Why - Saad Ali, Google.md`
 - source link: https://www.youtube.com/watch?v=ZuIQurh_kDk
 - original title: Kubernetes Design Principles: Understand the Why - Saad Ali, Google
 - author: Saad Ali（Google，講者）；CNCF（發布頻道）

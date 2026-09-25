@@ -1,6 +1,6 @@
 # EP1/23｜別部署 AI，部署它寫的程式：《Life 3.0》作者 Max Tegmark 的 vericoding（IPAM 2026）
 
-- source: `raw/EP123｜別部署 AI，部署它寫的程式：《Life 3.0》作者 Max Tegmark 的 vericoding（IPAM 2026）.md`
+- source: `raw/web-clipper/EP123｜別部署 AI，部署它寫的程式：《Life 3.0》作者 Max Tegmark 的 vericoding（IPAM 2026）.md`
 - source link: https://www.youtube.com/watch?v=igWS03uN4Nk
 - original title: EP1/23｜別部署 AI，部署它寫的程式：《Life 3.0》作者 Max Tegmark 的 vericoding（IPAM 2026）
 - author: AI 101

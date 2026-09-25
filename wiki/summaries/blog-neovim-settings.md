@@ -1,6 +1,6 @@
 # LazyVim 與 Oh My Tmux 設定筆記
 
-- source: `raw/neovim-settings.md`
+- source: `raw/my-vault/Note/Tech/neovim-settings.md`
 - original title: LazyVim 設定過程筆記
 - author: Walle
 - published: 2025-01-26

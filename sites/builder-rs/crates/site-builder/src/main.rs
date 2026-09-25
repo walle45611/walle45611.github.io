@@ -61,10 +61,20 @@ struct BuilderConfig {
 
 fn main() {
     let config = load_config();
-    let mut articles = read_articles(&config.raw_dir).unwrap_or_else(|err| {
-        eprintln!("failed to read raw posts: {err}");
-        std::process::exit(1);
-    });
+    let mut articles = Vec::new();
+    for (directory, prefix) in [(config.raw_dir.join("web-clipper"), "raw/web-clipper")] {
+        if !directory.exists() {
+            continue;
+        }
+        let mut found = read_articles(&directory).unwrap_or_else(|err| {
+            eprintln!("failed to read raw posts: {err}");
+            std::process::exit(1);
+        });
+        for article in &mut found {
+            article.source_file = format!("{prefix}/{}", article.source_file);
+        }
+        articles.extend(found);
+    }
     if config.vault_posts_dir.exists() {
         let vault_articles = read_articles(&config.vault_posts_dir).unwrap_or_else(|err| {
             eprintln!("failed to read vault posts: {err}");
@@ -72,7 +82,13 @@ fn main() {
         });
         for mut article in vault_articles {
             articles.retain(|old| old.slug != article.slug);
-            article.source_file = format!("vault-posts/{}", article.source_file);
+            article.source_file = format!("raw/my-vault/{}", article.source_file);
+            let source = config._project_root.join(&article.source_file);
+            let source_bytes = fs::read(&source).unwrap_or_else(|err| {
+                eprintln!("failed to read vault source {}: {err}", source.display());
+                std::process::exit(1);
+            });
+            article.source_hash = sha256_hex(&source_bytes);
             articles.push(article);
         }
         sort_articles(&mut articles);
@@ -132,10 +148,13 @@ fn load_config() -> BuilderConfig {
         _project_root: project_root.clone(),
         raw_dir: raw_dir
             .unwrap_or_else(|| resolve_existing_path(raw_default, &project_root, "raw")),
-        vault_posts_dir: project_root.join("sites").join("vault-posts"),
+        vault_posts_dir: project_root
+            .join("sites")
+            .join(".generated")
+            .join("vault-posts"),
         vault_assets_dir: project_root
             .join("sites")
-            .join("public")
+            .join(".generated")
             .join("vault-assets"),
         out_dir: out_dir.unwrap_or(out_default),
         manifest_path,
@@ -234,10 +253,12 @@ fn read_articles(raw_dir: &Path) -> std::io::Result<Vec<Article>> {
         let excerpt = clip_excerpt(&excerpt_raw);
         let body_html = render_markdown_to_html(&body);
         let hash = sha256_hex(raw.as_bytes());
-        let source_file = path
-            .file_name()
-            .map(|s| s.to_string_lossy().to_string())
-            .unwrap_or_default();
+        let source_file =
+            front_matter_value_str(&front_matter, "vault_source").unwrap_or_else(|| {
+                path.file_name()
+                    .map(|s| s.to_string_lossy().to_string())
+                    .unwrap_or_default()
+            });
         let route = format!("/articles/posts/{slug}/");
 
         articles.push(Article {
@@ -353,8 +374,9 @@ fn build_site(config: &BuilderConfig, articles: &[Article]) -> std::io::Result<(
         .collect::<Vec<_>>();
 
     let manifest = ContentManifest {
-        source: "../raw + vault-posts".to_string(),
-        selector: "blog: true, tags: [blog], or legacy blog.walle4561.com source; vault posts override matching slugs".to_string(),
+        source: "../raw".to_string(),
+        selector: "blog metadata in raw; raw/my-vault is authoritative for matching slugs"
+            .to_string(),
         articles: manifest_articles,
     };
 
@@ -462,10 +484,16 @@ fn render_data_structures_topic(articles: &[Article]) -> String {
         .filter(|a| a.topic_section.as_deref() == Some("algorithms"))
         .cloned()
         .collect::<Vec<_>>();
+    let problems = articles
+        .iter()
+        .filter(|a| a.topic_section.as_deref() == Some("problem-solving"))
+        .cloned()
+        .collect::<Vec<_>>();
     let body = format!(
-        "<section class=\"intro\"><h1>資料結構與演算法</h1></section><section><h2>資料結構</h2>{}</section><section><h2>演算法</h2>{}</section>",
+        "<section class=\"intro\"><h1>資料結構與演算法</h1></section><section><h2>資料結構</h2>{}</section><section><h2>演算法</h2>{}</section><section><h2>刷題</h2>{}</section>",
         render_post_list(&data, true),
-        render_post_list(&algorithms, true)
+        render_post_list(&algorithms, true),
+        render_post_list(&problems, true)
     );
     render_page(
         "資料結構與演算法",
@@ -801,9 +829,7 @@ fn has_blog_marker(front_matter: &HashMap<String, Value>) -> bool {
         return true;
     }
 
-    let source = front_matter_value_str(front_matter, "source").unwrap_or_default();
-    source.starts_with("http://blog.walle4561.com")
-        || source.starts_with("https://blog.walle4561.com")
+    false
 }
 
 fn bool_from_value(value: Option<&Value>) -> bool {
@@ -986,13 +1012,13 @@ mod tests {
     }
 
     #[test]
-    fn detects_legacy_blog_source() {
+    fn source_url_alone_does_not_publish() {
         let mut fm = HashMap::new();
         fm.insert(
             "source".to_string(),
             Value::String("https://blog.walle4561.com/2026".into()),
         );
-        assert!(has_blog_marker(&fm));
+        assert!(!has_blog_marker(&fm));
     }
 
     #[test]

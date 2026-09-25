@@ -1,6 +1,6 @@
 # AI 能自我修正嗎？從 decoding、workflow 到 reasoning 的技術發展整理
 
-- source: `raw/AI 能自我修正嗎？從 decoding、workflow 到 reasoning 的技術發展整理.md`
+- source: `raw/web-clipper/AI 能自我修正嗎？從 decoding、workflow 到 reasoning 的技術發展整理.md`
 - source link: [https://www.youtube.com/watch?v=m3i2mk5hs8U&t=4372s](https://www.youtube.com/watch?v=m3i2mk5hs8U&t=4372s)
 - original title: AI 能自我修正嗎？從 decoding、workflow 到 reasoning 的技術發展整理
 - author: [[Hung-yi Lee]]

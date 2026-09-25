@@ -1,6 +1,6 @@
 # Nuitka 與 Docker 打造高效能且安全的 Python 應用部署方案
 
-- source: `raw/Nuitka 與 Docker 打造高效能且安全的 Python 應用部署方案.md`
+- source: `raw/web-clipper/Nuitka 與 Docker 打造高效能且安全的 Python 應用部署方案.md`
 - blog source: `blog/source/_posts/Nuitka-與-Docker-打造高效能且安全的-Python-應用部署方案.md`
 - source link: https://blog.walle4561.com/20250721/111f/#more
 - original title: Nuitka 與 Docker 打造高效能且安全的 Python 應用部署方案

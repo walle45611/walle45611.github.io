@@ -1,6 +1,6 @@
 # Lost in the Middle: How Language Models use Long Context - Explained!
 
-- source: `raw/Lost in the Middle How Language Models use Long Context - Explained!.md`
+- source: `raw/web-clipper/Lost in the Middle How Language Models use Long Context - Explained!.md`
 - source link: https://www.youtube.com/watch?v=Kf3LeaUGwlg&t=2s
 - original title: Lost in the Middle: How Language Models use Long Context - Explained!
 - author: [[Weaviate vector database]]

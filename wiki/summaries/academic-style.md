@@ -1,6 +1,6 @@
 # Academic Style
 
-- source: `raw/Academic Style.md`
+- source: `raw/web-clipper/Academic Style.md`
 - source link: https://lifelong-learning.ox.ac.uk/academic-style/
 - original title: Academic Style
 - author: University of Oxford

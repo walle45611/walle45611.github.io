@@ -1,6 +1,6 @@
 # LeetCode 3106 刷題紀錄
 
-- source: `raw/leetcode-3106.md`
+- source: `raw/my-vault/Note/Research/leetcode-3106.md`
 - original title: 刷題紀錄 leetcode-3106
 - author: Walle
 - published: 2024-08-15

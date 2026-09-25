@@ -1,6 +1,6 @@
 # 作業系統：死結管理
 
-- source: `raw/deadlock-management.md`
+- source: `raw/my-vault/Note/Tech/deadlock-management.md`
 - original title: 作業系統-死結管理
 - author: Walle
 - published: 2025-01-06

@@ -1,6 +1,6 @@
 # Python 程式碼風格指南
 
-- source: `raw/style-guide-for-python-code.md`
+- source: `raw/my-vault/Note/Tech/style-guide-for-python-code.md`
 - original title: Python 程式碼風格指南
 - author: Walle
 - published: 2024-09-10

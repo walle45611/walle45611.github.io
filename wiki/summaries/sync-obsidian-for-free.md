@@ -1,6 +1,6 @@
 # 摘要：如何免費同步 Obsidian
 
-- source: `raw/How to sync Obsidian 4 FREE · Syncthing vs AutosyncPricing.md`
+- source: `raw/web-clipper/How to sync Obsidian 4 FREE · Syncthing vs AutosyncPricing.md`
 - source link: [https://www.youtube.com/watch?v=t3cy132eeUU](https://www.youtube.com/watch?v=t3cy132eeUU)
 - original title: How to sync Obsidian 4 FREE · Syncthing vs Autosync
 - speaker: DJ Lensing

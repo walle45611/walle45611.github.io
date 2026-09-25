@@ -1,6 +1,6 @@
 # 資料結構：二元樹篇
 
-- source: `raw/binary-trees-1.md`
+- source: `raw/my-vault/Note/Research/二元樹 (Binary Tree).md`
 - original title: 資料結構-二元樹篇-1
 - author: Walle
 - published: 2024-08-26

@@ -1,6 +1,6 @@
 # ISO 27001 第四至第六章
 
-- source: `raw/isms-context-leadership-planning.md`
+- source: `raw/my-vault/Note/Tech/isms-context-leadership-planning.md`
 - original title: ISO27001 第四至第六章 - 組織全景、領導與規劃
 - author: Walle
 - published: 2024-12-01

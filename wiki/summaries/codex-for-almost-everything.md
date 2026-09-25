@@ -1,6 +1,6 @@
 # Codex for (almost) everything
 
-- source: `raw/Codex for (almost) everything.md`
+- source: `raw/web-clipper/Codex for (almost) everything.md`
 - source link: https://openai.com/index/codex-for-almost-everything/
 - original title: Codex for (almost) everything
 - author: 

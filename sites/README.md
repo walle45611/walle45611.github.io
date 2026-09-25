@@ -1,78 +1,21 @@
 # Walle Blog
 
-A minimal static HTML/CSS blog generated from `raw/` markdown files and
-versioned snapshots of the My vault data-structures notes.
+Blog 從 `raw/` 的 Markdown 與發佈 metadata 建置，部署至 Cloudflare Pages。
 
-The build pipeline is now fully Rust-driven and deployed directly to **Cloudflare Pages**.
+## 來源
 
-## Architecture
+- `raw/my-vault/` 保存 My vault 筆記、附件和 Obsidian 設定。資料結構與演算法文章以這裡的 `blog: true`、`blog_title`、`blog_date`、`blog_url` 為準。
+- `raw/web-clipper/` 保存網頁剪藏；網址本身不會觸發發佈。
+- `wiki/` 是整理後的知識庫，不存放這 40 篇文章的第二份正文。
 
-- `sites/builder-rs/crates/site-builder` is the CLI entrypoint (`site-builder`).
-- `sites/builder-rs/crates/renderer-wasm` is the markdown rendering crate
-  (built for native first, and also compilable as wasm target).
-- `raw/` keeps the legacy blog articles and other archived sources.
-- `sites/vault-posts/` contains generated blog snapshots. The corresponding
-  notes in My vault are the source of truth; snapshots with the same slug
-  replace legacy `raw/` articles at build time without changing those files.
-- `sites/public/vault-assets/` contains copied images referenced by those posts.
-- `dist/client` is the static output directory for deployment.
+`sites/sync-vault-posts.py` 在每次建置時掃描 `raw/my-vault/Note/`，轉換 Obsidian 連結和圖片，輸出到被忽略的 `sites/.generated/`。產生檔不需編輯或提交。CI 會執行同一流程，再由 Rust builder 產生網站。
 
-## Content filtering
-
-A raw document is published when its frontmatter has either:
-
-```yaml
-blog: true
-```
-
-or a `blog` tag:
-
-```yaml
-tags:
-  - blog
-```
-
-or when `source` is under `https://blog.walle4561.com/` (legacy migration path).
-
-All other raw documents are ignored.
-
-## Sync data-structures and algorithms notes from My vault
-
-Run this before publishing changes to the data-structures section:
+## 本機建置
 
 ```bash
-python3 sites/sync-vault-posts.py --vault "/path/to/My vault"
+python3 sites/sync-vault-posts.py
 cd sites/builder-rs
 cargo run -p site-builder --release -- --project-dir ../.. --raw-dir ../../raw --out-dir ../../sites/dist/client
 ```
 
-The exporter reads links under `# 資料結構` and `# 演算法` in
-`00_Dashboard/資料結構和演算法 Overview.md`. Each published source note in
-`Note/Research/` has `blog: true`, `blog_title`, `blog_date`, and `blog_url`
-properties. The exporter takes the title, date, and URL slug from those source
-properties, strips them from the article body, converts Obsidian image embeds,
-and copies required assets. A missing or duplicate publication setting stops
-the export before any article is written.
-`00_Dashboard/blog-articles.base` lists the published notes and URLs in
-Obsidian. The dashboard controls article order; the properties make publication
-status and the live URL visible in the source note. Existing `raw/` files are
-untouched.
-Commit the generated posts and assets with the site changes so CI can build
-without access to the local vault. The empty `Rod-Cutting Problem` note is
-skipped until it has content.
-
-## Commands
-
-```bash
-cd sites/builder-rs
-cargo build --workspace --release
-cargo build --target wasm32-unknown-unknown -p renderer-wasm
-cargo run -p site-builder --release -- --raw-dir ../../raw --out-dir ../../sites/dist/client
-```
-
-## Analytics
-
-- GA4 measurement ID: `G-G0PYR1QYT5`
-- AdSense publisher ID: `ca-pub-7412528508334178`
-
-`ads.txt` and analytics tags are injected into generated HTML pages automatically.
+修改 My vault 後，先執行 `python3 sites/sync-my-vault.py`，再建置網站，最後執行 `python3 sites/stage-blog-sources.py`。後者只將發佈筆記、文章圖片和資料結構與演算法 Dashboard 加入公開 Git 倉庫；完整 My vault 副本仍保存在本機的 `raw/my-vault/`。是否發佈以筆記 metadata 為準。

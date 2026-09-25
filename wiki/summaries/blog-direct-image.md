@@ -1,6 +1,6 @@
 # Direct Image 的性質與應用
 
-- source: `raw/direct-image.md`
+- source: `raw/my-vault/Note/Research/direct-image.md`
 - original title: Direct Image 的性質與應用
 - author: Walle
 - published: 2024-08-22

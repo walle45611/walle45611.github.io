@@ -13,7 +13,7 @@ status: archived
 
 # 專案管理考前複習筆記講義
 
-- source: `raw/專案管理-期中筆記.md`
+- source: 原始檔未找到；先前記錄的路徑為 raw/專案管理-期中筆記.md（待回補）
 - original title: 專案管理考前複習筆記講義
 - author: self-authored
 - published: not specified

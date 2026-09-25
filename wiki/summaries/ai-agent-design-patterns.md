@@ -1,6 +1,6 @@
 # AI agent design patterns
 
-- source: `raw/AI agent design patterns.md`
+- source: `raw/web-clipper/AI agent design patterns.md`
 - source link: [https://www.youtube.com/watch?v=GDm_uH6VxPY](https://www.youtube.com/watch?v=GDm_uH6VxPY)
 - original title: AI agent design patterns
 - author: Google Cloud Tech

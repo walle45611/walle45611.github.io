@@ -1,6 +1,6 @@
 # What is the ROUGE metric?
 
-- source: `raw/What is the ROUGE metric?.md`
+- source: `raw/web-clipper/What is the ROUGE metric?.md`
 - source link: https://www.youtube.com/watch?v=TMshhnrEXlg
 - original title: What is the ROUGE metric?
 - author: [[Hugging Face]]

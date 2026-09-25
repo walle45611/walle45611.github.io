@@ -1,6 +1,6 @@
 # 資料結構：Stack
 
-- source: `raw/stack-1.md`
+- source: `raw/my-vault/Note/Research/堆疊 (Stack).md`
 - original title: 資料結構-Stack篇-1
 - author: Walle
 - published: 2024-08-28

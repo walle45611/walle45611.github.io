@@ -1,6 +1,6 @@
 # 快速上手 Vim 快捷鍵
 
-- source: `raw/introduce-vim.md`
+- source: `raw/my-vault/Note/Tech/introduce-vim.md`
 - original title: 快速上手 Vim 快捷鍵
 - author: Walle
 - published: 2024-08-14

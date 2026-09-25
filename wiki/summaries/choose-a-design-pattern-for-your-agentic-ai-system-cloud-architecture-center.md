@@ -1,6 +1,6 @@
 # Choose a design pattern for your agentic AI system
 
-- source: `raw/Choose a design pattern for your agentic AI system    Cloud Architecture Center.md`
+- source: `raw/web-clipper/Choose a design pattern for your agentic AI system    Cloud Architecture Center.md`
 - source link: https://docs.cloud.google.com/architecture/choose-design-pattern-agentic-ai-system
 - original title: Choose a design pattern for your agentic AI system
 - author: Google Cloud

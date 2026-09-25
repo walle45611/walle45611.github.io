@@ -1,6 +1,6 @@
 # Cloudflare Worker AI Pricing
 
-- source: `raw/Cloudflare Worker AI Pricing.md`
+- source: `raw/web-clipper/Cloudflare Worker AI Pricing.md`
 - source link: [https://developers.cloudflare.com/workers-ai/platform/pricing/](https://developers.cloudflare.com/workers-ai/platform/pricing/)
 - original title: Cloudflare Worker AI Pricing
 - author: (not specified)

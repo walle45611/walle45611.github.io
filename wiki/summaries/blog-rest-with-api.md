@@ -1,6 +1,6 @@
 # RESTful 和 API 關係介紹
 
-- source: `raw/rest-with-api.md`
+- source: `raw/my-vault/Note/Tech/rest-with-api.md`
 - original title: RESTful 和 API 關係介紹
 - author: Walle
 - published: 2024-09-12

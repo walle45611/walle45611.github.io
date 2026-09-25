@@ -1,6 +1,6 @@
 # Virtual Judge：P2249
 
-- source: `raw/virtual-judge-p2249.md`
+- source: `raw/my-vault/Note/Research/virtual-judge-p2249.md`
 - original title: virtual-judge 刷題紀錄 08/21
 - author: Walle
 - published: 2024-08-20

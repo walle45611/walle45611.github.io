@@ -1,6 +1,6 @@
 # 快速使用 Hexo 搭配 Google Analytics
 
-- source: `raw/setting-hexo-ga.md`
+- source: `raw/my-vault/Note/Tech/setting-hexo-ga.md`
 - original title: 快速使用 Hexo 搭配 Google Analytics (GA)
 - author: Walle
 - published: 2024-08-14

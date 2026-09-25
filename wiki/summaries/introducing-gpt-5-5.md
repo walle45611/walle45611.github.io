@@ -1,6 +1,6 @@
 # Introducing GPT-5.5
 
-- source: `raw/Introducing GPT-5.5.md`
+- source: `raw/web-clipper/Introducing GPT-5.5.md`
 - source link: https://openai.com/index/introducing-gpt-5-5/
 - original title: Introducing GPT-5.5
 - author: OpenAI

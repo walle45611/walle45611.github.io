@@ -1,6 +1,6 @@
 # K8s 中的 Pod 是什麼
 
-- source: `raw/k8s-introduction-pods.md`
+- source: `raw/my-vault/Note/Tech/K8s 中的 Pod 是什麼.md`
 - original title: K8s 中的 Pod 是什麼
 - author: Walle
 - published: 2024-11-28

@@ -1,6 +1,6 @@
 # 在 Windows 上設定 OpenSSH Server 和 Guacamole SFTP
 
-- source: `raw/setup-openssh-server-in-windows-with-guacamole-sftp.md`
+- source: `raw/my-vault/Note/Tech/setup-openssh-server-in-windows-with-guacamole-sftp.md`
 - original title: 在 Windows 上正確設定 OpenSSH Server 和 Guacamole SFTP
 - author: Walle
 - published: 2024-08-27

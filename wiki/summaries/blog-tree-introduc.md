@@ -1,6 +1,6 @@
 # 資料結構：樹
 
-- source: `raw/tree-introduc.md`
+- source: `raw/my-vault/Note/Research/樹（Tree）.md`
 - original title: 資料結構-樹篇
 - author: Walle
 - published: 2024-08-26

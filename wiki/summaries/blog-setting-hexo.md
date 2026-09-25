@@ -1,6 +1,6 @@
 # 使用 Hexo 建置自己的 Blog
 
-- source: `raw/setting-hoex.md`
+- source: `raw/my-vault/Note/Tech/setting-hoex.md`
 - original title: 快入使用 Hexo 建置自己的 Blog
 - author: Walle
 - published: 2024-08-12

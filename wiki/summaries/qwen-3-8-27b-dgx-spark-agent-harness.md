@@ -1,6 +1,6 @@
 # 從模型部署到 Agent Harness：Qwen 3.8 27B 與 DGX Spark 實機示範
 
-- source: `raw/從模型部署到 Agent Harness：Qwen 3.8 27B 與 DGX Spark 實機示範.md`
+- source: `raw/web-clipper/從模型部署到 Agent Harness：Qwen 3.8 27B 與 DGX Spark 實機示範.md`
 - source link: [https://www.youtube.com/watch?v=7tNIw_gHeSI](https://www.youtube.com/watch?v=7tNIw_gHeSI)
 - original title: 從模型部署到 Agent Harness：Qwen 3.8 27B 與 DGX Spark 實機示範
 - author: Will 保哥

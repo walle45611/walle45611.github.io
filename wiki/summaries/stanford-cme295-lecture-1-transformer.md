@@ -1,6 +1,6 @@
 # (3) Stanford CME295 Transformers & LLMs | Autumn 2025 | Lecture 1 - Transformer
 
-- source: `raw/(3) Stanford CME295 Transformers & LLMs  Autumn 2025  Lecture 1 - Transformer.md`
+- source: `raw/web-clipper/(3) Stanford CME295 Transformers & LLMs  Autumn 2025  Lecture 1 - Transformer.md`
 - source link: https://www.youtube.com/watch?v=Ub3GoFaUcds
 - original title: (3) Stanford CME295 Transformers & LLMs | Autumn 2025 | Lecture 1 - Transformer
 - author: Stanford Online

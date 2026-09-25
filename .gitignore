@@ -54,6 +54,12 @@ Cargo.lock
 
 # Local workspace metadata
 .obsidian/
+raw/my-vault/
+
+# Temporary pages and assets derived from raw/my-vault
+sites/.generated/
+__pycache__/
+*.pyc
 
 # Generated site outputs
 sites/builder-rs/sites/

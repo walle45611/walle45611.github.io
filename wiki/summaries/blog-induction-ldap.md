@@ -1,6 +1,6 @@
 # 簡單認識 LDAP
 
-- source: `raw/induction-ldap.md`
+- source: `raw/my-vault/Note/Tech/induction-ldap.md`
 - original title: 簡單認識 LDAP：讓網路認證更輕量
 - author: Walle
 - published: 2024-08-30

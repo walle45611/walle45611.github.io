@@ -1,6 +1,6 @@
 # DOMjudge 安裝指南
 
-- source: `raw/domjudge-install-guide.md`
+- source: `raw/my-vault/Note/Tech/domjudge-install-guide.md`
 - original title: DOMjudge 安裝指南
 - author: Walle
 - published: 2024-10-22

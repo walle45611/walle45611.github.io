@@ -1,6 +1,6 @@
 # VS Code Profile 管理不同開發環境
 
-- source: `raw/vscode-extension-profile.md`
+- source: `raw/my-vault/Note/Tech/vscode-extension-profile.md`
 - original title: 利用 vscode profile 分開不同開發環境的 vscode extension
 - author: Walle
 - published: 2024-08-16

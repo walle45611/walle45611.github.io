@@ -1,6 +1,6 @@
 # Windows 10 L2TP VPN 連線錯誤
 
-- source: `raw/windows-l2tp-connect-error-720.md`
+- source: `raw/my-vault/Note/Tech/windows-l2tp-connect-error-720.md`
 - original title: Windows 10 L2TP VPN 連線錯誤
 - author: Walle
 - published: 2024-08-30

@@ -1,6 +1,6 @@
 # DeepSeekMath 與 GRPO 精華版｜數學推理強化學習入門
 
-- source: `raw/DeepSeekMath 與 GRPO 精華版｜數學推理強化學習入門.md`
+- source: `raw/web-clipper/DeepSeekMath 與 GRPO 精華版｜數學推理強化學習入門.md`
 - source link: https://www.youtube.com/watch?v=r0kpXiy6GDA
 - original title: DeepSeekMath 與 GRPO 精華版｜數學推理強化學習入門
 - author: Affective Vision Computing Lab

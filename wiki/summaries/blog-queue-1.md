@@ -1,6 +1,6 @@
 # 資料結構：Queue
 
-- source: `raw/queue-1.md`
+- source: `raw/my-vault/Note/Research/queue-1.md`
 - original title: 資料結構-Queue篇-1
 - author: Walle
 - published: 2024-09-09

@@ -1,6 +1,6 @@
 # How to Write in Plain English
 
-- source: `raw/How to write in plain English.md`
+- source: `raw/web-clipper/How to write in plain English.md`
 - source link: https://www.kent.ac.uk/guides/plain-english
 - original title: How to write in plain English
 - author: (not specified)

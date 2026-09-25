@@ -1,6 +1,6 @@
 # Cloudflare Pull consumers
 
-- source: `raw/Cloudflare Pull consumers.md`
+- source: `raw/web-clipper/Cloudflare Pull consumers.md`
 - source link: [https://developers.cloudflare.com/queues/configuration/pull-consumers/](https://developers.cloudflare.com/queues/configuration/pull-consumers/)
 - original title: Cloudflare Pull consumers
 - author: (not specified)

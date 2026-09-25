@@ -329,7 +329,6 @@ fn build_site(config: &BuilderConfig, articles: &[Article]) -> std::io::Result<(
             .join("topics/data-structures-algorithms/index.html"),
         &render_data_structures_topic(articles),
     )?;
-    write_output(&config.out_dir.join("about/index.html"), &render_about())?;
     write_output(
         &config.out_dir.join("404.html"),
         &render_page(
@@ -459,7 +458,6 @@ fn render_sitemap(articles: &[Article]) -> String {
         "/".to_string(),
         "/articles/".to_string(),
         "/topics/data-structures-algorithms/".to_string(),
-        "/about/".to_string(),
     ];
     urls.extend(articles.iter().map(|a| a.route.clone()));
     let entries = urls
@@ -528,21 +526,6 @@ fn render_data_structures_topic(articles: &[Article]) -> String {
         &body,
         "website",
     )
-}
-
-fn render_about() -> String {
-    let body = r#"<article class="post">
-    <header class="post-header">
-      <div class="eyebrow">About</div>
-      <h1>Hi, I'm Walle.</h1>
-      <p class="post-deck">I build software and study how AI systems can be made useful, reliable, and understandable.</p>
-    </header>
-    <div class="prose">
-      <p>My work sits between software engineering, language models, knowledge systems, and applied research.</p>
-      <p>I use this blog to think in public: to keep notes on things I am building, questions I am working through, and ideas worth returning to.</p>
-    </div>
-  </article>"#;
-    render_page("About", "About Walle Blog.", "/about/", body, "website")
 }
 
 fn render_post(article: &Article) -> String {

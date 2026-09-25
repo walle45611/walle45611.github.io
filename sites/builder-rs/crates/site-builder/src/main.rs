@@ -694,7 +694,7 @@ fn render_page(
         <a href="/">Home</a>
         <a href="/articles/">Archive</a>
         <a href="/topics/data-structures-algorithms/">資料結構與演算法</a>
-        <a href="/about/">About</a>
+        <a href="https://linktr.ee/walle4561" target="_blank" rel="noopener noreferrer">Linktree</a>
         <a href="/feed.xml">RSS</a>
     </nav>
   </header>

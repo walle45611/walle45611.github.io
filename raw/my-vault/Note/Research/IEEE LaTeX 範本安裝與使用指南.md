@@ -1,3 +1,10 @@
+---
+blog: true
+blog_title: "IEEE LaTeX 範本安裝與使用指南"
+blog_date: 2026-09-26
+blog_url: https://blog.walle4561.com/articles/posts/ieee-latex-template-guide/
+---
+
 # IEEE LaTeX 範本安裝與使用指南
 
 本篇依序整理編譯環境、編輯器與 IEEE 範本的下載及安裝，最後確認範本可以編譯。Windows 與 macOS 只需選擇自己使用的系統安裝。

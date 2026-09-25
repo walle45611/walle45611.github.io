@@ -520,3 +520,10 @@
 - updated: `wiki/index.md` 的全部概念條目按主題分組；相關既有概念頁與四篇代表性摘要補上雙向導覽。
 - verified: 37 篇概念頁全部列入索引；所檢查的 Wiki Markdown 相對連結沒有失效目標；`git diff --check` 通過。
 - gaps: 資料庫總覽的原始 My vault 與 `raw/my-vault/` 副本仍不同步；未用舊副本推導新的資料庫概念頁。其餘來源摘要仍可逐步按重複主題整合，不把每篇摘要都拆成概念頁。
+
+## [2026-09-26] ingest | IEEE LaTeX 範本安裝與使用指南發佈為 Blog
+
+- source: `raw/my-vault/Note/Research/IEEE LaTeX 範本安裝與使用指南.md`，由原始 My vault 同名筆記同步這篇的 Blog metadata。
+- updated: 原始 My vault 與 `raw/my-vault/` 的這篇筆記加入 `blog: true`、標題、日期與固定網址；Rust 匯出器對存在但尚未發佈的 Obsidian 筆記連結顯示文字；更新本篇摘要來源雜湊、Blog 連結與 `wiki/index.md` 條目。
+- verified: 本機網站產生 69 篇文章、175 個附件；新文章的三個圖片／動畫資源都存在，文章已進入 Archive；Rust 單元測試與格式檢查通過。
+- gaps: `archive --check` 另指出刷題 Overview、SQL Overview、CASE WHEN 三份與本篇無關的來源摘要雜湊已不同步；本次未改寫其摘要。兩篇尚未發佈的延伸閱讀在 Blog 上僅顯示名稱，Obsidian 原筆記仍保留內部連結。

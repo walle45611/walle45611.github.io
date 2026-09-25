@@ -1,10 +1,11 @@
 # IEEE LaTeX 範本安裝與使用指南
 
 - source: `raw/my-vault/Note/Research/IEEE LaTeX 範本安裝與使用指南.md`
-- source_sha256: `73ff09a0521e7a6506eeb51937779be65c933327cdc696af34663c6d4a99a440`
+- source_sha256: `a35f0ae88f828504ca188947c2f075940f9d806548b40a6ef9033d1601a82600`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research
+- blog: https://blog.walle4561.com/articles/posts/ieee-latex-template-guide/
 
 ## Summary
 
@@ -18,4 +19,5 @@
 
 ## Navigation
 
+- [閱讀 Blog 文章](https://blog.walle4561.com/articles/posts/ieee-latex-template-guide/)
 - [回到 Research 歸檔](<../archives/my-vault-research.md>)

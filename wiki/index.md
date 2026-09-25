@@ -131,7 +131,7 @@
 - [my-vault-research-how-to-read-and-do-222a4ab5e](./summaries/my-vault-research-how-to-read-and-do-222a4ab5e.md) · 2026-09-26: 整理「How to read and do proofs」的原筆記內容與章節。
 - [my-vault-research-how-to-write-and-submit-e04c530ed](./summaries/my-vault-research-how-to-write-and-submit-e04c530ed.md) · 2026-09-26: 整理「Introduction and Literature Review Writing Notes」的原筆記內容與章節。
 - [my-vault-research-icmp-internet-control-message-protocol-c5dd151e8](./summaries/my-vault-research-icmp-internet-control-message-protocol-c5dd151e8.md) · 2026-09-26: 整理「ICMP(Internet Control Message Protocol) 基本介紹」的原筆記內容與章節。
-- [my-vault-research-ieee-latex-30520d577](./summaries/my-vault-research-ieee-latex-30520d577.md) · 2026-09-26: 整理「IEEE LaTeX 範本安裝與使用指南」的原筆記內容與章節。
+- [my-vault-research-ieee-latex-30520d577](./summaries/my-vault-research-ieee-latex-30520d577.md) · 2026-09-26: 整理 IEEE LaTeX 範本安裝指南，並連至 Blog 版本。
 - [my-vault-research-ip-internet-protocol-c8fb1204a](./summaries/my-vault-research-ip-internet-protocol-c8fb1204a.md) · 2026-09-26: 整理「概述」的原筆記內容與章節。
 - [my-vault-research-ipsec-ip-security-2f6ca4b6f](./summaries/my-vault-research-ipsec-ip-security-2f6ca4b6f.md) · 2026-09-26: 整理「IPSec (IP Security) 介紹」的原筆記內容與章節。
 - [my-vault-research-is-is-intermediate-system-intermediate-13aefca10](./summaries/my-vault-research-is-is-intermediate-system-intermediate-13aefca10.md) · 2026-09-26: 整理「IS-IS (Intermediate System - Intermediate System)」的原筆記內容與章節。

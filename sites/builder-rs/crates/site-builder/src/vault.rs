@@ -301,8 +301,16 @@ pub fn export(vault: &Path, build_dir: &Path) -> Result<()> {
         .ok_or_else(|| fail("Dashboard lacks algorithm section"))?;
     let algorithm_names: HashSet<_> = links(algorithms.1).into_iter().collect();
     let mut posts = Vec::<Post>::new();
+    let mut all_note_names = HashSet::new();
     let mut slugs = HashSet::new();
     for source in files_under(&vault.join("Note"), "md")? {
+        all_note_names.insert(
+            source
+                .file_stem()
+                .unwrap_or_default()
+                .to_string_lossy()
+                .into_owned(),
+        );
         let note = fs::read_to_string(&source)?;
         if let Some(post) = parse_post(&source, &note)? {
             if !slugs.insert(post.slug.clone()) {
@@ -331,6 +339,7 @@ pub fn export(vault: &Path, build_dir: &Path) -> Result<()> {
                 let linked = reference.strip_suffix(".md").unwrap_or(reference);
                 return match slugs_by_name.get(linked) {
                     Some(slug) => format!("[{linked}](/articles/posts/{slug}/)"),
+                    None if all_note_names.contains(linked) => linked.to_string(),
                     None => { error = Some(format!("Unmapped note link in {}: {reference}", post.name)); String::new() }
                 };
             }

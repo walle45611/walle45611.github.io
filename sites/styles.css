@@ -186,6 +186,10 @@ h1 {
   line-height: 1.95;
 }
 
+.prose a {
+  overflow-wrap: anywhere;
+}
+
 .prose h2 {
   border-bottom: 1px solid var(--line);
   font-size: 1.55rem;
@@ -233,6 +237,24 @@ h1 {
   max-width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+.prose .math-tex.has-overflow {
+  border: 1px solid var(--line);
+  border-radius: 0.3rem;
+  padding: 0.35rem 0.5rem;
+  scrollbar-color: #999 transparent;
+  scrollbar-width: thin;
+}
+
+.prose .math-tex.has-overflow::before {
+  color: var(--muted);
+  content: "↔ 左右滑動查看完整公式";
+  display: block;
+  font: 0.7rem/1.4 var(--sans);
+  left: 0;
+  position: sticky;
+  width: max-content;
 }
 
 .prose blockquote {
@@ -292,6 +314,22 @@ h1 {
 }
 
 @media (max-width: 600px) {
+  .site-header,
+  .site-main,
+  .site-footer {
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
+  }
+
+  .post-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .prose .math-tex.has-overflow:not(.math-display) {
+    display: block;
+    margin: 0.5rem 0;
+  }
+
   .post-list.compact .post-item {
     display: block;
   }

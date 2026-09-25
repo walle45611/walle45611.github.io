@@ -580,7 +580,30 @@ fn render_page(
         }
       };
     </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>"#
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
+    <script>
+      window.addEventListener('load', () => {
+        const prose = document.querySelector('.prose');
+        if (!prose) return;
+
+        let pending = false;
+        const markOverflow = () => {
+          pending = false;
+          prose.querySelectorAll('.math-tex').forEach((math) => {
+            math.classList.toggle('has-overflow', math.scrollWidth > math.clientWidth + 12);
+          });
+        };
+        const scheduleCheck = () => {
+          if (pending) return;
+          pending = true;
+          requestAnimationFrame(markOverflow);
+        };
+
+        new MutationObserver(scheduleCheck).observe(prose, { childList: true, subtree: true });
+        window.addEventListener('resize', scheduleCheck);
+        scheduleCheck();
+      });
+    </script>"#
     } else {
         ""
     };
@@ -600,8 +623,8 @@ fn render_page(
     <meta name="color-scheme" content="light">
     <meta name="theme-color" content="#ffffff">
     <style>{}</style>
-    <link rel="preload" href="/styles.css?v=3" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/styles.css?v=3"></noscript>
+    <link rel="preload" href="/styles.css?v=4" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/styles.css?v=4"></noscript>
     <meta property="og:type" content="{}">
     <meta property="og:title" content="{}">
     <meta property="og:description" content="{}">

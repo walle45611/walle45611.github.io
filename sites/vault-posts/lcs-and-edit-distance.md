@@ -8,7 +8,7 @@ blog: true
 vault_source: "Note/Research/LCS vs. Minimum Edit Distance.md"
 ---
 
-## 核心差異總覽 (Core Differences)
+### 核心差異總覽 (Core Differences)
 
 |特性|最長公共子序列 (LCS)|Minimum Edit Distance|
 |:--|:--|:--|
@@ -17,17 +17,17 @@ vault_source: "Note/Research/LCS vs. Minimum Edit Distance.md"
 |**目標**|**最大化** 共同長度|**最小化** 操作成本|
 |**關鍵操作**|匹配、跳過|匹配、插入、刪除、**替換**|
 |**公式核心**|`max()`|`min()`|
-## 1. 最長公共子序列 (LCS)
+### 1. 最長公共子序列 (LCS)
 
-### A. 問題定義
+#### A. 問題定義
 
 給定兩序列 $X=\langle x_1,\dots,x_m\rangle$ 與 $Y=\langle y_1,\dots,y_n\rangle$，找 $X$ 與 $Y$ 的最長共同子序列。
 
 子序列：刪除若干元素且不改變相對順序所得，如 "ace" 為 "abcde" 之子序列，"aec" 不是。
 
-### B. 結構、狀態與轉移
+#### B. 結構、狀態與轉移
 
-#### 1. 最優解的結構 (Optimal Substructure)
+##### 1. 最優解的結構 (Optimal Substructure)
 
 這是推導 DP 公式最關鍵的一步。我們想找出 $X_m$ ( $X$ 的所有字元) 和 $Y_n$ ( $Y$ 的所有字元) 之間的 LCS，我們只需要比較**最後一個字元**：$x_m$ 和 $y_n$。
 
@@ -50,7 +50,7 @@ vault_source: "Note/Research/LCS vs. Minimum Edit Distance.md"
     - LCS($X_m, Y_n$) = Max( LCS($X_{m-1}, Y_n$), LCS($X_m, Y_{n-1}$) )
         
 
-#### 2. 狀態與轉移方程
+##### 2. 狀態與轉移方程
 
 基於上述結構，我們定義狀態並建立遞迴解：
 
@@ -62,7 +62,7 @@ $$c[i,j]= \begin{cases} 0 & i=0 \text{ 或 } j=0\\ c[i-1,j-1]+1 & X_i=Y_j \text{
 
 **邊界：** $c[i,0]=0,c[0,j]=0$。
 
-### C. 演算法 (Bottom-Up)
+#### C. 演算法 (Bottom-Up)
 
 如果直接用遞迴公式，會因為「重疊子問題」導致效率極低。因此我們用 DP (Bottom-Up)，開一個 `c[0..m, 0..n]` 表格，從 `c[0, 0]` 開始，一格一格把答案算出來，直到 `c[m, n]`。
 
@@ -70,9 +70,10 @@ $$c[i,j]= \begin{cases} 0 & i=0 \text{ 或 } j=0\\ c[i-1,j-1]+1 & X_i=Y_j \text{
 
 ![01-C. 演算法 (Bottom-Up)](/vault-assets/8cb491d2bfb64ecffe2c.png)
 
-### D. 範例
 
-==口訣：一樣斜上，大看上，小看左，記得要加 1。==
+#### D. 範例
+
+<mark>口訣：一樣斜上，大看上，小看左，記得要加 1。</mark>
 
 $X=\langle A,B,C,B,D,A,B\rangle;(m=7)$
 
@@ -80,11 +81,13 @@ $Y=\langle B,D,C,A,B,A\rangle;(n=6)$
 
 ![02-D. 範例](/vault-assets/782115425bb2f8f1dc50.png)
 
+
 最終長度：`c[7,6]=4`；其中一個 LCS："BCBA"。
 
-### E. 回溯 (Reconstruction)
+#### E. 回溯 (Reconstruction)
 
 ![03-E. 回溯 (Reconstruction)](/vault-assets/64ca4d937b1b5fd7482e.png)
+
 
 `c` 表格只告訴我們「長度」，`b` 表格 (存箭頭 ↖, ↑, ←) 才是用來回溯找出「LCS 到底長怎樣」的。`PRINT-LCS` 自右下 `b[m,n]` 依箭頭回溯。
 
@@ -96,7 +99,7 @@ $Y=\langle B,D,C,A,B,A\rangle;(n=6)$
     
 - 直到 `i=0` 或 `j=0` 為止。
     
-### F. 複雜度分析 (Complexity)
+#### F. 複雜度分析 (Complexity)
 
 1. **時間複雜度 (Time):**
     
@@ -122,13 +125,13 @@ $Y=\langle B,D,C,A,B,A\rangle;(n=6)$
         
     - **回溯時間複雜度：$O(m+n)$**
 
-## 2. Minimum Edit Distance
+### 2. Minimum Edit Distance
 
-### A. 定義
+#### A. 定義
 
 給定 $S_1$（長度 $m$）與 $S_2$（長度 $n$），求將 $S_1$ **轉換**為 $S_2$ 的**最小**操作數。允許操作成本皆為 $1$：Insert、Delete、Replace。
 
-### B. 狀態與轉移
+#### B. 狀態與轉移
 
 **狀態：** `dp[i, j]` 為將 $S_1[1..i]$ 轉為 $S_2[1..j]$ 的最小成本。
 
@@ -139,7 +142,7 @@ $$dp[i, j] = \min \begin{cases} dp[i-1, j] + 1 & \text{(刪除 $S_1[i]$)} \\ dp[
 其中 $\text{cost}=0$ 若 $S_1[i]=S_2[j]$，否則 $\text{cost}=1$。
 
 **邊界：** $dp[0,0]=0,;dp[i,0]=i,;dp[0,j]=j$。
-### C. 演算法
+#### C. 演算法
 
 1. 建立 `dp[0..m,0..n]`。
     
@@ -185,7 +188,7 @@ EDIT-DISTANCE(S1, S2)
   return dp[m, n]
 ```
 
-### D. 範例
+#### D. 範例
 
 $S_1=\text{"SAT"}$, $S_2=\text{"CAT"}$
 
@@ -200,7 +203,7 @@ i
 
 最終答案：`dp[3,3]=1`。
 
-### E. 回溯 (Reconstruction)
+#### E. 回溯 (Reconstruction)
 
 dp 表格和箭頭不僅能給出最小成本，還能回溯出具體的操作步驟。
 
@@ -230,7 +233,7 @@ dp 表格和箭頭不僅能給出最小成本，還能回溯出具體的操作�
 
 總操作： 1 次「替換」。
 
-### F. 複雜度分析 (Complexity)
+#### F. 複雜度分析 (Complexity)
 
 1. **時間複雜度 (Time):**
     

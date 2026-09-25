@@ -8,11 +8,11 @@ blog: true
 vault_source: "Note/Research/互斥集合 (Disjoint Sets).md"
 ---
 
-## 📘 Disjoint Set - Abstract Data Type (ADT)
+### 📘 Disjoint Set - Abstract Data Type (ADT)
 
 Disjoint Set 是一種管理不相交集合（disjoint sets）的資料結構，支援以下三個基本操作：
 
-### 🔧 操作定義：
+#### 🔧 操作定義：
 
 - **Make-Set(x)**  
   建立一個新的集合，僅包含元素 $x$
@@ -27,11 +27,11 @@ Disjoint Set 是一種管理不相交集合（disjoint sets）的資料結構，
 	![Disjoint Sets CLRS 演算法](/vault-assets/24e5bffa5ebe441154bc.png)
 
 
-## 🏗️ Disjoint Set Representation（表示法）
+### 🏗️ Disjoint Set Representation（表示法）
 
-### 🧷 1. Linked List 表示法
+#### 🧷 1. Linked List 表示法
 
-#### 📌 結構概念：
+##### 📌 結構概念：
 
 - 每個集合是一個 Linked List
 	
@@ -59,7 +59,7 @@ struct DisjointSetNode {
 };
 ```
 
-#### ⚙️ 特性與缺點：
+##### ⚙️ 特性與缺點：
 
 - `Find-Set(x)`：需遍歷整條 linked list，效率低
 	
@@ -68,9 +68,9 @@ struct DisjointSetNode {
 - 教學常見，但實務較少使用
 
 
-### 🧮 2. Array（樹狀結構）表示法
+#### 🧮 2. Array（樹狀結構）表示法
 
-#### 📌 結構概念：
+##### 📌 結構概念：
 
 - 使用一個一維陣列 `parent[]` 表示每個節點的父節點
   
@@ -79,22 +79,24 @@ struct DisjointSetNode {
 - 整個集合是一棵以 root 為根的樹
 
 
-### 🔧 優化技巧（結合 size 儲存）：
+#### 🔧 優化技巧（結合 size 儲存）：
 
 - 若 $\text{parent}[i] < 0$，表示 $i$ 是 root，且集合大小為 $-\text{parent}[i]$
   
 - 若 $\text{parent}[i] \geq 0$，表示 $\text{parent}[i]$ 是節點 $i$ 的父節點
 
 
-### 📊 Array 範例：
+#### 📊 Array 範例：
+
 ![Disjoint Set 範例圖](/vault-assets/f82d72b27269252ca2e0.png)
+
 
 | index  | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
 |--------|---|---|---|---|---|---|---|---|---|----|
 | data   | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
 | parent | -4| 5 | -3| 3 | -3| 3 | 1 | 1 | 1 | 5  |
 
-#### 📌 解釋：
+##### 📌 解釋：
 
 - $\text{parent}[1] = -4$ → 節點 1 是 root，集合大小為 4
 - $\text{parent}[2] = 5$ → 節點 2 的父節點是 5
@@ -102,9 +104,9 @@ struct DisjointSetNode {
 - $\text{parent}[6] = 3$ → 節點 6 的父節點是 3
 
 
-## 📌 Application
+### 📌 Application
 
-### Disjoint Set 資料結構的常見應用包括：
+#### Disjoint Set 資料結構的常見應用包括：
 
 1. **Kruskal's Algorithm 中用來判斷是否可以將邊 (u, v) 加入 Spanning Tree**
 	
@@ -112,7 +114,7 @@ struct DisjointSetNode {
 	
 	- 避免產生環（Cycle） → Chapter: MST（Minimum Spanning Tree）
 
-### 找出圖中的 Connected Components（連通分量） (CLRS P564)
+#### 找出圖中的 Connected Components（連通分量） (CLRS P564)
 
 - 可將每個邊 $(u,v)$ 透過 `Union(u, v)` 合併
 
@@ -179,7 +181,7 @@ int main(){
 }
 ```
 
-## 3. **給等位配對資訊，找出等位集合**
+### 3. **給等位配對資訊，找出等位集合**
 
 等位關係（Equivalence Relation）需滿足三個性質：
 
@@ -187,7 +189,7 @@ int main(){
 - **對稱性**（Symmetric）：$$aRb \Rightarrow bRa$$  
 - **遞移性**（Transitive）：$$aRb \land bRc \Rightarrow aRc$$  
 
-#### 題目：
+##### 題目：
 已知以下等位配對資訊：
 
 $$
@@ -196,7 +198,7 @@ $$
 
 請找出所有等位集合。
 
-#### ✅ 解法說明：
+##### ✅ 解法說明：
 
 1. 一開始每個元素都是獨立集合。
    
@@ -204,7 +206,7 @@ $$
    
 3. 最後根據集合代表元（root）分組。
 
-#### 💻 C++ 實作程式碼：
+##### 💻 C++ 實作程式碼：
 
 ```cpp
 #include <iostream>
@@ -274,11 +276,11 @@ int main() {
 
 ---
 
-## 🧮 Arbitrary Union(i, j) and Simple Find(i) Implementation
+### 🧮 Arbitrary Union(i, j) and Simple Find(i) Implementation
 
 這是最基礎的互斥集合實作版本，不考慮 size/rank/path compression 的優化。
 
-### 🔁 Union(i, j)
+#### 🔁 Union(i, j)
 
 ```cpp
 // 合併兩集合：將 i 的 root 指向 j 的 root
@@ -294,7 +296,7 @@ void Union(Node* i, Node* j) {
 
 ---
 
-### 🔍 Find(i)
+#### 🔍 Find(i)
 
 ```cpp
 // 找到節點 i 所在集合的代表元（root）
@@ -317,7 +319,7 @@ Node* find(Node* i) {
 
 ---
 
-### 🧠 時間複雜度分析：
+#### 🧠 時間複雜度分析：
 	
 - 若沒有任何優化(例如 Union by Size / Rank 或 Path Compression)，則在最壞情況下，所有節點會逐一串接成一條**鏈狀結構（linear tree）**
 	
@@ -345,11 +347,11 @@ Node* find(Node* i) {
 
 ---
 
-## ⚙️ 優化的必要性（Why Optimization Matters）
+### ⚙️ 優化的必要性（Why Optimization Matters）
 
 在最原始的實作中，如果只使用 **Arbitrary Union(i, j)** 搭配 **Simple Find(i)**，不進行任何優化，會有以下問題：
 
-### ❗ 問題說明：
+#### ❗ 問題說明：
 
 1. 一開始我們有 $n$ 個單元素集合（singleton sets）：
 	$$
@@ -371,13 +373,13 @@ Node* find(Node* i) {
    - 時間複雜度退化為 $O(n)$，效能非常差
 
 
-### ⚙️ 優化方式（Optimization Techniques）
+#### ⚙️ 優化方式（Optimization Techniques）
 
 為了避免樹退化成鏈狀結構（linear tree）而導致 `Find(i)` 效率下降，我們可以設計更聰明的合併與查找策略。
 
 主要有兩大類優化方式：
 
-#### 📦 Union by Size / Weight
+##### 📦 Union by Size / Weight
 
 > 合併時，**讓節點數較少的集合掛到節點數較多的集合上**，避免樹變高。
 
@@ -385,7 +387,7 @@ Node* find(Node* i) {
 - 每次合併時比較兩個 root 所屬集合的大小，讓小的合併到大的
 - 這能保證樹的高度最多為 $\log n$
 
-##### 🧾 C++ 實作範例（以負數儲存 size）：
+###### 🧾 C++ 實作範例（以負數儲存 size）：
 
 ```cpp
 // parent[i] < 0 表示 i 是 root，且 abs(parent[i]) 為集合大小
@@ -410,27 +412,20 @@ void unionBySize(int i, int j, vector<int>& parent) {
 }
 ```
 
-##### 證明 Union by Weighting 的高度上界
+###### 證明 Union by Weighting 的高度上界
 
 $$
 \begin{aligned}
 &\text{定理：若以 Weighting Rule 對 }n\text{ 節點合併，則樹高 }H(n)\le\lceil\log_{2}(n+1)\rceil.\\[4pt]
-
 &\text{歸納基底：}n=1,\ \text{此時只有 root 一個點，}H(1)=1,\ \lceil\log_{2}(1+1)\rceil=1,\ \text{成立}.\\[4pt]
-
 &\text{歸納假設：對所有 }1\le k<n,\ H(k)\le\lceil\log_{2}(k+1)\rceil.\\[4pt]
-
 &\text{歸納步驟：設最後一次 union 合併兩棵子樹為 }T_a, T_b,\ \text{其節點數分別為 }a,b,\\
 &\quad a+b=n,\ a\le b.\ \text{根據 Weighting Rule，較小的樹合併至較大者，故合併後高度為：}\\
 &\quad H(n) = \max\{H(b),\,H(a)+1\}.\\[6pt]
-
 &\text{分兩種情況分析：}\\[4pt]
-
 &\text{Case 1：}H(a)+1 \le H(b)\ \Rightarrow\ H(n) = H(b) \le \lceil\log_{2}(b+1)\rceil \le \lceil\log_{2}(n)\rceil \le \lceil\log_{2}(n+1)\rceil.\\[6pt]
-
 &\text{Case 2：}H(a)+1 > H(b)\ \Rightarrow\ H(n) = H(b)+1 \le \lceil\log_{2}(b+1)\rceil + 1 \le \lceil\log_{2}(n)\rceil + 1.\\
 &\quad \text{因此新樹高度在此情況下} \;H(n)\le \lceil\log_{2}(n)\rceil + 1\le \lceil\log_{2}(n+1)\rceil.\\[6pt]
-
 &\text{結論：}H(n)\le\lceil\log_{2}(n+1)\rceil.\quad\blacksquare
 \end{aligned}
 $$
@@ -483,17 +478,17 @@ $$
 
 不論是哪一種情況，新的樹高都不會超過 $\lceil\log_{2}(n+1)\rceil$，最壞情況下的高度也只會是 log 等級。
 
-> [!NOTE]
+> **筆記**
 > Union by weighting rule (nodes 的總數)、 Union by Height、Union by ranks (root's degree) 都是一樣的樹高 $\lceil\log_{2}(n+1)\rceil$，並且 FIND(X) 時間複雜度 $O(\log n)$
 
 
-#### 🔗 Path Compression (Collapsing Rule)
+##### 🔗 Path Compression (Collapsing Rule)
 
-##### 定義  
+###### 定義  
 
 在 `Find(i)` 過程中，除了找出元素 *$i$ 所在集合的根（root）之外，還會將從 $i$ 到 root 路徑上 **所有非 root 的節點** 的 `parent` 直接指向該 root，以「壓扁」整條路徑。
 
-##### 演算法 
+###### 演算法 
 
 ```
 o1
@@ -545,7 +540,7 @@ Node* Find_with_Collapsing(Node* i) {
 }
 ```
 
-##### 📌 時間複雜度
+###### 📌 時間複雜度
 
 - 每次 `Find(i)` 操作的**均攤**時間為  $O\bigl(\alpha(m,n)\bigr)$ 
 	

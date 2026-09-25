@@ -8,7 +8,7 @@ blog: true
 vault_source: "Note/Research/K-means Clustering.md"
 ---
 
-## 1. 核心目標：K-means Problem
+### 1. 核心目標：K-means Problem
 
 解釋：
 
@@ -28,7 +28,7 @@ $$\Delta(\mathbf{x}, \mathbf{c}) = \|\mathbf{x} - \mathbf{c}\|^2 = \sum_{a=1}^{d
 
 $$f(S,C) = \sum_{\ell=1}^{k} \sum_{\mathbf{x} \in S^{(\ell)}} \Delta(\mathbf{x}, \mathbf{c}^{(\ell)})$$
 
-## 2. 核心規則：Nearest-Center Rule (最近中心法則)
+### 2. 核心規則：Nearest-Center Rule (最近中心法則)
 
 解釋：
 
@@ -44,7 +44,7 @@ $$\mathbf{x} \in S^{(\ell)} \;\; \text{iff} \;\; \Delta(\mathbf{x}, \mathbf{c}^{
     
 - **注意：** Center $\mathbf{c}^{(\ell)}$ 不一定需要是 $S$ 中的原始資料點。
     
-## 3. 求解演算法：Lloyd's Procedure
+### 3. 求解演算法：Lloyd's Procedure
 
 解釋：
 
@@ -72,7 +72,7 @@ $$\mathbf{x} \in S^{(\ell)} \;\; \text{iff} \;\; \Delta(\mathbf{x}, \mathbf{c}^{
     
     重複步驟 2 和 3，直到叢集指派不再發生變化（或 centers 的位置不再變動），此時演算法收斂。
     
-## 4. 關鍵數學性質 (演算法的基礎)
+### 4. 關鍵數學性質 (演算法的基礎)
 
 Lloyd's procedure 之所以有效，是因為它交替地滿足了兩個最佳化條件：
 
@@ -99,7 +99,7 @@ Lloyd's procedure 之所以有效，是因為它交替地滿足了兩個最佳�
     
     (此規則即 Lloyd's procedure 的「步驟 2：指派點」)
     
-## 5. 應用範例
+### 5. 應用範例
 
 **範例 1：地理資料分群 (如美國城市)**
 
@@ -140,7 +140,7 @@ Lloyd's procedure 之所以有效，是因為它交替地滿足了兩個最佳�
         
     - **$k$ 越大 (如 $k=256$)：** 壓縮率較低，檔案較大，但顏色更接近原始影像 (品質好)。
 
-### 計算方式
+#### 計算方式
 
 - **資料點 $S$：**
     
@@ -165,9 +165,9 @@ Lloyd's procedure 之所以有效，是因為它交替地滿足了兩個最佳�
     - $\mathbf{c}^{(2)} = P_6 = (8, 6)$
         
 - **距離公式：** $\Delta(\mathbf{x}, \mathbf{c}) = (x_1 - c_1)^2 + (x_2 - c_2)^2$
-#### 完整計算步驟
+##### 完整計算步驟
 
-#### 步驟 1：(A) Assign points to clusters (指派點到叢集)
+##### 步驟 1：(A) Assign points to clusters (指派點到叢集)
 
 我們必須計算**每一個點**到**每一個 center** 的（平方）距離，然後看哪個比較近。
 
@@ -191,7 +191,7 @@ Lloyd's procedure 之所以有效，是因為它交替地滿足了兩個最佳�
 
 ---
 
-#### 步驟 2：(B) Recompute centers as centroids (重算 centers)
+##### 步驟 2：(B) Recompute centers as centroids (重算 centers)
 
 現在我們根據上面分好的群組，來計算它們各自的「平均位置 (centroid)」，這就是我們的**新 centers**。
 
@@ -219,7 +219,7 @@ Lloyd's procedure 之所以有效，是因為它交替地滿足了兩個最佳�
     
 - **新的 $\mathbf{c}^{(2)} = (7, 7)$**
     
-### 總結
+#### 總結
 
 **第一輪迭代 (Iteration 1) 完成！**
 

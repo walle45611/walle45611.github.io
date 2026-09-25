@@ -8,9 +8,9 @@ blog: true
 vault_source: "Note/Research/M-Way(Degree) Search tree And B-Tree.md"
 ---
 
-# M-Way Search 
+## M-Way Search 
 
-## 定義
+### 定義
 
 **M-way Search Tree（M ≫ 2）重點**
 
@@ -25,7 +25,7 @@ vault_source: "Note/Research/M-Way(Degree) Search tree And B-Tree.md"
 - `search/insert/delete x` 的時間為 $O(h)$，其中 $h$ 是樹高；若結構 skewed，實際效能最壞也取決於 $h$。
     
 
-## **定理**（高度為 $h$ 的 $m$-way search tree）
+### **定理**（高度為 $h$ 的 $m$-way search tree）
 
 - 節點數上界：  $\sum_{i=1}^{h} (m^{i-1}) \,=\, \frac{m^{h}-1}{m-1}$
     
@@ -39,6 +39,7 @@ vault_source: "Note/Research/M-Way(Degree) Search tree And B-Tree.md"
 
 
 ![diagram-01](/vault-assets/26d7bfd472f3bc549083.png)
+
 
 **設定**
 
@@ -65,9 +66,10 @@ $$\bigg(\frac{m^{h}-1}{m-1}\bigg)\cdot(m-1) = m^{h}-1.$$
 
 ![diagram-02](/vault-assets/0538bbfc03799d8030ff.png)
 
-# B Tree of Order M
 
-## 定義 (Definition)
+## B Tree of Order M
+
+### 定義 (Definition)
 
 B-Tree of order m 是一種 **balanced m-way search tree**，主要應用於外部搜尋 (external search) 與外部排序 (external sort)。若非空，需滿足以下條件：
 
@@ -77,7 +79,7 @@ B-Tree of order m 是一種 **balanced m-way search tree**，主要應用於外�
     
 3. 所有葉節點 (leaf nodes) 必須位於同一層，確保樹保持平衡。
 
-## 定理 (Theorem)
+### 定理 (Theorem)
 
 對於高度為 $h$ 的 m-way search tree (root level = 1)：
 
@@ -92,39 +94,31 @@ B-Tree of order m 是一種 **balanced m-way search tree**，主要應用於外�
 	- **最少 keys**：  $K_{\min}=2\,t^{\,h-1}-1=2\cdot\left\lceil\frac{m}{2}\right\rceil^{h-1}-1$
 		
 	    - 例如 $m=3$：  $K_{\min}=2\cdot\left\lceil\tfrac{3}{2}\right\rceil^{h-1}-1=2\cdot 2^{h-1}-1=2^{h}-1$
-### 證明    
+#### 證明    
 
 ![01-證明](/vault-assets/e49053928d84bd5aa00e.png)
 
-#### 最少 nodes（包含葉）
+
+##### 最少 nodes（包含葉）
 
 層別節點數（root 取 degree = 2，其餘皆取 $\lceil m/2\rceil$）：
 
 $$
-
 \#\text{level}_1=1,\quad \#\text{level}_2=2,\quad \#\text{level}_k=2\Big\lceil \frac{m}{2}\Big\rceil^{\,k-2}\;(k\ge2).
-
 $$
 
 因此
 
 $$
-
 \begin{aligned}
-
 N_{\min}(h)
-
 &=1+\sum_{k=2}^{h}2\Big\lceil \frac{m}{2}\Big\rceil^{k-2}
-
 =1+2\sum_{i=0}^{h-2}\Big\lceil \frac{m}{2}\Big\rceil^{i}
-
 =1+2\,\frac{\Big\lceil \tfrac{m}{2}\Big\rceil^{h-1}-1}{\Big\lceil \tfrac{m}{2}\Big\rceil-1}\,.
-
 \end{aligned}
-
 $$
 
-#### 最少 keys
+##### 最少 keys
 
 * 非根每個節點的最少 keys，簡單來說就是你會需要 3 個 $key$ 切開 4 個子樹：$\left\lceil \frac{m}{2} \right\rceil-1$
 
@@ -133,21 +127,14 @@ $$
 因此最少 keys：
 
 $$
-
 \begin{aligned}
-
 K_{\min}(h)
-
 &=\underbrace{1}_{\text{root}}+\Big[\,2\cdot\frac{\left\lceil \tfrac{m}{2} \right\rceil^{\,h-1}-1}{\left\lceil \tfrac{m}{2} \right\rceil-1}\,\Big]\cdot\Big(\left\lceil \tfrac{m}{2} \right\rceil-1\Big)\\[4pt]
-
 &=1+2\Big(\left\lceil \tfrac{m}{2} \right\rceil^{\,h-1}-1\Big)\\[2pt]
-
 &=2\,\left\lceil \tfrac{m}{2} \right\rceil^{\,h-1}-1\,.
-
 \end{aligned}
-
 $$
-### 備註
+#### 備註
 
 - 名稱「2-3 Tree」、「2-3-4 Tree」等，來自允許的 **degree 範圍**：
     
@@ -160,7 +147,8 @@ $$
 
 ![diagram-03](/vault-assets/a33cd1d12f310c764fd6.png)
 
-### 判斷有沒有此種樹
+
+#### 判斷有沒有此種樹
 
 | order mm | 根的 degree | 非根節點 degree | 允許的節點型別（degree） |              常見名稱               |       是否存在       |
 | -------: | :-------: | :---------: | :-------------: | :-----------------------------: | :--------------: |
@@ -170,13 +158,13 @@ $$
 
 > 說明：m=5m=5 時，非根下限為 $\lceil 5/2\rceil=3$。一般節點**不能**有 degree=2，因此**沒有「2-3-4-5 Tree」**這個名稱。
 
-### 例：2-3 Tree 給定 key 數 n 求高度界
+#### 例：2-3 Tree 給定 key 數 n 求高度界
 
 - **最小高度**（最滿）：  $3^{h}-1\ge n\;\Rightarrow\; h=\left\lceil\log_{3}(n+1)\right\rceil$
     
 - **最大高度**（最稀）：  $2^{h}-1\ge n\;\Rightarrow\; h=\left\lceil\log_{2}(n+1)\right\rceil$
 
-## 插入 X 到 B 樹 (Order M)
+### 插入 X 到 B 樹 (Order M)
 
 1. Step 1. Search for X 由於 $X$ 不在樹中，會找到一個 external node (null)。  將 $X$ 放入該 external node 的 parent。  （找到 $X$ 的位置，在 node 放入 $X$）
 	
@@ -198,16 +186,18 @@ $$
 ---
 
 ![diagram-04](/vault-assets/be9fefb678aca6a126f3.png)
-### Example 
+
+#### Example 
 
 - B tree of order 3 (or 2-3 tree), what's the result after insert 55, 37
 
 
 ![diagram-05](/vault-assets/1e7ac0ecdff0b61a111e.png)
+
 1.  插入 55，但是因為 overflow 最多只能 $\left\lceil \tfrac{m}{2} \right\rceil \leq \deg(\text{node}) \leq m=2$, 所以需要 split action
 	![02-Example](/vault-assets/51ddcaa3d3f41b4018cc.png)
 2. Insert 5,18 and 12 in the 2-3 tree ![03-Example](/vault-assets/ca60eac2239004979d07.png)
-## Delete X in B-Tree of order m
+### Delete X in B-Tree of order m
 
 > 目標：刪除鍵值 xx。先搜尋到包含 xx 的節點 NN。
 
@@ -250,7 +240,7 @@ $$
 		* 到 $y$ 所在的 **leaf** 刪除 $y$。該 leaf 的鍵數減一，
 		
 		* 因此回到 **Case I** 的 underflow 檢查與修復流程。
-### 註記
+#### 註記
 
 * $\lceil m/2\rceil - 1$ 為**非根節點**允許的最少鍵數。
 
@@ -259,13 +249,14 @@ $$
 * 可能需**一路向上**修復直到根；若根空了且只有一個子樹，則將該子樹提升為新根。
 
 ![04-註記](/vault-assets/5bead16a97541c6cc3fe.png)
-### Example 
+
+#### Example 
 -  B-Tree Order 3, delete 58 55 and 40![05-Example](/vault-assets/66cb4c735047ab4f22ed.png)
 - Delete 15,70 ![06-Example - Delete 15,70](/vault-assets/4595944153a77476fbff.png)
 
-# $B^+$ Tree of order m
+## $B^+$ Tree of order m
 
-## 定義 (Definition)
+### 定義 (Definition)
 
 - 用途：ISAM（Index Sequential Access Method）。
     
@@ -282,14 +273,19 @@ $$
 		    
 		- 連結：各 **data block 以 linked list 串接**，方便順序讀取。
 		    
-		- 容量：每個 block 的資料數 **可依題目/規格自行訂**，**不必**與 index 的 order m 相同，**==但是題目沒有特別說就是一樣==**。
+		- 容量：每個 block 的資料數 **可依題目/規格自行訂**，**不必**與 index 的 order m 相同，**<mark>但是題目沒有特別說就是一樣</mark>**。
 
 ![07-定義 (Definition)](/vault-assets/f54f3baa36222f01a98b.png)
-## Insert a data 
+
+### Insert a data 
+
 ![08-Insert a data](/vault-assets/d5a5b5ac8979489501a8.png)
 
-## Delete a data
+
+### Delete a data
+
 ![09-Delete a data](/vault-assets/f1e06883175b53c7eb07.png)
+
 1. 尋找要刪除的節點，例如刪除 24 → 在葉節點 `[22 | 24]` 中找到。
     
 2. 從葉節點刪除 24 → 節點剩下 `[22]`。

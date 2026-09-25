@@ -8,7 +8,7 @@ blog: true
 vault_source: "Note/Research/樹（Tree）.md"
 ---
 
-## Tree 定義
+### Tree 定義
 
 * A tree is a finite set of one or more nodes such that: (也就是說樹一定是由一個或是多個節點組成的有限集，**所以就是說不可以為空的**)
 
@@ -16,11 +16,12 @@ vault_source: "Note/Research/樹（Tree）.md"
 
 	2. There remaining nodes are partioned into `n >= 0` disjoint sets T1,...,Tn, where each of these sets is a tree. We call T1,...Tn the subtrees of the root. (也就是說其他節點被劃分了 `n>=0` 個不相交的集合，每個集合都是一棵樹。稱之這些集合為 root 的 subtrees of the root.)
 
-## Tree Terminology Introduction
+### Tree Terminology Introduction
 
   
 
 ![圖 2. : A sample tree](https://imgur.com/LzDtjZ9.png)
+
 
   
 
@@ -36,11 +37,11 @@ vault_source: "Note/Research/樹（Tree）.md"
 
 * level : 就是為這顆樹最深的深度例 (圖1) 就是 4，有的書會從 0 起算。
 
-## Representation Of Trees
+### Representation Of Trees
 
 以下介紹兩種，樹的表示法 `List Representation` 和 `Left Child-Right Sibling Representation`。
 
-## Link List Representation
+### Link List Representation
 
 * 可以使用括號來做表示 $(A (B (E (K, L), F), C(G), D(H(M), I, J)))$ 以 (圖2) 為例。
 
@@ -50,10 +51,11 @@ vault_source: "Note/Research/樹（Tree）.md"
 
 ![圖 3. : List Representtation](https://imgur.com/hiqw0DL.png)
 
+
   
 
 
-### Link List k-元樹空間浪費分析
+#### Link List k-元樹空間浪費分析
 
 - `n`：樹中節點的總數  
 - `k`：每個節點預先分配的子指標數（代表最大可支援的孩子數，也就是最大 degree）
@@ -76,7 +78,7 @@ $$
 
 2. **動態容器**（如 `vector`、`list`）存孩子指標，按需分配，不會有空指標浪費。
 
-## Left Child-Right Sibling Representation
+### Left Child-Right Sibling Representation
 
 * 簡單來說就是每個節點開三個欄位分別存最左邊的*children*，然後連接右邊的 siblings，和自己的資料。
 

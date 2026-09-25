@@ -8,7 +8,7 @@ blog: true
 vault_source: "Note/Research/Linear Search and Binary Search.md"
 ---
 
-# Linear (Sequential) Search
+## Linear (Sequential) Search
 
 **特點：**
 
@@ -24,7 +24,7 @@ vault_source: "Note/Research/Linear Search and Binary Search.md"
 
 * 所以平均需要 $\frac{n+1}{2}$ 次比較，仍為 $O(n)$。
 
-## 一般 Linear Search
+### 一般 Linear Search
 
 ```c
 int search(int arr[], int n, int x) {
@@ -42,7 +42,7 @@ int search(int arr[], int n, int x) {
 
 * 缺點：每次迴圈要同時檢查索引是否越界 (`i < n`) 與值是否相等 (`arr[i] == x`)。
 
-### Linear Search with Sentinel
+#### Linear Search with Sentinel
 
 ```c
 int search(int arr[], int n, int x) {
@@ -61,7 +61,7 @@ int search(int arr[], int n, int x) {
 	
 	* 實際上只少掉「一次邊界檢查」，效能提升有限。
 
-### 比較次數分析
+#### 比較次數分析
 
 | 情境       | 普通搜尋               | 哨兵搜尋     |
 | -------- | ------------------ | -------- |
@@ -71,7 +71,7 @@ int search(int arr[], int n, int x) {
 
 👉 哨兵法最多省掉邊界檢查，效能差異不大。
 
-# Binary Search
+## Binary Search
 
 **前提條件：**
 
@@ -91,9 +91,9 @@ int search(int arr[], int n, int x) {
 
 4. 若 `x` 較大 → 在右半部繼續搜尋。
 
-### 程式碼
+#### 程式碼
 
-### 迴圈版本
+#### 迴圈版本
 ```c
 int binary_search(int arr[], int l, int r, int x) {
 	while (l <= r) {
@@ -106,7 +106,7 @@ int binary_search(int arr[], int l, int r, int x) {
 }
 ```
 
-### 遞迴版本
+#### 遞迴版本
 ```cpp
 int binary_search(int arr[], int l,int r,int x){
 	if(l <= r){
@@ -118,7 +118,7 @@ int binary_search(int arr[], int l,int r,int x){
 
 }
 ```
-### 注意事項：避免整數溢位
+#### 注意事項：避免整數溢位
 
 * **錯誤寫法：** 若 `l` 和 `r` 很大，`l + r` 可能超出整數範圍。
 
@@ -131,7 +131,7 @@ int binary_search(int arr[], int l,int r,int x){
 	int m = l + (r - l) / 2;
 	```
 
-### 時間複雜度遞迴式分析
+#### 時間複雜度遞迴式分析
 
 * 遞迴式：$T(n) = T(n/2) + 1, \quad T(1) = 1$
 
@@ -145,7 +145,7 @@ int binary_search(int arr[], int l,int r,int x){
 
 	* 符合 **Case 2** 因此：$T(n) = \Theta(\log n)$
 
-## Linear vs Binary Search
+### Linear vs Binary Search
 
 | 特性 | Linear Search | Binary Search |
 | ------- | ------------------- | ------------- |
@@ -154,7 +154,7 @@ int binary_search(int arr[], int l,int r,int x){
 | 平均時間複雜度 | $O(n)$ | $O(\log n)$ |
 | 最壞時間複雜度 | $O(n)$ | $O(\log n)$ |
 | 最佳情況 | 找到第一個元素只需 1 次比較 | 找到中點即可 1 次比較 |
-## 總結
+### 總結
 
 * **Linear Search**：簡單通用，但效能差，平均 $O(n)$。
 
@@ -162,9 +162,9 @@ int binary_search(int arr[], int l,int r,int x){
 
 * **Binary Search**：需要排序資料，但效能大幅提升到 $O(\log n)$；要注意避免中點計算溢位；遞迴式 $T(n)=T(n/2)+1$ → $\Theta(\log n)$。
 
-# 比較兩個 list 的 key value
+## 比較兩個 list 的 key value
 
-## verify1 
+### verify1 
 
 - $O(n\times m)$
 - 簡單來說就是用 list1 去掃描 list2 有沒有相同 key 並且確認有相同 key 後 `marked[i]=1`，並且判斷 value 數值相不相同，如果不相同的話那麼就輸出
@@ -218,7 +218,7 @@ int main(){
 
 ```
 
-## verify2 two point
+### verify2 two point
 
 - 這個的複雜度就是幾 $O(n\lg n)$ 或是 $O(m \lg m)$ 就看哪個比較長，主要是排序花的時間已經是 $O(n \lg n)$
 - 核心做法就是 sort 後比較 key 有沒有相同如果沒有相同那麼就是代表有少 key 並 ++ 往前走

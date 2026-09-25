@@ -8,9 +8,9 @@ blog: true
 vault_source: "Note/Research/Proving NP-Completeness.md"
 ---
 
-## 1. Polynomial-Time Reduction
+### 1. Polynomial-Time Reduction
 
-### 定義 ($A \le_p B$)
+#### 定義 ($A \le_p B$)
 
 若我們說語言 (Language) $A$ 可以 **Reduction** 到語言 $B$ ($A \le_p B$)，必須滿足以下條件：
 
@@ -35,10 +35,12 @@ vault_source: "Note/Research/Proving NP-Completeness.md"
 
 ---
 
-## 2. Steps to Prove NP-Completeness
+### 2. Steps to Prove NP-Completeness
+
 ![01-2. Steps to Prove NP-Completeness](/vault-assets/7931d9115b88597906ba.png)
 
-### 重要前提 (Premise)
+
+#### 重要前提 (Premise)
 
 在證明開始前，我們必須確立證明的核心邏輯：
 
@@ -48,13 +50,14 @@ vault_source: "Note/Research/Proving NP-Completeness.md"
 
 ![02-重要前提 (Premise)](/vault-assets/e3e855abf8e30b7f909a.png)
 
+
 $L \in \text{NP-Complete} \iff (L \in \text{NP}) \text{ 且 } (L \in \text{NP-hard})$
 
 意思：要證明 $L$ 是 NP-Complete，必須同時做到「$L$ 在 NP」與「$L$ 是 NP-hard」。
 
 證明 $L$ 屬於 NPC 的步驟如下：
 
-### Prove $L \in \text{NP}$
+#### Prove $L \in \text{NP}$
 
 - **目標**：證明存在 certificate $y$ 與 verification algorithm $V$，使得對所有輸入 $x$：
     
@@ -75,7 +78,7 @@ $L \in \text{NP-Complete} \iff (L \in \text{NP}) \text{ 且 } (L \in \text{NP-ha
     - $V$ 怎麼檢查、為什麼是多項式時間。
         
 
-### Prove $L \in \text{NP-hard}$ （$C \le_p L$）
+#### Prove $L \in \text{NP-hard}$ （$C \le_p L$）
 
 - **核心**：從一個已知 NP-Complete 的問題 $C$ 出發，證明你能把 $C$ 的任意 instance 在 polynomial time 內轉成 $L$ 的 instance，且答案不變。
     
@@ -107,13 +110,13 @@ $L \in \text{NP-Complete} \iff (L \in \text{NP}) \text{ 且 } (L \in \text{NP-ha
     常見寫法：說明 $f(x)$ 的輸出大小是 $\text{poly}(|x|)$，且建構每個部件只花多項式時間，因此總時間是多項式。
     
 
-### 結論
+#### 結論
 
 若第 3 點完成（$L \in \text{NP}$），且第 4 點完成（$C \le_p L \Rightarrow L$ NP-hard），則可推出 $L$ 是 NP-Complete。
 
 ---
 
-## 3. 證明方向圖解
+### 3. 證明方向圖解
 
 在證明 $B$ 是 NPC 時，Reduction 的方向至關重要，絕對不能搞反。
 
@@ -122,5 +125,6 @@ $$Known\ NPC\ Problem\ (A) \xrightarrow{Reduction\ f} New\ Problem\ (B)$$
 - **正確**：$A \le_p B$ (證明 $B$ 至少跟 $A$ 一樣難 $\to$ $B$ 是 NPC)。
     
 - **錯誤**：$B \le_p A$ (這只能證明 $B$ 屬於 NP，無法證明 $B$ 很難)。
-## 4. 一些經典問題的 reduction 方向 
+### 4. 一些經典問題的 reduction 方向 
+
 ![03-4. 一些經典問題的 reduction 方向](/vault-assets/1f779bac14797268bc97.png)

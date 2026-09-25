@@ -8,8 +8,8 @@ blog: true
 vault_source: "Note/Research/Spanning Tree.md"
 ---
 
-# Spanning Tree Concept
-## 定義（Definition）
+## Spanning Tree Concept
+### 定義（Definition）
 
 對一個連通無向圖 $G=(V,E)$：
 
@@ -19,13 +19,13 @@ vault_source: "Note/Research/Spanning Tree.md"
     $$  
     T = (V, E_T) \subseteq G  
     $$  
-- ==其中 $T$ 含有所有頂點（$|V|$ 相同），但邊數為 $|E_T| = |V|-1$，而且沒有環（acyclic）。==
+- <mark>其中 $T$ 含有所有頂點（$|V|$ 相同），但邊數為 $|E_T| = |V|-1$，而且沒有環（acyclic）。</mark>
 
-## 性質（Properties）
+### 性質（Properties）
 
 1. **DFS 或 BFS 的樹邊（Tree Edge）會構成一棵生成樹。**
     
-    - ==若圖是連通的，執行 DFS/BFS 會拜訪所有頂點，因此這些 traversal 形成的樹就是 spanning tree==。
+    - <mark>若圖是連通的，執行 DFS/BFS 會拜訪所有頂點，因此這些 traversal 形成的樹就是 spanning tree</mark>。
         
 2. **在任何連通圖中：**
     
@@ -34,7 +34,7 @@ vault_source: "Note/Research/Spanning Tree.md"
     - 若刪除生成樹中任一條邊，會使圖變成不連通==（生成兩個 component）==。
         
 
-## 圖形例子
+### 圖形例子
 
 圖 $G$ 有頂點 ${A, B, C, D, E}$，邊為多重連接（例如 $A$–$B$, $A$–$C$, $B$–$C$, $B$–$D$, $C$–$E$, $D$–$E$ 等）。
 
@@ -49,9 +49,12 @@ vault_source: "Note/Research/Spanning Tree.md"
 - 兩者都有 5 個頂點和 4 條邊（$|V|-1=4$），所以都符合生成樹條件。
     
 - 最後一句「$S_1$ and $S_2$ 是不同但同屬生成樹」是在說這圖有多個可能的 spanning tree。
+
 ![01-圖形例子](/vault-assets/59408b598aa6611445f9.png)
+
 ![02-圖形例子](/vault-assets/5371ff1c4df857d20020.png)
-## DFS 與 BFS 生成樹的差異
+
+### DFS 與 BFS 生成樹的差異
 
 - **DFS Spanning Tree**：偏向「深」的結構，每次盡量往下走到底。
     
@@ -59,7 +62,7 @@ vault_source: "Note/Research/Spanning Tree.md"
 	
 - 兩者都能構成生成樹，但邊的選取順序不同。
 
-# Minimum spanning tree(MST)
+## Minimum spanning tree(MST)
 
 - **定義**  在連通、無向、帶權圖 $G=(V,E,w)$ 中，生成樹 $T=(V,E_T)$ 使得 $\sum_{e\in E_T} w(e)$ 最小者稱為 MST（可能不唯一）。
 	
@@ -84,8 +87,8 @@ vault_source: "Note/Research/Spanning Tree.md"
 	
 - **直覺**  要連到 $n$ 個點至少需要 $n-1$ 條邊；MST 是在所有可行的 $n-1$ 邊組合中，使 $\sum_{e\in E_T} w(e)$ 最小的那組。
 
-## 定理
-### 如果 Graph 所有邊成本不同，那麼 MST 唯一
+### 定理
+#### 如果 Graph 所有邊成本不同，那麼 MST 唯一
 
 1. **假設有兩棵樹 (A, B)**：我們先假設有兩棵不同的最小生成樹 A 和 B。
 
@@ -101,7 +104,7 @@ vault_source: "Note/Research/Spanning Tree.md"
 
 7. **產生矛盾**：我們找到了一棵比 B 更便宜的樹 `B'`，這與我們一開始「B 是最小生成樹」的假設互相矛盾。
 
-### Cut Theory
+#### Cut Theory
 
 **核心思想：** 提供一個明確的規則，告訴我們如何找到一條可以**安全加入 (include)** 最小生成樹的邊，其實也是在證明 cut-set 中的最小成本邊一定會在 All MSTs 中。
 
@@ -117,9 +120,10 @@ vault_source: "Note/Research/Spanning Tree.md"
     
 ![03-Cut Theory](/vault-assets/024c796ecda701a117fd.png)
 
+
 **證明邏輯 (剪貼法)**：其證明是透過反證法。假設這條最輕的跨界邊 `(u, v)` 不在某個 MST `T` 中，那麼在 `T` 裡必定存在另一條路徑可以連接 `u` 和 `v`，且該路徑上必定有另一條更重的跨界邊 `(x, y)`。我們可以從 `T` 中移除 `(x, y)` 並加入 `(u, v)`，得到一棵總權重更小的新生成樹 `T'`，這與 `T` 是 MST 的假設矛盾。
 
-### Cycle Theory
+#### Cycle Theory
 
 **核心思想：** 提供一個明確的規則，告訴我們哪一條邊**絕對不能 (cannot belong)** 屬於最小生成樹，因此可以被**安全地排除 (exclude)**。
 
@@ -134,10 +138,10 @@ vault_source: "Note/Research/Spanning Tree.md"
 
 **證明邏輯 (替換法)**：同樣採用反證法。假設這條最重的邊 $e$ 存在於某個 MST $T$ 中。如果我們將 $e$ 移除，樹會斷開。但因為 $e$ 在一個循環中，我們必然可以在該循環中找到另一條權重更輕的邊 $W$ 來重新連接樹。這樣操作後得到的新生成樹 $S$，其總權重必定小於 $T$，這與 $T$ 是 MST 的假設矛盾。
 
-- ==Q1：在圖 $G$ 中最大邊必定不在 MST 中？False==
-- ==Q2：在圖 $G$ 的 cycle 的最小成本一定在 MST 中？ False==
+- <mark>Q1：在圖 $G$ 中最大邊必定不在 MST 中？False</mark>
+- <mark>Q2：在圖 $G$ 的 cycle 的最小成本一定在 MST 中？ False</mark>
 
-### 總結比較表
+#### 總結比較表
 
 | 特性 (Feature) | 切割理論 (Cut Theory)                                 | 循環理論 (Cycle Theory)                                     |
 | ------------ | ------------------------------------------------- | ------------------------------------------------------- |
@@ -146,7 +150,7 @@ vault_source: "Note/Research/Spanning Tree.md"
 | **尋找對象**     | **權重最輕**的**跨界邊** (Lightest edge crossing the cut) | **權重最重**的**循環邊** (Heaviest edge in the cycle)           |
 | **理論來源**     | CLRS **Theorem 21.1** & PPT                       | PPT                                                     |
 | **主要應用演算法**  | **Prim's Algorithm** (每次都將已選頂點視為一堆，未選的為另一堆)       | **Kruskal's Algorithm** (當加入一條邊會形成循環時，該邊必為循環中最重的邊，因此捨棄) |
-## Kruskal's Algorithm
+### Kruskal's Algorithm
 
 - **輸入**：連通無向帶權圖 $G=(V,E,w)$  
 	
@@ -160,7 +164,7 @@ vault_source: "Note/Research/Spanning Tree.md"
 	    
 	- 稀疏圖常選 Kruskal's；稠密圖多用 Prim's。
 
-### ==步驟==
+#### <mark>步驟</mark>
 
 1. $T\leftarrow\varnothing$；為每個頂點建立一個集合（Disjoint Set）。
     
@@ -177,13 +181,13 @@ vault_source: "Note/Research/Spanning Tree.md"
 5. 若掃完仍 $|T|<|V|-1$，圖不連通，無 MST（得到最小生成森林）。
     
 
-### 正確性要點
+#### 正確性要點
 
 - **Cut 性質**：跨任一切割的最輕邊必屬某棵 MST。
     
 - 遞增挑邊且避環 ⇒ 每步皆選安全邊。
     
-### 複雜度
+#### 複雜度
 
 - 排序：$O(E\log E)$。
     
@@ -192,13 +196,15 @@ vault_source: "Note/Research/Spanning Tree.md"
 - 總時間：$O(E\log E)$（因為 $E\log E \ge E\cdot\alpha(|V|)$）。
     
 - 空間：$O(|V|)$（並查集）或 $O(|V|+E)$（含堆）。
-### 手寫範例
-> [!note]- 手寫範例
+#### 手寫範例
+> **手寫範例**
 > ![04-手寫範例](/vault-assets/9e4870bccd141b06dee1.png)
-### 實作（Like C）
+#### 實作（Like C）
 
-#### CLRS 版（先整體排序）
+##### CLRS 版（先整體排序）
+
 ![05-CLRS 版(先整體排序)](/vault-assets/0e4a7181c9f7bb9d635e.png)
+
 
 ```c
 typedef struct { int u, v, w; } Edge;
@@ -218,7 +224,7 @@ int kruskal_clrs(int V, int E, Edge edges[], Edge T_out[]){
 }
 ```
 
-#### DS 版（以最小堆逐邊取出）
+##### DS 版（以最小堆逐邊取出）
 
 ```c
 typedef struct { int u, v, w; } Edge;
@@ -243,11 +249,11 @@ int kruskal_heap(int V, int E, Edge edges[], Edge T_out[]){
 }
 ```
 
-### Kruskal's Algorithm 時間分析（依 CLRS）
+#### Kruskal's Algorithm 時間分析（依 CLRS）
 
 **前置假設**：並使用 union-by-rank + path compression。其均攤成本為 $Θ(\alpha(|V|))$。
 
-#### 成本分解
+##### 成本分解
 
 1. **初始化 A 與建單一邊表**
     
@@ -269,29 +275,29 @@ int kruskal_heap(int V, int E, Edge edges[], Edge T_out[]){
 	    
 	- 合計並查集成本：$O((V+E)\alpha(|V|))$；連通圖下可視為 $O(E,\alpha(|V|))$。
     
-#### 合併與化簡
+##### 合併與化簡
 
 總時間  
-$$  
-T(E,V)=O(E\log E)+O(E,\alpha(|V|))+O(E)  
+$$
+T(E,V)=O(E\log E)+O(E,\alpha(|V|))+O(E)
 =O(E\log E)
-$$  
+$$
 理由：$\alpha(|V|)$ 成長極慢，且對連通圖有 $|E|\ge |V|-1$，並且 $\alpha(|V|)=O(\log |V|)=O(\log |E|)$，因此 $E\log E$ 主導。
 
-#### 同階改寫
+##### 同階改寫
 
 因為 $|E|<|V|^2$，有 $\log |E|=O(\log |V|)$，故亦可寫  
-$$  
-T(E,V)=O(E\log V),.  
+$$
+T(E,V)=O(E\log V),.
 $$
 
 **空間**：並查集 $O(|V|)$；若含邊表/堆則 $O(|V|+E)$。
 
 
-## Prim’s Algorithm
+### Prim’s Algorithm
 
 **核心** 維持集合 $S$（已在樹內）。每步選跨越切割 $(S, V\setminus S)$ 的最小權重邊，把對端頂點加入 $S$。安全性由 Cut 性質保證。
-#### DS 版（鄰接矩陣，無堆，$O(V^2)$）
+##### DS 版（鄰接矩陣，無堆，$O(V^2)$）
 
 適合稠密圖或教學。
 
@@ -325,11 +331,13 @@ void prim_matrix(int n, int r){
 時間：選最小 u 共 $V$ 次，各次掃一列 $V$，總 $O(V^2)$。空間 $O(V^2)$。
 
 ![06-DS 版(鄰接矩陣,無堆,$O(V^2)$)](/vault-assets/3c77455a1116183f00f4.png)
-#### CLRS 版（鄰接表 + 最小堆，O($E\log V$)）
+
+##### CLRS 版（鄰接表 + 最小堆，O($E\log V$)）
 
 適合稀疏圖與實作，也是使用鬆弛這個方式也就是說找到新路近看有沒有連到如果有就更新如果更小的話 (relaxation)。
 
 ![07-CLRS 版(鄰接表 + 最小堆,O($E log V$))](/vault-assets/a9eedc4449b81ab146b6.png)
+
 
 ```c
 // n: 頂點數，root: 起點(0..n-1)
@@ -365,7 +373,8 @@ int prim_clrs(int n, int root, int parent[]){
 若用 Fibonacci heap：$O(E + V\log V)$。
 
 ![08-CLRS 版(鄰接表 + 最小堆,O($E log V$))](/vault-assets/6f22023bd809423ba2cb.png)
-### 複雜度對照
+
+#### 複雜度對照
 
 - 鄰接矩陣：$O(V^2)$
     
@@ -373,7 +382,7 @@ int prim_clrs(int n, int root, int parent[]){
     
 - 鄰接表 + Fibonacci 堆：$O(E + V\log V)$
     
-### 備忘
+#### 備忘
 
 - 權重可為負。連通性必須成立；否則得到最小生成森林。
     
@@ -381,5 +390,6 @@ int prim_clrs(int n, int root, int parent[]){
     
 - Prim 與 Kruskal 皆以 Cut 性質為正確性基礎；Prim 是單棵樹擴張，Kruskal 是合併多樹。
 
-## Sollin's Algorithm
+### Sollin's Algorithm
+
 ![09-Sollin's Algorithm](/vault-assets/3958c5477990d76a799f.png)

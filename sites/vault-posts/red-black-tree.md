@@ -8,7 +8,7 @@ blog: true
 vault_source: "Note/Research/Red-Black tree.md"
 ---
 
-# properties
+## properties
 
 1. 每個節點要嘛是紅色，要嘛是黑色。
     
@@ -32,11 +32,13 @@ vault_source: "Note/Research/Red-Black tree.md"
         
     - 這樣程式中判斷條件就簡單，只要檢查是否等於 T.nil。
 
-## 定理
+### 定理
+
 ![01-定理](/vault-assets/39f1d6b158c35a65feeb.png)
+
 - 紅黑樹高度  為 $O(\lg n)$，更精確地 $h \le 2\lg(n+1)$。
 
-### Proof
+#### Proof
 
 證明：含有 $n$ 個內部節點的紅黑樹，其高度 $h$ 滿足 $h \le 2\lg(n+1)$。
 
@@ -95,23 +97,23 @@ vault_source: "Note/Research/Red-Black tree.md"
 
 
 
-# Red-Black Tree 插入 (Top-Down Approach)
+## Red-Black Tree 插入 (Top-Down Approach)
 
-## 步驟
+### 步驟
 1. 搜尋 X 的適當插入位置。
 	
-2. 在搜尋過程中，若發現經過的節點 (例如 Y) 兩個子節點皆為紅色，則執行 **Color Change**將  ==Y 標紅色， 將 Y 的兩個子節點標黑色  ==
+2. 在搜尋過程中，若發現經過的節點 (例如 Y) 兩個子節點皆為紅色，則執行 **Color Change**將  <mark>Y 標紅色， 將 Y 的兩個子節點標黑色  </mark>
 		![04-步驟](/vault-assets/3a8f178bdee92461dd7c.png)
 	接著檢查是否出現「連續的紅節點」（即 Y 以及 Y 的父節點是否同為紅色）。若有，則進行 Rotation 調整。
 3.  找到正確位置後，放置新節點 X，並將 X 標示為紅色。
 4. 檢查是否有連續的紅色節點（即 X 與 X 的父節點同為紅色）。若有，則進行 Rotation 調整。
 5. 最後，檢查 Root 是否為黑色；若是紅色，則將其改為黑色。
 
-## 特性
+### 特性
 
 - 在步驟 (2) 與 (4) 的過程中，Rotation 可能發生一次或沒有發生，不會同時多次發生。  
 	
-- Insertion 過程中，==最多發生 1 次 Rotation==（不論是 `single` 或 `double rotation`）。  
+- Insertion 過程中，<mark>最多發生 1 次 Rotation</mark>（不論是 `single` 或 `double rotation`）。  
 	
 - 時間複雜度：  
 		
@@ -125,7 +127,7 @@ vault_source: "Note/Research/Red-Black tree.md"
 		
 	- **AVL Tree**: 插入刪除可能需要 $O(\log n)$ 次 rotation
 
-## Rotation
+### Rotation
 
 - 與 AVL Tree 的 rotation 類似，分為四種：
 		
@@ -134,7 +136,9 @@ vault_source: "Note/Research/Red-Black tree.md"
 	- LR 與 RL（雙旋轉）
 
 - 規則：若自己與父親皆為紅色，往上看祖父，根據情況做四種旋轉。
+
 ![05-Rotation](/vault-assets/10a4b92431ae938c8e3c.png)
+
 - 與 AVL Tree 的差異：
 		
 	1. 調整後，中間鍵值往上拉並標示為黑色。
@@ -142,18 +146,25 @@ vault_source: "Note/Research/Red-Black tree.md"
 	2. 左右兩側的子節點標示為紅色。
 		
 	3. 加上 color 調整的規則，而不是單純依靠高度差。
-### pseudocode
+#### pseudocode
+
 ![06-pseudocode](/vault-assets/4d44647ff7d1f3087208.png)
 
-## 範例
+
+### 範例
+
 ![07-範例](/vault-assets/8b9312064b2ae18ec949.png)
-## ALGO CLRS
+
+### ALGO CLRS
+
 ![08-ALGO CLRS](/vault-assets/bb277ade34be892e0f52.png)
+
 ![09-ALGO CLRS](/vault-assets/00d145e557b08e1b444c.png)
 
-# Horowitz version RB-Tree
 
-## 定義
+## Horowitz version RB-Tree
+
+### 定義
 
 1. 是 2-3-4 Tree 對等的 BST  
 	
@@ -165,35 +176,32 @@ vault_source: "Note/Research/Red-Black tree.md"
 	
 5. Root 到不同 Leaf 的 path 上都要有相同數量的黑色 links
 
-### 轉換規則 
+#### 轉換規則 
 
 ![10-轉換規則](/vault-assets/61d741a66a675f1e3c70.png)
-### 範例
+
+#### 範例
+
 ![11-範例](/vault-assets/a256976bd3785c023237.png)
-## 2-3-4 Tree 高度分析
+
+### 2-3-4 Tree 高度分析
 
 1. 若全部為 2-node：
 
 $$
-
 h = \log_{2}(n+1)
-
 $$
 
 2. 若全部為 4-node：
 
 $$
-
 h = \log_{4}(n+1) = \tfrac{1}{2}\log_{2}(n+1)
-
 $$
 
 3. 因此高度範圍：
 
 $$
-
 \tfrac{1}{2}\log_{2}(n+1) \;\leq\; h \;\leq\; \log_{2}(n+1)
-
 $$
 
 * 2-node：最差情況，高度較高。

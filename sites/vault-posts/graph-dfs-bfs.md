@@ -8,23 +8,29 @@ blog: true
 vault_source: "Note/Research/Graph 基本定義和 DFS 還有 BFS.md"
 ---
 
-# 基本定義和術語介紹
-## 基本定義
+## 基本定義和術語介紹
+### 基本定義
 
 - **圖形**：$G=\langle V,E\rangle$，$V$ 為頂點集合，$E$ 為邊集合。
     
 - **無向圖**：邊為無序對 ${i,j}$。
+
 ![diagram-01](/vault-assets/d99d5a2cf81d0ae2c372.png)
+
     
 - **有向圖**：邊為有序對 $\langle i,j\rangle$。
+
 ![diagram-02](/vault-assets/7c390ff07767de32aaee.png)
+
     
 - **完全圖**：$K_n$ 邊數 $|E|=\binom{n}{2}=n(n-1)/2$；若為有向且無自迴路，弧數 $n(n-1)$。$$**示例：K_5**$$
+
 ![diagram-03](/vault-assets/41babeaa51524f487653.png)
+
     
 - **子圖**：$G'=\langle V',E'\rangle$，$V'\subseteq V$，$E'\subseteq E$ 且端點屬於 $V'$。
     
-## 路徑與連通
+### 路徑與連通
 
 - **路徑**：$v_0,v_1,\dots,v_k$；無向用 ${v_{i-1},v_i}\in E$，有向用 $\langle v_{i-1},v_i\rangle\in E$。
     
@@ -41,13 +47,16 @@ vault_source: "Note/Research/Graph 基本定義和 DFS 還有 BFS.md"
 - **強連通**：有向圖任兩點 $i,j$ 皆有 $i\to j$ 與 $j\to i$。SCC 為極大強連通子圖。
     
 **示例：$P_4$ 與 $C_5$**  
+
 ![diagram-04](/vault-assets/ed980e239a5d771704c7.png)
+
 
 **示例：兩個連通分量**  
 
 ![diagram-05](/vault-assets/c8a2331370ee5b0fafd6.png)
 
-## 次數與手搖定理
+
+### 次數與手搖定理
 
 - 無向：$\sum_{v}\deg(v)=2|E|$。
     
@@ -55,7 +64,7 @@ vault_source: "Note/Research/Graph 基本定義和 DFS 還有 BFS.md"
     
 - 推論：無向圖度數和為偶數。
     
-## 歐拉路徑與環
+### 歐拉路徑與環
 
 - **Eulerian cycle**：連通且所有頂點度為偶數。
     
@@ -65,15 +74,18 @@ vault_source: "Note/Research/Graph 基本定義和 DFS 還有 BFS.md"
 
 ![diagram-06](/vault-assets/293d0c9635f79218a292.png)
 
-## 漢米爾頓（NP-complete）
+
+### 漢米爾頓（NP-complete）
 
 - **Hamiltonian cycle**：經每頂點一次並回到起點。
     
 - **Hamiltonian path**：經每頂點一次但不回起點。
     
 **示例：Hamiltonian cycle**  
+
 ![diagram-07](/vault-assets/30dfb8ae5d8a26aa956a.png)
-## 二分圖
+
+### 二分圖
 
 - 定義：$V=L\cup R$，$L\cap R=\varnothing$，邊僅跨 $L$ 與 $R$。
     
@@ -85,8 +97,10 @@ vault_source: "Note/Research/Graph 基本定義和 DFS 還有 BFS.md"
     
 
 **示例：$K_{3,2}$**  
+
 ![diagram-08](/vault-assets/3849af1842ede792d4ac.png)
-## 團 (Clique)
+
+### 團 (Clique)
 
 - 團：誘導子圖為完全圖的頂點子集。
     
@@ -94,7 +108,7 @@ vault_source: "Note/Research/Graph 基本定義和 DFS 還有 BFS.md"
     
 - 判定是否有大小 $\ge k$ 的團為 **NP-complete**。
     
-## 頂點覆蓋 (Vertex cover)
+### 頂點覆蓋 (Vertex cover)
 
 - $S\subseteq V$，使每條邊至少有一端點在 $S$。
     
@@ -123,18 +137,21 @@ vault_source: "Note/Research/Graph 基本定義和 DFS 還有 BFS.md"
 **示例：最小覆蓋為 Vertex Cover**  
 
 ![diagram-09](/vault-assets/ca98ad7b8607b931b4ea.png)
+
 **示例：最小覆蓋為 Edge Cover**
+
 ![diagram-10](/vault-assets/a63af2d392d4f8edda49.png)
 
-## 常用符號
+
+### 常用符號
 
 - $n=|V|$ 頂點數量，$m=|E|$ 邊的數量；無向 $m=\binom{n}{2}$；有向無自迴路 $m=n(n-1)$。
     
 - 路徑長度＝邊數；簡單路徑不重頂點；環為閉合簡單路徑。
     
-## 快速檢核
+### 快速檢核
 
-- ==所有的演算法沒有辦法解決 Negative cycle ==
+- <mark>所有的演算法沒有辦法解決 Negative cycle </mark>
 	
 - Eulerian cycle：連通 + 全偶數 $Degree$。
     
@@ -142,11 +159,11 @@ vault_source: "Note/Research/Graph 基本定義和 DFS 還有 BFS.md"
     
 - 二分圖：二著色或找奇環。
     
-- ==度數和驗證：無向 $\sum \deg=2m$；有向 $\sum \deg^{+}=\sum \deg^{-}=m$==。
+- <mark>度數和驗證：無向 $\sum \deg=2m$；有向 $\sum \deg^{+}=\sum \deg^{-}=m$</mark>。
 
-# 圖的表方式
+## 圖的表方式
 
-## ==Adjacency Matrix（相鄰矩陣）==
+### <mark>Adjacency Matrix（相鄰矩陣）</mark>
 
 令圖 $G=(V,E)$，$|V|=n$。**相鄰矩陣**為 $n\times n$ 矩陣 $A$，規則：
 
@@ -156,30 +173,30 @@ vault_source: "Note/Research/Graph 基本定義和 DFS 還有 BFS.md"
     
 - 簡單圖預設 $A[i,i]=0$（無自迴路）。
     
-### 範例 
+#### 範例 
 
 **G1（無向，$K_4$）**  
-$$  
-A=\begin{bmatrix}  
+$$
+A=\begin{bmatrix}
 0&1&1&1\\
-1&0&1&1\\  
-1&1&0&1\\ 
-1&1&1&0  
-\end{bmatrix}  
+1&0&1&1\\
+1&1&0&1\\
+1&1&1&0
+\end{bmatrix}
 $$
 
 **有向例（邊：$1\to2,1\to3,2\to1,2\to3$）**  
-$$  
-A=\begin{bmatrix}  
-0&1&1\\  
-1&0&1\\  
-0&0&0  
-\end{bmatrix}  
+$$
+A=\begin{bmatrix}
+0&1&1\\
+1&0&1\\
+0&0&0
+\end{bmatrix}
 $$
 
 - 第 $i$ 列和 $=\deg^{+}(i)$（出度），第 $j$ 欄和 $=\deg^{-}(j)$（入度）。
     
-### 性質
+#### 性質
 
 1. 無向圖：$A$ 為對稱矩陣，$A[i,j]=A[j,i]$。
     
@@ -193,57 +210,59 @@ $$
         
     - 有向圖：$$\sum_{i,j}A[i,j]=m.$$
         
-5. ==空間 $O(n^2)$。查詢是否相鄰 $O(1)$；掃一整列求度或鄰點 $O(n)$；全圖統計（如總邊數）$O(n^2)$。==
+5. <mark>空間 $O(n^2)$。查詢是否相鄰 $O(1)$；掃一整列求度或鄰點 $O(n)$；全圖統計（如總邊數）$O(n^2)$。</mark>
     
-6. ==適合 **dense graph**；稀疏圖多用 adjacency list==。
+6. <mark>適合 **dense graph**；稀疏圖多用 adjacency list</mark>。
     
-### 快速公式
+#### 快速公式
 
-- ==無向：$\deg(i)=\sum_{j}A[i,j]$。==
+- <mark>無向：$\deg(i)=\sum_{j}A[i,j]$。</mark>
     
-- ==有向：$\deg^{+}(i)=\sum_j A[i,j],\ \deg^{-}(i)=\sum_j A[j,i]$。==
+- <mark>有向：$\deg^{+}(i)=\sum_j A[i,j],\ \deg^{-}(i)=\sum_j A[j,i]$。</mark>
     
-- ==邊數：無向 $m=\tfrac12\sum_{i,j}A[i,j]$；有向 $m=\sum_{i,j}A[i,j]$。==
+- <mark>邊數：無向 $m=\tfrac12\sum_{i,j}A[i,j]$；有向 $m=\sum_{i,j}A[i,j]$。</mark>
 
-## Incidence matrix `[ALGO]`
+### Incidence matrix `[ALGO]`
 
 - 有向圖（無自迴路）：$B\in\mathbb{R}^{|V|\times|E|}$，$b_{ij}=-1$ 若邊 $e_j$ 從頂點 $i$ **離開**；$b_{ij}=1$ 若 **進入**；否則 $0$。每欄恰有一個 $-1$ 與一個 $1$。
     
 - 無向圖：$b_{ij}=1$ 若頂點 $i$ 與邊 $e_j$ 相鄰；否則 $0$。每欄有兩個 $1$。
     
-### 有向例（邊：$e_1:2\to1,\ e_2:1\to3,\ e_3:4\to3,\ e_4:1\to4$）
+#### 有向例（邊：$e_1:2\to1,\ e_2:1\to3,\ e_3:4\to3,\ e_4:1\to4$）
 
 ![diagram-11](/vault-assets/57e9766cdda665f74076.png)
 
-$$  
-B=\begin{bmatrix}  
-\ \ 1 & -1 & \ ,0 & -1\\  
+
+$$
+B=\begin{bmatrix}
+\ \ 1 & -1 & \ ,0 & -1\\
 -1 & \ ,0 & \ ,0 & \ ,0\\
-\ 0 & \ ,1 & \ ,1 & \ ,0\\  
-\ 0 & \ ,0 & -1 & \ ,1  
-\end{bmatrix}  
-\quad(\text{rows }1..4,\ \text{cols }e_1..e_4)  
+\ 0 & \ ,1 & \ ,1 & \ ,0\\
+\ 0 & \ ,0 & -1 & \ ,1
+\end{bmatrix}
+\quad(\text{rows }1..4,\ \text{cols }e_1..e_4)
 $$
 
-### 無向例（同一張圖，忽略方向）
+#### 無向例（同一張圖，忽略方向）
 
 ![diagram-12](/vault-assets/3bdf534845b7d4ef7785.png)
 
-$$  
-B_{\text{und}}=\begin{bmatrix}  
-1 & 1 & 0 & 1\\  
-1 & 0 & 0 & 0\\  
-0 & 1 & 1 & 0\\  
-0 & 0 & 1 & 1  
-\end{bmatrix}  
-\quad(\text{rows }1..4,\ \text{cols }e_1..e_4)  
+
+$$
+B_{\text{und}}=\begin{bmatrix}
+1 & 1 & 0 & 1\\
+1 & 0 & 0 & 0\\
+0 & 1 & 1 & 0\\
+0 & 0 & 1 & 1
+\end{bmatrix}
+\quad(\text{rows }1..4,\ \text{cols }e_1..e_4)
 $$
 
 備註：若允許自迴路，常令有向圖的該欄出現 $+1$ 與 $-1$ 在**同一列**（或定義為 $2$ 與 $0$ 的變體）。
 
-## ==Adjacency Lists（相鄰串列）==
+### <mark>Adjacency Lists（相鄰串列）</mark>
 
-### ==定義與結構==
+#### <mark>定義與結構</mark>
 
 - 圖 $G=(V,E)$，$|V|=n, |E|=m$。
     
@@ -251,7 +270,7 @@ $$
     
 - 串列節點欄位：`(neighbor, next)`。
     
-### 無向 vs 有向
+#### 無向 vs 有向
 
 - **無向邊** ${u,v}$ 以兩筆節點記錄：$u\to v$、$v\to u$。
     
@@ -269,19 +288,19 @@ $$
         
     - $\displaystyle \sum_{i=1}^{n}\text{len}(i)=m$。
         
-### ==空間複雜度==
+#### <mark>空間複雜度</mark>
 
 - 表頭：$O(n)$。
     
 - 串列節點：無向 $2m$、有向 $m$。
 	
 - **總空間**：$O(n+m)$（適合稀疏圖）
-#### 邊數範圍與量級
+##### 邊數範圍與量級
 
 - 無向簡單圖：$0 \le m \le \binom{n}{2}=\Theta(n^2)$；樹：$m=n-1=\Theta(n)$。
 
 - 有向無自迴路：$0 \le m \le n(n-1)=\Theta(n^2)$。
-#### ==對複雜度的影響（以相鄰串列為例）==
+##### <mark>對複雜度的影響（以相鄰串列為例）</mark>
 
 - 空間：$O(n+m)$
 		
@@ -299,7 +318,7 @@ $$
 
 > 對照相鄰矩陣：空間固定 $O(n^2)$；是否相鄰查詢 $O(1)$，列舉鄰點 $O(n)$。
 
-### 常見操作時間
+#### 常見操作時間
 
 - 列舉鄰點 `Adj(v)`：$O(\deg(v))$。
     
@@ -315,13 +334,13 @@ $$
     
 - BFS/DFS：$O(n+m)$。
     
-### 何時用
+#### 何時用
 
 - **相鄰串列**：稀疏圖（$m\ll n^2$），需快速列舉鄰點。
     
 - **相鄰矩陣**：稠密圖或需要 $O(1)$ 相鄰查詢。
 
-### ==求 adjacency list 邊數==
+#### <mark>求 adjacency list 邊數</mark>
 
 - 求 $m=|E|$。
 
@@ -329,7 +348,7 @@ $$
     
 - 無向圖：每條邊在兩個串列出現 → 總節點數 $=2m$。
     
-#### 演算法
+##### 演算法
 
 ```text
 s = 0
@@ -352,23 +371,25 @@ return s        // 有向圖
 
 - 時間複雜度：外層跑 $V$ 次，內層每個串列節點剛好訪一次。  $\Rightarrow O(V+E)$。
 
-## 相鄰多元串列 (Adjacency Multilist) `[DS]`
+### 相鄰多元串列 (Adjacency Multilist) `[DS]`
 
-- ==這個簡單來說就是 V1 有用到的所有邊他都會連過去，所以第一個 list 表達了 edge(1->2)，這個邊然後所以他就會把 Link for V1 連到有用到 V1 的其他邊，V2 同個概念==
+- <mark>這個簡單來說就是 V1 有用到的所有邊他都會連過去，所以第一個 list 表達了 edge(1->2)，這個邊然後所以他就會把 Link for V1 連到有用到 V1 的其他邊，V2 同個概念</mark>
+
 ![01-相鄰多元串列 (Adjacency Multilist) \[DS\]](/vault-assets/65230b62d27eed6a9234.png)
-## Index + Array
 
-### 結構
+### Index + Array
+
+#### 結構
 
 - $\text{index}[1..n+1]$：頂點起始位置。第 `i` 個頂點的鄰居在 $\text{adj}[\text{index}[i] .. \text{index}[i+1-1]$。
     
 - $\text{adj}[1..L]$：連續儲存所有鄰點；無向 $L=2m$，有向 $L=m$。
     
-$$  
-\deg(i)=\mathrm{index}[i+1]-\mathrm{index}[i].  
+$$
+\deg(i)=\mathrm{index}[i+1]-\mathrm{index}[i].
 $$
 
-### 範例（無向 $K_4$）
+#### 範例（無向 $K_4$）
 
 鄰居：$N(1)={2,3,4},\ N(2)={1,3,4},\ N(3)={1,2,4},\ N(4)={1,2,3}$
 
@@ -379,7 +400,7 @@ adj   = [2,3,4, 1,3,4, 1,2,4, 1,2,3]
 
 查 $3$ 的鄰居：$\text{adj}[\text{index}[3] .. \text{index}[4]-1] = \text{adj}[7..9] = {1,2,4}$。  
 $$\deg(3)=10-7=3.$$
-### 基本操作
+#### 基本操作
 
 - 列舉鄰點：`for k = index[i] .. index[i+1]-1: v = adj[k]`，時間 $O(\deg(i))$。
     
@@ -387,7 +408,7 @@ $$\deg(3)=10-7=3.$$
     
 - BFS/DFS：$O(n+m)$。
     
-### 建表（從邊集合）
+#### 建表（從邊集合）
 
 1. 累計度數（無向邊兩端各 $+1$）。
     
@@ -397,33 +418,33 @@ $$\deg(3)=10-7=3.$$
     時間 $O(n+m)$，空間 $O(n+L)$。
     
 
-### 空間複雜度
-$$  
-O(n+L)=  
-\begin{cases}  
-O(n+2m) & \text{無向}\\
-O(n+m) & \text{有向}  
-\end{cases}  
+#### 空間複雜度
 $$
-# Graph Traversal 
+O(n+L)=
+\begin{cases}
+O(n+2m) & \text{無向}\\
+O(n+m) & \text{有向}
+\end{cases}
+$$
+## Graph Traversal 
 
-## DFS
+### DFS
 
 - 輸入：圖 $G=(V,E)$、起點 $s$；鄰接串列按「編號遞增」掃描則序固定。
 
 - 目的：走訪與 $s$ 可達之所有頂點（或全圖）。
 
-- 複雜度：==鄰接串列 $O(V+E)$；矩陣 $O(V^2)$。==
+- 複雜度：<mark>鄰接串列 $O(V+E)$；矩陣 $O(V^2)$。</mark>
 
 - 空間：遞迴或堆疊 $O(V)$。
 
-- 性質：==每點只標記一次；走到無未訪鄰點就回溯。不同起點或鄰接順序會產生不同走訪序，如果設定只能由小點走到大點順序會可以爲一==。
+- 性質：<mark>每點只標記一次；走到無未訪鄰點就回溯。不同起點或鄰接順序會產生不同走訪序，如果設定只能由小點走到大點順序會可以爲一</mark>。
 
 - 例（右圖，從 $1$ 並按遞增掃鄰點）：$1,2,4,8,5,6,3,7$。
 
-### DS 版的寫法 `單純走訪`
+#### DS 版的寫法 `單純走訪`
 
-#### 遞迴版（visited 為全域）
+##### 遞迴版（visited 為全域）
 
 ```c
 // G: adjacency list, vertices are 1..V
@@ -450,10 +471,12 @@ void dfs_all(int Vn) {
 	- 也可記**完成序**（postorder），或記每個點的父節點形成森林。
 		
 - 例：掃描順序為遞增；圖有三個分量  $C_1={1,2,3}$，$C_2={4}$，$C_3={5,6}$.  全圖 DFS 的發現序可能是：$1,2,3,4,5,6$；森林根為 ${1,4,5}$。
-##### 範例
+###### 範例
+
 ![02-範例](/vault-assets/e38875b58304cd655b26.png)
 
-#### 疊代版
+
+##### 疊代版
 
 ```c
 void dfs_iter(int s) {
@@ -472,10 +495,10 @@ void dfs_iter(int s) {
 }
 ```
 
-### CLRS 版的寫法 `著色法`
-#### DFS 邊的四種類型 (Types of Edges in DFS)
+#### CLRS 版的寫法 `著色法`
+##### DFS 邊的四種類型 (Types of Edges in DFS)
 
-當我們從一個頂點 `u` 探索到它的鄰居 `v` 時，根據 `v` 當下的狀態（顏色），我們可以將邊 `(u, v)` 分成以下四種，==直得注意的是如我今天是 undirected graph 他只有 Tree edge 和 Back edge，未經過的就是 Back edge，有經過的就是 Tree edge==：
+當我們從一個頂點 `u` 探索到它的鄰居 `v` 時，根據 `v` 當下的狀態（顏色），我們可以將邊 `(u, v)` 分成以下四種，<mark>直得注意的是如我今天是 undirected graph 他只有 Tree edge 和 Back edge，未經過的就是 Back edge，有經過的就是 Tree edge</mark>：
 
 1. **樹邊 (Tree Edge):**
     
@@ -505,7 +528,7 @@ void dfs_iter(int s) {
             
         - 同一棵 DFS 樹中，一個已經被你**完全探索完畢**的分支。
             
-#### 判斷規則總表
+##### 判斷規則總表
 
 演算法的核心是利用**頂點顏色**和**發現時間 (discovered-time, `d`)** 來判斷。以下是判斷的完整流程：
 
@@ -516,7 +539,7 @@ void dfs_iter(int s) {
 |**情況 3**|**黑色 (BLACK)**|需比較發現時間： **如果 `u.d < v.d`**|**前向邊 (Forward Edge)**|
 |**情況 4**|**黑色 (BLACK)**|需比較發現時間： **如果 `u.d > v.d`**|**交叉邊 (Cross Edge)**|
 
-#### 為什麼規則是這樣設計的？(規則背後的邏輯)
+##### 為什麼規則是這樣設計的？(規則背後的邏輯)
 
 - **v 是白色 (WHITE):**
     
@@ -541,12 +564,15 @@ void dfs_iter(int s) {
         - **如果 `u.d > v.d`：** 代表 `v` 比 `u` **更早**被發現。既然 `v` 先被發現，而且現在已經是黑色的（探索完畢），而 `u` 卻現在才走到它，這表示它們倆肯定不在同一條直系分支上。`v` 屬於一個已經被徹底搞定的分支。
             
             - **結論：** Cross Edge。
-#### 演算法
-![03-演算法](/vault-assets/b086a1c210b2414883dc.png)
-![04-演算法](/vault-assets/b7462fb4d6bf8fe8f9e0.png)
-## BFS
+##### 演算法
 
-### DS 版的寫法 `單純走訪`
+![03-演算法](/vault-assets/b086a1c210b2414883dc.png)
+
+![04-演算法](/vault-assets/b7462fb4d6bf8fe8f9e0.png)
+
+### BFS
+
+#### DS 版的寫法 `單純走訪`
 
 - 功能：分層擴張，求最短邊數距離 $dist$（無權、非負邊）。
     
@@ -568,11 +594,13 @@ void bfs(int s) {
 }
 ```
 
-#### 範例
-![05-範例](/vault-assets/71872e4d1645ea4e5727.png)
-### 演算法版本 BFS `著色法`
+##### 範例
 
-#### 流程
+![05-範例](/vault-assets/71872e4d1645ea4e5727.png)
+
+#### 演算法版本 BFS `著色法`
+
+##### 流程
 
 1. 初始化（除起點 $s$ 以外）  
     `color[u]=WHITE; d[u]=∞; π[u]=NIL;`
@@ -588,7 +616,7 @@ void bfs(int s) {
     
 > 顏色語意：`WHITE` 未發現；`GRAY` 已入隊但鄰居未掃完；`BLACK` 已完成。
 
-#### 輸出意義
+##### 輸出意義
 
 - `d[v]`：從 $s$ 到 $v$ 的**最短邊數距離**。
     
@@ -596,18 +624,18 @@ void bfs(int s) {
     
 - 走訪順序依層次而定，與鄰接串列內的掃描順序一致。
     
-#### 正確性直觀
+##### 正確性直觀
 
 - 佇列是 FIFO，節點依距離非遞減出隊；首次發現 $v$ 即得最短距離 `d[u]+1`。
     
-#### 複雜度
+##### 複雜度
 
 - 使用相鄰串列：每頂點入隊出隊各一次，每邊在無向圖被檢視兩次  
     $\Rightarrow\ O(V+E)$。
     
 - 相鄰矩陣時，掃鄰點需 $O(V)$ 次  
     $\Rightarrow\ O(V^2)$。    
-#### 演算法
+##### 演算法
 
 ```c
 void bfs(int s) {
@@ -635,6 +663,7 @@ void bfs(int s) {
 
 ![diagram-13](/vault-assets/5e4552e858b3ab3d8609.png)
 
+
 起點 $s=1$。BFS（按編號遞增掃鄰點）：
 
 - 層次：$L_0={1}$，$L_1={2,3}$，$L_2={4,5}$，$L_3={6}$。
@@ -656,8 +685,10 @@ void bfs(int s) {
 **當某頂點 $v$ 首次被發現時，$d[v]=d[u]+1$，其中 $u$ 是當下出隊的頂點，且 $d[u]$ 已是最小距離。**  
 因為 BFS 以 FIFO 逐層擴張，所有距離 $<d[u]$ 的頂點早已出隊並掃完鄰邊；若存在更短路徑到 $v$，必從某個距離 $<d[u]$ 的頂點發現 $v$，與「$v$ 此刻才第一次被發現」矛盾。  
 因此 $d[v]$ 等於從 $s$ 到 $v$ 的最短邊數距離。
+
 ![06-演算法](/vault-assets/585aafd0d74513a2d90a.png)
-### BFS 證明正確性
+
+#### BFS 證明正確性
 
 - **Lemma 20.1（相鄰差至多 1）**
     
@@ -827,7 +858,7 @@ void bfs(int s) {
         
         這個 Lemma 就是為這個操作提供了理論保證。它告訴我們，BFS 演算法不僅僅是算出一個個孤立的距離數字，它還留下了一張**「最短路徑地圖」**。這張地圖就是由所有的 `π` 指標構成的樹。當你需要找出具體的路徑時，只要沿著這張地圖的指示（`v.π`）往回走，就一定能找到回家的最短的路。這也是 `PRINT-PATH` 函式能夠正確運作的根本原因。
 
-#### BFS 正確性證明總表
+##### BFS 正確性證明總表
 
 | 引理/定理                    | 一句話總結 (你的道理)                         | 核心數學式 / 結論                                                                |
 | ------------------------ | ------------------------------------ | ------------------------------------------------------------------------- |
@@ -836,9 +867,9 @@ void bfs(int s) {
 | **Lemma 20.3** (佇列性質)    | 「隊伍裡的牌是 `>=` 的」，且 「也不可能超過 $v_1.d+1$」 | 對於佇列 Q=`<v₁, ..., vᵣ>`： 1. $v_r.d \le v_1.d + 1$ 2. $v_i.d \le v_{i+1}.d$ |
 | **Corollary 20.4** (單調性) | 「處理的順序，距離只會越來越遠」                     | 如果 $v_i$ 比 $v_j$ 先入隊， 則 $v_i.d \le v_j.d$                                 |
 | **Theorem 20.5** (正確性)   | 「既然是一層層來，那找到的一定是最短路」                 | BFS 演算法是正確的， 最終對所有可達點 v， $v.d = \delta(s,v)$                              |
-## 一些應用
+### 一些應用
 
-### 檢測是否是 Connected Graph
+#### 檢測是否是 Connected Graph
 
 - 使用DFS or BFS追蹤圖型。完後，如果每一個頂點都 visited 過，則為connected。否則，unconnected。
 - Time is $O(V+E)$ based on the adjacency lists representation
@@ -856,7 +887,7 @@ ConnectedComponent(G,n) //n is the number of vertex
  }
 ```
 
-### 計算連通分量
+#### 計算連通分量
 
 - 使用 CLRS DFS 也就是每次進一次回圈計算一次
 
@@ -895,11 +926,11 @@ DFS_Visit_and_Print(Vertex u):
 ```
 
 
-### DETECT CYCLE
+#### DETECT CYCLE
 
 - 判斷流程：先分「有向」與「無向」。皆可用 DFS。時間 $O(V+E)$，空間 $O(V)。
     
-#### directed graph
+##### directed graph
 
 - 判斷依據：出現 **back edge**（遇到顏色 GRAY 的鄰點）即有環。
     
@@ -937,7 +968,7 @@ bool hasDirectedCycle(Graph g){
 }
 ```
 
-#### undirected graph
+##### undirected graph
 
 - 原因：無向邊會被看兩次（u↔v）。用「看到 GRAY 就有環」會把「回到父節點」誤判，因此需排除父節點。
     
@@ -980,7 +1011,7 @@ bool hasUndirectedCycle(Graph g){
 ```
 
 - 備註（可選替代）：無向圖也可用並查集（Union-Find）。掃每條邊 (u,v)：若 find(u)=find(v) ⇒ 有環；否則 union(u,v)。時間 O(E α(V))。
-### level order BFS
+#### level order BFS
 
 - 簡單來說就是把 order 每層都輸出，通常用在 tree or binary tree，那麼這個輸出的會是 preorder 的效果
 

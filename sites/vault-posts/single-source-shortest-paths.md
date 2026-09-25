@@ -8,7 +8,7 @@ blog: true
 vault_source: "Note/Research/Single-Source Shortest Paths Problem.md"
 ---
 
-# Single-Source Shortest Paths 演算法總覽
+## Single-Source Shortest Paths 演算法總覽
 
 | 項目                    | DAG（Directed Acyclic Graph） | Dijkstra                                                 | Bellman–Ford |
 | --------------------- | --------------------------- | -------------------------------------------------------- | ------------ |
@@ -19,7 +19,7 @@ vault_source: "Note/Research/Single-Source Shortest Paths Problem.md"
 | 圖可有負環（negative cycle） | 否                           | 否                                                        | 否（若存在則回報）    |
 | 時間複雜度（鄰接矩陣）           | $O(V+E)$                    | $O(V^2)$                                                 | $O(V^3)$     |
 | 時間複雜度（鄰接串列／堆）         | $O(V+E)$                    | $O(E\log V)$（binary heap）；$O(V\log V+E)$（Fibonacci heap） | $O(VE)$      |
-# Relax
+## Relax
 
 若經由 $u$ 可以改進 $v$ 的估計，就更新距離與前驅：
     
@@ -38,9 +38,9 @@ RELAX(u, v):
 		
 	3. 收斂：若 $u.d=\delta(s,u)$，鬆弛 $(u,v)$ 後得 $v.d=\delta(s,v)$。
         
-# DAG shortest-paths algorithm
+## DAG shortest-paths algorithm
 
-- **問題與條件**：==單源最短路，圖為 DAG。允許負邊；無（負）環。輸入 $G=(V,E),\ w:E\to\mathbb{R},\ s\in V$。==
+- **問題與條件**：<mark>單源最短路，圖為 DAG。允許負邊；無（負）環。輸入 $G=(V,E),\ w:E\to\mathbb{R},\ s\in V$。</mark>
     
 - **核心觀念**：拓樸序一次走完，對每條邊恰鬆弛一次，總時間 $O(V+E)$。
 	
@@ -97,11 +97,13 @@ RELAX(u, v):
     - Dijkstra 要求邊非負，時間常見 $O(E\log V)$；適用一般圖。
         
     - DAG 法更快 $O(V+E)$，但僅限 DAG。
-## 範例
-![01-範例](/vault-assets/5c3cabc5919dc2c45739.png)
-# Dijkstra Algorithm
+### 範例
 
-## 資料結構版本 `adj matrix`
+![01-範例](/vault-assets/5c3cabc5919dc2c45739.png)
+
+## Dijkstra Algorithm
+
+### 資料結構版本 `adj matrix`
     
 - **資料結構**
     
@@ -169,12 +171,16 @@ DIJKSTRA_MATRIX(COST, n, s)
     - 正確性：每次選出的 $u$ 滿足 $DIST[u]=\delta(s,u)$，之後不再改變。
         
     - 鬆弛充足：矩陣版每回合檢查所有 $v$，不會漏掉可改進的鄰接。
+
 ![02-資料結構版本 adj matrix](/vault-assets/180cfc82b7d34ba6dbf4.png)
-## 演算法版本
+
+### 演算法版本
 
 ![03-演算法版本](/vault-assets/63c110d4bf6d5629a20b.png)
+
 ![04-演算法版本](/vault-assets/c7b0bcdd8504060f8425.png)
-## 複雜度分析
+
+### 複雜度分析
 
 - 前提：以鄰接串列表示圖，$w(u,v)\ge 0$。優先佇列 $Q$ 存所有頂點，鍵為 $v.d$。
     
@@ -203,9 +209,10 @@ DIJKSTRA_MATRIX(COST, n, s)
         ⇒ **$O(V\log V + E)$**。
         
 - 備註：若用鄰接矩陣且不建堆，經典實作為 **$O(V^2)$**。
-## Dijkstra's Algorithm 不能用在含負權邊的圖
+### Dijkstra's Algorithm 不能用在含負權邊的圖
 
 ![diagram-01](/vault-assets/d6e0f2126f66d91087e6.png)
+
 
 - **條件**：來源 $A$；邊權：$A\to B=3,\ A\to C=5,\ C \to B=-4,\ B\to D=1$。
     
@@ -224,8 +231,8 @@ DIJKSTRA_MATRIX(COST, n, s)
     3. 取出 $D$ 無事可做；再取出 $C$，鬆弛 $C \to B$ 得 $1<3$，但 $B$ 已定稿，不會改。
         
     4. 結束；輸出錯誤的 $4$。
-# Bellman-ford Algorithm
-## 定義
+## Bellman-ford Algorithm
+### 定義
 
 - 採用 DP 的方式
 	
@@ -255,9 +262,9 @@ DIJKSTRA_MATRIX(COST, n, s)
 	2. 重複 $k=1\ldots |V|-1$ 即得 $\mathrm{Dist}^{|V|-1}$ 為答案（任何簡單路徑至多 $|V|-1$ 邊）。  
 		
 	3. 再做一次鬆弛仍能下降則存在負環。
-## 演算法實作
+### 演算法實作
 
-### DS 版本
+#### DS 版本
     
 - **用途**：單源最短路，允許負邊；可偵測負環。
     
@@ -299,9 +306,13 @@ BELLmanFord_MATRIX(COST, n, s)
     
 - **路徑輸出**：對任一 $t$，自 $t$ 逆著 $P[\cdot]$ 回溯到 $s$。
 
-### CLRS 版本
+#### CLRS 版本
+
 ![06-CLRS 版本](/vault-assets/f34db5018f420d1e6684.png)
+
 時間複雜度 $O(VE)$，那麼是因為 base on adj list
-## 範例
+### 範例
+
 ![07-範例](/vault-assets/320e7ff5dd2ba1cab4bf.png)
+
 ![08-範例](/vault-assets/8c5c17d7aa4da7364539.png)

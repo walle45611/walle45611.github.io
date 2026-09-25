@@ -8,11 +8,11 @@ blog: true
 vault_source: "Note/Research/Reduction & Problem Types.md"
 ---
 
-## 1. 決策問題 vs. 優化問題 (Decision vs. Optimization)
+### 1. 決策問題 vs. 優化問題 (Decision vs. Optimization)
 
 在計算複雜度理論中，我們通常關注「決策問題」，但實際應用常遇到「優化問題」。
 
-### 1.1 決策問題 (Decision Problems)
+#### 1.1 決策問題 (Decision Problems)
 
 - **定義**：問題的答案只有簡單的 **"Yes" (1)** 或 **"No" (0)**。
     
@@ -27,7 +27,7 @@ vault_source: "Note/Research/Reduction & Problem Types.md"
     - **KNAPSACK**：背包問題。給定容量 $C$ 與目標價值 $V$，是否存在一種裝法使得總價值 $\ge V$ 且不超重？
         
 
-### 1.2 優化問題轉決策問題 (Converting Optimization to Decision)
+#### 1.2 優化問題轉決策問題 (Converting Optimization to Decision)
 
 - **關係**：
     
@@ -42,10 +42,11 @@ vault_source: "Note/Research/Reduction & Problem Types.md"
     - **從決策解優化 ($A_{dec} \to P_{opt}$)**：利用二分搜尋法 (Binary Search) 配合決策演算法。透過不斷詢問「最佳值是否 $\le X$？」來逼近並找出最佳解。
         
 
-## 2. 多項式時間 Reduction (Polynomial-time Reduction)
+### 2. 多項式時間 Reduction (Polynomial-time Reduction)
 
 ![01-2. 多項式時間 Reduction (Polynomial-time](/vault-assets/844b533c7e03d7996a2a.png)
-### 2.1 定義與機制
+
+#### 2.1 定義與機制
 
 - **符號**：$A \le_p B$ (讀作：Problem A reduces to Problem B)。
     
@@ -58,7 +59,7 @@ vault_source: "Note/Research/Reduction & Problem Types.md"
     - 這意味著我們可以使用解決 $B$ 的演算法 ($AlgB$) 來解決 $A$。
         
 
-### 2.2 難度關係含義
+#### 2.2 難度關係含義
 
 若 $A \le_p B$，則隱含以下重要結論：
 
@@ -67,7 +68,7 @@ vault_source: "Note/Research/Reduction & Problem Types.md"
 2. **$B$ 至少跟 $A$ 一樣難 (B is at least as hard as A)**：若 $A$ 本身很難，那 $B$ 一定也很難。
     
 
-### 2.3 具體實例 (Example)
+#### 2.3 具體實例 (Example)
 
 - **問題 A**：「2 能否整除 $x$？」(Instances $\alpha \in \{1, 2, 3...\}$)。
     
@@ -80,7 +81,7 @@ vault_source: "Note/Research/Reduction & Problem Types.md"
     - 如此一來，解決通用的除法問題 B，就能解決特定的除以 2 問題 A。
         
 
-## 3. Reduction 的應用 (Applications of Reduction)
+### 3. Reduction 的應用 (Applications of Reduction)
 
 Reduction 主要有三種用途：
 

@@ -8,7 +8,7 @@ blog: true
 vault_source: "Note/Research/對稱最小最大堆積 (Symmetric Min-Max Heap，SMMH).md"
 ---
 
-## Def
+### Def
 
 為 Complete Binary Tree，支援雙端優先佇列（double-ended priority queue）的實作。
 Insert、delete-min、delete-max 操作皆為 $O(\log n)$ 時間複雜度。需滿足以下性質：
@@ -21,7 +21,7 @@ Insert、delete-min、delete-max 操作皆為 $O(\log n)$ 時間複雜度。需�
    
 4. 若節點 X 有祖父節點，則「祖父的右子點 ≥ X」【性質 P₃】（Max heap 性質）
 
-### 對等於：假設 elements(N) ≠ 0，則 N 滿足以下性質：
+#### 對等於：假設 elements(N) ≠ 0，則 N 滿足以下性質：
 
 - Q1：N 的左子點具有 elements(N) 中的最小值。
 	  
@@ -33,7 +33,7 @@ Insert、delete-min、delete-max 操作皆為 $O(\log n)$ 時間複雜度。需�
 		  
 	- 最大值必為 X 右子樹中某個節點。
 
-## INSERT X IN SMMH
+### INSERT X IN SMMH
 
 - **X 置於最後一個節點之下一個位置**
     
@@ -55,7 +55,7 @@ Insert、delete-min、delete-max 操作皆為 $O(\log n)$ 時間複雜度。需�
             
 - **直到 P1、P2、P3 皆滿足為止**
     
-### 範例：插入值 X = 2
+#### 範例：插入值 X = 2
 
 原始節點順序（Level-order）：  
 `root, 4, 80, 8, 60, 6, 40, 12, 20, 10, 16, 14, 30`
@@ -115,7 +115,7 @@ Insert、delete-min、delete-max 操作皆為 $O(\log n)$ 時間複雜度。需�
 ```
 
 ---
-## DELETE-MIN in SMMH
+### DELETE-MIN in SMMH
 
 1. 刪除最小值一定從 **左子樹的 root** 開始（因為整棵樹的 min 就在這裡），並形成一個空格（E）。
     
@@ -132,11 +132,11 @@ Insert、delete-min、delete-max 操作皆為 $O(\log n)$ 時間複雜度。需�
 
 🧠 **重點心得：** 就是去找兄弟的左子點和自己的左子點比大小，小的繼任這個空格直到 P1 和 P2 都對。
 
-### DELETE-MIN in SMMH 範例流程
+#### DELETE-MIN in SMMH 範例流程
 
 以下是從 SMMH 中刪除最小值的完整範例（以圖示方式說明）：
 
-#### 🔹 初始狀態
+##### 🔹 初始狀態
 
 ```
               (root)
@@ -148,7 +148,7 @@ Insert、delete-min、delete-max 操作皆為 $O(\log n)$ 時間複雜度。需�
      12  20 10 16 14 30  6  40
 ```
 
-#### 🔹 Step 1：刪除最小值 `2`，形成空格 E，並將最後節點 `40` 移上來
+##### 🔹 Step 1：刪除最小值 `2`，形成空格 E，並將最後節點 `40` 移上來
 
 ```
               (root)
@@ -160,7 +160,7 @@ Insert、delete-min、delete-max 操作皆為 $O(\log n)$ 時間複雜度。需�
      12  20 10 16 14 30  6 40 (last node X)
 ```
 
-#### 🔹 Step 2：將 `40` 放入空格 E 的位置
+##### 🔹 Step 2：將 `40` 放入空格 E 的位置
 
 ```
               (root)
@@ -172,7 +172,7 @@ Insert、delete-min、delete-max 操作皆為 $O(\log n)$ 時間複雜度。需�
      12  20 10 16 14 30  6
 ```
 
-#### 🔹 Step 3：檢查 `40` 是否違反 P1/P2
+##### 🔹 Step 3：檢查 `40` 是否違反 P1/P2
 
 - 最小的孫子為 `4`
     
@@ -189,7 +189,7 @@ Insert、delete-min、delete-max 操作皆為 $O(\log n)$ 時間複雜度。需�
      12  20 10 16 14 30  6
 ```
 
-### 🔹 Step 4：繼續往下檢查 `40`
+#### 🔹 Step 4：繼續往下檢查 `40`
 
 - 最小的孫子為 `30`
     

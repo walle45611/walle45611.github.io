@@ -8,7 +8,7 @@ blog: true
 vault_source: "Note/Research/Selection Problem.md"
 ---
 
-# 定義和問題
+## 定義和問題
 
 - **問題描述**：在未排序陣列 $A$（含 $n$ 個互異元素）中，找出第 $k$ 小的元素，$1 \le k \le n$
     
@@ -38,9 +38,9 @@ vault_source: "Note/Research/Selection Problem.md"
         
 - **設計要點**：分割與遞迴（divide and conquer），只做與序位相關的部分工作，避免完整排序
 
-# 方法
+## 方法
 
-## 方法 1｜同時計算最小與最大值（Pairwise 成對法）
+### 方法 1｜同時計算最小與最大值（Pairwise 成對法）
 
 - **問題定義**：給定長度 $n$ 的陣列 $A$，同時計算 $\min(A)$ 與 $\max(A)$，使**比較次數最少**
     
@@ -117,9 +117,9 @@ vault_source: "Note/Research/Selection Problem.md"
       return (min, max)
     ```
 
-## 方法 2｜Randomized-Select
+### 方法 2｜Randomized-Select
 
-- **命名核心**：==每次遞迴都**隨機**選 pivot。隨機性不是實作細節，而是演算法本質，並且使用 quick sort 裡面的類似 partition 方法，因為 pivot 是隨機==。
+- **命名核心**：<mark>每次遞迴都**隨機**選 pivot。隨機性不是實作細節，而是演算法本質，並且使用 quick sort 裡面的類似 partition 方法，因為 pivot 是隨機</mark>。
     
 - **與確定性法的區別**：
     
@@ -150,7 +150,7 @@ vault_source: "Note/Research/Selection Problem.md"
         - 若 $i>k$：在右半 $A[q+1..r]$ 找**第 $i' = i-k$ 小**（因左半含 pivot 的 $k$ 個元素皆 $\le$ pivot，已被排除）。
             
         - 迷你例：原目標第 $i=7$ 小，pivot 秩 $k=4$，改在右半找第 $i'=7-4=3$ 小。
-### Randomized-Select 分析
+#### Randomized-Select 分析
 
 - **最佳情況（Best Case）**
     
@@ -209,16 +209,19 @@ vault_source: "Note/Research/Selection Problem.md"
         - CLRS 常數上界約 $<8n$；配合首層的 $\Omega(n)$，得 $\Theta(n)$
             
     - **結論**：$$\boxed{\ \mathbb{E}[T(n)]=\Theta(n)\ }$$
-## 方法3｜Median of Medians 
+### 方法3｜Median of Medians 
+
 ![02-方法3 Median of Medians](/vault-assets/d3c578cef965ee01e58e.png)
+
 
 - 目的在於提供一個 method 可以在 worst case 的時候還是 $O(n)$ 。
 	
 - 那他的方式或是原則就是小心選擇 pivot。
 
-### 實現方法
+#### 實現方法
 
 ![03-實現方法](/vault-assets/bbf50f4c3b1b2168c9a3.png)
+
 
 - **1. 分組**：把當前子陣列切成 $5$ 人小組；最後一組可不足 $5$。一次線性掃描完成，**$O(n)$**，並且把 $p+1$ 往後因為最前面已經是最小的那幾個了所以 $i-1$
     
@@ -248,7 +251,7 @@ vault_source: "Note/Research/Selection Problem.md"
         
     - **最壞情況複雜度遞迴**：  
         $$T(n)\ \le\ T\left(\left\lceil \tfrac{n}{5}\right\rceil\right)\ +\ T\left(\tfrac{7n}{10}+O(1)\right)\ +\ O(n)\ =\ O(n).$$
-### 證明
+#### 證明
 
 - 以 $5$ 人一組並組內排序，取每組中位形成集合 $M$，令 $x=\mathrm{median}(M)$。
     
@@ -272,10 +275,12 @@ vault_source: "Note/Research/Selection Problem.md"
     $$  
     T(n)\ \le\ T\left(\left\lceil \tfrac{n}{5}\right\rceil\right)\ +\ T\left(\tfrac{7n}{10}+O(1)\right)\ +\ O(n)\ =\ O(n).  
     $$
-### Total complex Time 
+#### Total complex Time 
+
 ![04-Total complex Time](/vault-assets/7bd00890cf0a3dbe47b1.png)
 
-### 範例
+
+#### 範例
 
 - **資料**：$A[p..r]=[22,7,18,11,25,9,14,6,20,13]$；$p=0$，$n=10=5g\Rightarrow g=2$
     

@@ -8,7 +8,7 @@ blog: true
 vault_source: "Note/Research/Activity Network.md"
 ---
 
-# AOV（Activity on Vertex）
+## AOV（Activity on Vertex）
 
 - 定義：AOV 網路是有向圖 $G$。頂點＝任務或活動；邊＝先後關係。
     
@@ -24,13 +24,13 @@ vault_source: "Note/Research/Activity Network.md"
     
 - 可行性：若網路無有向環（即為 DAG），則可行。
     
-## 拓撲序（Topological Order）
+### 拓撲序（Topological Order）
 
 - 定義：一個線性序，使得任意兩頂點 $i,j$，若 $i$ 是 $j$ 的前驅，則 $i$ 在序中先於 $j$。
     
 - 一個 AOV 可能有多個拓撲序。
     
-### 拓撲排序
+#### 拓撲排序
 
 目標：輸出一個拓撲序；若偵測到環則回報「不可行」。
 
@@ -56,8 +56,10 @@ vault_source: "Note/Research/Activity Network.md"
 3. 全部輸出完即得一個拓撲序。
     
 > 時間複雜度：$O(e+n)$。空間：鄰接表與計數陣列 $O(e+n)$。
+
 ![01-拓撲排序 - 全部輸出完即得一個拓撲序。](/vault-assets/8221d5d0c283329ff5fb.png) 
-### 參考樣式（貼近課本 C 風格）
+
+#### 參考樣式（貼近課本 C 風格）
 
 ```c
 void topsort(Graph g, int n){
@@ -82,7 +84,7 @@ void topsort(Graph g, int n){
 }
 ```
 
-# AOE （Activity on Edge）
+## AOE （Activity on Edge）
 
 - 模型：頂點=事件；邊=活動；權重 $w_{uv}$=工期；必要時加「虛擬活動」（工期 $0$）表額外依賴。
 	
@@ -105,8 +107,10 @@ void topsort(Graph g, int n){
 	- 關鍵活動與路徑：$s_{uv}=0$ 的邊與其連成的 $s\to t$ 路徑（可多條）。
 		
 - 複雜度：鄰接表＋拓撲序實作皆為 $O(|V|+|E|)$。
-## 範例
+### 範例
+
 ![02-範例](/vault-assets/1da86d7fc1cd2ff2973b.png)
+
 - **Q3｜Critical task 判定**
     
     - 定義：位於任一關鍵路徑的活動；浮時 $s=0$。

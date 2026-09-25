@@ -8,7 +8,7 @@ blog: true
 vault_source: "Note/Research/最小最大堆積 (Min-Max Heap).md"
 ---
 
-## 定義
+### 定義
 
 - 一個 **Min-Max Heap** 是一棵 **完全二元樹** (complete binary tree)，其第 $i$ 層為 **min-level** 或 **max-level**，並互相交錯 (alternating levels)
     
@@ -22,13 +22,13 @@ vault_source: "Note/Research/最小最大堆積 (Min-Max Heap).md"
     
 - 相對地，**max-min heap** 是 root 是最大值，子節點中有最小值
     
-## 性質
+### 性質
 
 - 因為是完全二元樹，可以用陣列形式 $A[1..N]$ 來表示
     
 - 第 $i$ 個節點的父節點為 $\left\lfloor \frac{i}{2} \right\rfloor$，子節點為 $2i$ 和 $2i + 1$
     
-## Min/Max 層級
+### Min/Max 層級
 
 - 使用 0-based 層級 index
     
@@ -36,7 +36,7 @@ vault_source: "Note/Research/最小最大堆積 (Min-Max Heap).md"
         
     - 奇數層: $1, 3, 5, \dots$ 是 **max-level**
         
-## Min / Max 驗證
+### Min / Max 驗證
 
 - 假設節點 $P$ 在 min-level，則  
     $P \le \min(\text{所有子孫節點的值})$
@@ -44,9 +44,9 @@ vault_source: "Note/Research/最小最大堆積 (Min-Max Heap).md"
 - 假設節點 $P$ 在 max-level，則  
     $P \ge \max(\text{所有子孫節點的值})$
     
-## 插入操作（Insertion）
+### 插入操作（Insertion）
 
-### 步驟
+#### 步驟
 
 1. 將 $x$ 插入在最後一個位置（即 $n+1$）
     
@@ -54,7 +54,7 @@ vault_source: "Note/Research/最小最大堆積 (Min-Max Heap).md"
     
 3. 根據 $p$ 所在層級分為兩種情況處理：
     
-### Case 1：父節點 $p$ 在 min-level
+#### Case 1：父節點 $p$ 在 min-level
 
 - 若 $x.key > H[p].key$，代表 $x$ 比父親大，不應留在 min-level：
     
@@ -64,7 +64,7 @@ vault_source: "Note/Research/最小最大堆積 (Min-Max Heap).md"
     
     - 令 $H[n] = H[p]$（父值下移），再執行 `VerifyMin(H, p, x)`
         
-### Case 2：父節點 $p$ 在 max-level
+#### Case 2：父節點 $p$ 在 max-level
 
 - 若 $x.key < H[p].key$，代表 $x$ 比父親小，不應留在 max-level：
     
@@ -77,11 +77,11 @@ vault_source: "Note/Research/最小最大堆積 (Min-Max Heap).md"
 
 > ✅ 插入後，會根據父節點決定自己應該屬於 max-level 還是 min-level，然後只會在「自己的層級」中挑戰上去，保持那層的 heap 性質。
 
-### 時間複雜度
+#### 時間複雜度
 
 因為調整 min-level 或是 max-level 那麼他的複雜度為樹高 $O(h), \ h=\log(n)$ 所以爲 $O(\log n)$
 
-### 程式碼片段
+#### 程式碼片段
 
 ```cpp
 void VerifyMin(std::vector<int>& H, int index, int x) {
@@ -145,15 +145,15 @@ bool isMinLevel(int index) {
 
 ---
 
-## Delete-Min on Min-Max Heap
+### Delete-Min on Min-Max Heap
 
-### 操作目標：
+#### 操作目標：
 
 > ✅ **刪除最小值時，會將最後一個節點的值 $x$ 補到 root，然後從 root 開始向下調整位置，直到找到 $x$ 合法的落點，確保整棵 Min-Max Heap 結構正確。**
 
 從 Min-Max Heap 中**刪除最小值（即 root）**，並保持 heap 結構與 min-max 層級規則正確。
 
-### 步驟說明：
+#### 步驟說明：
 
 1. **移走 root 的資料值**（即最小值）。
     
@@ -163,11 +163,11 @@ bool isMinLevel(int index) {
         
 3. 將 `x` 插入到 root 為起點的子樹中，視子節點情況分成 3 類：
     
-### Case 1：Root 無子節點
+#### Case 1：Root 無子節點
 
 - 表示 heap 只剩一個節點，直接移除即可。
     
-### Case 2：Root 有子但無孫子節點（即 root 的 children 是葉節點）
+#### Case 2：Root 有子但無孫子節點（即 root 的 children 是葉節點）
 
 - 找出 **root 兩個子節點中較小者 `k`**
     
@@ -175,13 +175,13 @@ bool isMinLevel(int index) {
     
 - 否則：`x` 留在 root
     
-### Case 3：Root 有孫子存在（完整三層以上）
+#### Case 3：Root 有孫子存在（完整三層以上）
 
 - 找出整個子孫中 **最小值所在的節點 `k`**
     
 - 設 `p` 為 `k` 的父節點
     
-#### 接下來判斷：
+##### 接下來判斷：
 
 - 如果 `x.key <= k.key`：
     
@@ -202,11 +202,11 @@ bool isMinLevel(int index) {
     
 - 若 `x` 被放到 max-level，要保證它不是比其父還大（因為那是 min 層）
 
-### 時間複雜度
+#### 時間複雜度
 
 如果已 case 3 討論，那麼從孫子節點中找到最大或是最小，所以基本就是找到樹的每層 $h/2$ 所以基本是樹高的 $O(\log n)$
 
-### C++ 程式碼片段：Delete-Min 操作
+#### C++ 程式碼片段：Delete-Min 操作
 
 ```cpp
 void deleteMin(std::vector<int>& H) {
@@ -259,7 +259,7 @@ void deleteMin(std::vector<int>& H) {
 
 ---
 
-## 範例樹（插入後驗證）
+### 範例樹（插入後驗證）
 
 ```
               8                ← Min level (root)
@@ -280,7 +280,7 @@ void deleteMin(std::vector<int>& H) {
 - 46, 51, 13, 71 為 min-level 節點
     
 
-## 最大值位置
+### 最大值位置
 
 - 由於 root 是 min-value，**max-value 會出現在 root 的子節點中**，即 $A[2]$ 與 $A[3]$
     $$\text{max\_value} = \max(A[2], A[3])$$

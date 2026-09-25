@@ -9,7 +9,7 @@ vault_source: "Note/Research/01 背包問題 (01 Knapsack Problem).md"
 ---
 
 https://www.hello-algo.com/zh-hant/chapter_dynamic_programming/knapsack_problem/#__tabbed_4_6
-# 1. 問題定義
+## 1. 問題定義
 
 - **給定 (Given):**
     
@@ -37,7 +37,7 @@ https://www.hello-algo.com/zh-hant/chapter_dynamic_programming/knapsack_problem/
 > 此問題具有**最佳子結構 (Optimal Substructure)**，適合使用 DP 求解。
 >     
 
-# 2. Recursive Form (遞迴關係式)
+## 2. Recursive Form (遞迴關係式)
 
 我們使用一個二維陣列（表格）$C[i, k]$ 來定義子問題：
 
@@ -45,7 +45,7 @@ https://www.hello-algo.com/zh-hant/chapter_dynamic_programming/knapsack_problem/
 
 我們的目標是求出 $C[n, W]$。
 
-## 遞迴推導：
+### 遞迴推導：
 
 當我們考慮第 $i$ 個物品（其重量為 $w_i$，價值為 $v_i$）時，有兩種選擇：
 
@@ -65,12 +65,12 @@ https://www.hello-algo.com/zh-hant/chapter_dynamic_programming/knapsack_problem/
         
     - 即 $v_i + C[i-1, k - w_i]$。
         
-## 關係式總結：
+### 關係式總結：
 
 $C[i, k]$ 就是取上述兩種情況中，價值較大的一個。
 
 $$C[i, k] = \begin{cases} 0 & \text{if } i = 0 \text{ or } k = 0 \\ C[i-1, k] & \text{if } k < w_i \text{ (放不下第 i 個物品)} \\ \max(C[i-1, k], \quad v_i + C[i-1, k - w_i]) & \text{if } k \ge w_i \text{ (可選擇放或不放)} \end{cases}$$
-# 3. 演算法 (Algorithm) - Bottom-up DP
+## 3. 演算法 (Algorithm) - Bottom-up DP
 
 我們可以使用「由下而上」(Bottom-up) 的方式，填滿 $C[i, k]$ 這個表格來求解。
 
@@ -117,7 +117,7 @@ for i <- 1 to n:
 return C[n, W]
 ```
 
-# 4. 複雜度分析 (Complexity Analysis)
+## 4. 複雜度分析 (Complexity Analysis)
 
 - **時間複雜度 (Time Complexity): $O(nW)$**
     
@@ -127,9 +127,9 @@ return C[n, W]
     
     - **原因：** 需要一個 $C[0..n, 0..W]$ 的二維表格來儲存子問題的解，表格大小為 $(n+1) \times (W+1)$，也就是額外花費的記憶體。
         
-# 填表過程
+## 填表過程
 
-## 直觀的說
+### 直觀的說
 
 **1. 裝得下嗎？ ($k < w_i$)**
 
@@ -145,7 +145,7 @@ return C[n, W]
         
 **「斜上」** 就是指：**往上一列，再往左 $w_i$ 格**。
 
-### 物品 1：$i=1, w_1=2, v_1=6$
+#### 物品 1：$i=1, w_1=2, v_1=6$
 
 $C[1,k]=\max{C[0,k],6+C[0,k-2]}$
 
@@ -155,7 +155,7 @@ $C[1,k]=\max{C[0,k],6+C[0,k-2]}$
 |:--|:-:|:-:|:-:|:-:|:-:|:-:|
 |值|0|**0**|**6**|**6**|**6**|**6**|
 
-### 物品 2：$i=2, w_2=3, v_2=10$
+#### 物品 2：$i=2, w_2=3, v_2=10$
 
 $C[2,k]=\max{C[1,k],;10+C[1,k-3]}$
 
@@ -165,7 +165,7 @@ $C[2,k]=\max{C[1,k],;10+C[1,k-3]}$
 |:--|:-:|:-:|:-:|:-:|:-:|:-:|
 |值|0|**0**|**6**|**10**|**10**|**16**|
 
-### 物品 3：$i=3, w_3=4, v_3=12$
+#### 物品 3：$i=3, w_3=4, v_3=12$
 
 $C[3,k]=\max{C[2,k],12+C[2,k-4]}$
 
@@ -175,7 +175,7 @@ $C[3,k]=\max{C[2,k],12+C[2,k-4]}$
 |:--|:-:|:-:|:-:|:-:|:-:|:-:|
 |值|0|**0**|**6**|**10**|**12**|**16**|
 
-## 完整表格
+### 完整表格
 
 |$C[i,k]$|0|1|2|3|4|5|
 |:--|:-:|:-:|:-:|:-:|:-:|:-:|
@@ -186,7 +186,7 @@ $C[3,k]=\max{C[2,k],12+C[2,k-4]}$
 
 **答案**：$C[n,W]=C[3,5]=16$
 
-## 回溯解集合
+### 回溯解集合
 
 從 $C[3,5]=16$ 往回：
 

@@ -8,14 +8,14 @@ blog: true
 vault_source: "Note/Research/Array 記憶體位址計算全攻略.md"
 ---
 
-## 1. 基礎觀念：一維陣列 (1-Dim Array)
+### 1. 基礎觀念：一維陣列 (1-Dim Array)
 
 - **公式**：$Loc(A[i]) = L_0 + (i - l) \times d$
     
 
 ---
 
-## 2. 進階觀念：二維陣列 (2-Dim Array)
+### 2. 進階觀念：二維陣列 (2-Dim Array)
 
 - **宣告**：$A[l_1 \ldots u_1, \ l_2 \ldots u_2]$
     
@@ -24,7 +24,7 @@ vault_source: "Note/Research/Array 記憶體位址計算全攻略.md"
 - **行數 (Cols)**：$C = u_2 - l_2 + 1$
     
 
-### 通用公式
+#### 通用公式
 
 - Row-major (以列為主 - C/C++)：
     
@@ -37,9 +37,9 @@ vault_source: "Note/Research/Array 記憶體位址計算全攻略.md"
 
 ---
 
-## 3. 四大常考題型攻略 (含範例詳解)
+### 3. 四大常考題型攻略 (含範例詳解)
 
-### 🔥 型一：給定所有參數，求位址
+#### 🔥 型一：給定所有參數，求位址
 
 **題目**：陣列 $A=[-3\ldots8,\,-1\ldots14]$，起始位址 $L_0=100$，元素大小 $d=4$。
 
@@ -63,7 +63,7 @@ vault_source: "Note/Research/Array 記憶體位址計算全攻略.md"
 
 ---
 
-### 🔥 型二：給 2 個元素位址，判斷 Row/Col Major
+#### 🔥 型二：給 2 個元素位址，判斷 Row/Col Major
 
 **題目**：$A(3,2)=1110$，$A(2,3)=1115$，且 $d=1$。求儲存方式與 $A(5,4)$。
 
@@ -93,7 +93,7 @@ vault_source: "Note/Research/Array 記憶體位址計算全攻略.md"
 
 ---
 
-### 🔥 型三：已知 2 點位址，求維度與第三點
+#### 🔥 型三：已知 2 點位址，求維度與第三點
 
 **題目**：$A[1\ldots m, 1\ldots n]$，$d=1$，已知 $A(3,3)=121$，$A(6,4)=159$。求 $A(10,7)$。
 
@@ -119,7 +119,7 @@ vault_source: "Note/Research/Array 記憶體位址計算全攻略.md"
 
 ---
 
-### 🔥 型四：給 3 個元素位址，解全套 (B, n, m, d)
+#### 🔥 型四：給 3 個元素位址，解全套 (B, n, m, d)
 
 **題目**：$A(2,3)=18, A(3,2)=28, A(1,1)=2$。求 $A(4,5)$。
 
@@ -156,9 +156,9 @@ vault_source: "Note/Research/Array 記憶體位址計算全攻略.md"
 
 ---
 
-## 4. 高維度陣列 (3D, 4D, N-Dim)
+### 4. 高維度陣列 (3D, 4D, N-Dim)
 
-### 3D Row-Major 實戰例題
+#### 3D Row-Major 實戰例題
 
 **題目**：宣告 $A[1\dots5, 2\dots4, 0\dots3]$，Row-major，$L_0=1000, d=2$。求 $A[3, 3, 2]$。
 
@@ -199,7 +199,7 @@ $$Loc = 1000 + (7 \times 4 + 2) \times 2 = 1000 + 30 \times 2 = \boxed{1060}$$
 
 ---
 
-## 5. N 維陣列通用公式
+### 5. N 維陣列通用公式
 
 宣告：$A[n_1, n_2, \ldots, n_k]$
 

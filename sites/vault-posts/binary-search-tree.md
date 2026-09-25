@@ -8,7 +8,7 @@ blog: true
 vault_source: "Note/Research/二元搜尋樹 (Binary Search Tree).md"
 ---
 
-## 定義
+### 定義
 
 - 是一棵二元樹，可以為空。
     
@@ -21,7 +21,7 @@ vault_source: "Note/Research/二元搜尋樹 (Binary Search Tree).md"
     3. 左、右子樹本身也都是二元搜尋樹。
         
 
-## 特性
+### 特性
 
 - **Inorder Traversal (中序走訪)**：順序為 Left → Data → Right (L D R)。
 
@@ -48,7 +48,7 @@ vault_source: "Note/Research/二元搜尋樹 (Binary Search Tree).md"
   - **方法二**（記錄方式不同）：
     - 每個節點用 `key` 表示左子樹的值，用 `counter` 表示右子樹中該 key 的出現次數或統計資料（可用於統計或自訂搜尋邏輯）
 
-### 證明 Inorder Traversal 有序性
+#### 證明 Inorder Traversal 有序性
 
 假設對任意節點 $v$：
 
@@ -67,7 +67,7 @@ $$L  ∥  [v]  ∥  R$$
 
 ---
 
-## 時間複雜度
+### 時間複雜度
 
 令節點數為 n，BST 高度為 hh。
 
@@ -88,7 +88,7 @@ $$L  ∥  [v]  ∥  R$$
 
 ---
 
-# 在 BST 中搜尋 X (Search X)
+## 在 BST 中搜尋 X (Search X)
 
 - **時間複雜度**：$O(h)$，其中 $h$ 為 BST 高度。
     
@@ -117,7 +117,7 @@ int search(struct node *root, int x)
 
 ---
 
-## 搜尋時間複雜度推導
+### 搜尋時間複雜度推導
 
 這段推導其實是在算一棵理想（滿／完全）二元樹上，搜尋所有節點一次所需要的比較次數總和 $S$，然後再除以節點數 $n$ 得到「平均比較次數」。具體思路是：
 
@@ -159,7 +159,7 @@ int search(struct node *root, int x)
 
 ---
 
-# 找最小值 / 最大值 (Find-min / Find-max)
+## 找最小值 / 最大值 (Find-min / Find-max)
 
 - **時間複雜度**：
     
@@ -190,7 +190,7 @@ struct node* find_maximum(struct node *root)
 
 ---
 
-# 插入 X (Insert X)
+## 插入 X (Insert X)
 
 - 若 X 已存在，則不插入。
     
@@ -224,7 +224,7 @@ struct node* insert(struct node *root, int x) {
 
 ---
 
-## 刪除節點 (Delete X in a BST)
+### 刪除節點 (Delete X in a BST)
 1. **Degree 0（葉節點 leaf）**
    - 條件：無左子也無右子
    - 刪除方式：直接刪除該節點

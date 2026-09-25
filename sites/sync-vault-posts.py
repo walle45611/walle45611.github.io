@@ -80,6 +80,59 @@ TITLES = {
 
 EMBED = re.compile(r"!?\[\[(.*?)\]\]")
 TIKZ = re.compile(r"(?ms)^```tikz[ \t]*\n(.*?)^```[ \t]*$")
+HEADING = re.compile(r"^(#{1,5})([ \t]+)(.*)$")
+HIGHLIGHT = re.compile(r"(?<![\w`])==(.+?)==(?![\w`])")
+CALLOUT = re.compile(r"^([ \t]*>[ \t]*)\[!(\w+)\][+-]?[ \t]*(.*)$", re.I)
+CALLOUT_NAMES = {
+    "note": "筆記", "info": "資訊", "tip": "提示", "warning": "注意",
+    "important": "重點", "example": "範例", "question": "問題",
+}
+DISPLAY_MATH = re.compile(r"(?ms)^\$\$[ \t]*\n(.*?)^\$\$[ \t]*$")
+
+
+def normalize_display_math(body: str) -> str:
+    """Obsidian permits blank lines in display math; Comrak treats those as paragraphs."""
+    def compact(match: re.Match[str]) -> str:
+        lines = [line.rstrip() for line in match.group(1).splitlines() if line.strip()]
+        return "$$\n" + "\n".join(lines) + "\n$$"
+
+    return DISPLAY_MATH.sub(compact, body)
+
+
+def convert_obsidian_format(body: str) -> str:
+    """Keep vault content intact while adapting Obsidian syntax for the blog."""
+    output = []
+    fenced = False
+    fence_char = ""
+    fence_width = 0
+    for line in body.splitlines():
+        fence = re.match(r"^[ \t]*(`{3,}|~{3,})", line)
+        if fence and not fenced:
+            fenced = True
+            fence_char = fence.group(1)[0]
+            fence_width = len(fence.group(1))
+            output.append(line)
+            continue
+        if fenced:
+            output.append(line)
+            if fence and fence.group(1)[0] == fence_char and len(fence.group(1)) >= fence_width:
+                fenced = False
+            continue
+
+        heading = HEADING.match(line)
+        if heading:
+            line = "#" + line  # The article title is already the page's H1.
+        callout = CALLOUT.match(line)
+        if callout:
+            label = callout.group(3) or CALLOUT_NAMES.get(callout.group(2).lower(), callout.group(2))
+            line = f"{callout.group(1)}**{label}**"
+        line = HIGHLIGHT.sub(r"<mark>\1</mark>", line)
+        if line.startswith("![") and output and output[-1].strip():
+            output.append("")
+        output.append(line)
+        if line.startswith("!["):
+            output.append("")
+    return "\n".join(output).strip()
 
 
 def export(vault: Path, site: Path) -> None:
@@ -125,7 +178,7 @@ def export(vault: Path, site: Path) -> None:
             alt = asset.stem.replace("[", r"\[").replace("]", r"\]")
             return f"![{alt}](/vault-assets/{asset_name})"
 
-        body = EMBED.sub(replace_embed, body)
+        body = normalize_display_math(convert_obsidian_format(EMBED.sub(replace_embed, body)))
 
         if TIKZ.search(body):
             raise ValueError(f"TikZ remains in source note: {source}")

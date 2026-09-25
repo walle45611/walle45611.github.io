@@ -8,7 +8,7 @@ blog: true
 vault_source: "Note/Research/Hashing.md"
 ---
 
-# 名詞解釋和定義
+## 名詞解釋和定義
 
 - **模型** 表分成 $b$ 個 bucket，每個 bucket 有 s 個 slots；第 $i$ 個 bucket 目前放入筆數 $n_i$。
 	
@@ -24,7 +24,7 @@ vault_source: "Note/Research/Hashing.md"
 		
 	-  一些探討：也就是說 Overflow 他一定就會有 Collision，反之不一定，也就是說 Collision 他不一定會有 Overflow，但是今天如果 slot 大小他只有 1 的話那麼 Collision 他就會有 Overflow
 
-* **識別字密度（Identifier Density）**：表示在整個變數（鍵值）空間中，實際被使用的變數比例。==若程式中有 $n$ 個實際使用的鍵，整體可用鍵空間大小為 $T$，則 $n/T$稱為識別字密度。此值越小，代表空間越稀疏、浪費越多。==（MIT 課程中對應於 $n/u$，說明若 $u$ 遠大於 $n$，直接存取表會造成 $O(u)$ 空間浪費。）
+* **識別字密度（Identifier Density）**：表示在整個變數（鍵值）空間中，實際被使用的變數比例。<mark>若程式中有 $n$ 個實際使用的鍵，整體可用鍵空間大小為 $T$，則 $n/T$稱為識別字密度。此值越小，代表空間越稀疏、浪費越多。</mark>（MIT 課程中對應於 $n/u$，說明若 $u$ 遠大於 $n$，直接存取表會造成 $O(u)$ 空間浪費。）
 		
 	- 識別字密度（Identifier Density）範例
 		    
@@ -37,7 +37,7 @@ vault_source: "Note/Research/Hashing.md"
 	        
 	    - 解讀：學號宇宙極大但實際用到的位數使用很少；若用直接存取結構需配置 $10^9$ 格，空間浪費嚴重。
 
-* **負載密度（Loading Density）或負載因子（Loading Factor）**：當雜湊表劃分為 $b$ 個 bucket、每個 bucket 含 $s$ 個 slot 時，==$n/ (b\times s)$即為負載密度。此值代表表格的實際填滿程度。值越大，表示空間使用率高，但發生**碰撞（Collision）**或**溢位（Overflow）**的機率也會上升==。（MIT 課程中對應於 $n/m$，並指出當 $m\propto n$ 時能維持常數期望搜尋時間 $O(1)$。）
+* **負載密度（Loading Density）或負載因子（Loading Factor）**：當雜湊表劃分為 $b$ 個 bucket、每個 bucket 含 $s$ 個 slot 時，<mark>$n/ (b\times s)$即為負載密度。此值代表表格的實際填滿程度。值越大，表示空間使用率高，但發生**碰撞（Collision）**或**溢位（Overflow）**的機率也會上升</mark>。（MIT 課程中對應於 $n/m$，並指出當 $m\propto n$ 時能維持常數期望搜尋時間 $O(1)$。）
 		
 	- 負載密度（Loading Density / 負載因子）範例
 	    
@@ -50,7 +50,7 @@ vault_source: "Note/Research/Hashing.md"
 	        
 	    - 解讀：表格整體填滿 60%；平均每個 bucket 約 30 筆，未達 overflow（每 bucket 上限 50）。若 n 增加而 b、s 不變，則 $\alpha$ 變大，碰撞次數變多，最終可能出現 overflow。
 
-# Hashing 優點
+## Hashing 優點
 
 - 使用 Hashing 進行搜尋，資料不需事先排序。
     
@@ -66,10 +66,10 @@ vault_source: "Note/Research/Hashing.md"
     
 - 可縮小索引範圍：以雜湊函數將大型識別空間映射到較小的表中，降低儲存與索引成本（概念近似「壓縮」，但非一般可逆壓縮）。
 
-# Hashing function design
+## Hashing function design
 
 
-## 平方值取中間位數（Middle square）
+### 平方值取中間位數（Middle square）
     
 - 步驟：鍵先平方，擷取平方值的中間數位作位址。
 	
@@ -79,7 +79,7 @@ vault_source: "Note/Research/Hashing.md"
 	
 - 評述：實作簡單；分佈品質差，易碰撞與短循環，實務少用。
         
-## 除法（Mod 運算）
+### 除法（Mod 運算）
     
 - 定義：  
 	$$h(x)=x\bmod M$$
@@ -96,7 +96,7 @@ vault_source: "Note/Research/Hashing.md"
 		
 - 評述：分佈穩定，實務最常用。
     
-## 折疊相加（Folding Addition）
+### 折疊相加（Folding Addition）
 
 - 把鍵切成等長區段（最後一段不足就左補 0），各段相加後再取表大小 $m$ 的餘數作位址。$$h(x)=S \bmod m$$
 * 分段為 $(P1=123,P2=203,P3=241,P4=112,P5=20)$。
@@ -107,8 +107,8 @@ vault_source: "Note/Research/Hashing.md"
 - 邊界折疊比位移折疊更能打散高相似度鍵，碰撞通常較少。
 	
 - 數值分析：可能有 10 位數那麼就是把每個位數去看，例如第 10 位他的 2 重複很多那就把 2 刪掉又或是像是電話 09 開頭那麼我就把 09 刪掉用其他當作辨識。
-## Universal hash function
-### 什麼是雜湊族 (Hash Family)?
+### Universal hash function
+#### 什麼是雜湊族 (Hash Family)?
 
 雜湊族（或稱萬用雜湊族 $H$）是一個**雜湊函數的集合**。
 
@@ -116,7 +116,7 @@ vault_source: "Note/Research/Hashing.md"
 2. **方法：** 我們會隨機地從這個雜湊族 $H$ 中選取一個雜湊函數 $h_{a,b}$ 來使用。由於使用者不知道我們選了哪一個函數，這使得他們很難提供會導致大量碰撞的「壞」輸入。
 3. **結果：** 萬用雜湊族保證了：即使對於任意兩個不同的鍵值，它們發生碰撞的機率也會很低（小於等於 $1/m$）。
 
-#### 萬用雜湊公式 $h_{a,b}(K)$ 中的變數
+##### 萬用雜湊公式 $h_{a,b}(K)$ 中的變數
 
 公式 $h_{a,b}(K) = ((aK + b) \pmod p) \pmod m$ 是一種常見的萬用雜湊函數設計。
 
@@ -133,10 +133,12 @@ vault_source: "Note/Research/Hashing.md"
 
 1. 先做 $(aK + b) \pmod p$，在一個大質數 $p$ 的範圍內打亂鍵值。
 2. 再做 $\pmod m$，將結果壓縮到雜湊表大小 $m$ 的範圍內。
-## Proof 
+### Proof 
 
 在採用 universal hash（對任兩鍵碰撞機率 $\le 1/m$）且表大小 $m=\Omega(n)$（負載因子 $\alpha=n/m=O(1)$）時，任意鍵 $k_i$ 於索引 $h(k_i)$ 的期望鏈長滿足 $\mathbb{E}[X_i]\le 1+(n-1)/m=1+\alpha-1/m=O(1)$，因此成功查找的期望比較次數 $S_n=1+\alpha/2$，失敗查找 $U_n=\alpha$。
+
 ![01-Proof](/vault-assets/ad46e41f855ca909e7fd.png)
+
 
 - 失敗查找：$U_n=\alpha$
     
@@ -150,11 +152,11 @@ vault_source: "Note/Research/Hashing.md"
     
 - 小例：$m=100,\ n=200\Rightarrow \alpha=2$ 失敗平均比 $2$ 次；成功平均比 $2$ 次。
 
-# Overflow 處理方式
+## Overflow 處理方式
 
-## Open addressing mode
+### Open addressing mode
 
-### **Linear Probing（線性探測）**
+#### **Linear Probing（線性探測）**
     
 - 意義：碰撞時沿著表向右一格一格找空位。
 	
@@ -175,7 +177,7 @@ Idx: 0  1  2   3   4  5   6  7  8  9
 # 33: 3(占)→4(占)→5(空) 放入
 ```
 
-### **Quadratic Probing（二次方探測）**
+#### **Quadratic Probing（二次方探測）**
     
 - 意義：碰撞時用平方距離跳探，避開一大段連續區。
 	
@@ -200,7 +202,7 @@ Idx: 0  1  2   3   4  5   6  7  8  9
 	- Quadratic：序列非連續 → 解 Primary，但同 hash 值的鍵仍走相同序列 → Secondary clustering；且可能無法利用到所有空格。
 		
 	- 兩者最壞查找皆可能達 $\Theta(n)$；需控制負載因子 $\alpha=n/B$ 並定期擴表重雜湊。
-### Double Hashing
+#### Double Hashing
 
 * **概念**：碰撞時以第二雜湊決定步長，探測序列為 $\text{probe}_i= (H(x)+i\cdot f(x))\bmod B\quad(i=0,1,\ldots)$常用 $f(x)=R-(x\bmod R)$，$f(x)$ 這個會考試可能會換所以依照考試給定，其中 $R$ 為小於 $B$ 的質數且 $f(x)\neq 0$。
 
@@ -208,8 +210,8 @@ Idx: 0  1  2   3   4  5   6  7  8  9
 
 * **範例** 設 $B=10$，$H(x)=x\bmod 10$，選 $R=7$，故 $f(x)=7-(x\bmod 7)$。依序插入：$3,14,9,10,23,33,43$。 
 	![02-Double Hashing](/vault-assets/640598098713855634ac.png)
-## Close addressing mode
-### Chaining
+### Close addressing mode
+#### Chaining
 
 - **定義**：雜湊表視為有 (b) 個 buckets；雜湊位址相同的鍵放入同一個 bucket 的串列（或其他容器），形成「鏈結」。屬於 **Closed addressing**；對照 **Open addressing** 的探測法。
     
@@ -245,7 +247,7 @@ Idx: 0  1  2   3   4  5   6  7  8  9
 	...
 	```
 
-## Rehashing
+### Rehashing
 
 - 設置一系列的散置函數 f1、f2、…、fn。當使用 f1 產生溢位時，則改用 f2，若又發生溢位時，則改用 f3，依此類推，直到沒有溢位發生為止。如果函數全部使用完，仍有碰撞，則資料無法存入。
     

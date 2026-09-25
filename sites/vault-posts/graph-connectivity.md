@@ -23,7 +23,7 @@ https://nthu-cp.github.io/NTHU-CPP/graph/introduction_to_AP_bridge.html
         
     - **5. 收縮 SCC 的好處**：把每個 SCC 縮為單點，可消除所有環，得到 DAG；在 DAG 上設計與實作演算法更容易、更高效。
 
-# Tarjan's Algorithm to find Bridge
+## Tarjan's Algorithm to find Bridge
 
 ```cpp
 #include <bits/stdc++.h>
@@ -187,11 +187,11 @@ int main(){
         
     - 關節：根看「子樹數」，非根看「child 的 low 是否上不去」。
 
-## 手寫計算
-> [!note]- 手寫計算
+### 手寫計算
+> **手寫計算**
 > ![01-手寫計算](/vault-assets/b620255e9261bb519bac.png)
 
-# Tarjan’s Algorithm — SCC（有向圖）
+## Tarjan’s Algorithm — SCC（有向圖）
 
 - 目標：在有向圖分解 **Strongly Connected Components**，時間 $O(V+E)$。
     

@@ -8,7 +8,7 @@ blog: true
 vault_source: "Note/Research/Complexity Classes and P vs NP.md"
 ---
 
-## 1. 基礎複雜度類別 (P 與 NP)
+### 1. 基礎複雜度類別 (P 與 NP)
 
 - **複雜度類別 (Complexity Class)**
     
@@ -31,7 +31,7 @@ vault_source: "Note/Research/Complexity Classes and P vs NP.md"
     - **邏輯**：如果一個問題能很快被算出來 (P)，那答案當然也能很快被檢查 (NP)。
         
 
-## 2. 進階複雜度定義 (NP-Hard 與 NP-Complete)
+### 2. 進階複雜度定義 (NP-Hard 與 NP-Complete)
 
 - **什麼是「難」問題 (Hard Problem)**
     
@@ -60,8 +60,10 @@ vault_source: "Note/Research/Complexity Classes and P vs NP.md"
     - **重要性**：只要能找到一個 NPC 問題的高效解法（P解法），就等於解決了所有 NP 問題（即證明 $P=NP$）。
         
 
-## 3. P 與 NP 的關係 ($P \stackrel{?}{=} NP$)
+### 3. P 與 NP 的關係 ($P \stackrel{?}{=} NP$)
+
 ![01-3. P 與 NP 的關係 ($P stackrel{ }{=} NP$](/vault-assets/2fefb61551fd234a86a0.png)
+
 - **已知事實**：$P \subseteq NP$ (P 是 NP 的子集)。
     
 - **未解之謎**：是否 $NP \subseteq P$？ (也就是 $P = NP$ 嗎？)
@@ -79,7 +81,7 @@ vault_source: "Note/Research/Complexity Classes and P vs NP.md"
     - **若 $P = NP$**：P、NP、NPC 三者邊界消失，全部重疊在一起。
         
 
-## 4. 不可判定性 (Undecidability) 與 停機問題
+### 4. 不可判定性 (Undecidability) 與 停機問題
 
 這部分跳脫了「解得快慢」，討論的是更根本的「能不能解」。
 
@@ -106,9 +108,10 @@ vault_source: "Note/Research/Complexity Classes and P vs NP.md"
     4. 因此假設錯誤，這樣的全能機器 $H$ 不存在。
         
 
-## 5. 複雜度層級總結 (The Hierarchy)
+### 5. 複雜度層級總結 (The Hierarchy)
 
 ![02-5. 複雜度層級總結 (The Hierarchy)](/vault-assets/1b35dd275e67d5bd9238.png)
+
 根據計算資源與可判定性，由內而外（由簡入難）的同心圓層級關係：
 
 1. **P** (Polynomial Time)：最內層，多項式時間可解。

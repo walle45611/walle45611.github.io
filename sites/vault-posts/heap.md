@@ -19,9 +19,9 @@ vault_source: "Note/Research/堆積 (Heap).md"
 - 適合用陣列儲存（Array 表示）
 
 ---
-## Bottom Up (heapify down)
+### Bottom Up (heapify down)
 
-### Heap Adjust (heapify) 和 build
+#### Heap Adjust (heapify) 和 build
 
 -  **Heapify（上浮）**：向上與 parent 比較
 	
@@ -65,7 +65,7 @@ void buildheap(int tree[], int n) {
 }
 ```
 
-#### 建立 Heap 的時間複雜度推導
+##### 建立 Heap 的時間複雜度推導
 
 - 前提假設：
 		
@@ -125,7 +125,7 @@ void buildheap(int tree[], int n) {
 
 
 ---
-### 插入操作：Insert X
+#### 插入操作：Insert X
 
 1. **插入位置**：將新元素 `x` 插入至陣列最後一個位置（即最後一個節點）
 		
@@ -174,7 +174,7 @@ void insert(int tree[], int x, int *n) {
 
 ---
 
-### 🔴 刪除最大值操作：Delete-Max（Max-Heap）
+#### 🔴 刪除最大值操作：Delete-Max（Max-Heap）
 
 1. **刪除 Root**：
 		
@@ -219,7 +219,7 @@ int delmax(int tree[], int *n) {
 
 ---
 
-## Top Down (flowing up)
+### Top Down (flowing up)
 
 - 前提假設：
 		
@@ -256,7 +256,7 @@ int delmax(int tree[], int *n) {
 	
 ---
 
-## Top-Down vs Bottom-Up 建堆方法比較
+### Top-Down vs Bottom-Up 建堆方法比較
 
 | 項目       | Bottom-Up（heapify down）                     | Top-Down（flowing up）          |
 | -------- | ------------------------------------------- | ----------------------------- |
@@ -270,7 +270,7 @@ int delmax(int tree[], int *n) {
 | 適用情境     | 大量資料批次建堆時，如：Heap Sort 初始堆建立                 | 資料逐筆產生時，如：Priority Queue 動態插入 |
 
 ---
-##  常見操作與時間複雜度
+###  常見操作與時間複雜度
 
 | 操作說明                          | 時間複雜度      |
 | ----------------------------- | ---------- |
@@ -284,7 +284,7 @@ int delmax(int tree[], int *n) {
 | Search X                      | $O(n)$     |
 
 ---
-## 合併兩個 Heap 的方法：
+### 合併兩個 Heap 的方法：
 
   假設我們有兩個 Heap：
 - H₁ 有 $n$ 個元素

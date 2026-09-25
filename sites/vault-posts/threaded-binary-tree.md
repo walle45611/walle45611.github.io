@@ -8,7 +8,7 @@ blog: true
 vault_source: "Note/Research/引線二元樹 (Threaded Binary Tree).md"
 ---
 
-## ✅ 背景說明
+### ✅ 背景說明
 
 普通的二元樹有以下性質：
 
@@ -16,13 +16,13 @@ vault_source: "Note/Research/引線二元樹 (Threaded Binary Tree).md"
     
 - 若每個節點使用指標儲存左右子節點，則需要 $2n$ 個指標。
     
-- ==其中會有：$2n - (n - 1) = n + 1$ 個是 `null` 指標（空指標）。==
+- <mark>其中會有：$2n - (n - 1) = n + 1$ 個是 `null` 指標（空指標）。</mark>
 
 👉 這些空指標可以被有效利用來儲存「**中序遍檢順序下的**先行者與**後繼者**」。
 
 ---
 
-## 📌 中序線索二元樹規則（Threading Rules）
+### 📌 中序線索二元樹規則（Threading Rules）
 
 1. 若某節點的左子樹為空，則其 `left` 指標指向 **先行者（predecessor）**。
     
@@ -30,7 +30,7 @@ vault_source: "Note/Research/引線二元樹 (Threaded Binary Tree).md"
 
 ---
 
-## 📆 Thread Binary Tree 節點結構
+### 📆 Thread Binary Tree 節點結構
 
 ```
  ┌───────────────┬────────┬──────┬────────┬──────────────┐
@@ -53,7 +53,7 @@ struct ThreadNode {
 };
 ```
 
-### 判斷規則：
+#### 判斷規則：
 
 - 若 `Lthread == false`，代表 `Lchild` 是左子樹。
     
@@ -63,11 +63,11 @@ struct ThreadNode {
     
 ---
 
-### 🔧 Head 節點（特殊節點）
+#### 🔧 Head 節點（特殊節點）
 
 Thread Binary Tree 中的 Head 節點具有特殊意義，負責協助非遞迴中序遍歷的開始與結束判斷。
 
-#### 🔸 Case 1：空樹（empty）
+##### 🔸 Case 1：空樹（empty）
 
 若樹為空，Head 節點會指向自己：
 
@@ -85,7 +85,7 @@ Lthread = True          Rthread = False
     
 - `Lthread = True` 表示 `Lchild` 是線索（不是左子樹）。
     
-#### 🔸 Case 2：非空樹（not empty）
+##### 🔸 Case 2：非空樹（not empty）
 
 若樹非空，Head 節點會指向實際的根節點：
 
@@ -104,13 +104,14 @@ Lthread = False         Rthread = False
     
 - 中序最左節點的前驅與最右節點的後繼會分別線索回 Head 節點。
         
-### 完整示意圖
+#### 完整示意圖
 
 ![Threaded Binary Tree 完整示意圖](/vault-assets/a515d09e819cb509fd99.png)
 
+
 ---
 
-## 📈 優點與用途
+### 📈 優點與用途
 
 - 可進行 **非遞迴的中序遍檢**，不需使用額外 stack。
     
@@ -120,9 +121,9 @@ Lthread = False         Rthread = False
     
 ---
 
-## 🔄 中序後繼與中序遍歷（C++）
+### 🔄 中序後繼與中序遍歷（C++）
 
-### ✅ 中序後繼函式 `Insuc`
+#### ✅ 中序後繼函式 `Insuc`
 
 ```cpp
 ThreadNode* Insuc(ThreadNode* x) {
@@ -141,7 +142,7 @@ ThreadNode* Insuc(ThreadNode* x) {
 }
 ```
 
-### ✅ 非遞迴中序遍歷 `InorderTraversal`
+#### ✅ 非遞迴中序遍歷 `InorderTraversal`
 
 ```cpp
 void InorderTraversal(ThreadNode* head) {
@@ -155,7 +156,7 @@ void InorderTraversal(ThreadNode* head) {
 }
 ```
 
-### 📘 補充說明
+#### 📘 補充說明
 
 - 若某節點 `x` 的 `Rthread == false`，代表 `Rchild` 是右子樹，要往該子樹中最左節點找中序後繼。
     
@@ -165,8 +166,10 @@ void InorderTraversal(ThreadNode* head) {
     
 * 時間複雜度：每個節點都恰好拜訪一次 $O(N)$ ，中序遍歷不需要使用遞迴或額外 stack。
 
-### 🧐 圖解說明
+#### 🧐 圖解說明
+
 ![Threaded Binary Tree 示意圖](/vault-assets/d7a21fe029cbe99610ab.png)
+
 
 以下是圖中的二元樹中序遍檢順序：
 
@@ -174,17 +177,19 @@ $H \rightarrow D \rightarrow I \rightarrow B \rightarrow E \rightarrow A \righta
 
 ---
 
-## 引線二元樹插入右子
+### 引線二元樹插入右子
 
-### Case 1：`S` 原本沒有右子樹（`S.Rthread == true`）
+#### Case 1：`S` 原本沒有右子樹（`S.Rthread == true`）
 
 ![引線二元樹插入 case 1](/vault-assets/4fff67d262d6faa38c23.png)
 
-### Case 2：`S` 原本有右子樹（`S.Rthread == false`）
+
+#### Case 2：`S` 原本有右子樹（`S.Rthread == false`）
 
 ![引線二元樹插入 case 2](/vault-assets/c64eaad4f825717153df.png)
 
-### 實作程式碼
+
+#### 實作程式碼
 
 下面的程式碼依據中的 **①…⑤** 步驟編號對應：
 

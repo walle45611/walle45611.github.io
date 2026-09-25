@@ -16,7 +16,7 @@ vault_source: "Note/Research/All-Pair Shortest Path Problem.md"
 | 允許負環  | NO             | NO                                       |
 | 時間複雜度 | $O(V^3)$       | $O(V^2\log V + V E)$                     |
 
-# All-pairs shortest paths（用「Single Source 法重複跑」）
+## All-pairs shortest paths（用「Single Source 法重複跑」）
     
 - **方法概念**：把每個頂點當成來源，重複執行單源最短路演算法，蒐集所有 $s\to v$ 的距離與路徑。
     
@@ -42,7 +42,7 @@ vault_source: "Note/Research/All-Pair Shortest Path Problem.md"
         
     - Johnson：先重權後多次 Dijkstra，**$O(V^2\log V + VE)$**（允許負邊，無可達負環）。
 
-# Floyd-Warshall
+## Floyd-Warshall
 
 - **問題**：全點對最短路（允許負邊，無可達負環）。
     
@@ -51,9 +51,11 @@ vault_source: "Note/Research/All-Pair Shortest Path Problem.md"
     - 基底：$A^{0}(i,j)=\text{COST}(i,j)$（鄰接成本矩陣；無邊為 $\infty$，$i=j$ 為 $0$）。
         
     - 遞迴：   
+
 ![diagram-01](/vault-assets/fd10e325f18ed22ea9fd.png)
-$$  
-A^{k}(i,j)=\min\Big(A^{k-1}(i,j),\ A^{k-1}(i,k)+A^{k-1}(k,j)\Big),\quad k=1,\dots,n.  
+
+$$
+A^{k}(i,j)=\min\Big(A^{k-1}(i,j),\ A^{k-1}(i,k)+A^{k-1}(k,j)\Big),\quad k=1,\dots,n.
 $$
         
 - **直觀**：考慮是否讓 $k$ 作為最後一個允許的中繼點。要嘛不用 $k$（左項），要嘛走 $i\to k$ 再 $k\to j$（右項）。
@@ -87,9 +89,11 @@ FLOYD_WARSHALL(COST, n) # 是幾個 vertexs
     - 若任意 $A^{n}(v,v)<0$，存在可達負環。
         
     - 需要實際路徑就維護前驅矩陣（如上）。
-## 範例
+### 範例
+
 ![01-範例](/vault-assets/577d331e31b027f5b95c.png)
-## 應用
+
+### 應用
 - **目標**
     
     - $A^{+}$：轉移閉包（長度 $\ge 1$ 的可達性）。
@@ -138,11 +142,13 @@ FLOYD_WARSHALL(COST, n) # 是幾個 vertexs
     - 已得 $A^{\_}$ 時，$A^{+}$ 可直接由 $A^{\_}$ 將對角線清為 0 得到。
         
     - 利用 $A^{\_}$ 可判斷強連通（$A^{\_}[i,j]=A^{*}[j,i]=1$）、回答任意可達性查詢（$O(1)$）。
+
 ![02-應用](/vault-assets/47407898bed0cbfa7366.png)
 
-# Johnson
 
-## 1. 核心問題
+## Johnson
+
+### 1. 核心問題
 
 此演算法用於解決「**全點對最短路徑 (All-Pairs Shortest Path, APSP)**」問題。
 
@@ -167,7 +173,7 @@ FLOYD_WARSHALL(COST, n) # 是幾個 vertexs
 
 Johnson's 演算法的目標就是結合兩者的優點：**只跑一次 Bellman-Ford**，然後**跑 $V$ 次 Dijkstra**，從而提高效率。
 
-## 2. 核心思想：「重設權重 (Re-weighting)」
+### 2. 核心思想：「重設權重 (Re-weighting)」
 
 Johnson's 演算法的精髓在於，它不直接在原始圖上操作，而是執行以下步驟：
 
@@ -180,7 +186,7 @@ Johnson's 演算法的精髓在於，它不直接在原始圖上操作，而是�
 4. **還原**：最後，將 Dijkstra 算出的新路徑總長 $\hat{\delta}$，「還原」回原始的路徑總長 $\delta$。
     
 
-## 3. 演算法步驟
+### 3. 演算法步驟
 
 這對應你提供的那張虛擬碼 (pseudocode) `JOHNSON(G, w)`：
 
@@ -248,7 +254,7 @@ Johnson's 演算法的精髓在於，它不直接在原始圖上操作，而是�
 
 - 回傳填滿所有最短路徑的矩陣 $D$。
     
-## 4. 關鍵推導：為什麼 Re-weighting 有效？
+### 4. 關鍵推導：為什麼 Re-weighting 有效？
 
 1. **定義**：
     
@@ -286,9 +292,10 @@ Johnson's 演算法的精髓在於，它不直接在原始圖上操作，而是�
         
     - 既然所有路徑都被「公平地」平移了相同的值，那麼**原始的最短路徑，在新圖中也必然是相對最短的**。
         
-## 5. 複雜度總結
+### 5. 複雜度總結
 
 ![03-5. 複雜度總結](/vault-assets/89d3afd98a93dfe34a7d.png)
+
 
 - **Step 1 (加 $s$)**: $O(V)$
     
@@ -310,10 +317,12 @@ Johnson's 演算法的精髓在於，它不直接在原始圖上操作，而是�
 - 在**稠密圖** ($E \approx V^2$) 中，複雜度為 $O(V^3)$，與 Floyd-Warshall 相同。
 
 
-## 範例
+### 範例
+
 ![04-範例](/vault-assets/c08897bce3657727dc59.png)
 
-### 1. 圖 (a): 步驟 1 & 2 (新增 $s$ 並執行 Bellman-Ford)
+
+#### 1. 圖 (a): 步驟 1 & 2 (新增 $s$ 並執行 Bellman-Ford)
 
 這張圖的左半邊 (a) 顯示了演算法的前兩個步驟：
 
@@ -343,7 +352,7 @@ Johnson's 演算法的精髓在於，它不直接在原始圖上操作，而是�
             
         - $h(v_5)$ (bottom-left) = -4
             
-### 2. 圖 (b): 步驟 4 (Re-weighting 重設權重)
+#### 2. 圖 (b): 步驟 4 (Re-weighting 重設權重)
 
 這張圖的右半邊 (b) 展示了「重設權重」這個核心步驟：
 
@@ -372,7 +381,7 @@ Johnson's 演算法的精髓在於，它不直接在原始圖上操作，而是�
 
 經過這個步驟，圖 (b) 中的所有邊權重都變成了非負數，Dijkstra 演算法現在可以安全地在這個圖上運作了。
 
-### 3. 圖 (c) - (g): 步驟 6 (執行 $V$ 次 Dijkstra)
+#### 3. 圖 (c) - (g): 步驟 6 (執行 $V$ 次 Dijkstra)
 
 最後這 5 張小圖 (c, d, e, f, g) 展示了演算法的最後階段：
 
@@ -407,7 +416,7 @@ Johnson's 演算法的精髓在於，它不直接在原始圖上操作，而是�
 - 還原後的真正最短路徑 $\delta(1, 3)$ 是 -3。
     
 
-### 總結
+#### 總結
 
 這張圖完整地展示了 Johnson's 演算法的三大階段：
 

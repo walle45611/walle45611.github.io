@@ -8,16 +8,16 @@ blog: true
 vault_source: "Note/Research/堆疊 (Stack).md"
 ---
 
-## 前情提要
+### 前情提要
 
 這篇文章是資料結構系列的第一篇，主要聚焦於 Stack 的基本概念、應用範圍以及其實現方式。透過深入介紹 Stack 的運作原理、應用場景以及程式實作，本篇內容適合初學者快速掌握 Stack 的核心知識，也為後續進階的資料結構學習奠定基礎。
 文章中包含了 Stack 的定義與特性、應用範疇（如括號匹配、DFS、算術表達式轉換等）、以及用陣列與鏈結串列實作 Stack 的具體範例程式碼，旨在讓讀者對 Stack 的理論與實作有全面的認識。
 
-## Stack 基本的介紹
+### Stack 基本的介紹
 
 當談到資料結構時，Stack 是一個不可忽視的重要概念。即使在日常程式設計中不常使用它，理解 Stack 的原理仍然對其他應用場景大有助益。Stack 的經典應用之一是深度優先搜尋 (DFS)，它利用系統堆疊來記錄每次函數的調用過程。透過理解 Stack 的運作方式，我們能更好地掌握各種遞迴操作和函數調用的細節。接下來，我們將深入探討 Stack 的基本原理及其應用。
 
-## Stack 常見的應用
+### Stack 常見的應用
 
 1. parsing context-free languages 文本剖析類型，例如 check 合法的括號配對，check 是不是 palindrome (回文)。
 
@@ -37,16 +37,16 @@ vault_source: "Note/Research/堆疊 (Stack).md"
 
 6. Maze (or mazing problem) 迷宮問題.
 
-### Stack Frame 介紹
+#### Stack Frame 介紹
 
-#### Stack Frame 是什麼？
+##### Stack Frame 是什麼？
 
 
 1. 簡單來說，每當你的程式執行過程中使用一個 function（invoke a function）時，系統（通常是操作系統）會為這個 function 分配一個專門的空間，此空間稱為 stack frame。
   
 2. Stack Frame 包含了該函數的局部變數、參數、返回地址（return address），以及一些相關的執行信息。
 
-#### Stack Frame 的結構
+##### Stack Frame 的結構
 
 * 區域變數 : 也就是每個每個 function 他都會將 local varaible 儲存在自己的 stack frame 中。
 
@@ -60,18 +60,19 @@ vault_source: "Note/Research/堆疊 (Stack).md"
 
 ![圖 2. : Stack frame pointer](https://imgur.com/i0U2n1M.png)
 
+
   
-## Stack 的定義
+### Stack 的定義
 
 * A stack has the LIFO (Last-In-First-Out) property. When inserting an element, we perform the operation from the top, which is called "push." Similarly, when removing an element, we also operate from the top, which is called "pop." Thus, both push and pop operations are performed at the top of the stack.
 
-## Stack ADT
+### Stack ADT
 
 **結構** : Stack
 
 **物件** : a finite ordered list with zero or more elemtns
 
-### 函數定義
+#### 函數定義
 
 以下是最小的操作步驟也就是說你的一個 Stack 需要這些操作才能正常運作，當然你的 ADT 可ㄧ有很多自定義的操作，但是以 `horowitz` 的書中是這樣寫的，那麼這些操作的複雜度也都是 $O(1)$。
 
@@ -108,7 +109,7 @@ if (IsEmpty(stack)) stack_empty
 else remove and return the item on the top of the stack
 ```
 
-## Stack permutatoins
+### Stack permutatoins
   
 * 也就是說有幾種可能是正常的 `pop` `push` 操作會有的可能輸出題目可能會先給你一個序列。
 
@@ -137,9 +138,10 @@ $$\dfrac{1}{n+1}\binom{2n}{n}$$
 
 ![圖 3. : 107 中央資管資料結構](https://imgur.com/sdxFTPH.png)
 
+
   
 
-## Evaluating arithmetic expressions
+### Evaluating arithmetic expressions
 
 1. 跳過所有空白字元
     
@@ -260,9 +262,10 @@ int main(){
 
 ![圖 4. : 108 台大資工資料結構與演算法](https://imgur.com/jrJIbqR.png)
 
+
   
 
-## Implementation code by 1-dim Array
+### Implementation code by 1-dim Array
 
 ```cpp
 #include <bits/stdc++.h>
@@ -365,7 +368,7 @@ int main() {
 }
 ```
 
-## Implementation code by link list
+### Implementation code by link list
 
 ```cpp
 #include <bits/stdc++.h>

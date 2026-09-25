@@ -8,11 +8,11 @@ blog: true
 vault_source: "Note/Research/OBST (Optimal Binary Search Tree).md"
 ---
 
-# 問題背景
+## 問題背景
 
 你要做英→拉脫維亞字典查詢。每個英文單字出現頻率不同；常見字應該更接近根，以降低平均查詢步數。有些查詢不在字典內，也要計入「失敗查詢」的機率。
 
-# 正式定義（CLRS）
+## 正式定義（CLRS）
 
 * 排序後的 **n 個鍵**：$K=\langle k_1<k_2<\cdots<k_n\rangle$。
 
@@ -32,13 +32,13 @@ vault_source: "Note/Research/OBST (Optimal Binary Search Tree).md"
 
 * 目標：構造一棵 BST，使 **期望查詢成本** 最小。
 
-## 成本模型
+### 成本模型
 
 * 真實成本＝搜尋時**被檢視的節點數**。
 
 * 若搜尋命中鍵 $k_i$ 或 dummy $d_i$，成本 = 該節點在樹中的 **深度 depth** $+1$。
 
-## 期望查詢成本（CLRS 公式 14.11）
+### 期望查詢成本（CLRS 公式 14.11）
 
 令 $\operatorname{depth}_T(x)$ 為節點 $x$ 在樹 $T$ 的深度（根深度 0）。則
 
@@ -54,8 +54,10 @@ $$
 
 > 解讀：常見鍵的深度要小；dummy 也要安排在淺層以降低失敗查詢成本。
 
-## 圖 14.9 的資料（範例）
+### 圖 14.9 的資料（範例）
+
 ![01-圖 14.9 的資料(範例)](/vault-assets/78cc42f006e3ac60e24c.png)
+
 $$
 \begin{array}{c|cccccc}
 i   & 0    & 1    & 2    & 3    & 4    & 5 \\ \hline
@@ -75,7 +77,7 @@ $$
 
 	* (b) $\mathbb{E}=2.75$（**最優**）
 
-### 範例重點
+#### 範例重點
 
 * 最優樹會把高機率鍵與高機率 dummy 安排在較淺層。
 
@@ -85,9 +87,9 @@ $$
 
 - 期望成本 = 1 + 加權深度和（鍵與 dummy）。
 
-# 證明
+## 證明
 
-## Step 1. Optimal Substructure
+### Step 1. Optimal Substructure
 
 * **子樹必須連續區間**：任何 BST 的子樹都包含一段連續鍵值 $k_i, \ldots, k_j$。
 
@@ -100,8 +102,10 @@ $$
 
 * **結論**：Optimal BST 問題具備最優子結構。
 
-## Step 2. Recursive Subproblem
+### Step 2. Recursive Subproblem
+
 ![04-Step 2. Recursive Subproblem](/vault-assets/58f0f79be1ef45b052ec.png)
+
 * **子問題定義**：令 $e[i,j]$ 表示含鍵 $k_i, \ldots, k_j$ 與 dummy keys $d_{i-1}, \ldots, d_j$ 的最小期望成本。
 
 * **邊界情況**：當 $j = i-1$，子問題只包含 dummy key $d_{i-1}$，此時 $e[i, i-1] = q_{i-1}.$
@@ -118,28 +122,25 @@ $$
 
 * **最優選擇**：取使成本最小的根：$e[i,j] = \min_{i \le r \le j} \{ e[i,r-1] + e[r+1,j] + w(i,j) \}.$
 
-## Step 3. Recursive Formulation (CLRS 公式 14.14)
+### Step 3. Recursive Formulation (CLRS 公式 14.14)
 
 $$
-
 e[i,j] =
-
 \begin{cases}
-
 q_{i-1}, & j = i-1, \\
-
 \min_{i \le r \le j} \{ e[i,r-1] + e[r+1,j] + w(i,j) \}, & i \le j.
-
 \end{cases}
-
 $$
 
 * 此公式定義了所有子問題的最小期望成本。
 
 * 可同時計算 `root[i,j]`，記錄最優根節點位置。
-### ALGO
+#### ALGO
+
 ![05-ALGO](/vault-assets/2f2617fed3a60217b505.png)
+
 - $O(n^3)$ 可以想 $O(n^2) \times O(n)$ 因為 $n \times n$ 格格子，那麼在跑 n 次所以就是 $O(n^3)$ 
 - 可以想像 $l$ 是滑動視窗跟 $i$ 配合 $j$ 負責最後的位置
-### 計算方式
+#### 計算方式
+
 ![06-計算方式](/vault-assets/5042277e4f69939c8c4d.png)

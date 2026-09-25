@@ -8,9 +8,9 @@ blog: true
 vault_source: "Note/Research/Sorting Algo.md"
 ---
 
-# Sorting 名詞解釋整理
+## Sorting 名詞解釋整理
 
-## Sorting Problem 定義
+### Sorting Problem 定義
 
 * **輸入 (Input)**：一個含有 $n$ 個數字的序列 $\langle a\_1, a\_2, \ldots, a\_n \rangle$。
 
@@ -20,7 +20,7 @@ vault_source: "Note/Research/Sorting Algo.md"
 
 * **紀錄 (Record)**：每筆資料包含 **鍵 (Key)** 與 **附屬資料 (Satellite Data)**。排序時必須保證鍵與附屬資料一同搬移。
 
-## 為什麼排序重要 (Why Sorting)
+### 為什麼排序重要 (Why Sorting)
 
 1. 某些應用需要直接排序，例如銀行需依支票號碼排序。
 
@@ -32,17 +32,17 @@ vault_source: "Note/Research/Sorting Algo.md"
 
 5. 工程上挑戰：快取、記憶體階層、附屬資料大小、軟體環境，都影響實作效能。
 
-## Internal vs External Sorting
+### Internal vs External Sorting
 
-* ==**Internal Sorting**：資料量小，能完全放入記憶體中處理。==
+* <mark>**Internal Sorting**：資料量小，能完全放入記憶體中處理。</mark>
 
-* ==**External Sorting**：資料量太大，無法一次放入記憶體，需要外部儲存裝置 (如磁碟) 協助，例如多路合併排序 (multi-way merge)。==
+* <mark>**External Sorting**：資料量太大，無法一次放入記憶體，需要外部儲存裝置 (如磁碟) 協助，例如多路合併排序 (multi-way merge)。</mark>
 
-## Stable vs Unstable Sorting
+### Stable vs Unstable Sorting
 
-* ==**Stable Sorting**：若輸入有相同鍵值，排序後相對順序保持不變。==
+* <mark>**Stable Sorting**：若輸入有相同鍵值，排序後相對順序保持不變。</mark>
 
-* ==**Unstable Sorting**：排序後相同鍵值的相對順序可能改變。==
+* <mark>**Unstable Sorting**：排序後相同鍵值的相對順序可能改變。</mark>
 
 **範例分類：**
 
@@ -56,9 +56,9 @@ vault_source: "Note/Research/Sorting Algo.md"
 
 * Unstable 可能進行不必要的交換，但排序時間不一定比較慢。
 
-## Sorting In-Place
+### Sorting In-Place
 
-* ==**定義：演算法只需常數額外空間 (O(1)) 即可完成排序。**==
+* <mark>**定義：演算法只需常數額外空間 (O(1)) 即可完成排序。**</mark>
 
 * **特性**：直接在輸入陣列內完成資料搬移。允許少量變數。
 
@@ -68,7 +68,7 @@ vault_source: "Note/Research/Sorting Algo.md"
 
 * 非 In-place：Merge、Counting、Radix、Bucket。
 
-## ==常見排序演算法複雜度==
+### <mark>常見排序演算法複雜度</mark>
 
 | Algorithm      | Worst-case         | Average / Expected      | In-place | Stable |
 | -------------- | ------------------ | ----------------------- | -------- | ------ |
@@ -79,7 +79,7 @@ vault_source: "Note/Research/Sorting Algo.md"
 | Counting sort  | $\Theta(k+n)$      | $\Theta(k+n)$           | ✘        | ✔      |
 | Radix sort     | $\Theta(d(n+k))$   | $\Theta(d(n+k))$        | ✘        | ✔      |
 | Bucket sort    | $\Theta(n^2)$      | $\Theta(n)$ (平均)        | ✘        | ✔      |
-# Insertion sort
+## Insertion sort
 
 ```cpp
 void insertion_sort(int arr[],int n){
@@ -95,7 +95,7 @@ void insertion_sort(int arr[],int n){
 }
 ```
 
-## Insertion Sort 分析
+### Insertion Sort 分析
 
 | Case             | 複雜度      | 說明                                              |
 | ---------------- | -------- | ----------------------------------------------- |
@@ -112,13 +112,13 @@ void insertion_sort(int arr[],int n){
 	    
 	- 當資料**已經排序 (sorted)** 或 **幾乎排序 (almost sorted)** 時，Insertion Sort 或 Bubble Sort 表現良好。
 
-### 複雜度證明
+#### 複雜度證明
 
-#### Best Case：$O(n)$
+##### Best Case：$O(n)$
 
 **情境**：輸入資料原本就由小到大排列（min → max）。
 
-##### 方法 1：統計比較或 swap 次數
+###### 方法 1：統計比較或 swap 次數
 
 * 因為 $key > arr[j]$，`while` 條件不成立，不會進入內層迴圈。
 
@@ -127,12 +127,10 @@ void insertion_sort(int arr[],int n){
 * 需要比較 $(n - 1)$ 次即可完成排序。
 
 $$
-
 T(n) = (n - 1) = O(n)
-
 $$
 
-##### 方法 2：遞迴時間模型
+###### 方法 2：遞迴時間模型
 
 * 假設 $T(n)$ 為排序 $n$ 筆資料的時間。
 
@@ -141,38 +139,30 @@ $$
 * 第一筆不需比較（$T(1) = 0$）。
 
 $$
-
 T(n) = T(n - 1) + 1
-
 $$
 
 展開：
 
 $$
-
 T(n) = T(n - 2) + 1 + 1 = \dots = T(1) + (n - 1)
-
 $$
 
 $$
-
 T(1) = 0 \Rightarrow T(n) = n - 1 = O(n)
-
 $$
 
 因此最佳情況時間複雜度為：
 
 $$
-
 T(n) = O(n)
-
 $$
 
-#### Worst Case：$O(n^2)$
+##### Worst Case：$O(n^2)$
 
 **情境**：輸入資料為反序（由大到小）。
 
-##### 方法 1：統計比較次數
+###### 方法 1：統計比較次數
 
 * 每次插入都必須和所有已排序元素比較。
 
@@ -181,51 +171,39 @@ $$
 總比較次數：
 
 $$
-
 1 + 2 + 3 + \dots + (n - 1) = \frac{n(n - 1)}{2}
-
 $$
 
 因此：
 
 $$
-
 T(n) = O(n^2)
-
 $$
 
-##### 方法 2：遞迴時間模型
+###### 方法 2：遞迴時間模型
 
 * 第 $n$ 筆資料插入時要比較 $(n - 1)$ 次。
 
 $$
-
 T(n) = T(n - 1) + (n - 1)
-
 $$
 
 展開：
 
 $$
-
 T(n) = T(n - 2) + (n - 2) + (n - 1)
-
 $$
 
 $$
-
 T(n) = T(1) + 2 + 3 + \dots + (n - 1)
-
 $$
 
 因為 $T(1) = 0$：
 
 $$
-
 T(n) = \frac{n(n - 1)}{2} = O(n^2)
-
 $$
-#### Average Case：$O(n^2)$
+##### Average Case：$O(n^2)$
 
 **情境**：輸入資料為隨機排列。
 
@@ -236,21 +214,19 @@ $$
 總比較次數：
 
 $$
-
 \frac{1}{2}(1 + 2 + 3 + \dots + (n - 1)) = \frac{1}{2} \cdot \frac{n(n - 1)}{2} = \frac{n(n - 1)}{4}
-
 $$
 
 因此：
 
 $$
-
 T(n) = O(n^2)
-
 $$
 
-#### ==Horowitz 分析補充(LOO 概念)==
-![01-==Horowitz 分析補充(LOO 概念)==](/vault-assets/a58f4bf3c7e0afd28c86.png)
+##### <mark>Horowitz 分析補充(LOO 概念)</mark>
+
+![01-<mark>Horowitz 分析補充(LOO 概念)</mark>](/vault-assets/a58f4bf3c7e0afd28c86.png)
+
 
 Horowitz 用 LOO（Left Out of Order）衡量輸入序列的無序程度：
 	
@@ -265,9 +241,7 @@ Horowitz 用 LOO（Left Out of Order）衡量輸入序列的無序程度：
 * 若 $R_i$ 左邊有比它大的元素，則 $R_i$ 是 LOO：
 
 $$
-
 R_i \text{ is LOO } \iff R_i < \max \{ R_j \mid 0 \le j < i \}
-
 $$
 
 * 插入排序的成本主要來自 LOO 元素，因為它們才會觸發內層 `while`。
@@ -275,23 +249,19 @@ $$
 * 若有 $k$ 個元素是 LOO，時間複雜度為：
 
 $$
-
 T(n) = O((k + 1)n)
-
 $$
 
 * 若 $k = n - 1$（完全亂序），則：
 
 $$
-
 T(n) = O((n - 1 + 1)n) = O(n^2)
-
 $$
 
 * 若 $k$ 很少（幾乎有序），時間接近 $O(n)$。
 
 
-## 插入排序的兩種變形與改進
+### 插入排序的兩種變形與改進
 
 插入排序（Insertion Sort）可分為兩種主要改進方向：
 
@@ -299,7 +269,7 @@ $$
 
 2. Linear Insertion Sort（線性插入排序 / 鏈結串列）
 
-### 原始（標準）Insertion Sort 回顧
+#### 原始（標準）Insertion Sort 回顧
 
 * 每次插入要做兩件事：
 		
@@ -308,15 +278,15 @@ $$
 	2. **元素右移插入**（資料搬移） → $O(n)$
 
 * 總體時間複雜度：$(n - 1) \times O(n) = O(n^2)$
-### Binary Insertion Sort（二分插入排序）
+#### Binary Insertion Sort（二分插入排序）
 
-#### 改進重點
+##### 改進重點
 
 1. 使用 **Binary Search** 尋找插入位置（前提：前段為已排序陣列）時間複雜度：$O(\log n)$
 
 2. 仍需使用陣列搬移（Random Access）時間複雜度：$O(n)$
 
-#### 成本分析
+##### 成本分析
 
 * 單次插入時間：$O(\log n) + O(n) = O(n)$
 
@@ -326,15 +296,15 @@ $$
 
 📌 **缺點**：資料搬移次數未改善。
 
-### Linear Insertion Sort（線性插入排序 / 鏈結串列）
+#### Linear Insertion Sort（線性插入排序 / 鏈結串列）
 
-#### 改進重點
+##### 改進重點
 
 1. 尋找插入位置仍為 **線性搜尋** 時間複雜度：$O(n)$
 
 2. 使用 **鏈結串列** 儲存資料 → 插入時僅改指標，不需整體搬移 插入時間：$O(1)$
 
-#### 成本分析
+##### 成本分析
 
 * 單次插入時間：$O(n) + O(1) = O(n)$
 
@@ -344,23 +314,23 @@ $$
 
 📌 **缺點**：比較次數未改善。
 
-### 三種版本比較
+#### 三種版本比較
 
 | 版本 | 尋找插入位置 | 搬移資料 | 單次插入時間 | 總體複雜度 | 優點 |
 | --------------------- | ----------- | ------ | ------ | -------- | ------ |
 | 標準 Insertion Sort | $O(n)$ | $O(n)$ | $O(n)$ | $O(n^2)$ | 實作簡單 |
 | Binary Insertion Sort | $O(\log n)$ | $O(n)$ | $O(n)$ | $O(n^2)$ | 減少比較次數 |
 | Linear Insertion Sort | $O(n)$ | $O(1)$ | $O(n)$ | $O(n^2)$ | 減少搬移成本 |
-* ==無論使用 **Binary Search** 還是 **Linked List**，整體時間複雜度都仍為 $O(n^2)$。==
+* <mark>無論使用 **Binary Search** 還是 **Linked List**，整體時間複雜度都仍為 $O(n^2)$。</mark>
 	
 * 改進的重點是降低「常數因子」和提升實際執行效率，而非改變漸進複雜度。
 
 
-# Shell's Sort
+## Shell's Sort
 
 Shell Sort（希爾排序）是由 Donald L. Shell 在 1959 年提出的一種改==良版插入排序（Insertion Sort）==。其核心思想源自對插入排序的效能瓶頸的觀察與改進。
 
-在經典插入排序中，若資料的初始狀態為「逆序」，每次插入操作都可能導致大量元素的位移，時間複雜度為 $O(n^2)$。這種情況在大型資料集中特別明顯，使得插入排序的效率無法滿足實際需求。Shell 的研究動機正是為了解決這個問題：==**如何降低插入排序在遠距離元素交換時的代價**==。
+在經典插入排序中，若資料的初始狀態為「逆序」，每次插入操作都可能導致大量元素的位移，時間複雜度為 $O(n^2)$。這種情況在大型資料集中特別明顯，使得插入排序的效率無法滿足實際需求。Shell 的研究動機正是為了解決這個問題：<mark>**如何降低插入排序在遠距離元素交換時的代價**</mark>。
 
 Shell 在原始論文中指出，傳統的排序方法主要分為兩類：「兩兩交換」與「插入移動」，而插入排序雖然在接近有序時非常快速，但在元素分布無序的情況下效率低下。為了結合「插入排序的穩定性」與「減少資料移動距離」的優點，他提出了分段處理的概念：**將資料按照一定間隔（gap）分組，對每組使用插入排序，隨後逐步縮小 gap，直到 gap = 1 完成排序。**
 
@@ -388,7 +358,8 @@ void shellSort(vector<int>& arr) {
 
 ![02-Shell's Sort](/vault-assets/ab09c7b35a51e8881a79.png)
 
-## Shell's Sort 分析
+
+### Shell's Sort 分析
 
 **時間複雜度**（依 gap 序列而定）：
 
@@ -425,7 +396,7 @@ void shellSort(vector<int>& arr) {
 * 時間複雜度無明確封閉解，取決於 gap 序列的選擇。經典分析多以 $O(n^{3/2})$ 作為平均情況的近似值。
 
 * 已知最佳的 gap 設計可使 Shell Sort 的時間複雜度達到 $O(n^{7/6})$，但考試與實務中常使用 $O(n^{3/2})$ 表達。
-# Selection Sort
+## Selection Sort
 
 - 它的流程是：
 		
@@ -464,19 +435,17 @@ int main() {
 }
 ```
 
-## Selection Sort 分析
+### Selection Sort 分析
 
 選擇排序的時間複雜度在==最佳、最壞與平均情況下皆為 $O(n^2)$==，因為外層迴圈會執行 $n - 1$ 次，而內層每次都要比較剩餘的元素。總比較次數為：
 
 $$
-
 (n - 1) + (n - 2) + (n - 3) + \dots + 1 = \frac{n(n - 1)}{2}
-
 $$
 
 不論輸入資料是已排序、反序或隨機，這個比較次數都不會改變，因此三種情況下的時間複雜度都一樣。空間複雜度是 $O(1)$，因為它是原地排序，不需要額外記憶體。
 
-選擇排序是不穩定的，==因為在找到最小值後會與目前位置的元素交換，這可能改變相同元素的相對順序==。它適合用在==大型紀錄或交換成本高的情況==，因為每輪最多只交換一次。
+選擇排序是不穩定的，<mark>因為在找到最小值後會與目前位置的元素交換，這可能改變相同元素的相對順序</mark>。它適合用在==大型紀錄或交換成本高的情況==，因為每輪最多只交換一次。
 
 以下是排序過程的例子，假設原始序列為：`5 8 5 2`
 
@@ -492,7 +461,7 @@ $$
 
 總結來說，==選擇排序的時間複雜度在三種情況下都是 $O(n^2)$，空間複雜度是 $O(1)$，是不穩定排序，==每輪最多交換一次，適合交換成本高的場景使用。
 
-# Bubble Sort
+## Bubble Sort
 
 泡沫排序（Bubble Sort）是一種基於「相鄰元素比較與交換」的簡單排序演算法。基本概念是：**從左到右反覆比較相鄰元素，若前一項大於後一項則交換，讓最大值逐步浮到最右邊**，就像氣泡上升一樣。
 
@@ -533,7 +502,7 @@ void bubbleSort(int arr[], int n) {
 	    
 	- Pass 4：$[1, 2, 3, 5, 8]$
     
-## Bubble Sort 分析
+### Bubble Sort 分析
 
 | 項目    | 最佳情況 (Best case) | 最壞情況 (Worst case) | 平均情況 (Average case) |
 | ----- | ---------------- | ----------------- | ------------------- |
@@ -580,34 +549,21 @@ $$
 **逐步展開**：
 
 $$
-
 \begin{aligned}
-
 T(n) &= c\,n + T(n-1) \\
-
 &= c\,n + \big(c\,(n-1) + T(n-2)\big) \\
-
 &= c\,n + c\,(n-1) + T(n-2) \\
-
 &= c\,n + c\,(n-1) + \big(c\,(n-2) + T(n-3)\big) \\
-
 &= c\,n + c\,(n-1) + c\,(n-2) + T(n-3) \\
-
 &\phantom{=}\,\vdots \\
-
 &= c\,\big(n + (n-1) + (n-2) + \cdots + 2 + 1\big) + T(1) \\
-
 &= c\,\frac{n(n+1)}{2} + 0.
-
 \end{aligned}
-
 $$
 
 因此
 $$
-
 T(n)=\frac{c}{2}\,n(n+1)=\Theta(n^2)\;\;\Rightarrow\;\;O(n^2).
-
 $$
 
 > 關鍵：明確指定 **基底**（例如 $T(1)=0$ 或 $T(0)=0$）。這樣在展開到最後一項時，就能把 $T(1)$（或 $T(0)$）直接代入為 0，尾端項自然消失。
@@ -615,44 +571,36 @@ $$
 1. **Best case（Bubble / Insertion）**：
 
 $$
-
 T(n)=T(n-1)+1,\quad T(1)=0
-
 $$
 
 展開：
 
 $$
-
 T(n)=1+1+\cdots+1+T(1)=(n-1)+0=O(n).
-
 $$
 
 2. **Worst case（Insertion 典型推導）**：
 
 $$
-
 T(n)=T(n-1)+(n-1),\quad T(1)=0
-
 $$
 
 展開：
 
 $$
-
 T(n)=(n-1)+(n-2)+\cdots+1+0=\frac{n(n-1)}{2}=O(n^2).
-
 $$
 
 > 只要在一開始就給出 **正確的基底值**，像 $T(n-2)$、$T(n-3)$ 這些遞迴尾巴在展開鏈條的最後都會落到 $T(1)$ 或 $T(0)$，用基底直接歸零即可。
 
-# Quick sort
+## Quick sort
 
-## 觀念與策略
+### 觀念與策略
 
 **平均情況下最快的比較式內部排序法。**核心採用 **Divide and Conquer**：
 
-* **Divide（分割）**：==選一個 pivot（常取端點或隨機），對區間做 *partition*，把陣列切成兩側：左側元素皆 ≤ pivot，右側元素皆 ≥ pivot（Hoare 版本中，pivot 不一定落在最終索引）。==
+* **Divide（分割）**：<mark>選一個 pivot（常取端點或隨機），對區間做 *partition*，把陣列切成兩側：左側元素皆 ≤ pivot，右側元素皆 ≥ pivot（Hoare 版本中，pivot 不一定落在最終索引）。</mark>
 
 * **Conquer（征服）**：遞迴地對左右兩個子區間分別套用 quick sort。
 
@@ -660,21 +608,21 @@ $$
 
 直觀理解：一次「把 pivot 放到正確區側並分治」，重複此過程；若每次分得接近等大，整體時間為 $\Theta(n\log n)$，這就是它在平均情況下極快的原因。
 
-## Partition (Divide)方法
+### Partition (Divide)方法
 
 其實就是如何選擇 Pk 之最正確之位置，左側 ≤ pivot，右側 ≥ pivot。
 
-### Hoare partition
+#### Hoare partition
 
-- 常用：`pivot = A[l]`（也可隨機/取中位數），==但是基本型都是設定最左邊==。
+- 常用：`pivot = A[l]`（也可隨機/取中位數），<mark>但是基本型都是設定最左邊</mark>。
     
 - 指標：`i` 自左、`j` 自右內縮；各自尋到違規元素就交換；`i ≥ j` 回傳 `p = j`。
     
 - 特性：pivot **不一定**在最終索引；遞迴區間 `[l..p]`、`[p+1..r]`。
 		
-	- best case : ==是全部元素都相同==
+	- best case : <mark>是全部元素都相同</mark>
 		
-	- worst case : ==就是全部元素都排序好==
+	- worst case : <mark>就是全部元素都排序好</mark>
 
 ```cpp
 void quicksort(int arr[],int left,int right){
@@ -689,16 +637,18 @@ void quicksort(int arr[],int left,int right){
 	quicksort(arr,j+1,right);
 }
 ```
-![03-Hoare partition](/vault-assets/1efc6eba706424e43da7.png)
-### Lomuto partition（Cormen/CLRS）
 
-- 常用：`pivot = A[r]`，==設定在最右邊==。
+![03-Hoare partition](/vault-assets/1efc6eba706424e43da7.png)
+
+#### Lomuto partition（Cormen/CLRS）
+
+- 常用：`pivot = A[r]`，<mark>設定在最右邊</mark>。
     
 - 指標：`i = l-1`，`j = l..r-1`；遇到 `A[j] ≤ pivot` 先增 `i` 再與 `A[j]` 交換；最後把 pivot 與 `A[i+1]` 交換並回傳 `i+1`。
     
 - 特性：pivot **一定**被放到最終索引；實作簡單但對大量重複鍵較易退化。
 		
-	- worst case : ==就是 Hoare 的  best case 也就是全部元素相同==，解決辦法有==兩種==改用 ==Hoare 的 partition== 或是先==檢查所有元素是否相同花費 $O(n)$ 時間==，但不影響總體時間 $O(n\log n)$
+	- worst case : <mark>就是 Hoare 的  best case 也就是全部元素相同</mark>，解決辦法有==兩種==改用 <mark>Hoare 的 partition</mark> 或是先==檢查所有元素是否相同花費 $O(n)$ 時間==，但不影響總體時間 $O(n\log n)$
 
 ```
 def partition(A, p, r):
@@ -715,12 +665,14 @@ def quicksort(A, p, r):
         quicksort(A, p, q-1)
         quicksort(A, q+1, r)
 ```
+
 ![04-Lomuto partition(Cormen CLRS)](/vault-assets/b478500b209be5bb0f76.png)
-## Quick Sort 分析
+
+### Quick Sort 分析
 
 > 核心：`partition` 單次成本 $\Theta(n)$。整體取決於分割的平衡度。
 
-### 時間複雜度總覽
+#### 時間複雜度總覽
 
 | 情況      | 遞迴式                                                           | 道理                                | 結論                |
 | ------- | ------------------------------------------------------------- | --------------------------------- | ----------------- |
@@ -736,7 +688,7 @@ def quicksort(A, p, r):
         
     - 極端不平衡（pivot 為最小/最大）⇒ $n$ 層 ⇒ $\Theta(n^2)$。
         
-### 遞迴式推導
+#### 遞迴式推導
 
 - **Best**：Master 定理 $a=2, b=2, f(n)=\Theta(n)$ ⇒ $\Theta(n\log n)$。
     
@@ -745,7 +697,7 @@ def quicksort(A, p, r):
 - **Average**：所有切點等機率，期望高度 $\Theta(\log n)$ ⇒ 總成本 $\Theta(n\log n)$，可以想像切分了 $n$ 和 $n-s$。
 	![05-遞迴式推導](/vault-assets/107311b831eb7e70cd7e.png)
 
-### 空間複雜度分析（recursive stack）
+#### 空間複雜度分析（recursive stack）
 
 - 重點概念
 		
@@ -767,9 +719,9 @@ def quicksort(A, p, r):
 	- 遞迴樹高度：  $k = n-1$
 	    
 	- 棧深 = (k) ⇒ 空間複雜度：  $\boxed{O(n)}$
-## 改善 Worst case 方法
+### 改善 Worst case 方法
 
-### Worst Case 概要
+#### Worst Case 概要
 
 * 來源：每次分割產生 $n-1$ 與 $0$ 的子問題（pivot 總落在極端）。
 
@@ -785,7 +737,7 @@ def quicksort(A, p, r):
 		
 	* 大量相等鍵且分割把「等於」都丟同側。
 
-### 改進策略一：Randomized QuickSort（隨機 pivot）
+#### 改進策略一：Randomized QuickSort（隨機 pivot）
 
 ```
 procedure RQSort(A, p, r):
@@ -830,7 +782,7 @@ procedure LomutoPartition(A, p, r):
 
 * 缺點：不提供 worst-case 上界保證。
 
-### 改進策略二：Median-of-Three（三數取中）
+#### 改進策略二：Median-of-Three（三數取中）
 
 **想法**：用 $\text{left}$、$\text{middle}$、$\text{right}$ 的中位數當 pivot，避免端點成為 pivot。
 
@@ -850,7 +802,7 @@ procedure LomutoPartition(A, p, r):
 
 * 缺點：無 worst-case 保證。
 
-### 改進策略三：Median of Medians（良好 pivot 的保證）
+#### 改進策略三：Median of Medians（良好 pivot 的保證）
 
 **想法**：用確定性方法找一個「夠好」的 pivot，使切分至少保持固定比例（例如 $\ge 30/70$）。
 
@@ -872,7 +824,7 @@ procedure LomutoPartition(A, p, r):
 
 * 缺點：常數與實作成本高，平均效能未必勝過隨機化/三數取中。
 
-## tail-recursion elimination
+### tail-recursion elimination
 
 ```
 TRE-QUICKSORT(A,p,r):
@@ -895,9 +847,9 @@ SMART-QUICKSORT(A,p,r):
       r = q - 1
 ```
 - 把 stack 的深度降低到 $O(\log n)$，每次都去找比較小的區域去 recursion 其他交給 while 更新左邊或是右邊
-# Merge Sort
+## Merge Sort
 
-## 觀念與策略
+### 觀念與策略
 
 - Merge Sort = 分而治之：對半切、各自排、再合併。
     
@@ -913,7 +865,7 @@ SMART-QUICKSORT(A,p,r):
     
 - k-way 合併：一次合併 $k\in{2,4,8,16,\dots}$ 個 run，外部排序常用。
 
-## Merge Sort 實作
+### Merge Sort 實作
 
 ```c
 void merge_sort(int A[], int p, int r) {
@@ -957,23 +909,27 @@ void merge(int A[], int p, int q, int r) {
 	
 - 合併規則：兩頭比較，小的先放；一邊用完，另一邊整段複製。
 
-## Iterative
+### Iterative
+
 ![06-Iterative](/vault-assets/d91ca66084d9f7e19da8.png)
+
 - 先把每個元素都變成一個 run
 	
 - 慢慢合併過程有點像一棵二元樹，一回合要花 $O(n)$ 的時間，那麼因為樹的關係所以跟樹高有關係所以可以從 $\text{回合數}=\text{樹高}-1 \Rightarrow 2^{i-1} \Rightarrow i=\lceil \log_2 n \rceil + 1 \Rightarrow \lceil \log_2 n \rceil$ 所以最後得 $O(n \log_2 n)$
-## Recursive
+### Recursive
+
 ![07-Recursive](/vault-assets/df611c3a5a392d4bc587.png)
+
 - 那麼每次都切一半，紅色分割是第一次切割，第二次是橘色再來是綠色，接下來因為 if(p<r) 不成立所以就沒有繼續切割然後開始 merge。
-### 複雜度分析
+#### 複雜度分析
 
 1. 資料串列都會被切成 2 等份
 	
 2. 做右分別執行 merge sort 排序好得到 2 個 runs
 	
-3. 然後 merge L 和 M 兩個 Runs 或是一個 Run ==最少比較 $n/2$ 次==、==最多比較 $n/2+n/2-1=n-1$ 所以可以知道 $\Theta(n)$==，==最後與 Quick Sort 的複雜度相同$T(n)=2T(\tfrac{n}{2})+cn$==
+3. 然後 merge L 和 M 兩個 Runs 或是一個 Run <mark>最少比較 $n/2$ 次</mark>、<mark>最多比較 $n/2+n/2-1=n-1$ 所以可以知道 $\Theta(n)$</mark>，<mark>最後與 Quick Sort 的複雜度相同$T(n)=2T(\tfrac{n}{2})+cn$</mark>
 
-## Merge Sort 分析
+### Merge Sort 分析
 
 | 項目                        | 內容                                                                       |
 | ------------------------- | ------------------------------------------------------------------------ |
@@ -985,9 +941,9 @@ void merge(int A[], int p, int q, int r) {
 | 版本                        | Iterative（run 長度倍增 1→2→4→8…）／Recursive（對半切後合併）                           |
 | k-way 合併                  | 一次合併 $k\in{2,4,8,\dots}$ 個 run，外部排序常用                                    |
 
-## Selection Tree 與 External Merge Sort（k-way 合併）
+### Selection Tree 與 External Merge Sort（k-way 合併）
 
-### 重要概念
+#### 重要概念
 
 * 目的：在 **k-way 合併** 中，以 $O(\log k)$ 時間選出當前最小鍵並更新，將多個已排序 **runs** 合併成更長的 **new run**（外部排序每輪讀 A、寫 B，下一輪讀 B、寫 A），可以想像如果資料是很多個 block 需要合併那麼如果是 external 會存在 disk 裡面那麼需要一直使用 I/O 效率不是很好那麼有沒有一種方法可以把 block merge 成一個大的 block 這就是為什麼需要 Selection Tree。
 
@@ -999,8 +955,10 @@ void merge(int A[], int p, int q, int r) {
 
 * 穩定性：相等時固定一側優先（例如左優先），可保穩定。
 
-### Loser tree
+#### Loser tree
+
 ![08-Loser tree](/vault-assets/2285b7646188a7d3d3cf.png)
+
 
 * 結構：內節點記錄**較大者（敗者）**，根保存**本輪贏家索引**；葉為各 run 的當前鍵。
 
@@ -1008,14 +966,16 @@ void merge(int A[], int p, int q, int r) {
 	
 	1. `BUILD`：自底向上比賽，將敗者寫入父節點，贏家往上；$O(k)$。
 	
-	2. `EXTRACT-MIN`：==讀根對應的鍵，**append** 到 new run，直到把 runs 全部合併變成 new run。==
+	2. `EXTRACT-MIN`：<mark>讀根對應的鍵，**append** 到 new run，直到把 runs 全部合併變成 new run。</mark>
 	
 	3. `REPLACE & ADJUST`：從贏家葉讀下一鍵（或 $+\infty$），沿葉→根與節點內敗者重比，更新到根；$O(\log k)$。
 
 * 優點：更新路徑固定、搬移少，外部排序下的區塊 I/O 親和；實務常用。
 
-### Winner tree
+#### Winner tree
+
 ![09-Winner tree](/vault-assets/fc2d697a4bc1ce8160af.png)
+
 
 * 結構：內節點記錄**較小者（勝者）**，根即全域最小；葉為各 run 的當前鍵。
 
@@ -1023,7 +983,7 @@ void merge(int A[], int p, int q, int r) {
 
 * 差異：節點存的是勝者，實作細節不同，但**時間、空間複雜度相同**。
 
-### 複雜度分析
+#### 複雜度分析
 
 * 建樹：$O(k)$，先將 k 個 runs 中的 min-value 複製到 leaf $O(k)$，然後經過 $k-1$ 次比較選出 Root $O(k)$。
 
@@ -1035,7 +995,7 @@ void merge(int A[], int p, int q, int r) {
 
 * 外部排序整輪：每輪線性掃過全部資料（I/O）+ 內部比較 $n\log k$，run 數量每輪約除以 $k$，直到剩 1 條全域有序 run。
 
-### 證明：k-way merge sort on m runs（總筆數 n）之總時間與 k 無關
+#### 證明：k-way merge sort on m runs（總筆數 n）之總時間與 k 無關
 
 - **符號**
 		
@@ -1072,13 +1032,13 @@ $$\underbrace{O(n\log k)}*{\text{每輪}}\times\underbrace{\left\lceil\log_k m\r
 
 **結論**
 
-* ==以比較次數衡量時，總時間 **$O(n\log m)$，與 $k$ 無關==。
+* <mark>以比較次數衡量時，總時間 **$O(n\log m)$，與 $k$ 無關</mark>。
 
 * 但 **I/O 輪數** 為 $\left\lceil\log_k m\right\rceil$，與 $k$ 有關；$k$ 越大，輪數越少、I/O 越少。
 
-# Heap Sort
+## Heap Sort
 
-## 步驟
+### 步驟
 
 1. Create heap：從 $i=\lfloor n/2\rfloor$ 遞減到 $1$ 執行下濾。
     
@@ -1086,7 +1046,8 @@ $$\underbrace{O(n\log k)}*{\text{每輪}}\times\underbrace{\left\lceil\log_k m\r
 
 ![10-步驟](/vault-assets/cdafe41114313ad99b8a.png)
 
-## 建堆與排序流程（程式區塊）
+
+### 建堆與排序流程（程式區塊）
 
 ```c
 // sift-down：把 tree[i] 往下調成最大堆（1-based 思維，n=heap size）
@@ -1118,7 +1079,7 @@ void heapsort(int tree[], int n) {
 void swap(int *a, int *b) { int t = *a; *a = *b; *b = t; }
 ```
 
-## 複雜度與性質
+### 複雜度與性質
 
 - **建堆**：bottom-up `heapify`，時間 $\mathcal{O}(n)$，空間 $\mathcal{O}(1)$。
     
@@ -1133,16 +1094,18 @@ void swap(int *a, int *b) { int t = *a; *a = *b; *b = t; }
     - 穩定性：Unstable。
         
 
-# 排序演算法的理論極限與分類
+## 排序演算法的理論極限與分類
 
-- 在限定使用 ==**comparison-based** 或是 swap== 技巧下，最快可以達到 $\Omega(n \log n)$。
+- 在限定使用 <mark>**comparison-based** 或是 swap</mark> 技巧下，最快可以達到 $\Omega(n \log n)$。
     
 - 如果不是採用此排序技巧，則不受此限制，也就是有可能來到 **linear-time：** $O(n)$ 的排序時間，也就是 LSD Radix Sort 和 MSD Radix Sort (Bucket Sort)、Counting Sort。
 
-## Decision tree
+### Decision tree
 
 **Decision tree** for sorting comparison behavior，使用三個資料 $K_1,K_2,K_3$ 排序之 Decision tree。
+
 ![11-Decision tree](/vault-assets/46799c4a6387a89b60b4.png)
+
 1. **Non-leaf ⇒ Compare node** 內部節點表示一次元素間的大小**比較**。
 
 2. **Leaf ⇒ 某個 sorted 結果** 葉節點對應一個最終排序結果（輸出排列）。
@@ -1152,13 +1115,13 @@ void swap(int *a, int *b) { int t = *a; *a = *b; *b = t; }
 4. **n 個資料排序 ⇒ n! 種可能結果** 需能區分所有排列，故決策樹至少需要 $n!$ 個葉節點。
 
 5. **比較次數下限 = B.T. height − 1（Root level = 1）** 若樹高為 $h$，最壞情況比較次數為 $h-1$；且二元樹 $2^h \ge n! \Rightarrow h \ge \log_2(n!) = \Theta(n\log n)$。
-### Proof
+#### Proof
 
 > 命題：在僅使用比較（comparison-based）的模型中，排序 $n$ 筆互異資料的最壞比較次數下限為 $\Omega(n\log n)$。
 
-#### 思路
+##### 思路
 
-- ==$n$ 筆資料的排序結果有 **$n!$** 種可能。==
+- <mark>$n$ 筆資料的排序結果有 **$n!$** 種可能。</mark>
     
 - 任何比較式排序可視為一棵**二元決策樹**：
     
@@ -1168,7 +1131,7 @@ void swap(int *a, int *b) { int t = *a; *a = *b; *b = t; }
         
     - 故葉節點數 $\ge n!$。
         
-#### 樹高推導
+##### 樹高推導
 
 令決策樹高度為 $h$（root level = 1）。
 
@@ -1180,13 +1143,13 @@ void swap(int *a, int *b) { int t = *a; *a = *b; *b = t; }
     
 > 最壞比較次數 $\ge h-1 \ge \lceil \log_2(n!) \rceil - 1$。
 
-#### 近似化簡（史特林）
+##### 近似化簡（史特林）
 
 用斯特林近似 $\log_2(n!) = \Theta(n\log n)$，因此
 
 $$\text{Worst-Case Comparisons} \ge c \cdot n\log n = \Omega(n\log n).$$
 
-#### 小例題
+##### 小例題
 
 **Ex.** 以比較法排序 5 筆資料，最壞比較次數下限約是多少？
 

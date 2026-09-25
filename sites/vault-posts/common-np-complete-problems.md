@@ -8,9 +8,9 @@ blog: true
 vault_source: "Note/Research/NP-C常見的問題.md"
 ---
 
-### 命題分析
+#### 命題分析
 
-#### 1) If $A \le_p B$, then $A$ is no harder than $B$
+##### 1) If $A \le_p B$, then $A$ is no harder than $B$
 
 **Verdict: True（對）**
 
@@ -19,7 +19,7 @@ vault_source: "Note/Research/NP-C常見的問題.md"
 - $B$ 的解法邏輯上「包含」了 $A$ 的解法（加上一點多項式轉換的時間成本）。
     
 
-#### 2) If $A \le_p B$ and $B \le_p C$, then $A \le_p C$
+##### 2) If $A \le_p B$ and $B \le_p C$, then $A \le_p C$
 
 **Verdict: True（對）**
 
@@ -28,7 +28,7 @@ vault_source: "Note/Research/NP-C常見的問題.md"
 - 先把 $A$ 轉成 $B$，再把 $B$ 轉成 $C$。兩個多項式時間的轉換合起來，總時間仍是多項式時間。
     
 
-#### 3) NP-Complete problems can be reduced to each other in polynomial time
+##### 3) NP-Complete problems can be reduced to each other in polynomial time
 
 **Verdict: True（對）**
 
@@ -43,7 +43,7 @@ vault_source: "Note/Research/NP-C常見的問題.md"
 - **結論：** 它們彼此可以互相多項式歸約。
     
 
-#### 4) If $A \le_p B$ and $B$ is NPC, then $A$ is NPC too
+##### 4) If $A \le_p B$ and $B$ is NPC, then $A$ is NPC too
 
 **Verdict: False（錯）**
 
@@ -58,7 +58,7 @@ vault_source: "Note/Research/NP-C常見的問題.md"
     - 確實存在 $2\text{-SAT} \le_p 3\text{-SAT}$（簡單問題當然可以歸約到難題），但這不會讓 2-SAT 變成 NP-Complete（除非 $P=NP$）。
         
 
-#### 5) If $A \le_p B$ and $A$ is NPC, then $B$ is NPC too
+##### 5) If $A \le_p B$ and $A$ is NPC, then $B$ is NPC too
 
 **Verdict: False（錯）**
 

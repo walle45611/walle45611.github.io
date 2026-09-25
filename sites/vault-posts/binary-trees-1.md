@@ -8,11 +8,11 @@ blog: true
 vault_source: "Note/Research/二元樹 (Binary Tree).md"
 ---
 
-## 前情提要
+### 前情提要
 
 這篇文章是資料結構系列的第二篇，主要討論 Binary Tree（二元樹） 的基礎概念與相關理論。今天整理了 Binary Tree 的定義、基本性質、常見類型，以及一些重要的數學性質與推導，像是節點數、樹的高度等。此外，也介紹了二元樹的實現方式（陣列與鏈結串列）和走訪方法，並分享了一些經典範例題的解法，希望幫助讀者快速掌握二元樹的核心知識。
 
-## Binary Tree 和 Tree 的討論
+### Binary Tree 和 Tree 的討論
 
 所有的樹是可以表示成二元樹的 (樹轉二元樹)，所以有很多人會把 Tree 跟 Binary Tree 搞混，有很重要的重點就是，樹不可以為空，但是 Binary Tree 可以為空，除此之外樹是沒有順序之分。
 
@@ -24,13 +24,14 @@ vault_source: "Note/Research/二元樹 (Binary Tree).md"
 
 ![圖 2. : different tree from binary tree](https://imgur.com/lNmehwp.png)
 
+
   
 
-## Binary Tree 定義
+### Binary Tree 定義
 
 * A binary tree is a finite set of nodes that is either empty or consists of a root and two disjoint binary trees called theleft subree an the right subtree. (也就是說二元樹可以是空，那麼由一個 root 和兩個不相交的兩個子樹，這兩個子樹分別為右子樹、左子樹)
 
-## Binary Tree ADT
+### Binary Tree ADT
 
 **結構** : `Binary_Tree` (簡寫為 `BinTree`)
 
@@ -40,7 +41,7 @@ $$
 \forall bt, bt1, bt2 \in \text{BinTree}, \; item \in \text{element}
 $$
 
-### 函數定義
+#### 函數定義
 
 以下是最小的操作步驟也就是說你的一個 Binary Tree 需要這些操作才能正常運作，當然你的ADT可ㄧ有很多自定義的操作，但是以 `horowitz` 的書中是這樣寫的。
 
@@ -56,18 +57,24 @@ $$
 
 * **BinTree Rchild(bt)** : if (IsEmpty(bt)) 則返回錯誤，否則返回 bt 的右子樹
 
-## Binary Tree Types
+### Binary Tree Types
   
 * *skewed* :
+
 ![skewed binary tree](/vault-assets/7bfea50966c5516eb5e1.png)
+
 
   
 
 * *complete binary tree* : 用直白的話說 complete 其實就是你在 n-1 層是滿的且你在第 n 層是一定要按照 binary tree 的順序生成樹的不能有位置跳號的情況。
+
 ![complete binary tree](/vault-assets/8801ad1d496ddbe562f7.png)
 
+
 * *not complete binary tree* :
+
 ![not complete binary tree](/vault-assets/9f4fde649d9f760bc641.png)
+
 
   
 
@@ -77,16 +84,19 @@ $$
 
 
 
+
 * *Strict binary tree* : Each non-leaf node will have two children. There is no degree-1 nodes exist.
+
 ![圖 7. : Strict binary tree](https://imgur.com/0dtk7qI.png)
+
 
   
 
-## Binary Tree 的 4 個 Lemma
+### Binary Tree 的 4 個 Lemma
 
 以下會介紹 Binary Tree 的 4 個 Lemma 其中有兩個屬於 maximum number of nodes 的證明，和一個 Relation between number of leaf node and nodes of degree 2，和一個是從 maximum number of nodes 變化出來的特別針對於 complete binary tree。
 
-### Maximum number of nodes
+#### Maximum number of nodes
 
 1. The maximum number of nodes on level $i$ of a binary tree is $2^{i-1}$, $i \ge 1$.
 	- **Proof (by induction)**
@@ -171,7 +181,7 @@ $$
 		$$
 
 
-### Relation between number of leaf node and nodes of degree 2
+#### Relation between number of leaf node and nodes of degree 2
 
 在 Binary Tree 有一個現象，leaf 和 degree 2 的點數有些關係，這個證明滿重要的。
 
@@ -193,13 +203,13 @@ $$
 n_0+n_1+n_2 = 1 + n_1 + 2n_2
 \Rightarrow n_0 = 1 + n_2
 $$
-#### 總結
+##### 總結
 
 * Lemma 2 可以得知一個 full binary tree 他就會有 $2^k-1$ 個 nodes，這個應該滿好理解就不說了，在 `horowitz` 書中有寫到第 195 頁底下。
 
-### Binary Tree 的最小高度推導
+#### Binary Tree 的最小高度推導
 
-#### Q1. 若二元樹有 $n$ 個節點，最小高度是多少？
+##### Q1. 若二元樹有 $n$ 個節點，最小高度是多少？
 
 一棵**滿二元樹**擁有 $n$ 個節點時，高度是最小的。滿二元樹是指所有層次都被完全填滿的一棵二元樹。
 對於滿二元樹，其節點數 $n$ 與高度 $h$ 的關係是：
@@ -220,7 +230,7 @@ $$
 
 這公式表明了給定 $n$ 個節點時的最小高度，對應於每一層節點都儘量填滿的情況。
 
-#### Q2. 若有 $n$ 個葉節點，最小高度是多少？
+##### Q2. 若有 $n$ 個葉節點，最小高度是多少？
 
 假設我們有 $n$ 個葉節點，我們要構造一棵高度最小的二元樹。在二元樹中，葉節點的數量決定了樹的最小高度。最小高度的二元樹是一棵滿二元樹，其中所有的葉節點都位於最後一層或倒數第二層。
 若我們將 $l$ 代表葉節點的數量，滿二元樹的葉節點數與高度 $h$ 的關係為 :
@@ -231,9 +241,7 @@ $$
 
 對於最小高度，我們取 :
 $$
-
 h_{\text{min}} = \lceil \, \log_2 l \, \rceil + 1
-
 $$
 
 因此，若有 $n$ 個葉節點，二元樹的**最小高度**為：
@@ -243,9 +251,9 @@ $$
 
 這表示給定 $n$ 個葉節點，最小高度是 $\lceil \log_2 n \rceil$ 再加一層 root node。
 
-## Binary Tree representations
+### Binary Tree representations
 
-### Array method
+#### Array method
 
 * 需要 $2^k -1$ 個 Array 空間。
 
@@ -262,9 +270,11 @@ $$
 	2. 對於 skewed binary tree 浪費空間如果高度為`H`則浪費$2^{H}-1-H$，可以這樣想畢竟你每個點的數量就 $1$ 那麼當然就是減高度就可以知道了。
 
 * 範例 `(A(B,E),C)` 為例
+
 ![Array 表示 Binary Tree](/vault-assets/4af350fef0d153bede9d.png)
 
-### Link list method
+
+#### Link list method
 
 * 優點
 
@@ -283,17 +293,18 @@ $$
 
 ![Link list 表示 Binary Tree](/vault-assets/f88e683114c34c2b4bd3.png)
 
+
   
 
 
-### 兩種方式比較
+#### 兩種方式比較
 
 |        | Array                                                                          | Link List                                                                                   |
 | ------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- |
 | **優點** | 1. 容易存取左右子點與父點<br>2. 對於 Full/Complete Binary tree 表示，空間充分利用，無浪費<br>是 1 的 space | 1. 容易增刪節點<br>2. 對於 skewed binary tree 比 Array 節省空間                                          |
 | **缺點** | 1. 不容易儲節點點<br>2. 對於 skewed binary tree 表示，極度浪費空間。若高度 H，浪費格數為 $2^H - 1$         | 1. 不容易存取父點<br>2. Links space 浪費約一半。如果有$N$ 個節點，則有 $N+1$ 條的 Nil links，有用的<br>$2N - (N - 1)$ 條 |
 
-## Binary Tree Traversal
+### Binary Tree Traversal
 
 大家想想，*right subtree* 和 *left subtree* 和 *root* 有幾種走訪方式 `3!` 種對吧，但是為了方便，有的就不討論了，核心就是一定要 *left subtree* 先走，然後才走 *right subtre*，那麼這樣就分成了，*VLR (preorder)*、*LVR (inorder)*、*LRV (postorder)*，反正就看 *V* 在哪裡就是叫什麼樣的走法，那麼還有一個比較特別的 *Level-Order*，在 `horowitz` 書中有寫到那我覺得他就是 *BFS* 其實，那麼走訪的 complexity 都是 $O(n)$，畢竟就是看你有幾個點對吧。
 
@@ -303,10 +314,12 @@ $$
 
 ![108 中山資管資料結構](/vault-assets/cdfdb8bc95438e6ea9a3.png)
 
+
 那麼看到這個題目基本就秒殺哈哈哈哈，可以先知道 Preorder 就是第一個是 root 所以去 inorder 從 A 的位置切一刀你就知道左半邊是 *left subtree*，右半邊是 *right subtree*，然後一直反覆反覆就可以得知答案了。
 
 ![108 中山資管資料結構解題](/vault-assets/96132f7472e936d396f2.jpg)
-### Binary Tree Traversal Code
+
+#### Binary Tree Traversal Code
 ```cpp
 #include <bits/stdc++.h>
 
@@ -376,9 +389,9 @@ int main() {
 
 ---
 
-## 樹（Tree）與二元樹（Binary Tree）的轉換
+### 樹（Tree）與二元樹（Binary Tree）的轉換
 
-### Tree → Binary Tree
+#### Tree → Binary Tree
 
 - **規則：**
   1. 每個節點的 **第一個子節點** 成為其 **左子節點（left child）**。
@@ -389,9 +402,10 @@ int main() {
 
 ![Tree to Binary Tree 範例](/vault-assets/3eefb87987682fbd1f10.png)
 
+
 ---
 
-### Binary Tree → Tree
+#### Binary Tree → Tree
 
 - **規則：**
   1. 將二元樹節點 **逆時針旋轉 45°**。
@@ -402,11 +416,12 @@ int main() {
 
 ![Binary Tree to Tree 範例](/vault-assets/60fbc6d14378e6b3987a.png)
 
+
 ---
 
-## 森林（Forest）與二元樹（Binary Tree）的轉換
+### 森林（Forest）與二元樹（Binary Tree）的轉換
 
-### Forest → Binary Tree
+#### Forest → Binary Tree
 
 - **規則：**
   1. 將多棵樹的根節點視為兄弟，以 **右子鏈** 串接。
@@ -417,9 +432,10 @@ int main() {
 
 ![Forest To Binary Tree 範例](/vault-assets/fb5850d3ab1235386f29.png)
 
+
 ---
 
-### Binary Tree → Forest
+#### Binary Tree → Forest
 
 - **規則：**
   1. 根節點間的 **右子鏈** 對應到森林中多棵樹。

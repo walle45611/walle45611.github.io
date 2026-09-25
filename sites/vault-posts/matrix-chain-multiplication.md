@@ -8,7 +8,7 @@ blog: true
 vault_source: "Note/Research/Matrix-chain Multiplication.md"
 ---
 
-## 1. 問題定義 (Problem)
+### 1. 問題定義 (Problem)
 
 給定一串矩陣鏈 $\langle A_1, A_2, \dots, A_n \rangle$，找出一個最佳的「加括號方式」（parenthesization），使得計算總乘積 $A_1A_2\dots A_n$ 所需的「純量乘法次數」最少。
 
@@ -16,7 +16,7 @@ vault_source: "Note/Research/Matrix-chain Multiplication.md"
     
 - **成本：** $A_{p \times q} \times B_{q \times r}$ 的成本是 $p \times q \times r$ 次純量乘法。
     
-### 為什麼這很重要？
+#### 為什麼這很重要？
 
 不同的計算順序，成本天差地遠。
 
@@ -39,7 +39,7 @@ vault_source: "Note/Research/Matrix-chain Multiplication.md"
     - **總成本: 75,000**
         
 
-## 2. 為什麼不能用暴力法 (Brute Force)？
+### 2. 為什麼不能用暴力法 (Brute Force)？
 
 暴力法需要嘗試所有可能的加括號方式。
 
@@ -52,11 +52,11 @@ vault_source: "Note/Research/Matrix-chain Multiplication.md"
 - 當 $n$ 很大時，暴力法不可行。
     
 
-## 3. 動態規劃 (DP) 解法
+### 3. 動態規劃 (DP) 解法
 
 這是一個 `Interval DP` 的經典問題。我們遵循 DP 的四個步驟：
 
-### 步驟 1：分析最優解的結構 (Optimal Substructure)
+#### 步驟 1：分析最優解的結構 (Optimal Substructure)
 
 > 核心思想：
 > 
@@ -66,7 +66,7 @@ vault_source: "Note/Research/Matrix-chain Multiplication.md"
 > 
 > (如果子問題不是最優，我們總能換成一個更優的子解，從而得到一個比原解更優的解，產生矛盾。)
 
-### 步驟 2：建立遞迴解 (Recursive Solution)
+#### 步驟 2：建立遞迴解 (Recursive Solution)
 
 - **狀態定義：**
     
@@ -89,11 +89,12 @@ vault_source: "Note/Research/Matrix-chain Multiplication.md"
     - (其中 $p$ 是維度陣列，$A_i$ 的維度是 $p_{i-1} \times p_i$)
         
 
-### 步驟 3：計算最優成本 (Computing Costs)
+#### 步驟 3：計算最優成本 (Computing Costs)
 
 我們使用 **Bottom-Up (由下而上)** 的方式填表。
 
 ![01-步驟 3 計算最優成本 (Computing Costs)](/vault-assets/41d82bf9058556a3ef2b.png)
+
 
 - **演算法邏輯：**
     
@@ -111,8 +112,10 @@ vault_source: "Note/Research/Matrix-chain Multiplication.md"
         
     - 這是**遍歷所有子問題**的巧妙技巧，但演算法本質是 `Interval DP`，因為「長區間」的解依賴於「短區間」的解。
 
-#### 輸出方法
+##### 輸出方法
+
 ![02-輸出方法](/vault-assets/1459a617fcb285ff6087.png)
+
 
 - **如果 $i == j$ (只剩一個矩陣):** 直接印出矩陣名字 (如 `A1`)。
     
@@ -128,7 +131,7 @@ vault_source: "Note/Research/Matrix-chain Multiplication.md"
         
     - 最後，它印一個 `)`。
 
-### 步驟 4：建構最佳解 (Constructing Solution)
+#### 步驟 4：建構最佳解 (Constructing Solution)
 
 - 我們需要一個輔助表格 `s[i, j]`。
     
@@ -142,7 +145,7 @@ vault_source: "Note/Research/Matrix-chain Multiplication.md"
         
     3. 遞迴地去 `s[1, k]` 和 `s[k+1, n]` 找下一層的括號。
         
-## 4. ==範例演繹 (Walkthrough)==
+### 4. <mark>範例演繹 (Walkthrough)</mark>
 
 計算 $A_1A_2A_3A_4$，維度 $p = [10, 100, 5, 50, 20]$ 這邊可以想像 $A_{1}$ 他是 $10 \times 100$，那 $A_2$ 是 $100 \times 5$，所以就會可以知道 $P_0=10,P_1=100$ 以此類推。
 
@@ -183,7 +186,7 @@ vault_source: "Note/Research/Matrix-chain Multiplication.md"
     
 - `s[1,3] = 2` (記錄 $k=2$ 是最佳切點)
 
-### 最終成本表 (m table)
+#### 最終成本表 (m table)
 
 `m[i, j]` = 計算 $A_i...A_j$ 的最小成本
 
@@ -193,7 +196,7 @@ vault_source: "Note/Research/Matrix-chain Multiplication.md"
 | **2**     | -     | 0     | 25000 | 15000     |
 | **3**     | -     | -     | 0     | 5000      |
 | **4**     | -     | -     | -     | 0         |
-### 最佳切點表 (s table)
+#### 最佳切點表 (s table)
 
 `s[i, j]` = 計算 $A_i...A_j$ 時，得到最小成本的最佳切點 $k$
 
@@ -203,7 +206,7 @@ vault_source: "Note/Research/Matrix-chain Multiplication.md"
 | **2**     | -     | -     | 2     | 2     |
 | **3**     | -     | -     | -     | 3     |
 | **4**     | -     | -     | -     | -     |
-### 最終結果
+#### 最終結果
 
 - **最小成本:** `m[1, 4] = 11,000`
     
@@ -215,7 +218,7 @@ vault_source: "Note/Research/Matrix-chain Multiplication.md"
         
     3. 看右邊 `s[3, 4] = 3` $\implies$ 切點 $k=3$ $\implies$ $((A_3)(A_4))$
         
-### 最終結果
+#### 最終結果
 
 - **最小成本:** `m[1, 4] = 11,000`
     

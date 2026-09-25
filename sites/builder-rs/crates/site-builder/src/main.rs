@@ -463,8 +463,7 @@ fn render_data_structures_topic(articles: &[Article]) -> String {
         .cloned()
         .collect::<Vec<_>>();
     let body = format!(
-        "<section class=\"intro\"><h1>資料結構與演算法</h1><p>依照 My vault 的主題總覽整理，共 {} 篇文章。</p></section><section><h2>資料結構</h2>{}</section><section><h2>演算法</h2>{}</section>",
-        data.len() + algorithms.len(),
+        "<section class=\"intro\"><h1>資料結構與演算法</h1></section><section><h2>資料結構</h2>{}</section><section><h2>演算法</h2>{}</section>",
         render_post_list(&data, true),
         render_post_list(&algorithms, true)
     );
@@ -571,7 +570,8 @@ fn render_page(
     } else {
         format!("{title} | Walle Blog")
     };
-    let math_markup = if page_type == "article" && body.contains('$') {
+    let math_markup = if page_type == "article" && (body.contains("math-tex") || body.contains('$'))
+    {
         r#"<script>
       window.MathJax = {
         tex: {

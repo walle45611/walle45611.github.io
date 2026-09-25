@@ -439,3 +439,10 @@
 - created: `wiki/summaries/kubernetes-design-principles-understand-the-why.md`, `wiki/concepts/kubernetes-design-principles.md`
 - updated: `wiki/concepts/kubernetes-gitops-delivery.md`, `wiki/concepts/microk8s-production-readiness.md`, `wiki/index.md`, `wiki/log.md`
 - notes: 比對 raw 與 summary 來源欄位後，確認僅此一篇尚未收錄；另三個未追蹤 raw 已於 2026-09-22 收錄，不重複整理。依本地完整逐字稿整理四項設計原則，補齊概念雙向連結；保留 2018 年背景，限制無單點故障、儲存可攜性及最終一致性說法的解讀範圍。未修改 raw，未新增外部資料。
+
+## [2026-09-25] ingest | Michael Kerrisk: Understanding Linux user namespaces
+
+- source: `raw/Michael Kerrisk  Understanding Linux user namespaces.md`
+- created: `wiki/summaries/michael-kerrisk-understanding-linux-user-namespaces.md`, `wiki/concepts/linux-user-namespaces.md`
+- updated: `wiki/concepts/container-networking.md`, `wiki/index.md`, `wiki/log.md`
+- notes: 比對 74 份 raw Markdown 與 summary 來源欄位，確認僅此份尚無摘要；整理 UID/GID 映射、capabilities 與 namespace 權限歸屬，補上容器網路概念的雙向連結。保留 2023 年演講與自動逐字稿的限制；既有 raw 檔未修改。

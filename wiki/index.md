@@ -1,6 +1,7 @@
 # Wiki Index
 ## Concepts
 
+- [linux-user-namespaces](./concepts/linux-user-namespaces.md): 整理 UID/GID 映射、capabilities 與其他 namespace 資源的權限歸屬。
 - [kubernetes-design-principles](./concepts/kubernetes-design-principles.md): 整理宣告式 API、共同 API 協作、應用介面與儲存可攜性的設計理由及保證邊界。
 
 - [container-networking](./concepts/container-networking.md): 整理 namespace、veth、bridge、跨節點路由與 overlay 的分層及排錯邊界。
@@ -39,6 +40,7 @@
 - [blog-knowledge-migration](./concepts/blog-knowledge-migration.md): 記錄舊 Blog Repo 文章納入 LLM Wiki 的來源邊界、摘要集合與後續維護方式。
 ## Summaries
 
+- [michael-kerrisk-understanding-linux-user-namespaces](./summaries/michael-kerrisk-understanding-linux-user-namespaces.md) · 2026-09-25: 整理 Kerrisk 的 user namespace 演講，聚焦內外 UID/GID、capabilities 與容器權限邊界。
 - [kubernetes-design-principles-understand-the-why](./summaries/kubernetes-design-principles-understand-the-why.md) · 2026-09-23: 整理 Saad Ali 的四項 Kubernetes 設計原則、狀態收斂、PVC／PV 與 2018 年演講限制。
 
 - [container-networking-from-scratch](./summaries/container-networking-from-scratch.md) · 2026-09-22: 整理四階段容器網路實驗、封包觀察與 2018 年教學設定的適用限制。

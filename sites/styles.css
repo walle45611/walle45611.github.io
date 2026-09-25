@@ -239,6 +239,11 @@ h1 {
   overflow-y: hidden;
 }
 
+.prose table .math-tex:not(.math-display) {
+  max-width: none;
+  overflow: visible;
+}
+
 .prose .math-tex.has-overflow {
   border: 1px solid var(--line);
   border-radius: 0.3rem;

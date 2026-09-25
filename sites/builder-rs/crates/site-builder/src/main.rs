@@ -590,7 +590,10 @@ fn render_page(
         const markOverflow = () => {
           pending = false;
           prose.querySelectorAll('.math-tex').forEach((math) => {
-            math.classList.toggle('has-overflow', math.scrollWidth > math.clientWidth + 12);
+            math.classList.toggle(
+              'has-overflow',
+              !math.closest('table') && math.scrollWidth > math.clientWidth + 12
+            );
           });
         };
         const scheduleCheck = () => {
@@ -623,8 +626,8 @@ fn render_page(
     <meta name="color-scheme" content="light">
     <meta name="theme-color" content="#ffffff">
     <style>{}</style>
-    <link rel="preload" href="/styles.css?v=4" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/styles.css?v=4"></noscript>
+    <link rel="preload" href="/styles.css?v=5" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/styles.css?v=5"></noscript>
     <meta property="og:type" content="{}">
     <meta property="og:title" content="{}">
     <meta property="og:description" content="{}">

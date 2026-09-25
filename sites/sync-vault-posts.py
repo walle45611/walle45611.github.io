@@ -81,7 +81,7 @@ TITLES = {
 EMBED = re.compile(r"!?\[\[(.*?)\]\]")
 TIKZ = re.compile(r"(?ms)^```tikz[ \t]*\n(.*?)^```[ \t]*$")
 HEADING = re.compile(r"^(#{1,5})([ \t]+)(.*)$")
-HIGHLIGHT = re.compile(r"(?<![\w`])==(.+?)==(?![\w`])")
+HIGHLIGHT = re.compile(r"==(.+?)==(?![A-Za-z0-9_])")
 CALLOUT = re.compile(r"^([ \t]*>[ \t]*)\[!(\w+)\][+-]?[ \t]*(.*)$", re.I)
 CALLOUT_NAMES = {
     "note": "筆記", "info": "資訊", "tip": "提示", "warning": "注意",
@@ -91,7 +91,41 @@ DISPLAY_MATH = re.compile(r"(?ms)^\$\$[ \t]*\n(.*?)^\$\$[ \t]*$")
 
 
 def normalize_display_math(body: str) -> str:
-    """Obsidian permits blank lines in display math; Comrak treats those as paragraphs."""
+    """Put multiline display delimiters on their own lines for the renderer."""
+    output = []
+    in_math = False
+    fenced = False
+    fence_char = ""
+    for line in body.splitlines():
+        fence = re.match(r"^[ \t]*(`{3,}|~{3,})", line)
+        if fence:
+            if not fenced:
+                fenced, fence_char = True, fence.group(1)[0]
+            elif fence.group(1)[0] == fence_char:
+                fenced = False
+            output.append(line)
+            continue
+        if fenced:
+            output.append(line)
+            continue
+
+        marker = line.find("$$")
+        if marker < 0 or line[:marker].count("`") % 2:
+            output.append(line)
+            continue
+        if not in_math and line.find("$$", marker + 2) >= 0:
+            output.append(line)  # A complete display expression on one line.
+            continue
+        before, after = line[:marker], line[marker + 2:]
+        if before.strip():
+            output.append(before.rstrip())
+        output.append("$$")
+        if after.strip():
+            output.append(after.lstrip() if not in_math else after.rstrip())
+        in_math = not in_math
+
+    body = "\n".join(output)
+
     def compact(match: re.Match[str]) -> str:
         lines = [line.rstrip() for line in match.group(1).splitlines() if line.strip()]
         return "$$\n" + "\n".join(lines) + "\n$$"
@@ -126,7 +160,16 @@ def convert_obsidian_format(body: str) -> str:
         if callout:
             label = callout.group(3) or CALLOUT_NAMES.get(callout.group(2).lower(), callout.group(2))
             line = f"{callout.group(1)}**{label}**"
-        line = HIGHLIGHT.sub(r"<mark>\1</mark>", line)
+        def replace_highlight(match: re.Match[str]) -> str:
+            before = line[:match.start()]
+            end = line[:match.end()]
+            if before.count("`") % 2 or end.count("`") % 2:
+                return match.group(0)
+            if before.count("$") % 2 or end.count("$") % 2:
+                return match.group(0)
+            return f"<mark>{match.group(1)}</mark>"
+
+        line = HIGHLIGHT.sub(replace_highlight, line)
         if line.startswith("![") and output and output[-1].strip():
             output.append("")
         output.append(line)

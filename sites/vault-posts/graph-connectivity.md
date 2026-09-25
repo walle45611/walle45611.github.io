@@ -204,13 +204,13 @@ int main(){
     - `stack<int> st`、`onStack[u]`：維持當前 DFS 路徑集合。
         
 - 定義（$low$ 的更新來源）  
-    $$  
-    low[u] = \min\Big(  
-    d[u],  
-    \min_{u\to v\ \text{且}\ v\ \text{未訪問}} low[v], 
-    \min_{u\to v\ \text{且}\ onStack[v]} d[v]  
-    \Big)  
-    $$
+$$
+    low[u] = \min\Big(
+    d[u],
+    \min_{u\to v\ \text{且}\ v\ \text{未訪問}} low[v],
+    \min_{u\to v\ \text{且}\ onStack[v]} d[v]
+    \Big)
+$$
     
 - 規則
     

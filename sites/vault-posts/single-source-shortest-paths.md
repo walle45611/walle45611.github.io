@@ -241,13 +241,13 @@ DIJKSTRA_MATRIX(COST, n, s)
 - 定義 $\mathrm{Dist}^k[i]$ 為：從起點 $s$ 到頂點 $i$、**最多使用 $k$ 條邊**的最短距離。  
 	
 - 則遞迴式： 
-	$$  
-	\mathrm{Dist}^k[i]  
-	=\min\Big(  
-	\underbrace{\mathrm{Dist}^{k-1}[i]}_{\text{路徑不增邊，走原路}},  
-	\ \underbrace{\min_{(j,i)\in E}\big(\mathrm{Dist}^{k-1}[j]+ \mathrm{cost}[j,i]\big)}_{\text{經由某前驅 $j$ 多走一條邊做 relaxation，更好就更新 }(j,i)}  
-	\Big).  
-	$$
+$$
+	\mathrm{Dist}^k[i]
+	=\min\Big(
+	\underbrace{\mathrm{Dist}^{k-1}[i]}_{\text{路徑不增邊，走原路}},
+	\ \underbrace{\min_{(j,i)\in E}\big(\mathrm{Dist}^{k-1}[j]+ \mathrm{cost}[j,i]\big)}_{\text{經由某前驅 $j$ 多走一條邊做 relaxation，更好就更新 }(j,i)}
+	\Big).
+$$
 	
 - 理由：用最多 $k$ 邊到 $i$ 的最短路，只可能是
 		

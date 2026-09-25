@@ -70,9 +70,9 @@ vault_source: "Note/Research/Red-Black tree.md"
 			$\operatorname{bh}(c) \ge bh(k)-1\quad (\text{黑子時等於 } bh(k)-1,\ \text{紅子時等於 } bh(k)).$
 			
 			由 **IH**：每個子樹至少有 $2^{bh(k)-1}-1$ 個內部節點。故左子數+右子數+root得以下公式
-			$$
+$$
 			\#\text{internal}(x) \ge 1 + (2^{b-1}-1) + (2^{b-1}-1) = 2^b - 1.
-			$$
+$$
 			得證。
 			
 - **高度上界推論**

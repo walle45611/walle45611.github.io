@@ -39,9 +39,9 @@ i = \mathrm{min\_partner}(n)
   = n \;-\; 2^{\,\lfloor \log_{2} n\rfloor - 1}.
 $$
 - 若計算出來的 `i` 超過 `heap_size`，則  
-  $$
+$$
   i = \Big\lfloor \frac{i}{2} \Big\rfloor.
-  $$
+$$
 
 **右側對應節點（Max‐partner）**  
 給定一個位於 **min‐heap** 中的節點索引 `n`（`n ≥ 2`），對應到 **max‐heap** 的父節點索引 `j`：  
@@ -51,9 +51,9 @@ j = \mathrm{max\_partner}(n)
   \quad(\text{整數除法})
 $$
 - 若計算出來的 `j` 超過 `heap_size`，則  
-  $$
+$$
   j = \Big\lfloor \frac{j}{2} \Big\rfloor.
-  $$
+$$
 
 
 ---

@@ -22,9 +22,9 @@ vault_source: "Note/Research/Splay Trees.md"
 **敘述** 對於起始節點 $q$，單次 splay 的平攤成本至多為 $3(\log_2 n - r(q)) + 1$
 
 - **位能法公式**
-	$$
+$$
 	\text{Amortized cost} = (\text{actual cost}) + (\Phi_i - \Phi_{i-1})
-	$$
+$$
 	- 其中：
 			
 		* $r(i) = \log_2s(i)$，$s(i)$ 是以節點 $i$ 為根的子樹大小。
@@ -59,14 +59,14 @@ vault_source: "Note/Research/Splay Trees.md"
 	* 影響節點 $q, p, gp$。
 		
 	* 位能變化：
-		$$
+$$
 		\Delta \Phi = r'(q) + r'(p) + r'(gp) - r(q) - r(p) - r(gp)
-		$$
+$$
 	
 	* 分析可得：
-		$$
+$$
 		\text{Amortized cost} \leq 3(r'(q) - r(q)) - 1
-		$$
+$$
 綜合各情形得 Access Lemma：$\text{amortized cost} \le 3\big(r(\text{root}) - r(q)\big) + 1 \le 3(\log_2 n - r(q)) + 1$。 因此為 $O(\log n)$，且給出更精確的常數界。
 
 #### Theorem 10.1：n 次操作的總時間

@@ -16,9 +16,9 @@ vault_source: "Note/Research/Spanning Tree.md"
 - 若 $G$ 是連通的（connected），則它至少存在一棵生成樹（spanning tree）。
     
 - 生成樹是指：  
-    $$  
-    T = (V, E_T) \subseteq G  
-    $$  
+$$
+    T = (V, E_T) \subseteq G
+$$
 - <mark>其中 $T$ 含有所有頂點（$|V|$ 相同），但邊數為 $|E_T| = |V|-1$，而且沒有環（acyclic）。</mark>
 
 ### 性質（Properties）
@@ -31,7 +31,7 @@ vault_source: "Note/Research/Spanning Tree.md"
     
     - 若加入任何一條不屬於生成樹的邊，會產生一個簡單環（simple cycle）。
         
-    - 若刪除生成樹中任一條邊，會使圖變成不連通==（生成兩個 component）==。
+    - 若刪除生成樹中任一條邊，會使圖變成不連通<mark>（生成兩個 component）</mark>。
         
 
 ### 圖形例子

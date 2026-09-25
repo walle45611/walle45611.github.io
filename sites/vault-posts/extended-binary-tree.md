@@ -86,7 +86,7 @@ $$E=I+2n$$
    - 設左子樹有 $n_l$ 個 internal nodes，右子樹有 $n_r$ 個，則：$n = n_l + n_r + 1$
      
    - 則： 
-	$$
+$$
 	 \begin{aligned}
 	 I(T) &= I(L) + n_l + I(R) + n_r \\
 	 E(T) &= E(L) + (n_l + 1) + E(R) + (n_r + 1) \\
@@ -95,7 +95,7 @@ $$E=I+2n$$
 		  &= I(L) + I(R) + n_l + n_r + 2(n_l + n_r + 1) \\
 		  &= I(T) + 2n
 	 \end{aligned}
-     $$
+$$
 
    所以對 $n$ 也成立，證畢。✅
 

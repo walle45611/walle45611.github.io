@@ -34,13 +34,13 @@ vault_source: "Note/Research/Linear-time sorting algo.md"
 	    
 	3. <mark>前綴和：對 $i=1..k$，令 $C[i] \leftarrow C[i]+C[i-1]$</mark>
 	    
-	4. 回填==（由右往左）==：對 $j=n..1$，令 $x=A[j]$，設 $B[C[x]]\leftarrow x$，再令 $C[x]\leftarrow C[x]-1$。
+	4. 回填<mark>（由右往左）</mark>：對 $j=n..1$，令 $x=A[j]$，設 $B[C[x]]\leftarrow x$，再令 $C[x]\leftarrow C[x]-1$。
 	
 - **正確性**
 		
 	- 由上式，$C[i]$ 是「$\le i$ 的元素個數」。因此值為 $i$ 的元素應被放入區間 $(C[i-1]+1)..C[i]$。
 	    
-	- 在第 4 步中，$j$ 自右往左處理並遞減 $C[i]$，恰好把所有值為 $i$ 的元素依序填入該區間，且保持原相對次序==（**穩定**）==。
+	- 在第 4 步中，$j$ 自右往左處理並遞減 $C[i]$，恰好把所有值為 $i$ 的元素依序填入該區間，且保持原相對次序<mark>（**穩定**）</mark>。
     
 - **時間**
 		

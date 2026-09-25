@@ -169,13 +169,13 @@ vault_source: "Note/Research/Selection Problem.md"
     - **遞迴式**：$$T(n)=T(n-1)+cn$$
         
     - **展開**：  
-        $$  
-        \begin{aligned}  
-        T(n)&=T(1)+c\sum_{k=2}^{n}k \  
-        &=T(1)+c\left(\tfrac{n(n+1)}{2}-1\right)  
-        =\Theta(n^2)  
-        \end{aligned}  
-        $$
+$$
+        \begin{aligned}
+        T(n)&=T(1)+c\sum_{k=2}^{n}k \
+        &=T(1)+c\left(\tfrac{n(n+1)}{2}-1\right)
+        =\Theta(n^2)
+        \end{aligned}
+$$
         
     - **對照**：與 Quicksort 最壞遞迴同型，每層線性，層數近 $n$
         
@@ -200,12 +200,12 @@ vault_source: "Note/Research/Selection Problem.md"
         - 每次切分成本 $\le c,n_k$
             
     - **期望總成本上界**：  
-        $$  
-        \mathbb{E}[T(n)] \le c\sum_{k\ge0}\mathbb{E}[X_k]\cdot n_k,\quad \mathbb{E}[X_k]\le 2  
-        $$
-        $$  
-        \Rightarrow\ \mathbb{E}[T(n)] \le 2c,n\sum_{k\ge0}\left(\tfrac{3}{4}\right)^k = O(n)  
-        $$
+$$
+        \mathbb{E}[T(n)] \le c\sum_{k\ge0}\mathbb{E}[X_k]\cdot n_k,\quad \mathbb{E}[X_k]\le 2
+$$
+$$
+        \Rightarrow\ \mathbb{E}[T(n)] \le 2c,n\sum_{k\ge0}\left(\tfrac{3}{4}\right)^k = O(n)
+$$
         - CLRS 常數上界約 $<8n$；配合首層的 $\Omega(n)$，得 $\Theta(n)$
             
     - **結論**：$$\boxed{\ \mathbb{E}[T(n)]=\Theta(n)\ }$$
@@ -262,19 +262,19 @@ vault_source: "Note/Research/Selection Problem.md"
 - 需扣除至多 **2 組** 的例外：包含 $x$ 的那組，以及可能不足 $5$ 個元素的殘缺組。
     
 - 因此，$\ge x$ 的元素數至少  
-    $$  
-    3\big(\lfloor \frac{|M|}{2}\rfloor-2\big)\ \ge\ \tfrac{3n}{10}-O(1),  
-    $$  
+$$
+    3\big(\lfloor \frac{|M|}{2}\rfloor-2\big)\ \ge\ \tfrac{3n}{10}-O(1),
+$$
     對稱地，$\le x$ 的元素數也至少 $\tfrac{3n}{10}-O(1)$。
     
 - 於是以 $x$ 分割後，仍需遞迴的**較大一側**大小  
-    $$  
-    \le\ n-\Big(\tfrac{3n}{10}-O(1)\Big)\ =\ \tfrac{7n}{10}+O(1).  
-    $$
+$$
+    \le\ n-\Big(\tfrac{3n}{10}-O(1)\Big)\ =\ \tfrac{7n}{10}+O(1).
+$$
 - 導出最壞情況遞迴式  
-    $$  
-    T(n)\ \le\ T\left(\left\lceil \tfrac{n}{5}\right\rceil\right)\ +\ T\left(\tfrac{7n}{10}+O(1)\right)\ +\ O(n)\ =\ O(n).  
-    $$
+$$
+    T(n)\ \le\ T\left(\left\lceil \tfrac{n}{5}\right\rceil\right)\ +\ T\left(\tfrac{7n}{10}+O(1)\right)\ +\ O(n)\ =\ O(n).
+$$
 #### Total complex Time 
 
 ![04-Total complex Time](/vault-assets/7bd00890cf0a3dbe47b1.png)

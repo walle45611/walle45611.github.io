@@ -669,9 +669,9 @@ void bfs(int s) {
 - 層次：$L_0={1}$，$L_1={2,3}$，$L_2={4,5}$，$L_3={6}$。
     
 - 距離：  
-    $$  
-    d[1]=0,\quad d[2]=d[3]=1,\quad d[4]=d[5]=2,\quad d[6]=3.  
-    $$
+$$
+    d[1]=0,\quad d[2]=d[3]=1,\quad d[4]=d[5]=2,\quad d[6]=3.
+$$
     
 - 佇列追蹤：  
     $[1]\ \Rightarrow$ 出隊 $1$ 變黑色，入隊 $2,3$ → $[2,3]$  
@@ -697,13 +697,13 @@ void bfs(int s) {
     - 解讀：有向圖僅在 $u\to v$ 時適用；無向圖兩向皆有，得 $|\delta(s,u)-\delta(s,v)|\le 1$。
         
     - 一句證明：  
-        $$  
+$$
         \begin{aligned}
-        &\text{最短路 } s\to\cdots\to u \text{ 長 } \delta(s,u),\\  
-        &\text{接 }(u,v)\text{ 得一路徑長 } \delta(s,u)+1,\\  
-        &\Rightarrow\ \delta(s,v)\le \delta(s,u)+1\quad (\delta(s,u)=\infty\ \text{亦成立}).  
-        \end{aligned}  
-        $$
+        &\text{最短路 } s\to\cdots\to u \text{ 長 } \delta(s,u),\\
+        &\text{接 }(u,v)\text{ 得一路徑長 } \delta(s,u)+1,\\
+        &\Rightarrow\ \delta(s,v)\le \delta(s,u)+1\quad (\delta(s,u)=\infty\ \text{亦成立}).
+        \end{aligned}
+$$
         
     - 用途：保證 BFS 設新點距離時不會低估真實最短距離。
         
@@ -714,14 +714,14 @@ void bfs(int s) {
     - 基底：$s.d=0=\delta(s,s)$；對 $v\neq s$，$v.d=\infty\ge \delta(s,v)$。
         
     - 歸納步（多行，用 align）：  
-        $$  
-        \begin{aligned}  
-        &\text{由 }u\text{ 發現白鄰 }v:\ v.d\leftarrow u.d+1,\\  
-        &u.d\ge \delta(s,u)\ \text{（歸納假設）},\\  
-        &\delta(s,v)\le \delta(s,u)+1\ \text{（Lemma 20.1）},\\  
-        &\Rightarrow\ v.d=u.d+1\ge \delta(s,u)+1\ge \delta(s,v).  
-        \end{aligned}  
-        $$
+$$
+        \begin{aligned}
+        &\text{由 }u\text{ 發現白鄰 }v:\ v.d\leftarrow u.d+1,\\
+        &u.d\ge \delta(s,u)\ \text{（歸納假設）},\\
+        &\delta(s,v)\le \delta(s,u)+1\ \text{（Lemma 20.1）},\\
+        &\Rightarrow\ v.d=u.d+1\ge \delta(s,u)+1\ge \delta(s,v).
+        \end{aligned}
+$$
         
     - 性質：$v$ 僅入隊一次且之後 $v.d$ 不變；因此 $\delta(s,v)\le v.d$，即 $v.d$ 是最短距離的上界。
 		
@@ -739,7 +739,8 @@ void bfs(int s) {
             
         - 條件 2：因 $r-1=0$，此條件無須檢驗，成立。
             
-    - 歸納步（證明此性質在「出隊」與「入隊」操作後依然保持），Dequeue 是在證明不可能超過$v_1.d+1$，那麼 Enqueue 是在證明，隊伍裡的牌是 $\ge$ 的排列：$$
+    - 歸納步（證明此性質在「出隊」與「入隊」操作後依然保持），Dequeue 是在證明不可能超過$v_1.d+1$，那麼 Enqueue 是在證明，隊伍裡的牌是 $\ge$ 的排列：
+$$
 		\begin{aligned}
 		&\text{1. 出隊 (Dequeue) 操作：}\\
 		&\quad \text{設隊首 } v_1 \text{ 出隊，新隊首為 } v_2 \text{。}\\
@@ -756,7 +757,7 @@ void bfs(int s) {
 		&\quad \Rightarrow v_{r+1}.d = u.d + 1 \le v_1'.d + 1 \text{。}\\
 		&\quad \text{因此新佇列滿足所有性質。}
 		\end{aligned}
-		$$
+$$
     - 性質與直觀理解：此引理是 BFS 正確性的核心，它保證了演算法能夠「逐層」搜索。
         
         > **因為佇列是先進先出 (FIFO)，演算法一定會先把某一層（距離為 d）的節點全部處理完，才會開始處理下一層（距離為 d+1）的節點。在處理某一層節點時，會把下一層的新節點放到佇列的尾巴。這就導致了佇列中的節點距離最多只會橫跨兩層，因此隊尾的距離 $v_r.d$ 最多只會比隊首的距離 $v_1.d$ 多 1。**
@@ -767,7 +768,8 @@ void bfs(int s) {
         
         假設在 BFS 執行期間，頂點 $v_i$ 比頂點 $v_j$ 先被放入佇列 (enqueued)。則必然有 $v_i.d \le v_j.d$。
         
-    - **證明：** $$
+    - **證明：**
+$$
 		\begin{aligned}
 		&\text{設 } u_i \text{ 與 } u_j \text{ 分別是 } v_i \text{ 與 } v_j \text{ 的父節點（發現者）。}\\
 		&\text{則 } v_i.d = u_i.d + 1 \text{ 且 } v_j.d = u_j.d + 1 \text{。}\\
@@ -781,7 +783,7 @@ void bfs(int s) {
 		\\
 		&\Rightarrow v_i.d = u_i.d + 1 \le u_j.d + 1 = v_j.d \text{。}
 		\end{aligned}
-		$$
+$$
     - 性質：
         
         此推論確保了 BFS 賦予頂點距離的過程是單調的。演算法探索的「前線」只會離起點越來越遠，絕不會後退。
@@ -793,7 +795,8 @@ void bfs(int s) {
         當 BFS 演算法完成後，對於任何從起點 s 可到達的頂點 v，演算法計算出的距離 $v.d$ 等於真實的最短路徑距離 $\delta(s, v)$。此外，演算法建構的前驅子圖形成了一棵最短路徑樹。
         
     - **證明 (使用反證法)：** 
-		$$\begin{aligned}
+$$
+\begin{aligned}
 		&\text{1. 假設結論是錯的：}\\
 		&\quad \text{假設存在至少一個頂點 v，使得 } v.d > \delta(s, v) \text{。}\\
 		\\
@@ -820,7 +823,7 @@ void bfs(int s) {
 		&\text{6. 結論：}\\
 		&\quad \text{最初的假設不成立，因此對所有可達點 v，必有 } v.d = \delta(s, v) \text{。}
 		\end{aligned}
-		$$
+$$
     - 性質與直觀理解：
         
         這個定理是 BFS 演算法的最終保證書。整個證明就像一個偵探故事：透過假設有兇手（算錯的點），我們找到了第一個案發現場 (v)，接著找到了案發前最後一個誠實的證人 (u)。結果證人的證詞 ($u.d$) 讓整個案件 ($v.d > \delta(s,v)$) 的邏輯完全無法成立，從而證明了兇手根本不存在。這確保了 BFS 那看似簡單的「逐層搜索」規則，確實能完美地找到最短路徑。
@@ -831,7 +834,9 @@ void bfs(int s) {
         
         當廣度優先搜尋 (BFS) 應用於一個圖 G=(V, E) 時，其建構的前驅子圖 G_π = (V_π, E_π) 會形成一棵「廣度優先樹」。在這棵樹中，從起點 s 到任何可到達頂點 v 的路徑，都是圖 G 中的一條最短路徑。
         
-    - **證明 (核心思想)：**        $$\begin{aligned}
+    - **證明 (核心思想)：**
+$$
+\begin{aligned}
 &\text{1. 前驅子圖 } G_\pi \text{ 的形成：}\\
 &\quad \text{根據 BFS 演算法，一個頂點 v 的前驅 } v.\pi \text{ 被設為 u，}\\
 &\quad \text{若且唯若 v 是在走訪 u 的鄰居時被首次發現的 (v.color == WHITE)。}\\
@@ -849,7 +854,8 @@ void bfs(int s) {
 &\quad \text{而 BFS 設定 } v.\pi = u \text{ 的同時，也設定了 } v.d = u.d + 1 \text{。}\\
 &\quad \text{將兩式結合可得：} \delta(s, v) = v.d = u.d + 1 = \delta(s, u) + 1 \text{。}\\
 &\quad \text{這完美符合最短路徑的性質。因此，樹上的每條路徑都是最短路徑。}
-\end{aligned}$$
+\end{aligned}
+$$
     - 性質與直觀理解：
         
         這個引理完美地回答了您的問題：「所以我有一個點，我直接用他的 v.pi 一直往上找，就是他的最短路徑嗎？」

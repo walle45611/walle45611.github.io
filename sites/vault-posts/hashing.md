@@ -12,9 +12,9 @@ vault_source: "Note/Research/Hashing.md"
 
 - **模型** 表分成 $b$ 個 bucket，每個 bucket 有 s 個 slots；第 $i$ 個 bucket 目前放入筆數 $n_i$。
 	
-	$$
+$$
 	T=b\cdot s
-	$$
+$$
 	
 - **定義**
 	
@@ -31,9 +31,9 @@ vault_source: "Note/Research/Hashing.md"
 	    - 情境：全校學號為 9 位數（000000000–999999999），可用識別字總數 $T=10^9$；本學年實際註冊學生 $n=300$。
 	        
 	    - 計算：  
-	        $$  
-	        \text{Identifier Density} = \frac{n}{T} = \frac{300}{10^9} = 3\times10^{-7}  
-	        $$
+$$
+	        \text{Identifier Density} = \frac{n}{T} = \frac{300}{10^9} = 3\times10^{-7}
+$$
 	        
 	    - 解讀：學號宇宙極大但實際用到的位數使用很少；若用直接存取結構需配置 $10^9$ 格，空間浪費嚴重。
 
@@ -44,9 +44,9 @@ vault_source: "Note/Research/Hashing.md"
 	    - 情境：以「學號最後一碼」作為雜湊 $hash(id)=id \mod 10$，因此 bucket 數 $b=10$；每個 bucket 預留 $s=50$ 個 slot。總槽數 $m=b*s=500$；同樣 $n=300$ 位學生要放入表中。
 	        
 	    - 計算：  
-	        $$  
-	        \alpha = \frac{n}{b\cdot s} = \frac{300}{10\cdot 50} = \frac{300}{500} = 0.6  
-	        $$
+$$
+	        \alpha = \frac{n}{b\cdot s} = \frac{300}{10\cdot 50} = \frac{300}{500} = 0.6
+$$
 	        
 	    - 解讀：表格整體填滿 60%；平均每個 bucket 約 30 筆，未達 overflow（每 bucket 上限 50）。若 n 增加而 b、s 不變，則 $\alpha$ 變大，碰撞次數變多，最終可能出現 overflow。
 
@@ -74,8 +74,10 @@ vault_source: "Note/Research/Hashing.md"
 - 步驟：鍵先平方，擷取平方值的中間數位作位址。
 	
 - 範例：鍵 8125，表大小 1000（位址 0–999）。  
-	$$8125^2 = 66015625 \  
-	\text{取中間三位} = 156  $$
+$$
+8125^2 = 66015625 \
+	\text{取中間三位} = 156
+$$
 	
 - 評述：實作簡單；分佈品質差，易碰撞與短循環，實務少用。
         

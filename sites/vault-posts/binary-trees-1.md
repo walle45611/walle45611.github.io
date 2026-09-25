@@ -119,7 +119,8 @@ $$
 		4. 因此，對所有 $i \ge 1$，第 $i$ 層節點數的上界皆為 $2^{i-1}$
 
 2. The maximum number of nodes in a binary tree of depth k is $2^k - 1$, $k \ge 1$.
-	 - **Proof** :  $$
+	 - **Proof** :
+$$
 	\begin{aligned}
 	&\text{由 Lemma 1 可知第 }i\text{ 層最多有 }2^{i-1}\text{ 個節點；}\\
 	&\text{又幾何級數公式 }
@@ -135,10 +136,11 @@ $$
 	  \sum_{i=1}^k(\text{每層最大節點數})
 	  =2^k-1.
 	\end{aligned}
-	$$
+$$
 
 3. 如果有一個 complete binary tree 他有 n 個 nodes 那麼他的深度會是 $\lfloor log_2n + 1 \rfloor$ 假設一棵完全二元樹有 $n$ 個節點，則這棵樹的高度可以表示為：
-	- **Proof** : $$
+	- **Proof** :
+$$
 		\begin{aligned}
 		&2^k - 1 \le n < 2^{k+1} - 1,\quad\text{由最大節點數界限得}\\
 		&\log_2(2^k - 1) \le \log_2 n,\quad\text{對不等式兩邊取對數}\\
@@ -146,7 +148,7 @@ $$
 		&k \approx \log_2 n,\quad\text{因此}\\
 		&k = \lceil \log_2(n+1)\rceil \quad\text{或}\quad \lfloor \log_2 n\rfloor + 1,\quad\text{考慮高度從 1 開始計算}
 		\end{aligned}
-		$$
+$$
 
 - 以下事項非常重要：
 	- **節點編號**  
@@ -154,31 +156,31 @@ $$
 		$$1 \le i \le n.$$
 	
 	- **父節點**  
-		$$
+$$
 		\mathrm{parent}(i) =
 		\begin{cases}
 		  \lfloor i/2\rfloor, & i > 1,\\
 		  \text{根節點（無父節點）}, & i = 1.
 		\end{cases}
-		$$
+$$
 	
 	- **左子節點**  
-		$$
+$$
 		\mathrm{left\_child}(i) =
 		\begin{cases}
 		  2i, & 2i \le n,\\
 		  \text{無}, & 2i > n.
 		\end{cases}
-		$$
+$$
 	
 	- **右子節點**  
-		$$
+$$
 		\mathrm{right\_child}(i) =
 		\begin{cases}
 		  2i + 1, & 2i + 1 \le n,\\
 		  \text{無}, & 2i + 1 > n.
 		\end{cases}
-		$$
+$$
 
 
 #### Relation between number of leaf node and nodes of degree 2

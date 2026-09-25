@@ -466,3 +466,9 @@
 - source check: 另發現既有專案管理摘要所指的 `raw/專案管理-期中筆記.md` 原檔並不存在；已在摘要標記待回補，未自行杜撰來源。
 - metadata view: 原始 My vault 的 `00_Dashboard/blog-articles.base` 已改由 `blog == true` 篩選，涵蓋 Research 與 Tech；YAML 解析通過。
 - final adjustment: 依使用者後續要求，移除多餘的 `00_Dashboard/blog-articles.base`；刷題總覽與六篇文章的發佈標題改用核對後的題號，並修正 UVA 272 的題目連結文字。網站主題頁另列「刷題」段落。
+
+## [2026-09-26] maintenance | 刷題與 SQL 主題總覽
+
+- updated: 原始 My vault 及 `raw/my-vault/00_Dashboard/資料結構和演算法 Overview.md`、六篇刷題筆記、`sites/sync-vault-posts.py`、`sites/README.md`。
+- created: 原始 My vault 與本機副本的 `00_Dashboard/刷題 Overview.md`。
+- notes: 刷題總覽依圖論與搜尋、二分搜尋、字串與模擬、貪心與矩陣、SQL 語句類型列出實際題號；既有 SQL Overview 改以資料庫安裝與 SQL 語句為主，並交叉連結刷題總覽。資料結構與演算法總覽連至刷題總覽，六篇公開刷題文章以 `blog_topic: problem-solving` 維持網站分類。兩份新整理的主題總覽留在完整 Vault 副本，不加入公開 Git。

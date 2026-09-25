@@ -65,9 +65,4 @@
 [[K-means Clustering]]
 
 ### 刷題
-[[codeforces-0815|Codeforces 580C、1996B]]
-[[leetcode-3106|LeetCode 3106]]
-[[uva-1586-227|UVA 227、1586]]
-[[uva-272-340-0816|UVA 340、272]]
-[[virtual-judge-hdu-1232|HDU 1232]]
-[[virtual-judge-p2249|Luogu P2249]]
+[[刷題 Overview]]

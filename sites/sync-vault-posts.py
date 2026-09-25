@@ -45,7 +45,10 @@ def split_blog_properties(note: str, source: Path) -> tuple[dict[str, str], str]
     body = note[match.end():].strip()
     if not body:
         raise ValueError(f"Empty blog body in source note: {source}")
-    return {"title": title, "slug": slug_match.group(1), "date": date}, body
+    topic = properties.get("blog_topic", "")
+    if topic and topic not in {"data-structures", "algorithms", "problem-solving"}:
+        raise ValueError(f"Invalid blog topic in source note: {source}")
+    return {"title": title, "slug": slug_match.group(1), "date": date, "topic": topic}, body
 
 
 def normalize_display_math(body: str) -> str:
@@ -144,7 +147,6 @@ def export(vault: Path, site: Path) -> None:
 
     names = link_targets(overview)
     algorithm_names = set(link_targets(overview.split("# 演算法", 1)[1]))
-    problem_names = set(link_targets(overview.split("### 刷題", 1)[1])) if "### 刷題" in overview else set()
     if len(names) != len(set(names)):
         raise ValueError("Dashboard has duplicate note links")
 
@@ -198,8 +200,7 @@ def export(vault: Path, site: Path) -> None:
             raise ValueError(f"TikZ remains in source note: {source}")
         slug = properties["slug"]
         title = properties["title"]
-        topic_section = (
-            "problem-solving" if name in problem_names else
+        topic_section = properties["topic"] or (
             "algorithms" if name in algorithm_names else
             "data-structures" if name in names else None
         )

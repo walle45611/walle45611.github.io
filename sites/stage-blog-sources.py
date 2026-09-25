@@ -30,9 +30,10 @@ def main() -> None:
             if not asset.is_file():
                 raise SystemExit(f"Missing asset: {asset}")
             allowed.add(str(asset.relative_to(ROOT)))
-    for name in ("raw/my-vault/00_Dashboard/資料結構和演算法 Overview.md",):
-        if (ROOT / name).is_file():
-            allowed.add(name)
+    name = "raw/my-vault/00_Dashboard/資料結構和演算法 Overview.md"
+    if not (ROOT / name).is_file():
+        raise SystemExit(f"Missing dashboard: {name}")
+    allowed.add(name)
     tracked = subprocess.check_output(
         ["git", "ls-files", "-z", "--", "raw/my-vault"], cwd=ROOT
     ).decode().split("\0")

@@ -10,6 +10,8 @@ Blog 從 `raw/` 的 Markdown 與發佈 metadata 建置，部署至 Cloudflare Pa
 
 `sites/sync-vault-posts.py` 在每次建置時掃描 `raw/my-vault/Note/`，轉換 Obsidian 連結和圖片，輸出到被忽略的 `sites/.generated/`。產生檔不需編輯或提交。CI 會執行同一流程，再由 Rust builder 產生網站。
 
+`blog_topic: problem-solving` 讓刷題文章列在網站主題頁的「刷題」區。Obsidian 的 `刷題 Overview` 按演算法題型與 SQL 題型導覽；`SQL Overview` 則按資料庫與 SQL 語句導覽。兩份總覽保存在完整的本機/iCloud Vault 副本，不另外加入公開 Git。
+
 ## 本機建置
 
 ```bash

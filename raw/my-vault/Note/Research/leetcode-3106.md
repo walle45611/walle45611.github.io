@@ -8,6 +8,7 @@ categories: Programming
 abbrlink: cbef
 date: 2024-08-15 12:20:29
 blog: true
+blog_topic: problem-solving
 legacy_blog_file: "source/_posts/leetcode-3106.md"
 blog_title: "LeetCode 3106"
 blog_date: 2024-08-15

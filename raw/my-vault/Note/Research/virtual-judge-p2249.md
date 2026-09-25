@@ -8,6 +8,7 @@ categories: Programming
 abbrlink: 3fea
 date: 2024-08-20 18:32:04
 blog: true
+blog_topic: problem-solving
 legacy_blog_file: "source/_posts/virtual-judge-P2249.md"
 blog_title: "Luogu P2249"
 blog_date: 2024-08-20

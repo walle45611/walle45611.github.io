@@ -8,6 +8,7 @@ categories: Programming
 abbrlink: ceb
 date: 2024-08-15 18:31:40
 blog: true
+blog_topic: problem-solving
 legacy_blog_file: "source/_posts/virtual-judge-HDU-1232.md"
 blog_title: "HDU 1232"
 blog_date: 2024-08-15

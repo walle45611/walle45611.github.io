@@ -9,6 +9,7 @@ categories: Programming
 abbrlink: 15cb
 date: 2024-08-15 15:33:27
 blog: true
+blog_topic: problem-solving
 legacy_blog_file: "source/_posts/codeforces-0815.md"
 blog_title: "Codeforces 580C、1996B"
 blog_date: 2024-08-15

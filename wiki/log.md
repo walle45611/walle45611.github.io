@@ -499,3 +499,10 @@
 - checked: 原始 My vault 的 `00_Dashboard/`、四篇 SQL 題解與 Oracle Database 19c 安裝筆記。
 - fixed: 原始 My vault 新增 `00_Dashboard/database-overview.md`，只收資料庫安裝與管理筆記；移除原始 `SQL Overview.md`，刷題總覽保留 SQL 題號分類且不再連往 SQL Overview。
 - gaps: 依 `raw/` 既有來源不可改寫的規則，LLM Wiki 的舊 `raw/my-vault/00_Dashboard/SQL Overview.md` 與相應摘要仍是舊版；未將原始 Vault 的刪除同步至 `raw/`。
+
+## [2026-09-26] lint | Blog 與知識庫維護改由 Rust 執行並修正 RSS
+
+- checked: `scripts/` 四支 Python 腳本、Rust 網站建置器、Cloudflare Pages 工作流程、Blog 文章與附件輸出、RSS feed。
+- fixed: Rust `site-builder` 直接讀取 My vault 的 Blog metadata 並轉換文章與圖片；新增 `sync-vault`、`archive`、`stage-assets` 指令，移除 `scripts/` 的四支 Python 腳本及部署流程中的 Python 步驟。RSS 改由 `rss` crate 產生完整 item 與符合 RSS 格式的發佈日期。
+- verified: 68 篇轉換文章及 172 個附件與舊流程的雜湊一致；387 份來源的歸檔檢查為 missing=0、changed=0；Rust 測試、Clippy 與 RSS XML 解析通過。
+- gaps: `sync-vault` 涉及覆寫 `raw/my-vault/`，本次僅以暫存目錄測試鏡像邏輯，未執行實際來源同步。

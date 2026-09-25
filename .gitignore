@@ -64,8 +64,6 @@ raw/my-vault/Note/Tech/.claude/settings.local.json
 
 # Generated builds and temporary pages derived from raw/my-vault
 .build/
-__pycache__/
-*.pyc
 node_modules/
 .wrangler/
 .env*

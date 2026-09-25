@@ -11,6 +11,9 @@ use serde_yaml::Value;
 use sha2::{Digest, Sha256};
 use unicode_normalization::UnicodeNormalization;
 
+mod maintenance;
+mod vault;
+
 const SITE_URL: &str = "https://walle-blog.walle4561.chatgpt.site";
 const GA_ID: &str = "G-G0PYR1QYT5";
 const ADSENSE_CLIENT: &str = "ca-pub-7412528508334178";
@@ -60,7 +63,24 @@ struct BuilderConfig {
 }
 
 fn main() {
+    let arguments: Vec<String> = env::args().skip(1).collect();
+    if let Some(command) = arguments.first() {
+        if matches!(command.as_str(), "sync-vault" | "archive" | "stage-assets") {
+            if let Err(error) = maintenance::run(command, &arguments[1..]) {
+                eprintln!("{command} failed: {error}");
+                std::process::exit(1);
+            }
+            return;
+        }
+    }
     let config = load_config();
+    if let Err(error) = vault::export(
+        &config._project_root.join("raw/my-vault"),
+        &config._project_root.join(".build/site"),
+    ) {
+        eprintln!("vault export failed: {error}");
+        std::process::exit(1);
+    }
     let mut articles = Vec::new();
     for (directory, prefix) in [(config.raw_dir.join("web-clipper"), "raw/web-clipper")] {
         if !directory.exists() {
@@ -179,6 +199,9 @@ fn print_usage_and_exit(code: i32) -> ! {
         "\
 Usage:
   site-builder [--raw-dir <path>] [--out-dir <path>] [--project-dir <path>]
+  site-builder sync-vault [--source <path>]
+  site-builder archive [--check | --refresh-generated]
+  site-builder stage-assets
 
 Options:
   --raw-dir      Path to raw markdown source (default: <project>/raw)
@@ -402,25 +425,33 @@ fn render_feed(articles: &[Article]) -> String {
         .iter()
         .take(20)
         .map(|article| {
-            let date = article
-                .date
-                .as_ref()
-                .map(|date| format!("<pubDate>{}T00:00:00Z</pubDate>", date));
-            format!(
-                "<item><title>{}</title><link>{}</link><guid>{}</guid>{}</description>{}</item>",
-                escape_html(&article.title),
-                page_url(&article.route),
-                page_url(&article.route),
-                date.unwrap_or_else(String::new),
-                escape_html(&article.excerpt)
-            )
+            let url = page_url(&article.route);
+            let pub_date = article.date.as_deref().and_then(|date| {
+                chrono::NaiveDate::parse_from_str(date, "%Y-%m-%d")
+                    .ok()
+                    .map(|value| value.format("%a, %d %b %Y 00:00:00 +0000").to_string())
+            });
+            rss::ItemBuilder::default()
+                .title(Some(article.title.clone()))
+                .link(Some(url.clone()))
+                .guid(Some(
+                    rss::GuidBuilder::default()
+                        .value(url)
+                        .permalink(true)
+                        .build(),
+                ))
+                .pub_date(pub_date)
+                .description(Some(article.excerpt.clone()))
+                .build()
         })
-        .collect::<Vec<_>>()
-        .join("");
-    format!(
-        "<?xml version=\"1.0\" encoding=\"UTF-8\"?><rss version=\"2.0\"><channel><title>Walle Blog</title><link>{}</link><description>Notes on software, systems, and language models.</description>{}</channel></rss>",
-        SITE_URL, items
-    )
+        .collect::<Vec<_>>();
+    rss::ChannelBuilder::default()
+        .title("Walle Blog")
+        .link(SITE_URL)
+        .description("Notes on software, systems, and language models.")
+        .items(items)
+        .build()
+        .to_string()
 }
 
 fn render_sitemap(articles: &[Article]) -> String {
@@ -993,5 +1024,31 @@ mod tests {
         let html = render_markdown_to_html("# Heading\n\n`code`");
         assert!(html.contains("<h1"));
         assert!(html.contains("<code>code</code>"));
+    }
+
+    #[test]
+    fn feed_is_valid_rss_with_a_description_and_publication_date() {
+        let article = Article {
+            source_file: "raw/my-vault/Note/test.md".into(),
+            source_hash: "test".into(),
+            route: "/articles/posts/test/".into(),
+            slug: "test".into(),
+            title: "測試 & RSS".into(),
+            date: Some("2026-09-24".into()),
+            excerpt: "A < B & C".into(),
+            body_html: String::new(),
+            kind: "post".into(),
+            kind_label: "Post".into(),
+            route_kind: "posts".into(),
+            topic_section: None,
+        };
+        let feed = render_feed(&[article]);
+        let channel = rss::Channel::read_from(feed.as_bytes()).expect("valid RSS XML");
+        assert_eq!(channel.items().len(), 1);
+        assert_eq!(channel.items()[0].description(), Some("A < B & C"));
+        assert_eq!(
+            channel.items()[0].pub_date(),
+            Some("Thu, 24 Sep 2026 00:00:00 +0000")
+        );
     }
 }

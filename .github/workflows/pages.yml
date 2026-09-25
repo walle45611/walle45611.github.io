@@ -30,9 +30,6 @@ jobs:
         run: cargo build --target wasm32-unknown-unknown -p renderer-wasm --release
         working-directory: ./sites/builder-rs
 
-      - name: Prepare blog posts from raw vault notes
-        run: python3 scripts/sync-vault-posts.py
-
       - name: Generate static site
         run: cargo run -p site-builder --release -- --project-dir "$GITHUB_WORKSPACE" --raw-dir "$GITHUB_WORKSPACE/raw"
         working-directory: ./sites/builder-rs

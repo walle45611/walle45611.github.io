@@ -527,3 +527,9 @@
 - updated: 原始 My vault 與 `raw/my-vault/` 的這篇筆記加入 `blog: true`、標題、日期與固定網址；Rust 匯出器對存在但尚未發佈的 Obsidian 筆記連結顯示文字；更新本篇摘要來源雜湊、Blog 連結與 `wiki/index.md` 條目。
 - verified: 本機網站產生 69 篇文章、175 個附件；新文章的三個圖片／動畫資源都存在，文章已進入 Archive；Rust 單元測試與格式檢查通過。
 - gaps: `archive --check` 另指出刷題 Overview、SQL Overview、CASE WHEN 三份與本篇無關的來源摘要雜湊已不同步；本次未改寫其摘要。兩篇尚未發佈的延伸閱讀在 Blog 上僅顯示名稱，Obsidian 原筆記仍保留內部連結。
+
+## [2026-09-26] lint | IEEE LaTeX Blog 部署素材補齊
+
+- checked: GitHub Actions 的新文章部署失敗，缺少 `TeXstudio-F5-編譯與預覽.gif`；核對本篇引用的兩張 MiKTeX 圖與一個 GIF 都是 Blog 實際使用的素材。
+- fixed: 使用既有 Rust `site-builder stage-assets`，將這三個先前被忽略的素材加入 Git；未加入其他未使用附件。
+- verified: 暫存區新增三個素材，沒有移除既有素材。

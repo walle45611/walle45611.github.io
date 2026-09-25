@@ -18,4 +18,5 @@
 
 ## Navigation
 
+- [資料結構與演算法](../concepts/data-structures-and-algorithms.md)
 - [回到 Research 歸檔](<../archives/my-vault-research.md>)

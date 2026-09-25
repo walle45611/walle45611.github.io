@@ -17,6 +17,7 @@ Overlay 是一種連通方式，不是所有容器網路的必要條件。MTU、
 
 ## Related Concepts
 
+- [network-protocol-layers](./network-protocol-layers.md)：IP、傳輸層與 DNS 的責任分層是理解容器封包路徑的基礎。
 - [microk8s-production-readiness](./microk8s-production-readiness.md)：部署基線之外，另需理解節點與 Pod 的封包路徑。
 - [linux-user-namespaces](./linux-user-namespaces.md)：補充 network namespace 的權限歸屬及內外 UID/GID 映射邊界。
 

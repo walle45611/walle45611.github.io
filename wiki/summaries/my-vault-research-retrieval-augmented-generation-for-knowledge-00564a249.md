@@ -17,4 +17,5 @@
 
 ## Navigation
 
+- [檢索增強生成（RAG）](../concepts/retrieval-augmented-generation.md)
 - [回到 Research 歸檔](<../archives/my-vault-research.md>)

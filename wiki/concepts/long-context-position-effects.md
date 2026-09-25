@@ -28,6 +28,7 @@
 
 ## Related Concepts
 
+- [retrieval-augmented-generation](./retrieval-augmented-generation.md)
 - [context-engineering](./context-engineering.md)
 - [harness-engineering](./harness-engineering.md)
 

@@ -512,3 +512,11 @@
 - checked: 已部署的 `https://blog.walle4561.com/feed.xml` 可解析，但舊版文章連結指向已回傳 404 的 `walle-blog.walle4561.chatgpt.site`；確認現行 Blog 文章網址回傳 200。
 - fixed: 網站公開網址常數改為 `https://blog.walle4561.com`，供 RSS、sitemap 與頁面 canonical 使用。
 - verified: 本機建置的 RSS XML 可解析，文章連結與 sitemap 不再包含舊網域；Rust 測試通過。
+
+## [2026-09-26] ingest | 概念層主題整理
+
+- source: 已歸檔的 My vault 資料結構、作業系統、網路與 RAG 摘要，以及既有概念頁。
+- created: `wiki/concepts/data-structures-and-algorithms.md`、`wiki/concepts/operating-system-concurrency.md`、`wiki/concepts/network-protocol-layers.md`、`wiki/concepts/retrieval-augmented-generation.md`。
+- updated: `wiki/index.md` 的全部概念條目按主題分組；相關既有概念頁與四篇代表性摘要補上雙向導覽。
+- verified: 37 篇概念頁全部列入索引；所檢查的 Wiki Markdown 相對連結沒有失效目標；`git diff --check` 通過。
+- gaps: 資料庫總覽的原始 My vault 與 `raw/my-vault/` 副本仍不同步；未用舊副本推導新的資料庫概念頁。其餘來源摘要仍可逐步按重複主題整合，不把每篇摘要都拆成概念頁。

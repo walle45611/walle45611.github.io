@@ -17,6 +17,7 @@ User namespace 將程序看到的 UID/GID 與 capabilities 限定在一個權限
 
 ## Related Concepts
 
+- [operating-system-concurrency](./operating-system-concurrency.md)：共享狀態同步與資源等待是不同於 namespace 權限隔離的作業系統問題。
 - [container-networking](./container-networking.md)：network namespace 隔離網路資源；user namespace 決定這些資源的權限歸屬。
 
 ## Sources

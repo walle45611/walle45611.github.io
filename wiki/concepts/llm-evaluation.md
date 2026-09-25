@@ -46,6 +46,7 @@ Benchmark 應服務於具體決策：MMLU 可代表多領域知識，AIME 與 PI
 
 ## Related Concepts
 
+- [retrieval-augmented-generation](./retrieval-augmented-generation.md)
 - [[nlp-evaluation-metrics]]
 - [[self-correction-in-language-models]]
 - [[harness-engineering]]

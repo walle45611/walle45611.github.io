@@ -9,42 +9,58 @@
 
 ## Concepts
 
-- [linux-user-namespaces](./concepts/linux-user-namespaces.md): 整理 UID/GID 映射、capabilities 與其他 namespace 資源的權限歸屬。
-- [kubernetes-design-principles](./concepts/kubernetes-design-principles.md): 整理宣告式 API、共同 API 協作、應用介面與儲存可攜性的設計理由及保證邊界。
+### 資料結構與系統基礎
 
-- [container-networking](./concepts/container-networking.md): 整理 namespace、veth、bridge、跨節點路由與 overlay 的分層及排錯邊界。
+- [data-structures-and-algorithms](./concepts/data-structures-and-algorithms.md): 連接陣列、樹、圖、排序與最佳化筆記，區分概念和刷題紀錄。
+- [operating-system-concurrency](./concepts/operating-system-concurrency.md): 整理競爭條件、同步工具、經典問題與死結管理。
+- [network-protocol-layers](./concepts/network-protocol-layers.md): 以網路分層串連 IP、TCP/UDP、DNS 與容器網路。
 - [javascript-event-loop](./concepts/javascript-event-loop.md): 整理瀏覽器 call stack、task 與 microtask 排程，區分計時到期與實際執行。
+- [linux-user-namespaces](./concepts/linux-user-namespaces.md): 整理 UID/GID 映射、capabilities 與其他 namespace 資源的權限歸屬。
+- [container-networking](./concepts/container-networking.md): 整理 namespace、veth、bridge、跨節點路由與 overlay 的分層及排錯邊界。
 
-- [formal-verification-for-ai-generated-software](./concepts/formal-verification-for-ai-generated-software.md): 整合 model checking、vericoding、SDD 與需求規格的保證邊界。
-- [transformer-attention-fundamentals](./concepts/transformer-attention-fundamentals.md): 整理 attention 資料流與 Transformer 基礎，區分模型機制和上下文管理。
+### 雲端與軟體交付
 
-- [agentic-knowledge-base-maintenance](./concepts/agentic-knowledge-base-maintenance.md): 統整知識庫型 agent 的維護基線，聚焦 `raw/`/`wiki/` 分層、規則路由、背景執行管線與對外輸出分離。
-- [agent-design-patterns](./concepts/agent-design-patterns.md): 統整 single、sequential、parallel 等基礎 agent workflow pattern 的選型邏輯，聚焦 control、latency、cost 與責任分工的 trade-off。
-- [cloudflare-queue-consumer-modes](./concepts/cloudflare-queue-consumer-modes.md): 統整 Cloudflare Queues 中 push 與 pull consumer 的選型邏輯，聚焦誰控制消費節奏、如何處理 ack/retry，以及 `visibility_timeout` 的運維含義。
-- [context-engineering](./concepts/context-engineering.md): 聚焦 context window 管理的核心方法：按需載入、子代理摘要、記憶檢索、compaction 與 pruning 的取捨。
-- [long-context-position-effects](./concepts/long-context-position-effects.md): 統整長輸入中的位置效應，聚焦 lost-in-the-middle、RAG 排序品質、top-k 擴張限制與 query-aware contextualization。
-- [harness-engineering](./concepts/harness-engineering.md): 目前知識庫對 AI agent 駕馭工程的整合頁，聚焦規則檔、工具邊界與生成-評估回饋迴圈的設計原則。
-- [local-llm-deployment](./concepts/local-llm-deployment.md): 統整地端與私有雲 LLM 部署的模型容量、推論引擎、資料邊界、硬體 POC 與 sandbox 隔離取捨。
-- [self-correction-in-language-models](./concepts/self-correction-in-language-models.md): 統整語言模型如何透過 decoding、workflow 與 reasoning 訓練進行自我修正，聚焦外部回饋、算力成本與能力邊界。
-- [verbalized-feedback-learning](./concepts/verbalized-feedback-learning.md): 整理自然語言回饋如何在多輪流程中改變 agent 行為，及其與檢查工具、評量設計、長期學習的關係。
-- [effective-learning](./concepts/effective-learning.md): 目前知識庫對高效學習的初始整合頁，聚焦深層處理、變化練習、回饋品質與直覺校正條件。
-- [ai-assisted-research-workflows](./concepts/ai-assisted-research-workflows.md): 統整 AI 輔助研究中從文獻檢索、矩陣比較到驗證與責任邊界的工作流程設計。
-- [parameter-efficient-fine-tuning](./concepts/parameter-efficient-fine-tuning.md): 統整 PEFT、LoRA 與 QLoRA 的微調思路，聚焦只訓練部分參數時的容量、層覆蓋與超參數取捨。
-- [llm-serving-compatibility](./concepts/llm-serving-compatibility.md): 統整模型、adapter、runtime 與 CUDA wheel 的相容性檢查，聚焦 serving 可用性與 native extension 載入邊界。
-- [model-quantization](./concepts/model-quantization.md): 整理模型量化如何透過降低數值精度節省記憶體，並說明它在 QLoRA 中的角色與取捨。
-- [nlp-evaluation-metrics](./concepts/nlp-evaluation-metrics.md): 統整 NLP 自動評估指標的選型邏輯，聚焦 ROUGE、reference overlap、precision/recall/F1 與生成品質代理指標的限制。
+- [kubernetes-design-principles](./concepts/kubernetes-design-principles.md): 整理宣告式 API、共同 API 協作、應用介面與儲存可攜性的設計理由及保證邊界。
 - [microk8s-production-readiness](./concepts/microk8s-production-readiness.md): 統整 MicroK8s 在生產環境的適用條件、基礎元件基線與多節點運維重點。
 - [kubernetes-gitops-delivery](./concepts/kubernetes-gitops-delivery.md): 統整 Helm、Argo CD、Image Updater 與 Sealed Secrets 在 Kubernetes 上形成的 GitOps 交付鏈。
+- [cloudflare-queue-consumer-modes](./concepts/cloudflare-queue-consumer-modes.md): 統整 Cloudflare Queues 中 push 與 pull consumer 的選型邏輯，聚焦誰控制消費節奏、如何處理 ack/retry，以及 `visibility_timeout` 的運維含義。
 - [cloudflare-workers-ai-pricing-model](./concepts/cloudflare-workers-ai-pricing-model.md): 聚焦 Workers AI 的 daily quota、超額計費與超限失敗行為如何影響成本與可用性治理。
 - [neuron-based-ai-cost-metering](./concepts/neuron-based-ai-cost-metering.md): 整理以 neurons 作為跨模型統一成本度量的判讀方式與實務管控啟發。
-- [obsidian-sync-strategies](./concepts/obsidian-sync-strategies.md): 統整 Obsidian 免費同步方案的選型邏輯，聚焦同步與備份的邊界、避免混用，以及 Syncthing 與雲端同步工具的取捨。
-- [opencode](./concepts/opencode.md): 統整 OpenCode 作為開源版 Claude Code 的核心定位、優勢與進階 Agent 特性。
-- [microsoft-entra](./concepts/microsoft-entra.md): 統整 Microsoft Entra 身份與網路存取產品家族，涵蓋零信任存取、ID 管理、外部 ID 與 Agent ID 等核心組件。
-- [ai-coding-tools](./concepts/ai-coding-tools.md): 統整 AI 程式碼輔助工具的發展趨勢與知識庫中的代表性工具。
 - [nuitka-and-docker-deployment](./concepts/nuitka-and-docker-deployment.md): 統整 Nuitka 與 Docker 部署方案，說明高效能與安全部署實務。
-- [social-english-and-small-talk](./concepts/social-english-and-small-talk.md): 統整社交英文與 small talk 的語用功能，聚焦問候、回應、接話、追問與低風險寒暄開場。
+- [microsoft-entra](./concepts/microsoft-entra.md): 統整 Microsoft Entra 身份與網路存取產品家族，涵蓋零信任存取、ID 管理、外部 ID 與 Agent ID 等核心組件。
+- [obsidian-sync-strategies](./concepts/obsidian-sync-strategies.md): 統整 Obsidian 免費同步方案的選型邏輯，聚焦同步與備份的邊界、避免混用，以及 Syncthing 與雲端同步工具的取捨。
+
+### 模型、檢索與評估
+
+- [transformer-attention-fundamentals](./concepts/transformer-attention-fundamentals.md): 整理 attention 資料流與 Transformer 基礎，區分模型機制和上下文管理。
+- [retrieval-augmented-generation](./concepts/retrieval-augmented-generation.md): 比較原始 RAG、Atlas、Agentic RAG 與醫療檢索評測的適用邊界。
+- [long-context-position-effects](./concepts/long-context-position-effects.md): 統整長輸入中的位置效應，聚焦 lost-in-the-middle、RAG 排序品質、top-k 擴張限制與 query-aware contextualization。
+- [context-engineering](./concepts/context-engineering.md): 聚焦 context window 管理的核心方法：按需載入、子代理摘要、記憶檢索、compaction 與 pruning 的取捨。
+- [parameter-efficient-fine-tuning](./concepts/parameter-efficient-fine-tuning.md): 統整 PEFT、LoRA 與 QLoRA 的微調思路，聚焦只訓練部分參數時的容量、層覆蓋與超參數取捨。
+- [model-quantization](./concepts/model-quantization.md): 整理模型量化如何透過降低數值精度節省記憶體，並說明它在 QLoRA 中的角色與取捨。
+- [local-llm-deployment](./concepts/local-llm-deployment.md): 統整地端與私有雲 LLM 部署的模型容量、推論引擎、資料邊界、硬體 POC 與 sandbox 隔離取捨。
+- [llm-serving-compatibility](./concepts/llm-serving-compatibility.md): 統整模型、adapter、runtime 與 CUDA wheel 的相容性檢查，聚焦 serving 可用性與 native extension 載入邊界。
 - [llm-evaluation](./concepts/llm-evaluation.md): 統整 LLM 輸出、事實性、agent 工作流與 benchmark 的評估層次、偏誤與選型原則。
+- [nlp-evaluation-metrics](./concepts/nlp-evaluation-metrics.md): 統整 NLP 自動評估指標的選型邏輯，聚焦 ROUGE、reference overlap、precision/recall/F1 與生成品質代理指標的限制。
+- [self-correction-in-language-models](./concepts/self-correction-in-language-models.md): 統整語言模型如何透過 decoding、workflow 與 reasoning 訓練進行自我修正，聚焦外部回饋、算力成本與能力邊界。
+- [verbalized-feedback-learning](./concepts/verbalized-feedback-learning.md): 整理自然語言回饋如何在多輪流程中改變 agent 行為，及其與檢查工具、評量設計、長期學習的關係。
+
+### Agent 與知識工作
+
+- [agent-design-patterns](./concepts/agent-design-patterns.md): 統整 single、sequential、parallel 等基礎 agent workflow pattern 的選型邏輯，聚焦 control、latency、cost 與責任分工的 trade-off。
+- [harness-engineering](./concepts/harness-engineering.md): 目前知識庫對 AI agent 駕馭工程的整合頁，聚焦規則檔、工具邊界與生成-評估回饋迴圈的設計原則。
+- [agentic-knowledge-base-maintenance](./concepts/agentic-knowledge-base-maintenance.md): 統整知識庫型 agent 的維護基線，聚焦 `raw/`/`wiki/` 分層、規則路由、背景執行管線與對外輸出分離。
+- [formal-verification-for-ai-generated-software](./concepts/formal-verification-for-ai-generated-software.md): 整合 model checking、vericoding、SDD 與需求規格的保證邊界。
+- [ai-assisted-research-workflows](./concepts/ai-assisted-research-workflows.md): 統整 AI 輔助研究中從文獻檢索、矩陣比較到驗證與責任邊界的工作流程設計。
+- [ai-coding-tools](./concepts/ai-coding-tools.md): 統整 AI 程式碼輔助工具的發展趨勢與知識庫中的代表性工具。
+- [opencode](./concepts/opencode.md): 統整 OpenCode 作為開源版 Claude Code 的核心定位、優勢與進階 Agent 特性。
+
+### 學習與表達
+
+- [effective-learning](./concepts/effective-learning.md): 目前知識庫對高效學習的初始整合頁，聚焦深層處理、變化練習、回饋品質與直覺校正條件。
 - [writing-style-and-plain-english](./concepts/writing-style-and-plain-english.md): 整合 plain English 的讀者導向寫作與 academic style 的作者位置、hedging、脈絡及證據支撐。
+- [social-english-and-small-talk](./concepts/social-english-and-small-talk.md): 統整社交英文與 small talk 的語用功能，聚焦問候、回應、接話、追問與低風險寒暄開場。
+
 ## Summaries
 
 - [my-vault-dashboard-ai-overview-839780b37](./summaries/my-vault-dashboard-ai-overview-839780b37.md) · 2026-09-26: 整理「AI Overview」的原筆記內容與章節。

@@ -21,4 +21,5 @@
 
 ## Navigation
 
+- [作業系統並行與同步](../concepts/operating-system-concurrency.md)
 - [My vault：Tech 筆記](../archives/my-vault-tech.md)

@@ -34,6 +34,7 @@
 
 ## Related Concepts
 
+- [retrieval-augmented-generation](./retrieval-augmented-generation.md)：外部檢索的設計與評估，延伸這裡的上下文載入策略。
 - [harness-engineering](./harness-engineering.md)
 - [agentic-knowledge-base-maintenance](./agentic-knowledge-base-maintenance.md)
 - [long-context-position-effects](./long-context-position-effects.md)

@@ -18,6 +18,6 @@
 - Default profile 可以保存常用工具，再以 copy from 建立新的工作環境。
 - Profile 也可以建立、切換或刪除，讓 VS Code 啟動時載入較小的設定集合。
 
-## Related Concepts
+## Navigation
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
+- [My vault：Tech 筆記](../archives/my-vault-tech.md)

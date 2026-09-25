@@ -33,3 +33,7 @@ $$
 來源為課程逐字稿，未包含完整投影片；公式依逐字稿 1:32:21 的口述整理。影片發布日期未填，Autumn 2025 是課程標示，不替代發布日期。這裡說明的是原始 encoder-decoder 架構，不代表所有後續 LLM 都有 cross-attention。
 
 本講為 [[transformer-attention-fundamentals]] 提供基礎，並補充 [[context-engineering]] 的模型機制背景：attention 的上下文化表示與工作流程中的摘要／compaction 是不同層次。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

@@ -1,0 +1,268 @@
+{
+	"nodes": [
+		{
+			"id": "b94942784861b694",
+			"type": "group",
+			"x": 960,
+			"y": -2480,
+			"width": 3360,
+			"height": 2696,
+			"label": "ALU Control Unit"
+		},
+		{
+			"id": "30aab2db4fd6e17f",
+			"type": "group",
+			"x": -1440,
+			"y": -2480,
+			"width": 2160,
+			"height": 2342,
+			"label": "Main Control"
+		},
+		{
+			"id": "b863571a95a767a3",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Unit_construction/07-Main Control - 方便記得所以 Branch 也算在 MUX.png",
+			"x": -1360,
+			"y": -1880,
+			"width": 692,
+			"height": 360
+		},
+		{
+			"id": "f1ec31b6e6b67919",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Unit_construction/09-Main Control - 方便記得所以 Branch 也算在 MUX.png",
+			"x": -1360,
+			"y": -1336,
+			"width": 706,
+			"height": 200
+		},
+		{
+			"id": "7aacef104afcd46e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Unit_construction/10-Main Control - 方便記得所以 Branch 也算在 MUX.png",
+			"x": -337,
+			"y": -1336,
+			"width": 698,
+			"height": 400
+		},
+		{
+			"id": "bf8a51d471a91059",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Unit_construction/03-Main Control.png",
+			"x": -1360,
+			"y": -2400,
+			"width": 755,
+			"height": 367
+		},
+		{
+			"id": "f6aec18aff114250",
+			"type": "text",
+			"text": "- 方便記得所以 Branch 也算在 MUX ",
+			"x": -314,
+			"y": -1700,
+			"width": 250,
+			"height": 58,
+			"color": "1"
+		},
+		{
+			"id": "a61403c518b07197",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Unit_construction/11-Main Control.png",
+			"x": -314,
+			"y": -840,
+			"width": 606,
+			"height": 682
+		},
+		{
+			"id": "264b6969b50991ac",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Unit_construction/12-計算機組織_TOPIC_3_Unit_const.png",
+			"x": -1360,
+			"y": 800,
+			"width": 1204,
+			"height": 840
+		},
+		{
+			"id": "d0397981fb694dc0",
+			"type": "text",
+			"text": "- 驗證方式很簡單如果是負數的話那麼你全部皆最高位數，然後 1 to 0, 0 to 1 然後最後加 1，就會得到原本的直再加上正負，所以可以這樣用",
+			"x": -978,
+			"y": 1800,
+			"width": 440,
+			"height": 87,
+			"color": "1"
+		},
+		{
+			"id": "fd1d23234ca9908f",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Unit_construction/08-ALU Control Unit - ALU Control K-map 化簡過程.png",
+			"x": 2720,
+			"y": -1565,
+			"width": 575,
+			"height": 320
+		},
+		{
+			"id": "81c02b75d40c5267",
+			"type": "text",
+			"text": "# 多層控制 multiple levels of control\n\n**核心觀念**  \n用多個較小的控制器分工：Main Control 處理高階指令型態，ALU Control 決定具體 ALU 動作。可縮小主控器邏輯，潛在縮短關鍵路徑並提升時脈。\n\n**資料流與介面**\n\n```\nopcode ──► Main Control ──► {RegDst, Branch, MemRead, MemWrite,\n                               MemtoReg, RegWrite, ALUSrc, ALUOp}\n                                          │\n                               funct + ALUOp ──► ALU Control ──► ALU操作碼\n```\n\n**職責分工**\n\n- Main Control：只看 `opcode`，輸出高階控制訊號與精簡 `ALUOp`。\n    \n- ALU Control：以 `ALUOp` + R-type `funct`，產生 ALU 的最終操作碼。\n    \n\n**常見對應（MIPS 範例）**\n\n- `ALUOp=00` → `ADD`（`lw/sw` 位址計算）\n    \n- `ALUOp=01` → `SUB`（`beq` 比較）\n    \n- `ALUOp=10` + `funct`：`100000`→ADD，`100010`→SUB，`100100`→AND，`100101`→OR，`101010`→SLT\n    \n\n**優缺點**\n\n- 優點：主控器面積更小、邏輯深度較淺、模組化易擴充。\n    \n- 代價：多一級邏輯與介面協定，需小心時序與解碼延遲。\n    \n",
+			"x": 2080,
+			"y": -3790,
+			"width": 759,
+			"height": 710
+		},
+		{
+			"id": "f8b2be427b2a1c8f",
+			"type": "text",
+			"text": "# ALU Control K-map 化簡過程\n\n---\n\n## Operation3\n\n- **需求**：所有指令的輸出此位 = 0。\n    \n- **K-map**：全 0，僅 A1A0=11 為 don’t care。\n    \n- **化簡**：`Op3 = 0`\n    \n\n---\n\n## Operation2 (依 A0、A1、F1)\n\n- **需求**：\n    \n    - lw/sw (00) → 0\n        \n    - beq (01) → 1\n        \n    - R-type (10) → 只有 sub/slt (F1=1) 才是 1\n        \n    - A1A0=11 → don’t care\n        \n- **K-map (列=A1A0，欄=F1F0)**\n    \n\n```\n            F1F0\n           00  01  11  10\nA1A0=00     0   0   0   0\nA1A0=01     1   1   1   1\nA1A0=11     x   x   x   x\nA1A0=10     0   0   1   1\n```\n\n- **分組**：\n    \n    - 整列 A1A0=01 (含 11 的 x) → A0\n        \n    - A1A0=10 且 F1=1 (01,11) → A1·F1\n        \n- **化簡**：`Op2 = A0 + (A1·F1)`\n    \n\n---\n\n## Operation1 (依 A1、F2)\n\n- **需求**：\n    \n    - lw/sw (00) → 1\n        \n    - beq (01) → 1\n        \n    - R-type (10)：add/sub/slt (F2=0) → 1；and/or (F2=1) → 0\n        \n    - A1A0=11 → don’t care\n        \n- **K-map (列=A1A0，欄=F3F2)**\n    \n\n```\n            F3F2\n           00  01  11  10\nA1A0=00     1   1   1   1\nA1A0=01     1   1   1   1\nA1A0=11     x   x   x   x\nA1A0=10     1   0   0   1\n```\n\n- **分組**：\n    \n    - 上兩行全 1 → A1′\n        \n    - R-type 列中 F2=0 的兩格 → F2′\n        \n- **化簡**：`Op1 = A1′ + F2′`\n    \n\n---\n\n## Operation0 (依 A1、F3、F0)\n\n- **需求**：\n    \n    - lw/sw、beq → 0\n        \n    - R-type：or(F0=1) → 1；slt(F3=1) → 1；其餘 0\n        \n    - A1A0=11 → don’t care\n        \n- **K-map (列=A1A0，欄=F3F0)**\n    \n\n```\n            F3F0\n           00  01  11  10\nA1A0=00     0   0   0   0\nA1A0=01     0   0   0   0\nA1A0=11     x   x   x   x\nA1A0=10     0   1   0   1\n```\n\n- **分組**：\n    \n    - (10,01) 與 (11,01 x) → A1·F0\n        \n    - (10,10) 與 (11,10 x) → A1·F3\n        \n- **化簡**：`Op0 = A1·F0 + A1·F3 = A1·(F0 + F3)`\n    \n\n---\n\n# 總結布林函數\n\n```\nOp3 = 0\nOp2 = A0 + (A1·F1)\nOp1 = ¬A1 + ¬F2\nOp0 = A1·(F0 + F3)\n```",
+			"x": 3520,
+			"y": -2130,
+			"width": 606,
+			"height": 2201
+		},
+		{
+			"id": "7c607575fd210087",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Unit_construction/05-ALU Control Unit.png",
+			"x": 1118,
+			"y": -2111,
+			"width": 573,
+			"height": 320
+		},
+		{
+			"id": "f5e4db248c892b6e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Unit_construction/06-ALU Control Unit.png",
+			"x": 1923,
+			"y": -2102,
+			"width": 577,
+			"height": 320
+		},
+		{
+			"id": "689f16ca06247c1a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Unit_construction/01-計算機組織_TOPIC_3_Unit_const.png",
+			"x": 980,
+			"y": -3280,
+			"width": 711,
+			"height": 400
+		},
+		{
+			"id": "56fcd73994fb6de0",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Unit_construction/02-ALU Control Unit.png",
+			"x": 2747,
+			"y": -2440,
+			"width": 521,
+			"height": 275
+		},
+		{
+			"id": "1f32303b72fb1c3a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Unit_construction/04-ALU Control Unit.png",
+			"x": 2720,
+			"y": -2117,
+			"width": 575,
+			"height": 379
+		}
+	],
+	"edges": [
+		{
+			"id": "7c41a50c8eee255d",
+			"fromNode": "7c607575fd210087",
+			"fromSide": "right",
+			"toNode": "f5e4db248c892b6e",
+			"toSide": "left"
+		},
+		{
+			"id": "f19d640a3fbbc093",
+			"fromNode": "f5e4db248c892b6e",
+			"fromSide": "right",
+			"toNode": "1f32303b72fb1c3a",
+			"toSide": "left"
+		},
+		{
+			"id": "979d24e9b1b2412c",
+			"fromNode": "1f32303b72fb1c3a",
+			"fromSide": "bottom",
+			"toNode": "fd1d23234ca9908f",
+			"toSide": "top"
+		},
+		{
+			"id": "8f66ee372dc8c966",
+			"fromNode": "fd1d23234ca9908f",
+			"fromSide": "right",
+			"toNode": "f8b2be427b2a1c8f",
+			"toSide": "left"
+		},
+		{
+			"id": "2e5e0dcf57fb6666",
+			"fromNode": "b863571a95a767a3",
+			"fromSide": "right",
+			"toNode": "f6aec18aff114250",
+			"toSide": "left"
+		},
+		{
+			"id": "88513591eb7ad2a6",
+			"fromNode": "689f16ca06247c1a",
+			"fromSide": "right",
+			"toNode": "81c02b75d40c5267",
+			"toSide": "left"
+		},
+		{
+			"id": "c20d34a4d3063eb4",
+			"fromNode": "689f16ca06247c1a",
+			"fromSide": "bottom",
+			"toNode": "b94942784861b694",
+			"toSide": "top"
+		},
+		{
+			"id": "d8961de9cfe85e35",
+			"fromNode": "56fcd73994fb6de0",
+			"fromSide": "bottom",
+			"toNode": "1f32303b72fb1c3a",
+			"toSide": "top"
+		},
+		{
+			"id": "7d64e5f6919bb88b",
+			"fromNode": "b863571a95a767a3",
+			"fromSide": "bottom",
+			"toNode": "f1ec31b6e6b67919",
+			"toSide": "top"
+		},
+		{
+			"id": "0942f3e3a3c7bf73",
+			"fromNode": "bf8a51d471a91059",
+			"fromSide": "bottom",
+			"toNode": "b863571a95a767a3",
+			"toSide": "top"
+		},
+		{
+			"id": "42381498d295855f",
+			"fromNode": "f1ec31b6e6b67919",
+			"fromSide": "right",
+			"toNode": "7aacef104afcd46e",
+			"toSide": "left"
+		},
+		{
+			"id": "38ed53403811a4bf",
+			"fromNode": "f1ec31b6e6b67919",
+			"fromSide": "right",
+			"toNode": "a61403c518b07197",
+			"toSide": "left"
+		},
+		{
+			"id": "850055e9e815e975",
+			"fromNode": "689f16ca06247c1a",
+			"fromSide": "bottom",
+			"toNode": "30aab2db4fd6e17f",
+			"toSide": "top"
+		},
+		{
+			"id": "fdc73295bc3b77a8",
+			"fromNode": "264b6969b50991ac",
+			"fromSide": "bottom",
+			"toNode": "d0397981fb694dc0",
+			"toSide": "top"
+		}
+	]
+}

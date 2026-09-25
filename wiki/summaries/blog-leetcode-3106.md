@@ -18,6 +18,6 @@
 - 每次接受變換後扣除對應距離，並持續更新結果 `t`。
 - 原文保留題目連結與解題程式，摘要只保留演算法思路。
 
-## Related Concepts
+## Navigation
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
+- [My vault：Research 筆記](../archives/my-vault-research.md)

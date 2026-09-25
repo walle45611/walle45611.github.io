@@ -49,3 +49,7 @@
 
 - 這份來源補強了 `context-engineering` 中對 RAG 與長 context 管理的觀點：問題不只是能塞多少內容，而是模型能否在正確位置讀到真正有用的內容。
 - 它也促成一個更具體的概念層整理：把長 context 中的 serial-position 式偏差獨立成 `long-context-position-effects`，方便後續接到檢索排序、prompt 組裝與多來源 context 設計。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

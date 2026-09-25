@@ -34,3 +34,7 @@ Microsoft Entra 是一系列身份與網路存取產品，旨在協助組織實�
 ## 相關連結
 - [Microsoft Entra 授權](https://learn.microsoft.com/zh-tw/entra/fundamentals/licensing)
 - [身份與存取基礎](https://learn.microsoft.com/zh-tw/entra/fundamentals/identity-fundamental-concepts)
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

@@ -1,0 +1,123 @@
+{
+	"nodes": [
+		{
+			"id": "cf18d3127d45ea93",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Flash/01-NOR flash.png",
+			"x": -280,
+			"y": -320,
+			"width": 399,
+			"height": 166
+		},
+		{
+			"id": "45c183e90f7f2e34",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Flash/02-NOR flash.png",
+			"x": -280,
+			"y": -60,
+			"width": 400,
+			"height": 195
+		},
+		{
+			"id": "dea2984dd8db6820",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Flash/03-寫太多次會壞所以沒有辦法取代硬碟.png",
+			"x": -280,
+			"y": 220,
+			"width": 400,
+			"height": 60
+		},
+		{
+			"id": "5daca328e87e634c",
+			"type": "text",
+			"text": "- NOR flash \n\t\t\n\t- 隨機讀寫一個 word\n\t\t\n\t- 用在 embedded system 當作 instr. memory\n\t\n- NAND flase\n\t\t\n\t- 一次存取一個 block",
+			"x": 210,
+			"y": -42,
+			"width": 410,
+			"height": 160,
+			"color": "1"
+		},
+		{
+			"id": "2c0309587868bd38",
+			"type": "text",
+			"text": "- 寫太多次會壞所以沒有辦法取代硬碟\n- 所以使用交換位置去寫入，常用的換到不常用這樣",
+			"x": 210,
+			"y": 205,
+			"width": 330,
+			"height": 91,
+			"color": "1"
+		},
+		{
+			"id": "59d275044806132c",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Flash/04-寫太多次會壞所以沒有辦法取代硬碟.png",
+			"x": -280,
+			"y": 380,
+			"width": 400,
+			"height": 359
+		},
+		{
+			"id": "282ede9f763105f0",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Flash/05-計算機組織_TOPIC_4_Flash.png",
+			"x": 260,
+			"y": 460,
+			"width": 400,
+			"height": 200
+		},
+		{
+			"id": "3408e03482e05c2a",
+			"type": "text",
+			"text": "- **判斷**：浮動閘極有電子＝**0**，沒電子＝**1**。\n    \n- **寫 0**：Gate 加高電壓 → 電子進入浮動閘極。\n    \n- **擦成 1**：基板/源極加高電壓、Gate 低電 → 電子離開浮動閘極。\n    \n- **讀取**：給小讀電壓試導通。導通＝1，不導通＝0。\n- 讀的速度比較快，寫比較慢，那麼 floating gate 寫久了他會慢慢消失",
+			"x": 238,
+			"y": 720,
+			"width": 445,
+			"height": 214,
+			"color": "1"
+		}
+	],
+	"edges": [
+		{
+			"id": "2e9b126f12e047ee",
+			"fromNode": "cf18d3127d45ea93",
+			"fromSide": "bottom",
+			"toNode": "45c183e90f7f2e34",
+			"toSide": "top"
+		},
+		{
+			"id": "0f097a2dbc98dea0",
+			"fromNode": "45c183e90f7f2e34",
+			"fromSide": "right",
+			"toNode": "5daca328e87e634c",
+			"toSide": "left"
+		},
+		{
+			"id": "6b86b14e0e29db9e",
+			"fromNode": "45c183e90f7f2e34",
+			"fromSide": "bottom",
+			"toNode": "dea2984dd8db6820",
+			"toSide": "top"
+		},
+		{
+			"id": "7ee1cbcd94d0c139",
+			"fromNode": "dea2984dd8db6820",
+			"fromSide": "right",
+			"toNode": "2c0309587868bd38",
+			"toSide": "left"
+		},
+		{
+			"id": "2dc042961c03963a",
+			"fromNode": "59d275044806132c",
+			"fromSide": "right",
+			"toNode": "282ede9f763105f0",
+			"toSide": "left"
+		},
+		{
+			"id": "e53dd230c744587d",
+			"fromNode": "282ede9f763105f0",
+			"fromSide": "bottom",
+			"toNode": "3408e03482e05c2a",
+			"toSide": "top"
+		}
+	]
+}

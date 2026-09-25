@@ -41,3 +41,7 @@ OpenAI 發布了 GPT-5.5，這是目前最聰明且直覺的模型，旨在成�
 
 - [[ai-coding-tools]]
 - [[opencode]]
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

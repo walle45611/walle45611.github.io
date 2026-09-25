@@ -1,0 +1,220 @@
+{
+	"nodes": [
+		{
+			"id": "3012f7c559c604b5",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_07_平行電腦分類/02-taxonomy 就是分類學.png",
+			"x": -180,
+			"y": -180,
+			"width": 400,
+			"height": 174
+		},
+		{
+			"id": "ca1d25db3adb0977",
+			"type": "text",
+			"text": "taxonomy 就是分類學",
+			"x": 300,
+			"y": -123,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "5e3f0b8f187f10b7",
+			"type": "text",
+			"text": "- SISD 就是傳統 Computer",
+			"x": -305,
+			"y": 103,
+			"width": 250,
+			"height": 60
+		},
+		{
+			"id": "899adff118fae950",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_07_平行電腦分類/04-計算機組織_TOPIC_07_平行電腦分類.png",
+			"x": 100,
+			"y": 103,
+			"width": 400,
+			"height": 217
+		},
+		{
+			"id": "451868c8c306da87",
+			"type": "text",
+			"text": "- Data-level parallelism 就是同一種資料可以有很多個 operating 就是像矩陣加法",
+			"x": 138,
+			"y": 380,
+			"width": 325,
+			"height": 117,
+			"color": "1"
+		},
+		{
+			"id": "7bb710f9f7593ef0",
+			"type": "text",
+			"text": "- SISD（Single Instruction, Single Data）  \n    定義：單一指令流、單一資料流，單處理器順序執行。  \n    範例：傳統單核心 CPU、最基本的微控制器。\n    \n- SIMD（Single Instruction, Multiple Data）  \n    定義：同一條指令同時套用到多筆資料。  \n    範例：GPU 中的 warp／wavefront、CPU 的 SSE/AVX 向量指令、vector processor、array processor。\n    \n- MIMD（Multiple Instruction, Multiple Data）  \n    定義：多條指令流、多筆資料流，每個核心可跑不同程式、用不同資料。  \n    範例：多核心 CPU、SMP 伺服器、叢集、雲端機群（各節點跑不同工作）。\n    \n- SPMD（Single Program, Multiple Data）  \n    定義：多處理器執行「同一支程式」，但各自處理不同資料。  \n    範例：CUDA kernel、OpenCL、MPI 程式（rank 執行同一 binary，不同 rank 處理不同資料區塊）。\n    \n- MISD（Multiple Instruction, Single Data）  \n    定義：多條指令流處理同一筆資料。  \n    範例：幾乎沒有主流商用系統，一般課本會寫「實際系統極少或可忽略」。",
+			"x": -1029,
+			"y": 163,
+			"width": 698,
+			"height": 454,
+			"color": "1"
+		},
+		{
+			"id": "7dea264c4ab80a92",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_07_平行電腦分類/01-計算機組織_TOPIC_07_平行電腦分類.png",
+			"x": -880,
+			"y": -180,
+			"width": 400,
+			"height": 169
+		},
+		{
+			"id": "b07b1aad7e99e14b",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_07_平行電腦分類/09-計算機組織_TOPIC_07_平行電腦分類.png",
+			"x": -505,
+			"y": 747,
+			"width": 400,
+			"height": 218
+		},
+		{
+			"id": "40357d89ba605619",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_07_平行電腦分類/08-計算機組織_TOPIC_07_平行電腦分類.png",
+			"x": -958,
+			"y": 747,
+			"width": 388,
+			"height": 191
+		},
+		{
+			"id": "961fcfa7f40cfdaf",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_07_平行電腦分類/06-計算機組織_TOPIC_07_平行電腦分類.png",
+			"x": -1938,
+			"y": 747,
+			"width": 484,
+			"height": 191
+		},
+		{
+			"id": "e51f1579b91fb1f9",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_07_平行電腦分類/07-計算機組織_TOPIC_07_平行電腦分類.png",
+			"x": -1378,
+			"y": 747,
+			"width": 349,
+			"height": 191
+		},
+		{
+			"id": "64a5464c8f446406",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_07_平行電腦分類/05-計算機組織_TOPIC_07_平行電腦分類.png",
+			"x": -1696,
+			"y": 163,
+			"width": 399,
+			"height": 105
+		},
+		{
+			"id": "0185164b29e50cd0",
+			"type": "text",
+			"text": "depth pipeline 他是利用指令之間的 overleap 達到效果，跟 SIMD 不同，只有一顆 Core，但是可以達到差不多的效果，成本還比較低。",
+			"x": -1677,
+			"y": 314,
+			"width": 363,
+			"height": 85,
+			"color": "1"
+		},
+		{
+			"id": "05267f6d26459b30",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_07_平行電腦分類/03-計算機組織_TOPIC_07_平行電腦分類.png",
+			"x": -2200,
+			"y": 74,
+			"width": 400,
+			"height": 283
+		}
+	],
+	"edges": [
+		{
+			"id": "9ef9d5da23630727",
+			"fromNode": "3012f7c559c604b5",
+			"fromSide": "right",
+			"toNode": "ca1d25db3adb0977",
+			"toSide": "left"
+		},
+		{
+			"id": "463fdb3db2253d19",
+			"fromNode": "3012f7c559c604b5",
+			"fromSide": "bottom",
+			"toNode": "5e3f0b8f187f10b7",
+			"toSide": "top"
+		},
+		{
+			"id": "558b00b3c52e9a2c",
+			"fromNode": "3012f7c559c604b5",
+			"fromSide": "bottom",
+			"toNode": "899adff118fae950",
+			"toSide": "top"
+		},
+		{
+			"id": "a70bbd90393668e6",
+			"fromNode": "899adff118fae950",
+			"fromSide": "bottom",
+			"toNode": "451868c8c306da87",
+			"toSide": "top"
+		},
+		{
+			"id": "c7e57982b838a7b4",
+			"fromNode": "3012f7c559c604b5",
+			"fromSide": "left",
+			"toNode": "7dea264c4ab80a92",
+			"toSide": "right"
+		},
+		{
+			"id": "aedb1317df299f50",
+			"fromNode": "7dea264c4ab80a92",
+			"fromSide": "bottom",
+			"toNode": "7bb710f9f7593ef0",
+			"toSide": "top"
+		},
+		{
+			"id": "890760a461f9d210",
+			"fromNode": "7bb710f9f7593ef0",
+			"fromSide": "bottom",
+			"toNode": "961fcfa7f40cfdaf",
+			"toSide": "top"
+		},
+		{
+			"id": "32d43cfb7d5df8c2",
+			"fromNode": "7bb710f9f7593ef0",
+			"fromSide": "bottom",
+			"toNode": "e51f1579b91fb1f9",
+			"toSide": "top"
+		},
+		{
+			"id": "266e7ef4275e00b5",
+			"fromNode": "7bb710f9f7593ef0",
+			"fromSide": "bottom",
+			"toNode": "40357d89ba605619",
+			"toSide": "top"
+		},
+		{
+			"id": "41271a107cf5b6c4",
+			"fromNode": "7bb710f9f7593ef0",
+			"fromSide": "bottom",
+			"toNode": "b07b1aad7e99e14b",
+			"toSide": "top"
+		},
+		{
+			"id": "2683254e54339f37",
+			"fromNode": "64a5464c8f446406",
+			"fromSide": "bottom",
+			"toNode": "0185164b29e50cd0",
+			"toSide": "top"
+		},
+		{
+			"id": "358e16d029755487",
+			"fromNode": "64a5464c8f446406",
+			"fromSide": "left",
+			"toNode": "05267f6d26459b30",
+			"toSide": "right"
+		}
+	]
+}

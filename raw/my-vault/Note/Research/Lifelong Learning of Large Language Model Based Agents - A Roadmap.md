@@ -1,0 +1,12 @@
+# Lifelong Learning of Large Language Model Based Agents: A Roadmap
+
+[[Assets/Note/Research/Papers/Lifelong Learning of Large Language Model Based Agents - A Roadmap/Lifelong Learning of Large Language Model Based Agents - A Roadmap.pdf|論文 PDF]]
+
+## 初讀摘要
+
+- 這篇綜述關注 LLM Agent 如何持續適應變化，而非只在固定任務與靜態知識下運作。
+- 以感知、記憶、行動三個模組整理終身學習技術，涵蓋多模態輸入、知識存取與環境互動。
+- 主要產出是研究路線與評估問題，包含災難性遺忘及長期表現；新增外部記憶與更新模型權重是不同機制，閱讀時需分別理解。
+
+摘要依據：PDF 摘要與導論。
+

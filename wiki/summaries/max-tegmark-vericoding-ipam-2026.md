@@ -26,3 +26,7 @@
 本地 raw 只有影片簡介和章節，沒有逐字稿。其記載原演講於 2026-09-01 舉行、約 51 分鐘；本次未觀看或獨立查證原演講。檔名寫 EP123，frontmatter 標題寫 EP1/23，保留兩者原樣，不自行推定集數。
 
 此來源與 [[harness-engineering]] 的生成—驗證閉環一致。跨來源整合見 [[formal-verification-for-ai-generated-software]]：徐天音訪談補上需求、規格與故障模型的限制；驗證成功的範圍不能超出規格與驗證方法涵蓋的條件。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

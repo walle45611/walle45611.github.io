@@ -18,6 +18,6 @@
 - 文章以集合表示式與證明說明直接像保留聯集，以及對交集等運算的包含關係。
 - 後續內容延伸到直接像與逆像的對照，作為集合論與函數映射的複習筆記。
 
-## Related Concepts
+## Navigation
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
+- [My vault：Research 筆記](../archives/my-vault-research.md)

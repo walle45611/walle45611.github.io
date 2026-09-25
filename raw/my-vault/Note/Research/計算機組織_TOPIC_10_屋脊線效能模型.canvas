@@ -1,0 +1,146 @@
+{
+	"nodes": [
+		{
+			"id": "e18a82bd19ca2b34",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_10_屋脊線效能模型/01-計算機組織_TOPIC_10_屋脊線效能模型.png",
+			"x": -240,
+			"y": -260,
+			"width": 400,
+			"height": 147
+		},
+		{
+			"id": "68a74e1e986ca285",
+			"type": "text",
+			"text": "- peak floating-point performance 這條線是去查看硬體規格 \n- peak memory BW(stream) 這條斜線是用 $Bandwidth=byte/sec$，其實就是縱軸除以橫軸就可以得到這條線\n- 算是強度是下面的橫軸 $\\frac{\\text{FLOPs}/\\text{sec}}{\\text{FLOPs}/\\text{byte}}$\n- Ridge point 就是分界線如果靠右就是只有極高的算術密度的程式能得到計算機的最大效能，靠左就是代表核心程式就是代表基本上所有程式都可以得到該計算機的最大效能。\n- $kernel_2$ 程式他就可以達到最高效能，$kernel_1$ 程式他就被 Memory 的 Bandwidth 限制了",
+			"x": 200,
+			"y": -43,
+			"width": 500,
+			"height": 290,
+			"color": "1"
+		},
+		{
+			"id": "88806b9bfc2f2446",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_10_屋脊線效能模型/02-計算機組織_TOPIC_10_屋脊線效能模型.png",
+			"x": -185,
+			"y": -31,
+			"width": 290,
+			"height": 267
+		},
+		{
+			"id": "eb6397a66e5a7be7",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_10_屋脊線效能模型/04-計算機組織_TOPIC_10_屋脊線效能模型.png",
+			"x": 38,
+			"y": 360,
+			"width": 305,
+			"height": 290
+		},
+		{
+			"id": "886cf679e0c0af0c",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_10_屋脊線效能模型/03-計算機組織_TOPIC_10_屋脊線效能模型.png",
+			"x": -410,
+			"y": 360,
+			"width": 301,
+			"height": 290
+		},
+		{
+			"id": "c564d387095dbd34",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_10_屋脊線效能模型/05-計算機組織_TOPIC_10_屋脊線效能模型.png",
+			"x": -10,
+			"y": 740,
+			"width": 400,
+			"height": 196
+		},
+		{
+			"id": "5f8670bae44a4416",
+			"type": "text",
+			"text": "1. Floating-point operation mix 就是要把浮點數 additions 和 multiplications 指令個數要均衡，Computer 通常會做成家指令 (fused multiply-add instr.)，電腦也會提供相同個數的浮點數加法器和乘法器，所以呢需要把 additions 和 multiplications 平衡。\n2. 可以藉由 Compiler 增加 ILP 然後是可以透過 unrolling loops 技術來增加 ILP",
+			"x": -40,
+			"y": 1007,
+			"width": 460,
+			"height": 207,
+			"color": "1"
+		},
+		{
+			"id": "5695d0c11f975930",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_10_屋脊線效能模型/06-計算機組織_TOPIC_10_屋脊線效能模型.png",
+			"x": -462,
+			"y": 747,
+			"width": 400,
+			"height": 169
+		},
+		{
+			"id": "c8d1cedfeb77caf4",
+			"type": "text",
+			"text": "1. 其實就是利用 Complier 猜等等要用的指令有哪些讓他先預抓。\n2. 儘量把相關的指令放在一起，也就是增加 Spatial Locality 。",
+			"x": -415,
+			"y": 1007,
+			"width": 306,
+			"height": 121,
+			"color": "1"
+		}
+	],
+	"edges": [
+		{
+			"id": "af2b4c3de2f2aa76",
+			"fromNode": "e18a82bd19ca2b34",
+			"fromSide": "bottom",
+			"toNode": "88806b9bfc2f2446",
+			"toSide": "top"
+		},
+		{
+			"id": "cc7412dc0ee079cf",
+			"fromNode": "88806b9bfc2f2446",
+			"fromSide": "right",
+			"toNode": "68a74e1e986ca285",
+			"toSide": "left"
+		},
+		{
+			"id": "4cbc7522c37182fe",
+			"fromNode": "88806b9bfc2f2446",
+			"fromSide": "bottom",
+			"toNode": "eb6397a66e5a7be7",
+			"toSide": "top"
+		},
+		{
+			"id": "fac3a8be30a475c8",
+			"fromNode": "88806b9bfc2f2446",
+			"fromSide": "bottom",
+			"toNode": "886cf679e0c0af0c",
+			"toSide": "top"
+		},
+		{
+			"id": "d1fb4bbe46ccd868",
+			"fromNode": "886cf679e0c0af0c",
+			"fromSide": "bottom",
+			"toNode": "5695d0c11f975930",
+			"toSide": "top"
+		},
+		{
+			"id": "811b2d626814e750",
+			"fromNode": "eb6397a66e5a7be7",
+			"fromSide": "bottom",
+			"toNode": "c564d387095dbd34",
+			"toSide": "top"
+		},
+		{
+			"id": "94ec422072f0989a",
+			"fromNode": "c564d387095dbd34",
+			"fromSide": "bottom",
+			"toNode": "5f8670bae44a4416",
+			"toSide": "top"
+		},
+		{
+			"id": "afb1ebcbb622c83d",
+			"fromNode": "5695d0c11f975930",
+			"fromSide": "bottom",
+			"toNode": "c8d1cedfeb77caf4",
+			"toSide": "top"
+		}
+	]
+}

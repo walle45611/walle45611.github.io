@@ -1,0 +1,1228 @@
+{
+	"nodes": [
+		{
+			"id": "dd1189056be59934",
+			"type": "group",
+			"x": -1220,
+			"y": -300,
+			"width": 1620,
+			"height": 3688,
+			"label": "Poilling"
+		},
+		{
+			"id": "c947c4b71cb618b9",
+			"type": "group",
+			"x": 1428,
+			"y": 4240,
+			"width": 2086,
+			"height": 1900,
+			"label": "Stale data problem 或是 coherence problem"
+		},
+		{
+			"id": "5fbeaf230a62f875",
+			"type": "group",
+			"x": 3720,
+			"y": -316,
+			"width": 1400,
+			"height": 2478,
+			"label": "I/O processor"
+		},
+		{
+			"id": "f98358fd32c2b178",
+			"type": "group",
+			"x": 2460,
+			"y": -316,
+			"width": 1054,
+			"height": 3291,
+			"label": "DMA"
+		},
+		{
+			"id": "f717609f5f7c443c",
+			"type": "group",
+			"x": 1434,
+			"y": 3200,
+			"width": 2080,
+			"height": 916,
+			"label": "DMA 遇到 Virtual Memory 的問題"
+		},
+		{
+			"id": "a007a2762c63c15f",
+			"type": "group",
+			"x": 660,
+			"y": -280,
+			"width": 1420,
+			"height": 1225,
+			"label": "Interrupt"
+		},
+		{
+			"id": "48756f30e2246dda",
+			"type": "text",
+			"text": "\n- 方法一：讓 **DMA 以虛擬位址** 工作，允許跨越頁邊界的傳輸。  \n    在這種設計中，**DMA 單元** 內建少量對映表項，用來把虛擬位址對映到實體位址再進行傳輸。（類似 IOMMU/DMAR 的小型映射）\n    \n- 方法二：由 **作業系統** 把一次 DMA 傳輸**切成多段**，每段都限制在**單一實體頁**內；把這些段以**鏈結（chaining）**交給 I/O 處理器或智慧型 DMA，一口氣執行整串。\n    \n- 方法三：同樣由 **作業系統分段**到單一頁，但不做鏈結，**OS 逐段發出請求**，每段完成再請下一段。\n    \n\n速記：  \n虛擬位址法＝硬體做轉換；鏈結分段＝硬體一次跑完整串；逐段分段＝OS 一段一段下單。",
+			"x": 2292,
+			"y": 3751,
+			"width": 520,
+			"height": 345,
+			"color": "1"
+		},
+		{
+			"id": "d05e802e886b9301",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/20-Poilling.png",
+			"x": -480,
+			"y": 1000,
+			"width": 400,
+			"height": 231
+		},
+		{
+			"id": "6570d0f00b1dc3db",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/16-Poilling.png",
+			"x": -480,
+			"y": 660,
+			"width": 400,
+			"height": 232
+		},
+		{
+			"id": "199cfef3720b81ff",
+			"type": "text",
+			"text": "- OS 的版本叫做 busy bit 那計組叫做 done bit",
+			"x": -29,
+			"y": 421,
+			"width": 389,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "82f2cfa0d94afb58",
+			"type": "text",
+			"text": "1. 那剛剛在執行 Process2 但是要執行 ISR 所以要先把 Process2 存起來\n2. 把 B 放到 Data\n3. 然後把 Restore Process2\n4. 給控制全給 Process2",
+			"x": 1680,
+			"y": 734,
+			"width": 329,
+			"height": 158,
+			"color": "5"
+		},
+		{
+			"id": "f88c5c6ff3bf7816",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/17-Interrupt.png",
+			"x": 1200,
+			"y": 700,
+			"width": 400,
+			"height": 225
+		},
+		{
+			"id": "36deeee5a4db75f0",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/05-Interrupt - I O interrupt 跟指令沒有關係.png",
+			"x": 1200,
+			"y": -260,
+			"width": 399,
+			"height": 222
+		},
+		{
+			"id": "819f9c851e6e6212",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/13-Interrupt.png",
+			"x": 1200,
+			"y": 370,
+			"width": 400,
+			"height": 231
+		},
+		{
+			"id": "6b16c140d5201f59",
+			"type": "text",
+			"text": "產生 interrupt，當 A 印完了，然後去執行 ISR",
+			"x": 1680,
+			"y": 458,
+			"width": 250,
+			"height": 55,
+			"color": "5"
+		},
+		{
+			"id": "530601cb3ffa59a5",
+			"type": "text",
+			"text": "- timer 又到了那麼那現在要 print b 那麼又把 done bit 變成 0",
+			"x": 6,
+			"y": 2137,
+			"width": 374,
+			"height": 87,
+			"color": "5"
+		},
+		{
+			"id": "fc60bb18e0332810",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/31-Poilling - 一樣把控制全交給 process2.png",
+			"x": -480,
+			"y": 2424,
+			"width": 400,
+			"height": 230
+		},
+		{
+			"id": "5a43427e9f51e83c",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/33-Poilling.png",
+			"x": -480,
+			"y": 2780,
+			"width": 400,
+			"height": 233
+		},
+		{
+			"id": "f48e3e9a408a8b3f",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/29-Poilling.png",
+			"x": -480,
+			"y": 2060,
+			"width": 400,
+			"height": 233
+		},
+		{
+			"id": "a87a4fc46953536a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/07-Interrupt - I O interrupt 跟指令沒有關係.png",
+			"x": 680,
+			"y": -229,
+			"width": 400,
+			"height": 161
+		},
+		{
+			"id": "1fd219894d631210",
+			"type": "text",
+			"text": "1. 先 save Process1 的 PCB\n2. 控制權交給 OS\n3. 和 Data 寫入\n4. 然後把 I/O Device command 設定\n5. Process1 waiting 那麼就會 restore process2 控制全在交給 process2",
+			"x": 1700,
+			"y": 62,
+			"width": 360,
+			"height": 214,
+			"color": "5"
+		},
+		{
+			"id": "ed63465fda6d62fa",
+			"type": "text",
+			"text": "1. I/O interrupt 跟指令沒有關係\n2. I/O interrupt 比起 exception 還帶來更多訊息，因為可以知道哪個 I/O 設備發生 interrupt\n",
+			"x": 690,
+			"y": -5,
+			"width": 380,
+			"height": 91,
+			"color": "1"
+		},
+		{
+			"id": "4854bfc798de0eae",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/09-Interrupt - 先 save Process1 的 PCB.png",
+			"x": 1200,
+			"y": 40,
+			"width": 400,
+			"height": 236
+		},
+		{
+			"id": "02a8c52f9d92a6ec",
+			"type": "text",
+			"text": "- 一樣把控制全交給 process2",
+			"x": 40,
+			"y": 2514,
+			"width": 280,
+			"height": 50,
+			"color": "5"
+		},
+		{
+			"id": "9de61d97116c1878",
+			"type": "text",
+			"text": "- 然後印好了，所以要把 done bit 變成 0 然後恢復 process 1",
+			"x": 37,
+			"y": 3225,
+			"width": 343,
+			"height": 58,
+			"color": "5"
+		},
+		{
+			"id": "6924d77e86f64058",
+			"type": "text",
+			"text": "- 再檢查一次，如果還是 1 代表沒有空繼續給 process2 ==但是要記得這邊會先存 PCB 放到 kernel memory，切換 Process 都會這樣==然後等待下一次 timer interrupt",
+			"x": 40,
+			"y": 2823,
+			"width": 340,
+			"height": 148,
+			"color": "5"
+		},
+		{
+			"id": "d4e0c83dd1435a75",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/34-Poilling.png",
+			"x": -480,
+			"y": 3140,
+			"width": 400,
+			"height": 228
+		},
+		{
+			"id": "f28d997cd70f0b78",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/23-Poilling.png",
+			"x": -480,
+			"y": 1340,
+			"width": 400,
+			"height": 226
+		},
+		{
+			"id": "c23310b0b1568267",
+			"type": "text",
+			"text": "- 因為 process1 在 I/O 也就是 waiting 那麼控制全先教給 process2\n- timer 會定時發中斷然後就會跳到 OS 就會去看 I/O 的狀態也就是 done bit or busy bit 那麼如果，status 還是 0 也就是還沒有做完那麼就繼續執行 Process2",
+			"x": -20,
+			"y": 1025,
+			"width": 400,
+			"height": 181,
+			"color": "5"
+		},
+		{
+			"id": "99e0fbd5530aa283",
+			"type": "text",
+			"text": "- 那麼假設剛剛在 timer 觸發 interrupt 前還沒有做完 I/O ，但是那控制全還在 Process2 那要再等下一次的 timer\n- 且 A 這時候印完了",
+			"x": -3,
+			"y": 1753,
+			"width": 383,
+			"height": 121,
+			"color": "5"
+		},
+		{
+			"id": "321981955b00739f",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/26-Poilling.png",
+			"x": -480,
+			"y": 1700,
+			"width": 400,
+			"height": 227
+		},
+		{
+			"id": "83053bad182162db",
+			"type": "text",
+			"text": "- OS 間單來說就是會定期檢查 I/O 設備的狀態那麼並且是使用 polling routine\n- 那麼就是簡單，但是會很浪費時間",
+			"x": -1105,
+			"y": 0,
+			"width": 365,
+			"height": 91,
+			"color": "1"
+		},
+		{
+			"id": "dce1357ce53e2a15",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/08-Poilling.png",
+			"x": -480,
+			"y": 20,
+			"width": 400,
+			"height": 224
+		},
+		{
+			"id": "15aed7cc17b41973",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/04-Poilling.png",
+			"x": -480,
+			"y": -280,
+			"width": 400,
+			"height": 227
+		},
+		{
+			"id": "2bb5eb7cbf757bce",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/06-Poilling.png",
+			"x": -1200,
+			"y": -249,
+			"width": 554,
+			"height": 165
+		},
+		{
+			"id": "79d20a40e1aa7185",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/12-Poilling.png",
+			"x": -480,
+			"y": 340,
+			"width": 400,
+			"height": 222
+		},
+		{
+			"id": "370d422e82859838",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/11-DMA - 有四樣東西要做設定.png",
+			"x": 2494,
+			"y": 284,
+			"width": 400,
+			"height": 181
+		},
+		{
+			"id": "7f3ff381aa91eeb3",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/15-DMA - 有四樣東西要做設定.png",
+			"x": 2494,
+			"y": 624,
+			"width": 400,
+			"height": 236
+		},
+		{
+			"id": "fbfaa0fda4a59d0e",
+			"type": "text",
+			"text": "給 Process2 執行",
+			"x": 2975,
+			"y": 1725,
+			"width": 250,
+			"height": 60,
+			"color": "5"
+		},
+		{
+			"id": "2a9306f8d160ba0d",
+			"type": "text",
+			"text": "DMAC 取得 Bus 控制權",
+			"x": 2975,
+			"y": 2085,
+			"width": 250,
+			"height": 60,
+			"color": "5"
+		},
+		{
+			"id": "0fd4c856623c254e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/28-DMA.png",
+			"x": 2494,
+			"y": 2004,
+			"width": 400,
+			"height": 221
+		},
+		{
+			"id": "b28f3b56dd0e8009",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/32-DMA.png",
+			"x": 2494,
+			"y": 2704,
+			"width": 399,
+			"height": 251
+		},
+		{
+			"id": "64c9df1fbad0e1d2",
+			"type": "text",
+			"text": "- 最後資料傳完了那麼就 DMA 發生 Interrupt 給 CPU 然後 run ISR\n- save process2 然後 restore process1 然後執行 process1",
+			"x": 3000,
+			"y": 2781,
+			"width": 356,
+			"height": 121,
+			"color": "1"
+		},
+		{
+			"id": "ef9cbda54bd236d3",
+			"type": "text",
+			"text": "1. 會把資料個數 -4 並且 Disk Controller 抓取硬碟資料\n2. 把 Mem. Addr. -4 因為要讀下一筆資料了\n3. 然後如果硬碟已經讀完或是寫完了那麼 done bit 就會把它變成 1，DMAC 會去檢查，然後再跳到 1. 去做一樣的事情",
+			"x": 3000,
+			"y": 2353,
+			"width": 356,
+			"height": 184,
+			"color": "1"
+		},
+		{
+			"id": "ad70c99d40010ed8",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/30-DMA.png",
+			"x": 2494,
+			"y": 2324,
+			"width": 400,
+			"height": 241
+		},
+		{
+			"id": "4f2ef0271eaa709a",
+			"type": "text",
+			"text": "1. 要轉交控制權從 process1 轉交給 OS，因為發生 syscall 然後並且存 PCB",
+			"x": 4380,
+			"y": 577,
+			"width": 270,
+			"height": 87,
+			"color": "5"
+		},
+		{
+			"id": "8ac1e4ba7fc988fb",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/18-I O processor.png",
+			"x": 3898,
+			"y": 827,
+			"width": 400,
+			"height": 238
+		},
+		{
+			"id": "53ace33f583f7e11",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/21-I O processor.png",
+			"x": 3898,
+			"y": 1187,
+			"width": 399,
+			"height": 242
+		},
+		{
+			"id": "df0f57b3234f0f68",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/24-I O processor.png",
+			"x": 3898,
+			"y": 1547,
+			"width": 400,
+			"height": 234
+		},
+		{
+			"id": "7b6e1a6af24f7fd6",
+			"type": "text",
+			"text": "1. 因為要把控制權交給 process2 所以要先 restore 然後在轉移控制權",
+			"x": 4424,
+			"y": 1631,
+			"width": 316,
+			"height": 58,
+			"color": "5"
+		},
+		{
+			"id": "ebfce99812debd72",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/27-I O processor.png",
+			"x": 3898,
+			"y": 1907,
+			"width": 399,
+			"height": 235
+		},
+		{
+			"id": "be01f60b272013a8",
+			"type": "text",
+			"text": "把 I/O Program 的 PC 位置給 I/O processor",
+			"x": 4399,
+			"y": 1276,
+			"width": 341,
+			"height": 60,
+			"color": "5"
+		},
+		{
+			"id": "f7ff4d7a1552c827",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/22-DMA - 給 Process2 執行.png",
+			"x": 2494,
+			"y": 1304,
+			"width": 400,
+			"height": 236
+		},
+		{
+			"id": "3ac64c8ac02474b9",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/19-DMA - 給 Process2 執行.png",
+			"x": 2494,
+			"y": 964,
+			"width": 400,
+			"height": 235
+		},
+		{
+			"id": "f9aad6727c2abb16",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/25-DMA - 給 Process2 執行.png",
+			"x": 2494,
+			"y": 1644,
+			"width": 400,
+			"height": 229
+		},
+		{
+			"id": "cfba051f932fbf78",
+			"type": "text",
+			"text": "1. 然後 I/O processor 他會取得 Bus 然後轉移資料\n2. 然後轉完了就會發中斷 Interrupt\n- 那麼這邊可以注意說，I/O program 可以做多個 I/O operation",
+			"x": 4360,
+			"y": 1953,
+			"width": 441,
+			"height": 144,
+			"color": "1"
+		},
+		{
+			"id": "86f6a894b20ff1c4",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/14-I O processor.png",
+			"x": 3898,
+			"y": 507,
+			"width": 400,
+			"height": 227
+		},
+		{
+			"id": "67e61e5af68eeaa8",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/02-I O processor.png",
+			"x": 3898,
+			"y": -296,
+			"width": 400,
+			"height": 207
+		},
+		{
+			"id": "c7a742beff1ec171",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/03-I O processor.png",
+			"x": 4616,
+			"y": -296,
+			"width": 400,
+			"height": 205
+		},
+		{
+			"id": "bacdf48222bca1b0",
+			"type": "text",
+			"text": "* 為了進一步減少在處理 I/O 請求時中斷與佔用主處理器，而且 I/O 請求可能包含多個實際操作，I/O 控制器可以做得更聰明。這種智慧型控制器常被稱為「I/O 處理器（I/O processors）」。\n\n* 這些特殊處理器會執行一系列 I/O 操作，稱為「I/O 程式（I/O program）」。這個程式可以儲存在 I/O 處理器內，或者儲存在主記憶體中再由 I/O 處理器擷取。\n\n* 使用 I/O 處理器時，作業系統通常會先設定一個 I/O 程式，指出要進行哪些 I/O 操作，並給定任何讀寫的資料大小與傳輸位址。I/O 處理器依該 I/O 程式自行執行，只有在整個程式完成時才中斷主處理器。\n\n* DMA 處理器本質上是特殊用途處理器（通常為單晶片且不可程式化）；而 I/O 處理器則多以通用微處理器實作，能執行專門的 I/O 程式（可程式化）。\n\n==一句話總結：I/O 處理器＝可程式化、批次處理 I/O，最後一次性打斷 CPU；DMA 多半固定功能，彈性較低。==",
+			"x": 4531,
+			"y": -13,
+			"width": 569,
+			"height": 396,
+			"color": "1"
+		},
+		{
+			"id": "1df87ec6eb1f95e1",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/01-DMA.png",
+			"x": 2480,
+			"y": -296,
+			"width": 414,
+			"height": 240
+		},
+		{
+			"id": "ec0649137776dc5d",
+			"type": "text",
+			"text": "- 那麼可能會花很多時間，因為如果今天 A 檔案很大一直發生中斷那麼就會很浪費 CPU Time，也違背了當初 CPU 用來計算的目的所以呢就會有 DMA",
+			"x": 2960,
+			"y": -234,
+			"width": 372,
+			"height": 117,
+			"color": "1"
+		},
+		{
+			"id": "ffea011ce84344ac",
+			"type": "text",
+			"text": "- 為了減少主處理器被 I/O 事情一直打斷，I/O 控制器做得更聰明，稱為「I/O 處理器（I/O processor）」。\n    \n- I/O 處理器會執行一連串 I/O 作業，稱為「I/O 程式（I/O program）」。這個程式可放在 I/O 處理器裡，或放在主記憶體由 I/O 處理器去抓。\n    \n- 使用 I/O 處理器時，作業系統會先「設定」一個 I/O 程式，指明：\n    \n    - 要做哪些 I/O 操作\n        \n    - 要傳多少資料（size）\n        \n    - 要傳到哪個位址或從哪個位址來（transfer address）\n        \n    - 是讀還是寫（reads/writes）\n        \n- 設定好後，I/O 處理器照程式自行處理，等整個 I/O 程式完成才「中斷」主處理器回報結果。\n    \n- 對比：DMA 處理器多是單晶片、不可程式化的特殊用途；I/O 處理器常用一般微處理器來做，可跑自訂的 I/O 程式（可程式化）。",
+			"x": 3740,
+			"y": -13,
+			"width": 716,
+			"height": 344,
+			"color": "5"
+		},
+		{
+			"id": "07f786b3bb749707",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/38-Stale data problem 或是 co.png",
+			"x": 1448,
+			"y": 4260,
+			"width": 400,
+			"height": 176
+		},
+		{
+			"id": "043ae2b03fd5b5eb",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/43-Stale data problem 或是 co.png",
+			"x": 2986,
+			"y": 5560,
+			"width": 400,
+			"height": 191
+		},
+		{
+			"id": "6af7d04a39b98a0d",
+			"type": "text",
+			"text": "結論：I/O 與 CPU 快取一致性可用三招處理。\n\n1. **走快取路由**  \n    把 I/O 讀寫都經過 CPU 快取。讀一定看到最新值，寫也會更新快取。  \n    代價：昂貴，容易把程式有用資料擠出快取，效能常掉。\n    \n2. **由 OS 選擇性處理**  \n    I/O 讀前由 OS 使目標快取行失效；I/O 寫時強迫回寫（flush）或失效。  \n    優點：精準控制。缺點：需要 OS 介入與正確標註範圍。\n    \n3. **硬體選擇性沖洗/失效機制**  \n    提供硬體指令或機制，對指定位址範圍做 flush 或 invalidate。  \n    優點：快速、粒度小。缺點：硬體與平台相依。\n    \n\n速記：==全走快取＝簡單慢；OS 失效/回寫＝靈活；硬體 flush/invalidate＝快但要支援。==",
+			"x": 1744,
+			"y": 5180,
+			"width": 604,
+			"height": 361,
+			"color": "5"
+		},
+		{
+			"id": "c2a33075188ec0a1",
+			"type": "text",
+			"text": "OS 把 cache 改成 miss 這樣就可以重抓一次 cache，那如果是硬體做的話就是第三種方法",
+			"x": 2595,
+			"y": 5560,
+			"width": 250,
+			"height": 85,
+			"color": "1"
+		},
+		{
+			"id": "fdd54e058a3ec568",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/40-Stale data problem 或是 co - 間單來說不管寫讀都要經過 Cache.png",
+			"x": 2986,
+			"y": 4880,
+			"width": 399,
+			"height": 198
+		},
+		{
+			"id": "2bbc0ddbe8da08bf",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/42-Stale data problem 或是 co - 間單來說不管寫讀都要經過 Cache.png",
+			"x": 2986,
+			"y": 5160,
+			"width": 400,
+			"height": 200
+		},
+		{
+			"id": "21ebbae1249d4836",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/10-DMA.png",
+			"x": 2487,
+			"y": 44,
+			"width": 399,
+			"height": 132
+		},
+		{
+			"id": "081a2714ccbdcd78",
+			"type": "text",
+			"text": "1. 有四樣東西要做設定\n\t1. device 的 identity 也就是他是誰\n\t2. 然後是要 read 還是 write 或是說方向\n\t3. 然後和 memory 的起始位置\n\t4. 和要傳多大，多少個 Byte\n2. DMA 取得 Bus 的控制權監管 Memory 和 I/O Device 的溝通過程\n3. 通常 DMA 會傳輸好幾個 KB 才會完成 I/O operation 那麼就會用 interrupt 告知處理器",
+			"x": 2980,
+			"y": 244,
+			"width": 514,
+			"height": 243,
+			"color": "1"
+		},
+		{
+			"id": "f8509df2508581f3",
+			"type": "text",
+			"text": "- 那麼還是需要 interrupt，大型檔案傳輸完畢或是有出現錯誤\n",
+			"x": 2980,
+			"y": 81,
+			"width": 279,
+			"height": 58,
+			"color": "1"
+		},
+		{
+			"id": "c3dc47a3b7e4eacc",
+			"type": "text",
+			"text": "CPU 可能拿到 Cache 不新鮮的資料，那麼也有可能在導致 Hard Disk 拿到不新鮮的資料，因為 Cache 是新的沒以有更新到 Memory 然後就被 DMA 拿去更新 HD",
+			"x": 1948,
+			"y": 4292,
+			"width": 349,
+			"height": 112,
+			"color": "5"
+		},
+		{
+			"id": "4333050ca6c4b466",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/41-Stale data problem 或是 co - 間單來說不管寫讀都要經過 Cache.png",
+			"x": 2020,
+			"y": 4906,
+			"width": 400,
+			"height": 172
+		},
+		{
+			"id": "88db0c587feb1078",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/39-Stale data problem 或是 co.png",
+			"x": 1948,
+			"y": 4500,
+			"width": 399,
+			"height": 199
+		},
+		{
+			"id": "2835503aa5356ccb",
+			"type": "text",
+			"text": "間單來說不管寫讀都要經過 Cache",
+			"x": 2546,
+			"y": 4929,
+			"width": 299,
+			"height": 50,
+			"color": "1"
+		},
+		{
+			"id": "cbfbfeaf6446b7e1",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/44-Stale data problem 或是 co.png",
+			"x": 2986,
+			"y": 5860,
+			"width": 399,
+			"height": 190
+		},
+		{
+			"id": "118cbd6ca5d10c45",
+			"type": "text",
+			"text": "==結論：沒有單一正解。純 **實體位址** 最簡單但不能跨頁；用 **虛擬位址** 需做位址轉換。實務多用 IOMMU 或 scatter-gather 來折衷。==\n\n\n- 問題：在有虛擬記憶的系統裡，DMA 應該用「虛擬位址」還是「實體位址」？\n    \n- 用虛擬位址的明顯問題：DMA 必須把虛擬位址轉成實體位址。\n    \n- 用實體位址的主要問題：DMA 轉送不易「跨頁邊界」。\n    \n- 若 I/O 請求跨越頁邊界，對應的虛擬位址範圍在實體上可能不連續。因此若用實體位址，通常要限制每筆 DMA 傳輸「待在同一頁」內。\n    \n\n常見實作選項（精簡）：\n\n- **Pin + 實體位址**：OS 先鎖頁，確保不換頁，按頁分段傳。\n    \n- **Scatter-Gather DMA**：控制器吃一串分散的〈實體位址, 長度〉描述子，等效支援跨頁。\n    \n- **IOMMU**：硬體替 DMA 做虛→實轉換，允許 DMA 直接用虛擬位址，兼顧安全與彈性。",
+			"x": 1454,
+			"y": 3220,
+			"width": 740,
+			"height": 363,
+			"color": "5"
+		},
+		{
+			"id": "dcffaa852d2ea618",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/35-DMA 遇到 Virtual Memory 的問.png",
+			"x": 2352,
+			"y": 3231,
+			"width": 400,
+			"height": 170
+		},
+		{
+			"id": "df9a448dc486942b",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/37-DMA 遇到 Virtual Memory 的問.png",
+			"x": 2352,
+			"y": 3493,
+			"width": 400,
+			"height": 181
+		},
+		{
+			"id": "6f66fa58d8bf63c1",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_11_DataTransfer/36-DMA 遇到 Virtual Memory 的問.png",
+			"x": 3094,
+			"y": 3231,
+			"width": 400,
+			"height": 218
+		}
+	],
+	"edges": [
+		{
+			"id": "3f5f053aae78b208",
+			"fromNode": "15aed7cc17b41973",
+			"fromSide": "bottom",
+			"toNode": "dce1357ce53e2a15",
+			"toSide": "top"
+		},
+		{
+			"id": "9ee45ad0c82ad53d",
+			"fromNode": "dce1357ce53e2a15",
+			"fromSide": "bottom",
+			"toNode": "79d20a40e1aa7185",
+			"toSide": "top"
+		},
+		{
+			"id": "0d17d7a32183f873",
+			"fromNode": "79d20a40e1aa7185",
+			"fromSide": "right",
+			"toNode": "199cfef3720b81ff",
+			"toSide": "left"
+		},
+		{
+			"id": "4e0b30f74088088c",
+			"fromNode": "79d20a40e1aa7185",
+			"fromSide": "bottom",
+			"toNode": "6570d0f00b1dc3db",
+			"toSide": "top"
+		},
+		{
+			"id": "7628d481e70cc4f5",
+			"fromNode": "6570d0f00b1dc3db",
+			"fromSide": "bottom",
+			"toNode": "d05e802e886b9301",
+			"toSide": "top"
+		},
+		{
+			"id": "67a1a9a7385ea520",
+			"fromNode": "d05e802e886b9301",
+			"fromSide": "right",
+			"toNode": "c23310b0b1568267",
+			"toSide": "left"
+		},
+		{
+			"id": "1085f8bbb2a21137",
+			"fromNode": "d05e802e886b9301",
+			"fromSide": "bottom",
+			"toNode": "f28d997cd70f0b78",
+			"toSide": "top"
+		},
+		{
+			"id": "552beb3586187e29",
+			"fromNode": "f28d997cd70f0b78",
+			"fromSide": "bottom",
+			"toNode": "321981955b00739f",
+			"toSide": "top"
+		},
+		{
+			"id": "78e0af6c58f4f5dc",
+			"fromNode": "321981955b00739f",
+			"fromSide": "right",
+			"toNode": "99e0fbd5530aa283",
+			"toSide": "left"
+		},
+		{
+			"id": "a00f657c671650c3",
+			"fromNode": "321981955b00739f",
+			"fromSide": "bottom",
+			"toNode": "f48e3e9a408a8b3f",
+			"toSide": "top"
+		},
+		{
+			"id": "b14b252dc53282f4",
+			"fromNode": "f48e3e9a408a8b3f",
+			"fromSide": "right",
+			"toNode": "530601cb3ffa59a5",
+			"toSide": "left"
+		},
+		{
+			"id": "7647280bf77d42d7",
+			"fromNode": "f48e3e9a408a8b3f",
+			"fromSide": "bottom",
+			"toNode": "fc60bb18e0332810",
+			"toSide": "top"
+		},
+		{
+			"id": "6e21c762384f57a5",
+			"fromNode": "fc60bb18e0332810",
+			"fromSide": "right",
+			"toNode": "02a8c52f9d92a6ec",
+			"toSide": "left"
+		},
+		{
+			"id": "9fae1a688281b34c",
+			"fromNode": "fc60bb18e0332810",
+			"fromSide": "bottom",
+			"toNode": "5a43427e9f51e83c",
+			"toSide": "top"
+		},
+		{
+			"id": "f1b98b16543844a0",
+			"fromNode": "5a43427e9f51e83c",
+			"fromSide": "right",
+			"toNode": "6924d77e86f64058",
+			"toSide": "left"
+		},
+		{
+			"id": "9884113e857bd00e",
+			"fromNode": "5a43427e9f51e83c",
+			"fromSide": "bottom",
+			"toNode": "d4e0c83dd1435a75",
+			"toSide": "top"
+		},
+		{
+			"id": "5024ba6d75f15861",
+			"fromNode": "d4e0c83dd1435a75",
+			"fromSide": "right",
+			"toNode": "9de61d97116c1878",
+			"toSide": "left"
+		},
+		{
+			"id": "f7f67771dc385045",
+			"fromNode": "2bb5eb7cbf757bce",
+			"fromSide": "right",
+			"toNode": "15aed7cc17b41973",
+			"toSide": "left"
+		},
+		{
+			"id": "802c196c55042f35",
+			"fromNode": "2bb5eb7cbf757bce",
+			"fromSide": "bottom",
+			"toNode": "83053bad182162db",
+			"toSide": "top"
+		},
+		{
+			"id": "eeab5adbed331fb4",
+			"fromNode": "36deeee5a4db75f0",
+			"fromSide": "bottom",
+			"toNode": "4854bfc798de0eae",
+			"toSide": "top"
+		},
+		{
+			"id": "68a19d1aa5d9abef",
+			"fromNode": "4854bfc798de0eae",
+			"fromSide": "right",
+			"toNode": "1fd219894d631210",
+			"toSide": "left"
+		},
+		{
+			"id": "b72b747dff64bcb5",
+			"fromNode": "819f9c851e6e6212",
+			"fromSide": "right",
+			"toNode": "6b16c140d5201f59",
+			"toSide": "left"
+		},
+		{
+			"id": "769166b49571b731",
+			"fromNode": "4854bfc798de0eae",
+			"fromSide": "bottom",
+			"toNode": "819f9c851e6e6212",
+			"toSide": "top"
+		},
+		{
+			"id": "dbd464a21c74d252",
+			"fromNode": "819f9c851e6e6212",
+			"fromSide": "bottom",
+			"toNode": "f88c5c6ff3bf7816",
+			"toSide": "top"
+		},
+		{
+			"id": "03ca66e1cac8a669",
+			"fromNode": "f88c5c6ff3bf7816",
+			"fromSide": "right",
+			"toNode": "82f2cfa0d94afb58",
+			"toSide": "left"
+		},
+		{
+			"id": "c8d04998850f0649",
+			"fromNode": "a87a4fc46953536a",
+			"fromSide": "right",
+			"toNode": "36deeee5a4db75f0",
+			"toSide": "left"
+		},
+		{
+			"id": "1dc0bb31a660f1c8",
+			"fromNode": "a87a4fc46953536a",
+			"fromSide": "bottom",
+			"toNode": "ed63465fda6d62fa",
+			"toSide": "top"
+		},
+		{
+			"id": "8c56f595f74c26f0",
+			"fromNode": "1df87ec6eb1f95e1",
+			"fromSide": "right",
+			"toNode": "ec0649137776dc5d",
+			"toSide": "left"
+		},
+		{
+			"id": "ba11b7491bf6d711",
+			"fromNode": "1df87ec6eb1f95e1",
+			"fromSide": "bottom",
+			"toNode": "21ebbae1249d4836",
+			"toSide": "top"
+		},
+		{
+			"id": "908e01e88e9de090",
+			"fromNode": "21ebbae1249d4836",
+			"fromSide": "right",
+			"toNode": "f8509df2508581f3",
+			"toSide": "left"
+		},
+		{
+			"id": "d2a37e84dea8ed88",
+			"fromNode": "21ebbae1249d4836",
+			"fromSide": "bottom",
+			"toNode": "370d422e82859838",
+			"toSide": "top"
+		},
+		{
+			"id": "4a714088371c5268",
+			"fromNode": "370d422e82859838",
+			"fromSide": "right",
+			"toNode": "081a2714ccbdcd78",
+			"toSide": "left"
+		},
+		{
+			"id": "0966fc6aab80a7b9",
+			"fromNode": "7f3ff381aa91eeb3",
+			"fromSide": "bottom",
+			"toNode": "3ac64c8ac02474b9",
+			"toSide": "top"
+		},
+		{
+			"id": "719320940f7c3521",
+			"fromNode": "3ac64c8ac02474b9",
+			"fromSide": "bottom",
+			"toNode": "f7ff4d7a1552c827",
+			"toSide": "top"
+		},
+		{
+			"id": "9f5d00fb0920ae90",
+			"fromNode": "f7ff4d7a1552c827",
+			"fromSide": "bottom",
+			"toNode": "f9aad6727c2abb16",
+			"toSide": "top"
+		},
+		{
+			"id": "6746fc8dc77d2da0",
+			"fromNode": "f9aad6727c2abb16",
+			"fromSide": "right",
+			"toNode": "fbfaa0fda4a59d0e",
+			"toSide": "left"
+		},
+		{
+			"id": "7fb9fa463068106c",
+			"fromNode": "f9aad6727c2abb16",
+			"fromSide": "bottom",
+			"toNode": "0fd4c856623c254e",
+			"toSide": "top"
+		},
+		{
+			"id": "90c8cdf93dabc296",
+			"fromNode": "0fd4c856623c254e",
+			"fromSide": "right",
+			"toNode": "2a9306f8d160ba0d",
+			"toSide": "left"
+		},
+		{
+			"id": "80179ab0e1294e5b",
+			"fromNode": "0fd4c856623c254e",
+			"fromSide": "bottom",
+			"toNode": "ad70c99d40010ed8",
+			"toSide": "top"
+		},
+		{
+			"id": "fc393eea24b1c20d",
+			"fromNode": "ad70c99d40010ed8",
+			"fromSide": "right",
+			"toNode": "ef9cbda54bd236d3",
+			"toSide": "left"
+		},
+		{
+			"id": "0f3ef34d8b7c7b60",
+			"fromNode": "ad70c99d40010ed8",
+			"fromSide": "bottom",
+			"toNode": "b28f3b56dd0e8009",
+			"toSide": "top"
+		},
+		{
+			"id": "d366ca12fe7b6412",
+			"fromNode": "b28f3b56dd0e8009",
+			"fromSide": "right",
+			"toNode": "64c9df1fbad0e1d2",
+			"toSide": "left"
+		},
+		{
+			"id": "2eff14852936019f",
+			"fromNode": "67e61e5af68eeaa8",
+			"fromSide": "bottom",
+			"toNode": "ffea011ce84344ac",
+			"toSide": "top"
+		},
+		{
+			"id": "518027b1f9bd2147",
+			"fromNode": "c7a742beff1ec171",
+			"fromSide": "bottom",
+			"toNode": "bacdf48222bca1b0",
+			"toSide": "top"
+		},
+		{
+			"id": "e8821e721d682d1d",
+			"fromNode": "67e61e5af68eeaa8",
+			"fromSide": "right",
+			"toNode": "c7a742beff1ec171",
+			"toSide": "left"
+		},
+		{
+			"id": "2de177c80482ef7e",
+			"fromNode": "86f6a894b20ff1c4",
+			"fromSide": "right",
+			"toNode": "4f2ef0271eaa709a",
+			"toSide": "left"
+		},
+		{
+			"id": "8e6c74e61e7be5c7",
+			"fromNode": "86f6a894b20ff1c4",
+			"fromSide": "bottom",
+			"toNode": "8ac1e4ba7fc988fb",
+			"toSide": "top"
+		},
+		{
+			"id": "9b20425ee466222a",
+			"fromNode": "8ac1e4ba7fc988fb",
+			"fromSide": "bottom",
+			"toNode": "53ace33f583f7e11",
+			"toSide": "top"
+		},
+		{
+			"id": "b35c4231016f8c26",
+			"fromNode": "53ace33f583f7e11",
+			"fromSide": "right",
+			"toNode": "be01f60b272013a8",
+			"toSide": "left"
+		},
+		{
+			"id": "b7554d0b0f4e9284",
+			"fromNode": "53ace33f583f7e11",
+			"fromSide": "bottom",
+			"toNode": "df0f57b3234f0f68",
+			"toSide": "top"
+		},
+		{
+			"id": "c45b6bdc3869210c",
+			"fromNode": "df0f57b3234f0f68",
+			"fromSide": "right",
+			"toNode": "7b6e1a6af24f7fd6",
+			"toSide": "left"
+		},
+		{
+			"id": "26b367f0c9737c1f",
+			"fromNode": "df0f57b3234f0f68",
+			"fromSide": "bottom",
+			"toNode": "ebfce99812debd72",
+			"toSide": "top"
+		},
+		{
+			"id": "5f2f439a442bb58b",
+			"fromNode": "ebfce99812debd72",
+			"fromSide": "right",
+			"toNode": "cfba051f932fbf78",
+			"toSide": "left"
+		},
+		{
+			"id": "8076df8acb2d09bf",
+			"fromNode": "dcffaa852d2ea618",
+			"fromSide": "right",
+			"toNode": "6f66fa58d8bf63c1",
+			"toSide": "left"
+		},
+		{
+			"id": "e51f7158bdc00bb0",
+			"fromNode": "dcffaa852d2ea618",
+			"fromSide": "left",
+			"toNode": "118cbd6ca5d10c45",
+			"toSide": "right"
+		},
+		{
+			"id": "9b75513e79ec9d96",
+			"fromNode": "dcffaa852d2ea618",
+			"fromSide": "bottom",
+			"toNode": "df9a448dc486942b",
+			"toSide": "top"
+		},
+		{
+			"id": "509f9c2c28670fe6",
+			"fromNode": "df9a448dc486942b",
+			"fromSide": "bottom",
+			"toNode": "48756f30e2246dda",
+			"toSide": "top"
+		},
+		{
+			"id": "c462268eddec05d0",
+			"fromNode": "07f786b3bb749707",
+			"fromSide": "right",
+			"toNode": "c3dc47a3b7e4eacc",
+			"toSide": "left"
+		},
+		{
+			"id": "828368b828eefbdf",
+			"fromNode": "c3dc47a3b7e4eacc",
+			"fromSide": "bottom",
+			"toNode": "88db0c587feb1078",
+			"toSide": "top"
+		},
+		{
+			"id": "79cce13acdff4b70",
+			"fromNode": "fdd54e058a3ec568",
+			"fromSide": "left",
+			"toNode": "2835503aa5356ccb",
+			"toSide": "right"
+		},
+		{
+			"id": "de39961ca5aa61ff",
+			"fromNode": "fdd54e058a3ec568",
+			"fromSide": "bottom",
+			"toNode": "2bbc0ddbe8da08bf",
+			"toSide": "top"
+		},
+		{
+			"id": "653b549f48daa068",
+			"fromNode": "4333050ca6c4b466",
+			"fromSide": "right",
+			"toNode": "2835503aa5356ccb",
+			"toSide": "left"
+		},
+		{
+			"id": "06ccd9a6104194b3",
+			"fromNode": "4333050ca6c4b466",
+			"fromSide": "bottom",
+			"toNode": "6af7d04a39b98a0d",
+			"toSide": "top"
+		},
+		{
+			"id": "05287f4caa308dcf",
+			"fromNode": "4333050ca6c4b466",
+			"fromSide": "right",
+			"toNode": "c2a33075188ec0a1",
+			"toSide": "left"
+		},
+		{
+			"id": "56d106373d64088d",
+			"fromNode": "c2a33075188ec0a1",
+			"fromSide": "right",
+			"toNode": "043ae2b03fd5b5eb",
+			"toSide": "left"
+		},
+		{
+			"id": "c55a31cbd469c575",
+			"fromNode": "c2a33075188ec0a1",
+			"fromSide": "right",
+			"toNode": "cbfbfeaf6446b7e1",
+			"toSide": "left"
+		}
+	]
+}

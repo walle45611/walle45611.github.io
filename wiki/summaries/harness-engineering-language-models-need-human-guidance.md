@@ -47,3 +47,7 @@
 
 - 這是目前知識庫第一筆聚焦 AI agent harness 的來源，與既有 `effective-learning` 主題無直接衝突。
 - 來源同時涵蓋部落格觀察、論文轉述與個人案例，後續若納入原始論文，應把跨來源可重現結論回寫到概念頁，保留此摘要頁作為來源邊界。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

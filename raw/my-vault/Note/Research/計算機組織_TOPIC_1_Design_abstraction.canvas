@@ -1,0 +1,31 @@
+{
+	"nodes": [
+		{
+			"id": "9f45ed3e3bac308e",
+			"type": "text",
+			"text": "# 設計抽象（Design Abstraction）\n\n**定義**  \n設計複雜系統時，暫時隱藏較低層的細節，只保留必要介面，降低設計複雜度。\n\n**典型層級**\n\n- ISA（指令集） ↔ 微架構（管線、快取、控制） ↔ RTL（Verilog/VHDL） ↔ 閘級/版圖\n    \n\n**效益**\n\n- 降低認知負擔，促進分工與驗證。\n    \n- 容許自頂向下規劃與自底向上實作並行迭代。\n    \n\n**與分層控制的關聯**\n\n- Main/ALU Control 就是抽象邊界的實例：主控只約定 `ALUOp` 協定，不需知道 ALU 的閘級細節。\n    \n\n**注意**\n\n- 抽象過度可能遮蔽瓶頸；需以量測與時序分析檢驗關鍵路徑。",
+			"x": -100,
+			"y": -920,
+			"width": 741,
+			"height": 488
+		},
+		{
+			"id": "b104c87c35d7fdca",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_1_Design_abstraction/01-計算機組織_TOPIC_1_Design_abs.png",
+			"x": 800,
+			"y": -746,
+			"width": 667,
+			"height": 140
+		}
+	],
+	"edges": [
+		{
+			"id": "ce372f33ffb3f75c",
+			"fromNode": "9f45ed3e3bac308e",
+			"fromSide": "right",
+			"toNode": "b104c87c35d7fdca",
+			"toSide": "left"
+		}
+	]
+}

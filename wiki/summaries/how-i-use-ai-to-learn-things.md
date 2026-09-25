@@ -86,3 +86,7 @@ tags:
 - 這份來源把 `effective-learning` 中的 deep processing、適度困難與回饋校正，具體實作成 probe、plan、teach 與 quiz 迴圈。
 - 它也補強 `harness-engineering`：規則、子代理、查證器、視覺化工具、持久化 log 與測驗共同構成教學 harness；重點是工作流設計，不只是換一個模型。
 - 它和既有學習摘要一致地把筆記理解成壓縮與校正工具，而不是完整抄錄的終點；但個人化 AI 教學的長期成效仍是待驗證問題。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

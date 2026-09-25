@@ -1,0 +1,354 @@
+{
+	"nodes": [
+		{
+			"id": "9dd394d9a10baf46",
+			"type": "group",
+			"x": -228,
+			"y": 1120,
+			"width": 1062,
+			"height": 1420,
+			"label": "Bandwithdth"
+		},
+		{
+			"id": "6e25fcf92a4b6a0c",
+			"type": "group",
+			"x": 1720,
+			"y": -580,
+			"width": 960,
+			"height": 1000,
+			"label": "Write hit"
+		},
+		{
+			"id": "e5f2a9f6359ebd00",
+			"type": "group",
+			"x": 1120,
+			"y": -232,
+			"width": 440,
+			"height": 590,
+			"label": "Read miss"
+		},
+		{
+			"id": "f4cba5781fd9acca",
+			"type": "group",
+			"x": 1760,
+			"y": -232,
+			"width": 440,
+			"height": 586,
+			"label": "Write-through"
+		},
+		{
+			"id": "421b432546826be5",
+			"type": "group",
+			"x": 2820,
+			"y": -580,
+			"width": 760,
+			"height": 586,
+			"label": "Write Miss"
+		},
+		{
+			"id": "12a21effbabfa22f",
+			"type": "group",
+			"x": 992,
+			"y": 1120,
+			"width": 697,
+			"height": 577,
+			"label": "Memory Latency"
+		},
+		{
+			"id": "5657342c0e20c5a5",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Cache_fundamental/13-Bandwithdth - 加寬 (圖 b).png",
+			"x": -208,
+			"y": 1180,
+			"width": 385,
+			"height": 266
+		},
+		{
+			"id": "ce6c1ed6c838f1a2",
+			"type": "text",
+			"text": "1. **加寬**（圖 b）\n   加寬快取、匯流排、記憶體資料匯（一次搬更多位元）。\n   優點：一次傳更多；缺點：硬體大、腳位多。\n\n2. **交錯（Interleaving）**（圖 c）\n   把主記憶體切成多個 **banks**，用低位位元做 `bank = addr mod N`，讓**連續位址落到不同 bank**。\n   多個 bank 交錯工作與管線化，雖**單次延遲不變**，但**吞吐量↑**。\n   例：4 個 bank、每 bank 延遲 m 週期 → 啟動後可近似 **每週期一字**輸出，適合快取行的 burst 讀寫。\n",
+			"x": 292,
+			"y": 1185,
+			"width": 522,
+			"height": 255,
+			"color": "1"
+		},
+		{
+			"id": "9c77d3ac5fc69f1e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Cache_fundamental/06-Write hit.png",
+			"x": 2260,
+			"y": -203,
+			"width": 400,
+			"height": 218
+		},
+		{
+			"id": "a6dce32890d22ce3",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Cache_fundamental/12-Memory Latency.png",
+			"x": 1012,
+			"y": 1160,
+			"width": 400,
+			"height": 103
+		},
+		{
+			"id": "3970ff5239250ab7",
+			"type": "text",
+			"text": "* **EDO DRAM**：不是「二維」。是舊式非同步 DRAM 的時序改良，**資料保留更久（Extended Data Out）**，可在上一筆資料仍有效時啟動下一次欄位存取（CAS），縮短週期時間。\n\n* **SDRAM**：加入**時脈同步**與指令介面（ACT/RD/WR/PRE），內含**多 bank**，支援**突發傳輸（burst）**與銀行交錯，提高吞吐。\n\n* **DDR SDRAM**：在**時脈的上升與下降緣都傳資料**（雙邊緣），並用 DQS 資料節拍與 **2n-prefetch** 提升速率。\n\n* **QDR**：業界常見的是 **QDR SRAM**（讀寫分離、每時脈四次有效傳輸）。若教材寫 **QDR SDRAM**，其意即**每個時脈週期等效四次資料傳輸**（例如相位交錯的資料節拍與更深的預取，如 4n），不是「上半週期寫、下半週期寫」這種描述。\n\n總結：\nEDO=時序延長；SDRAM=同步+多銀行+burst；DDR=雙邊緣；QDR=每時脈四次等效資料傳輸（常指 QDR SRAM；DRAM主流仍為各代 DDR）。\n",
+			"x": 1012,
+			"y": 1305,
+			"width": 657,
+			"height": 372,
+			"color": "1"
+		},
+		{
+			"id": "680cc272217d188d",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Cache_fundamental/11-計算機組織_TOPIC_4_Cache_fund.png",
+			"x": 932,
+			"y": 680,
+			"width": 400,
+			"height": 228
+		},
+		{
+			"id": "5388ad888159952c",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Cache_fundamental/01-Write Miss.png",
+			"x": 2840,
+			"y": -543,
+			"width": 400,
+			"height": 218
+		},
+		{
+			"id": "b171027bb2bd95db",
+			"type": "text",
+			"text": "可以提高下一次的 hit，因為拉上來 cache，下一次就比較不會怕拿不到",
+			"x": 3310,
+			"y": -476,
+			"width": 250,
+			"height": 85,
+			"color": "1"
+		},
+		{
+			"id": "2313deda117845c3",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Cache_fundamental/04-Write Miss.png",
+			"x": 2840,
+			"y": -220,
+			"width": 400,
+			"height": 206
+		},
+		{
+			"id": "2d18a6f14340209e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Cache_fundamental/16-Bandwithdth - 加寬 (圖 b).png",
+			"x": -163,
+			"y": 1909,
+			"width": 399,
+			"height": 114
+		},
+		{
+			"id": "28161bf589776400",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Cache_fundamental/14-Bandwithdth - 加寬 (圖 b).png",
+			"x": 414,
+			"y": 1539,
+			"width": 400,
+			"height": 231
+		},
+		{
+			"id": "8a9b0788e22220b3",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Cache_fundamental/15-Bandwithdth - 加寬 (圖 b).png",
+			"x": 414,
+			"y": 1860,
+			"width": 399,
+			"height": 211
+		},
+		{
+			"id": "9b4f05aeeacb24a1",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Cache_fundamental/17-Bandwithdth.png",
+			"x": 414,
+			"y": 2180,
+			"width": 400,
+			"height": 216
+		},
+		{
+			"id": "9a03ee9f7bcf05de",
+			"type": "text",
+			"text": "- **Read hit**：直接回資料。\n    \n- **Read miss**\n    \n    - **Read-allocate**（預設）：把整個區塊載入快取，再回資料。\n        \n    - **Read-through**：不載入，直接從下層讀給 CPU（少用）。\n        \n- **Write hit**\n    \n    - **Write-through**：同時寫快取與下層；簡單，需搭配 write buffer。\n        \n    - **Write-back**：只改快取並設 **dirty**，被替換時才寫回；效能佳，複雜。\n        \n- **Write miss**\n    \n    - **Write-allocate**：先把區塊拉進快取，再寫；常與 write-back 搭配。\n        \n    - **Write-around（no-allocate）**：不載入，直接寫下層；常與 write-through 搭配。",
+			"x": 260,
+			"y": -300,
+			"width": 690,
+			"height": 298,
+			"color": "1"
+		},
+		{
+			"id": "218cf260ddada29b",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Cache_fundamental/02-Read hit 直接回資料。.png",
+			"x": 1140,
+			"y": -521,
+			"width": 400,
+			"height": 205
+		},
+		{
+			"id": "c4891d63dff890d6",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Cache_fundamental/07-Read miss - Read hit 直接回資料。.png",
+			"x": 1140,
+			"y": -200,
+			"width": 400,
+			"height": 210
+		},
+		{
+			"id": "3f3c4025a042f868",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Cache_fundamental/09-Read miss - 常見配對.png",
+			"x": 1140,
+			"y": 100,
+			"width": 400,
+			"height": 219
+		},
+		{
+			"id": "b770f8884ca5b35d",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Cache_fundamental/05-Write-through.png",
+			"x": 1780,
+			"y": -203,
+			"width": 400,
+			"height": 217
+		},
+		{
+			"id": "38491d342fe30689",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Cache_fundamental/10-Write-through.png",
+			"x": 1780,
+			"y": 100,
+			"width": 400,
+			"height": 234
+		},
+		{
+			"id": "ef1404da3dcbbd1a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Cache_fundamental/03-Write hit.png",
+			"x": 1760,
+			"y": -520,
+			"width": 380,
+			"height": 207
+		},
+		{
+			"id": "c6cf248ffb4adbcf",
+			"type": "text",
+			"text": "- **常見配對**\n    \n    - **Write-through + Write-around（no-allocate）**：避免在寫入失誤時把整塊搬進快取，減少匯流排流量。\n        \n    - **Write-back + Write-allocate**：之後多次寫同一塊都在快取內完成，效能好。\n        \n- **可行但較少見**\n    \n    - **Write-through + Write-allocate**：命中率可能提高，但每次寫仍要下傳，流量大。\n        \n    - **Write-back + Write-around**：會把常寫資料留在下層，失去 write-back 優勢。",
+			"x": 260,
+			"y": 40,
+			"width": 690,
+			"height": 216,
+			"color": "5"
+		},
+		{
+			"id": "98bf93e64460d408",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Cache_fundamental/08-常見配對.png",
+			"x": -260,
+			"y": -103,
+			"width": 400,
+			"height": 202
+		}
+	],
+	"edges": [
+		{
+			"id": "ba136e27bdf4c197",
+			"fromNode": "98bf93e64460d408",
+			"fromSide": "right",
+			"toNode": "9a03ee9f7bcf05de",
+			"toSide": "left"
+		},
+		{
+			"id": "8b7b788058486b75",
+			"fromNode": "98bf93e64460d408",
+			"fromSide": "right",
+			"toNode": "c6cf248ffb4adbcf",
+			"toSide": "left"
+		},
+		{
+			"id": "7b1bebc43077956a",
+			"fromNode": "9a03ee9f7bcf05de",
+			"fromSide": "right",
+			"toNode": "218cf260ddada29b",
+			"toSide": "left"
+		},
+		{
+			"id": "63d870e0cc092a91",
+			"fromNode": "9a03ee9f7bcf05de",
+			"fromSide": "right",
+			"toNode": "e5f2a9f6359ebd00",
+			"toSide": "left"
+		},
+		{
+			"id": "f491c76119daa08a",
+			"fromNode": "5388ad888159952c",
+			"fromSide": "right",
+			"toNode": "b171027bb2bd95db",
+			"toSide": "left"
+		},
+		{
+			"id": "3298499068454c93",
+			"fromNode": "b770f8884ca5b35d",
+			"fromSide": "bottom",
+			"toNode": "38491d342fe30689",
+			"toSide": "top"
+		},
+		{
+			"id": "a2a667752c920eea",
+			"fromNode": "ef1404da3dcbbd1a",
+			"fromSide": "right",
+			"toNode": "9c77d3ac5fc69f1e",
+			"toSide": "top"
+		},
+		{
+			"id": "d3a90bcab9d09b22",
+			"fromNode": "5657342c0e20c5a5",
+			"fromSide": "right",
+			"toNode": "ce6c1ed6c838f1a2",
+			"toSide": "left"
+		},
+		{
+			"id": "cd60479f8e4fdf74",
+			"fromNode": "680cc272217d188d",
+			"fromSide": "bottom",
+			"toNode": "9dd394d9a10baf46",
+			"toSide": "top"
+		},
+		{
+			"id": "281b1bbb98577cd6",
+			"fromNode": "2d18a6f14340209e",
+			"fromSide": "right",
+			"toNode": "28161bf589776400",
+			"toSide": "left"
+		},
+		{
+			"id": "27b6fe10b204cf28",
+			"fromNode": "2d18a6f14340209e",
+			"fromSide": "right",
+			"toNode": "8a9b0788e22220b3",
+			"toSide": "left"
+		},
+		{
+			"id": "32408f0cfd33a84b",
+			"fromNode": "2d18a6f14340209e",
+			"fromSide": "right",
+			"toNode": "9b4f05aeeacb24a1",
+			"toSide": "left"
+		},
+		{
+			"id": "adcd6fcec0db154a",
+			"fromNode": "a6dce32890d22ce3",
+			"fromSide": "bottom",
+			"toNode": "3970ff5239250ab7",
+			"toSide": "top"
+		}
+	]
+}

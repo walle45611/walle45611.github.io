@@ -1,0 +1,414 @@
+{
+	"nodes": [
+		{
+			"id": "942ee5ceb72e9c66",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Direct_mapped_cache/07-計算機組織_TOPIC_3_Direct_map.png",
+			"x": -260,
+			"y": -300,
+			"width": 400,
+			"height": 230
+		},
+		{
+			"id": "b78d7284d668a76a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Direct_mapped_cache/10-計算機組織_TOPIC_3_Direct_map.png",
+			"x": -260,
+			"y": 80,
+			"width": 399,
+			"height": 216
+		},
+		{
+			"id": "e574d65bd958cca3",
+			"type": "text",
+			"text": "- 今天要找 cache 內容，36 要找但是就會發現在 cache 的 index 和 tag 會導致找到 5 號，但是實際是要找 9 號 block，所以出現了錯。\n\n- 位址 36 對應：\n\t\n\t- $B = ⌊36/4⌋ = 9$，$O = 0$\n\t    \n\t- $I = 9 \\mod 4 = 1$ → 查快取格 1\n\t    \n\t- 需要的 **$tag = ⌊9/4⌋ = 2$**\n\n這是**衝突未命中**（direct-mapped 同 index 衝突）。",
+			"x": 220,
+			"y": 80,
+			"width": 558,
+			"height": 230,
+			"color": "1"
+		},
+		{
+			"id": "f11c30d2d6f76a74",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Direct_mapped_cache/13-更新 cache 的內容.png",
+			"x": -260,
+			"y": 400,
+			"width": 399,
+			"height": 204
+		},
+		{
+			"id": "600fac2b494967aa",
+			"type": "text",
+			"text": "- 更新 cache 的內容",
+			"x": 252,
+			"y": 470,
+			"width": 250,
+			"height": 60,
+			"color": "5"
+		},
+		{
+			"id": "454363474c3a76f7",
+			"type": "text",
+			"text": "是。由 **cache controller** 負責在 miss 時更新該格：\n\n流程（direct-mapped 範例）\n\n1. CPU 給位址 → 解析出 **index、tag、offset**。\n    \n2. 用 index 找到快取格，檢查 **valid** 與 **tag 比對**。\n    \n3. 若不符（miss）→ 控制器向下層取 **整個 block**：\n    \n    - 如該格 **dirty=1** 先寫回舊 block。\n        \n    - 將新 block 放入此格，**寫入新 tag**、設 **valid=1**、重設 **dirty**。\n        \n4. 用 offset 取出目標位元組回給 CPU。\n    \n5. 若是寫入，依策略更新（write-through 或 write-back 並設 dirty）。",
+			"x": -320,
+			"y": -720,
+			"width": 530,
+			"height": 339,
+			"color": "1"
+		},
+		{
+			"id": "01a46d0af23f079d",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Direct_mapped_cache/15-更新 cache 的內容.png",
+			"x": -260,
+			"y": 740,
+			"width": 400,
+			"height": 224
+		},
+		{
+			"id": "fa7259daa4bac412",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Direct_mapped_cache/02-命中範例圖案中那個是比較器.png",
+			"x": -1080,
+			"y": -802,
+			"width": 480,
+			"height": 272
+		},
+		{
+			"id": "12044ecebfb60728",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Direct_mapped_cache/05-失敗範例.png",
+			"x": -1080,
+			"y": -420,
+			"width": 445,
+			"height": 255
+		},
+		{
+			"id": "21a1c27b11d4160d",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Direct_mapped_cache/09-失敗範例.png",
+			"x": -1080,
+			"y": -85,
+			"width": 446,
+			"height": 245
+		},
+		{
+			"id": "4c845889f4ecd102",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Direct_mapped_cache/12-失敗範例.png",
+			"x": -1080,
+			"y": 240,
+			"width": 484,
+			"height": 280
+		},
+		{
+			"id": "b982cbb7cb74408e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Direct_mapped_cache/14-計算機組織_TOPIC_3_Direct_map.png",
+			"x": -1080,
+			"y": 620,
+			"width": 489,
+			"height": 281
+		},
+		{
+			"id": "bb5d87a9f16d402e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Direct_mapped_cache/16-計算機組織_TOPIC_3_Direct_map.png",
+			"x": -1094,
+			"y": 1000,
+			"width": 518,
+			"height": 300
+		},
+		{
+			"id": "c8ba2c6b9f08a058",
+			"type": "text",
+			"text": "命中範例圖案中那個是比較器",
+			"x": -1480,
+			"y": -710,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "806e783d71508348",
+			"type": "text",
+			"text": "失敗範例",
+			"x": -1475,
+			"y": -316,
+			"width": 250,
+			"height": 50,
+			"color": "1"
+		},
+		{
+			"id": "0a1be920f1e21fba",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Direct_mapped_cache/03-Cache 要幾個 block 了.png",
+			"x": 1040,
+			"y": -680,
+			"width": 399,
+			"height": 223
+		},
+		{
+			"id": "b46ddc189b317ade",
+			"type": "text",
+			"text": "Cache 要幾個 block 了",
+			"x": 1537,
+			"y": -605,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "71e5921fe57e2956",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Direct_mapped_cache/06-計算機組織_TOPIC_3_Direct_map.png",
+			"x": 1040,
+			"y": -380,
+			"width": 400,
+			"height": 190
+		},
+		{
+			"id": "a19cf52be5f35f88",
+			"type": "text",
+			"text": "- **Offset 位數 = log₂(block size)**。  \n    32 B/line ⇒ offset = **log₂32 = 5 bits**（選 line 內第幾個 byte）。\n    \n- **Index 位數 = log₂(cache size / block size)**。  \n    16 KB / 32 B = 512 lines = 2⁹ ⇒ index = **9 bits**。\n    \n- **Tag 位數 = 位址總長度 − index − offset**。  \n    若實體位址 32 bits ⇒ tag = 32 − 9 − 5 = **18 bits**（與圖一致）。\n    \n\n說明：offset 只由「每行大小」決定，用來在該行內定位到某個 byte；tag 是剩餘高位元，用來和該 index 的快取格比對。",
+			"x": 1560,
+			"y": -380,
+			"width": 540,
+			"height": 249,
+			"color": "1"
+		},
+		{
+			"id": "53604628dab0a266",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Direct_mapped_cache/08-對。 Index 與可快取位址空間無關。.png",
+			"x": 3300,
+			"y": -162,
+			"width": 400,
+			"height": 158
+		},
+		{
+			"id": "577339e0d85d53da",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Direct_mapped_cache/04-先算 一行的資料大小.png",
+			"x": 3300,
+			"y": -658,
+			"width": 400,
+			"height": 201
+		},
+		{
+			"id": "f7f2b18ba8dd2d2f",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Direct_mapped_cache/11-對。 Index 與可快取位址空間無關。.png",
+			"x": 3300,
+			"y": 156,
+			"width": 400,
+			"height": 177
+		},
+		{
+			"id": "d9b159dfe88c4f60",
+			"type": "text",
+			"text": "1. 先算**一行的資料大小**\n   = **block size（位元組）**。如果題目給「4 words/line、1 word = 4 B」，那就是 16 B/line。\n\n2. 算**行數**\n   = **cache data 容量（位元組） ÷ block size（位元組）**。\n   只除「整個 block 大小」，不是只除 words 數。\n\n3. **Index 位數**\n   = **log₂(行數)**。\n\n4. **Offset 位數**\n   = **log₂(block size in bytes)**。\n   若要拆成「word 選擇 + byte 選擇」，再把這個數拆開即可。\n\n5. **Tag 位數**\n   = **位址總長度 − index − offset**。\n\n6. **含開銷的快取總位元數**\n   = **行數 × [ block 資料位元數 + tag 位數 + valid(1) + dirty(有就加1) ]**。\n   note: **block 資料位元數 = block size × 8**，不是取 log₂。\n",
+			"x": 2393,
+			"y": -762,
+			"width": 667,
+			"height": 442,
+			"color": "1"
+		},
+		{
+			"id": "053b8e201cd76cdd",
+			"type": "text",
+			"text": "對。**Index 與可快取位址空間無關。**\n\n* 直接對映：`index = log2(快取行數) = log2(cache_size / block_size)`\n* 組相連 E-way：`index = log2(集合數) = log2(cache_size / (block_size × E))`\n\n改變「可快取位址空間」只會改 **tag**：`tag = 位址長度 − index − offset`。\n`offset = log2(block_size)`。\n",
+			"x": 2393,
+			"y": -193,
+			"width": 652,
+			"height": 220,
+			"color": "1"
+		},
+		{
+			"id": "4bd1273669a16055",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Direct_mapped_cache/01-計算機組織_TOPIC_3_Direct_map.png",
+			"x": 2393,
+			"y": -1320,
+			"width": 399,
+			"height": 232
+		},
+		{
+			"id": "d82860b0064096fd",
+			"type": "text",
+			"text": "- block 變大 → 利用**空間局部性**，**強制性 miss**下降，所以 miss rate 先降。\n    \n- 太大 → 同容量下可容納的**行數變少**，**容量與衝突 miss**上升，miss rate又回升。\n    \n- 快取越大（右側 16K/64K/256K 線），整體 miss rate 越低且對 block 大小不那麼敏感。\n    ",
+			"x": 2923,
+			"y": -1480,
+			"width": 677,
+			"height": 94,
+			"color": "1"
+		},
+		{
+			"id": "73f1883cc500acb8",
+			"type": "text",
+			"text": "1. **Block 變大 → miss penalty 變貴**  \n    miss penalty = 取回整個區塊所需時間  \n    = **首字延遲（latency to first word）** + **其餘字傳輸時間（transfer time）**。  \n    區塊越大，第二項越長。\n    \n2. **降低 miss penalty 的兩招**\n    \n    - **Early restart**：先拿到要的字就讓 CPU 繼續執行，其餘字背景搬。\n        \n    - **Critical-word first**：傳輸順序改為先送被請求的字，再送同一區塊其他字。  \n        兩者都不減少 miss 次數，只縮短一次 miss 的停頓時間。\n        \n3. **大區塊的取捨**\n    \n    - 好處：利用**空間局部性**，**強制性 miss**下降。\n        \n    - 壞處：\n        \n        1. 區塊越大 → 行數變少 → **容量/衝突 miss**上升。\n            \n        2. 區塊太大 → 同一區塊內的實際空間局部性變弱 → 下載許多用不到的字。\n            \n        3. 區塊越大 → **miss penalty**更久。  \n            所以 miss rate 會**先降後升**，存在最佳區塊大小。",
+			"x": 2923,
+			"y": -1320,
+			"width": 698,
+			"height": 418,
+			"color": "5"
+		}
+	],
+	"edges": [
+		{
+			"id": "f67643b6d8d198ec",
+			"fromNode": "942ee5ceb72e9c66",
+			"fromSide": "bottom",
+			"toNode": "b78d7284d668a76a",
+			"toSide": "top"
+		},
+		{
+			"id": "f88499c3be4580cf",
+			"fromNode": "b78d7284d668a76a",
+			"fromSide": "right",
+			"toNode": "e574d65bd958cca3",
+			"toSide": "left"
+		},
+		{
+			"id": "e7e024f0d97d3f9e",
+			"fromNode": "b78d7284d668a76a",
+			"fromSide": "bottom",
+			"toNode": "f11c30d2d6f76a74",
+			"toSide": "top"
+		},
+		{
+			"id": "91f13fc3058eb4f3",
+			"fromNode": "f11c30d2d6f76a74",
+			"fromSide": "right",
+			"toNode": "600fac2b494967aa",
+			"toSide": "left"
+		},
+		{
+			"id": "ad210554407a0440",
+			"fromNode": "454363474c3a76f7",
+			"fromSide": "bottom",
+			"toNode": "942ee5ceb72e9c66",
+			"toSide": "top"
+		},
+		{
+			"id": "94a22d0a9837eba3",
+			"fromNode": "f11c30d2d6f76a74",
+			"fromSide": "bottom",
+			"toNode": "01a46d0af23f079d",
+			"toSide": "top"
+		},
+		{
+			"id": "5403b01566393f5b",
+			"fromNode": "454363474c3a76f7",
+			"fromSide": "left",
+			"toNode": "fa7259daa4bac412",
+			"toSide": "right"
+		},
+		{
+			"id": "df2a050380eadbb6",
+			"fromNode": "fa7259daa4bac412",
+			"fromSide": "left",
+			"toNode": "c8ba2c6b9f08a058",
+			"toSide": "right"
+		},
+		{
+			"id": "25b6c760d9e65474",
+			"fromNode": "12044ecebfb60728",
+			"fromSide": "bottom",
+			"toNode": "21a1c27b11d4160d",
+			"toSide": "top"
+		},
+		{
+			"id": "e0f18125250bec94",
+			"fromNode": "21a1c27b11d4160d",
+			"fromSide": "bottom",
+			"toNode": "4c845889f4ecd102",
+			"toSide": "top"
+		},
+		{
+			"id": "a234183dcd26e4ac",
+			"fromNode": "4c845889f4ecd102",
+			"fromSide": "bottom",
+			"toNode": "b982cbb7cb74408e",
+			"toSide": "top"
+		},
+		{
+			"id": "48f2efe5345e7394",
+			"fromNode": "b982cbb7cb74408e",
+			"fromSide": "bottom",
+			"toNode": "bb5d87a9f16d402e",
+			"toSide": "top"
+		},
+		{
+			"id": "88e0a0c8d9cb7f8b",
+			"fromNode": "454363474c3a76f7",
+			"fromSide": "left",
+			"toNode": "12044ecebfb60728",
+			"toSide": "right"
+		},
+		{
+			"id": "02f10827b0e74df8",
+			"fromNode": "12044ecebfb60728",
+			"fromSide": "left",
+			"toNode": "806e783d71508348",
+			"toSide": "right"
+		},
+		{
+			"id": "cc9043194cc54906",
+			"fromNode": "0a1be920f1e21fba",
+			"fromSide": "right",
+			"toNode": "b46ddc189b317ade",
+			"toSide": "left"
+		},
+		{
+			"id": "3a041a96036e7497",
+			"fromNode": "0a1be920f1e21fba",
+			"fromSide": "bottom",
+			"toNode": "71e5921fe57e2956",
+			"toSide": "top"
+		},
+		{
+			"id": "19597fa7f74ce0f5",
+			"fromNode": "71e5921fe57e2956",
+			"fromSide": "right",
+			"toNode": "a19cf52be5f35f88",
+			"toSide": "left"
+		},
+		{
+			"id": "58b5f37325780284",
+			"fromNode": "d9b159dfe88c4f60",
+			"fromSide": "right",
+			"toNode": "577339e0d85d53da",
+			"toSide": "left"
+		},
+		{
+			"id": "177bb4c587cd4d3b",
+			"fromNode": "053b8e201cd76cdd",
+			"fromSide": "right",
+			"toNode": "53604628dab0a266",
+			"toSide": "left"
+		},
+		{
+			"id": "c7ce45be2e2d056a",
+			"fromNode": "53604628dab0a266",
+			"fromSide": "bottom",
+			"toNode": "f7f2b18ba8dd2d2f",
+			"toSide": "top"
+		},
+		{
+			"id": "079d922add4ea41a",
+			"fromNode": "4bd1273669a16055",
+			"fromSide": "right",
+			"toNode": "d82860b0064096fd",
+			"toSide": "left"
+		},
+		{
+			"id": "57e6f94ff5fc208a",
+			"fromNode": "4bd1273669a16055",
+			"fromSide": "right",
+			"toNode": "73f1883cc500acb8",
+			"toSide": "left"
+		}
+	]
+}

@@ -18,6 +18,6 @@
 - 透過多維陣列與迴圈完成矩陣題目的資料處理。
 - 原文以個人解題思路與 C++ 程式碼為主，完整程式碼保留在 Blog source。
 
-## Related Concepts
+## Navigation
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
+- [My vault：Research 筆記](../archives/my-vault-research.md)

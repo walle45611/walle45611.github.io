@@ -55,3 +55,7 @@
 
 - 這份來源補上目前 wiki 尚未獨立整理的「self-correction」主題，並把它和既有 `harness-engineering`、`verbalized-feedback-learning` 連成一條從 workflow 到 training 的技術路線。
 - 與既有 `harness-engineering-language-models-need-human-guidance` 一致：工作流與回饋設計會深刻影響模型表現；但這份來源更進一步指出，單純內部反思的穩定性有限，外部 feedback 與算力預算比較才是實務關鍵。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

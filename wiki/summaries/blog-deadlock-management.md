@@ -19,6 +19,6 @@
 - Deadlock prevention、avoidance、detection and recovery 是不同層次的處理方法，選擇取決於系統可接受的成本與保證程度。
 - Banker’s Algorithm 與 resource-allocation graph 可用來判斷安全狀態或分析循環等待。
 
-## Related Concepts
+## Navigation
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
+- [My vault：Tech 筆記](../archives/my-vault-tech.md)

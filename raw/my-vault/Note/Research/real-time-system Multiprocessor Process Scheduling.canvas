@@ -1,0 +1,287 @@
+{
+	"nodes": [
+		{
+			"id": "text-mcnaughton",
+			"type": "text",
+			"text": "### McNaughton 1959\n\n- 目標：比較 preemptive / non-preemptive 對加權完成時間和 $\\sum w_j c_j$ 的影響（identical CPUs）。\n- 結論：存在一個 non-preemptive 排程，效能與任何有限次 preemption 的排程一樣好；preemption 非必要。\n- 理由：相同 CPU 下，切割工作不增益，關鍵在負載平衡，可不靠任意 preemption 達成。\n- 備註：求最佳為 NP-hard；若目標是最小化 $\\sum c_j$，Shortest Processing Time (SPT) 貪心為最佳。",
+			"x": -800,
+			"y": -110,
+			"width": 480,
+			"height": 280
+		},
+		{
+			"id": "239007e663871884",
+			"type": "file",
+			"file": "Assets/Note/Research/real-time-system Multiprocessor Process Scheduling/01-Mok 1983.png",
+			"x": 440,
+			"y": -468,
+			"width": 400,
+			"height": 269
+		},
+		{
+			"id": "text-assumption",
+			"type": "text",
+			"text": "### 框架與假設\n\n- 常見假設：inter-processor communication 無額外成本（理想 migration）。\n- Partitioning：先 task allocation，再各 CPU 用 uniprocessor scheduling；分析簡單但可能浪費容量。\n- Global：全域 dispatcher 對 periodic/sporadic 一起排程，允許 migration 以吸收突發負載。",
+			"x": -50,
+			"y": 787,
+			"width": 420,
+			"height": 240
+		},
+		{
+			"id": "f9cfa552d98897e1",
+			"type": "file",
+			"file": "Assets/Note/Research/real-time-system Multiprocessor Process Scheduling/05-框架與假設.png",
+			"x": -260,
+			"y": 322,
+			"width": 400,
+			"height": 318
+		},
+		{
+			"id": "text-global-edf-dm",
+			"type": "text",
+			"text": "### Global EDF / Deadline-Monotonic 行為\n\n- 目標：在 $m$ identical CPUs、$n$ independent periodic tasks 下看可排程性。\n- 觀察：某些任務集合即使總利用率很低，global EDF 仍不可排（高/低利用率混合造成干擾）。\n- 提示：將 heavy tasks 與 light tasks 分隔，降低 cross-interference。",
+			"x": 700,
+			"y": 787,
+			"width": 460,
+			"height": 240
+		},
+		{
+			"id": "320421e86309679d",
+			"type": "file",
+			"file": "Assets/Note/Research/real-time-system Multiprocessor Process Scheduling/06-real-time-system Multipr.png",
+			"x": 730,
+			"y": 333,
+			"width": 400,
+			"height": 307
+		},
+		{
+			"id": "text-nonpreemptive",
+			"type": "text",
+			"text": "### Nonpreemptive 多處理器排程\n\n- 條件：單一 deadline、identical processors、所有任務 t=0 ready。\n- 複雜度直覺：跨 CPU 排序再加資源/先後約束，搜尋空間爆炸；只有 2 CPU + unit-time 無資源是 polynomial，多數情況 NP-complete。\n- 表格重點：加入資源、樹狀先後或可變執行時間，很快轉 NP-complete；即使多 CPU，除非結構高度受限，仍難解。",
+			"x": -1520,
+			"y": -75,
+			"width": 560,
+			"height": 205
+		},
+		{
+			"id": "aa09749848afb52c",
+			"type": "file",
+			"file": "Assets/Note/Research/real-time-system Multiprocessor Process Scheduling/03-Nonpreemptive 多處理器排程.png",
+			"x": -1440,
+			"y": -455,
+			"width": 400,
+			"height": 296
+		},
+		{
+			"id": "cdc95efd6175d2bf",
+			"type": "file",
+			"file": "Assets/Note/Research/real-time-system Multiprocessor Process Scheduling/02-McNaughton 1959.png",
+			"x": -760,
+			"y": -466,
+			"width": 400,
+			"height": 267
+		},
+		{
+			"id": "text-lawler",
+			"type": "text",
+			"text": "### Lawler 1983\n\n- 目標：說明 real-time 多處理器需要啟發式。條件：identical processors、不同 deadlines、允許 preemption。\n- 定理：最小化遲到任務數為 NP-hard。\n- 直覺：異質 deadline 迫使跨 CPU 協調，決定誰被延後是組合覆蓋問題。",
+			"x": -200,
+			"y": -90,
+			"width": 420,
+			"height": 240
+		},
+		{
+			"id": "d5864f55a1120d01",
+			"type": "file",
+			"file": "Assets/Note/Research/real-time-system Multiprocessor Process Scheduling/04-Lawler 1983.png",
+			"x": -180,
+			"y": -455,
+			"width": 400,
+			"height": 256
+		},
+		{
+			"id": "text-mok",
+			"type": "text",
+			"text": "### Mok 1983\n\n- 目標：揭露 EDF 在多處理器的限制。條件：不同 ready time。\n- 定理 0：在 $P>1$ 時，EDF 非最佳。例：T1(c=1,d=1)、T2(c=1,d=2)、T3(c=3,d=3.5) 於 2 CPU，EDF 會 miss 但存在可行排程。\n- 定理 1：$P\\ge2$，若沒有完整的 deadline/執行/釋放資訊，沒有 deadline-based 演算法能全域最佳。\n- 直覺：非同步釋放打破 EDF 優勢，跨 CPU 的 job packing 可能阻塞更早期限。",
+			"x": 380,
+			"y": -112,
+			"width": 520,
+			"height": 280
+		},
+		{
+			"id": "text-global-edf-formula",
+			"type": "text",
+			"text": "### Global EDF / DM 可排程（Baker 2003）\n\n- 條件：$n$ 獨立週期任務，$m$ identical CPUs，preemptive EDF/DM。\n- 充分條件：對每個 $\\tau_k$，若 $\\sum_{i=1}^{n} \\min(1, \\beta_i) \\le m\\left(1-\\frac{c_k}{d_k}\\right)+\\frac{c_k}{d_k}$，則可排。\n- $\\beta_i$ 依 $c_i/T_i$ 與 deadline/period 關係分段定義（見 Baker 論文）。\n- 直覺：每個任務的 demand 上限為 1 個 CPU，檢查在 $\\tau_k$ 視窗內總需求是否塞得進 $m$ 個 CPU 並扣除 $\\tau_k$ 自身。",
+			"x": 1280,
+			"y": 776,
+			"width": 520,
+			"height": 262
+		},
+		{
+			"id": "f2aab48b1f067f27",
+			"type": "file",
+			"file": "Assets/Note/Research/real-time-system Multiprocessor Process Scheduling/07-real-time-system Multipr.png",
+			"x": 1340,
+			"y": 333,
+			"width": 400,
+			"height": 319
+		},
+		{
+			"id": "text-baruah",
+			"type": "text",
+			"text": "### Global FJP vs Partitioned FJP（Baruah 2008）\n\n- 結論：global fixed job-priority（如 global EDF）與 partitioned FJP 互不可比，各自有可排與不可排的任務集。\n- 例（2 CPUs）：$\\tau_1(c=2,d=2,p=3)$、$\\tau_2(3,3,4)$、$\\tau_3(5,12,12)$；任兩任務利用率超 100% 破壞 partitioning，但 global 可交錯執行。\n- Takeaway：在 sporadic 混合負載下需評估 global 與 partitioned，尤其當利用率逼近單核容量時。",
+			"x": 1920,
+			"y": 781,
+			"width": 520,
+			"height": 253
+		},
+		{
+			"id": "a0060b6bb92bd497",
+			"type": "file",
+			"file": "Assets/Note/Research/real-time-system Multiprocessor Process Scheduling/09-real-time-system Multipr.png",
+			"x": 1980,
+			"y": 441,
+			"width": 400,
+			"height": 278
+		},
+		{
+			"id": "text-graham",
+			"type": "text",
+			"text": "### Multiprocessor Anomaly（Graham 1976）\n\n- 現象：改變優先序、增加 CPU、縮短執行、放寬先後，反而可能拉長排程。\n- 理由：先後與平行的互動可能造成新競爭/閒置，擾動後出現排程空洞。\n- 教訓：多核並非資源越多越好，需分析 makespan 而非依直覺。",
+			"x": 2560,
+			"y": 793,
+			"width": 460,
+			"height": 229
+		},
+		{
+			"id": "1251cfe82e44ff01",
+			"type": "file",
+			"file": "Assets/Note/Research/real-time-system Multiprocessor Process Scheduling/08-real-time-system Multipr.png",
+			"x": 2590,
+			"y": 433,
+			"width": 399,
+			"height": 279
+		}
+	],
+	"edges": [
+		{
+			"id": "edge-nonpreemptive",
+			"fromNode": "aa09749848afb52c",
+			"fromSide": "bottom",
+			"toNode": "text-nonpreemptive",
+			"toSide": "top"
+		},
+		{
+			"id": "edge-mcnaughton",
+			"fromNode": "cdc95efd6175d2bf",
+			"fromSide": "bottom",
+			"toNode": "text-mcnaughton",
+			"toSide": "top"
+		},
+		{
+			"id": "edge-lawler",
+			"fromNode": "d5864f55a1120d01",
+			"fromSide": "bottom",
+			"toNode": "text-lawler",
+			"toSide": "top"
+		},
+		{
+			"id": "edge-mok",
+			"fromNode": "239007e663871884",
+			"fromSide": "bottom",
+			"toNode": "text-mok",
+			"toSide": "top"
+		},
+		{
+			"id": "edge-assumption",
+			"fromNode": "f9cfa552d98897e1",
+			"fromSide": "bottom",
+			"toNode": "text-assumption",
+			"toSide": "top"
+		},
+		{
+			"id": "edge-global-edf-dm",
+			"fromNode": "320421e86309679d",
+			"fromSide": "bottom",
+			"toNode": "text-global-edf-dm",
+			"toSide": "top"
+		},
+		{
+			"id": "edge-global-edf-formula",
+			"fromNode": "f2aab48b1f067f27",
+			"fromSide": "bottom",
+			"toNode": "text-global-edf-formula",
+			"toSide": "top"
+		},
+		{
+			"id": "edge-baruah",
+			"fromNode": "a0060b6bb92bd497",
+			"fromSide": "bottom",
+			"toNode": "text-baruah",
+			"toSide": "top"
+		},
+		{
+			"id": "edge-graham",
+			"fromNode": "1251cfe82e44ff01",
+			"fromSide": "bottom",
+			"toNode": "text-graham",
+			"toSide": "top"
+		},
+		{
+			"id": "flow-nonpreemptive-mcnaughton",
+			"fromNode": "text-nonpreemptive",
+			"fromSide": "right",
+			"toNode": "text-mcnaughton",
+			"toSide": "left"
+		},
+		{
+			"id": "flow-mcnaughton-lawler",
+			"fromNode": "text-mcnaughton",
+			"fromSide": "right",
+			"toNode": "text-lawler",
+			"toSide": "left"
+		},
+		{
+			"id": "flow-lawler-mok",
+			"fromNode": "text-lawler",
+			"fromSide": "right",
+			"toNode": "text-mok",
+			"toSide": "left"
+		},
+		{
+			"id": "flow-mok-assumption",
+			"fromNode": "text-mok",
+			"fromSide": "bottom",
+			"toNode": "text-assumption",
+			"toSide": "top"
+		},
+		{
+			"id": "flow-assumption-global",
+			"fromNode": "text-assumption",
+			"fromSide": "right",
+			"toNode": "text-global-edf-dm",
+			"toSide": "left"
+		},
+		{
+			"id": "flow-global-formula",
+			"fromNode": "text-global-edf-dm",
+			"fromSide": "right",
+			"toNode": "text-global-edf-formula",
+			"toSide": "left"
+		},
+		{
+			"id": "flow-formula-baruah",
+			"fromNode": "text-global-edf-formula",
+			"fromSide": "right",
+			"toNode": "text-baruah",
+			"toSide": "left"
+		},
+		{
+			"id": "flow-baruah-graham",
+			"fromNode": "text-baruah",
+			"fromSide": "right",
+			"toNode": "text-graham",
+			"toSide": "left"
+		}
+	]
+}

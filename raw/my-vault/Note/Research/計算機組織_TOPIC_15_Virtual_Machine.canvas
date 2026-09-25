@@ -1,0 +1,27 @@
+{
+	"nodes":[
+		{"id":"f2b7a62f6feb2b56","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_15_Virtual_Machine/01-計算機組織_TOPIC_15_Virtual_M.png","x":-240,"y":-340,"width":399,"height":225},
+		{"id":"dfc4125bfb816e81","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_15_Virtual_Machine/02-計算機組織_TOPIC_15_Virtual_M.png","x":-240,"y":-20,"width":400,"height":246},
+		{"id":"420d8b901b0c4668","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_15_Virtual_Machine/05-計算機組織_TOPIC_15_Virtual_M.png","x":-240,"y":340,"width":400,"height":212},
+		{"id":"a39684570e459d21","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_15_Virtual_Machine/03-三種技術.png","x":320,"y":15,"width":467,"height":151},
+		{"id":"1f788ab9a78a914e","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_15_Virtual_Machine/04-三種技術.png","x":354,"y":267,"width":400,"height":121},
+		{"id":"266d00b6faebca77","type":"text","text":"- Guest 不能配置 Host 只能由 Host 的 VMM 來配置那麼就是使用 kernel mode 或是 user mode 去做防護的這點跟 OS 相同","x":335,"y":893,"width":370,"height":87,"color":"1"},
+		{"id":"f62656b89b52932f","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_15_Virtual_Machine/06-三種技術.png","x":880,"y":513,"width":400,"height":247},
+		{"id":"dd3981d770d61605","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_15_Virtual_Machine/08-計算機組織_TOPIC_15_Virtual_M.png","x":320,"y":552,"width":400,"height":266},
+		{"id":"0d2da7e7198e290e","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_15_Virtual_Machine/07-三種技術.png","x":1360,"y":535,"width":400,"height":203},
+		{"id":"47e95c1e9d5e1fc9","type":"text","text":"- 三種技術\n\t1.  time-shared(CPU) 和 partitioned(Memory Disk) 都會使得硬體看起來很多個。\n\t2. emulated 是如果使用 micro programming 的 Control 那麼可以利用裡面的 code 讓她看起來有不同的應題。","x":1159,"y":175,"width":402,"height":184,"color":"1"},
+		{"id":"9477fc164f809e44","type":"text","text":"- 成本是 CPU Time 那麼就是 \n- User-level processor-bound programs(CPU-bound) \n\t- 因為沒有使用到 VMM 也就是 IO 硬體設備等等的虛擬化，那麼就是沒有 Overhead。\n\t- I/O-intensive workloads 就是 I/O-bound 那麼這個就會有比較多的虛擬化 Overhead。\n\t- 最後一個在說的就是 CPU 處理的時間可以隱藏掉，因為 I/O-bound","x":1840,"y":530,"width":484,"height":238,"color":"1"}
+	],
+	"edges":[
+		{"id":"f88aba4c4c6c2b12","fromNode":"f2b7a62f6feb2b56","fromSide":"bottom","toNode":"dfc4125bfb816e81","toSide":"top"},
+		{"id":"dd720791a8050b86","fromNode":"dfc4125bfb816e81","fromSide":"right","toNode":"a39684570e459d21","toSide":"left"},
+		{"id":"e7b8e13f8b3a7ec7","fromNode":"dfc4125bfb816e81","fromSide":"bottom","toNode":"420d8b901b0c4668","toSide":"top"},
+		{"id":"51412fe4ab11cfd6","fromNode":"a39684570e459d21","fromSide":"bottom","toNode":"1f788ab9a78a914e","toSide":"top"},
+		{"id":"08e7103f109da740","fromNode":"1f788ab9a78a914e","fromSide":"right","toNode":"47e95c1e9d5e1fc9","toSide":"left"},
+		{"id":"eefd0535d3e92568","fromNode":"1f788ab9a78a914e","fromSide":"bottom","toNode":"dd3981d770d61605","toSide":"top"},
+		{"id":"60082a882edf34e0","fromNode":"dd3981d770d61605","fromSide":"bottom","toNode":"266d00b6faebca77","toSide":"top"},
+		{"id":"593e1ea1294e543b","fromNode":"47e95c1e9d5e1fc9","fromSide":"bottom","toNode":"f62656b89b52932f","toSide":"top"},
+		{"id":"2a8ee1e3bc7a6b78","fromNode":"47e95c1e9d5e1fc9","fromSide":"bottom","toNode":"0d2da7e7198e290e","toSide":"top"},
+		{"id":"6bf7677b2ec02fd1","fromNode":"0d2da7e7198e290e","fromSide":"right","toNode":"9477fc164f809e44","toSide":"left"}
+	]
+}

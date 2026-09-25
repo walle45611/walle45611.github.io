@@ -1,0 +1,221 @@
+{
+	"nodes": [
+		{
+			"id": "4f47653d8cdfb7de",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_06_硬體支援多執行緒/01-計算機組織_TOPIC_06_硬體支援多執行緒.png",
+			"x": -260,
+			"y": -280,
+			"width": 400,
+			"height": 181
+		},
+		{
+			"id": "020834b6534fcc2c",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_06_硬體支援多執行緒/03-計算機組織_TOPIC_06_硬體支援多執行緒.png",
+			"x": -220,
+			"y": -40,
+			"width": 321,
+			"height": 400
+		},
+		{
+			"id": "a3299c67ce1a2512",
+			"type": "text",
+			"text": "- Thread A 橫列都是一個 instr. package 那麼，那中間空閒的時間有可能是 memory access load/store 的時間那麼他屬於 long store(Coarse sw)\n- Thread B 是屬於 short store\n1. Coarse MT 就是遇到 Long store，切換 thread 的執行，short store 沒有辦法處理會有 throughput 的損失。\n2. Fine MT 輪流切換一個 thread，就是 RR 切換這樣。\n3. SMT 基本上跟 Fine MT 差不多，但是如果是 4-way 那麼他會拿別邊的 threads 湊滿 4-way。",
+			"x": 180,
+			"y": 9,
+			"width": 460,
+			"height": 302,
+			"color": "1"
+		},
+		{
+			"id": "f4758e01d62bb642",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_06_硬體支援多執行緒/02-計算機組織_TOPIC_06_硬體支援多執行緒.png",
+			"x": -760,
+			"y": -247,
+			"width": 399,
+			"height": 115
+		},
+		{
+			"id": "938eec4509c02463",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_06_硬體支援多執行緒/06-計算機組織_TOPIC_06_硬體支援多執行緒.png",
+			"x": -690,
+			"y": 540,
+			"width": 400,
+			"height": 170
+		},
+		{
+			"id": "f78e65c2ed08c7e4",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_06_硬體支援多執行緒/08-計算機組織_TOPIC_06_硬體支援多執行緒.png",
+			"x": 179,
+			"y": 543,
+			"width": 400,
+			"height": 93
+		},
+		{
+			"id": "ec0d2ed5a4df39be",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_06_硬體支援多執行緒/04-計算機組織_TOPIC_06_硬體支援多執行緒.png",
+			"x": -760,
+			"y": 37,
+			"width": 400,
+			"height": 245
+		},
+		{
+			"id": "482552d8ac30ad46",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_06_硬體支援多執行緒/09-計算機組織_TOPIC_06_硬體支援多執行緒.png",
+			"x": -690,
+			"y": 820,
+			"width": 399,
+			"height": 164
+		},
+		{
+			"id": "21b919c32b207fa6",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_06_硬體支援多執行緒/12-計算機組織_TOPIC_06_硬體支援多執行緒.png",
+			"x": -690,
+			"y": 1080,
+			"width": 399,
+			"height": 217
+		},
+		{
+			"id": "ee863466bcbdbff2",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_06_硬體支援多執行緒/07-計算機組織_TOPIC_06_硬體支援多執行緒.png",
+			"x": -259,
+			"y": 543,
+			"width": 399,
+			"height": 96
+		},
+		{
+			"id": "a8c9cba9c47bd9d3",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_06_硬體支援多執行緒/10-計算機組織_TOPIC_06_硬體支援多執行緒.png",
+			"x": -260,
+			"y": 820,
+			"width": 400,
+			"height": 190
+		},
+		{
+			"id": "2baeb60602d48f0d",
+			"type": "text",
+			"text": "這邊就不用 context switch 因為硬體可以，不用切換",
+			"x": -184,
+			"y": 1050,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "8b06b90005faf525",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_06_硬體支援多執行緒/05-計算機組織_TOPIC_06_硬體支援多執行緒.png",
+			"x": -1160,
+			"y": 540,
+			"width": 399,
+			"height": 176
+		},
+		{
+			"id": "931812ea8769da36",
+			"type": "text",
+			"text": "Simultaneous 和 Fine-grained 優缺點一樣",
+			"x": -1085,
+			"y": 760,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "f317c2f5403090c1",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_06_硬體支援多執行緒/11-計算機組織_TOPIC_06_硬體支援多執行緒.png",
+			"x": -1180,
+			"y": 902,
+			"width": 400,
+			"height": 117
+		}
+	],
+	"edges": [
+		{
+			"id": "90e5f3db1dbd6988",
+			"fromNode": "020834b6534fcc2c",
+			"fromSide": "right",
+			"toNode": "a3299c67ce1a2512",
+			"toSide": "left"
+		},
+		{
+			"id": "b6e76055cbc3da51",
+			"fromNode": "f4758e01d62bb642",
+			"fromSide": "right",
+			"toNode": "4f47653d8cdfb7de",
+			"toSide": "left"
+		},
+		{
+			"id": "8de6db25b2ec2435",
+			"fromNode": "020834b6534fcc2c",
+			"fromSide": "bottom",
+			"toNode": "938eec4509c02463",
+			"toSide": "top"
+		},
+		{
+			"id": "d24540d74eabc10d",
+			"fromNode": "020834b6534fcc2c",
+			"fromSide": "bottom",
+			"toNode": "ee863466bcbdbff2",
+			"toSide": "top"
+		},
+		{
+			"id": "b7b5797b0e90b789",
+			"fromNode": "020834b6534fcc2c",
+			"fromSide": "bottom",
+			"toNode": "f78e65c2ed08c7e4",
+			"toSide": "top"
+		},
+		{
+			"id": "6df0f17d2d0d12bc",
+			"fromNode": "020834b6534fcc2c",
+			"fromSide": "left",
+			"toNode": "ec0d2ed5a4df39be",
+			"toSide": "right"
+		},
+		{
+			"id": "ff6d3e64bd252a21",
+			"fromNode": "938eec4509c02463",
+			"fromSide": "bottom",
+			"toNode": "482552d8ac30ad46",
+			"toSide": "top"
+		},
+		{
+			"id": "7fd8b5f6e1d95770",
+			"fromNode": "482552d8ac30ad46",
+			"fromSide": "bottom",
+			"toNode": "21b919c32b207fa6",
+			"toSide": "top"
+		},
+		{
+			"id": "bb45db89563e7048",
+			"fromNode": "ee863466bcbdbff2",
+			"fromSide": "bottom",
+			"toNode": "a8c9cba9c47bd9d3",
+			"toSide": "top"
+		},
+		{
+			"id": "dcf8e0eb76049596",
+			"fromNode": "a8c9cba9c47bd9d3",
+			"fromSide": "bottom",
+			"toNode": "2baeb60602d48f0d",
+			"toSide": "top"
+		},
+		{
+			"id": "d3653b37cfc511d8",
+			"fromNode": "8b06b90005faf525",
+			"fromSide": "bottom",
+			"toNode": "931812ea8769da36",
+			"toSide": "top"
+		}
+	]
+}

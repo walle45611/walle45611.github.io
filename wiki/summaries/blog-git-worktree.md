@@ -19,6 +19,6 @@
 - 原文示範 bare repository、worktree 建立、分支操作與提交 PR 的流程。
 - Worktree 的價值在於工作目錄分離與歷史可讀性，不是取代分支或版本控制本身。
 
-## Related Concepts
+## Navigation
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
+- [My vault：Tech 筆記](../archives/my-vault-tech.md)

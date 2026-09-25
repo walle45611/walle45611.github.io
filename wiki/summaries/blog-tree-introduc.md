@@ -19,6 +19,6 @@
 - 表示法包含 list representation 與 left-child/right-sibling，並說明一般樹與 Binary Tree 的關係。
 - 內容參考 CLRS 與 Horowitz，完整圖例與推導保留在 Blog source。
 
-## Related Concepts
+## Navigation
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
+- [My vault：Research 筆記](../archives/my-vault-research.md)

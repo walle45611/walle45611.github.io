@@ -19,6 +19,6 @@
 - 遞迴分析涵蓋展開帶入法、遞迴樹、原始與擴展 Master Theorem。
 - Selection Sort、階乘、`log(n!)` 與其他範例用來示範複雜度推導。
 
-## Related Concepts
+## Navigation
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
+- [My vault：Research 筆記](../archives/my-vault-research.md)

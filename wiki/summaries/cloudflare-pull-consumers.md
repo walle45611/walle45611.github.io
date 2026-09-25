@@ -43,3 +43,7 @@
 
 - 這是知識庫第一份關於 Cloudflare Queues consumer 行為的資料，與既有 Workers AI 計價主題互補，但焦點不同。
 - 新來源把 Cloudflare 主題從成本治理擴展到訊息消費控制，後續可累積更多 queue、retry、backpressure 與 API-based consumer 的實務資料。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

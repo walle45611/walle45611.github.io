@@ -19,6 +19,6 @@
 - Guacamole 的 SFTP 設定本身不一定是唯一問題，網路延遲也可能造成連線失敗。
 - 原文保留 Windows 服務與測試命令；實際操作需依目前 Windows 版本重新確認。
 
-## Related Concepts
+## Navigation
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
+- [My vault：Tech 筆記](../archives/my-vault-tech.md)

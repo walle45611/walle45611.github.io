@@ -18,6 +18,6 @@
 - 找到相等值時仍需繼續向左確認，才能得到首次出現的位置。
 - 原文保留個人解題流程與完整程式碼；摘要只保留演算法判斷。
 
-## Related Concepts
+## Navigation
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
+- [My vault：Research 筆記](../archives/my-vault-research.md)

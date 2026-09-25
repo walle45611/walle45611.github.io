@@ -1,0 +1,195 @@
+{
+	"nodes": [
+		{
+			"id": "fb330723d28e9f3e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_15_定址模式/01-計算機組織TOPIC_15_定址模式.png",
+			"x": -320,
+			"y": -320,
+			"width": 399,
+			"height": 240
+		},
+		{
+			"id": "d75123256eb05ee4",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_15_定址模式/02-計算機組織TOPIC_15_定址模式.png",
+			"x": -320,
+			"y": -20,
+			"width": 400,
+			"height": 49
+		},
+		{
+			"id": "d869e73341f7f8bd",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_15_定址模式/04-這都是在說運算元從哪邊來.png",
+			"x": -360,
+			"y": 120,
+			"width": 481,
+			"height": 240
+		},
+		{
+			"id": "67d4142ef9d89696",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_15_定址模式/07-計算機組織TOPIC_15_定址模式.png",
+			"x": -359,
+			"y": 500,
+			"width": 480,
+			"height": 260
+		},
+		{
+			"id": "5aa27d6ef56900ba",
+			"type": "text",
+			"text": "指令如何計算跳躍的位置或是指令如何取得運算元，的分類",
+			"x": 220,
+			"y": -26,
+			"width": 250,
+			"height": 55,
+			"color": "1"
+		},
+		{
+			"id": "e421b83fb5778b4d",
+			"type": "text",
+			"text": "- 這都是在說運算元從哪邊來\n\t\t\n\t- immediate 反正就是有 i 的就是這個 addressing mode。\n\t\t\n\t- register 就是有運算元在 register 就是此定址模式，所有的運算元都在 register 裡面，記得 `jr` 指令是這個。\n\t\t\n\t- base or displacement 如果有在 memory 定址的指令就是此定址模式。\n\n",
+			"x": 220,
+			"y": 162,
+			"width": 612,
+			"height": 157,
+			"color": "1"
+		},
+		{
+			"id": "09a5195fa69c7c52",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_15_定址模式/03-計算機組織TOPIC_15_定址模式.png",
+			"x": -940,
+			"y": 120,
+			"width": 486,
+			"height": 240
+		},
+		{
+			"id": "1e949f574db221c3",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_15_定址模式/06-計算機組織TOPIC_15_定址模式.png",
+			"x": -934,
+			"y": 500,
+			"width": 480,
+			"height": 260
+		},
+		{
+			"id": "f219860dddfaea39",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_15_定址模式/08-計算機組織TOPIC_15_定址模式.png",
+			"x": 220,
+			"y": 532,
+			"width": 620,
+			"height": 98
+		},
+		{
+			"id": "ed6d84fb1e373244",
+			"type": "text",
+			"text": "- direct 是直接放 Memory Label\n- index 就是兩個 reg 相加就是 mem 的位置了",
+			"x": 389,
+			"y": 669,
+			"width": 282,
+			"height": 91,
+			"color": "1"
+		},
+		{
+			"id": "b2a35516fdb93527",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_15_定址模式/05-計算機組織TOPIC_15_定址模式.png",
+			"x": 1000,
+			"y": 367,
+			"width": 615,
+			"height": 331
+		},
+		{
+			"id": "fbf1b827e19dd7fb",
+			"type": "text",
+			"text": "memory indirect 就是先把 10004 的內容先載入到 $3 但是還不是最後的結果再來把 10020 是位置再載入其位置之內容，需要 memory access 3 次，有一次是抓取指令",
+			"x": 1186,
+			"y": 804,
+			"width": 394,
+			"height": 115,
+			"color": "2"
+		}
+	],
+	"edges": [
+		{
+			"id": "8212f017122feb00",
+			"fromNode": "fb330723d28e9f3e",
+			"fromSide": "bottom",
+			"toNode": "d75123256eb05ee4",
+			"toSide": "top"
+		},
+		{
+			"id": "6eee44e6a51e05ab",
+			"fromNode": "d75123256eb05ee4",
+			"fromSide": "right",
+			"toNode": "5aa27d6ef56900ba",
+			"toSide": "left"
+		},
+		{
+			"id": "b556ca9378f8a4ea",
+			"fromNode": "d75123256eb05ee4",
+			"fromSide": "bottom",
+			"toNode": "d869e73341f7f8bd",
+			"toSide": "top"
+		},
+		{
+			"id": "95ed541be1dcb5c3",
+			"fromNode": "d869e73341f7f8bd",
+			"fromSide": "right",
+			"toNode": "e421b83fb5778b4d",
+			"toSide": "left"
+		},
+		{
+			"id": "f8aff6c7559da1ca",
+			"fromNode": "d869e73341f7f8bd",
+			"fromSide": "bottom",
+			"toNode": "67d4142ef9d89696",
+			"toSide": "top"
+		},
+		{
+			"id": "8a7f2552e596044c",
+			"fromNode": "d75123256eb05ee4",
+			"fromSide": "bottom",
+			"toNode": "09a5195fa69c7c52",
+			"toSide": "top"
+		},
+		{
+			"id": "a22562d563bdb439",
+			"fromNode": "09a5195fa69c7c52",
+			"fromSide": "bottom",
+			"toNode": "1e949f574db221c3",
+			"toSide": "top"
+		},
+		{
+			"id": "a6bfa828b9d4f74b",
+			"fromNode": "d869e73341f7f8bd",
+			"fromSide": "bottom",
+			"toNode": "f219860dddfaea39",
+			"toSide": "top"
+		},
+		{
+			"id": "f917d3133bf0a602",
+			"fromNode": "f219860dddfaea39",
+			"fromSide": "bottom",
+			"toNode": "ed6d84fb1e373244",
+			"toSide": "top"
+		},
+		{
+			"id": "870f6770fb43e22a",
+			"fromNode": "f219860dddfaea39",
+			"fromSide": "right",
+			"toNode": "b2a35516fdb93527",
+			"toSide": "left"
+		},
+		{
+			"id": "c52a5ac810c54cfc",
+			"fromNode": "b2a35516fdb93527",
+			"fromSide": "bottom",
+			"toNode": "fbf1b827e19dd7fb",
+			"toSide": "top"
+		}
+	]
+}

@@ -36,3 +36,7 @@
 - 前綴快取依賴引擎支援、啟用狀態、相容且相同的前綴及尚未淘汰的狀態；原文「無需配置」「速度自動到手」不是普遍保證。
 - [[deepseek-v4-1-flash-kv-cache-compression]] 側重縮小 KV 表示與跨層副本，本篇側重請求排程與復用，兩者互補。兩篇均不能把歷史 K/V 重算的減少等同於所有注意力成本消失。
 - [[local-llm-deployment]] 承接部署與量測框架，[[transformer-attention-fundamentals]] 承接模型機制與快取的區分。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

@@ -42,3 +42,7 @@
 
 - 這是知識庫第一份 Cloudflare Workers AI 成本資料，屬新主題擴充，暫無既有結論衝突。
 - 新來源可拆成兩條長期概念軸線：平台計價機制（方案/配額/超限行為）與計量單位（token-neuron 轉換）。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

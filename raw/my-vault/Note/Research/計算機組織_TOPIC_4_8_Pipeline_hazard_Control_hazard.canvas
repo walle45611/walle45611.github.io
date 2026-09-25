@@ -1,0 +1,2119 @@
+{
+	"nodes": [
+		{
+			"id": "5b36f077dd35b582",
+			"type": "group",
+			"x": 2720,
+			"y": 1840,
+			"width": 7680,
+			"height": 7280,
+			"label": "Control hazard"
+		},
+		{
+			"id": "9b5f7579efdab8ec",
+			"type": "group",
+			"x": 2960,
+			"y": 5150,
+			"width": 7280,
+			"height": 3730,
+			"label": "Hardware base"
+		},
+		{
+			"id": "e7223f0ce1e4327f",
+			"type": "group",
+			"x": 2960,
+			"y": 2146,
+			"width": 5720,
+			"height": 2580,
+			"label": "Software base"
+		},
+		{
+			"id": "bf7945111e25ec44",
+			"type": "group",
+			"x": -1040,
+			"y": 1840,
+			"width": 3342,
+			"height": 3440,
+			"label": "Data hazard"
+		},
+		{
+			"id": "fc0c6d8fb870f4ba",
+			"type": "group",
+			"x": 3060,
+			"y": 5310,
+			"width": 1890,
+			"height": 3440,
+			"label": "static branch pred."
+		},
+		{
+			"id": "d79182bf3087a44d",
+			"type": "group",
+			"x": 5080,
+			"y": 2938,
+			"width": 3580,
+			"height": 1768,
+			"label": "delayed branching"
+		},
+		{
+			"id": "d14f186ffaadedcd",
+			"type": "group",
+			"x": -1020,
+			"y": 3680,
+			"width": 1592,
+			"height": 1513,
+			"label": "Forwarding Unit"
+		},
+		{
+			"id": "623de3dffb7d5cf4",
+			"type": "group",
+			"x": 819,
+			"y": 3681,
+			"width": 1463,
+			"height": 1527,
+			"label": " Hazard Detection Unit"
+		},
+		{
+			"id": "dcd48d272af4aad8",
+			"type": "group",
+			"x": -179,
+			"y": 2049,
+			"width": 1320,
+			"height": 1449,
+			"label": "instr. reording"
+		},
+		{
+			"id": "f5858e1b7722c89f",
+			"type": "group",
+			"x": 1882,
+			"y": -800,
+			"width": 800,
+			"height": 1949,
+			"label": "Structural hazard"
+		},
+		{
+			"id": "5d178ca881dccc8a",
+			"type": "group",
+			"x": 5459,
+			"y": 6950,
+			"width": 880,
+			"height": 1360,
+			"label": "猜跳且猜對"
+		},
+		{
+			"id": "6fe5c684f96fa630",
+			"type": "group",
+			"x": 8239,
+			"y": 6959,
+			"width": 900,
+			"height": 1262,
+			"label": "猜不跳不對"
+		},
+		{
+			"id": "f67107f2ea4b480a",
+			"type": "group",
+			"x": 7339,
+			"y": 6950,
+			"width": 804,
+			"height": 1285,
+			"label": "猜不跳對"
+		},
+		{
+			"id": "b72750b762ce9d07",
+			"type": "group",
+			"x": 3810,
+			"y": 6519,
+			"width": 480,
+			"height": 2135,
+			"label": "Case 2"
+		},
+		{
+			"id": "b80199a03f3a71e2",
+			"type": "group",
+			"x": 6479,
+			"y": 6950,
+			"width": 770,
+			"height": 1285,
+			"label": "猜跳猜錯"
+		},
+		{
+			"id": "e9ee49771afe798a",
+			"type": "group",
+			"x": -1020,
+			"y": 2040,
+			"width": 730,
+			"height": 999,
+			"label": "NOP"
+		},
+		{
+			"id": "a4fe0512d76abcdc",
+			"type": "group",
+			"x": -2340,
+			"y": 3339,
+			"width": 1026,
+			"height": 701,
+			"label": "data dependency"
+		},
+		{
+			"id": "168dd999830d2328",
+			"type": "group",
+			"x": 5080,
+			"y": 2166,
+			"width": 983,
+			"height": 615,
+			"label": "Move branch decision earlier"
+		},
+		{
+			"id": "d46febbb63bde9e9",
+			"type": "group",
+			"x": 4320,
+			"y": 3254,
+			"width": 520,
+			"height": 951,
+			"label": "Insert NOP"
+		},
+		{
+			"id": "02362f69b6fb59ce",
+			"type": "group",
+			"x": 5439,
+			"y": 5730,
+			"width": 4640,
+			"height": 2600,
+			"label": "Dynamic branch prediction"
+		},
+		{
+			"id": "60856ff3eaf362c6",
+			"type": "group",
+			"x": 3162,
+			"y": 6519,
+			"width": 616,
+			"height": 1681,
+			"label": "Case 1"
+		},
+		{
+			"id": "da5584f76d179782",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/82-Case 2.png",
+			"x": 3840,
+			"y": 8390,
+			"width": 430,
+			"height": 244
+		},
+		{
+			"id": "dc33e4f8035d38ff",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/60-Dynamic branch predictio.png",
+			"x": 9299,
+			"y": 6930,
+			"width": 760,
+			"height": 421
+		},
+		{
+			"id": "62e4378f050fa26e",
+			"type": "text",
+			"text": "因為猜不跳，所以 1 1 但是真的要跳所以他就被清空了",
+			"x": 4447,
+			"y": 5756,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "c9fc1cfdd4c2095a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/51-static branch pred.png",
+			"x": 3970,
+			"y": 5684,
+			"width": 400,
+			"height": 224
+		},
+		{
+			"id": "90c1bcebfaa95344",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/55-Case 1 - 引發的問題更嚴重的 data hazard.png",
+			"x": 3270,
+			"y": 6539,
+			"width": 399,
+			"height": 228
+		},
+		{
+			"id": "9b49bba6672ff8f8",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/59-Case 1.png",
+			"x": 3290,
+			"y": 6859,
+			"width": 400,
+			"height": 223
+		},
+		{
+			"id": "8a7178bc56338fed",
+			"type": "text",
+			"text": "發現 add 還沒有 wb 所以 beq的數值就要跳了那麼這樣會判斷錯誤，所以需要靠 hazard detection unit 來停一個 clock",
+			"x": 3365,
+			"y": 7130,
+			"width": 250,
+			"height": 115,
+			"color": "5"
+		},
+		{
+			"id": "73636cbc013752ef",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/70-Case 1.png",
+			"x": 3182,
+			"y": 7362,
+			"width": 576,
+			"height": 334
+		},
+		{
+			"id": "864b0c3186664169",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/76-Case 1.png",
+			"x": 3182,
+			"y": 7853,
+			"width": 575,
+			"height": 327
+		},
+		{
+			"id": "135f7435d48fdf91",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/57-static branch pred - 最後的電路.png",
+			"x": 4370,
+			"y": 6539,
+			"width": 559,
+			"height": 334
+		},
+		{
+			"id": "e78f2cd3dbfbdba3",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/58-Case 2.png",
+			"x": 3830,
+			"y": 6854,
+			"width": 400,
+			"height": 228
+		},
+		{
+			"id": "b270716106803a9f",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/26-Forwarding Unit.png",
+			"x": -169,
+			"y": 3700,
+			"width": 576,
+			"height": 292
+		},
+		{
+			"id": "b42238f2fdc694a0",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/41-Forwarding Unit.png",
+			"x": -999,
+			"y": 4135,
+			"width": 488,
+			"height": 280
+		},
+		{
+			"id": "1cf2d6ed568d2b32",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/28-Hazard Detection Unit.png",
+			"x": 1761,
+			"y": 3701,
+			"width": 495,
+			"height": 291
+		},
+		{
+			"id": "39d075851baf3e53",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/40-Hazard Detection Unit.png",
+			"x": 1761,
+			"y": 4101,
+			"width": 501,
+			"height": 299
+		},
+		{
+			"id": "3e8a78728adb7f92",
+			"type": "text",
+			"text": "```\nif (EX.MemRead==1) and ((EX.Rt==ID.Rs) or (EX.Rt==ID.Rt)) then\n    PCWrite=0; IFIDWrite=0; ControlMux=NOP   # stall 1 拍\n```",
+			"x": 839,
+			"y": 4755,
+			"width": 616,
+			"height": 115,
+			"color": "1"
+		},
+		{
+			"id": "6bf55278f440c39e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/47-Hazard Detection Unit.png",
+			"x": 1761,
+			"y": 4900,
+			"width": 501,
+			"height": 288
+		},
+		{
+			"id": "9035d22d1b5d1a98",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/44-Hazard Detection Unit.png",
+			"x": 1761,
+			"y": 4480,
+			"width": 494,
+			"height": 284
+		},
+		{
+			"id": "a26707663758d051",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/27-Hazard Detection Unit.png",
+			"x": 925,
+			"y": 3701,
+			"width": 515,
+			"height": 291
+		},
+		{
+			"id": "354e65166d994c1f",
+			"type": "text",
+			"text": "```\n# ForwardA for EX.Rs\nif (MEM.RegWrite==1) and (MEM.Rd!=0) and (MEM.Rd==EX.Rs) then\n    ForwardA = 10   # EX/MEM 優先\nelse if (WB.RegWrite==1) and (WB.Rd!=0) and (WB.Rd==EX.Rs) then\n    ForwardA = 01   # MEM/WB 次之\nelse\n    ForwardA = 00   # 原本ID/EX輸入\n\n# ForwardB for EX.Rt\nif (MEM.RegWrite==1) and (MEM.Rd!=0) and (MEM.Rd==EX.Rt) then\n    ForwardB = 10\nelse if (WB.RegWrite==1) and (WB.Rd!=0) and (WB.Rd==EX.Rt) then\n    ForwardB = 01\nelse\n    ForwardB = 00\n```",
+			"x": -314,
+			"y": 4755,
+			"width": 866,
+			"height": 418,
+			"color": "1"
+		},
+		{
+			"id": "4fe3fc6d1975f1f8",
+			"type": "text",
+			"text": "## 為什麼會有 Forwarding Unit？\n\n- Pipeline 裡的 **data dependency (RAW)**：後一條指令要讀一個暫存器，而這個暫存器剛被前一條指令寫。\n    \n- 如果照正常流程，要等前一條進 WB 才能讀，但這樣會 stall。\n    \n- 但事實上，結果在前一條的 **EX** 或 **MEM** 階段就算好了，可以直接「繞道」送給下一條 EX。\n    \n- 這個動作就是 **forwarding**。\n    \n\n👉 **Forwarding Unit 的工作**：  \n對 EX 階段的來源暫存器 `Rs`、`Rt` 去檢查：\n\n- **EX/MEM 階段**是否正要寫相同暫存器？\n    \n    - 是 → 從 EX/MEM 直接送過來。\n        \n- 否的話，再檢查 **MEM/WB 階段**。\n    \n    - 是 → 從 MEM/WB 送過來。\n        \n- 兩邊都沒有 → 用寄存器檔原本的值。",
+			"x": -296,
+			"y": 4141,
+			"width": 831,
+			"height": 396
+		},
+		{
+			"id": "0dd2ced0d3301b43",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/12-instr. reording.png",
+			"x": -79,
+			"y": 2459,
+			"width": 400,
+			"height": 377
+		},
+		{
+			"id": "3ec800ae5885a97d",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/15-instr. reording.png",
+			"x": -79,
+			"y": 2940,
+			"width": 400,
+			"height": 224
+		},
+		{
+			"id": "5b763042c3ffee58",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/08-instr. reording.png",
+			"x": 551,
+			"y": 2094,
+			"width": 399,
+			"height": 230
+		},
+		{
+			"id": "5389bada598ec1d6",
+			"type": "text",
+			"text": "lw 已經要 WB 所以不會跟 IF 撞到",
+			"x": 2382,
+			"y": 630,
+			"width": 280,
+			"height": 50
+		},
+		{
+			"id": "d5e02f6e035d06f1",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/05-Structural hazard - lw 已經要 WB 所以不會跟 IF 撞到.png",
+			"x": 1902,
+			"y": 540,
+			"width": 400,
+			"height": 236
+		},
+		{
+			"id": "f854dc628301c3fa",
+			"type": "text",
+			"text": "所以只要放一個 NOP 就可以解決此問題",
+			"x": 2411,
+			"y": 980,
+			"width": 250,
+			"height": 60
+		},
+		{
+			"id": "e69fac010d82d803",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/06-Structural hazard - 所以只要放一個 NOP 就可以解決此問題.png",
+			"x": 1902,
+			"y": 900,
+			"width": 400,
+			"height": 229
+		},
+		{
+			"id": "20f4ba36485f2b48",
+			"type": "text",
+			"text": "## 為什麼還要 Hazard Detection Unit？\n\n- ==Forwarding 幾乎能解大部分 RAW hazard，但 **load-use hazard 例外**，其實就是 load 相關指令後面有 hazard==\n    \n- 因為 load (`lw/lh/lb`) 要到 **MEM 結束**才真的把資料讀回來。\n    \n- 下一條馬上要用，EX 階段時資料還沒出來，forwarding 根本沒東西可送。\n    \n\n👉 **Hazard Detection Unit 的工作**：\n\n- 檢查「EX 階段是不是 load，且它的目標暫存器 = ID 階段的來源暫存器」。\n    \n- 如果是 → stall pipeline 一拍：\n    \n    - PC 不更新。\n        \n    - IF/ID latch 不更新。\n        \n    - ID/EX 插一條 NOP。\n        \n- 等到 load 把資料讀回，再透過 forwarding 傳給後面。",
+			"x": 854,
+			"y": 4141,
+			"width": 586,
+			"height": 398
+		},
+		{
+			"id": "6a40c5d2d90a0fcc",
+			"type": "text",
+			"text": "- **RAW**：最常見，也是我們一直在講的 load-use hazard → stall / forwarding 解。\n\t\n- **WAW**：兩條指令寫同一個暫存器，可能覆蓋掉 → in-order pipeline 很少有影響，但在亂序執行 (out-of-order) 要特別小心。\n\t\n- **WAR**：只有在 out-of-order pipeline 才會出現。\n\t\n- 檢查相依方式\n\t\n\t- **Check 1**：你的目的暫存器 (Dest) 有沒有被後面拿來當來源 (Source)？ → RAW\n\n\t- **Check 2**：你的來源暫存器 (Source) 有沒有依賴前面某人的目的暫存器 (Dest)？ → RAW\n\t\t\n\t- **Check 3**：你的目的暫存器 (Dest) 會不會被後面的目的暫存器覆蓋掉？ → WAW",
+			"x": 381,
+			"y": 2452,
+			"width": 740,
+			"height": 243
+		},
+		{
+			"id": "e015376d5390530a",
+			"type": "text",
+			"text": "- **理想情況**：透過 **instruction reordering**（把不相依的指令調換順序），就能避免 data hazard，而不用多插 NOP。這樣 pipeline 可以保持滿載，CPI 最小化。\n    \n- **現實限制**：不是所有程式都有「足夠獨立的指令」可以拿來重排。例如：\n    \n    - 指令之間高度相依，怎麼排都會卡在 load-use hazard。\n        \n    - 程式語意限制（例如順序不可改動），也不能亂 reorder。\n        \n- **最後手段**：如果真的找不到可以重排的指令，就只能插入 **NOP**，讓 pipeline 停一拍（或多拍），保證資料正確性，但代價是效能下降。",
+			"x": -159,
+			"y": 3240,
+			"width": 600,
+			"height": 238,
+			"color": "5"
+		},
+		{
+			"id": "5ca00ae470501d81",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/07-instr. reording.png",
+			"x": -79,
+			"y": 2069,
+			"width": 400,
+			"height": 280
+		},
+		{
+			"id": "74ae722287c1bf63",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/01-Structural hazard.png",
+			"x": 1902,
+			"y": -780,
+			"width": 400,
+			"height": 230
+		},
+		{
+			"id": "991f2c192a4cc170",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/02-Structural hazard - 加一個 NOP.png",
+			"x": 1902,
+			"y": -460,
+			"width": 400,
+			"height": 223
+		},
+		{
+			"id": "177308d67320d124",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/04-Structural hazard - 加一個 NOP.png",
+			"x": 1902,
+			"y": 200,
+			"width": 400,
+			"height": 225
+		},
+		{
+			"id": "1670b89f3bb348e7",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/03-Structural hazard - 加一個 NOP.png",
+			"x": 1902,
+			"y": -140,
+			"width": 399,
+			"height": 226
+		},
+		{
+			"id": "6eb4959ba63b38fd",
+			"type": "text",
+			"text": "加一個 NOP ",
+			"x": 2382,
+			"y": 283,
+			"width": 250,
+			"height": 60
+		},
+		{
+			"id": "9842d0360e0a996b",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/14-NOP - 需要等到 lw 真正 WB 的時線才能使用.png",
+			"x": -1000,
+			"y": 2799,
+			"width": 400,
+			"height": 220
+		},
+		{
+			"id": "2f35a472a111d9a9",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/11-NOP - 需要等到 lw 真正 WB 的時線才能使用.png",
+			"x": -1000,
+			"y": 2459,
+			"width": 400,
+			"height": 229
+		},
+		{
+			"id": "1b18cf81e1c7a5d8",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/30-Forwarding Unit.png",
+			"x": -1000,
+			"y": 3735,
+			"width": 488,
+			"height": 282
+		},
+		{
+			"id": "98c8a2dd906fc20e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/20-data dependency - 計算機組織_第五章重要#資料依賴性.png",
+			"x": -2320,
+			"y": 3359,
+			"width": 986,
+			"height": 455
+		},
+		{
+			"id": "36b00c0ffed38030",
+			"type": "text",
+			"text": "需要等到 lw 真正 WB 的時線才能使用",
+			"x": -560,
+			"y": 2209,
+			"width": 250,
+			"height": 60
+		},
+		{
+			"id": "f08583b61477bccb",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/09-NOP - 需要等到 lw 真正 WB 的時線才能使用.png",
+			"x": -1000,
+			"y": 2120,
+			"width": 400,
+			"height": 229
+		},
+		{
+			"id": "7dbc36dc7ae625d8",
+			"type": "text",
+			"text": "[[計算機組織_第五章重要#資料依賴性]]",
+			"x": -1952,
+			"y": 3960,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "ccd4d70663b3f60f",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/45-Forwarding Unit - ForwardA for EX.Rs.png",
+			"x": -1000,
+			"y": 4535,
+			"width": 489,
+			"height": 284
+		},
+		{
+			"id": "cadce800e0ba44bd",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/50-static branch pred - 猜不跳但是猜錯了所以逞罰加 NOP.png",
+			"x": 3080,
+			"y": 5650,
+			"width": 399,
+			"height": 232
+		},
+		{
+			"id": "475220be057d6254",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/24-Insert NOP.png",
+			"x": 4380,
+			"y": 3641,
+			"width": 400,
+			"height": 224
+		},
+		{
+			"id": "ffc3e543a52f4348",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/19-Insert NOP.png",
+			"x": 4380,
+			"y": 3306,
+			"width": 400,
+			"height": 227
+		},
+		{
+			"id": "ecea350aa1efbaf6",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/49-static branch pred - 這邊都假設不跳.png",
+			"x": 3970,
+			"y": 5350,
+			"width": 400,
+			"height": 230
+		},
+		{
+			"id": "376c25c31627abcf",
+			"type": "text",
+			"text": "猜不跳但是猜錯了所以逞罰加 NOP",
+			"x": 3550,
+			"y": 5736,
+			"width": 280,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "cc3705c76bd1d8ed",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/52-static branch pred - 猜不跳但是猜錯了所以逞罰加 NOP.png",
+			"x": 3970,
+			"y": 6010,
+			"width": 400,
+			"height": 229
+		},
+		{
+			"id": "f020b10c986358ed",
+			"type": "text",
+			"text": "引發的問題更嚴重的 data hazard",
+			"x": 3532,
+			"y": 6390,
+			"width": 277,
+			"height": 50,
+			"color": "2"
+		},
+		{
+			"id": "da884b69434e3322",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/10-Move branch decision ear.png",
+			"x": 5100,
+			"y": 2218,
+			"width": 400,
+			"height": 223
+		},
+		{
+			"id": "2b9dccb1035c9cdf",
+			"type": "text",
+			"text": "### Control hazard 裡的「NOP 數量」和分支判斷時機\n\n- 如果 **branch 判斷在 EX** 才知道 → 假設原本要 3 個 NOP，因為 pipeline 已經錯抓了 3 條指令。\n    \n- 如果能提早到 **ID** 就知道 → 就可以少 1 個 NOP（只需要 flush 掉 2 條）。\n    \n- 如果能更早在 **IF**（搭配 branch prediction 或 target buffer）就知道 → 甚至再少 1 個。\n\t\n- **==提前判斷 NOP 數量 -1==** ",
+			"x": 5620,
+			"y": 2186,
+			"width": 423,
+			"height": 287,
+			"color": "1"
+		},
+		{
+			"id": "f2dd8a59ef26165a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/16-delayed branching - 挑選安全指令.png",
+			"x": 5836,
+			"y": 2958,
+			"width": 454,
+			"height": 249
+		},
+		{
+			"id": "8ad6c083f918aa1d",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/21-delayed branching - 挑選安全指令.png",
+			"x": 5836,
+			"y": 3384,
+			"width": 434,
+			"height": 241
+		},
+		{
+			"id": "8eabe55bda68edae",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/36-Insert NOP.png",
+			"x": 4380,
+			"y": 3963,
+			"width": 399,
+			"height": 222
+		},
+		{
+			"id": "c374cfd8160ba605",
+			"type": "text",
+			"text": "簡單來說就是現在的 pipeline delayed branching 方法沒有什麼吸引力了人在在 runtime 使用dynamic approaches 都比較好了",
+			"x": 5256,
+			"y": 4387,
+			"width": 300,
+			"height": 115,
+			"color": "2"
+		},
+		{
+			"id": "4bb338afe13c3586",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/22-delayed branching - 挑選安全指令.png",
+			"x": 6370,
+			"y": 3385,
+			"width": 446,
+			"height": 240
+		},
+		{
+			"id": "1e0cfb9fa7e21e65",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/17-delayed branching - 這圖要會畫.png",
+			"x": 5100,
+			"y": 3094,
+			"width": 612,
+			"height": 400
+		},
+		{
+			"id": "35778c3f2341cd61",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/48-static branch pred - 這邊都假設不跳.png",
+			"x": 3080,
+			"y": 5350,
+			"width": 400,
+			"height": 228
+		},
+		{
+			"id": "52f1ae9cfc28eff4",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/23-Software base.png",
+			"x": 2980,
+			"y": 3535,
+			"width": 400,
+			"height": 227
+		},
+		{
+			"id": "0b1f0a506159ea65",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/34-Software base.png",
+			"x": 2980,
+			"y": 3875,
+			"width": 400,
+			"height": 230
+		},
+		{
+			"id": "7002a54dd023c44b",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/18-Software base.png",
+			"x": 2980,
+			"y": 3233,
+			"width": 400,
+			"height": 224
+		},
+		{
+			"id": "2aaf7f3db8e4e851",
+			"type": "text",
+			"text": "- multi cycle machine 本身就有 structural hazard 只有一個 memory ",
+			"x": 3302,
+			"y": 975,
+			"width": 600,
+			"height": 60
+		},
+		{
+			"id": "8eb576866bd0ac77",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_第五章重要/03-3. Control Hazard - 例 beq 、 j 。.png",
+			"x": 3182,
+			"y": 1144,
+			"width": 888,
+			"height": 292
+		},
+		{
+			"id": "6886e4b7a0a1c910",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/13-Move branch decision ear.png",
+			"x": 5110,
+			"y": 2518,
+			"width": 380,
+			"height": 243
+		},
+		{
+			"id": "4cefdbee8d20ff93",
+			"type": "text",
+			"text": "簡單來說就是要等 beq 或是 jmp 相關指令結束後再抓指令因為有可能不會用到 sub 或是跳過去 rt 之後的數值不一定是原本的或是正確的",
+			"x": 3520,
+			"y": 3899,
+			"width": 250,
+			"height": 145,
+			"color": "1"
+		},
+		{
+			"id": "18bd5628c290972e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/62-猜跳猜錯 - 也是猜跳,但是猜錯.png",
+			"x": 6499,
+			"y": 6970,
+			"width": 399,
+			"height": 230
+		},
+		{
+			"id": "9aa0245faa320eb0",
+			"type": "text",
+			"text": "也是猜跳，但是猜錯",
+			"x": 6929,
+			"y": 7057,
+			"width": 250,
+			"height": 60,
+			"color": "5"
+		},
+		{
+			"id": "6de5a84464002756",
+			"type": "text",
+			"text": "最後下一個 clock 來了因為 pipeline 變成空的了所以就是 NOP 那麼這樣錯誤指令也消失了",
+			"x": 6953,
+			"y": 8045,
+			"width": 276,
+			"height": 115,
+			"color": "5"
+		},
+		{
+			"id": "be4fd3d01c749ecd",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/79-猜跳猜錯.png",
+			"x": 6499,
+			"y": 7990,
+			"width": 400,
+			"height": 225
+		},
+		{
+			"id": "1a12e49264032cf9",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/25-Software base.png",
+			"x": 3880,
+			"y": 3648,
+			"width": 400,
+			"height": 230
+		},
+		{
+			"id": "e8412350235dc0fe",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/35-Software base.png",
+			"x": 3880,
+			"y": 3950,
+			"width": 400,
+			"height": 229
+		},
+		{
+			"id": "8fee784f846975c4",
+			"type": "text",
+			"text": "這邊都假設不跳",
+			"x": 3576,
+			"y": 5430,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "8ef81aa242474ac8",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/67-猜跳猜錯.png",
+			"x": 6499,
+			"y": 7294,
+			"width": 400,
+			"height": 230
+		},
+		{
+			"id": "3266ce4669a08c01",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/63-猜不跳不對 - 不跳,但是猜錯.png",
+			"x": 8259,
+			"y": 6979,
+			"width": 400,
+			"height": 228
+		},
+		{
+			"id": "a57417a5036773d5",
+			"type": "text",
+			"text": "猜不跳，猜對",
+			"x": 7859,
+			"y": 7093,
+			"width": 139,
+			"height": 50,
+			"color": "5"
+		},
+		{
+			"id": "98f430a7708d026e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/64-猜不跳對 - 猜不跳,猜對.png",
+			"x": 7359,
+			"y": 7002,
+			"width": 400,
+			"height": 231
+		},
+		{
+			"id": "e95a9db8dc24a330",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/71-猜不跳對 - 沒有要跳所以抓原本下一行要抓的指令.png",
+			"x": 7359,
+			"y": 7591,
+			"width": 400,
+			"height": 224
+		},
+		{
+			"id": "e7f8c9ebace4e4a4",
+			"type": "text",
+			"text": "沒有要跳所以抓原本下一行要抓的指令",
+			"x": 7873,
+			"y": 7515,
+			"width": 250,
+			"height": 55,
+			"color": "5"
+		},
+		{
+			"id": "7c997bed546f02b2",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/66-猜不跳對 - 沒有要跳所以抓原本下一行要抓的指令.png",
+			"x": 7359,
+			"y": 7290,
+			"width": 400,
+			"height": 225
+		},
+		{
+			"id": "c54db6fc27b2da6f",
+			"type": "text",
+			"text": "所以 4:1 MUX 給 0 就是讓原本的穿過去，然後 IF.Flush = 1，清掉",
+			"x": 6953,
+			"y": 7548,
+			"width": 250,
+			"height": 85,
+			"color": "5"
+		},
+		{
+			"id": "afbc1cd2e62a7c96",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/73-猜跳猜錯.png",
+			"x": 6499,
+			"y": 7633,
+			"width": 400,
+			"height": 230
+		},
+		{
+			"id": "c4f3520b8f7daa8b",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/32-delayed branching.png",
+			"x": 7686,
+			"y": 3759,
+			"width": 474,
+			"height": 262
+		},
+		{
+			"id": "92808d4465babf4d",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/39-delayed branching.png",
+			"x": 7686,
+			"y": 4060,
+			"width": 474,
+			"height": 210
+		},
+		{
+			"id": "6e8bd47bcef691ff",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/46-delayed branching.png",
+			"x": 8210,
+			"y": 4566,
+			"width": 398,
+			"height": 85
+		},
+		{
+			"id": "2eabcd6cdd472ba6",
+			"type": "text",
+			"text": "- 這邊會有另一個問題，就是如果今天 branch 也是在 ID2 解碼的話那麼他也會繼續抓指令但是，他後面如果是猜對了那麼 ID1 ID2 EXE1 是抓錯的指令需要砍掉但是 IF1 IF2 是抓對的，因為 IF1 是跳躍目的的指令 ，IF2 是猜跳後的第一個指令\n- 反之如果是猜錯了那麼就是就是後面要刪掉 IF1 IF2\n- 課本就是 branch 可以猜但是 JMP 指令不行猜",
+			"x": 8200,
+			"y": 4292,
+			"width": 420,
+			"height": 209
+		},
+		{
+			"id": "5ed8b80738a0f1a6",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/68-猜不跳不對.png",
+			"x": 8266,
+			"y": 7318,
+			"width": 400,
+			"height": 225
+		},
+		{
+			"id": "b473c3e379ccf18c",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/78-猜不跳不對.png",
+			"x": 8259,
+			"y": 7970,
+			"width": 400,
+			"height": 231
+		},
+		{
+			"id": "14cd3f90613fd275",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/74-猜不跳不對.png",
+			"x": 8259,
+			"y": 7650,
+			"width": 400,
+			"height": 225
+		},
+		{
+			"id": "ea7b452c02af44f5",
+			"type": "text",
+			"text": "猜錯，所以應該是要抓 beq 指令的後面，才對所以設定成 3 就是抓 beq 正後面也就是 sw 才對那麼不用在重新加 4 因為前面已經加好了，並且要把錯誤指令清空所以 IF.Flush = 1",
+			"x": 8822,
+			"y": 7558,
+			"width": 297,
+			"height": 145,
+			"color": "5"
+		},
+		{
+			"id": "73a4b1a96a124500",
+			"type": "text",
+			"text": "不跳，但是猜錯",
+			"x": 8749,
+			"y": 7065,
+			"width": 250,
+			"height": 60,
+			"color": "5"
+		},
+		{
+			"id": "3259a55b4bb2b1b2",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/77-猜不跳對 - 沒有要跳所以抓原本下一行要抓的指令.png",
+			"x": 7359,
+			"y": 7930,
+			"width": 400,
+			"height": 231
+		},
+		{
+			"id": "3ef27dd7a344c1a7",
+			"type": "text",
+			"text": "- 4:1 MUX 的狀態\n\t- 3 直接抓 beq 後面的指令也就是不用再加四因為加過了\n\t- 2 把 beq(PC 這邊已經先加過 4 也就是抓一次指令了) 的結果在加一次 4 後給 PC\n\t- 1 就是正常送一次 +4\n\t- 0 就是什麼都不動再送一次\n",
+			"x": 7709,
+			"y": 6511,
+			"width": 487,
+			"height": 190,
+			"color": "1"
+		},
+		{
+			"id": "916c857a1f631626",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/53-Dynamic branch predictio - BTB 和 BHT 定義.png",
+			"x": 7245,
+			"y": 6170,
+			"width": 400,
+			"height": 229
+		},
+		{
+			"id": "15aceb9cc062b911",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/54-Dynamic branch predictio - 4 1 MUX 的狀態.png",
+			"x": 7238,
+			"y": 6490,
+			"width": 400,
+			"height": 231
+		},
+		{
+			"id": "bbd3baf57ea9a2b7",
+			"type": "text",
+			"text": "## BTB 和 BHT 定義\nbht：branch history table\n小型記憶體結構，用分支指令位址低位元索引，儲存 1-bit 或 2-bit 計數器，表示該分支「上次」是 taken 還是 not taken。它提供分支方向的預測。\n\nbtb：branch target buffer\n類似快取的結構，存放分支目標位址 (target pc)。如果 bht 預測為 taken，就從 btb 直接取出跳轉位址，避免等到解碼或執行階段才計算。\n\n差異：\nbht 管方向（跳或不跳),btb 管目標（跳去哪裡)",
+			"x": 7091,
+			"y": 5750,
+			"width": 708,
+			"height": 305,
+			"color": "1"
+		},
+		{
+			"id": "c147ece7098923d7",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/29-delayed branching - 挑選安全指令.png",
+			"x": 6521,
+			"y": 3721,
+			"width": 400,
+			"height": 230
+		},
+		{
+			"id": "cfc437ceaa01b3db",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/37-delayed branching - 挑選安全指令.png",
+			"x": 6521,
+			"y": 4007,
+			"width": 400,
+			"height": 239
+		},
+		{
+			"id": "8851a6693455f539",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/38-delayed branching.png",
+			"x": 7079,
+			"y": 4027,
+			"width": 399,
+			"height": 243
+		},
+		{
+			"id": "4a069bfe4b197733",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/31-delayed branching.png",
+			"x": 7030,
+			"y": 3759,
+			"width": 498,
+			"height": 192
+		},
+		{
+			"id": "2e801b7db7938ab5",
+			"type": "text",
+			"text": "- 如果用 Delayed branch 題目有說到一定會有足夠的安全指令所以不會有逞罰\n- 猜跳\n\t- 是 5，因為「錯猜」代價 = 2 + 3。\n\t\t\n\t- 2：分支指令在到達 ID1 前，IF1、IF2 已先把順序路徑的 I+1、I+2 取回。若你採「猜跳」，在 ID1 算出目標就改抓目標，這兩條序路指令被丟掉；若實際不跳，I+1、I+2 需要重抓，等於白費 2 個 cycle。\n\t    \n\t- 3：分支方向要到 EXE2 才知道。從你在 ID1 依「猜的路徑」開始取指，到 EXE2 才發現猜錯，ID2、EXE1、EXE2 這三個 stage 中灌進來的錯路徑指令都要 flush，空轉 3 個 cycle。\n\t\t\n\t- JMP，所以後面的指令就要刪掉那在他後面有 3 個指令就需要殺掉",
+			"x": 7440,
+			"y": 4321,
+			"width": 680,
+			"height": 288
+		},
+		{
+			"id": "2a0d4fc7a13ab161",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/69-猜跳且猜對 - 所以 BTB 的內容進去也就是 SW.png",
+			"x": 5479,
+			"y": 7330,
+			"width": 400,
+			"height": 227
+		},
+		{
+			"id": "7be4e51370830790",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/33-delayed branching - 這圖要會畫.png",
+			"x": 5100,
+			"y": 3790,
+			"width": 612,
+			"height": 323
+		},
+		{
+			"id": "0458b5bf6ce8525a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/43-delayed branching - 這圖要會畫.png",
+			"x": 5206,
+			"y": 4267,
+			"width": 400,
+			"height": 98
+		},
+		{
+			"id": "585528c2a2eafe99",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/75-猜跳且猜對.png",
+			"x": 5479,
+			"y": 7690,
+			"width": 400,
+			"height": 230
+		},
+		{
+			"id": "4d9b00b100214d23",
+			"type": "text",
+			"text": "PCSrc 輸出一但是因為猜跳所以猜對，所以也要把 slt 抓進來也就是 sw 的下一個指令，所以就會把 beq 的位置在 +4",
+			"x": 6009,
+			"y": 7748,
+			"width": 250,
+			"height": 115,
+			"color": "5"
+		},
+		{
+			"id": "f37b0c4ec8b23d0c",
+			"type": "text",
+			"text": "完成抓取",
+			"x": 6041,
+			"y": 8134,
+			"width": 98,
+			"height": 60
+		},
+		{
+			"id": "31c19e53392f5e76",
+			"type": "text",
+			"text": "所以 BTB 的內容進去也就是 SW",
+			"x": 5989,
+			"y": 7409,
+			"width": 290,
+			"height": 60,
+			"color": "5"
+		},
+		{
+			"id": "8ff68fb2a85be05d",
+			"type": "text",
+			"text": "這圖要會畫",
+			"x": 5281,
+			"y": 4162,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "12aaee18f5a1e49a",
+			"type": "text",
+			"text": "## 挑選安全指令\n\n- 那麼要檢查 beq（if）From before，那麼如果指令有移動要檢查 RAW WAR WAW 這三個 [[計算機組織_第五章重要#資料依賴性]]，可能範圍很大可以用的安全指令很多，那麼不管怎麼樣都要用 From before 來找安全指令，如果 From before 找不到那麼就用下面兩種\n- From Target 就是跳的機率很高，那就是會跳，那麼就用這個 From Target，如果還是找不到就是 NOP，==如果是往下跳的那就把跳躍目的位置指令複製到 Delay slot，然後把原本的跳躍目的位置改成下一個==，那麼用 COPY 的原因是因為如果直接往下搬會造成程式碼少執行一次那麼會錯誤，所以要用 COPY 的方法，==那麼也有可能猜錯就是他可能猜不跳那麼就不能用這個主要是不能影響程式碼正確性 Complier 確認，如果會那麼就不能使用只能用 NOP==\n- From fall through 跳的機率很低就使用，如果還是找不到就是 NOP，因為如果猜測不跳，==那麼就是把下一行指令(beq 下一個不包括 NOP) 直接放到 delay slot==，就是沒有改變，==這個如果錯誤處理方式跟 From Target 一樣==",
+			"x": 5836,
+			"y": 3727,
+			"width": 560,
+			"height": 448,
+			"color": "1"
+		},
+		{
+			"id": "7262da5bbafbc118",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/61-猜跳且猜對.png",
+			"x": 5479,
+			"y": 6970,
+			"width": 400,
+			"height": 228
+		},
+		{
+			"id": "6b9c7c68a39c477b",
+			"type": "text",
+			"text": "是猜跳，但是猜對",
+			"x": 6016,
+			"y": 7051,
+			"width": 163,
+			"height": 60,
+			"color": "5"
+		},
+		{
+			"id": "8f8ff8aa0b6f4f2f",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/81-猜跳且猜對 - 完成抓取.png",
+			"x": 5479,
+			"y": 8050,
+			"width": 399,
+			"height": 224
+		},
+		{
+			"id": "4ab3ac1168045698",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/80-Case 2.png",
+			"x": 3832,
+			"y": 8017,
+			"width": 438,
+			"height": 253
+		},
+		{
+			"id": "5d0da1c65b06ce19",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/42-delayed branching - 挑選安全指令.png",
+			"x": 5916,
+			"y": 4246,
+			"width": 399,
+			"height": 98
+		},
+		{
+			"id": "1be23488e034f4bc",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/72-Case 2.png",
+			"x": 3830,
+			"y": 7621,
+			"width": 440,
+			"height": 255
+		},
+		{
+			"id": "41d71d53a2aca839",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/65-Case 2.png",
+			"x": 3830,
+			"y": 7134,
+			"width": 399,
+			"height": 226
+		},
+		{
+			"id": "7cd001223b65d46c",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_8_Pipeline_hazard_Control_hazard/56-Case 2 - 引發的問題更嚴重的 data hazard.png",
+			"x": 3830,
+			"y": 6539,
+			"width": 400,
+			"height": 229
+		},
+		{
+			"id": "c64fa1de11c50e39",
+			"type": "text",
+			"text": "最後的電路",
+			"x": 4593,
+			"y": 6968,
+			"width": 114,
+			"height": 27,
+			"color": "1"
+		},
+		{
+			"id": "75a0145af4e71096",
+			"type": "text",
+			"text": "這樣一樣會有問題因為還是一樣沒有 wb 但是因為 load-used 的 hazard 所以有被 detect，但是需要停兩個 clock 的原因是今天 **==lw 的前半週寫後半週讀所以這樣才能讓 beq 讀取正確的 reg 數值==**",
+			"x": 3840,
+			"y": 7414,
+			"width": 380,
+			"height": 115,
+			"color": "5"
+		}
+	],
+	"edges": [
+		{
+			"id": "228858d860bfcb46",
+			"fromNode": "74ae722287c1bf63",
+			"fromSide": "bottom",
+			"toNode": "991f2c192a4cc170",
+			"toSide": "top"
+		},
+		{
+			"id": "01e90589ef5f545e",
+			"fromNode": "991f2c192a4cc170",
+			"fromSide": "bottom",
+			"toNode": "1670b89f3bb348e7",
+			"toSide": "top"
+		},
+		{
+			"id": "0d8af0c48c9f1cc1",
+			"fromNode": "1670b89f3bb348e7",
+			"fromSide": "bottom",
+			"toNode": "177308d67320d124",
+			"toSide": "top"
+		},
+		{
+			"id": "c0ac1e371f12a86e",
+			"fromNode": "177308d67320d124",
+			"fromSide": "right",
+			"toNode": "6eb4959ba63b38fd",
+			"toSide": "left"
+		},
+		{
+			"id": "bbb39c3e810049fc",
+			"fromNode": "177308d67320d124",
+			"fromSide": "bottom",
+			"toNode": "d5e02f6e035d06f1",
+			"toSide": "top"
+		},
+		{
+			"id": "bbf9a98a21ada0c4",
+			"fromNode": "d5e02f6e035d06f1",
+			"fromSide": "right",
+			"toNode": "5389bada598ec1d6",
+			"toSide": "left"
+		},
+		{
+			"id": "2a1b7aaa77d9b89f",
+			"fromNode": "d5e02f6e035d06f1",
+			"fromSide": "bottom",
+			"toNode": "e69fac010d82d803",
+			"toSide": "top"
+		},
+		{
+			"id": "a185642d87d6a278",
+			"fromNode": "e69fac010d82d803",
+			"fromSide": "right",
+			"toNode": "f854dc628301c3fa",
+			"toSide": "left"
+		},
+		{
+			"id": "b05532136af3e26f",
+			"fromNode": "f08583b61477bccb",
+			"fromSide": "right",
+			"toNode": "36b00c0ffed38030",
+			"toSide": "left"
+		},
+		{
+			"id": "f3628615f990f56f",
+			"fromNode": "f08583b61477bccb",
+			"fromSide": "bottom",
+			"toNode": "2f35a472a111d9a9",
+			"toSide": "top"
+		},
+		{
+			"id": "a99ce4818fdab206",
+			"fromNode": "2f35a472a111d9a9",
+			"fromSide": "bottom",
+			"toNode": "9842d0360e0a996b",
+			"toSide": "top"
+		},
+		{
+			"id": "d222ee11dd67861f",
+			"fromNode": "7002a54dd023c44b",
+			"fromSide": "bottom",
+			"toNode": "52f1ae9cfc28eff4",
+			"toSide": "top"
+		},
+		{
+			"id": "8b2ea90faeb49f2a",
+			"fromNode": "52f1ae9cfc28eff4",
+			"fromSide": "bottom",
+			"toNode": "0b1f0a506159ea65",
+			"toSide": "top"
+		},
+		{
+			"id": "130b407739ea6f04",
+			"fromNode": "0b1f0a506159ea65",
+			"fromSide": "right",
+			"toNode": "4cefdbee8d20ff93",
+			"toSide": "left"
+		},
+		{
+			"id": "df732464d35f8541",
+			"fromNode": "8eb576866bd0ac77",
+			"fromSide": "top",
+			"toNode": "2aaf7f3db8e4e851",
+			"toSide": "bottom"
+		},
+		{
+			"id": "f91c26d38db39d4b",
+			"fromNode": "5ca00ae470501d81",
+			"fromSide": "bottom",
+			"toNode": "0dd2ced0d3301b43",
+			"toSide": "top"
+		},
+		{
+			"id": "0a7c6d1f29972729",
+			"fromNode": "0dd2ced0d3301b43",
+			"fromSide": "bottom",
+			"toNode": "3ec800ae5885a97d",
+			"toSide": "top"
+		},
+		{
+			"id": "dede317c6755ebec",
+			"fromNode": "3ec800ae5885a97d",
+			"fromSide": "bottom",
+			"toNode": "e015376d5390530a",
+			"toSide": "top"
+		},
+		{
+			"id": "459ace6760a4dbf0",
+			"fromNode": "5b763042c3ffee58",
+			"fromSide": "bottom",
+			"toNode": "6a40c5d2d90a0fcc",
+			"toSide": "top"
+		},
+		{
+			"id": "aef94b86c5e2cb78",
+			"fromNode": "b270716106803a9f",
+			"fromSide": "bottom",
+			"toNode": "4fe3fc6d1975f1f8",
+			"toSide": "top"
+		},
+		{
+			"id": "c282fab00e58d7c1",
+			"fromNode": "1b18cf81e1c7a5d8",
+			"fromSide": "bottom",
+			"toNode": "b42238f2fdc694a0",
+			"toSide": "top"
+		},
+		{
+			"id": "2abb45ee83c88fb9",
+			"fromNode": "b42238f2fdc694a0",
+			"fromSide": "bottom",
+			"toNode": "ccd4d70663b3f60f",
+			"toSide": "top"
+		},
+		{
+			"id": "241ec9fca9e118d6",
+			"fromNode": "b270716106803a9f",
+			"fromSide": "left",
+			"toNode": "1b18cf81e1c7a5d8",
+			"toSide": "right"
+		},
+		{
+			"id": "8192b81ae5e898e3",
+			"fromNode": "4fe3fc6d1975f1f8",
+			"fromSide": "bottom",
+			"toNode": "354e65166d994c1f",
+			"toSide": "top"
+		},
+		{
+			"id": "1060d3112c3292b7",
+			"fromNode": "a26707663758d051",
+			"fromSide": "bottom",
+			"toNode": "20f4ba36485f2b48",
+			"toSide": "top"
+		},
+		{
+			"id": "60306d166bd8ee27",
+			"fromNode": "a26707663758d051",
+			"fromSide": "right",
+			"toNode": "1cf2d6ed568d2b32",
+			"toSide": "left"
+		},
+		{
+			"id": "0a7d8d2d00547122",
+			"fromNode": "20f4ba36485f2b48",
+			"fromSide": "bottom",
+			"toNode": "3e8a78728adb7f92",
+			"toSide": "top"
+		},
+		{
+			"id": "77df624a5337581e",
+			"fromNode": "1cf2d6ed568d2b32",
+			"fromSide": "bottom",
+			"toNode": "39d075851baf3e53",
+			"toSide": "top"
+		},
+		{
+			"id": "e71f4a301e1b0304",
+			"fromNode": "39d075851baf3e53",
+			"fromSide": "bottom",
+			"toNode": "9035d22d1b5d1a98",
+			"toSide": "top"
+		},
+		{
+			"id": "f4fd9976d0b24962",
+			"fromNode": "9035d22d1b5d1a98",
+			"fromSide": "bottom",
+			"toNode": "6bf55278f440c39e",
+			"toSide": "top"
+		},
+		{
+			"id": "730a254b992feffc",
+			"fromNode": "8eb576866bd0ac77",
+			"fromSide": "bottom",
+			"toNode": "bf7945111e25ec44",
+			"toSide": "top"
+		},
+		{
+			"id": "3ac0824a322a2c23",
+			"fromNode": "98c8a2dd906fc20e",
+			"fromSide": "right",
+			"toNode": "bf7945111e25ec44",
+			"toSide": "left"
+		},
+		{
+			"id": "b1afecd21b7a99a5",
+			"fromNode": "98c8a2dd906fc20e",
+			"fromSide": "bottom",
+			"toNode": "7dbc36dc7ae625d8",
+			"toSide": "top"
+		},
+		{
+			"id": "a69998a289dbbd80",
+			"fromNode": "475220be057d6254",
+			"fromSide": "bottom",
+			"toNode": "8eabe55bda68edae",
+			"toSide": "top"
+		},
+		{
+			"id": "074818d75c274945",
+			"fromNode": "ffc3e543a52f4348",
+			"fromSide": "bottom",
+			"toNode": "475220be057d6254",
+			"toSide": "top"
+		},
+		{
+			"id": "8aec354671ac005f",
+			"fromNode": "1a12e49264032cf9",
+			"fromSide": "bottom",
+			"toNode": "e8412350235dc0fe",
+			"toSide": "top"
+		},
+		{
+			"id": "c5ade8f3f3f39e0b",
+			"fromNode": "4cefdbee8d20ff93",
+			"fromSide": "right",
+			"toNode": "1a12e49264032cf9",
+			"toSide": "left"
+		},
+		{
+			"id": "fe2078321ead74c1",
+			"fromNode": "da884b69434e3322",
+			"fromSide": "right",
+			"toNode": "2b9dccb1035c9cdf",
+			"toSide": "left"
+		},
+		{
+			"id": "996e68420dfb86e0",
+			"fromNode": "da884b69434e3322",
+			"fromSide": "bottom",
+			"toNode": "6886e4b7a0a1c910",
+			"toSide": "top"
+		},
+		{
+			"id": "d97f10c1942c945c",
+			"fromNode": "8eabe55bda68edae",
+			"fromSide": "right",
+			"toNode": "da884b69434e3322",
+			"toSide": "left"
+		},
+		{
+			"id": "3bbeac1754d34c87",
+			"fromNode": "35778c3f2341cd61",
+			"fromSide": "bottom",
+			"toNode": "cadce800e0ba44bd",
+			"toSide": "top"
+		},
+		{
+			"id": "8996333cc95c3765",
+			"fromNode": "cadce800e0ba44bd",
+			"fromSide": "right",
+			"toNode": "376c25c31627abcf",
+			"toSide": "left"
+		},
+		{
+			"id": "afab05614c1689e2",
+			"fromNode": "ecea350aa1efbaf6",
+			"fromSide": "bottom",
+			"toNode": "c9fc1cfdd4c2095a",
+			"toSide": "top"
+		},
+		{
+			"id": "8777eb3c006c9813",
+			"fromNode": "c9fc1cfdd4c2095a",
+			"fromSide": "bottom",
+			"toNode": "cc3705c76bd1d8ed",
+			"toSide": "top"
+		},
+		{
+			"id": "b9acc9acf267c40f",
+			"fromNode": "376c25c31627abcf",
+			"fromSide": "right",
+			"toNode": "cc3705c76bd1d8ed",
+			"toSide": "left"
+		},
+		{
+			"id": "1b7b03060f0863fa",
+			"fromNode": "c9fc1cfdd4c2095a",
+			"fromSide": "right",
+			"toNode": "62e4378f050fa26e",
+			"toSide": "left"
+		},
+		{
+			"id": "fa82fcca60497310",
+			"fromNode": "35778c3f2341cd61",
+			"fromSide": "right",
+			"toNode": "8fee784f846975c4",
+			"toSide": "left"
+		},
+		{
+			"id": "5b0cee71299a5953",
+			"fromNode": "cc3705c76bd1d8ed",
+			"fromSide": "bottom",
+			"toNode": "f020b10c986358ed",
+			"toSide": "top"
+		},
+		{
+			"id": "67319631153ded6f",
+			"fromNode": "7cd001223b65d46c",
+			"fromSide": "bottom",
+			"toNode": "e78f2cd3dbfbdba3",
+			"toSide": "top"
+		},
+		{
+			"id": "d3cb16097d101bde",
+			"fromNode": "e78f2cd3dbfbdba3",
+			"fromSide": "bottom",
+			"toNode": "41d71d53a2aca839",
+			"toSide": "top"
+		},
+		{
+			"id": "dabb327adfcb1f5e",
+			"fromNode": "41d71d53a2aca839",
+			"fromSide": "bottom",
+			"toNode": "75a0145af4e71096",
+			"toSide": "top"
+		},
+		{
+			"id": "1ee03bdfbd133f1f",
+			"fromNode": "f020b10c986358ed",
+			"fromSide": "bottom",
+			"toNode": "7cd001223b65d46c",
+			"toSide": "top"
+		},
+		{
+			"id": "786ddc67423303f2",
+			"fromNode": "90c1bcebfaa95344",
+			"fromSide": "bottom",
+			"toNode": "9b49bba6672ff8f8",
+			"toSide": "top"
+		},
+		{
+			"id": "1cb8842ddb60b4b3",
+			"fromNode": "9b49bba6672ff8f8",
+			"fromSide": "bottom",
+			"toNode": "8a7178bc56338fed",
+			"toSide": "top"
+		},
+		{
+			"id": "ffde882c164a481e",
+			"fromNode": "f020b10c986358ed",
+			"fromSide": "bottom",
+			"toNode": "90c1bcebfaa95344",
+			"toSide": "top"
+		},
+		{
+			"id": "cd46f5bdc8316c0f",
+			"fromNode": "cc3705c76bd1d8ed",
+			"fromSide": "bottom",
+			"toNode": "135f7435d48fdf91",
+			"toSide": "top"
+		},
+		{
+			"id": "0dcd66ea20297837",
+			"fromNode": "135f7435d48fdf91",
+			"fromSide": "bottom",
+			"toNode": "c64fa1de11c50e39",
+			"toSide": "top"
+		},
+		{
+			"id": "64dca0f387ca877c",
+			"fromNode": "73636cbc013752ef",
+			"fromSide": "bottom",
+			"toNode": "864b0c3186664169",
+			"toSide": "top"
+		},
+		{
+			"id": "7df82bd3bdbbf672",
+			"fromNode": "8a7178bc56338fed",
+			"fromSide": "bottom",
+			"toNode": "73636cbc013752ef",
+			"toSide": "top"
+		},
+		{
+			"id": "4906214e5463ad68",
+			"fromNode": "75a0145af4e71096",
+			"fromSide": "bottom",
+			"toNode": "1be23488e034f4bc",
+			"toSide": "top"
+		},
+		{
+			"id": "8c094568fe5cd9ef",
+			"fromNode": "1be23488e034f4bc",
+			"fromSide": "bottom",
+			"toNode": "4ab3ac1168045698",
+			"toSide": "top"
+		},
+		{
+			"id": "ac77430ca0ac7707",
+			"fromNode": "4ab3ac1168045698",
+			"fromSide": "bottom",
+			"toNode": "da5584f76d179782",
+			"toSide": "top"
+		},
+		{
+			"id": "aecdee49e432eebd",
+			"fromNode": "bbd3baf57ea9a2b7",
+			"fromSide": "bottom",
+			"toNode": "916c857a1f631626",
+			"toSide": "top"
+		},
+		{
+			"id": "6254bccfbf486642",
+			"fromNode": "2a0d4fc7a13ab161",
+			"fromSide": "bottom",
+			"toNode": "585528c2a2eafe99",
+			"toSide": "top"
+		},
+		{
+			"id": "0dfc6ab1ca92408d",
+			"fromNode": "7262da5bbafbc118",
+			"fromSide": "bottom",
+			"toNode": "2a0d4fc7a13ab161",
+			"toSide": "top"
+		},
+		{
+			"id": "f88d14541a215a8d",
+			"fromNode": "585528c2a2eafe99",
+			"fromSide": "bottom",
+			"toNode": "8f8ff8aa0b6f4f2f",
+			"toSide": "top"
+		},
+		{
+			"id": "d289b2311c04622a",
+			"fromNode": "7262da5bbafbc118",
+			"fromSide": "right",
+			"toNode": "6b9c7c68a39c477b",
+			"toSide": "left"
+		},
+		{
+			"id": "32fd67213b0e2757",
+			"fromNode": "15aceb9cc062b911",
+			"fromSide": "bottom",
+			"toNode": "5d178ca881dccc8a",
+			"toSide": "top"
+		},
+		{
+			"id": "a0b1ed95b97a08f7",
+			"fromNode": "2a0d4fc7a13ab161",
+			"fromSide": "right",
+			"toNode": "31c19e53392f5e76",
+			"toSide": "left"
+		},
+		{
+			"id": "3434784ea17e836f",
+			"fromNode": "585528c2a2eafe99",
+			"fromSide": "right",
+			"toNode": "4d9b00b100214d23",
+			"toSide": "left"
+		},
+		{
+			"id": "f41b97e050e42a16",
+			"fromNode": "8f8ff8aa0b6f4f2f",
+			"fromSide": "right",
+			"toNode": "f37b0c4ec8b23d0c",
+			"toSide": "left"
+		},
+		{
+			"id": "fc8e01419f6d7d0d",
+			"fromNode": "18bd5628c290972e",
+			"fromSide": "bottom",
+			"toNode": "8ef81aa242474ac8",
+			"toSide": "top"
+		},
+		{
+			"id": "0e1df769953aeb2e",
+			"fromNode": "8ef81aa242474ac8",
+			"fromSide": "bottom",
+			"toNode": "afbc1cd2e62a7c96",
+			"toSide": "top"
+		},
+		{
+			"id": "b6ab70350ed8bb15",
+			"fromNode": "afbc1cd2e62a7c96",
+			"fromSide": "bottom",
+			"toNode": "be4fd3d01c749ecd",
+			"toSide": "top"
+		},
+		{
+			"id": "18022348ababdd97",
+			"fromNode": "18bd5628c290972e",
+			"fromSide": "right",
+			"toNode": "9aa0245faa320eb0",
+			"toSide": "left"
+		},
+		{
+			"id": "c54afea3db64b278",
+			"fromNode": "afbc1cd2e62a7c96",
+			"fromSide": "right",
+			"toNode": "c54db6fc27b2da6f",
+			"toSide": "bottom"
+		},
+		{
+			"id": "c709b17f787d525b",
+			"fromNode": "8ef81aa242474ac8",
+			"fromSide": "right",
+			"toNode": "c54db6fc27b2da6f",
+			"toSide": "top"
+		},
+		{
+			"id": "0edfab878503049a",
+			"fromNode": "be4fd3d01c749ecd",
+			"fromSide": "right",
+			"toNode": "6de5a84464002756",
+			"toSide": "left"
+		},
+		{
+			"id": "f9145df04bc678c8",
+			"fromNode": "15aceb9cc062b911",
+			"fromSide": "bottom",
+			"toNode": "b80199a03f3a71e2",
+			"toSide": "top"
+		},
+		{
+			"id": "185bbbb0f14e2eb8",
+			"fromNode": "e95a9db8dc24a330",
+			"fromSide": "bottom",
+			"toNode": "3259a55b4bb2b1b2",
+			"toSide": "top"
+		},
+		{
+			"id": "ee0d33487920d973",
+			"fromNode": "98f430a7708d026e",
+			"fromSide": "right",
+			"toNode": "a57417a5036773d5",
+			"toSide": "left"
+		},
+		{
+			"id": "e956a3ff9dca8979",
+			"fromNode": "98f430a7708d026e",
+			"fromSide": "bottom",
+			"toNode": "7c997bed546f02b2",
+			"toSide": "top"
+		},
+		{
+			"id": "8b6cc74c671fcc32",
+			"fromNode": "7c997bed546f02b2",
+			"fromSide": "bottom",
+			"toNode": "e95a9db8dc24a330",
+			"toSide": "top"
+		},
+		{
+			"id": "b1a79872bf08c6ad",
+			"fromNode": "7c997bed546f02b2",
+			"fromSide": "right",
+			"toNode": "e7f8c9ebace4e4a4",
+			"toSide": "top"
+		},
+		{
+			"id": "04a844d5e9aa2dc9",
+			"fromNode": "e95a9db8dc24a330",
+			"fromSide": "right",
+			"toNode": "e7f8c9ebace4e4a4",
+			"toSide": "bottom"
+		},
+		{
+			"id": "8e8ddd7fe2c91117",
+			"fromNode": "15aceb9cc062b911",
+			"fromSide": "right",
+			"toNode": "3ef27dd7a344c1a7",
+			"toSide": "left"
+		},
+		{
+			"id": "2d863c8055e499a3",
+			"fromNode": "15aceb9cc062b911",
+			"fromSide": "bottom",
+			"toNode": "f67107f2ea4b480a",
+			"toSide": "top"
+		},
+		{
+			"id": "68d799b10d939d65",
+			"fromNode": "3266ce4669a08c01",
+			"fromSide": "bottom",
+			"toNode": "5ed8b80738a0f1a6",
+			"toSide": "top"
+		},
+		{
+			"id": "aacff8f337718ffe",
+			"fromNode": "5ed8b80738a0f1a6",
+			"fromSide": "bottom",
+			"toNode": "14cd3f90613fd275",
+			"toSide": "top"
+		},
+		{
+			"id": "0543be9661a7a8b2",
+			"fromNode": "14cd3f90613fd275",
+			"fromSide": "bottom",
+			"toNode": "b473c3e379ccf18c",
+			"toSide": "top"
+		},
+		{
+			"id": "8ee3b8b6ee89e693",
+			"fromNode": "3266ce4669a08c01",
+			"fromSide": "right",
+			"toNode": "73a4b1a96a124500",
+			"toSide": "left"
+		},
+		{
+			"id": "be99c9b251f87332",
+			"fromNode": "5ed8b80738a0f1a6",
+			"fromSide": "right",
+			"toNode": "ea7b452c02af44f5",
+			"toSide": "left"
+		},
+		{
+			"id": "190a3c630d769bd8",
+			"fromNode": "14cd3f90613fd275",
+			"fromSide": "right",
+			"toNode": "ea7b452c02af44f5",
+			"toSide": "left"
+		},
+		{
+			"id": "46505794d63b1c58",
+			"fromNode": "15aceb9cc062b911",
+			"fromSide": "bottom",
+			"toNode": "6fe5c684f96fa630",
+			"toSide": "top"
+		},
+		{
+			"id": "c626ec4363cb1a31",
+			"fromNode": "15aceb9cc062b911",
+			"fromSide": "bottom",
+			"toNode": "dc33e4f8035d38ff",
+			"toSide": "top"
+		},
+		{
+			"id": "8a293a27b1c19b97",
+			"fromNode": "fc0c6d8fb870f4ba",
+			"fromSide": "right",
+			"toNode": "02362f69b6fb59ce",
+			"toSide": "left"
+		},
+		{
+			"id": "4c2716293a40f328",
+			"fromNode": "8eb576866bd0ac77",
+			"fromSide": "left",
+			"toNode": "f5858e1b7722c89f",
+			"toSide": "right"
+		},
+		{
+			"id": "deb0668a600f0649",
+			"fromNode": "1e0cfb9fa7e21e65",
+			"fromSide": "right",
+			"toNode": "f2dd8a59ef26165a",
+			"toSide": "left"
+		},
+		{
+			"id": "ed425f33814f6641",
+			"fromNode": "1e0cfb9fa7e21e65",
+			"fromSide": "right",
+			"toNode": "8ad6c083f918aa1d",
+			"toSide": "left"
+		},
+		{
+			"id": "f1565e0d37820edf",
+			"fromNode": "8ad6c083f918aa1d",
+			"fromSide": "right",
+			"toNode": "4bb338afe13c3586",
+			"toSide": "left"
+		},
+		{
+			"id": "c0811a3479e70b5a",
+			"fromNode": "7be4e51370830790",
+			"fromSide": "right",
+			"toNode": "12aaee18f5a1e49a",
+			"toSide": "left"
+		},
+		{
+			"id": "12bfb9764fc0ab99",
+			"fromNode": "12aaee18f5a1e49a",
+			"fromSide": "right",
+			"toNode": "c147ece7098923d7",
+			"toSide": "left"
+		},
+		{
+			"id": "d9235b316b2bfeaa",
+			"fromNode": "12aaee18f5a1e49a",
+			"fromSide": "right",
+			"toNode": "cfc437ceaa01b3db",
+			"toSide": "left"
+		},
+		{
+			"id": "fad7787a2501a966",
+			"fromNode": "12aaee18f5a1e49a",
+			"fromSide": "bottom",
+			"toNode": "5d0da1c65b06ce19",
+			"toSide": "top"
+		},
+		{
+			"id": "152da8e99b950b2c",
+			"fromNode": "7be4e51370830790",
+			"fromSide": "bottom",
+			"toNode": "8ff68fb2a85be05d",
+			"toSide": "top"
+		},
+		{
+			"id": "7a7a8304c043b900",
+			"fromNode": "4a069bfe4b197733",
+			"fromSide": "bottom",
+			"toNode": "8851a6693455f539",
+			"toSide": "top"
+		},
+		{
+			"id": "13c9c2c7501a1c2c",
+			"fromNode": "8ff68fb2a85be05d",
+			"fromSide": "bottom",
+			"toNode": "0458b5bf6ce8525a",
+			"toSide": "top"
+		},
+		{
+			"id": "09bac31d02772e65",
+			"fromNode": "0458b5bf6ce8525a",
+			"fromSide": "bottom",
+			"toNode": "c374cfd8160ba605",
+			"toSide": "top"
+		},
+		{
+			"id": "3d5ed8988f02505f",
+			"fromNode": "168dd999830d2328",
+			"fromSide": "bottom",
+			"toNode": "d79182bf3087a44d",
+			"toSide": "top"
+		},
+		{
+			"id": "04e5f27aade37d17",
+			"fromNode": "c4f3520b8f7daa8b",
+			"fromSide": "bottom",
+			"toNode": "92808d4465babf4d",
+			"toSide": "top"
+		},
+		{
+			"id": "53cb692f73c335bc",
+			"fromNode": "92808d4465babf4d",
+			"fromSide": "bottom",
+			"toNode": "2e801b7db7938ab5",
+			"toSide": "top"
+		},
+		{
+			"id": "9f7ed2d3baca4878",
+			"fromNode": "2e801b7db7938ab5",
+			"fromSide": "right",
+			"toNode": "2eabcd6cdd472ba6",
+			"toSide": "left"
+		},
+		{
+			"id": "029f4686ada645ba",
+			"fromNode": "2eabcd6cdd472ba6",
+			"fromSide": "bottom",
+			"toNode": "6e8bd47bcef691ff",
+			"toSide": "top"
+		},
+		{
+			"id": "94512d2c30a1d139",
+			"fromNode": "8eb576866bd0ac77",
+			"fromSide": "right",
+			"toNode": "5b36f077dd35b582",
+			"toSide": "top"
+		}
+	]
+}

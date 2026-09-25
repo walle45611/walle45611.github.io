@@ -48,3 +48,7 @@
 
 - 與既有 `harness-engineering-language-models-need-human-guidance` 一致，且補上更工程化的執行細節（system prompt 組裝、工具閉環、compact 機制、heartbeat/cron）。
 - 本來源強化了「harness 層硬防禦」與「隔離部署」的重要性，對既有概念頁屬於補強而非衝突。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

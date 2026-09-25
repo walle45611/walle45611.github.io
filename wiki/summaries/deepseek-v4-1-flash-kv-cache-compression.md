@@ -46,3 +46,7 @@
 - [[model-quantization]]：區分快取量化與權重量化，保留 scale 開銷及品質驗證邊界。
 
 - [[how-inference-engines-work-agent-loops]]：互補說明連續批次、chunked prefill 與跨請求前綴復用。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

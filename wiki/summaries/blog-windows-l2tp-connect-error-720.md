@@ -19,6 +19,6 @@
 - 原文的除錯流程聚焦 WAN Miniport 定義、裝置檢查與修復步驟。
 - 這是特定 Windows 環境的歷史排錯紀錄，不能直接視為所有 L2TP 720 錯誤的唯一解法。
 
-## Related Concepts
+## Navigation
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
+- [My vault：Tech 筆記](../archives/my-vault-tech.md)

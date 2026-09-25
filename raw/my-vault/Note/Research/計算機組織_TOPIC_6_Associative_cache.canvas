@@ -1,0 +1,30 @@
+{
+	"nodes":[
+		{"id":"c66f1f62fb650e43","type":"group","x":780,"y":-381,"width":1250,"height":551,"label":"fully 和 direct 解釋"},
+		{"id":"799f0b0fabd48f76","type":"group","x":-320,"y":-360,"width":903,"height":760,"label":"E-way set-associative cache"},
+		{"id":"9fe152aa2c851ac8","type":"group","x":-320,"y":960,"width":872,"height":653,"label":"關聯式記憶體設計"},
+		{"id":"191a267cb284e880","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_6_Associative_cache/01-E-way set-associative ca - Set index = ( 餘數 )。.png","x":-300,"y":-320,"width":399,"height":229},
+		{"id":"3b8a06288dff8204","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_6_Associative_cache/04-E-way set-associative ca - Set index = ( 餘數 )。.png","x":-300,"y":0,"width":399,"height":224},
+		{"id":"55983cd8375e6f0b","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_6_Associative_cache/05-E-way set-associative ca.png","x":-300,"y":300,"width":400,"height":80},
+		{"id":"581e22f2b99ce934","type":"text","text":"- **Set index** = $\\text{block addr} \\mod \\text{sets}$（**餘數**）。\n    \n- **Tag** = $\\left\\lfloor \\text{blockaddr} / \\text{sets} \\right\\rfloor$（**商數**）。\n    \n- **Offset** 取自 block 大小。\n","x":187,"y":-251,"width":376,"height":94,"color":"1"},
+		{"id":"876d9e7a9d92f20f","type":"text","text":"- 總結\n\t\n\t1. **快取的區塊數 = Cache size ÷ Block size**。\n\t   這些區塊被分成：**sets × associativity(E)**。\n\t\n\t2. 在**固定 cache 容量**下，**E 增加 → 每個 set 的區塊數↑，set 的數量↓**。\n\t   例：E 翻倍 ⇒ 每 set 的 blocks 也翻倍 ⇒ set 數目減半。\n\t\n\t3. 取捨：**E 大 → 衝突 miss 降**；但**命中時間與硬體成本可能升**（多路標籤比對、替換邏輯）。\n","x":-300,"y":560,"width":776,"height":188,"color":"1"},
+		{"id":"ad0098d5adce636c","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_6_Associative_cache/06-關聯式記憶體設計.png","x":-300,"y":1000,"width":400,"height":237},
+		{"id":"01aa5ec3874b853c","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_6_Associative_cache/08-關聯式記憶體設計.png","x":-300,"y":1360,"width":399,"height":233},
+		{"id":"0996f9f6ca563574","type":"text","text":"MUX 看哪條命中，壞處就是增加 hit time","x":172,"y":1447,"width":360,"height":50,"color":"1"},
+		{"id":"83ea6b8660cb7ffb","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_6_Associative_cache/02-fully 和 direct 解釋.png","x":800,"y":-90,"width":400,"height":240},
+		{"id":"9ccf0faf2a5c7d3e","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_6_Associative_cache/03-fully 和 direct 解釋 - 去每格都找.png","x":1253,"y":-90,"width":446,"height":240},
+		{"id":"260f185044540f10","type":"text","text":"- 那麼 one-way 就是 direct memory\n- 那麼 fully 就是沒有 set 那麼就是會等於 tag","x":1044,"y":-361,"width":313,"height":110,"color":"1"},
+		{"id":"ceb269d205eca561","type":"text","text":"去每格都找","x":1760,"y":0,"width":250,"height":60,"color":"1"},
+		{"id":"fa3dbc982f32a456","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_6_Associative_cache/07-計算機組織_TOPIC_6_Associativ.png","x":760,"y":1000,"width":399,"height":189}
+	],
+	"edges":[
+		{"id":"4a6856757aa1ff55","fromNode":"191a267cb284e880","fromSide":"bottom","toNode":"3b8a06288dff8204","toSide":"top"},
+		{"id":"6cdeb014032a213f","fromNode":"3b8a06288dff8204","fromSide":"bottom","toNode":"55983cd8375e6f0b","toSide":"top"},
+		{"id":"59c7cbd258ba2158","fromNode":"191a267cb284e880","fromSide":"right","toNode":"581e22f2b99ce934","toSide":"left"},
+		{"id":"ebe30fd566e3e963","fromNode":"260f185044540f10","fromSide":"bottom","toNode":"9ccf0faf2a5c7d3e","toSide":"top"},
+		{"id":"db10b2b6f02b6b89","fromNode":"260f185044540f10","fromSide":"bottom","toNode":"83ea6b8660cb7ffb","toSide":"top"},
+		{"id":"88a6c23efd759bbf","fromNode":"9ccf0faf2a5c7d3e","fromSide":"right","toNode":"ceb269d205eca561","toSide":"left"},
+		{"id":"45ddc5d44c6fbb8a","fromNode":"ad0098d5adce636c","fromSide":"bottom","toNode":"01aa5ec3874b853c","toSide":"top"},
+		{"id":"a94881c30d5e70ad","fromNode":"01aa5ec3874b853c","fromSide":"right","toNode":"0996f9f6ca563574","toSide":"left"}
+	]
+}

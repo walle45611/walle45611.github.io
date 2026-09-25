@@ -28,3 +28,7 @@
 此來源補上既有 reasoning／RL 討論中的 DeepSeekMath 與 GRPO 名詞入口；因證據有限，先整合到既有概念，不另建完整演算法頁。
 
 - [self-correction-in-language-models](../concepts/self-correction-in-language-models.md)
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

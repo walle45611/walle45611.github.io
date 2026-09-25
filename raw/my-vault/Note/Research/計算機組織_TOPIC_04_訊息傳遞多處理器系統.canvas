@@ -1,0 +1,187 @@
+{
+	"nodes": [
+		{
+			"id": "7a5ef0d16c705393",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_04_訊息傳遞多處理器系統/01-課本的圖片.png",
+			"x": -280,
+			"y": -260,
+			"width": 400,
+			"height": 294
+		},
+		{
+			"id": "bb58efe0d62f12c3",
+			"type": "text",
+			"text": "課本的圖片",
+			"x": 200,
+			"y": -143,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "f28d8becb92bbbad",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_04_訊息傳遞多處理器系統/03-比較正確的.png",
+			"x": -280,
+			"y": 140,
+			"width": 400,
+			"height": 298
+		},
+		{
+			"id": "0e08da61a8d7e1c3",
+			"type": "text",
+			"text": "比較正確的",
+			"x": 200,
+			"y": 259,
+			"width": 250,
+			"height": 60,
+			"color": "5"
+		},
+		{
+			"id": "327eec875c7cd6d4",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_04_訊息傳遞多處理器系統/04-計算機組織_TOPIC_04_訊息傳遞多處理器系.png",
+			"x": -363,
+			"y": 560,
+			"width": 567,
+			"height": 160
+		},
+		{
+			"id": "c2c190c928f98162",
+			"type": "text",
+			"text": "系統要提供 send receive 這兩個程式 routines",
+			"x": 260,
+			"y": 610,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "81e9bda0a8d38f55",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_04_訊息傳遞多處理器系統/05-計算機組織_TOPIC_04_訊息傳遞多處理器系.png",
+			"x": -321,
+			"y": 800,
+			"width": 483,
+			"height": 231
+		},
+		{
+			"id": "60eb51de7572ad49",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_04_訊息傳遞多處理器系統/06-計算機組織_TOPIC_04_訊息傳遞多處理器系.png",
+			"x": -347,
+			"y": 1160,
+			"width": 535,
+			"height": 255
+		},
+		{
+			"id": "49a9fd561e19608c",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_04_訊息傳遞多處理器系統/07-計算機組織_TOPIC_04_訊息傳遞多處理器系.png",
+			"x": 280,
+			"y": 1224,
+			"width": 654,
+			"height": 127
+		},
+		{
+			"id": "64a07abd1f3dcc5a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_04_訊息傳遞多處理器系統/08-計算機組織_TOPIC_04_訊息傳遞多處理器系.png",
+			"x": 280,
+			"y": 1480,
+			"width": 658,
+			"height": 146
+		},
+		{
+			"id": "b84b4ed38288db5d",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_04_訊息傳遞多處理器系統/02-計算機組織_TOPIC_04_訊息傳遞多處理器系.png",
+			"x": -960,
+			"y": -233,
+			"width": 400,
+			"height": 181
+		},
+		{
+			"id": "40cf88a69e04d7c8",
+			"type": "text",
+			"text": "每個 computer 裡面都一個 OS 對於 cluster 所以才要 $4-1$",
+			"x": -913,
+			"y": 34,
+			"width": 306,
+			"height": 85
+		}
+	],
+	"edges": [
+		{
+			"id": "5d5532d3b1a0bc9e",
+			"fromNode": "7a5ef0d16c705393",
+			"fromSide": "right",
+			"toNode": "bb58efe0d62f12c3",
+			"toSide": "left"
+		},
+		{
+			"id": "079de11f1faf979d",
+			"fromNode": "7a5ef0d16c705393",
+			"fromSide": "bottom",
+			"toNode": "f28d8becb92bbbad",
+			"toSide": "top"
+		},
+		{
+			"id": "cb49b5cb39e7ad5f",
+			"fromNode": "f28d8becb92bbbad",
+			"fromSide": "right",
+			"toNode": "0e08da61a8d7e1c3",
+			"toSide": "left"
+		},
+		{
+			"id": "b2f45fe646cf6daa",
+			"fromNode": "f28d8becb92bbbad",
+			"fromSide": "bottom",
+			"toNode": "327eec875c7cd6d4",
+			"toSide": "top"
+		},
+		{
+			"id": "43ecc972c13bea01",
+			"fromNode": "327eec875c7cd6d4",
+			"fromSide": "right",
+			"toNode": "c2c190c928f98162",
+			"toSide": "left"
+		},
+		{
+			"id": "d0ce70d442cf3109",
+			"fromNode": "327eec875c7cd6d4",
+			"fromSide": "bottom",
+			"toNode": "81e9bda0a8d38f55",
+			"toSide": "top"
+		},
+		{
+			"id": "eafff9423d7b29fc",
+			"fromNode": "81e9bda0a8d38f55",
+			"fromSide": "bottom",
+			"toNode": "60eb51de7572ad49",
+			"toSide": "top"
+		},
+		{
+			"id": "1050097dbf448d34",
+			"fromNode": "60eb51de7572ad49",
+			"fromSide": "right",
+			"toNode": "49a9fd561e19608c",
+			"toSide": "left"
+		},
+		{
+			"id": "9a1cb5bd758e7db3",
+			"fromNode": "60eb51de7572ad49",
+			"fromSide": "right",
+			"toNode": "64a07abd1f3dcc5a",
+			"toSide": "left"
+		},
+		{
+			"id": "a7184ad633e86484",
+			"fromNode": "b84b4ed38288db5d",
+			"fromSide": "bottom",
+			"toNode": "40cf88a69e04d7c8",
+			"toSide": "top"
+		}
+	]
+}

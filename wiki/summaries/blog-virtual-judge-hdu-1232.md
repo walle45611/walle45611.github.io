@@ -18,6 +18,6 @@
 - 若連通分量數為 `connect`，要把它們連成一個連通圖需要 `connect - 1` 條邊。
 - 原文的解題程式保留在 Blog source；此頁只保存問題抽象與演算法思路。
 
-## Related Concepts
+## Navigation
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
+- [My vault：Research 筆記](../archives/my-vault-research.md)

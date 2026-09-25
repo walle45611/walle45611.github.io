@@ -1,0 +1,703 @@
+{
+	"nodes": [
+		{
+			"id": "509b8b8d8cf3090f",
+			"type": "group",
+			"x": -1140,
+			"y": -630,
+			"width": 3060,
+			"height": 2628,
+			"label": "IEEE 754 浮點數表示"
+		},
+		{
+			"id": "98fab074774973bd",
+			"type": "group",
+			"x": 2222,
+			"y": -630,
+			"width": 1900,
+			"height": 965,
+			"label": "題目"
+		},
+		{
+			"id": "53891050a8d07e61",
+			"type": "group",
+			"x": 2222,
+			"y": 1237,
+			"width": 1178,
+			"height": 761,
+			"label": "IBM flooting format"
+		},
+		{
+			"id": "f199c2492d24f20c",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_11_浮點數表示/02-題目.png",
+			"x": 2242,
+			"y": -593,
+			"width": 675,
+			"height": 225
+		},
+		{
+			"id": "d8fd111ba4dec4ca",
+			"type": "text",
+			"text": "### 浮點數精度與範圍的取捨示意圖\n\n#### 示意表格\n| 分配                | 影響                         |\n| ----------------- | -------------------------- |\n| **Fraction 位數增加** | 提高 **Precision (精度)**      |\n| **Exponent 位數增加** | 擴大 **Range (範圍)**          |\n| **Word Size 固定**  | 必須在兩者間取得 **Tradeoff (取捨)** |\n\n---\n\n#### 簡易 ASCII 圖示\n```\n Word Size 固定\n     /     \\\n Fraction   Exponent\n   (精度)      (範圍)\n     \\     /\n     取捨 (Tradeoff)\n```\n",
+			"x": -602,
+			"y": -346,
+			"width": 455,
+			"height": 555,
+			"color": "1"
+		},
+		{
+			"id": "b8be878f84810229",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_11_浮點數表示/09-IEEE 754 浮點數表示 - 浮點數精度與範圍的取捨示意圖.png",
+			"x": -1120,
+			"y": -165,
+			"width": 400,
+			"height": 193
+		},
+		{
+			"id": "a2eeaf81e2518f1c",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_11_浮點數表示/03-IEEE 754 浮點數表示.png",
+			"x": -1120,
+			"y": -546,
+			"width": 400,
+			"height": 232
+		},
+		{
+			"id": "3e739fffa06e3f2b",
+			"type": "text",
+			"text": "### IEEE 754 只有 double 和 single 就是 64 和 32 如果其他的都是變形那麼不一定會有非正規化數",
+			"x": -634,
+			"y": -520,
+			"width": 518,
+			"height": 69,
+			"color": "1"
+		},
+		{
+			"id": "b421a7968b140bab",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_11_浮點數表示/17-IBM flooting format.png",
+			"x": 2242,
+			"y": 1257,
+			"width": 658,
+			"height": 326
+		},
+		{
+			"id": "a82e31c6ef9cd8dc",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_11_浮點數表示/12-IEEE 754 浮點數表示 - Bias notation 的規則是.png",
+			"x": -300,
+			"y": 620,
+			"width": 595,
+			"height": 269
+		},
+		{
+			"id": "b12c85cc26984e2f",
+			"type": "text",
+			"text": "d) 他錯的原因是他寫了 will 如果寫 may 就是對的，因因為真的會失真但是不一定是每次，但是交大給的有 d",
+			"x": 3004,
+			"y": -485,
+			"width": 250,
+			"height": 117,
+			"color": "1"
+		},
+		{
+			"id": "2b95940bf255ab9d",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_11_浮點數表示/07-題目.png",
+			"x": 2284,
+			"y": -277,
+			"width": 591,
+			"height": 300
+		},
+		{
+			"id": "8f4306dc4a63da59",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_11_浮點數表示/01-題目.png",
+			"x": 3364,
+			"y": -610,
+			"width": 738,
+			"height": 320
+		},
+		{
+			"id": "d2a10f24dd423e60",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_11_浮點數表示/08-題目 - Excess-N = Bias =.png",
+			"x": 3364,
+			"y": -212,
+			"width": 738,
+			"height": 380
+		},
+		{
+			"id": "f7aa14da1c17497e",
+			"type": "text",
+			"text": "這邊就用 try 的 $2^{n}-1$ 慢慢試因為題目寫 within 所以只能在範圍內且不能超過最接近",
+			"x": 3422,
+			"y": 230,
+			"width": 250,
+			"height": 85
+		},
+		{
+			"id": "b629127b4e9eebc5",
+			"type": "text",
+			"text": "Excess-N = Bias = $2{6-1}-1=31$",
+			"x": 3760,
+			"y": 243,
+			"width": 282,
+			"height": 60
+		},
+		{
+			"id": "06de7b9f94525ecd",
+			"type": "text",
+			"text": "IBM 的 Exponent 他的表示 0 的方式 10,0000 但是 IEEE 表示的方式是 0111,1111，也就是說 0 後面都是一",
+			"x": 3042,
+			"y": 1494,
+			"width": 338,
+			"height": 85,
+			"color": "1"
+		},
+		{
+			"id": "b1bc527c1cfcbe79",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_11_浮點數表示/18-IBM flooting format.png",
+			"x": 2242,
+			"y": 1710,
+			"width": 661,
+			"height": 268
+		},
+		{
+			"id": "1e98dd188f387cc3",
+			"type": "text",
+			"text": "因為一次 shift 只能 4 個 bit 所以不能保證他的最左邊那個 bit 是 1 所以要保證小數點後面四個 bit 要有 1",
+			"x": 3037,
+			"y": 1818,
+			"width": 343,
+			"height": 102,
+			"color": "1"
+		},
+		{
+			"id": "ef6136c58bd00ef4",
+			"type": "text",
+			"text": "很重要，這是正規化數的最大最小指數的部分，非正規化數也是 $- (\\text{Bias} -1)$",
+			"x": 987,
+			"y": 722,
+			"width": 250,
+			"height": 85,
+			"color": "1"
+		},
+		{
+			"id": "a4756382472e6394",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_11_浮點數表示/10-IEEE 754 浮點數表示 - 錯誤範例 100 交大資聯.png",
+			"x": 1007,
+			"y": -133,
+			"width": 634,
+			"height": 50
+		},
+		{
+			"id": "e4e122573980bc6a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_11_浮點數表示/04-IEEE 754 浮點數表示 - 錯誤範例 100 交大資聯.png",
+			"x": 1197,
+			"y": -525,
+			"width": 400,
+			"height": 237
+		},
+		{
+			"id": "ae03c8de38b00626",
+			"type": "text",
+			"text": "錯誤範例 100 交大資聯",
+			"x": 1247,
+			"y": -32,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "caaef45eded1af40",
+			"type": "text",
+			"text": "- 負號快速算法就是記得 0 的表示方式直例如 0111,1111 直接減掉  -12 \n- 正數快速算是 12 直接加上 1000,0000 \n- 這樣就會是正確的 Bias notation",
+			"x": 780,
+			"y": 472,
+			"width": 385,
+			"height": 124,
+			"color": "1"
+		},
+		{
+			"id": "aabd94dab1b6e3f5",
+			"type": "text",
+			"text": "- 正規化最大表示方式 \n\t$(2-2^{-23}) \\times 2^{127}= 2 \\times (1-2^{-24}) \\times 2^{127} \\approx 2.0 \\times 10^{38}$\n- 正規化最小正數表示\n\t$2 \\times 10^{-38}$\n- 非正規化數最大的表示\n\t因為 $1-2^{-23} \\approx 1$ 所以就是 $1 \\times 10^{-38}$，會比實際小一點點因為 $1.175494$ 才對\n- 非正規化正數之最小表示\n\t$1.0 \\times 2^{-149}$ 因為太小了所以直接 $-126+(-23)=-149$\n\t\t$\\approx 1.0 \\times 10^{-45}$\n- note \n\t$2^{-126} = 10 ^ {\\log_{10} (2^{-126})} = 10^{-126 \\cdot \\log_{10}2} = 10^{-126 \\times 0.3} = 10^{-38}$ \n\t",
+			"x": 473,
+			"y": 1427,
+			"width": 549,
+			"height": 334,
+			"color": "1"
+		},
+		{
+			"id": "2cb776dc4dbad73f",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_11_浮點數表示/13-IEEE 754 浮點數表示.png",
+			"x": 497,
+			"y": 729,
+			"width": 398,
+			"height": 71
+		},
+		{
+			"id": "f4fa1d566735c332",
+			"type": "text",
+			"text": "- $b^n = a^{\\,n \\cdot \\log_a(b)}$\n\n- $b$：原本的底數（例如 2）\n    \n- $a$：目標的底數（例如 10）\n    \n- $n$：原本的指數",
+			"x": 613,
+			"y": 1850,
+			"width": 269,
+			"height": 128
+		},
+		{
+			"id": "4f52f50f8b343bf3",
+			"type": "text",
+			"text": "Bias notation 的規則是：\n\n$E_{\\text{biased}} = E_{\\text{real}} + 127$\n\n反過來：\n\n$E_{\\text{real}} = E_{\\text{biased}} - 127$",
+			"x": 419,
+			"y": 472,
+			"width": 213,
+			"height": 175,
+			"color": "5"
+		},
+		{
+			"id": "2a5aa8ddc80cae93",
+			"type": "text",
+			"text": "還原的算法",
+			"x": 762,
+			"y": -610,
+			"width": 250,
+			"height": 50,
+			"color": "5"
+		},
+		{
+			"id": "674ef8b93eb3f6a3",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_11_浮點數表示/11-IEEE 754 浮點數表示 - Bias notation 的規則是.png",
+			"x": 87,
+			"y": 94,
+			"width": 471,
+			"height": 256
+		},
+		{
+			"id": "0c2e803a3fd2301f",
+			"type": "text",
+			"text": "這個範例就是 Excess-127",
+			"x": 973,
+			"y": 190,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "d907b86e8e4d2cd5",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_11_浮點數表示/16-IEEE 754 浮點數表示 - 可表示五種.png",
+			"x": -260,
+			"y": 1010,
+			"width": 580,
+			"height": 283
+		},
+		{
+			"id": "6c4d09dedbf105a1",
+			"type": "text",
+			"text": "那麼可以用 Bias 這個公式算出來要減多少",
+			"x": 680,
+			"y": 195,
+			"width": 200,
+			"height": 55,
+			"color": "2"
+		},
+		{
+			"id": "66ac53523b2ac8b9",
+			"type": "text",
+			"text": "造成 NaN 的一些範例課本答案",
+			"x": -793,
+			"y": 1402,
+			"width": 275,
+			"height": 50,
+			"color": "1"
+		},
+		{
+			"id": "074083896d18e47c",
+			"type": "text",
+			"text": "原因是因為比較的時候直接 1000,0000 和 0111,1111 一位一位比較這樣比較快所以不用二補數表示的原因在這邊，這樣直接用無號數比較器比較快，因為在做運算有對齊指數的需求低位要對其高位",
+			"x": 632,
+			"y": -133,
+			"width": 295,
+			"height": 175,
+			"color": "2"
+		},
+		{
+			"id": "8a9f47ea0f770619",
+			"type": "text",
+			"text": "主要是要把 Exponent 使用 Bias notation 儲存",
+			"x": 242,
+			"y": -62,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "0d58774a12c8e0d0",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_11_浮點數表示/06-IEEE 754 浮點數表示.png",
+			"x": 167,
+			"y": -370,
+			"width": 400,
+			"height": 221
+		},
+		{
+			"id": "e09af95a0499c15e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_11_浮點數表示/05-IEEE 754 浮點數表示 - 還原的算法.png",
+			"x": 687,
+			"y": -490,
+			"width": 399,
+			"height": 167
+		},
+		{
+			"id": "969912f8cc098506",
+			"type": "text",
+			"text": "可能會考六個問題\n1. 正規化數正的最大跟最小\n2. 非正規化數正的最大跟最小\n3. 可表示的數包含正的正規化數最大和正的非正規化最小",
+			"x": 1547,
+			"y": 1019,
+			"width": 258,
+			"height": 174,
+			"color": "1"
+		},
+		{
+			"id": "10bdaf2d5cee7a92",
+			"type": "text",
+			"text": "- Overflow 數值太大無法表示\n- Underflow 基本上就是日常生活用不到的數因為太小了通常 ISA 不會不一定提供指令運算，但是 `IEEE754` 有提供，且大部分 ISA 都有\n- Gradual underflow 大部分 ISA 沒有\n- MIPS 只有 overflow 和 underflow",
+			"x": 1187,
+			"y": 1350,
+			"width": 449,
+			"height": 187,
+			"color": "1"
+		},
+		{
+			"id": "03ba3a916078219e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_11_浮點數表示/15-IEEE 754 浮點數表示 - 造成 NaN 的一些範例課本答案.png",
+			"x": -913,
+			"y": 1010,
+			"width": 604,
+			"height": 280
+		},
+		{
+			"id": "341bb6c2cbb9aec6",
+			"type": "text",
+			"text": "正規化數",
+			"x": 1187,
+			"y": 935,
+			"width": 250,
+			"height": 50
+		},
+		{
+			"id": "bd9140ebb3c0324e",
+			"type": "text",
+			"text": "非正規化數 0.0..1 小數有 32 位",
+			"x": 1187,
+			"y": 1209,
+			"width": 260,
+			"height": 60
+		},
+		{
+			"id": "f9a0ba852144985f",
+			"type": "text",
+			"text": "- 可表示五種\n\t1. 0：Exponent 和 Fraction 都是 0\n\t2. 非正規化 : Exponent 是 0 但 Fraction 不是\n\t3. 正規化 \n\t4. 無限大：如果 Exponent 是全 1且 Fraction 全 0 就是無限大\n\t5. NaN：如果 Exponent 是全 1且 Fraction 且 Faction 不是全 0\n",
+			"x": -228,
+			"y": 1402,
+			"width": 517,
+			"height": 192,
+			"color": "1"
+		},
+		{
+			"id": "920a0bbc86b502d1",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_11_浮點數表示/14-IEEE 754 浮點數表示 - 正規化數.png",
+			"x": 452,
+			"y": 960,
+			"width": 591,
+			"height": 330
+		}
+	],
+	"edges": [
+		{
+			"id": "3dd3820fd8a1fcdf",
+			"fromNode": "0d58774a12c8e0d0",
+			"fromSide": "bottom",
+			"toNode": "8a9f47ea0f770619",
+			"toSide": "top"
+		},
+		{
+			"id": "fb1a39fc26edf278",
+			"fromNode": "b8be878f84810229",
+			"fromSide": "right",
+			"toNode": "d8fd111ba4dec4ca",
+			"toSide": "left"
+		},
+		{
+			"id": "1b0b7405a357dcf9",
+			"fromNode": "a2eeaf81e2518f1c",
+			"fromSide": "bottom",
+			"toNode": "b8be878f84810229",
+			"toSide": "top"
+		},
+		{
+			"id": "c9ae460c1eae91b4",
+			"fromNode": "8a9f47ea0f770619",
+			"fromSide": "right",
+			"toNode": "074083896d18e47c",
+			"toSide": "left"
+		},
+		{
+			"id": "f833020ed0678e75",
+			"fromNode": "6c4d09dedbf105a1",
+			"fromSide": "right",
+			"toNode": "0c2e803a3fd2301f",
+			"toSide": "left"
+		},
+		{
+			"id": "c0beaed6ac571c82",
+			"fromNode": "0d58774a12c8e0d0",
+			"fromSide": "right",
+			"toNode": "e09af95a0499c15e",
+			"toSide": "left"
+		},
+		{
+			"id": "c72cd45391493f2b",
+			"fromNode": "e09af95a0499c15e",
+			"fromSide": "top",
+			"toNode": "2a5aa8ddc80cae93",
+			"toSide": "bottom"
+		},
+		{
+			"id": "7e71ad802cabd741",
+			"fromNode": "e09af95a0499c15e",
+			"fromSide": "right",
+			"toNode": "e4e122573980bc6a",
+			"toSide": "left"
+		},
+		{
+			"id": "88171a7f3bc7c542",
+			"fromNode": "674ef8b93eb3f6a3",
+			"fromSide": "right",
+			"toNode": "6c4d09dedbf105a1",
+			"toSide": "left"
+		},
+		{
+			"id": "c5d6ce433e976e2a",
+			"fromNode": "674ef8b93eb3f6a3",
+			"fromSide": "bottom",
+			"toNode": "4f52f50f8b343bf3",
+			"toSide": "top"
+		},
+		{
+			"id": "1f5c2362eebf379c",
+			"fromNode": "674ef8b93eb3f6a3",
+			"fromSide": "bottom",
+			"toNode": "caaef45eded1af40",
+			"toSide": "top"
+		},
+		{
+			"id": "eb432faf2562e12e",
+			"fromNode": "8a9f47ea0f770619",
+			"fromSide": "bottom",
+			"toNode": "674ef8b93eb3f6a3",
+			"toSide": "top"
+		},
+		{
+			"id": "f958d9da8ec3deb7",
+			"fromNode": "d907b86e8e4d2cd5",
+			"fromSide": "bottom",
+			"toNode": "f9a0ba852144985f",
+			"toSide": "top"
+		},
+		{
+			"id": "5d53b35bd9cbf7f4",
+			"fromNode": "a82e31c6ef9cd8dc",
+			"fromSide": "bottom",
+			"toNode": "d907b86e8e4d2cd5",
+			"toSide": "top"
+		},
+		{
+			"id": "8dc8e6e640685e7e",
+			"fromNode": "674ef8b93eb3f6a3",
+			"fromSide": "bottom",
+			"toNode": "a82e31c6ef9cd8dc",
+			"toSide": "top"
+		},
+		{
+			"id": "39510d11222c3789",
+			"fromNode": "2cb776dc4dbad73f",
+			"fromSide": "right",
+			"toNode": "ef6136c58bd00ef4",
+			"toSide": "left"
+		},
+		{
+			"id": "2c83a167d1260faf",
+			"fromNode": "a82e31c6ef9cd8dc",
+			"fromSide": "right",
+			"toNode": "2cb776dc4dbad73f",
+			"toSide": "left"
+		},
+		{
+			"id": "4971e043b5fa46f3",
+			"fromNode": "341bb6c2cbb9aec6",
+			"fromSide": "right",
+			"toNode": "969912f8cc098506",
+			"toSide": "left"
+		},
+		{
+			"id": "8a60a5637e53b6f1",
+			"fromNode": "bd9140ebb3c0324e",
+			"fromSide": "right",
+			"toNode": "969912f8cc098506",
+			"toSide": "left"
+		},
+		{
+			"id": "ba7a901c0c1bb1a8",
+			"fromNode": "a82e31c6ef9cd8dc",
+			"fromSide": "right",
+			"toNode": "920a0bbc86b502d1",
+			"toSide": "left"
+		},
+		{
+			"id": "7c7e39baa5f55617",
+			"fromNode": "920a0bbc86b502d1",
+			"fromSide": "right",
+			"toNode": "341bb6c2cbb9aec6",
+			"toSide": "left"
+		},
+		{
+			"id": "46c3912db29d7fcf",
+			"fromNode": "920a0bbc86b502d1",
+			"fromSide": "right",
+			"toNode": "bd9140ebb3c0324e",
+			"toSide": "left"
+		},
+		{
+			"id": "cbda6a4d08c36138",
+			"fromNode": "920a0bbc86b502d1",
+			"fromSide": "right",
+			"toNode": "10bdaf2d5cee7a92",
+			"toSide": "left"
+		},
+		{
+			"id": "c33b984b58708a88",
+			"fromNode": "920a0bbc86b502d1",
+			"fromSide": "bottom",
+			"toNode": "aabd94dab1b6e3f5",
+			"toSide": "top"
+		},
+		{
+			"id": "a3f6852aefe29091",
+			"fromNode": "aabd94dab1b6e3f5",
+			"fromSide": "bottom",
+			"toNode": "f4fa1d566735c332",
+			"toSide": "top"
+		},
+		{
+			"id": "3596f3c04db9210e",
+			"fromNode": "f199c2492d24f20c",
+			"fromSide": "bottom",
+			"toNode": "2b95940bf255ab9d",
+			"toSide": "top"
+		},
+		{
+			"id": "5c65243c14798c62",
+			"fromNode": "f199c2492d24f20c",
+			"fromSide": "right",
+			"toNode": "b12c85cc26984e2f",
+			"toSide": "left"
+		},
+		{
+			"id": "dd0afb8a2daa98d7",
+			"fromNode": "074083896d18e47c",
+			"fromSide": "right",
+			"toNode": "a4756382472e6394",
+			"toSide": "left"
+		},
+		{
+			"id": "627f4dbe00eefc6a",
+			"fromNode": "a4756382472e6394",
+			"fromSide": "bottom",
+			"toNode": "ae03c8de38b00626",
+			"toSide": "top"
+		},
+		{
+			"id": "12874e0d862dcff8",
+			"fromNode": "a82e31c6ef9cd8dc",
+			"fromSide": "left",
+			"toNode": "03ba3a916078219e",
+			"toSide": "top"
+		},
+		{
+			"id": "f243a6eb40e2ab94",
+			"fromNode": "03ba3a916078219e",
+			"fromSide": "bottom",
+			"toNode": "66ac53523b2ac8b9",
+			"toSide": "top"
+		},
+		{
+			"id": "456e420eda38f847",
+			"fromNode": "b421a7968b140bab",
+			"fromSide": "bottom",
+			"toNode": "b1bc527c1cfcbe79",
+			"toSide": "top"
+		},
+		{
+			"id": "bcb515291a9f82ca",
+			"fromNode": "b421a7968b140bab",
+			"fromSide": "right",
+			"toNode": "06de7b9f94525ecd",
+			"toSide": "left"
+		},
+		{
+			"id": "4d4e94ab2dd35836",
+			"fromNode": "8f4306dc4a63da59",
+			"fromSide": "bottom",
+			"toNode": "d2a10f24dd423e60",
+			"toSide": "top"
+		},
+		{
+			"id": "85ccb97e23433b81",
+			"fromNode": "d2a10f24dd423e60",
+			"fromSide": "bottom",
+			"toNode": "f7aa14da1c17497e",
+			"toSide": "top"
+		},
+		{
+			"id": "ec7add8fcb402956",
+			"fromNode": "d2a10f24dd423e60",
+			"fromSide": "bottom",
+			"toNode": "b629127b4e9eebc5",
+			"toSide": "top"
+		},
+		{
+			"id": "8c6ab802c13342d9",
+			"fromNode": "d8fd111ba4dec4ca",
+			"fromSide": "top",
+			"toNode": "3e739fffa06e3f2b",
+			"toSide": "bottom"
+		},
+		{
+			"id": "e9e78525df84c6b7",
+			"fromNode": "509b8b8d8cf3090f",
+			"fromSide": "right",
+			"toNode": "53891050a8d07e61",
+			"toSide": "left"
+		},
+		{
+			"id": "10a43337e6f15fc5",
+			"fromNode": "b1bc527c1cfcbe79",
+			"fromSide": "right",
+			"toNode": "1e98dd188f387cc3",
+			"toSide": "left"
+		}
+	]
+}

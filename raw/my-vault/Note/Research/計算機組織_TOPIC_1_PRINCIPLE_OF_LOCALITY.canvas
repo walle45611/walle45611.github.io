@@ -1,0 +1,205 @@
+{
+	"nodes": [
+		{
+			"id": "eef6bbc30ae26bc4",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_1_PRINCIPLE_OF_LOCALITY/08-計算機組織_TOPIC_1_PRINCIPLE.png",
+			"x": -240,
+			"y": 40,
+			"width": 400,
+			"height": 221
+		},
+		{
+			"id": "5d5f6562664721cc",
+			"type": "text",
+			"text": "- 🧠 **局部性原則 (Principle of Locality)** 程式在執行的任意時間點，實際上只會存取「**記憶體位址空間中的一小部分資料**」。  也就是說，雖然程式可能佔用很多記憶體，但運行中「常用的那部分」其實很集中。  這是快取（cache）能提升效能的基礎。\n\n- ⏱ **Temporal locality（時間局部性）**==若某個資料或指令剛被使用過，那它**很可能在不久之後會再次被用到**。==\n\n- 📍 **Spatial locality（空間局部性）**==若某個記憶體位置被存取，**鄰近的位址**也可能很快被存取。==\n\n| 類型                       | 意思                 | 範例            |\n| ------------------------ | ------------------ | ------------- |\n| Temporal Locality（時間局部性） | 最近用過的資料，之後可能還會用到   | 迴圈中的變數、指令重複執行 |\n| Spatial Locality（空間局部性）  | 用到某個資料時，附近的資料也會被用到 | 陣列、連續記憶體區塊    |\n\n> 程式傾向在「時間上重複使用」與「空間上集中使用」資料。",
+			"x": 300,
+			"y": 40,
+			"width": 657,
+			"height": 429,
+			"color": "1"
+		},
+		{
+			"id": "867450be98867df8",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_1_PRINCIPLE_OF_LOCALITY/09-計算機組織_TOPIC_1_PRINCIPLE.png",
+			"x": -240,
+			"y": 340,
+			"width": 400,
+			"height": 208
+		},
+		{
+			"id": "512dca8164c35a1f",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_1_PRINCIPLE_OF_LOCALITY/11-計算機組織_TOPIC_1_PRINCIPLE.png",
+			"x": -240,
+			"y": 700,
+			"width": 399,
+			"height": 152
+		},
+		{
+			"id": "399a0846aee4ba8a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_1_PRINCIPLE_OF_LOCALITY/10-SRAM 是 RS Latch 用電晶體.png",
+			"x": 360,
+			"y": 633,
+			"width": 400,
+			"height": 219
+		},
+		{
+			"id": "f6ce99d0fc0b7134",
+			"type": "text",
+			"text": "- SRAM 是 RS Latch 用電晶體\n- DRAM 用電容要要定期充電",
+			"x": 890,
+			"y": 703,
+			"width": 290,
+			"height": 73,
+			"color": "1"
+		},
+		{
+			"id": "429565f4bd281c6a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_1_PRINCIPLE_OF_LOCALITY/05-計算機組織_TOPIC_1_PRINCIPLE.png",
+			"x": -240,
+			"y": -420,
+			"width": 400,
+			"height": 223
+		},
+		{
+			"id": "705826e3bdb7c081",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_1_PRINCIPLE_OF_LOCALITY/06-計算機組織_TOPIC_1_PRINCIPLE.png",
+			"x": 300,
+			"y": -418,
+			"width": 400,
+			"height": 221
+		},
+		{
+			"id": "3895e5cd954753bf",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_1_PRINCIPLE_OF_LOCALITY/07-計算機組織_TOPIC_1_PRINCIPLE.png",
+			"x": 820,
+			"y": -395,
+			"width": 400,
+			"height": 174
+		},
+		{
+			"id": "d23bee14c3a8b9e8",
+			"type": "text",
+			"text": "Block/Line：快取搬運的最小單位。\n\nHit：要的資料在該層快取找到。\n\nMiss：在該層找不到。\n\nHit rate：在該層找到的比例。Miss rate = 1 − Hit rate。\n注意可分為：local miss rate（只看該層的存取）與 global miss rate（相對於 CPU 的所有存取）。\n\nHit time：在該層命中所需時間，含標籤比對與傳回資料。\n\nMiss penalty：該層發生 miss 從下層取回一個 block 並能繼續執行所花的額外時間，含下層存取、傳輸、填入、回送與重啟。",
+			"x": 280,
+			"y": -1155,
+			"width": 482,
+			"height": 330,
+			"color": "1"
+		},
+		{
+			"id": "0ce591d675b9200e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_1_PRINCIPLE_OF_LOCALITY/01-Block Line 快取搬運的最小單位。.png",
+			"x": -240,
+			"y": -1400,
+			"width": 399,
+			"height": 217
+		},
+		{
+			"id": "818f6c8bb42a9ca5",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_1_PRINCIPLE_OF_LOCALITY/03-Block Line 快取搬運的最小單位。.png",
+			"x": -240,
+			"y": -1096,
+			"width": 399,
+			"height": 213
+		},
+		{
+			"id": "1f5c59544a485972",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_1_PRINCIPLE_OF_LOCALITY/04-Block Line 快取搬運的最小單位。.png",
+			"x": -240,
+			"y": -795,
+			"width": 400,
+			"height": 218
+		},
+		{
+			"id": "6ec138c33a525028",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_1_PRINCIPLE_OF_LOCALITY/02-Block Line 快取搬運的最小單位。.png",
+			"x": 957,
+			"y": -1383,
+			"width": 399,
+			"height": 200
+		}
+	],
+	"edges": [
+		{
+			"id": "b6f7bd5c4cebab19",
+			"fromNode": "eef6bbc30ae26bc4",
+			"fromSide": "right",
+			"toNode": "5d5f6562664721cc",
+			"toSide": "left"
+		},
+		{
+			"id": "a347db0d1709187b",
+			"fromNode": "5d5f6562664721cc",
+			"fromSide": "left",
+			"toNode": "867450be98867df8",
+			"toSide": "right"
+		},
+		{
+			"id": "d315d60e079d7db2",
+			"fromNode": "512dca8164c35a1f",
+			"fromSide": "right",
+			"toNode": "399a0846aee4ba8a",
+			"toSide": "left"
+		},
+		{
+			"id": "1717920aaeeedd38",
+			"fromNode": "399a0846aee4ba8a",
+			"fromSide": "right",
+			"toNode": "f6ce99d0fc0b7134",
+			"toSide": "left"
+		},
+		{
+			"id": "94d10c424e2e1512",
+			"fromNode": "429565f4bd281c6a",
+			"fromSide": "right",
+			"toNode": "705826e3bdb7c081",
+			"toSide": "left"
+		},
+		{
+			"id": "04d52f3d95fcb4fd",
+			"fromNode": "705826e3bdb7c081",
+			"fromSide": "right",
+			"toNode": "3895e5cd954753bf",
+			"toSide": "left"
+		},
+		{
+			"id": "c99c64759b408073",
+			"fromNode": "1f5c59544a485972",
+			"fromSide": "right",
+			"toNode": "d23bee14c3a8b9e8",
+			"toSide": "left"
+		},
+		{
+			"id": "a950f469b99ac122",
+			"fromNode": "818f6c8bb42a9ca5",
+			"fromSide": "right",
+			"toNode": "d23bee14c3a8b9e8",
+			"toSide": "left"
+		},
+		{
+			"id": "2bc483623a4ea9cc",
+			"fromNode": "0ce591d675b9200e",
+			"fromSide": "right",
+			"toNode": "d23bee14c3a8b9e8",
+			"toSide": "left"
+		},
+		{
+			"id": "f8d7c3bbae2aafc8",
+			"fromNode": "429565f4bd281c6a",
+			"fromSide": "top",
+			"toNode": "1f5c59544a485972",
+			"toSide": "bottom"
+		}
+	]
+}

@@ -38,3 +38,7 @@
 ## Alignment With Current Wiki
 
 這份來源補充既有 AI coding 工具頁缺少的成本與 usage governance 面向；它描述的是 Codex 產品計價規則，不等同於模型能力評估或一般 API 定價。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

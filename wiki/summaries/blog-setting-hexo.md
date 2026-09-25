@@ -19,6 +19,6 @@
 - 文章同時記錄 GitHub Pages、`hexo deploy` 與 GitHub Actions 兩種部署方向。
 - 本次搬移保留這段歷史；後續知識維護不再以 Hexo 專案作為主要工作面。
 
-## Related Concepts
+## Navigation
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
+- [My vault：Tech 筆記](../archives/my-vault-tech.md)

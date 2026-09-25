@@ -42,3 +42,7 @@
 
 - 與既有 `harness-engineering` 一致：模型表現取決於工作流與約束設計，不僅是模型本體能力。
 - 這份來源屬個人實戰觀察，補強了「planner/executor 分層」在程式開發情境的可操作細節。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

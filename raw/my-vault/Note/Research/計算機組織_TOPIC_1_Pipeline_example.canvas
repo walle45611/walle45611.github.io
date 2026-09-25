@@ -1,0 +1,161 @@
+{
+	"nodes": [
+		{
+			"id": "43dc343e9d5024e2",
+			"type": "text",
+			"text": "# Pipeline 重點整理\n\n- **定義**：  \n  管線化 (Pipelining) 是一種實作技術，其中 **多個指令 (instructions)** 在執行時是 **overlapped** 的，這是讓處理器加快速度的關鍵。\n\n- **工作劃分**：  \n  - 將工作 (job) 切成數個 **步驟 (steps)**。  \n  - 將硬體 (hardware) 切成數個 **階段 (stages)**。  \n  - 每個階段負責其中一個步驟。  \n\n- **效能影響**：  \n  - **不會減少 latency**（單一任務的完成時間不變）。  \n  - **會提升 throughput**（單位時間完成的任務數變多）。  \n\n- **其他觀察**：  \n  - 一開始填充 (fill) 和最後排空 (drain) 時，管線未滿 → 效率較低。  \n  - 如果工作數量遠大於 stage 數（例如 ≫4），大部分時間管線是滿的 → throughput 接近 stage 數。  \n",
+			"x": -312,
+			"y": -63,
+			"width": 772,
+			"height": 447
+		},
+		{
+			"id": "992231565f6dd19a",
+			"type": "text",
+			"text": "# 為什麼 5-stage pipeline 實際 speedup < 5\n\n**理想狀況**  \n- 如果完全平衡、無額外延遲、無 hazard → speedup ≈ stage 數 (5)。  \n\n**實際情況中的限制因素：**  \n1. **Stages 不平衡**  \n   - 每個 stage 所需時間不相同 → pipeline 週期取決於最慢的 stage。  \n\n2. **Pipeline register overhead**  \n   - 每個 stage 之間需要 register 傳遞資料。  \n   - 註冊器存取延遲降低效能。  \n\n3. **Hazards**  \n   - Data hazard：指令間資料相依，需 stall/bubble。  \n   - Control hazard：分支、跳躍造成 pipeline flush。  \n\n4. **Fill 與 Drain 的時間**  \n   - 開始填充 (fill) 與最後排空 (drain) 時，pipeline 未滿載 → 效率降低。  \n\n---\n\n✅ **結論**：實際的 speedup 通常 **小於理想 stage 數**，原因就是 **不平衡 + register overhead + hazards + fill/drain 效應**。\n",
+			"x": 620,
+			"y": -132,
+			"width": 740,
+			"height": 585
+		},
+		{
+			"id": "0bf08bc72b4c4887",
+			"type": "text",
+			"text": "# Datapath 各指令對應階段\n\n| 指令類型 | IF | ID | EX | MEM         | WB |\n|----------|----|----|----|-------------|----|\n| R-type   | ✓  | ✓  | ✓  | Pass (MUX)  | ✓  |\n| lw       | ✓  | ✓  | ✓  | ✓ (存取記憶體) | ✓  |\n| sw       | ✓  | ✓  | ✓  | ✓ (存取記憶體) | Pass |\n| beq      | ✓  | ✓  | ✓  | Pass (控制) | Pass |\n| j        | ✓  | ✓  | ✓  | Pass (控制) | Pass |\n\n---\n\n**補充說明**：  \n- **R-type**：在 MEM 階段沒有記憶體存取，但結果需經過 **MUX** 選擇 ALU output 或 Memory output，因此仍存在 **路徑延遲**。  \n- **lw、sw**：MEM 階段會進行實際的 Load / Store。  \n- **beq、j**：主要為控制判斷，也要通過 MEM 階段，但僅是 pass-through。  \n",
+			"x": -237,
+			"y": 560,
+			"width": 623,
+			"height": 505,
+			"color": "1"
+		},
+		{
+			"id": "19d4d5715a393c03",
+			"type": "text",
+			"text": "# MIPS ISA 的設計原則（為了適合 Pipeline）\n\n1. **固定長度 (All instructions same length)**  \n   - 指令長度統一 (32 bits)，方便 IF 階段一次取指令，也方便 ID 階段解碼。  \n\n2. **格式規律 (Few formats, same field positions)**  \n   - 指令格式少，來源暫存器欄位位置一致。  \n   - 讓 ID 階段可以同時辨識指令型態並存取暫存器。  \n\n3. **記憶體只在 load/store 出現 (Memory operands only in lw/sw)**  \n   - 只有 `lw`、`sw` 會用到記憶體。  \n   - EX 階段先算位址，MEM 階段才存取記憶體 → 簡化 pipeline。  \n\n4. **運算元必須對齊 (Operands aligned in memory)**  \n   - 避免跨越兩個記憶體區塊存取，降低 pipeline 複雜度。  \n\n---\n\n✅ **總結**：  \nMIPS 的 ISA 設計刻意簡化，目標是 **讓 Pipeline 更容易實作**、減少 hazard 與複雜控制。  \n",
+			"x": 620,
+			"y": 602,
+			"width": 655,
+			"height": 463
+		},
+		{
+			"id": "62d7bec36befd6ae",
+			"type": "text",
+			"text": "理想 pipeline 假設：  \n- $S$ = stage 數  \n- $T$ = cycle time  \n- $N$ = 指令數  \n\n---\n\n**CPU clocks**  $(S - 1) + N$\n\n**ExTime**  $[(S - 1) + N] \\times T$\n\n**CPI**  $\\dfrac{(S - 1) + N}{N}$  若 $N \\to \\infty$，則 $CPI \\approx 1$\n\n**Speedup**  $\\dfrac{N \\times S \\times T}{[(S - 1) + N] \\times T}$  若 $N \\to \\infty$，則 $Speedup \\approx S$\n\n**Instr. Time**  $CPI \\times T = 1 \\times T = T$\n\n---\n\n重點：  \n- 當 $N$ 很大 → $CPI \\to 1$  \n- Speedup 上限 $\\approx S$  \n- Latency 不變，Throughput 提升\n",
+			"x": -800,
+			"y": 560,
+			"width": 443,
+			"height": 616,
+			"color": "1"
+		},
+		{
+			"id": "c1e991ad54efdd0d",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_1_Pipeline_example/03-理想 pipeline 假設.png",
+			"x": -500,
+			"y": 1300,
+			"width": 399,
+			"height": 222
+		},
+		{
+			"id": "6c8caa4a892ff320",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_1_Pipeline_example/02-理想 pipeline 假設.png",
+			"x": -1000,
+			"y": 1300,
+			"width": 400,
+			"height": 230
+		},
+		{
+			"id": "66ebc607f2f61bc1",
+			"type": "text",
+			"text": "- 最主要的原因是因為 $(S-1)+N$ 是指現在有幾指令需要被執行，然後加上 Stage，因為第一個任務進去後後面又跟著一個指令",
+			"x": -948,
+			"y": 1560,
+			"width": 297,
+			"height": 120
+		},
+		{
+			"id": "db33b7c30d40bda8",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_1_Pipeline_example/01-理想 pipeline 假設.png",
+			"x": -1480,
+			"y": 1300,
+			"width": 441,
+			"height": 230
+		},
+		{
+			"id": "35a06155340ac301",
+			"type": "text",
+			"text": "$ExTime_{single-cycle} = IC \\times S \\times T \\quad (\\text{其中 } S=1)$  \n\n$ExTime_{pipeline} = \\big[(S-1) + IC\\big] \\times T$  \n\n$Speedup = \\dfrac{IC \\times S \\times T}{\\big[(S-1) + IC\\big] \\times T}$  \n",
+			"x": -1480,
+			"y": 1580,
+			"width": 440,
+			"height": 150
+		}
+	],
+	"edges": [
+		{
+			"id": "95b5f4cf1d40bcca",
+			"fromNode": "43dc343e9d5024e2",
+			"fromSide": "right",
+			"toNode": "992231565f6dd19a",
+			"toSide": "left"
+		},
+		{
+			"id": "a9f584220277ecb9",
+			"fromNode": "43dc343e9d5024e2",
+			"fromSide": "bottom",
+			"toNode": "0bf08bc72b4c4887",
+			"toSide": "top"
+		},
+		{
+			"id": "7c48300b212ad19b",
+			"fromNode": "43dc343e9d5024e2",
+			"fromSide": "right",
+			"toNode": "19d4d5715a393c03",
+			"toSide": "left"
+		},
+		{
+			"id": "f1f318927aee2208",
+			"fromNode": "43dc343e9d5024e2",
+			"fromSide": "bottom",
+			"toNode": "62d7bec36befd6ae",
+			"toSide": "top"
+		},
+		{
+			"id": "e51ae7f023c64a60",
+			"fromNode": "62d7bec36befd6ae",
+			"fromSide": "bottom",
+			"toNode": "c1e991ad54efdd0d",
+			"toSide": "top"
+		},
+		{
+			"id": "44ee96bbc6d27724",
+			"fromNode": "62d7bec36befd6ae",
+			"fromSide": "bottom",
+			"toNode": "6c8caa4a892ff320",
+			"toSide": "top"
+		},
+		{
+			"id": "2a7f66eaf06a454c",
+			"fromNode": "6c8caa4a892ff320",
+			"fromSide": "bottom",
+			"toNode": "66ebc607f2f61bc1",
+			"toSide": "top"
+		},
+		{
+			"id": "912a31f61c437743",
+			"fromNode": "62d7bec36befd6ae",
+			"fromSide": "bottom",
+			"toNode": "db33b7c30d40bda8",
+			"toSide": "top"
+		},
+		{
+			"id": "2a5a2a5a3ebd23e6",
+			"fromNode": "db33b7c30d40bda8",
+			"fromSide": "bottom",
+			"toNode": "35a06155340ac301",
+			"toSide": "top"
+		}
+	]
+}

@@ -19,6 +19,6 @@
 - 原文比較 Test-and-Set、Compare-and-Swap、Peterson’s Solution、Mutex、Spinlock 與 Semaphore 的角色。
 - 後半段延伸到 liveness、priority inversion、producer-consumer、readers-writers 與 dining philosophers。
 
-## Related Concepts
+## Navigation
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
+- [My vault：Tech 筆記](../archives/my-vault-tech.md)

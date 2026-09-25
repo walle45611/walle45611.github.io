@@ -27,3 +27,7 @@ This article provides a structured approach to selecting an agentic AI system de
 ## Alignment With Current Wiki
 
 The summary aligns with the existing `agent-design-patterns` concept page, extending it with a practical decision matrix and a clearer mapping of patterns to workload characteristics. It also reinforces the importance of human oversight and iterative loops, which are covered in the `harness-engineering` concept.
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

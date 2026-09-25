@@ -1,0 +1,32 @@
+{
+	"nodes":[
+		{"id":"26d33b38ece863c6","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_03_記憶體共享多處理器系統/01-計算機組織_TOPIC_03_記憶體共享多處理器.png","x":-180,"y":-280,"width":400,"height":92},
+		{"id":"723d29c2e6698a4d","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_03_記憶體共享多處理器系統/02-計算機組織_TOPIC_03_記憶體共享多處理器.png","x":-180,"y":-140,"width":400,"height":159},
+		{"id":"bda57c2b64cf7e57","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_03_記憶體共享多處理器系統/04-計算機組織_TOPIC_03_記憶體共享多處理器.png","x":-380,"y":122,"width":380,"height":277},
+		{"id":"3276727a6aa900ef","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_03_記憶體共享多處理器系統/05-計算機組織_TOPIC_03_記憶體共享多處理器.png","x":80,"y":122,"width":400,"height":270},
+		{"id":"cd8449b32e87c561","type":"text","text":"每個 Processor 都是一樣的，因為 Bus 一樣那麼這樣也要特別注意題目是在說 Symmetry 還是指的是 Shared","x":-316,"y":472,"width":250,"height":115,"color":"1"},
+		{"id":"53e439b611f7f558","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_03_記憶體共享多處理器系統/06-計算機組織_TOPIC_03_記憶體共享多處理器.png","x":-860,"y":202,"width":400,"height":118},
+		{"id":"ea2f84baee5fbe9a","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_03_記憶體共享多處理器系統/07-計算機組織_TOPIC_03_記憶體共享多處理器.png","x":-860,"y":365,"width":400,"height":68},
+		{"id":"0d868f618c8bc83c","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_03_記憶體共享多處理器系統/09-解決辦法其實跟 OS 一樣.png","x":-1243,"y":520,"width":400,"height":123},
+		{"id":"5e311dcd3214b681","type":"text","text":"- 解決辦法其實跟 OS 一樣","x":-1168,"y":700,"width":250,"height":60},
+		{"id":"1a648fccd2ddf34f","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_03_記憶體共享多處理器系統/08-計算機組織_TOPIC_03_記憶體共享多處理器.png","x":-1620,"y":486,"width":248,"height":192},
+		{"id":"97ac011ed81ab52e","type":"text","text":"這個就是在 `ll(load link)` `sc(store condition)` 同步問題，OS 就是 race condition，MIPS 不提供 Atomic swap","x":-1340,"y":200,"width":250,"height":162,"color":"1"},
+		{"id":"454c6117ec81953f","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_03_記憶體共享多處理器系統/10-解決辦法其實跟 OS 一樣.png","x":-1696,"y":760,"width":400,"height":263},
+		{"id":"29c94fd06998bd8e","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_03_記憶體共享多處理器系統/03-計算機組織_TOPIC_03_記憶體共享多處理器.png","x":600,"y":82,"width":612,"height":350}
+	],
+	"edges":[
+		{"id":"4862f0d6d69ba51a","fromNode":"26d33b38ece863c6","fromSide":"bottom","toNode":"723d29c2e6698a4d","toSide":"top"},
+		{"id":"b23ce6ef489389df","fromNode":"723d29c2e6698a4d","fromSide":"bottom","toNode":"bda57c2b64cf7e57","toSide":"top"},
+		{"id":"aec407f362c7022e","fromNode":"723d29c2e6698a4d","fromSide":"bottom","toNode":"3276727a6aa900ef","toSide":"top"},
+		{"id":"c132b569ba44d2a3","fromNode":"bda57c2b64cf7e57","fromSide":"bottom","toNode":"cd8449b32e87c561","toSide":"top"},
+		{"id":"60789e36f96233f8","fromNode":"bda57c2b64cf7e57","fromSide":"left","toNode":"53e439b611f7f558","toSide":"right"},
+		{"id":"4cd90f44b4a97e1f","fromNode":"53e439b611f7f558","fromSide":"bottom","toNode":"ea2f84baee5fbe9a","toSide":"top"},
+		{"id":"c2c5a695c768e824","fromNode":"ea2f84baee5fbe9a","fromSide":"left","toNode":"97ac011ed81ab52e","toSide":"right"},
+		{"id":"5376f85850cca9b4","fromNode":"97ac011ed81ab52e","fromSide":"bottom","toNode":"0d868f618c8bc83c","toSide":"top"},
+		{"id":"ed5298c236b10f01","fromNode":"0d868f618c8bc83c","fromSide":"bottom","toNode":"5e311dcd3214b681","toSide":"top"},
+		{"id":"8990ab82ab53311f","fromNode":"0d868f618c8bc83c","fromSide":"left","toNode":"1a648fccd2ddf34f","toSide":"right"},
+		{"id":"27875c01f8bcea66","fromNode":"1a648fccd2ddf34f","fromSide":"top","toNode":"97ac011ed81ab52e","toSide":"left"},
+		{"id":"f663c8e76403883e","fromNode":"1a648fccd2ddf34f","fromSide":"bottom","toNode":"454c6117ec81953f","toSide":"top"},
+		{"id":"07e01595b3b63d1b","fromNode":"3276727a6aa900ef","fromSide":"right","toNode":"29c94fd06998bd8e","toSide":"left"}
+	]
+}

@@ -1,0 +1,34 @@
+{
+	"nodes":[
+		{"id":"862ec84a43220eba","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_09_網路拓樸/06-處理器之間怎麼做連結.png","x":-300,"y":-220,"width":398,"height":83},
+		{"id":"3134643bf5d69c95","type":"text","text":"處理器之間怎麼做連結","x":-225,"y":-340,"width":250,"height":60,"color":"1"},
+		{"id":"1edefac462b49547","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_09_網路拓樸/08-計算機組織_TOPIC_09_網路拓樸.png","x":-300,"y":-60,"width":400,"height":224},
+		{"id":"5c869c31f497d5d0","type":"text","text":"Linear 很便宜但是比較慢傳輸效率，沒有容錯能力。\nFully-connected 很貴但是傳輸效率比較好，有很好的容錯能力。","x":180,"y":14,"width":347,"height":115,"color":"1"},
+		{"id":"f96bf119e6e9df7e","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_09_網路拓樸/07-linear 變過來的,那麼他還有容錯能力.png","x":-800,"y":-60,"width":400,"height":180},
+		{"id":"1ba0148d4633eae4","type":"text","text":"linear 變過來的，那麼他還有容錯能力","x":-725,"y":200,"width":250,"height":55,"color":"1"},
+		{"id":"18671098af10f625","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_09_網路拓樸/05-Mash 他的行列都是 Ring.png","x":-800,"y":-393,"width":400,"height":226},
+		{"id":"073eb7270fe97bc4","type":"text","text":"Cube 方塊的角都是 Processor","x":-1167,"y":-248,"width":250,"height":60,"color":"1"},
+		{"id":"295818a7bf8cf724","type":"text","text":"Mash 他的行列都是 Ring","x":-1167,"y":-400,"width":250,"height":60,"color":"1"},
+		{"id":"764bb21d9f20ccdc","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_09_網路拓樸/04-Diameter(網路直徑).png","x":-1860,"y":-411,"width":640,"height":131},
+		{"id":"d6f2927551ae0bf3","type":"text","text":"- Network bandwidth，一秒鐘傳輸的最大資料量。\n- Bisection bandwidth，完全切開 link 左右邊完全沒有辦法通訊，的 bandwidth 需要多少損失那麼這個就是越大越好代表你的容錯很好。\n","x":-1752,"y":-218,"width":424,"height":121,"color":"1"},
+		{"id":"9e3015632a07a98f","type":"text","text":"- **Diameter（網路直徑）**\n    \n    - 定義：在整張網路圖裡，任選兩個節點 (u,v)，看它們之間「最短路徑」的 hop 數 $d(u,v)$。把所有 pair 都算一遍，其中**最大的那個最短距離**就是 diameter。  \n        $$\n        \\text{Diameter} = \\max_{u,v} d(u,v)  \n\t    $$\n        \n    - 意義：代表「這個網路裡，最遠的兩台機器，最倒楣要走幾跳」。\n        \n        - 小 → 任兩點之間延遲上限小，傳輸最慢的一組也不會太慢。\n            \n        - 大 → 有些點之間要跑很多 hop 才到。\n            \n- **Nodal degree（節點度數）**\n    \n    - 定義：對某一個節點來說，**直接連到它的連線條數**（或鄰居節點數）就是這個節點的 degree。\n        \n        - 規則拓樸中每個節點度數都一樣時，這個共同的值就叫做網路的 **nodal degree**。\n            \n    - 意義：可以想成「每個節點有幾個出口」。\n        \n        - 大 → 路徑選擇多，網路連通性好，但每個節點要多準備 port／線路，成本↑。\n            \n        - 小 → 結構簡單、成本低，但壅塞或繞路的機會變大。\n            ","x":-2680,"y":-572,"width":702,"height":454,"color":"1"},
+		{"id":"90669e6510151b19","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_09_網路拓樸/01-Diameter(網路直徑).png","x":-2598,"y":-820,"width":539,"height":174},
+		{"id":"be99296b12ead1a0","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_09_網路拓樸/02-Diameter(網路直徑).png","x":-3300,"y":-540,"width":568,"height":317},
+		{"id":"db84b1a178a0c74e","type":"file","file":"Assets/Note/Research/計算機組織_TOPIC_09_網路拓樸/03-計算機組織_TOPIC_09_網路拓樸.png","x":240,"y":-445,"width":400,"height":225}
+	],
+	"edges":[
+		{"id":"9944cddabf020ecd","fromNode":"862ec84a43220eba","fromSide":"top","toNode":"3134643bf5d69c95","toSide":"bottom"},
+		{"id":"cf0326660f7bce50","fromNode":"1edefac462b49547","fromSide":"right","toNode":"5c869c31f497d5d0","toSide":"left"},
+		{"id":"7186c9191daf4a84","fromNode":"1edefac462b49547","fromSide":"left","toNode":"f96bf119e6e9df7e","toSide":"right"},
+		{"id":"9bfeadc28ee8d51b","fromNode":"862ec84a43220eba","fromSide":"bottom","toNode":"1edefac462b49547","toSide":"top"},
+		{"id":"d978fbc54cceac50","fromNode":"f96bf119e6e9df7e","fromSide":"bottom","toNode":"1ba0148d4633eae4","toSide":"top"},
+		{"id":"0fc46bda6c31a43f","fromNode":"862ec84a43220eba","fromSide":"left","toNode":"18671098af10f625","toSide":"right"},
+		{"id":"17ee31fd87c4d67b","fromNode":"18671098af10f625","fromSide":"left","toNode":"295818a7bf8cf724","toSide":"right"},
+		{"id":"e630f1bf1134e850","fromNode":"18671098af10f625","fromSide":"left","toNode":"073eb7270fe97bc4","toSide":"right"},
+		{"id":"4de782a2ebe678fd","fromNode":"764bb21d9f20ccdc","fromSide":"bottom","toNode":"d6f2927551ae0bf3","toSide":"top"},
+		{"id":"90bfa2e79ddbaa64","fromNode":"764bb21d9f20ccdc","fromSide":"left","toNode":"9e3015632a07a98f","toSide":"right"},
+		{"id":"194ca54d9248496c","fromNode":"90669e6510151b19","fromSide":"bottom","toNode":"9e3015632a07a98f","toSide":"top"},
+		{"id":"a24e868f7fece030","fromNode":"90669e6510151b19","fromSide":"left","toNode":"be99296b12ead1a0","toSide":"top"},
+		{"id":"2381d36f2bc70a4c","fromNode":"862ec84a43220eba","fromSide":"right","toNode":"db84b1a178a0c74e","toSide":"left"}
+	]
+}

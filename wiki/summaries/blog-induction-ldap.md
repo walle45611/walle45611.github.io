@@ -19,6 +19,6 @@
 - 應用面涵蓋郵件伺服器、Samba、DNS、RADIUS、帳號密碼管理與 SSO。
 - 內容也說明 LDAP 的資料結構、目錄樹與查詢方式；實際部署設定不在本摘要中。
 
-## Related Concepts
+## Navigation
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
+- [My vault：Tech 筆記](../archives/my-vault-tech.md)

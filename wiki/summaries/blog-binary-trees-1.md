@@ -19,6 +19,6 @@
 - 實作面涵蓋陣列與 linked list 表示法，以及常見 traversal 與範例題。
 - 內容參考 CLRS 與 Horowitz 的資料結構脈絡，完整推導與程式碼保留在 Blog source。
 
-## Related Concepts
+## Navigation
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
+- [My vault：Research 筆記](../archives/my-vault-research.md)

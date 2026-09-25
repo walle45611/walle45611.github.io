@@ -1,0 +1,31 @@
+{
+	"nodes": [
+		{
+			"id": "9e66340fa677d848",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_1_Performance_law/01-計算機組織_1_Performance_law.png",
+			"x": -240,
+			"y": -320,
+			"width": 400,
+			"height": 148
+		},
+		{
+			"id": "896ea38eb11dd649",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_1_Performance_law/02-計算機組織_1_Performance_law.png",
+			"x": -240,
+			"y": -80,
+			"width": 400,
+			"height": 63
+		}
+	],
+	"edges": [
+		{
+			"id": "6ccb11257d93b8f0",
+			"fromNode": "9e66340fa677d848",
+			"fromSide": "bottom",
+			"toNode": "896ea38eb11dd649",
+			"toSide": "top"
+		}
+	]
+}

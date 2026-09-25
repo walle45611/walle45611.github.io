@@ -1,0 +1,197 @@
+{
+	"nodes": [
+		{
+			"id": "9192178387f6b44e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_08_GPU_圖形處理器/03-計算機組織_TOPIC_08_GPU_圖形處理器.png",
+			"x": -860,
+			"y": -620,
+			"width": 400,
+			"height": 224
+		},
+		{
+			"id": "7964d7524419e88b",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_08_GPU_圖形處理器/05-巨觀是 MIMD.png",
+			"x": -860,
+			"y": -340,
+			"width": 400,
+			"height": 229
+		},
+		{
+			"id": "3651b8bc49dc6ef4",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_08_GPU_圖形處理器/08-巨觀是 MIMD.png",
+			"x": -860,
+			"y": -40,
+			"width": 400,
+			"height": 238
+		},
+		{
+			"id": "8680ca64ce2fc275",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_08_GPU_圖形處理器/10-巨觀是 MIMD.png",
+			"x": -860,
+			"y": 260,
+			"width": 400,
+			"height": 245
+		},
+		{
+			"id": "adc32c0bc06958a2",
+			"type": "text",
+			"text": "- **巨觀是 MIMD：**\n    \n    - 一張顯卡上有幾十個 **Streaming Multiprocessor (SM)**。\n        \n    - SM #1 可以算遊戲畫面的左上角，SM #2 可以算右下角（或者算完全不同的物理碰撞）。它們彼此獨立，這就是 MIMD。\n        \n- **微觀是 SIMD (SIMT)：**\n    \n    - 但在每一個 SM 內部，有 **Warp Scheduler**。\n        \n    - 它一旦發號施令，下面的 **SP (CUDA Cores)** 就必須整齊劃一地執行同一個指令。這就是 SIMD。",
+			"x": -320,
+			"y": 265,
+			"width": 536,
+			"height": 240,
+			"color": "1"
+		},
+		{
+			"id": "19b342631d8909b7",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_08_GPU_圖形處理器/06-巨觀是 MIMD.png",
+			"x": -320,
+			"y": -316,
+			"width": 400,
+			"height": 217
+		},
+		{
+			"id": "e2bcd19914b1c9fa",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_08_GPU_圖形處理器/09-巨觀是 MIMD.png",
+			"x": -320,
+			"y": -10,
+			"width": 400,
+			"height": 131
+		},
+		{
+			"id": "41d04c3093977bd4",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_08_GPU_圖形處理器/04-巨觀是 MIMD.png",
+			"x": -320,
+			"y": -610,
+			"width": 400,
+			"height": 204
+		},
+		{
+			"id": "ac6c6d5dfd868690",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_08_GPU_圖形處理器/12-巨觀是 MIMD.png",
+			"x": -860,
+			"y": 640,
+			"width": 400,
+			"height": 288
+		},
+		{
+			"id": "d2b1c0788b22b241",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_08_GPU_圖形處理器/11-巨觀是 MIMD.png",
+			"x": -252,
+			"y": 612,
+			"width": 399,
+			"height": 172
+		},
+		{
+			"id": "3d3a15613163a7e5",
+			"type": "text",
+			"text": "- 現在著色 vertex 和 Geometry 和 Pixel 的 Shader 現在都是同一個硬體只是軟體可以控制，這樣方便軟體可以控制",
+			"x": 820,
+			"y": -606,
+			"width": 250,
+			"height": 147,
+			"color": "1"
+		},
+		{
+			"id": "68175b7a8c5fc0cd",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_08_GPU_圖形處理器/02-計算機組織_TOPIC_08_GPU_圖形處理器.png",
+			"x": 320,
+			"y": -639,
+			"width": 400,
+			"height": 214
+		},
+		{
+			"id": "9b7efd4de099164c",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_08_GPU_圖形處理器/01-計算機組織_TOPIC_08_GPU_圖形處理器.png",
+			"x": 1160,
+			"y": -643,
+			"width": 400,
+			"height": 222
+		},
+		{
+			"id": "eb08f217d76be8ad",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_08_GPU_圖形處理器/07-計算機組織_TOPIC_08_GPU_圖形處理器.png",
+			"x": 1160,
+			"y": -280,
+			"width": 399,
+			"height": 255
+		}
+	],
+	"edges": [
+		{
+			"id": "45b74dd00a65854c",
+			"fromNode": "9192178387f6b44e",
+			"fromSide": "bottom",
+			"toNode": "7964d7524419e88b",
+			"toSide": "top"
+		},
+		{
+			"id": "85b36ec5b7524ddd",
+			"fromNode": "7964d7524419e88b",
+			"fromSide": "bottom",
+			"toNode": "3651b8bc49dc6ef4",
+			"toSide": "top"
+		},
+		{
+			"id": "e8a808fc3b2b166a",
+			"fromNode": "8680ca64ce2fc275",
+			"fromSide": "right",
+			"toNode": "adc32c0bc06958a2",
+			"toSide": "left"
+		},
+		{
+			"id": "ca92675087212f64",
+			"fromNode": "3651b8bc49dc6ef4",
+			"fromSide": "bottom",
+			"toNode": "8680ca64ce2fc275",
+			"toSide": "top"
+		},
+		{
+			"id": "7c5a83df411ac003",
+			"fromNode": "8680ca64ce2fc275",
+			"fromSide": "bottom",
+			"toNode": "ac6c6d5dfd868690",
+			"toSide": "top"
+		},
+		{
+			"id": "c413b5acf6814b90",
+			"fromNode": "adc32c0bc06958a2",
+			"fromSide": "bottom",
+			"toNode": "d2b1c0788b22b241",
+			"toSide": "top"
+		},
+		{
+			"id": "990278416052128b",
+			"fromNode": "68175b7a8c5fc0cd",
+			"fromSide": "right",
+			"toNode": "3d3a15613163a7e5",
+			"toSide": "left"
+		},
+		{
+			"id": "f83561b00c70490c",
+			"fromNode": "3d3a15613163a7e5",
+			"fromSide": "right",
+			"toNode": "9b7efd4de099164c",
+			"toSide": "left"
+		},
+		{
+			"id": "fbcb74d21bb5f685",
+			"fromNode": "9b7efd4de099164c",
+			"fromSide": "bottom",
+			"toNode": "eb08f217d76be8ad",
+			"toSide": "top"
+		}
+	]
+}

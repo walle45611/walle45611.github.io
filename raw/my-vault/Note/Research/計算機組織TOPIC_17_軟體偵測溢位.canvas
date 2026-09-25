@@ -1,0 +1,305 @@
+{
+	"nodes": [
+		{
+			"id": "c040fb0d5ea6e431",
+			"type": "group",
+			"x": -640,
+			"y": -320,
+			"width": 2100,
+			"height": 1146,
+			"label": "有號數"
+		},
+		{
+			"id": "3a488d52302cbae8",
+			"type": "group",
+			"x": -190,
+			"y": 1360,
+			"width": 1200,
+			"height": 540,
+			"label": "無號數"
+		},
+		{
+			"id": "9209d9861c38b8d3",
+			"type": "text",
+			"text": "- nor 把 t1, 1 變成 0, 0 變成 ",
+			"x": 589,
+			"y": 1750,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "a1199e523d463588",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_17_軟體偵測溢位/07-問 idea 而已.png",
+			"x": 1160,
+			"y": 1365,
+			"width": 592,
+			"height": 237
+		},
+		{
+			"id": "135bcd5124246a38",
+			"type": "text",
+			"text": "問 idea 而已",
+			"x": 1820,
+			"y": 1454,
+			"width": 121,
+			"height": 60
+		},
+		{
+			"id": "33c78e56252127c9",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_17_軟體偵測溢位/01-有號數.png",
+			"x": -200,
+			"y": -300,
+			"width": 400,
+			"height": 189
+		},
+		{
+			"id": "75d1679d89de7d9e",
+			"type": "text",
+			"text": "XOR 如果就是相同為 0 相異為 1 那麼就可以用來判斷是不是同號數或是異號數",
+			"x": 100,
+			"y": 60,
+			"width": 250,
+			"height": 85,
+			"color": "2"
+		},
+		{
+			"id": "1662a6833d001c1a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_17_軟體偵測溢位/03-有號數.png",
+			"x": 25,
+			"y": 220,
+			"width": 399,
+			"height": 309
+		},
+		{
+			"id": "71ead8f06f80b923",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_17_軟體偵測溢位/06-有號數.png",
+			"x": -620,
+			"y": 546,
+			"width": 570,
+			"height": 260
+		},
+		{
+			"id": "cda173d07e756231",
+			"type": "text",
+			"text": "- 要用 addu  因為如果用 add 有號數相加的話如果 overflow 就會跳到 OS 而不是由軟體端去解決這個問題",
+			"x": 64,
+			"y": 632,
+			"width": 322,
+			"height": 88,
+			"color": "5"
+		},
+		{
+			"id": "9a57e2f3b107270d",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_17_軟體偵測溢位/10-問 idea 而已.png",
+			"x": 1160,
+			"y": 1750,
+			"width": 592,
+			"height": 260
+		},
+		{
+			"id": "27f78c1d6831dae6",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_17_軟體偵測溢位/09-無號數 - nor 把 t1, 1 變成 0, 0 變成.png",
+			"x": 423,
+			"y": 1420,
+			"width": 462,
+			"height": 221
+		},
+		{
+			"id": "f554a46fd0a863a4",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_17_軟體偵測溢位/08-無號數.png",
+			"x": -110,
+			"y": 1420,
+			"width": 400,
+			"height": 221
+		},
+		{
+			"id": "7dfae5246647a4b1",
+			"type": "text",
+			"text": "- 看結論就好了最後比較 t2 > ~t1 或是 t1 > ~t2",
+			"x": -103,
+			"y": 1750,
+			"width": 393,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "355f3461ebe51a01",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_17_軟體偵測溢位/02-有號數.png",
+			"x": 260,
+			"y": -295,
+			"width": 400,
+			"height": 184
+		},
+		{
+			"id": "7843202310aa2a3e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_17_軟體偵測溢位/04-有號數.png",
+			"x": 520,
+			"y": 220,
+			"width": 400,
+			"height": 311
+		},
+		{
+			"id": "74c73ce03dfd6e4c",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_17_軟體偵測溢位/05-有號數.png",
+			"x": 1040,
+			"y": 220,
+			"width": 400,
+			"height": 311
+		},
+		{
+			"id": "56d97ab7d9c704db",
+			"type": "text",
+			"text": "那麼這段是去判斷加完結果是不是異號數，因為不可能正+正會等於負，如果是那麼就是 overflow",
+			"x": 1114,
+			"y": 630,
+			"width": 250,
+			"height": 102,
+			"color": "5"
+		},
+		{
+			"id": "7e6f915de2acaeba",
+			"type": "text",
+			"text": "測試不是兩個數是不是異號數，那麼就是異號數不會有 overflow ",
+			"x": 595,
+			"y": 632,
+			"width": 250,
+			"height": 100,
+			"color": "5"
+		},
+		{
+			"id": "fedf12b0cda331ca",
+			"type": "text",
+			"text": "有號就用有號數的無號數的就用無號數的，除了 addu 不然 OS 會出來幹掉這個 process",
+			"x": 225,
+			"y": 1020,
+			"width": 350,
+			"height": 55,
+			"color": "1"
+		}
+	],
+	"edges": [
+		{
+			"id": "384dacb3f870a685",
+			"fromNode": "33c78e56252127c9",
+			"fromSide": "bottom",
+			"toNode": "75d1679d89de7d9e",
+			"toSide": "top"
+		},
+		{
+			"id": "e7ee530dbfc4863e",
+			"fromNode": "355f3461ebe51a01",
+			"fromSide": "bottom",
+			"toNode": "75d1679d89de7d9e",
+			"toSide": "top"
+		},
+		{
+			"id": "c81f51c0ea15cc77",
+			"fromNode": "75d1679d89de7d9e",
+			"fromSide": "bottom",
+			"toNode": "1662a6833d001c1a",
+			"toSide": "top"
+		},
+		{
+			"id": "c9ab4beb1d33c577",
+			"fromNode": "1662a6833d001c1a",
+			"fromSide": "right",
+			"toNode": "7843202310aa2a3e",
+			"toSide": "left"
+		},
+		{
+			"id": "0e0b550510c96c44",
+			"fromNode": "1662a6833d001c1a",
+			"fromSide": "bottom",
+			"toNode": "cda173d07e756231",
+			"toSide": "top"
+		},
+		{
+			"id": "42485cd1526d9a3e",
+			"fromNode": "71ead8f06f80b923",
+			"fromSide": "right",
+			"toNode": "cda173d07e756231",
+			"toSide": "left"
+		},
+		{
+			"id": "4ed856a6ba1e9cc6",
+			"fromNode": "7843202310aa2a3e",
+			"fromSide": "bottom",
+			"toNode": "7e6f915de2acaeba",
+			"toSide": "top"
+		},
+		{
+			"id": "d928de9ede12e891",
+			"fromNode": "7843202310aa2a3e",
+			"fromSide": "right",
+			"toNode": "74c73ce03dfd6e4c",
+			"toSide": "left"
+		},
+		{
+			"id": "1fefab77cb4e8512",
+			"fromNode": "74c73ce03dfd6e4c",
+			"fromSide": "bottom",
+			"toNode": "56d97ab7d9c704db",
+			"toSide": "top"
+		},
+		{
+			"id": "5abc3ce942ea9a79",
+			"fromNode": "f554a46fd0a863a4",
+			"fromSide": "bottom",
+			"toNode": "7dfae5246647a4b1",
+			"toSide": "top"
+		},
+		{
+			"id": "0f28d4ac844eb702",
+			"fromNode": "f554a46fd0a863a4",
+			"fromSide": "right",
+			"toNode": "27f78c1d6831dae6",
+			"toSide": "left"
+		},
+		{
+			"id": "a97faf98f3694ad1",
+			"fromNode": "27f78c1d6831dae6",
+			"fromSide": "bottom",
+			"toNode": "9209d9861c38b8d3",
+			"toSide": "top"
+		},
+		{
+			"id": "7f645e1117146b2e",
+			"fromNode": "c040fb0d5ea6e431",
+			"fromSide": "bottom",
+			"toNode": "fedf12b0cda331ca",
+			"toSide": "top"
+		},
+		{
+			"id": "db44278cdf577c0f",
+			"fromNode": "3a488d52302cbae8",
+			"fromSide": "top",
+			"toNode": "fedf12b0cda331ca",
+			"toSide": "bottom"
+		},
+		{
+			"id": "a8cdb4c6d79d262e",
+			"fromNode": "a1199e523d463588",
+			"fromSide": "bottom",
+			"toNode": "9a57e2f3b107270d",
+			"toSide": "top"
+		},
+		{
+			"id": "9b1f26b91e5d1055",
+			"fromNode": "a1199e523d463588",
+			"fromSide": "right",
+			"toNode": "135bcd5124246a38",
+			"toSide": "left"
+		}
+	]
+}

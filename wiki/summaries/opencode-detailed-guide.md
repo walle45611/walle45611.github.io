@@ -29,3 +29,7 @@
 
 - 目前已能連回 [[opencode]] 與 [[ai-coding-tools]] 兩個既有概念頁。
 - Claude Code、MCP、Agent Skills 在本頁中屬重要名詞，但知識庫尚未建立對應獨立頁面，暫先保留為缺頁候選而不使用損壞連結。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

@@ -1,0 +1,530 @@
+{
+	"nodes": [
+		{
+			"id": "stack_frame_explanation",
+			"type": "text",
+			"text": "## Process vs Stack Frame vs Procedure\n\n### Process（進程）\n\n**Process** 是 OS 層面的執行實體，擁有自己獨立的「整塊」虛擬記憶體空間：\n- 程式碼段（.text）\n- 資料段（.data/.bss）  \n- 堆（heap）\n- 棧（stack）\n\n同一個 process 可以執行多個函式呼叫，也可包含多個 thread（但各 thread 有自己的棧）。\n\n---\n\n### Stack Frame（呼叫堆疊幀／Activation Record）\n\n**Stack Frame** 是在 process 的**同一條棧（stack）**上，為每次函式呼叫劃出的區域。\n\n每個 stack frame 裡放該函式的：\n- **參數**（arguments）\n- **回傳位址**（return address）\n- **callee-saved 暫存器**\n- **區域變數**（local variables）\n\n當函式回傳，對應的 stack frame 即被彈出（被棧指標回收）。\n\n---\n\n### 重要觀念\n\n**Process ≠ Stack Frame**：\n- Process 是整個記憶體空間和執行上下文\n- Stack Frame 只是 process 內部棧的一小塊，用來存放一次函式呼叫的資料\n\n**不同 Stack Frame 代表不同的區域變數空間**：\n- 每個函式呼叫（無論是同一函式的多次呼叫還是不同函式）都會各自產生自己的 stack frame\n- 其裡面的區域變數互不干擾\n- 這就是為什麼遞迴函式每層呼叫都有自己獨立的變數空間",
+			"x": 1320,
+			"y": -3585,
+			"width": 763,
+			"height": 1025
+		},
+		{
+			"id": "ddad024cad6cde5d",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織 CPU Time/stack frame 解釋.png",
+			"x": 2300,
+			"y": -3492,
+			"width": 400,
+			"height": 202
+		},
+		{
+			"id": "a1137f8dc269d12a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織 CPU Time/stack frame 和 procedure.png",
+			"x": 2300,
+			"y": -3187,
+			"width": 400,
+			"height": 230
+		},
+		{
+			"id": "2161aff19a76e4ea",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織 CPU Time/不同 stack frame.png",
+			"x": 2301,
+			"y": -2827,
+			"width": 399,
+			"height": 223
+		},
+		{
+			"id": "7a1ac80942155dcf",
+			"type": "text",
+			"text": "在執行 **PA (Caller)** 切換到 **PB (Callee)** 的過程中，\n\n1. PA 會先用 `sw $s0…$s7, offset($sp)` 把 `$s0…$s7` 寄存器裡的值存到 **stack frame**。\n    \n2. 然後跳到 PB，PB 再把自己的 y0…y7 值載入到同一批 `$s0…$s7`。\n    \n\n**symbol table**（存放在 object file/可執行檔的 `.symtab` section，供 linker/debugger 用）  \n完全只在 **compile**／**link** 階段使用，  \n**loader** 只會映射執行所需的 `.text`、`.data`、`.bss` 及動態連結用的 `.dynsym` sections，  \n並不會把完整的符號表載到 stack 或 heap。  \n如果在 link 階段對可執行檔執行 **strip**，就直接刪除 `.symtab` ，  \n也不會將它移到其他 section（`.data`、`.bss`、heap…）。",
+			"x": 2370,
+			"y": -2201,
+			"width": 740,
+			"height": 285
+		},
+		{
+			"id": "3afec745ce552ef3",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織 CPU Time/編譯後執行 PA.png",
+			"x": 3232,
+			"y": -2170,
+			"width": 400,
+			"height": 223
+		},
+		{
+			"id": "1f86ecdbc3e7ba99",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織 CPU Time/執行 PA 要切換到 PB 了.png",
+			"x": 3232,
+			"y": -1764,
+			"width": 400,
+			"height": 218
+		},
+		{
+			"id": "7bdc5de443aa4129",
+			"type": "text",
+			"text": "## Caller 和 Callee 的關係\n\n**Caller (呼叫者)**\n- 發起函式呼叫的程序或函式\n- 負責準備參數並執行呼叫指令\n- 在呼叫結束後接收回傳值\n\n**Callee (被呼叫者)**\n- 被呼叫的函式或子程序\n- 執行特定功能並可能回傳結果\n- 執行完畢後將控制權交還給 Caller\n\n### 暫存器責任分工\n\n**Caller-saved (呼叫者儲存)**\n- **暫時暫存器** `$t0-$t9`\n- Caller 負責在呼叫前儲存這些暫存器的值\n- Callee 可以自由使用，不需要恢復\n- 如果 Caller 需要保留值，必須在呼叫前存入堆疊\n\n**Callee-saved (被呼叫者儲存)**\n- **儲存暫存器** `$s0-$s7`\n- Callee 如果要使用這些暫存器，必須：\n  1. 在函式開始時將原值存入堆疊\n  2. 在函式結束前從堆疊恢復原值\n- Caller 可以放心這些暫存器的值不會被改變",
+			"x": 1330,
+			"y": -2240,
+			"width": 450,
+			"height": 765
+		},
+		{
+			"id": "e95e2d5cc25d19e4",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織 CPU Time/Caller 和 Callee 的關係圖.png",
+			"x": 1954,
+			"y": -2115,
+			"width": 259,
+			"height": 399
+		},
+		{
+			"id": "acd18abb7d7e52c8",
+			"type": "text",
+			"text": "這個是在表示 `$fp` 和 `$sp` 時的 stack frame 變化，從一開始的程式碼執行到運行 PA 到運行 PA-sub 的變化，那麼 stack 的相關的 registry 會以四的倍數移動",
+			"x": 1820,
+			"y": -4480,
+			"width": 250,
+			"height": 162
+		},
+		{
+			"id": "db011f01a2c73013",
+			"type": "text",
+			"text": "Program Counter (PC):\n這是一個暫存器指向下一行指令的位置",
+			"x": 1021,
+			"y": -5460,
+			"width": 266,
+			"height": 85
+		},
+		{
+			"id": "2b7bef8fe1ef105d",
+			"type": "text",
+			"text": "MIPS 是 Byte addressing，也就是代表一個位置指向一個 Byte 的資料，MIPS 是以 $2^{5}=32$ 為一個指令的大小所以也就是一個 word 所以存取記憶體是用 4 個記憶體空間",
+			"x": 1459,
+			"y": -5310,
+			"width": 333,
+			"height": 150
+		},
+		{
+			"id": "c44192634492ac96",
+			"type": "text",
+			"text": "MIPS 的 registers 全部都是 32 bits",
+			"x": 987,
+			"y": -5260,
+			"width": 333,
+			"height": 50
+		},
+		{
+			"id": "b705334288a7a4c8",
+			"type": "text",
+			"text": "**1) 特殊／保留通用暫存器**\n\n- `$zero` (0)：永為 0，不可寫。\n    \n- `$at` (1)：組譯器暫用。手寫需要 `.set noat` 才能動它。\n    \n- `$k0–$k1` (26–27)：核心／例外處理用，使用者程式不要用。\n    \n\n**2) 程序呼叫相關**\n\n- 回傳值 `$v0–$v1` (2–3)：函式回傳放這裡；部分型別會用成對回傳。\n    \n- 參數 `$a0–$a3` (4–7)：前四個整數/指標參數。超過改走堆疊。\n    \n- 回傳位址 `$ra` (31)：`jal` 把下一指令位址寫入；`jr $ra` 返回。\n    \n\n**3) 暫時暫存器（caller-saved）**\n\n- `$t0–$t7` (8–15)，`$t8–$t9` (24–25)：呼叫者自保。呼叫前要先存起來才安全。\n    \n\n**4) 儲存暫存器（callee-saved）**\n\n- `$s0–$s7` (16–23)，`$fp`= `$s8` (30)：被呼叫者若使用，進入時必須保存，離開時復原。\n    \n\n**5) 指標暫存器**\n\n- `$gp` (28)：指向 small data 區段基底，便於存取全域/靜態資料。\n    \n- `$sp` (29)：堆疊指標。\n    \n- `$fp` (30)：別名 `$s8`，是否使用由編譯器決定；使用時同時屬於 callee-saved。\n    \n\n**6) 補充（硬體特殊暫存器，非 GPR）**\n\n- **PC**：下一條將取的指令位址。\n    \n- **HI/LO**：乘除法 64 位結果累加器。`mult/multu` → LO=低 32、HI=高 32；`div/divu` → LO=商、HI=餘數。\n    \n- **FPU**：`$f0–$f31` 與 **FCSR**（若有浮點）。",
+			"x": 987,
+			"y": -4879,
+			"width": 604,
+			"height": 839
+		},
+		{
+			"id": "d08f7f8edf32f37f",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織 CPU Time/運行 PA 時的 stack frame.png",
+			"x": 2500,
+			"y": -4534,
+			"width": 400,
+			"height": 284
+		},
+		{
+			"id": "cb3190e57ee1802b",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織 CPU Time/執行 PA 子的 stack frame.png",
+			"x": 2500,
+			"y": -4184,
+			"width": 400,
+			"height": 265
+		},
+		{
+			"id": "0ec8b3b6462663c1",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織 CPU Time/起始的 stack frame.png",
+			"x": 2500,
+			"y": -4854,
+			"width": 400,
+			"height": 236
+		},
+		{
+			"id": "0fe4e88b563e1d0e",
+			"type": "text",
+			"text": "- **procedure frame or activation record**：就是在 **呼叫堆疊（call stack）** 上，為每一次函式呼叫劃出的一小塊區域。\n    \n- 這塊區域包含：\n    \n    1. **被呼叫者保存的暫存器**（callee-saved registers），確保函式執行完畢後原呼叫者的暫存器值能恢復。\n        \n    2. **該函式的所有區域變數**（local variables），也就是編譯器按需要分配到棧上的那些臨時資料。",
+			"x": 1702,
+			"y": -4213,
+			"width": 534,
+			"height": 233
+		},
+		{
+			"id": "b0455c6385fc36fe",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織 CPU Time/alignment restriction.png",
+			"x": -435,
+			"y": -4619,
+			"width": 400,
+			"height": 362
+		},
+		{
+			"id": "d73a507abc20da46",
+			"type": "text",
+			"text": "CPU Time or CPU execution time 代表 CPU 真正執行運算的時間或是做特定工作的時間，不包含 I/O 或是 OS overhead",
+			"x": -870,
+			"y": -3613,
+			"width": 250,
+			"height": 157
+		},
+		{
+			"id": "04a8ca10905c76e5",
+			"type": "text",
+			"text": "### ⚡️ 重點觀念\n\n- **Clock Rate 換得越高 ≠ CPU 跑得越快**\n    \n- 從圖片可以看出，**不同指令需要不同的 Cycle 數**：\n    \n    - 例如：\n        \n        - 乘法 > 加法\n            \n        - 浮點操作 > 整數操作\n            \n        - 記憶體存取 > 快取器存取\n            \n- 因此，如果你把 cycle 縮短（clock rate 換高），可能會讓某些指令需要 **更多 cycles**，總體性能 **反而不一定提升**。\n    \n\n---\n\n### ✅ 總結\n\n> 調整 clock rate 往往會影響 CPI，結果是 CPU time 不能簡單看 clock rate，而是要看 **Cycle 數 × Cycle 時間** 的總合效果。",
+			"x": 60,
+			"y": -3585,
+			"width": 716,
+			"height": 466
+		},
+		{
+			"id": "d4d4e8213f55b7eb",
+			"type": "text",
+			"text": "Elapsed Time 代表 Total Response time 包含了 I/O, OS overhead or idle time",
+			"x": -524,
+			"y": -3579,
+			"width": 250,
+			"height": 88
+		},
+		{
+			"id": "03d87a33cd3793e0",
+			"type": "text",
+			"text": "$$\nf = \\frac{1}{T}, \\quad T = \\frac{1}{f}\n$$\n\n$\\text{CPU period :}=250\\text{ps}=0.25\\text{ns}=250 \\cdot 10^{-12}\\text{s}$\n$\\text{Clock frequency (rate): } 4.0\\ \\text{GHz} = 4000\\ \\text{MHz} = 4.0 \\times 10^9\\ \\text{Hz}\n$",
+			"x": -620,
+			"y": -3279,
+			"width": 386,
+			"height": 160
+		},
+		{
+			"id": "939cf508ab178f17",
+			"type": "text",
+			"text": "$$\\text{CPU Time}=\\text{CPU Clock Cycles} \\times \\text{Clock Cycle Time}$$\n$$\\text{CPU Time}=\\frac{\\text{CPU Clock Cycles}}{\\text{Clock Rate}}$$",
+			"x": -524,
+			"y": -2979,
+			"width": 415,
+			"height": 120
+		},
+		{
+			"id": "fe56030463a18e1c",
+			"type": "text",
+			"text": "**計算電腦 B 的時脈頻率（Clock Rate）**\n\n**已知條件：**\n\n- 電腦 A：\n    \n    - 時脈頻率 = 2 GHz\n        \n    - CPU 執行時間 = 10 秒\n        \n- 電腦 B 的設計目標：\n    \n    - 希望 CPU 執行時間為 6 秒\n        \n    - 但由於使用更快的時脈，導致需要的時脈週期數是電腦 A 的 1.2 倍\n\n**目標：** 求電腦 B 所需的時脈頻率（Clock Rate）\n\n---\n\n**步驟一：計算電腦 A 的時脈週期數（Clock Cycles）**\n$$\\text{Clock Cycles}_A = \\text{CPU Time}_A \\times \\text{Clock Rate}_A \\\\ = 10s \\times 2 \\times 10^9 \\\\ = 20 \\times 10^9 \\text{ cycles}$$\n\n**步驟二：計算電腦 B 的時脈週期數**\n$$\\text{Clock Cycles}_B = 1.2 \\times \\text{Clock Cycles}_A \\\\ = 1.2 \\times 20 \\times 10^9 \\\\ = 24 \\times 10^9 \\text{ cycles}$$\n\n**步驟三：計算電腦 B 所需的時脈頻率**\n$$\\text{Clock Rate}_B = \\frac{\\text{Clock Cycles}_B}{\\text{CPU Time}_B} \\\\ = \\frac{24 \\times 10^9}{6s} \\\\ = 4 \\times 10^9 \\text{ Hz} \\\\ = 4 \\text{ GHz}$$\n---\n\n**結論：**\n\n> 電腦 B 為了在時脈週期數增加 1.2 倍的情況下仍達到 6 秒的執行時間，必須使用 **4 GHz** 的時脈頻率。",
+			"x": 60,
+			"y": -2979,
+			"width": 760,
+			"height": 780
+		},
+		{
+			"id": "b0a7cc286ee4d062",
+			"type": "text",
+			"text": "stored-program 代表指令和資料必須以 number 的形式存在 memory",
+			"x": -774,
+			"y": -4624,
+			"width": 250,
+			"height": 107
+		},
+		{
+			"id": "84a72a8d2ca0d93c",
+			"type": "text",
+			"text": "代表了記憶體讀取或是寫入必須使用 4 的倍數",
+			"x": -774,
+			"y": -4317,
+			"width": 250,
+			"height": 60
+		},
+		{
+			"id": "cd803c0f9d7b8f34",
+			"type": "text",
+			"text": "Big-endian 放進 memory 的時候是由最高位放入，且 MIPS, Sparc, IBM 360/370 是用此方式\n",
+			"x": 256,
+			"y": -1920,
+			"width": 250,
+			"height": 122
+		},
+		{
+			"id": "31c637d2cea0b5b2",
+			"type": "text",
+			"text": "little-endian 放入 memory 的時候是由最低位放入 80x86, ARM, RISC-V 彩此方式",
+			"x": 180,
+			"y": -1606,
+			"width": 326,
+			"height": 86
+		},
+		{
+			"id": "87b65ae25400f8fc",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織 CPU Time/Big-Endian 示意圖.png",
+			"x": 576,
+			"y": -1971,
+			"width": 400,
+			"height": 224
+		},
+		{
+			"id": "ed0893b74acd91ac",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織 CPU Time/little-endian 示意圖.png",
+			"x": 576,
+			"y": -1690,
+			"width": 400,
+			"height": 228
+		},
+		{
+			"id": "7ef0f2794c2d4d05",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織 CPU Time/02-RISC 是使用 Load-store.png",
+			"x": -1266,
+			"y": -6720,
+			"width": 852,
+			"height": 229
+		},
+		{
+			"id": "dc8965c188c3726f",
+			"type": "text",
+			"text": "RISC 是使用 Load-store\n意思就是一定要寫入到在暫存器計算，並且用 Load 和 Store 取得從 Memory 指令",
+			"x": -155,
+			"y": -6594,
+			"width": 324,
+			"height": 120
+		},
+		{
+			"id": "08900c7327d3f00d",
+			"type": "text",
+			"text": "ACC （RD 暫存器）簡單來說就是一定會有 ACC 在 Registry 那麼反正不管都會從 ACC 拿出 One operand ![[Assets/Note/Research/計算機組織 CPU Time/01-計算機組織 CPU Time.png]]\n![[Assets/Note/Research/計算機組織 CPU Time/02-計算機組織 CPU Time.png]]",
+			"x": 237,
+			"y": -6594,
+			"width": 496,
+			"height": 389
+		},
+		{
+			"id": "f6fb771378da30c0",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織 CPU Time/01-RISC 是使用 Load-store.png",
+			"x": 285,
+			"y": -6785,
+			"width": 400,
+			"height": 131
+		},
+		{
+			"id": "e7fac248069c1528",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織 CPU Time/04-計算機組織 CPU Time.png",
+			"x": -81,
+			"y": -6080,
+			"width": 733,
+			"height": 309
+		},
+		{
+			"id": "d2ff0737f8f19d6f",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織 CPU Time/03-計算機組織 CPU Time.png",
+			"x": -1266,
+			"y": -6400,
+			"width": 666,
+			"height": 337
+		},
+		{
+			"id": "register_spilling",
+			"type": "text",
+			"text": "## Register Spilling（暫存器溢出）\n\n### 定義\n當編譯器在進行暫存器分配時，活躍變數（live variables）數量超過可用的物理暫存器，就會把部分變數 **spill**（溢出）到該函式的 stack frame（堆疊幀）中。\n\n### 觸發時機\n- 函式內同時需要保留的變數太多\n- 優先級較低、後續使用頻率較少的變數會被選中 spill\n\n### 操作流程\n1. `sw <reg>, offset($sp)`：將變數從暫存器存到 stack frame\n2. 清出暫存器給其他運算\n3. `lw <reg>, offset($sp)`：當再次需要該變數時，從 stack frame 讀回暫存器\n\n### 範例\n```asm\n# 假設 v6 → $t0，v7 → $t1，但暫存器不夠用\nsw   $t0,  8($sp)    # spill v6 到 stack\nsw   $t1, 12($sp)    # spill v7 到 stack\n\n# … 使用被釋放的暫存器做其他運算 …\n\nlw   $t0,  8($sp)    # reload v6\nlw   $t1, 12($sp)    # reload v7\n```\n\n### 影響\n**優點**：在暫存器不足時仍能正確保存所有變數\n\n**缺點**：增加記憶體存取延遲、程式碼體積略增",
+			"x": 200,
+			"y": -4889,
+			"width": 580,
+			"height": 980
+		}
+	],
+	"edges": [
+		{
+			"id": "cpu_time_concepts",
+			"fromNode": "d73a507abc20da46",
+			"fromSide": "right",
+			"toNode": "d4d4e8213f55b7eb",
+			"toSide": "left"
+		},
+		{
+			"id": "cpu_time_formulas",
+			"fromNode": "d4d4e8213f55b7eb",
+			"fromSide": "bottom",
+			"toNode": "03d87a33cd3793e0",
+			"toSide": "top"
+		},
+		{
+			"id": "formulas_to_calculation",
+			"fromNode": "03d87a33cd3793e0",
+			"fromSide": "bottom",
+			"toNode": "939cf508ab178f17",
+			"toSide": "top"
+		},
+		{
+			"id": "calculation_to_example",
+			"fromNode": "939cf508ab178f17",
+			"fromSide": "right",
+			"toNode": "fe56030463a18e1c",
+			"toSide": "left"
+		},
+		{
+			"id": "concepts_to_insights",
+			"fromNode": "939cf508ab178f17",
+			"fromSide": "top",
+			"toNode": "04a8ca10905c76e5",
+			"toSide": "bottom"
+		},
+		{
+			"id": "mips_basics",
+			"fromNode": "c44192634492ac96",
+			"fromSide": "top",
+			"toNode": "db011f01a2c73013",
+			"toSide": "bottom"
+		},
+		{
+			"id": "mips_addressing",
+			"fromNode": "c44192634492ac96",
+			"fromSide": "right",
+			"toNode": "2b7bef8fe1ef105d",
+			"toSide": "left"
+		},
+		{
+			"id": "registers_detail",
+			"fromNode": "c44192634492ac96",
+			"fromSide": "bottom",
+			"toNode": "b705334288a7a4c8",
+			"toSide": "top"
+		},
+		{
+			"id": "memory_concepts",
+			"fromNode": "b0a7cc286ee4d062",
+			"fromSide": "bottom",
+			"toNode": "84a72a8d2ca0d93c",
+			"toSide": "top"
+		},
+		{
+			"id": "alignment_to_diagram",
+			"fromNode": "84a72a8d2ca0d93c",
+			"fromSide": "right",
+			"toNode": "b0455c6385fc36fe",
+			"toSide": "left"
+		},
+		{
+			"id": "big_endian_concept",
+			"fromNode": "cd803c0f9d7b8f34",
+			"fromSide": "right",
+			"toNode": "87b65ae25400f8fc",
+			"toSide": "left"
+		},
+		{
+			"id": "little_endian_concept",
+			"fromNode": "31c637d2cea0b5b2",
+			"fromSide": "right",
+			"toNode": "ed0893b74acd91ac",
+			"toSide": "left"
+		},
+		{
+			"id": "caller_callee_concept",
+			"fromNode": "7bdc5de443aa4129",
+			"fromSide": "right",
+			"toNode": "e95e2d5cc25d19e4",
+			"toSide": "left"
+		},
+		{
+			"id": "procedure_switching",
+			"fromNode": "7a1ac80942155dcf",
+			"fromSide": "right",
+			"toNode": "3afec745ce552ef3",
+			"toSide": "left"
+		},
+		{
+			"id": "execution_sequence",
+			"fromNode": "3afec745ce552ef3",
+			"fromSide": "bottom",
+			"toNode": "1f86ecdbc3e7ba99",
+			"toSide": "top"
+		},
+		{
+			"id": "stack_frame_theory",
+			"fromNode": "stack_frame_explanation",
+			"fromSide": "right",
+			"toNode": "ddad024cad6cde5d",
+			"toSide": "left"
+		},
+		{
+			"id": "stack_frame_procedure",
+			"fromNode": "stack_frame_explanation",
+			"fromSide": "right",
+			"toNode": "a1137f8dc269d12a",
+			"toSide": "left"
+		},
+		{
+			"id": "stack_frame_examples",
+			"fromNode": "a1137f8dc269d12a",
+			"fromSide": "bottom",
+			"toNode": "2161aff19a76e4ea",
+			"toSide": "top"
+		},
+		{
+			"id": "1c187643f1d4f9b6",
+			"fromNode": "acd18abb7d7e52c8",
+			"fromSide": "right",
+			"toNode": "0ec8b3b6462663c1",
+			"toSide": "left"
+		},
+		{
+			"id": "1c54ee6169872129",
+			"fromNode": "acd18abb7d7e52c8",
+			"fromSide": "right",
+			"toNode": "d08f7f8edf32f37f",
+			"toSide": "left"
+		},
+		{
+			"id": "a4a85a0260decc6b",
+			"fromNode": "acd18abb7d7e52c8",
+			"fromSide": "right",
+			"toNode": "cb3190e57ee1802b",
+			"toSide": "left"
+		},
+		{
+			"id": "96e0e0c740931761",
+			"fromNode": "acd18abb7d7e52c8",
+			"fromSide": "left",
+			"toNode": "b705334288a7a4c8",
+			"toSide": "right"
+		},
+		{
+			"id": "295445cdf77ace2b",
+			"fromNode": "acd18abb7d7e52c8",
+			"fromSide": "bottom",
+			"toNode": "0fe4e88b563e1d0e",
+			"toSide": "top"
+		},
+		{
+			"id": "register_spilling_connection",
+			"fromNode": "b705334288a7a4c8",
+			"fromSide": "left",
+			"toNode": "register_spilling",
+			"toSide": "right"
+		},
+		{
+			"id": "1c17e43a4d865a09",
+			"fromNode": "f6fb771378da30c0",
+			"fromSide": "left",
+			"toNode": "dc8965c188c3726f",
+			"toSide": "top"
+		},
+		{
+			"id": "bb1ca6636ae15204",
+			"fromNode": "f6fb771378da30c0",
+			"fromSide": "bottom",
+			"toNode": "08900c7327d3f00d",
+			"toSide": "top"
+		}
+	]
+}

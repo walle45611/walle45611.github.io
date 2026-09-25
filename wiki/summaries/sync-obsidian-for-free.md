@@ -32,3 +32,7 @@ Obsidian 本身免費，但官方 Sync 是付費服務。若預算有限，可�
 ## 相關概念
 
 - [[obsidian-sync-strategies]]
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

@@ -32,3 +32,7 @@
 ## Alignment With Current Wiki
 
 這份來源補上知識庫中寫作方法的空缺，與 plain English 來源共同形成「清楚表達」與「學術論證」的對照，而不把兩者誤認為完全相同的文體。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

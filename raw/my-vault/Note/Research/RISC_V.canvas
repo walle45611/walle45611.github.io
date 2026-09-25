@@ -1,0 +1,757 @@
+{
+	"nodes": [
+		{
+			"id": "cb1ef9f01c5536fa",
+			"type": "group",
+			"x": 1200,
+			"y": -320,
+			"width": 1730,
+			"height": 2046,
+			"label": "Instr. Format"
+		},
+		{
+			"id": "0ce38ba138da3159",
+			"type": "group",
+			"x": -620,
+			"y": -320,
+			"width": 814,
+			"height": 1334,
+			"label": "Concept"
+		},
+		{
+			"id": "92d41dd90dfaaad7",
+			"type": "group",
+			"x": 280,
+			"y": -320,
+			"width": 840,
+			"height": 1254,
+			"label": "Instr."
+		},
+		{
+			"id": "60f09dc5c2670165",
+			"type": "text",
+			"text": "上面三種 MIPS 沒有",
+			"x": 740,
+			"y": 403,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "3a1164885a319f68",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/11-Instr - offset 的都是.png",
+			"x": 300,
+			"y": 140,
+			"width": 399,
+			"height": 145
+		},
+		{
+			"id": "78de85d259e2369d",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/15-Instr - 上面三種 MIPS 沒有.png",
+			"x": 300,
+			"y": 360,
+			"width": 399,
+			"height": 145
+		},
+		{
+			"id": "b51eef0a955241f9",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/03-Instr.png",
+			"x": 300,
+			"y": -247,
+			"width": 398,
+			"height": 109
+		},
+		{
+			"id": "46448b8347f76e5c",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/07-Instr - offset 的都是.png",
+			"x": 300,
+			"y": -60,
+			"width": 400,
+			"height": 129
+		},
+		{
+			"id": "b465fd823d02b98a",
+			"type": "text",
+			"text": "$32 \\times 64 \\text{bits}$ 的 register file\n",
+			"x": -140,
+			"y": 298,
+			"width": 250,
+			"height": 60
+		},
+		{
+			"id": "3b5833a28e4e74a9",
+			"type": "text",
+			"text": "offset 的都是 $12 \\text{ bits}$ ",
+			"x": 740,
+			"y": -25,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "da11a0a9fb2c7374",
+			"type": "text",
+			"text": "MIPS 都是 PC-relative 跳躍，如果把 jal x0, 100 就是無條件跳躍，那他是 $20 \\text{ bit}$，那他們兩個 instr. format 不同",
+			"x": 740,
+			"y": 799,
+			"width": 250,
+			"height": 115,
+			"color": "1"
+		},
+		{
+			"id": "6ac997df699df723",
+			"type": "text",
+			"text": "記得要擴充 $20$，因為是 12 bit，在 addi 上面，然後可以 4G 的範圍因為 auipc 這個指令可以搭配 jalr 從 PC 往上或是往下跳，然後後面的 const 是 20 bits",
+			"x": 740,
+			"y": -250,
+			"width": 360,
+			"height": 115,
+			"color": "1"
+		},
+		{
+			"id": "1894255c7dbcfb8b",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/19-Instr.png",
+			"x": 300,
+			"y": 592,
+			"width": 400,
+			"height": 148
+		},
+		{
+			"id": "049b6921b4f9db96",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/18-Concept.png",
+			"x": -593,
+			"y": 480,
+			"width": 386,
+			"height": 240
+		},
+		{
+			"id": "f76326857b556acc",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/25-Instr.png",
+			"x": 300,
+			"y": 820,
+			"width": 400,
+			"height": 73
+		},
+		{
+			"id": "c0a141720e41bea0",
+			"type": "text",
+			"text": "這邊跳躍是以自己為基準，但是 MIPS 是以下面那個指令的位置為基準，那麼只有 $12 \\text{ bit}$",
+			"x": 740,
+			"y": 624,
+			"width": 250,
+			"height": 85,
+			"color": "1"
+		},
+		{
+			"id": "42a4fe082742d9c9",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/01-Concept - 這幾個是基本模組,要用的時候要四選一.png",
+			"x": -600,
+			"y": -280,
+			"width": 400,
+			"height": 133
+		},
+		{
+			"id": "cf344428554ef8c7",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/06-Concept - 擴充模組看你要用哪一個模組這樣.png",
+			"x": -600,
+			"y": -80,
+			"width": 400,
+			"height": 224
+		},
+		{
+			"id": "059d3230798050a8",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/12-Concept.png",
+			"x": -600,
+			"y": 240,
+			"width": 400,
+			"height": 176
+		},
+		{
+			"id": "4d38620384fe4a02",
+			"type": "text",
+			"text": "S 開頭 register 12 個比 MIPS 8 個還多。\n",
+			"x": -161,
+			"y": 572,
+			"width": 335,
+			"height": 57
+		},
+		{
+			"id": "52f82e9db00a9557",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/24-Concept.png",
+			"x": -600,
+			"y": 800,
+			"width": 400,
+			"height": 194
+		},
+		{
+			"id": "e105c95791572dd4",
+			"type": "text",
+			"text": "$2^{64}$ byte 這麼大可以寫的程式容量也就是定址範圍，byte addressing，Little Endian，aligned 不用不會差太多效率上。",
+			"x": -160,
+			"y": 855,
+			"width": 334,
+			"height": 85,
+			"color": "1"
+		},
+		{
+			"id": "39e8b0aea427d03e",
+			"type": "text",
+			"text": "這幾個是基本模組，要用的時候要四選一",
+			"x": -100,
+			"y": -243,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "465b402c2d5060f9",
+			"type": "text",
+			"text": "擴充模組看你要用哪一個模組這樣",
+			"x": -100,
+			"y": -4,
+			"width": 259,
+			"height": 72,
+			"color": "1"
+		},
+		{
+			"id": "3b9c2ec2046f6d16",
+			"type": "text",
+			"text": "跟 MIPS 比有四個不一樣\n1. RegDst 沒有 MUX 和控制訊號線。\n2. ImmGen 排好擴充。\n3. 還有 PC 相對的定址模試所以是直接從 PC 拿出來，不是相對 PC+4。\n4. 還有 shift 1 的原因是因為 0 那個欄位所以只需要 shfit 1 就好了。",
+			"x": 4300,
+			"y": 1120,
+			"width": 320,
+			"height": 228,
+			"color": "1"
+		},
+		{
+			"id": "1d1261ac47623372",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/17-MIPS 也是一樣.png",
+			"x": 4460,
+			"y": 417,
+			"width": 400,
+			"height": 240
+		},
+		{
+			"id": "642f520bc2bc6644",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/05-MIPS 也是一樣.png",
+			"x": 4460,
+			"y": -223,
+			"width": 400,
+			"height": 245
+		},
+		{
+			"id": "a87b15b5beab5e43",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/10-MIPS 也是一樣.png",
+			"x": 4460,
+			"y": 110,
+			"width": 399,
+			"height": 225
+		},
+		{
+			"id": "851b4451af5f33b7",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/22-RISC_V.png",
+			"x": 3091,
+			"y": 780,
+			"width": 449,
+			"height": 270
+		},
+		{
+			"id": "48f43653f57a420c",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/04-MIPS 也是一樣.png",
+			"x": 3120,
+			"y": -224,
+			"width": 680,
+			"height": 464
+		},
+		{
+			"id": "56df1dddda14813c",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/16-MIPS 也是一樣.png",
+			"x": 3091,
+			"y": 360,
+			"width": 738,
+			"height": 337
+		},
+		{
+			"id": "c624ca942eb6b158",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/28-Instr. Format - For store 的指令.png",
+			"x": 1220,
+			"y": 1200,
+			"width": 400,
+			"height": 205
+		},
+		{
+			"id": "50e398f03ce20ba5",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/27-Instr. Format.png",
+			"x": 1220,
+			"y": 900,
+			"width": 400,
+			"height": 212
+		},
+		{
+			"id": "2296bb689dbb21e5",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/23-跟 MIPS 比有四個不一樣.png",
+			"x": 3600,
+			"y": 780,
+			"width": 559,
+			"height": 420
+		},
+		{
+			"id": "6b06688bcdeea943",
+			"type": "text",
+			"text": "MIPS 也是一樣",
+			"x": 3900,
+			"y": 499,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "d3676090bad683b9",
+			"type": "text",
+			"text": "跟 MIPS 比少了 RegDst，主要原因是因為 rs1,rs2,rd 位置都固定所以不需要 mux",
+			"x": 3191,
+			"y": 1100,
+			"width": 250,
+			"height": 85,
+			"color": "1"
+		},
+		{
+			"id": "e7459ca501bbd2a8",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/30-跟 MIPS 比有四個不一樣.png",
+			"x": 3600,
+			"y": 1280,
+			"width": 559,
+			"height": 272
+		},
+		{
+			"id": "fb48cf1f6b5c496c",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/08-Instr. Format.png",
+			"x": 2151,
+			"y": -20,
+			"width": 459,
+			"height": 260
+		},
+		{
+			"id": "85ab55c1dcfc4eab",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/14-Instr. Format.png",
+			"x": 2180,
+			"y": 345,
+			"width": 400,
+			"height": 218
+		},
+		{
+			"id": "743128841ee0c32d",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/21-Instr. Format.png",
+			"x": 2180,
+			"y": 625,
+			"width": 399,
+			"height": 203
+		},
+		{
+			"id": "908832de79e292f3",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/26-Instr. Format.png",
+			"x": 2180,
+			"y": 885,
+			"width": 400,
+			"height": 208
+		},
+		{
+			"id": "704ece18ed077458",
+			"type": "text",
+			"text": "向左，向右都是 I 格式，大部分指令都是 I-format",
+			"x": 1700,
+			"y": 693,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "b05283b8a90eac52",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/20-Instr. Format.png",
+			"x": 1220,
+			"y": 620,
+			"width": 399,
+			"height": 205
+		},
+		{
+			"id": "4337d5343cd0149a",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/31-Instr. Format - For store 的指令.png",
+			"x": 1220,
+			"y": 1500,
+			"width": 399,
+			"height": 206
+		},
+		{
+			"id": "19d1179c7bbf617c",
+			"type": "text",
+			"text": "For store 的指令",
+			"x": 1700,
+			"y": 1573,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "deba97ac37c64344",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/02-Instr. Format.png",
+			"x": 1220,
+			"y": -260,
+			"width": 400,
+			"height": 195
+		},
+		{
+			"id": "5bd811e0d111650b",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/13-Instr. Format.png",
+			"x": 1220,
+			"y": 345,
+			"width": 399,
+			"height": 204
+		},
+		{
+			"id": "089222611e932723",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/09-Instr. Format.png",
+			"x": 1220,
+			"y": -10,
+			"width": 400,
+			"height": 234
+		},
+		{
+			"id": "21a83f8f44cf03b7",
+			"type": "text",
+			"text": "bit 0 也是不存，Imm 欄位",
+			"x": 2660,
+			"y": 1273,
+			"width": 250,
+			"height": 60
+		},
+		{
+			"id": "3faef8b44703d488",
+			"type": "text",
+			"text": "Branch 的指令，bit 0 沒有用 imm 欄位",
+			"x": 2660,
+			"y": 697,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "aaba421eed86d282",
+			"type": "text",
+			"text": "func7 和 func3 是因為希望 instr. format 的 rs2 rs1 都在同個地方",
+			"x": 1700,
+			"y": 405,
+			"width": 250,
+			"height": 85,
+			"color": "1"
+		},
+		{
+			"id": "90a2eac88daf3dde",
+			"type": "text",
+			"text": "這個可以直接拿到 PC 的數值 auipc x5,0",
+			"x": 1709,
+			"y": 80,
+			"width": 250,
+			"height": 60
+		},
+		{
+			"id": "1f7afe0636867729",
+			"type": "file",
+			"file": "Assets/Note/Research/RISC_V/29-Instr. Format - bit 0 也是不存,Imm 欄位.png",
+			"x": 2180,
+			"y": 1200,
+			"width": 400,
+			"height": 205
+		}
+	],
+	"edges": [
+		{
+			"id": "e5593da370d55b69",
+			"fromNode": "42a4fe082742d9c9",
+			"fromSide": "bottom",
+			"toNode": "cf344428554ef8c7",
+			"toSide": "top"
+		},
+		{
+			"id": "54f2696af4d0b85b",
+			"fromNode": "cf344428554ef8c7",
+			"fromSide": "right",
+			"toNode": "465b402c2d5060f9",
+			"toSide": "left"
+		},
+		{
+			"id": "b2ebf83cc15815b9",
+			"fromNode": "cf344428554ef8c7",
+			"fromSide": "bottom",
+			"toNode": "059d3230798050a8",
+			"toSide": "top"
+		},
+		{
+			"id": "b7fff58d1ffe3def",
+			"fromNode": "059d3230798050a8",
+			"fromSide": "right",
+			"toNode": "b465fd823d02b98a",
+			"toSide": "left"
+		},
+		{
+			"id": "5a269b7804039c79",
+			"fromNode": "059d3230798050a8",
+			"fromSide": "bottom",
+			"toNode": "049b6921b4f9db96",
+			"toSide": "top"
+		},
+		{
+			"id": "c11dce82c3bfdb9b",
+			"fromNode": "049b6921b4f9db96",
+			"fromSide": "right",
+			"toNode": "4d38620384fe4a02",
+			"toSide": "left"
+		},
+		{
+			"id": "579b2aa5343c69a1",
+			"fromNode": "049b6921b4f9db96",
+			"fromSide": "bottom",
+			"toNode": "52f82e9db00a9557",
+			"toSide": "top"
+		},
+		{
+			"id": "a3fc3d3548749e66",
+			"fromNode": "52f82e9db00a9557",
+			"fromSide": "right",
+			"toNode": "e105c95791572dd4",
+			"toSide": "left"
+		},
+		{
+			"id": "45713933cc8f5c75",
+			"fromNode": "b51eef0a955241f9",
+			"fromSide": "right",
+			"toNode": "6ac997df699df723",
+			"toSide": "left"
+		},
+		{
+			"id": "15ed123cc016d548",
+			"fromNode": "b51eef0a955241f9",
+			"fromSide": "bottom",
+			"toNode": "46448b8347f76e5c",
+			"toSide": "top"
+		},
+		{
+			"id": "247da07e8da5d65b",
+			"fromNode": "46448b8347f76e5c",
+			"fromSide": "right",
+			"toNode": "3b5833a28e4e74a9",
+			"toSide": "left"
+		},
+		{
+			"id": "2b18fd43345f8f3f",
+			"fromNode": "46448b8347f76e5c",
+			"fromSide": "bottom",
+			"toNode": "3a1164885a319f68",
+			"toSide": "top"
+		},
+		{
+			"id": "546af18d1fa13e5d",
+			"fromNode": "3a1164885a319f68",
+			"fromSide": "bottom",
+			"toNode": "78de85d259e2369d",
+			"toSide": "top"
+		},
+		{
+			"id": "d98c5f9967384892",
+			"fromNode": "78de85d259e2369d",
+			"fromSide": "right",
+			"toNode": "60f09dc5c2670165",
+			"toSide": "left"
+		},
+		{
+			"id": "56002b1dc79d2850",
+			"fromNode": "78de85d259e2369d",
+			"fromSide": "bottom",
+			"toNode": "1894255c7dbcfb8b",
+			"toSide": "top"
+		},
+		{
+			"id": "0bf438997c7821b7",
+			"fromNode": "1894255c7dbcfb8b",
+			"fromSide": "right",
+			"toNode": "c0a141720e41bea0",
+			"toSide": "left"
+		},
+		{
+			"id": "e6b7b783ce44239f",
+			"fromNode": "1894255c7dbcfb8b",
+			"fromSide": "bottom",
+			"toNode": "f76326857b556acc",
+			"toSide": "top"
+		},
+		{
+			"id": "5d26614a89d42643",
+			"fromNode": "f76326857b556acc",
+			"fromSide": "right",
+			"toNode": "da11a0a9fb2c7374",
+			"toSide": "left"
+		},
+		{
+			"id": "9d1b91c4d0564d90",
+			"fromNode": "deba97ac37c64344",
+			"fromSide": "bottom",
+			"toNode": "089222611e932723",
+			"toSide": "top"
+		},
+		{
+			"id": "b390c64ed3ee79d0",
+			"fromNode": "089222611e932723",
+			"fromSide": "right",
+			"toNode": "90a2eac88daf3dde",
+			"toSide": "left"
+		},
+		{
+			"id": "81f4b64415cb8641",
+			"fromNode": "5bd811e0d111650b",
+			"fromSide": "right",
+			"toNode": "aaba421eed86d282",
+			"toSide": "left"
+		},
+		{
+			"id": "deac34ccfdff4ed4",
+			"fromNode": "b05283b8a90eac52",
+			"fromSide": "right",
+			"toNode": "704ece18ed077458",
+			"toSide": "left"
+		},
+		{
+			"id": "a13434b0e08bc9c6",
+			"fromNode": "b05283b8a90eac52",
+			"fromSide": "bottom",
+			"toNode": "50e398f03ce20ba5",
+			"toSide": "top"
+		},
+		{
+			"id": "ebdc2f15f917cfa7",
+			"fromNode": "4337d5343cd0149a",
+			"fromSide": "right",
+			"toNode": "19d1179c7bbf617c",
+			"toSide": "left"
+		},
+		{
+			"id": "2b9a7b56630c6a46",
+			"fromNode": "85ab55c1dcfc4eab",
+			"fromSide": "right",
+			"toNode": "3faef8b44703d488",
+			"toSide": "left"
+		},
+		{
+			"id": "bf5f2ec7c41bb64d",
+			"fromNode": "85ab55c1dcfc4eab",
+			"fromSide": "bottom",
+			"toNode": "743128841ee0c32d",
+			"toSide": "top"
+		},
+		{
+			"id": "0d774296adb143da",
+			"fromNode": "743128841ee0c32d",
+			"fromSide": "bottom",
+			"toNode": "908832de79e292f3",
+			"toSide": "top"
+		},
+		{
+			"id": "d658e93b1be41a28",
+			"fromNode": "908832de79e292f3",
+			"fromSide": "right",
+			"toNode": "3faef8b44703d488",
+			"toSide": "left"
+		},
+		{
+			"id": "d3c114bbbc8ef3b0",
+			"fromNode": "743128841ee0c32d",
+			"fromSide": "right",
+			"toNode": "3faef8b44703d488",
+			"toSide": "left"
+		},
+		{
+			"id": "ccd287bbdbe8dfaf",
+			"fromNode": "1f7afe0636867729",
+			"fromSide": "right",
+			"toNode": "21a83f8f44cf03b7",
+			"toSide": "left"
+		},
+		{
+			"id": "e8f35a3d0e953455",
+			"fromNode": "56df1dddda14813c",
+			"fromSide": "right",
+			"toNode": "6b06688bcdeea943",
+			"toSide": "left"
+		},
+		{
+			"id": "1151ddf379858b32",
+			"fromNode": "851b4451af5f33b7",
+			"fromSide": "bottom",
+			"toNode": "d3676090bad683b9",
+			"toSide": "top"
+		},
+		{
+			"id": "9396234a25c2cfdb",
+			"fromNode": "2296bb689dbb21e5",
+			"fromSide": "bottom",
+			"toNode": "e7459ca501bbd2a8",
+			"toSide": "top"
+		},
+		{
+			"id": "47e4658b4303edbe",
+			"fromNode": "2296bb689dbb21e5",
+			"fromSide": "right",
+			"toNode": "3b9c2ec2046f6d16",
+			"toSide": "left"
+		},
+		{
+			"id": "f79cf42f4ba23fec",
+			"fromNode": "e7459ca501bbd2a8",
+			"fromSide": "right",
+			"toNode": "3b9c2ec2046f6d16",
+			"toSide": "left"
+		},
+		{
+			"id": "328812c96f6afa88",
+			"fromNode": "642f520bc2bc6644",
+			"fromSide": "bottom",
+			"toNode": "a87b15b5beab5e43",
+			"toSide": "top"
+		},
+		{
+			"id": "9fefd0f011dcb75b",
+			"fromNode": "a87b15b5beab5e43",
+			"fromSide": "bottom",
+			"toNode": "1d1261ac47623372",
+			"toSide": "top"
+		}
+	]
+}

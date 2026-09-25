@@ -19,6 +19,6 @@
 - 文章先定義 Stack ADT，再以一維陣列與 linked list 展示 push、pop 等操作。
 - 完整 C++ 實作保留在 Blog source。
 
-## Related Concepts
+## Navigation
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
+- [My vault：Research 筆記](../archives/my-vault-research.md)

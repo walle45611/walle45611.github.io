@@ -38,8 +38,11 @@
 
 - [parameter-efficient-fine-tuning](../concepts/parameter-efficient-fine-tuning.md)
 - [llm-serving-compatibility](../concepts/llm-serving-compatibility.md)
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
 
 ## Alignment With Current Wiki
 
 這篇來源補上了 PEFT 之外的實作層：LoRA 是否可用，不只看 rank 與 adapter 設定，也要看 serving runtime 是否支援該模型，以及 CUDA wheel 是否和環境真正相容。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

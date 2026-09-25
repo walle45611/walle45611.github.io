@@ -1,0 +1,147 @@
+{
+	"nodes": [
+		{
+			"id": "85053b1253fc9492",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_01_多處理器系統簡介/01-用多個處理器同時處理多個 process.png",
+			"x": -220,
+			"y": -240,
+			"width": 400,
+			"height": 131
+		},
+		{
+			"id": "a93fe4b7d8b09850",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_01_多處理器系統簡介/02-用多個處理器同時處理多個 process.png",
+			"x": -220,
+			"y": -40,
+			"width": 398,
+			"height": 67
+		},
+		{
+			"id": "8634d7ca21ea3848",
+			"type": "text",
+			"text": "- 用多個處理器同時處理多個 process\n- 單一個程式碼再多個處理器中執行",
+			"x": 260,
+			"y": -40,
+			"width": 361,
+			"height": 61,
+			"color": "1"
+		},
+		{
+			"id": "f2622dc4871f34f3",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_01_多處理器系統簡介/03-計算機組織_TOPIC_01_多處理器系統簡介.png",
+			"x": -220,
+			"y": 120,
+			"width": 400,
+			"height": 129
+		},
+		{
+			"id": "11cf105738ef536a",
+			"type": "text",
+			"text": "- 單一晶片裡面有多顆處理器那也叫做 multicore microprocessors\n- Multicore microprocessor 就是多個 chip 裡面都有多顆的 processor 那麼 moden 都是這樣",
+			"x": 260,
+			"y": 109,
+			"width": 361,
+			"height": 151,
+			"color": "1"
+		},
+		{
+			"id": "8f356f1df552a42a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_01_多處理器系統簡介/04-計算機組織_TOPIC_01_多處理器系統簡介.png",
+			"x": -220,
+			"y": 360,
+			"width": 399,
+			"height": 106
+		},
+		{
+			"id": "ca6d14b77723d49e",
+			"type": "text",
+			"text": "那麼可以用 Cluster 去做處理，那麼使用 local network 去做連接很多個 computers",
+			"x": 260,
+			"y": 371,
+			"width": 250,
+			"height": 85,
+			"color": "1"
+		},
+		{
+			"id": "170a7e2cd443c399",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_01_多處理器系統簡介/05-計算機組織_TOPIC_01_多處理器系統簡介.png",
+			"x": -220,
+			"y": 580,
+			"width": 400,
+			"height": 179
+		},
+		{
+			"id": "da669eaaf4bc8eff",
+			"type": "text",
+			"text": "- 如果軟體應用程式可以被分成多個小的那就叫作 Concurrent 在 runtime 的時候。\n- 硬體如果只有一顆 CPU 就是 Serial 如果多個就叫做 Parallel。",
+			"x": 260,
+			"y": 609,
+			"width": 358,
+			"height": 121,
+			"color": "1"
+		}
+	],
+	"edges": [
+		{
+			"id": "e9ba08b24440510b",
+			"fromNode": "a93fe4b7d8b09850",
+			"fromSide": "right",
+			"toNode": "8634d7ca21ea3848",
+			"toSide": "left"
+		},
+		{
+			"id": "aaa59b5ed2596e50",
+			"fromNode": "85053b1253fc9492",
+			"fromSide": "bottom",
+			"toNode": "a93fe4b7d8b09850",
+			"toSide": "top"
+		},
+		{
+			"id": "ae44b1248e062dd2",
+			"fromNode": "a93fe4b7d8b09850",
+			"fromSide": "bottom",
+			"toNode": "f2622dc4871f34f3",
+			"toSide": "top"
+		},
+		{
+			"id": "9561e4daec0dc84d",
+			"fromNode": "f2622dc4871f34f3",
+			"fromSide": "right",
+			"toNode": "11cf105738ef536a",
+			"toSide": "left"
+		},
+		{
+			"id": "5d326fb2d26f0a1e",
+			"fromNode": "f2622dc4871f34f3",
+			"fromSide": "bottom",
+			"toNode": "8f356f1df552a42a",
+			"toSide": "top"
+		},
+		{
+			"id": "79715289ff7d7885",
+			"fromNode": "8f356f1df552a42a",
+			"fromSide": "right",
+			"toNode": "ca6d14b77723d49e",
+			"toSide": "left"
+		},
+		{
+			"id": "ea03be7cc6612ef6",
+			"fromNode": "8f356f1df552a42a",
+			"fromSide": "bottom",
+			"toNode": "170a7e2cd443c399",
+			"toSide": "top"
+		},
+		{
+			"id": "f13d1e7ec79a16fa",
+			"fromNode": "170a7e2cd443c399",
+			"fromSide": "right",
+			"toNode": "da669eaaf4bc8eff",
+			"toSide": "left"
+		}
+	]
+}

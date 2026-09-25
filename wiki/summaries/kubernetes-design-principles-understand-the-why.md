@@ -37,3 +37,7 @@
 ## 與既有知識的關係
 
 本來源補上既有部署操作背後的理由，未取代工具設定：[Kubernetes GitOps Delivery](../concepts/kubernetes-gitops-delivery.md) 可由期望狀態與持續收斂解釋；[MicroK8s Production Readiness](../concepts/microk8s-production-readiness.md) 仍需獨立落實 HA 與儲存治理。可重用的設計原則整理在 [Kubernetes Design Principles](../concepts/kubernetes-design-principles.md)。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

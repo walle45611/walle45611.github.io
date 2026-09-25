@@ -1,0 +1,514 @@
+{
+	"nodes": [
+		{
+			"id": "4c4f3cb5b7a3a1ba",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_RAID/01-計算機組織_TOPIC_5_RAID.png",
+			"x": -300,
+			"y": -340,
+			"width": 400,
+			"height": 93
+		},
+		{
+			"id": "160cd7fbbd5e381e",
+			"type": "text",
+			"text": "可以用一些很多小跟不是很好的硬碟組成 disk array",
+			"x": 180,
+			"y": -323,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "0075562230a0e9bd",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_RAID/02-計算機組織_TOPIC_5_RAID.png",
+			"x": -300,
+			"y": -180,
+			"width": 400,
+			"height": 152
+		},
+		{
+			"id": "4fc18a8ecbc83063",
+			"type": "text",
+			"text": "- 如果太多顆硬碟可能會讓硬碟的可靠度下降，因為可能一個檔案分散在各硬碟裡面的話，那可以用一些 Redundant 的資訊",
+			"x": 180,
+			"y": -177,
+			"width": 338,
+			"height": 147
+		},
+		{
+			"id": "538fab9308170728",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_RAID/03-Data Stripping 分散.png",
+			"x": -300,
+			"y": 60,
+			"width": 399,
+			"height": 161
+		},
+		{
+			"id": "5314a6b882444768",
+			"type": "text",
+			"text": "1. Data Stripping 分散\n2. Redundancy 就是冗餘\n- 只能提升 availability，但是 reliability 還是沒有辦法因為這些硬碟還是會壞只是提升系統服務的時間",
+			"x": 172,
+			"y": 54,
+			"width": 355,
+			"height": 174,
+			"color": "1"
+		},
+		{
+			"id": "c35af7776b4b416e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_RAID/04-課本的定義.png",
+			"x": -300,
+			"y": 300,
+			"width": 400,
+			"height": 152
+		},
+		{
+			"id": "fb4b0e0b7ef4096f",
+			"type": "text",
+			"text": "課本的定義",
+			"x": 185,
+			"y": 349,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "6ee70e51a85171e5",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_RAID/05-計算機組織_TOPIC_5_RAID.png",
+			"x": -300,
+			"y": 560,
+			"width": 400,
+			"height": 78
+		},
+		{
+			"id": "477552465b39d81b",
+			"type": "text",
+			"text": "- 六種 RAID 比較在比這個，Throughput 和 Latency",
+			"x": 212,
+			"y": 565,
+			"width": 253,
+			"height": 73,
+			"color": "1"
+		},
+		{
+			"id": "92731cfdca161530",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_RAID/07-快 Throughput.png",
+			"x": 139,
+			"y": 720,
+			"width": 400,
+			"height": 240
+		},
+		{
+			"id": "cc07bbb6676dbfe2",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_RAID/09-簡單來說就是,就是有一顆會當作備援.png",
+			"x": 139,
+			"y": 1060,
+			"width": 400,
+			"height": 216
+		},
+		{
+			"id": "ff0a03e3de7591f8",
+			"type": "text",
+			"text": "- 快 Throughput \n- 但是容錯爛，因為沒有冗餘",
+			"x": 600,
+			"y": 810,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "69dd13ffdd3ba9ed",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_RAID/10-計算機組織_TOPIC_5_RAID.png",
+			"x": 129,
+			"y": 1360,
+			"width": 420,
+			"height": 228
+		},
+		{
+			"id": "922b2cd1257f93ed",
+			"type": "text",
+			"text": "- 簡單來說就是，就是有一顆會當作備援\n- 有顆壞掉就用另一顆",
+			"x": 648,
+			"y": 1126,
+			"width": 352,
+			"height": 84,
+			"color": "1"
+		},
+		{
+			"id": "795ca104f0c9f2b1",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_RAID/15-RAID1,5 80% Server 都在用.png",
+			"x": 129,
+			"y": 2441,
+			"width": 400,
+			"height": 242
+		},
+		{
+			"id": "2e705b0a77e70d69",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_RAID/17-計算機組織_TOPIC_5_RAID.png",
+			"x": 129,
+			"y": 2841,
+			"width": 400,
+			"height": 226
+		},
+		{
+			"id": "efeb343a8495175f",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_RAID/12-計算機組織_TOPIC_5_RAID.png",
+			"x": 129,
+			"y": 1721,
+			"width": 400,
+			"height": 231
+		},
+		{
+			"id": "768d4ee170d69543",
+			"type": "text",
+			"text": "- ==RAID4 以 block 為單位，RAID3 是以 bit==\n- 如果小於一個 block 那麼這個存取叫做 small write/read，反叫做 big write/read\n- 如果是 small write/read A1 的話那麼要先 A2 A3 block 都要讀出來那麼還要重新計算 $A_p$ 嗎，那麼不需要這樣，也==就是說他可以做平行處理==。\n- ==只要把把舊的 $A_1$ 和 $A_p$ 讀出來再把新的 $A_1$ 做 xor 就好了就可以得到新的 $A_p$==\n- 但是他有個問題也就是同時存取 $A_1$ 和 $B_2$ 和 $C_3$ 那都要用 DISK3(Parity) 那麼這邊就要排隊了，會有瓶頸。\n- 都可以增加 Throughput 相較於 RAID3",
+			"x": 620,
+			"y": 2091,
+			"width": 623,
+			"height": 240,
+			"color": "1"
+		},
+		{
+			"id": "59366ab2aea92f70",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_RAID/13-計算機組織_TOPIC_5_RAID.png",
+			"x": 129,
+			"y": 2101,
+			"width": 399,
+			"height": 220
+		},
+		{
+			"id": "3be779706331e3be",
+			"type": "text",
+			"text": "- 把 Parity 和 Data 都分散主要改善 RAID4\n- 打散 Parity",
+			"x": 620,
+			"y": 2528,
+			"width": 372,
+			"height": 68,
+			"color": "1"
+		},
+		{
+			"id": "205317f32c08efa2",
+			"type": "text",
+			"text": "- 因為 ==RAID3~5== 他們能壞一顆還可以用 xor 的方式算回來，==兩顆以上就沒有辦法了==\n- RAID6 那麼就是用兩個 Parity 可以想像是 RAID4，並且像是 RAID5 打散 Parity 沒有 Parity Disk\n- 那他可以抵抗兩個 Disk 壞掉",
+			"x": 620,
+			"y": 2877,
+			"width": 432,
+			"height": 154,
+			"color": "1"
+		},
+		{
+			"id": "b2035c5d59460ff2",
+			"type": "text",
+			"text": "\n- ==位元/位元組級分條==：資料切很小，同步寫到多顆資料碟\n    \n- 專用 parity 碟：每個 stripe 用 XOR 計算並寫入單獨一顆\n    \n- 容量與容錯：(N-1) 資料 + 1 parity，可壞 1 碟\n    \n- ==效能：Latency 好，但是 throughput 不好；小型隨機 I/O 差，parity 碟易瓶頸，但是他的 recover 會比 RAID2 和 RAID1 來得久==\n    \n- **公式**\n\n\t有效容量比例：  $\\frac{N-1}{N}$\n\t\n\t重建遺失資料塊（任一資料碟故障）：  $D_i = P \\oplus \\bigoplus_{j\\ne i} D_j$\n\t\n\tParity 計算（每個 stripe）： $P = \\bigoplus_{j=0}^{N-2} D_j$",
+			"x": 640,
+			"y": 1680,
+			"width": 668,
+			"height": 314,
+			"color": "1"
+		},
+		{
+			"id": "34fb627cdf8cdfed",
+			"type": "text",
+			"text": "- **資料分條單位**：**位元級**（bit-level striping）。一個位元分散到多顆資料碟。\n    \n- **校正碼**：用 **Hamming code** 產生多顆「ECC 碟」。不是單一 XOR parity。\n    \n- **碟機**：早期設計需**同步轉速**，整組同時讀寫。\n    \n- **容錯**：可更精確偵測並更正位元錯誤與單碟故障，所需 ECC 碟數量由 Hamming( n, k ) 決定。\n\n- 範例\n\t\t\n\t- 使用 Hamming(7,4)：4 顆資料碟 + 3 顆 ECC 碟\n\t    \n\t- 每次寫入 4 個位元到 4 顆資料碟，同時計算 3 個校驗位元到 3 顆 ECC 碟。",
+			"x": 640,
+			"y": 1317,
+			"width": 516,
+			"height": 315,
+			"color": "1"
+		},
+		{
+			"id": "9ea0961294ba4033",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_RAID/11-RAID3~6.png",
+			"x": 1520,
+			"y": 1700,
+			"width": 553,
+			"height": 299
+		},
+		{
+			"id": "2984f633a9231f56",
+			"type": "text",
+			"text": "- RAID3~6\n- 如何 recover D1 其實就是加上一個 P(i) 和 D1(i) 在兩側加上去，那麼就可以通過 xor 的結合律和交換律直接合併",
+			"x": 1611,
+			"y": 2060,
+			"width": 372,
+			"height": 121,
+			"color": "1"
+		},
+		{
+			"id": "fc9c3010424db49d",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_RAID/14-Big 一定是全部動.png",
+			"x": 1547,
+			"y": 2300,
+			"width": 500,
+			"height": 250
+		},
+		{
+			"id": "01355ecec706cf5e",
+			"type": "text",
+			"text": "- Big 一定是全部動\n- small write 可以只動兩顆",
+			"x": 1659,
+			"y": 2620,
+			"width": 277,
+			"height": 80,
+			"color": "1"
+		},
+		{
+			"id": "93ff88dbc83df074",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_RAID/16-Big 一定是全部動.png",
+			"x": 2100,
+			"y": 2535,
+			"width": 484,
+			"height": 250
+		},
+		{
+			"id": "3a7984a17857d7f0",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_RAID/08-RAID 01 本質是 0 寫資料比較快.png",
+			"x": 1473,
+			"y": 810,
+			"width": 599,
+			"height": 261
+		},
+		{
+			"id": "9a28b706e01547e6",
+			"type": "text",
+			"text": "- RAID 01 本質是 0 寫資料比較快\n- RAID 10 本質是 1 冗餘比較好",
+			"x": 1616,
+			"y": 1140,
+			"width": 314,
+			"height": 61,
+			"color": "1"
+		},
+		{
+			"id": "434a936b98166227",
+			"type": "text",
+			"text": "RAID1,5 80% Server 都在用",
+			"x": -600,
+			"y": 1528,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "1e42b2b272d4131a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_RAID/06-RAID1,5 80% Server 都在用.png",
+			"x": -1058,
+			"y": 720,
+			"width": 758,
+			"height": 406
+		}
+	],
+	"edges": [
+		{
+			"id": "9ba3af6e0e4f8adf",
+			"fromNode": "4c4f3cb5b7a3a1ba",
+			"fromSide": "right",
+			"toNode": "160cd7fbbd5e381e",
+			"toSide": "left"
+		},
+		{
+			"id": "05160c20f4bc3cf4",
+			"fromNode": "4c4f3cb5b7a3a1ba",
+			"fromSide": "bottom",
+			"toNode": "0075562230a0e9bd",
+			"toSide": "top"
+		},
+		{
+			"id": "185c72035617fa0e",
+			"fromNode": "0075562230a0e9bd",
+			"fromSide": "right",
+			"toNode": "4fc18a8ecbc83063",
+			"toSide": "left"
+		},
+		{
+			"id": "a96a77567f3e4fff",
+			"fromNode": "0075562230a0e9bd",
+			"fromSide": "bottom",
+			"toNode": "538fab9308170728",
+			"toSide": "top"
+		},
+		{
+			"id": "ebff79cc545150a4",
+			"fromNode": "538fab9308170728",
+			"fromSide": "right",
+			"toNode": "5314a6b882444768",
+			"toSide": "left"
+		},
+		{
+			"id": "67b7f7c0cf8ed9db",
+			"fromNode": "538fab9308170728",
+			"fromSide": "bottom",
+			"toNode": "c35af7776b4b416e",
+			"toSide": "top"
+		},
+		{
+			"id": "3be40390e580d716",
+			"fromNode": "c35af7776b4b416e",
+			"fromSide": "right",
+			"toNode": "fb4b0e0b7ef4096f",
+			"toSide": "left"
+		},
+		{
+			"id": "f45f2eeddeae9ed2",
+			"fromNode": "6ee70e51a85171e5",
+			"fromSide": "right",
+			"toNode": "477552465b39d81b",
+			"toSide": "left"
+		},
+		{
+			"id": "0eb318ea901834d5",
+			"fromNode": "477552465b39d81b",
+			"fromSide": "bottom",
+			"toNode": "92731cfdca161530",
+			"toSide": "top"
+		},
+		{
+			"id": "6f7f352010bab4db",
+			"fromNode": "92731cfdca161530",
+			"fromSide": "right",
+			"toNode": "ff0a03e3de7591f8",
+			"toSide": "left"
+		},
+		{
+			"id": "59d9fac73293113d",
+			"fromNode": "92731cfdca161530",
+			"fromSide": "bottom",
+			"toNode": "cc07bbb6676dbfe2",
+			"toSide": "top"
+		},
+		{
+			"id": "d64929e36d563899",
+			"fromNode": "cc07bbb6676dbfe2",
+			"fromSide": "right",
+			"toNode": "922b2cd1257f93ed",
+			"toSide": "left"
+		},
+		{
+			"id": "0b2ceea5148b6ecd",
+			"fromNode": "cc07bbb6676dbfe2",
+			"fromSide": "bottom",
+			"toNode": "69dd13ffdd3ba9ed",
+			"toSide": "top"
+		},
+		{
+			"id": "1a5979e322288600",
+			"fromNode": "69dd13ffdd3ba9ed",
+			"fromSide": "right",
+			"toNode": "34fb627cdf8cdfed",
+			"toSide": "left"
+		},
+		{
+			"id": "a893020cf4e003c8",
+			"fromNode": "69dd13ffdd3ba9ed",
+			"fromSide": "bottom",
+			"toNode": "efeb343a8495175f",
+			"toSide": "top"
+		},
+		{
+			"id": "982a0add648052cd",
+			"fromNode": "efeb343a8495175f",
+			"fromSide": "right",
+			"toNode": "b2035c5d59460ff2",
+			"toSide": "left"
+		},
+		{
+			"id": "f5af9bd047883b92",
+			"fromNode": "efeb343a8495175f",
+			"fromSide": "bottom",
+			"toNode": "59366ab2aea92f70",
+			"toSide": "top"
+		},
+		{
+			"id": "b013e2910fbb7c61",
+			"fromNode": "59366ab2aea92f70",
+			"fromSide": "right",
+			"toNode": "768d4ee170d69543",
+			"toSide": "left"
+		},
+		{
+			"id": "202949169d6f1cd9",
+			"fromNode": "59366ab2aea92f70",
+			"fromSide": "bottom",
+			"toNode": "795ca104f0c9f2b1",
+			"toSide": "top"
+		},
+		{
+			"id": "33727931a35f5b2f",
+			"fromNode": "795ca104f0c9f2b1",
+			"fromSide": "right",
+			"toNode": "3be779706331e3be",
+			"toSide": "left"
+		},
+		{
+			"id": "bc90a8d4cb42a787",
+			"fromNode": "795ca104f0c9f2b1",
+			"fromSide": "bottom",
+			"toNode": "2e705b0a77e70d69",
+			"toSide": "top"
+		},
+		{
+			"id": "adc8f5592c514b5f",
+			"fromNode": "2e705b0a77e70d69",
+			"fromSide": "right",
+			"toNode": "205317f32c08efa2",
+			"toSide": "left"
+		},
+		{
+			"id": "be9dfb8bfd800035",
+			"fromNode": "9ea0961294ba4033",
+			"fromSide": "bottom",
+			"toNode": "2984f633a9231f56",
+			"toSide": "top"
+		},
+		{
+			"id": "f9c2bf0e20703b70",
+			"fromNode": "fc9c3010424db49d",
+			"fromSide": "bottom",
+			"toNode": "01355ecec706cf5e",
+			"toSide": "top"
+		},
+		{
+			"id": "a6ea96f09d1c0e3d",
+			"fromNode": "01355ecec706cf5e",
+			"fromSide": "right",
+			"toNode": "93ff88dbc83df074",
+			"toSide": "left"
+		},
+		{
+			"id": "786cc3959d4aea11",
+			"fromNode": "3a7984a17857d7f0",
+			"fromSide": "bottom",
+			"toNode": "9a28b706e01547e6",
+			"toSide": "top"
+		},
+		{
+			"id": "a6a592a3fb2ee495",
+			"fromNode": "cc07bbb6676dbfe2",
+			"fromSide": "left",
+			"toNode": "434a936b98166227",
+			"toSide": "right"
+		},
+		{
+			"id": "54ae89bc8f8c3888",
+			"fromNode": "795ca104f0c9f2b1",
+			"fromSide": "left",
+			"toNode": "434a936b98166227",
+			"toSide": "right"
+		}
+	]
+}

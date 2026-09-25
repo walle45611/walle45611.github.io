@@ -19,6 +19,6 @@
 - 後半段整理 import、命名規則、方法參數與 whitespace 的常見寫法。
 - 這是依當時官方文件整理的個人筆記；實際專案仍應以團隊 formatter/linter 合約為準。
 
-## Related Concepts
+## Navigation
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
+- [My vault：Tech 筆記](../archives/my-vault-tech.md)

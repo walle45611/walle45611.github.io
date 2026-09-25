@@ -1,0 +1,137 @@
+# My vault：Tech 筆記
+
+此頁依來源路徑列出已歸檔的筆記與摘要。完整原文仍以 `raw/` 檔案為準。
+
+## Tech
+
+- [Ansible 基本操作安裝](<../summaries/my-vault-tech-ansible-b4c67e1f5.md>) · `raw/my-vault/Note/Tech/Ansible 基本操作安裝.md`
+- [Arduino Formwork](<../summaries/my-vault-tech-arduino-formwork-b660864d3.md>) · `raw/my-vault/Note/Tech/Arduino Formwork.md`
+- [Azure Blob Lifecycle Policy](<../summaries/my-vault-tech-azure-blob-lifecycle-policy-ec25c39a6.md>) · `raw/my-vault/Note/Tech/Azure Blob Lifecycle Policy.md`
+- [Cisco ACL 存取控制清單指南](<../summaries/my-vault-tech-cisco-acl-448be839f.md>) · `raw/my-vault/Note/Tech/Cisco ACL 存取控制清單指南.md`
+- [Cisco device Security](<../summaries/my-vault-tech-cisco-device-security-6f1cfdcf2.md>) · `raw/my-vault/Note/Tech/Cisco device Security.md`
+- [Cisco DHCP 設定](<../summaries/my-vault-tech-cisco-dhcp-0816dddbe.md>) · `raw/my-vault/Note/Tech/Cisco DHCP 設定.md`
+- [Cisco errordisable 指令使用](<../summaries/my-vault-tech-cisco-errordisable-c32952ca3.md>) · `raw/my-vault/Note/Tech/Cisco errordisable 指令使用.md`
+- [Cisco IP SLA (IP Service-Level Agreement) 使用方式和設定](<../summaries/my-vault-tech-cisco-ip-sla-ip-service-729e04fb7.md>) · `raw/my-vault/Note/Tech/Cisco IP SLA (IP Service-Level Agreement) 使用方式和設定.md`
+- [Cisco NTP 設定](<../summaries/my-vault-tech-cisco-ntp-6bfdf4b95.md>) · `raw/my-vault/Note/Tech/Cisco NTP 設定.md`
+- [Cisco PoE 電力供應指南](<../summaries/my-vault-tech-cisco-poe-46a68be2d.md>) · `raw/my-vault/Note/Tech/Cisco PoE 電力供應指南.md`
+- [Cisco QinQ 802.1Q tunneling](<../summaries/my-vault-tech-cisco-qinq-802-1q-tunneling-1bcd7ea07.md>) · `raw/my-vault/Note/Tech/Cisco QinQ 802.1Q tunneling.md`
+- [Cisco SNMP (Simple Network Management Protocol) 介紹和使用方式](<../summaries/my-vault-tech-cisco-snmp-simple-network-management-af2e9ae16.md>) · `raw/my-vault/Note/Tech/Cisco SNMP (Simple Network Management Protocol) 介紹和使用方式.md`
+- [Cisco SPAN (Switch port Analysis) 簡介和使用方式](<../summaries/my-vault-tech-cisco-span-switch-port-analysis-7e6277b61.md>) · `raw/my-vault/Note/Tech/Cisco SPAN (Switch port Analysis) 簡介和使用方式.md`
+- [Cisco ssh and telnet 安全設定](<../summaries/my-vault-tech-cisco-ssh-and-telnet-729a3eec1.md>) · `raw/my-vault/Note/Tech/Cisco ssh and telnet 安全設定.md`
+- [Cisco StackWise FlexStack](<../summaries/my-vault-tech-cisco-stackwise-flexstack-6bd1af4cb.md>) · `raw/my-vault/Note/Tech/Cisco StackWise FlexStack.md`
+- [Cisco Switch Security 設定](<../summaries/my-vault-tech-cisco-switch-security-2f6c09047.md>) · `raw/my-vault/Note/Tech/Cisco Switch Security 設定.md`
+- [Cisco Syslog 設定](<../summaries/my-vault-tech-cisco-syslog-43addf7a4.md>) · `raw/my-vault/Note/Tech/Cisco Syslog 設定.md`
+- [Cisco VTP (VLAN Trunking Protocol)](<../summaries/my-vault-tech-cisco-vtp-vlan-trunking-protocol-b925ddb90.md>) · `raw/my-vault/Note/Tech/Cisco VTP (VLAN Trunking Protocol).md`
+- [Cisco 監控模組與路由處理器備援](<../summaries/my-vault-tech-cisco-debc7abdd.md>) · `raw/my-vault/Note/Tech/Cisco 監控模組與路由處理器備援.md`
+- [Cisco 路徑控制工具指南](<../summaries/my-vault-tech-cisco-e98fbfb10.md>) · `raw/my-vault/Note/Tech/Cisco 路徑控制工具指南.md`
+- [Cisco 路由重分配 (route redistribute)](<../summaries/my-vault-tech-cisco-route-redistribute-0b0dc757c.md>) · `raw/my-vault/Note/Tech/Cisco 路由重分配 (route redistribute).md`
+- [Cloud Shell](<../summaries/my-vault-tech-cloud-shell-e8005f054.md>) · `raw/my-vault/Note/Tech/Cloud Shell.md`
+- [Colima + containerd 指令小抄](<../summaries/my-vault-tech-colima-containerd-abe3009c8.md>) · `raw/my-vault/Note/Tech/Colima + containerd 指令小抄.md`
+- [Containerlab 安裝與設定指南](<../summaries/my-vault-tech-containerlab-4e538a1cc.md>) · `raw/my-vault/Note/Tech/Containerlab 安裝與設定指南.md`
+- [deadlock-management](<../summaries/blog-deadlock-management.md>) · `raw/my-vault/Note/Tech/deadlock-management.md`
+- [django-uwsgi-nginx](<../summaries/blog-django-uwsgi-nginx.md>) · `raw/my-vault/Note/Tech/django-uwsgi-nginx.md`
+- [domjudge-install-guide](<../summaries/blog-domjudge-install-guide.md>) · `raw/my-vault/Note/Tech/domjudge-install-guide.md`
+- [EVE-NG 安裝與設定指南](<../summaries/my-vault-tech-eve-ng-d3ad43ece.md>) · `raw/my-vault/Note/Tech/EVE-NG 安裝與設定指南.md`
+- [git-worktree](<../summaries/blog-git-worktree.md>) · `raw/my-vault/Note/Tech/git-worktree.md`
+- [GLBP  熱備份路由協定指南](<../summaries/my-vault-tech-glbp-5571b5098.md>) · `raw/my-vault/Note/Tech/GLBP  熱備份路由協定指南.md`
+- [GNS3 安裝與設定指南](<../summaries/my-vault-tech-gns3-f238533e1.md>) · `raw/my-vault/Note/Tech/GNS3 安裝與設定指南.md`
+- [GPO Basic + PowerShell 操作整理](<../summaries/my-vault-tech-gpo-basic-powershell-41c37f865.md>) · `raw/my-vault/Note/Tech/GPO Basic + PowerShell 操作整理.md`
+- [GRE 與 IPSec 隧道技術指南](<../summaries/my-vault-tech-gre-ipsec-ecd21424a.md>) · `raw/my-vault/Note/Tech/GRE 與 IPSec 隧道技術指南.md`
+- [HSRP 與 VRRP 熱備份路由協定指南](<../summaries/my-vault-tech-hsrp-vrrp-e98cbc5b9.md>) · `raw/my-vault/Note/Tech/HSRP 與 VRRP 熱備份路由協定指南.md`
+- [induction-ldap](<../summaries/blog-induction-ldap.md>) · `raw/my-vault/Note/Tech/induction-ldap.md`
+- [introduce-vim](<../summaries/blog-introduce-vim.md>) · `raw/my-vault/Note/Tech/introduce-vim.md`
+- [iptables 防火牆完整指南](<../summaries/my-vault-tech-iptables-af79c115e.md>) · `raw/my-vault/Note/Tech/iptables 防火牆完整指南.md`
+- [isms-context-leadership-planning](<../summaries/blog-isms-context-leadership-planning.md>) · `raw/my-vault/Note/Tech/isms-context-leadership-planning.md`
+- [K8s Cilium 與 Containerlab 網路實驗](<../summaries/my-vault-tech-k8s-cilium-containerlab-a8021aef6.md>) · `raw/my-vault/Note/Tech/K8s Cilium 與 Containerlab 網路實驗.md`
+- [K8s CNI 比較：Cilium、Calico 與 Flannel](<../summaries/my-vault-tech-k8s-cni-cilium-calico-flannel-260947f68.md>) · `raw/my-vault/Note/Tech/K8s CNI 比較：Cilium、Calico 與 Flannel.md`
+- [K8s Container Runtime 與 dockershim 遷移](<../summaries/my-vault-tech-k8s-container-runtime-dockershim-d963b74d8.md>) · `raw/my-vault/Note/Tech/K8s Container Runtime 與 dockershim 遷移.md`
+- [K8s CSI、PV、PVC 與雲端儲存](<../summaries/my-vault-tech-k8s-csi-pv-pvc-5d2a804c7.md>) · `raw/my-vault/Note/Tech/K8s CSI、PV、PVC 與雲端儲存.md`
+- [K8s HA、Quorum 與 Split-brain](<../summaries/my-vault-tech-k8s-ha-quorum-split-brain-87d7069b4.md>) · `raw/my-vault/Note/Tech/K8s HA、Quorum 與 Split-brain.md`
+- [K8s kubelet 與 Pod 執行流程](<../summaries/my-vault-tech-k8s-kubelet-pod-3a2c84245.md>) · `raw/my-vault/Note/Tech/K8s kubelet 與 Pod 執行流程.md`
+- [K8s 中的 Pod 是什麼](<../summaries/blog-k8s-introduction-pods.md>) · `raw/my-vault/Note/Tech/K8s 中的 Pod 是什麼.md`
+- [K8s 各 Component 說明](<../summaries/my-vault-tech-k8s-component-60805a21c.md>) · `raw/my-vault/Note/Tech/K8s 各 Component 說明.md`
+- [K8s 基本排錯指令](<../summaries/my-vault-tech-k8s-7830b1598.md>) · `raw/my-vault/Note/Tech/K8s 基本排錯指令.md`
+- [Linux Apache2 Web Server 設定指南](<../summaries/my-vault-tech-linux-apache2-web-server-1e216b5bc.md>) · `raw/my-vault/Note/Tech/Linux Apache2 Web Server 設定指南.md`
+- [Linux Debian DLBD ISO](<../summaries/my-vault-tech-linux-debian-dlbd-iso-44d594759.md>) · `raw/my-vault/Note/Tech/Linux Debian DLBD ISO.md`
+- [Linux DNS Bind9 相關設定](<../summaries/my-vault-tech-linux-dns-bind9-85516457f.md>) · `raw/my-vault/Note/Tech/Linux DNS Bind9 相關設定.md`
+- [Linux Fedora RPM package install](<../summaries/my-vault-tech-linux-fedora-rpm-package-install-e2a47c63c.md>) · `raw/my-vault/Note/Tech/Linux Fedora RPM package install.md`
+- [Linux Fedora 設定 IP 指南](<../summaries/my-vault-tech-linux-fedora-ip-776c73435.md>) · `raw/my-vault/Note/Tech/Linux Fedora 設定 IP 指南.md`
+- [Linux FreeRADIUS 設定指南](<../summaries/my-vault-tech-linux-freeradius-2ad21faae.md>) · `raw/my-vault/Note/Tech/Linux FreeRADIUS 設定指南.md`
+- [Linux GRE tunnel 設定指南](<../summaries/my-vault-tech-linux-gre-tunnel-82e4fc21a.md>) · `raw/my-vault/Note/Tech/Linux GRE tunnel 設定指南.md`
+- [Linux ISC DHCP Server 與 ISC DHCP Relay 設定指南](<../summaries/my-vault-tech-linux-isc-dhcp-server-isc-4a459c33c.md>) · `raw/my-vault/Note/Tech/Linux ISC DHCP Server 與 ISC DHCP Relay 設定指南.md`
+- [Linux iSCSI 設定指南](<../summaries/my-vault-tech-linux-iscsi-1f3fc5374.md>) · `raw/my-vault/Note/Tech/Linux iSCSI 設定指南.md`
+- [Linux L2TP over IPSec 設定指南](<../summaries/my-vault-tech-linux-l2tp-over-ipsec-4ac55948a.md>) · `raw/my-vault/Note/Tech/Linux L2TP over IPSec 設定指南.md`
+- [Linux Mail Server：Postfix、Dovecot 與 Maildir 設定指南](<../summaries/my-vault-tech-linux-mail-server-postfix-dovecot-49492796d.md>) · `raw/my-vault/Note/Tech/Linux Mail Server：Postfix、Dovecot 與 Maildir 設定指南.md`
+- [Linux networking 常用指令](<../summaries/my-vault-tech-linux-networking-90d9e167a.md>) · `raw/my-vault/Note/Tech/Linux networking 常用指令.md`
+- [Linux Nginx Web Server 設定指南](<../summaries/my-vault-tech-linux-nginx-web-server-43bc8f600.md>) · `raw/my-vault/Note/Tech/Linux Nginx Web Server 設定指南.md`
+- [Linux NIS 設定指南](<../summaries/my-vault-tech-linux-nis-786adfe67.md>) · `raw/my-vault/Note/Tech/Linux NIS 設定指南.md`
+- [Linux NTP Server and Client 設定與原理說明](<../summaries/my-vault-tech-linux-ntp-server-and-client-9034ec430.md>) · `raw/my-vault/Note/Tech/Linux NTP Server and Client 設定與原理說明.md`
+- [Linux OpenLDAP 設定指南](<../summaries/my-vault-tech-linux-openldap-7cd5f1cbb.md>) · `raw/my-vault/Note/Tech/Linux OpenLDAP 設定指南.md`
+- [Linux OpenSSH 設定指南](<../summaries/my-vault-tech-linux-openssh-c06f261d1.md>) · `raw/my-vault/Note/Tech/Linux OpenSSH 設定指南.md`
+- [Linux OpenSSL With Windows Web 憑證設定指南](<../summaries/my-vault-tech-linux-openssl-with-windows-web-82fbf3838.md>) · `raw/my-vault/Note/Tech/Linux OpenSSL With Windows Web 憑證設定指南.md`
+- [Linux OpenSSL 憑證管理完整指南](<../summaries/my-vault-tech-linux-openssl-39f90d82c.md>) · `raw/my-vault/Note/Tech/Linux OpenSSL 憑證管理完整指南.md`
+- [Linux OpenVPN 完整設定與憑證管理指南](<../summaries/my-vault-tech-linux-openvpn-ee3df5720.md>) · `raw/my-vault/Note/Tech/Linux OpenVPN 完整設定與憑證管理指南.md`
+- [Linux PPTP VPN 安裝與設定教學](<../summaries/my-vault-tech-linux-pptp-vpn-35217f77c.md>) · `raw/my-vault/Note/Tech/Linux PPTP VPN 安裝與設定教學.md`
+- [Linux Ubuntu or Debian Set hostname and IP address](<../summaries/my-vault-tech-linux-ubuntu-or-debian-set-53158e58e.md>) · `raw/my-vault/Note/Tech/Linux Ubuntu or Debian Set hostname and IP address.md`
+- [Linux 基本觀念和指令](<../summaries/my-vault-tech-linux-eb9576978.md>) · `raw/my-vault/Note/Tech/Linux 基本觀念和指令.md`
+- [MicroK8s 高可用安裝與設定](<../summaries/my-vault-tech-microk8s-bbfec784e.md>) · `raw/my-vault/Note/Tech/MicroK8s 高可用安裝與設定.md`
+- [Microsoft EntraID](<../summaries/my-vault-tech-microsoft-entraid-a5c3a925a.md>) · `raw/my-vault/Note/Tech/Microsoft EntraID.md`
+- [miniconda-troubleshooting](<../summaries/my-vault-tech-miniconda-troubleshooting-3d73dc004.md>) · `raw/my-vault/Note/Tech/miniconda-troubleshooting.md`
+- [MinIO S3 硬碟吞吐量基準測試報告](<../summaries/my-vault-tech-minio-s3-10b37c705.md>) · `raw/my-vault/Note/Tech/MinIO S3 硬碟吞吐量基準測試報告.md`
+- [neovim-settings](<../summaries/blog-neovim-settings.md>) · `raw/my-vault/Note/Tech/neovim-settings.md`
+- [NVIDIA NVML Driver 版本不相容問題](<../summaries/my-vault-tech-nvidia-nvml-driver-269812e32.md>) · `raw/my-vault/Note/Tech/NVIDIA NVML Driver 版本不相容問題.md`
+- [Oracle Database 19c 在 Oracle Linux 安裝指南](<../summaries/my-vault-tech-oracle-database-19c-oracle-linux-faa98a53b.md>) · `raw/my-vault/Note/Tech/Oracle Database 19c 在 Oracle Linux 安裝指南.md`
+- [Python 專案初始化](<../summaries/my-vault-tech-python-e3ca165fa.md>) · `raw/my-vault/Note/Tech/Python 專案初始化.md`
+- [Python 正規表達式 Regex](<../summaries/my-vault-tech-python-regex-4624bd6e2.md>) · `raw/my-vault/Note/Tech/Python 正規表達式 Regex.md`
+- [race-condition-and-synchronization](<../summaries/blog-race-condition-and-synchronization.md>) · `raw/my-vault/Note/Tech/race-condition-and-synchronization.md`
+- [rest-with-api](<../summaries/blog-rest-with-api.md>) · `raw/my-vault/Note/Tech/rest-with-api.md`
+- [setting-hexo-ga](<../summaries/blog-setting-hexo-ga.md>) · `raw/my-vault/Note/Tech/setting-hexo-ga.md`
+- [setting-hoex](<../summaries/blog-setting-hexo.md>) · `raw/my-vault/Note/Tech/setting-hoex.md`
+- [setup-openssh-server-in-windows-with-guacamole-sftp](<../summaries/blog-setup-openssh-server-in-windows-with-guacamole-sftp.md>) · `raw/my-vault/Note/Tech/setup-openssh-server-in-windows-with-guacamole-sftp.md`
+- [style-guide-for-python-code](<../summaries/blog-style-guide-for-python-code.md>) · `raw/my-vault/Note/Tech/style-guide-for-python-code.md`
+- [Terraform (IaC) 和 Hyper-V指南](<../summaries/my-vault-tech-terraform-iac-hyper-v-5b9362f35.md>) · `raw/my-vault/Note/Tech/Terraform (IaC) 和 Hyper-V指南.md`
+- [vLLM + Gemma4 LoRA 安裝與啟動流程](<../summaries/my-vault-tech-vllm-gemma4-lora-f0bb65d34.md>) · `raw/my-vault/Note/Tech/vLLM + Gemma4 LoRA 安裝與啟動流程.md`
+- [vllm-gemma-4-lora-我踩過的兩個坑](<../summaries/my-vault-tech-vllm-gemma-4-lora-0db56d1e6.md>) · `raw/my-vault/Note/Tech/vllm-gemma-4-lora-我踩過的兩個坑.md`
+- [vscode-extension-profile](<../summaries/blog-vscode-extension-profile.md>) · `raw/my-vault/Note/Tech/vscode-extension-profile.md`
+- [Window Server Active Directory Certificate Services](<../summaries/my-vault-tech-window-server-active-directory-certificate-0d7cd4659.md>) · `raw/my-vault/Note/Tech/Window Server Active Directory Certificate Services.md`
+- [Windows 11 安裝需求繞過指南](<../summaries/my-vault-tech-windows-11-53c1fc846.md>) · `raw/my-vault/Note/Tech/Windows 11 安裝需求繞過指南.md`
+- [Windows AppLocker](<../summaries/my-vault-tech-windows-applocker-6c71c7c66.md>) · `raw/my-vault/Note/Tech/Windows AppLocker.md`
+- [Windows auditing](<../summaries/my-vault-tech-windows-auditing-29816f042.md>) · `raw/my-vault/Note/Tech/Windows auditing.md`
+- [Windows Hyper-V](<../summaries/my-vault-tech-windows-hyper-v-d6965287e.md>) · `raw/my-vault/Note/Tech/Windows Hyper-V.md`
+- [Windows IIS Web 服務器配置指南](<../summaries/my-vault-tech-windows-iis-web-6f1e05035.md>) · `raw/my-vault/Note/Tech/Windows IIS Web 服務器配置指南.md`
+- [Windows local User and Group](<../summaries/my-vault-tech-windows-local-user-and-group-8f594fd77.md>) · `raw/my-vault/Note/Tech/Windows local User and Group.md`
+- [Windows PowerShell Create New AD User 腳本](<../summaries/my-vault-tech-windows-powershell-create-new-ad-3c77534b3.md>) · `raw/my-vault/Note/Tech/Windows PowerShell Create New AD User 腳本.md`
+- [Windows PowerShell 基本語法與實用範例整理](<../summaries/my-vault-tech-windows-powershell-798aa0cb8.md>) · `raw/my-vault/Note/Tech/Windows PowerShell 基本語法與實用範例整理.md`
+- [Windows Server Active Directory Operation Master（FSMO）角色整理](<../summaries/my-vault-tech-windows-server-active-directory-operation-fdbd804c4.md>) · `raw/my-vault/Note/Tech/Windows Server Active Directory Operation Master（FSMO）角色整理.md`
+- [Windows Server Active Directory 介紹](<../summaries/my-vault-tech-windows-server-active-directory-3b525f52b.md>) · `raw/my-vault/Note/Tech/Windows Server Active Directory 介紹.md`
+- [Windows Server AD Group User And OU](<../summaries/my-vault-tech-windows-server-ad-group-user-4a60e32ef.md>) · `raw/my-vault/Note/Tech/Windows Server AD Group User And OU.md`
+- [windows server AD with Linux bind9](<../summaries/my-vault-tech-windows-server-ad-with-linux-4f26bff01.md>) · `raw/my-vault/Note/Tech/windows server AD with Linux bind9.md`
+- [Windows Server Core 管理指南](<../summaries/my-vault-tech-windows-server-core-27f5efe0c.md>) · `raw/my-vault/Note/Tech/Windows Server Core 管理指南.md`
+- [Windows Server DFS namespace and DFS Replication 設定指南](<../summaries/my-vault-tech-windows-server-dfs-namespace-and-75f8f8f81.md>) · `raw/my-vault/Note/Tech/Windows Server DFS namespace and DFS Replication 設定指南.md`
+- [Windows Server DHCP 設定指南](<../summaries/my-vault-tech-windows-server-dhcp-927eb1852.md>) · `raw/my-vault/Note/Tech/Windows Server DHCP 設定指南.md`
+- [Windows Server DirectAccess VPN 設定指南](<../summaries/my-vault-tech-windows-server-directaccess-vpn-442604410.md>) · `raw/my-vault/Note/Tech/Windows Server DirectAccess VPN 設定指南.md`
+- [Windows server Disk Array RAID](<../summaries/my-vault-tech-windows-server-disk-array-raid-ae9fe4811.md>) · `raw/my-vault/Note/Tech/Windows server Disk Array RAID.md`
+- [Windows Server DNS 設定指南](<../summaries/my-vault-tech-windows-server-dns-8365bf46c.md>) · `raw/my-vault/Note/Tech/Windows Server DNS 設定指南.md`
+- [Windows Server IPAM](<../summaries/my-vault-tech-windows-server-ipam-a9ccd54a4.md>) · `raw/my-vault/Note/Tech/Windows Server IPAM.md`
+- [Windows Server IPSec 設定指南](<../summaries/my-vault-tech-windows-server-ipsec-0576ca98d.md>) · `raw/my-vault/Note/Tech/Windows Server IPSec 設定指南.md`
+- [Windows Server L2TP IPSec 與 IKEv2 VPN 設定指南](<../summaries/my-vault-tech-windows-server-l2tp-ipsec-ikev2-19417a173.md>) · `raw/my-vault/Note/Tech/Windows Server L2TP IPSec 與 IKEv2 VPN 設定指南.md`
+- [Windows Server Local security Policy](<../summaries/my-vault-tech-windows-server-local-security-policy-0cf2589fc.md>) · `raw/my-vault/Note/Tech/Windows Server Local security Policy.md`
+- [Windows Server NTP 網路時間協定設定指南](<../summaries/my-vault-tech-windows-server-ntp-47166f98c.md>) · `raw/my-vault/Note/Tech/Windows Server NTP 網路時間協定設定指南.md`
+- [Windows Server PPTP & GRE](<../summaries/my-vault-tech-windows-server-pptp-gre-f2659d4da.md>) · `raw/my-vault/Note/Tech/Windows Server PPTP & GRE.md`
+- [Windows Server PPTP tunnel](<../summaries/my-vault-tech-windows-server-pptp-tunnel-2128f5dac.md>) · `raw/my-vault/Note/Tech/Windows Server PPTP tunnel.md`
+- [Windows Server SSTP](<../summaries/my-vault-tech-windows-server-sstp-ebe02d216.md>) · `raw/my-vault/Note/Tech/Windows Server SSTP.md`
+- [Windows Server Trust](<../summaries/my-vault-tech-windows-server-trust-a90894f83.md>) · `raw/my-vault/Note/Tech/Windows Server Trust.md`
+- [Windows 檔案權限管理指南](<../summaries/my-vault-tech-windows-00b431670.md>) · `raw/my-vault/Note/Tech/Windows 檔案權限管理指南.md`
+- [windows-l2tp-connect-error-720](<../summaries/blog-windows-l2tp-connect-error-720.md>) · `raw/my-vault/Note/Tech/windows-l2tp-connect-error-720.md`
+- [WSL2 安裝指南](<../summaries/my-vault-tech-wsl2-40c53fbeb.md>) · `raw/my-vault/Note/Tech/WSL2 安裝指南.md`
+- [人月神話-軟體專案管理之道](<../summaries/my-vault-tech-note-57d9d348e.md>) · `raw/my-vault/Note/Tech/人月神話-軟體專案管理之道.md`
+- [使用 Nuitka 與 Docker 打造高效能且安全的 Python 應用部署方案](<../summaries/my-vault-tech-nuitka-docker-python-5cb3b6987.md>) · `raw/my-vault/Note/Tech/使用 Nuitka 與 Docker 打造高效能且安全的 Python 應用部署方案.md`
+- [網路位置與 Windows Defender 防火牆設定指南](<../summaries/my-vault-tech-windows-defender-9b233a1db.md>) · `raw/my-vault/Note/Tech/網路位置與 Windows Defender 防火牆設定指南.md`
+- [重構的時機與實作](<../summaries/my-vault-tech-note-64626b227.md>) · `raw/my-vault/Note/Tech/重構的時機與實作.md`
+
+## Tech/SQL
+
+- [CASE WHEN 條件判斷](<../summaries/my-vault-tech-case-when-affdf4577.md>) · `raw/my-vault/Note/Tech/SQL/CASE WHEN 條件判斷.md`
+- [JOIN 與反連接](<../summaries/my-vault-tech-join-cecad0b21.md>) · `raw/my-vault/Note/Tech/SQL/JOIN 與反連接.md`
+- [分組與資料修改](<../summaries/my-vault-tech-note-08db955d8.md>) · `raw/my-vault/Note/Tech/SQL/分組與資料修改.md`
+- [日期與視窗函數](<../summaries/my-vault-tech-note-8413de499.md>) · `raw/my-vault/Note/Tech/SQL/日期與視窗函數.md`

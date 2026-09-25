@@ -42,3 +42,7 @@ This video explains why parameter-efficient fine-tuning exists, then contrasts f
 ## Alignment With Current Wiki
 
 This source expands the wiki's model-adaptation layer: it adds a reusable PEFT concept and a separate quantization concept, which are both likely to recur across future fine-tuning or deployment notes.
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

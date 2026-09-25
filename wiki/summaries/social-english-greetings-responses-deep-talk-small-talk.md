@@ -70,3 +70,7 @@
 
 - 這是目前 wiki 第一筆聚焦日常英語社交互動的來源，補上既有知識庫中尚未獨立整理的 `social English / small talk` 主題。
 - 它和 [effective-learning](../concepts/effective-learning.md) 的交集在於都強調情境化與可遷移練習，但這份來源更聚焦在人際互動中的語用選擇，而不是一般學習理論。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

@@ -1,0 +1,691 @@
+{
+	"nodes": [
+		{
+			"id": "85b12a43c12db011",
+			"type": "group",
+			"x": 3500,
+			"y": 320,
+			"width": 1940,
+			"height": 1423,
+			"label": "Set"
+		},
+		{
+			"id": "de2fac29b9705674",
+			"type": "group",
+			"x": 2280,
+			"y": 320,
+			"width": 1107,
+			"height": 1282,
+			"label": "Direct-map"
+		},
+		{
+			"id": "ce9b61c6b582b9e1",
+			"type": "group",
+			"x": 2280,
+			"y": 1840,
+			"width": 1047,
+			"height": 1240,
+			"label": "fully"
+		},
+		{
+			"id": "e9b9d37a7efcd0c1",
+			"type": "group",
+			"x": 5880,
+			"y": 320,
+			"width": 785,
+			"height": 517,
+			"label": "Non blocking cache"
+		},
+		{
+			"id": "4c8da83fb4b34903",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_13_3C Model/09-Direct-map.png",
+			"x": 2300,
+			"y": 409,
+			"width": 550,
+			"height": 349
+		},
+		{
+			"id": "08b2132a4e7c2e6b",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_13_3C Model/03-計算機組織_TOPIC_13_3C Model.png",
+			"x": -200,
+			"y": -160,
+			"width": 399,
+			"height": 200
+		},
+		{
+			"id": "b2833fa172c7034d",
+			"type": "text",
+			"text": "- Compulsory misses(cold-start misses) 開機的時候 cache 都會 miss，每一次 memory block 都只會發生一次。\n- Capacity misses 是指 Cache block 個數不足已，容納一個 process，那麼就會一直被釋放又被拉回記憶體，==只有 fully 會有這個問題==。\n- Conflict misses(collision misses) ==只有在 Set 和 Direct 才會，fully 不會==，因為會一直競爭某些 block。",
+			"x": 300,
+			"y": -188,
+			"width": 580,
+			"height": 184,
+			"color": "1"
+		},
+		{
+			"id": "b10fdc05444d2d58",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_13_3C Model/15-Direct-map.png",
+			"x": 2300,
+			"y": 895,
+			"width": 519,
+			"height": 306
+		},
+		{
+			"id": "b970dba42c12910f",
+			"type": "text",
+			"text": "那麼使用 LRU 替換法則，所以把 0 號換掉",
+			"x": 1794,
+			"y": 205,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "a0fd88f4cb16bcbd",
+			"type": "text",
+			"text": "那麼接下來又換 0 上去但是 LRU，1 Long time not use，所以就會把 1 換掉變成 0 號要上去的，那麼這邊就是 Capacity Miss，容量不足。",
+			"x": 1794,
+			"y": 506,
+			"width": 250,
+			"height": 145,
+			"color": "1"
+		},
+		{
+			"id": "0ac89392e9dd1b39",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_13_3C Model/01-容量比關聯度很重要.png",
+			"x": 2280,
+			"y": -216,
+			"width": 590,
+			"height": 313
+		},
+		{
+			"id": "4df33bd129f69cff",
+			"type": "text",
+			"text": "- 預抓技術在 Miss 的時候直接那下一個或是指定跳幾號，例如拿 0 會順便把 1 也放上去。",
+			"x": 1788,
+			"y": 918,
+			"width": 250,
+			"height": 117,
+			"color": "1"
+		},
+		{
+			"id": "5ab62a56f3aeaf54",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_13_3C Model/19-Direct-map.png",
+			"x": 2300,
+			"y": 1295,
+			"width": 505,
+			"height": 287
+		},
+		{
+			"id": "322ebb9f4f2c5ab0",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_13_3C Model/22-fully.png",
+			"x": 2300,
+			"y": 1860,
+			"width": 487,
+			"height": 331
+		},
+		{
+			"id": "97fa61ad271c4453",
+			"type": "text",
+			"text": "往上找 block size 4 個看有沒有一樣的沒有一樣的就是 MIss，如果往上找一樣的那就是不算一次，也就是說往上找的途中中間有一樣的數字他只算一次。",
+			"x": 2966,
+			"y": 1978,
+			"width": 341,
+			"height": 115,
+			"color": "1"
+		},
+		{
+			"id": "394ab5f603e3c2a4",
+			"type": "text",
+			"text": "- 容量比關聯度很重要",
+			"x": 2450,
+			"y": 160,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "91b36a03a425e2d6",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_13_3C Model/08-Set - 方法大致與 Direct Map 相同。.png",
+			"x": 3520,
+			"y": 404,
+			"width": 520,
+			"height": 304
+		},
+		{
+			"id": "391f36b2bd31d067",
+			"type": "text",
+			"text": "- 方法大致與 Direct Map 相同。",
+			"x": 4190,
+			"y": 521,
+			"width": 290,
+			"height": 50
+		},
+		{
+			"id": "e51278ad4717aee2",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_13_3C Model/13-Set - 使用 LRU 替換.png",
+			"x": 3520,
+			"y": 787,
+			"width": 520,
+			"height": 288
+		},
+		{
+			"id": "60e6d53694cdc3d1",
+			"type": "text",
+			"text": "使用 LRU 替換",
+			"x": 4270,
+			"y": 886,
+			"width": 250,
+			"height": 60
+		},
+		{
+			"id": "7f9a2a880c6b8b97",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_13_3C Model/07-Non blocking cache.png",
+			"x": 5900,
+			"y": 340,
+			"width": 745,
+			"height": 267
+		},
+		{
+			"id": "c03069ebe62184ee",
+			"type": "text",
+			"text": "- super pipeline，就是 out-of-order processors 隱藏 miss latency。\n- hit under miss，Hit 用前面指令的 hit time 隱藏 miss 的時間\n- miss under miss，就是把兩個 miss 疊在一起可以減少 miss 逞罰的時間。",
+			"x": 5954,
+			"y": 723,
+			"width": 638,
+			"height": 94,
+			"color": "1"
+		},
+		{
+			"id": "8c861b20ca84d97c",
+			"type": "text",
+			"text": "- Direct 可以由下往上看（比較快），但是 set 和 fully 只能由上往下看。\n- direct 那麼就是可以看 index 由下往上看對應的 cache。",
+			"x": 2958,
+			"y": 988,
+			"width": 333,
+			"height": 121,
+			"color": "1"
+		},
+		{
+			"id": "5e524cc337aeda4f",
+			"type": "text",
+			"text": "- 那麼找到 WA 了那要記得我前數到 4 的倍數",
+			"x": 2958,
+			"y": 1409,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "5042c1e51a875b4e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_13_3C Model/18-Set.png",
+			"x": 3520,
+			"y": 1175,
+			"width": 520,
+			"height": 283
+		},
+		{
+			"id": "27ab1a303d931caa",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_13_3C Model/20-Set.png",
+			"x": 4120,
+			"y": 1500,
+			"width": 399,
+			"height": 220
+		},
+		{
+			"id": "3f236d02c7720f51",
+			"type": "text",
+			"text": "- 簡單來說就是使用 LRU 替換，那麼就是先看 Index 然後就是使用 LRU 來替換可能已經有的內容，往上找第二個不一樣的，且是 2 的倍數了所以直接放。",
+			"x": 4170,
+			"y": 1262,
+			"width": 310,
+			"height": 147,
+			"color": "1"
+		},
+		{
+			"id": "66b0c80dddbad76e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_13_3C Model/21-Set.png",
+			"x": 4560,
+			"y": 1500,
+			"width": 400,
+			"height": 223
+		},
+		{
+			"id": "bda05520fcffe3b7",
+			"type": "text",
+			"text": "- 是找 Tag 不一樣且 Block 0，且在 block 裡面就算是 hit 也要計算一次",
+			"x": 5100,
+			"y": 1572,
+			"width": 320,
+			"height": 68,
+			"color": "1"
+		},
+		{
+			"id": "5c2d09bad499ef9c",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_13_3C Model/23-fully.png",
+			"x": 2300,
+			"y": 2340,
+			"width": 486,
+			"height": 331
+		},
+		{
+			"id": "e5b1fe91fc9c04a3",
+			"type": "text",
+			"text": "看 BA 一樣的上往下看如果一樣就是 capt 如果第一次出現就是 cp",
+			"x": 3005,
+			"y": 2462,
+			"width": 250,
+			"height": 85,
+			"color": "1"
+		},
+		{
+			"id": "ed5aa1c6a3dc236c",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_13_3C Model/24-fully - 往上找四個.png",
+			"x": 2300,
+			"y": 2760,
+			"width": 485,
+			"height": 300
+		},
+		{
+			"id": "47f45b8bcf48fdbc",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_13_3C Model/02-計算機組織_TOPIC_13_3C Model.png",
+			"x": 1240,
+			"y": -176,
+			"width": 400,
+			"height": 232
+		},
+		{
+			"id": "a1734fe66a71e5a3",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_13_3C Model/05-計算機組織_TOPIC_13_3C Model.png",
+			"x": 1240,
+			"y": 124,
+			"width": 400,
+			"height": 230
+		},
+		{
+			"id": "c742f64b22c70c1f",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_13_3C Model/10-計算機組織_TOPIC_13_3C Model.png",
+			"x": 1240,
+			"y": 444,
+			"width": 400,
+			"height": 238
+		},
+		{
+			"id": "881b570e9ef5380d",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_13_3C Model/14-計算機組織_TOPIC_13_3C Model.png",
+			"x": 1240,
+			"y": 840,
+			"width": 411,
+			"height": 218
+		},
+		{
+			"id": "0e53444c30e03912",
+			"type": "text",
+			"text": "往上找四個",
+			"x": 3005,
+			"y": 2880,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "ddcfa5ef619bf90b",
+			"type": "text",
+			"text": "假設我們 0,4 都使用過了那麼第一次他們都會 Compulsory Miss",
+			"x": 930,
+			"y": 190,
+			"width": 250,
+			"height": 85,
+			"color": "1"
+		},
+		{
+			"id": "ba5a8a7f82d233d6",
+			"type": "text",
+			"text": "那麼又發生了一次那這次就是 Conflict Miss",
+			"x": 930,
+			"y": 591,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "5b770cad3219bbbd",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_13_3C Model/12-計算機組織_TOPIC_13_3C Model.png",
+			"x": 390,
+			"y": 496,
+			"width": 399,
+			"height": 249
+		},
+		{
+			"id": "81f64062f3bcefc4",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_13_3C Model/04-計算機組織_TOPIC_13_3C Model.png",
+			"x": 390,
+			"y": 116,
+			"width": 400,
+			"height": 232
+		},
+		{
+			"id": "24ad202b5c59ce5f",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_13_3C Model/11-計算機組織_TOPIC_13_3C Model.png",
+			"x": -318,
+			"y": 457,
+			"width": 600,
+			"height": 204
+		},
+		{
+			"id": "c164d8b0b35fb1f7",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_13_3C Model/06-計算機組織_TOPIC_13_3C Model.png",
+			"x": -304,
+			"y": 173,
+			"width": 586,
+			"height": 176
+		},
+		{
+			"id": "608515471f6f9d7b",
+			"type": "text",
+			"text": "1. capacity misses 就是增加 cache size 但是會對 performance 降低不太好。\n2. Conflict misses 增加關聯度，但是也會增加 CPU 存取的時間。\n3. Compulsory misses 增加 block size，但會造成 miss rate 上升。",
+			"x": -200,
+			"y": 745,
+			"width": 364,
+			"height": 184,
+			"color": "1"
+		},
+		{
+			"id": "d3d18e172cf4944b",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_13_3C Model/17-計算機組織_TOPIC_13_3C Model.png",
+			"x": 340,
+			"y": 1059,
+			"width": 400,
+			"height": 217
+		},
+		{
+			"id": "e527a09996d4968b",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_13_3C Model/16-計算機組織_TOPIC_13_3C Model.png",
+			"x": -200,
+			"y": 1058,
+			"width": 400,
+			"height": 218
+		},
+		{
+			"id": "c5ba2471fea4f6a6",
+			"type": "text",
+			"text": "- 如果 Index 都一樣前一個（最最靠近）那麼在比較 Tag 如果一樣就是 Hit，否則就是 Miss\n- 然後每種 Cache 只有兩種，就是判斷是不是 Compulsory 如果不是就是另一種，那麼就是看 memory block address，就是就是往上看看他有沒有出現沒有就是 Compulsory miss",
+			"x": 2940,
+			"y": 493,
+			"width": 427,
+			"height": 181,
+			"color": "1"
+		}
+	],
+	"edges": [
+		{
+			"id": "78866c6370886adc",
+			"fromNode": "08b2132a4e7c2e6b",
+			"fromSide": "right",
+			"toNode": "b2833fa172c7034d",
+			"toSide": "left"
+		},
+		{
+			"id": "0099783cfceb9fb0",
+			"fromNode": "b2833fa172c7034d",
+			"fromSide": "bottom",
+			"toNode": "81f64062f3bcefc4",
+			"toSide": "top"
+		},
+		{
+			"id": "6ef5a5018a478ea0",
+			"fromNode": "81f64062f3bcefc4",
+			"fromSide": "bottom",
+			"toNode": "5b770cad3219bbbd",
+			"toSide": "top"
+		},
+		{
+			"id": "a91f6a75f521ab4b",
+			"fromNode": "81f64062f3bcefc4",
+			"fromSide": "right",
+			"toNode": "ddcfa5ef619bf90b",
+			"toSide": "left"
+		},
+		{
+			"id": "163bed54fc07faaa",
+			"fromNode": "5b770cad3219bbbd",
+			"fromSide": "right",
+			"toNode": "ba5a8a7f82d233d6",
+			"toSide": "left"
+		},
+		{
+			"id": "4462f328289c855b",
+			"fromNode": "47f45b8bcf48fdbc",
+			"fromSide": "bottom",
+			"toNode": "a1734fe66a71e5a3",
+			"toSide": "top"
+		},
+		{
+			"id": "a9cde4d221cd6126",
+			"fromNode": "a1734fe66a71e5a3",
+			"fromSide": "right",
+			"toNode": "b970dba42c12910f",
+			"toSide": "left"
+		},
+		{
+			"id": "d5560e524dc943a0",
+			"fromNode": "a1734fe66a71e5a3",
+			"fromSide": "bottom",
+			"toNode": "c742f64b22c70c1f",
+			"toSide": "top"
+		},
+		{
+			"id": "ace17e1b90e73222",
+			"fromNode": "c742f64b22c70c1f",
+			"fromSide": "right",
+			"toNode": "a0fd88f4cb16bcbd",
+			"toSide": "left"
+		},
+		{
+			"id": "9071b6d2ecc58a05",
+			"fromNode": "08b2132a4e7c2e6b",
+			"fromSide": "bottom",
+			"toNode": "c164d8b0b35fb1f7",
+			"toSide": "top"
+		},
+		{
+			"id": "0a0dcea1e880b6c1",
+			"fromNode": "c164d8b0b35fb1f7",
+			"fromSide": "bottom",
+			"toNode": "24ad202b5c59ce5f",
+			"toSide": "top"
+		},
+		{
+			"id": "0ee8841992611a1d",
+			"fromNode": "24ad202b5c59ce5f",
+			"fromSide": "bottom",
+			"toNode": "608515471f6f9d7b",
+			"toSide": "top"
+		},
+		{
+			"id": "746f714cdbc8134a",
+			"fromNode": "e527a09996d4968b",
+			"fromSide": "right",
+			"toNode": "d3d18e172cf4944b",
+			"toSide": "left"
+		},
+		{
+			"id": "95cb8d25b1fa86c3",
+			"fromNode": "608515471f6f9d7b",
+			"fromSide": "bottom",
+			"toNode": "e527a09996d4968b",
+			"toSide": "top"
+		},
+		{
+			"id": "22a1c859605e83f8",
+			"fromNode": "0ac89392e9dd1b39",
+			"fromSide": "bottom",
+			"toNode": "394ab5f603e3c2a4",
+			"toSide": "top"
+		},
+		{
+			"id": "e064d22f3ac6ddad",
+			"fromNode": "881b570e9ef5380d",
+			"fromSide": "right",
+			"toNode": "4df33bd129f69cff",
+			"toSide": "left"
+		},
+		{
+			"id": "df78a129ef5e2441",
+			"fromNode": "4c8da83fb4b34903",
+			"fromSide": "right",
+			"toNode": "c5ba2471fea4f6a6",
+			"toSide": "left"
+		},
+		{
+			"id": "be92fe5398d6e7b8",
+			"fromNode": "b10fdc05444d2d58",
+			"fromSide": "right",
+			"toNode": "8c861b20ca84d97c",
+			"toSide": "left"
+		},
+		{
+			"id": "9f31dd29665bd512",
+			"fromNode": "b10fdc05444d2d58",
+			"fromSide": "bottom",
+			"toNode": "5ab62a56f3aeaf54",
+			"toSide": "top"
+		},
+		{
+			"id": "c22e5558b36d6c15",
+			"fromNode": "5ab62a56f3aeaf54",
+			"fromSide": "right",
+			"toNode": "5e524cc337aeda4f",
+			"toSide": "left"
+		},
+		{
+			"id": "dbfeb915daece783",
+			"fromNode": "4c8da83fb4b34903",
+			"fromSide": "bottom",
+			"toNode": "b10fdc05444d2d58",
+			"toSide": "top"
+		},
+		{
+			"id": "cd373524c59b9409",
+			"fromNode": "91b36a03a425e2d6",
+			"fromSide": "right",
+			"toNode": "391f36b2bd31d067",
+			"toSide": "left"
+		},
+		{
+			"id": "2595cc929ef1cd8a",
+			"fromNode": "91b36a03a425e2d6",
+			"fromSide": "bottom",
+			"toNode": "e51278ad4717aee2",
+			"toSide": "top"
+		},
+		{
+			"id": "51b44d8ee3d21b0e",
+			"fromNode": "e51278ad4717aee2",
+			"fromSide": "right",
+			"toNode": "60e6d53694cdc3d1",
+			"toSide": "left"
+		},
+		{
+			"id": "b2ce74a63d640ef7",
+			"fromNode": "e51278ad4717aee2",
+			"fromSide": "bottom",
+			"toNode": "5042c1e51a875b4e",
+			"toSide": "top"
+		},
+		{
+			"id": "7ade7e5c0edd9e71",
+			"fromNode": "5042c1e51a875b4e",
+			"fromSide": "right",
+			"toNode": "3f236d02c7720f51",
+			"toSide": "left"
+		},
+		{
+			"id": "d32b1c7504120b95",
+			"fromNode": "3f236d02c7720f51",
+			"fromSide": "bottom",
+			"toNode": "27ab1a303d931caa",
+			"toSide": "top"
+		},
+		{
+			"id": "d518fe2428e148ed",
+			"fromNode": "3f236d02c7720f51",
+			"fromSide": "bottom",
+			"toNode": "66b0c80dddbad76e",
+			"toSide": "top"
+		},
+		{
+			"id": "d47ab225f8f97b8a",
+			"fromNode": "66b0c80dddbad76e",
+			"fromSide": "right",
+			"toNode": "bda05520fcffe3b7",
+			"toSide": "left"
+		},
+		{
+			"id": "8c7796591067da57",
+			"fromNode": "322ebb9f4f2c5ab0",
+			"fromSide": "right",
+			"toNode": "97fa61ad271c4453",
+			"toSide": "left"
+		},
+		{
+			"id": "1d379d53b2f622cd",
+			"fromNode": "322ebb9f4f2c5ab0",
+			"fromSide": "bottom",
+			"toNode": "5c2d09bad499ef9c",
+			"toSide": "top"
+		},
+		{
+			"id": "68111b1feeb8ab12",
+			"fromNode": "5c2d09bad499ef9c",
+			"fromSide": "right",
+			"toNode": "e5b1fe91fc9c04a3",
+			"toSide": "left"
+		},
+		{
+			"id": "5747fbb2b2bb2f7e",
+			"fromNode": "5c2d09bad499ef9c",
+			"fromSide": "bottom",
+			"toNode": "ed5aa1c6a3dc236c",
+			"toSide": "top"
+		},
+		{
+			"id": "509cba68989a6a37",
+			"fromNode": "ed5aa1c6a3dc236c",
+			"fromSide": "right",
+			"toNode": "0e53444c30e03912",
+			"toSide": "left"
+		},
+		{
+			"id": "3b6e041f8c50d4e8",
+			"fromNode": "7f9a2a880c6b8b97",
+			"fromSide": "bottom",
+			"toNode": "c03069ebe62184ee",
+			"toSide": "top"
+		}
+	]
+}

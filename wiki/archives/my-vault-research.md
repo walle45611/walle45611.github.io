@@ -1,0 +1,206 @@
+# My vault：Research 筆記
+
+此頁依來源路徑列出已歸檔的筆記與摘要。完整原文仍以 `raw/` 檔案為準。
+
+## Research
+
+- [01 背包問題 (01 Knapsack Problem)](<../summaries/my-vault-research-01-01-knapsack-problem-a4021e9c5.md>) · `raw/my-vault/Note/Research/01 背包問題 (01 Knapsack Problem).md`
+- [Activity Network](<../summaries/my-vault-research-activity-network-30dafc487.md>) · `raw/my-vault/Note/Research/Activity Network.md`
+- [Adelson-Velsky and Landis tree(AVL Tree)](<../summaries/my-vault-research-adelson-velsky-and-landis-tree-6eaf640b5.md>) · `raw/my-vault/Note/Research/Adelson-Velsky and Landis tree(AVL Tree).md`
+- [Agentic AI - A Comprehensive Survey of Architectures, Applications, and Future Directions](<../summaries/my-vault-research-agentic-ai-a-comprehensive-survey-5be73f5b1.md>) · `raw/my-vault/Note/Research/Agentic AI - A Comprehensive Survey of Architectures, Applications, and Future Directions.md`
+- [Agentic AI - Autonomous Intelligence for Complex Goals - A Comprehensive Survey](<../summaries/my-vault-research-agentic-ai-autonomous-intelligence-for-ecab263d1.md>) · `raw/my-vault/Note/Research/Agentic AI - Autonomous Intelligence for Complex Goals - A Comprehensive Survey.md`
+- [Agentic AI and the Rise of in Silico Team Science in Biomedical Research](<../summaries/my-vault-research-agentic-ai-and-the-rise-26f6c4b5c.md>) · `raw/my-vault/Note/Research/Agentic AI and the Rise of in Silico Team Science in Biomedical Research.md`
+- [Agentic Retrieval-Augmented Generation - A Survey on Agentic RAG](<../summaries/my-vault-research-agentic-retrieval-augmented-generation-a-bbb5a39c5.md>) · `raw/my-vault/Note/Research/Agentic Retrieval-Augmented Generation - A Survey on Agentic RAG.md`
+- [All-Pair Shortest Path Problem](<../summaries/my-vault-research-all-pair-shortest-path-problem-c4f143287.md>) · `raw/my-vault/Note/Research/All-Pair Shortest Path Problem.md`
+- [ARP (Address Resolution Protocol) 基本介紹](<../summaries/my-vault-research-arp-address-resolution-protocol-623f55941.md>) · `raw/my-vault/Note/Research/ARP (Address Resolution Protocol) 基本介紹.md`
+- [Array 記憶體位址計算全攻略](<../summaries/my-vault-research-array-d69e88713.md>) · `raw/my-vault/Note/Research/Array 記憶體位址計算全攻略.md`
+- [Artificial Intelligence Language Models for Medical Text Analysis - A Systematic Review](<../summaries/my-vault-research-artificial-intelligence-language-models-for-e1bf442bc.md>) · `raw/my-vault/Note/Research/Artificial Intelligence Language Models for Medical Text Analysis - A Systematic Review.md`
+- [Atlas - Few-shot Learning with Retrieval Augmented Language Models](<../summaries/my-vault-research-atlas-few-shot-learning-with-5fc8a4cbb.md>) · `raw/my-vault/Note/Research/Atlas - Few-shot Learning with Retrieval Augmented Language Models.md`
+- [Attention Is All You Need](<../summaries/my-vault-research-attention-is-all-you-need-3bf0d552b.md>) · `raw/my-vault/Note/Research/Attention Is All You Need.md`
+- [Benchmarking Retrieval-Augmented Generation for Medicine](<../summaries/my-vault-research-benchmarking-retrieval-augmented-generation-for-0c5032872.md>) · `raw/my-vault/Note/Research/Benchmarking Retrieval-Augmented Generation for Medicine.md`
+- [BERT - Pre-training of Deep Bidirectional Transformers for Language Understanding](<../summaries/my-vault-research-bert-pre-training-of-deep-bce592a96.md>) · `raw/my-vault/Note/Research/BERT - Pre-training of Deep Bidirectional Transformers for Language Understanding.md`
+- [BGP 邊界閘道協定完整指南](<../summaries/my-vault-research-bgp-5b3ea995b.md>) · `raw/my-vault/Note/Research/BGP 邊界閘道協定完整指南.md`
+- [Binomial Tree 和 Binomial Heap 和 Fibonacci Heaps](<../summaries/my-vault-research-binomial-tree-binomial-heap-fibonacci-2356c945e.md>) · `raw/my-vault/Note/Research/Binomial Tree 和 Binomial Heap 和 Fibonacci Heaps.md`
+- [CDP 與 LLDP 鄰居探索協定指南](<../summaries/my-vault-research-cdp-lldp-51ddb0650.md>) · `raw/my-vault/Note/Research/CDP 與 LLDP 鄰居探索協定指南.md`
+- [Chain-of-Thought Prompting Elicits Reasoning in Large Language Models](<../summaries/my-vault-research-chain-of-thought-prompting-elicits-74d43e31a.md>) · `raw/my-vault/Note/Research/Chain-of-Thought Prompting Elicits Reasoning in Large Language Models.md`
+- [codeforces-0815](<../summaries/blog-codeforces-0815.md>) · `raw/my-vault/Note/Research/codeforces-0815.md`
+- [Complexity Classes and P vs NP](<../summaries/my-vault-research-complexity-classes-and-p-vs-a9bab1479.md>) · `raw/my-vault/Note/Research/Complexity Classes and P vs NP.md`
+- [CPRS - A Clinical Protocol Recommendation System Based on LLMs](<../summaries/my-vault-research-cprs-a-clinical-protocol-recommendation-a8c56fe31.md>) · `raw/my-vault/Note/Research/CPRS - A Clinical Protocol Recommendation System Based on LLMs.md`
+- [Deep Residual Learning for Image Recognition](<../summaries/my-vault-research-deep-residual-learning-for-image-5494d1fb5.md>) · `raw/my-vault/Note/Research/Deep Residual Learning for Image Recognition.md`
+- [DHCP (Dynamic Host Configuration Protocol)](<../summaries/my-vault-research-dhcp-dynamic-host-configuration-protocol-e9b68d117.md>) · `raw/my-vault/Note/Research/DHCP (Dynamic Host Configuration Protocol).md`
+- [Direct Preference Optimization Your Language Model is Secretly a Reward Model](<../summaries/my-vault-research-direct-preference-optimization-your-language-b36ece630.md>) · `raw/my-vault/Note/Research/Direct Preference Optimization Your Language Model is Secretly a Reward Model.md`
+- [direct-image](<../summaries/blog-direct-image.md>) · `raw/my-vault/Note/Research/direct-image.md`
+- [Distributed Representations of Words and Phrases and their Compositionality](<../summaries/my-vault-research-distributed-representations-of-words-and-e02b628b5.md>) · `raw/my-vault/Note/Research/Distributed Representations of Words and Phrases and their Compositionality.md`
+- [DMVPN (Dynamic Multipoint VPN) 介紹](<../summaries/my-vault-research-dmvpn-dynamic-multipoint-vpn-783e181ba.md>) · `raw/my-vault/Note/Research/DMVPN (Dynamic Multipoint VPN) 介紹.md`
+- [DNS (Domain Name Service)](<../summaries/my-vault-research-dns-domain-name-service-5c6d0878f.md>) · `raw/my-vault/Note/Research/DNS (Domain Name Service).md`
+- [Domain Specific Finetuning of LLMs Using PEFT Techniques](<../summaries/my-vault-research-domain-specific-finetuning-of-llms-1f46922fa.md>) · `raw/my-vault/Note/Research/Domain Specific Finetuning of LLMs Using PEFT Techniques.md`
+- [Efficient Estimation of Word Representations in Vector Space](<../summaries/my-vault-research-efficient-estimation-of-word-representations-009c81759.md>) · `raw/my-vault/Note/Research/Efficient Estimation of Word Representations in Vector Space.md`
+- [EIGRP (Enhanced interior Gateway Routing Protocol)](<../summaries/my-vault-research-eigrp-enhanced-interior-gateway-routing-d3abed149.md>) · `raw/my-vault/Note/Research/EIGRP (Enhanced interior Gateway Routing Protocol).md`
+- [Energy-efficient implementation of YOLOv8, instance segmentation, and pose detection on RISC-V SoC](<../summaries/my-vault-research-energy-efficient-implementation-of-yolov8-6ef7c1275.md>) · `raw/my-vault/Note/Research/Energy-efficient implementation of YOLOv8, instance segmentation, and pose detection on RISC-V SoC.md`
+- [EtherChannel 介紹](<../summaries/my-vault-research-etherchannel-4257dd934.md>) · `raw/my-vault/Note/Research/EtherChannel 介紹.md`
+- [Ethernet 乙太網路協定指南](<../summaries/my-vault-research-ethernet-e5226b687.md>) · `raw/my-vault/Note/Research/Ethernet 乙太網路協定指南.md`
+- [Famous Synchronization Problems](<../summaries/my-vault-research-famous-synchronization-problems-e91233fa5.md>) · `raw/my-vault/Note/Research/Famous Synchronization Problems.md`
+- [Frame Relay 介紹](<../summaries/my-vault-research-frame-relay-4878e7ef7.md>) · `raw/my-vault/Note/Research/Frame Relay 介紹.md`
+- [From Local to Global - A Graph RAG Approach to Query-Focused Summarization](<../summaries/my-vault-research-from-local-to-global-a-ab25c0a9a.md>) · `raw/my-vault/Note/Research/From Local to Global - A Graph RAG Approach to Query-Focused Summarization.md`
+- [Gemma 4 Technical Report](<../summaries/my-vault-research-gemma-4-technical-report-e9f0f2914.md>) · `raw/my-vault/Note/Research/Gemma 4 Technical Report.md`
+- [Generative Agents Interactive Simulacra of Human Behavior](<../summaries/my-vault-research-generative-agents-interactive-simulacra-of-0f152a736.md>) · `raw/my-vault/Note/Research/Generative Agents Interactive Simulacra of Human Behavior.md`
+- [Graph Connectivity](<../summaries/my-vault-research-graph-connectivity-b11305690.md>) · `raw/my-vault/Note/Research/Graph Connectivity.md`
+- [Graph 基本定義和 DFS 還有 BFS](<../summaries/my-vault-research-graph-dfs-bfs-6d2b56ce5.md>) · `raw/my-vault/Note/Research/Graph 基本定義和 DFS 還有 BFS.md`
+- [GRE 介紹](<../summaries/my-vault-research-gre-c0c578d91.md>) · `raw/my-vault/Note/Research/GRE 介紹.md`
+- [Hamiltonian](<../summaries/my-vault-research-hamiltonian-7b03d6f6a.md>) · `raw/my-vault/Note/Research/Hamiltonian.md`
+- [Hardware Synchronization Implementation & Proofs](<../summaries/my-vault-research-hardware-synchronization-implementation-proofs-5dcea0ae1.md>) · `raw/my-vault/Note/Research/Hardware Synchronization Implementation & Proofs.md`
+- [Hashing](<../summaries/my-vault-research-hashing-dd3537714.md>) · `raw/my-vault/Note/Research/Hashing.md`
+- [HDLC 介紹](<../summaries/my-vault-research-hdlc-431ed99d3.md>) · `raw/my-vault/Note/Research/HDLC 介紹.md`
+- [Hierarchical Memory Organization for Wikipedia Generation](<../summaries/my-vault-research-hierarchical-memory-organization-for-wikipedia-2b84c89c6.md>) · `raw/my-vault/Note/Research/Hierarchical Memory Organization for Wikipedia Generation.md`
+- [How to read and do proofs](<../summaries/my-vault-research-how-to-read-and-do-222a4ab5e.md>) · `raw/my-vault/Note/Research/How to read and do proofs.md`
+- [How to write and submit anacademic paper in 18 weeks](<../summaries/my-vault-research-how-to-write-and-submit-e04c530ed.md>) · `raw/my-vault/Note/Research/How to write and submit anacademic paper in 18 weeks.md`
+- [HTTP (Hypertext Transfer Protocol)](<../summaries/my-vault-research-http-hypertext-transfer-protocol-5a9d6fd7a.md>) · `raw/my-vault/Note/Research/HTTP (Hypertext Transfer Protocol).md`
+- [ICMP(Internet Control Message Protocol) 基本介紹](<../summaries/my-vault-research-icmp-internet-control-message-protocol-c5dd151e8.md>) · `raw/my-vault/Note/Research/ICMP(Internet Control Message Protocol) 基本介紹.md`
+- [IEEE LaTeX 範本安裝與使用指南](<../summaries/my-vault-research-ieee-latex-30520d577.md>) · `raw/my-vault/Note/Research/IEEE LaTeX 範本安裝與使用指南.md`
+- [Improving Language Understanding by Generative Pre-Training](<../summaries/my-vault-research-improving-language-understanding-by-generative-616fce342.md>) · `raw/my-vault/Note/Research/Improving Language Understanding by Generative Pre-Training.md`
+- [IP (internet protocol) 基本介紹](<../summaries/my-vault-research-ip-internet-protocol-c8fb1204a.md>) · `raw/my-vault/Note/Research/IP (internet protocol) 基本介紹.md`
+- [IPSec (IP Security) 介紹](<../summaries/my-vault-research-ipsec-ip-security-2f6ca4b6f.md>) · `raw/my-vault/Note/Research/IPSec (IP Security) 介紹.md`
+- [IS-IS (Intermediate System - Intermediate System)](<../summaries/my-vault-research-is-is-intermediate-system-intermediate-13aefca10.md>) · `raw/my-vault/Note/Research/IS-IS (Intermediate System - Intermediate System).md`
+- [ISO 27001  第五章 - 領導 (Leadership)](<../summaries/my-vault-research-iso-27001-leadership-75244ab69.md>) · `raw/my-vault/Note/Research/ISO 27001  第五章 - 領導 (Leadership).md`
+- [ISO 27001  第六章 - 規劃 (Planning)](<../summaries/my-vault-research-iso-27001-planning-3254799e7.md>) · `raw/my-vault/Note/Research/ISO 27001  第六章 - 規劃 (Planning).md`
+- [ISO 27001  第四章 - 組織全景 (Context of the organization)](<../summaries/my-vault-research-iso-27001-context-of-the-00a4f836f.md>) · `raw/my-vault/Note/Research/ISO 27001  第四章 - 組織全景 (Context of the organization).md`
+- [ISO 27001 第七章 - 支援](<../summaries/my-vault-research-iso-27001-1eb14c345.md>) · `raw/my-vault/Note/Research/ISO 27001 第七章 - 支援.md`
+- [Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena](<../summaries/my-vault-research-judging-llm-as-a-judge-0fb8d5254.md>) · `raw/my-vault/Note/Research/Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena.md`
+- [K-means Clustering](<../summaries/my-vault-research-k-means-clustering-97386bf4d.md>) · `raw/my-vault/Note/Research/K-means Clustering.md`
+- [KGAPG - Knowledge-Aware Neural Group Representation Learning for Attentive Prescription Generation of Traditional Chinese Medicine](<../summaries/my-vault-research-kgapg-knowledge-aware-neural-group-018e0b6cf.md>) · `raw/my-vault/Note/Research/KGAPG - Knowledge-Aware Neural Group Representation Learning for Attentive Prescription Generation of Traditional Chinese Medicine.md`
+- [Lamport's Bakery Algorithm (LBA)](<../summaries/my-vault-research-lamport-s-bakery-algorithm-lba-33f7f2dbf.md>) · `raw/my-vault/Note/Research/Lamport's Bakery Algorithm (LBA).md`
+- [Language Models are Unsupervised Multitask Learners](<../summaries/my-vault-research-language-models-are-unsupervised-multitask-5e6b96109.md>) · `raw/my-vault/Note/Research/Language Models are Unsupervised Multitask Learners.md`
+- [Large Language Models in Medicine](<../summaries/my-vault-research-large-language-models-in-medicine-944188856.md>) · `raw/my-vault/Note/Research/Large Language Models in Medicine.md`
+- [LaTeX 論文協作使用指南](<../summaries/my-vault-research-latex-70dfb1772.md>) · `raw/my-vault/Note/Research/LaTeX 論文協作使用指南.md`
+- [Layer Normalization](<../summaries/my-vault-research-layer-normalization-953a00c04.md>) · `raw/my-vault/Note/Research/Layer Normalization.md`
+- [LCS vs. Minimum Edit Distance](<../summaries/my-vault-research-lcs-vs-minimum-edit-distance-bebcbfdb1.md>) · `raw/my-vault/Note/Research/LCS vs. Minimum Edit Distance.md`
+- [LDAP (Light-weight Directory Access Protocol)](<../summaries/my-vault-research-ldap-light-weight-directory-access-43173b353.md>) · `raw/my-vault/Note/Research/LDAP (Light-weight Directory Access Protocol).md`
+- [leetcode-3106](<../summaries/blog-leetcode-3106.md>) · `raw/my-vault/Note/Research/leetcode-3106.md`
+- [Leftist heap or min Leftist Tree](<../summaries/my-vault-research-leftist-heap-or-min-leftist-a2b69a6b4.md>) · `raw/my-vault/Note/Research/Leftist heap or min Leftist Tree.md`
+- [Lifelong Learning of Large Language Model Based Agents - A Roadmap](<../summaries/my-vault-research-lifelong-learning-of-large-language-d127b81d8.md>) · `raw/my-vault/Note/Research/Lifelong Learning of Large Language Model Based Agents - A Roadmap.md`
+- [Linear Search and Binary Search](<../summaries/my-vault-research-linear-search-and-binary-search-4827175d9.md>) · `raw/my-vault/Note/Research/Linear Search and Binary Search.md`
+- [Linear-time sorting algo](<../summaries/my-vault-research-linear-time-sorting-algo-3c0a12d3f.md>) · `raw/my-vault/Note/Research/Linear-time sorting algo.md`
+- [Link List](<../summaries/my-vault-research-link-list-8ad5d3ef6.md>) · `raw/my-vault/Note/Research/Link List.md`
+- [LLaMA - Open and Efficient Foundation Language Models](<../summaries/my-vault-research-llama-open-and-efficient-foundation-c61b6120e.md>) · `raw/my-vault/Note/Research/LLaMA - Open and Efficient Foundation Language Models.md`
+- [Logistic Regression 與 Log-Odds 計算](<../summaries/my-vault-research-logistic-regression-log-odds-29b3a26f1.md>) · `raw/my-vault/Note/Research/Logistic Regression 與 Log-Odds 計算.md`
+- [LoRA - Low-Rank Adaptation of Large Language Models](<../summaries/my-vault-research-lora-low-rank-adaptation-of-a671ad0ce.md>) · `raw/my-vault/Note/Research/LoRA - Low-Rank Adaptation of Large Language Models.md`
+- [Lost in the Middle How Language Models Use Long Contexts](<../summaries/my-vault-research-lost-in-the-middle-how-0aac0a675.md>) · `raw/my-vault/Note/Research/Lost in the Middle How Language Models Use Long Contexts.md`
+- [Low-Cost FPGA-Enhanced CNN Accelerator for Real-Time YOLO Object Detection & Classification](<../summaries/my-vault-research-low-cost-fpga-enhanced-cnn-13449d2d8.md>) · `raw/my-vault/Note/Research/Low-Cost FPGA-Enhanced CNN Accelerator for Real-Time YOLO Object Detection & Classification.md`
+- [M-Way(Degree) Search tree And B-Tree](<../summaries/my-vault-research-m-way-degree-search-tree-54cf4dbb8.md>) · `raw/my-vault/Note/Research/M-Way(Degree) Search tree And B-Tree.md`
+- [Matrix-chain Multiplication](<../summaries/my-vault-research-matrix-chain-multiplication-4442fe425.md>) · `raw/my-vault/Note/Research/Matrix-chain Multiplication.md`
+- [Medical Graph RAG - Evidence-based Medical Large Language Model via Graph Retrieval-Augmented Generation](<../summaries/my-vault-research-medical-graph-rag-evidence-based-62508d3f8.md>) · `raw/my-vault/Note/Research/Medical Graph RAG - Evidence-based Medical Large Language Model via Graph Retrieval-Augmented Generation.md`
+- [MemGPT Towards LLMs as Operating Systems](<../summaries/my-vault-research-memgpt-towards-llms-as-operating-4f65677be.md>) · `raw/my-vault/Note/Research/MemGPT Towards LLMs as Operating Systems.md`
+- [MLS (MLS，multilayer switching)](<../summaries/my-vault-research-mls-mls-multilayer-switching-61f7c8912.md>) · `raw/my-vault/Note/Research/MLS (MLS，multilayer switching).md`
+- [monitor](<../summaries/my-vault-research-monitor-f68b5966b.md>) · `raw/my-vault/Note/Research/monitor.md`
+- [Mutex Locks & Semaphores](<../summaries/my-vault-research-mutex-locks-semaphores-f4379acfc.md>) · `raw/my-vault/Note/Research/Mutex Locks & Semaphores.md`
+- [NAT (Network Address Translation) 介紹](<../summaries/my-vault-research-nat-network-address-translation-b22f534f7.md>) · `raw/my-vault/Note/Research/NAT (Network Address Translation) 介紹.md`
+- [NDP (Neighbor Discovery Protocol) 基本介紹](<../summaries/my-vault-research-ndp-neighbor-discovery-protocol-1dc5210dc.md>) · `raw/my-vault/Note/Research/NDP (Neighbor Discovery Protocol) 基本介紹.md`
+- [Neural Machine Translation by Jointly Learning to Align and Translate](<../summaries/my-vault-research-neural-machine-translation-by-jointly-0ff4a0101.md>) · `raw/my-vault/Note/Research/Neural Machine Translation by Jointly Learning to Align and Translate.md`
+- [NP-C常見的問題](<../summaries/my-vault-research-np-c-a64e6a2c5.md>) · `raw/my-vault/Note/Research/NP-C常見的問題.md`
+- [NTP (Network Time Protocol)](<../summaries/my-vault-research-ntp-network-time-protocol-2a5cd5d36.md>) · `raw/my-vault/Note/Research/NTP (Network Time Protocol).md`
+- [OBST (Optimal Binary Search Tree)](<../summaries/my-vault-research-obst-optimal-binary-search-tree-26ca19d23.md>) · `raw/my-vault/Note/Research/OBST (Optimal Binary Search Tree).md`
+- [OSPFv2 與 OSPFv3 全面整理：原理、流程、LSA 類型與實作案例](<../summaries/my-vault-research-ospfv2-ospfv3-lsa-ed1c0f1f2.md>) · `raw/my-vault/Note/Research/OSPFv2 與 OSPFv3 全面整理：原理、流程、LSA 類型與實作案例.md`
+- [Performance of a Large Language Model on the Reasoning Tasks of a Physician](<../summaries/my-vault-research-performance-of-a-large-language-22c5383ec.md>) · `raw/my-vault/Note/Research/Performance of a Large Language Model on the Reasoning Tasks of a Physician.md`
+- [Peterson's Solution](<../summaries/my-vault-research-peterson-s-solution-2d712149a.md>) · `raw/my-vault/Note/Research/Peterson's Solution.md`
+- [PKI (Public key infrastructure)公鑰基礎設施](<../summaries/my-vault-research-pki-public-key-infrastructure-f023e2d22.md>) · `raw/my-vault/Note/Research/PKI (Public key infrastructure)公鑰基礎設施.md`
+- [PPP 和 PPPoE 介紹](<../summaries/my-vault-research-ppp-pppoe-de8e0672a.md>) · `raw/my-vault/Note/Research/PPP 和 PPPoE 介紹.md`
+- [Proving NP-Completeness](<../summaries/my-vault-research-proving-np-completeness-38e352bcb.md>) · `raw/my-vault/Note/Research/Proving NP-Completeness.md`
+- [QLoRA - Efficient Finetuning of Quantized LLMs](<../summaries/my-vault-research-qlora-efficient-finetuning-of-quantized-52761c370.md>) · `raw/my-vault/Note/Research/QLoRA - Efficient Finetuning of Quantized LLMs.md`
+- [queue-1](<../summaries/blog-queue-1.md>) · `raw/my-vault/Note/Research/queue-1.md`
+- [RADIUS (Remote Authentication Dial In User Service)](<../summaries/my-vault-research-radius-remote-authentication-dial-in-862748b19.md>) · `raw/my-vault/Note/Research/RADIUS (Remote Authentication Dial In User Service).md`
+- [ReAct - Synergizing Reasoning and Acting in Language Models](<../summaries/my-vault-research-react-synergizing-reasoning-and-acting-9837cf319.md>) · `raw/my-vault/Note/Research/ReAct - Synergizing Reasoning and Acting in Language Models.md`
+- [real-time system RMA 與實務排程分析整理](<../summaries/my-vault-research-real-time-system-rma-8e0d277ac.md>) · `raw/my-vault/Note/Research/real-time system RMA 與實務排程分析整理.md`
+- [Recurrent Neural Network (RNN)](<../summaries/my-vault-research-recurrent-neural-network-rnn-0eec6f0dd.md>) · `raw/my-vault/Note/Research/Recurrent Neural Network (RNN).md`
+- [Red-Black tree](<../summaries/my-vault-research-red-black-tree-1741e2b72.md>) · `raw/my-vault/Note/Research/Red-Black tree.md`
+- [Reduction & Problem Types](<../summaries/my-vault-research-reduction-problem-types-aa20007f7.md>) · `raw/my-vault/Note/Research/Reduction & Problem Types.md`
+- [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](<../summaries/my-vault-research-retrieval-augmented-generation-for-knowledge-00564a249.md>) · `raw/my-vault/Note/Research/Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks.md`
+- [RIP (Routing information Protocols)](<../summaries/my-vault-research-rip-routing-information-protocols-3cb471576.md>) · `raw/my-vault/Note/Research/RIP (Routing information Protocols).md`
+- [Rod-Cutting Problem](<../summaries/my-vault-research-rod-cutting-problem-7f6a075c1.md>) · `raw/my-vault/Note/Research/Rod-Cutting Problem.md`
+- [RoFormer - Enhanced Transformer with Rotary Position Embedding](<../summaries/my-vault-research-roformer-enhanced-transformer-with-rotary-f8f618898.md>) · `raw/my-vault/Note/Research/RoFormer - Enhanced Transformer with Rotary Position Embedding.md`
+- [Routing 基本技術](<../summaries/my-vault-research-routing-d3f96a8fc.md>) · `raw/my-vault/Note/Research/Routing 基本技術.md`
+- [Selection Problem](<../summaries/my-vault-research-selection-problem-91fa4d063.md>) · `raw/my-vault/Note/Research/Selection Problem.md`
+- [Sequence to Sequence Learning with Neural Networks](<../summaries/my-vault-research-sequence-to-sequence-learning-with-2cdc8336b.md>) · `raw/my-vault/Note/Research/Sequence to Sequence Learning with Neural Networks.md`
+- [Single-Source Shortest Paths Problem](<../summaries/my-vault-research-single-source-shortest-paths-problem-d55d9b70e.md>) · `raw/my-vault/Note/Research/Single-Source Shortest Paths Problem.md`
+- [Sorting Algo](<../summaries/my-vault-research-sorting-algo-e54a59046.md>) · `raw/my-vault/Note/Research/Sorting Algo.md`
+- [Spanning Tree](<../summaries/my-vault-research-spanning-tree-05de9a377.md>) · `raw/my-vault/Note/Research/Spanning Tree.md`
+- [Splay Trees](<../summaries/my-vault-research-splay-trees-8954f3ed9.md>) · `raw/my-vault/Note/Research/Splay Trees.md`
+- [Standard Acupuncture Nomenclature - A Brief Explanation of 361 Classical Acupuncture Point Names and Their Multilingual Comparative List](<../summaries/my-vault-research-standard-acupuncture-nomenclature-a-brief-2157f1d2f.md>) · `raw/my-vault/Note/Research/Standard Acupuncture Nomenclature - A Brief Explanation of 361 Classical Acupuncture Point Names and Their Multilingual Comparative List.md`
+- [STP (Spanning tree) 完整指南](<../summaries/my-vault-research-stp-spanning-tree-9eeb1ba1d.md>) · `raw/my-vault/Note/Research/STP (Spanning tree) 完整指南.md`
+- [Syndrome Differentiation in Modern Research of Traditional Chinese Medicine](<../summaries/my-vault-research-syndrome-differentiation-in-modern-research-b550d2c5c.md>) · `raw/my-vault/Note/Research/Syndrome Differentiation in Modern Research of Traditional Chinese Medicine.md`
+- [Taiwan Herbal Pharmacopeia 4th Edition English Version](<../summaries/my-vault-research-taiwan-herbal-pharmacopeia-4th-edition-356e0ead5.md>) · `raw/my-vault/Note/Research/Taiwan Herbal Pharmacopeia 4th Edition English Version.md`
+- [Taiwan Herbal Pharmacopeia, 4th Edition](<../summaries/my-vault-research-taiwan-herbal-pharmacopeia-4th-edition-978e1dfef.md>) · `raw/my-vault/Note/Research/Taiwan Herbal Pharmacopeia, 4th Edition.md`
+- [TCM-FTP - Fine-Tuning Large Language Models for Herbal Prescription Prediction](<../summaries/my-vault-research-tcm-ftp-fine-tuning-large-00e7a6e7a.md>) · `raw/my-vault/Note/Research/TCM-FTP - Fine-Tuning Large Language Models for Herbal Prescription Prediction.md`
+- [TCMEval-SDT - A Benchmark Dataset for Syndrome Differentiation Thought of Traditional Chinese Medicine](<../summaries/my-vault-research-tcmeval-sdt-a-benchmark-dataset-a6471a9d6.md>) · `raw/my-vault/Note/Research/TCMEval-SDT - A Benchmark Dataset for Syndrome Differentiation Thought of Traditional Chinese Medicine.md`
+- [TCMLLM-PR - Evaluation of Large Language Models for Prescription Recommendation in Traditional Chinese Medicine](<../summaries/my-vault-research-tcmllm-pr-evaluation-of-large-76073f22c.md>) · `raw/my-vault/Note/Research/TCMLLM-PR - Evaluation of Large Language Models for Prescription Recommendation in Traditional Chinese Medicine.md`
+- [TCMPR - TCM Prescription Recommendation Based on Subnetwork Term Mapping and Deep Learning](<../summaries/my-vault-research-tcmpr-tcm-prescription-recommendation-based-59e07a9ff.md>) · `raw/my-vault/Note/Research/TCMPR - TCM Prescription Recommendation Based on Subnetwork Term Mapping and Deep Learning.md`
+- [TCP 和 UDP 的基本介紹](<../summaries/my-vault-research-tcp-udp-ed699ac3f.md>) · `raw/my-vault/Note/Research/TCP 和 UDP 的基本介紹.md`
+- [TeXstudio 快速上手指南](<../summaries/my-vault-research-texstudio-444974244.md>) · `raw/my-vault/Note/Research/TeXstudio 快速上手指南.md`
+- [The anxious generation-introduction](<../summaries/my-vault-research-the-anxious-generation-introduction-63d24ac81.md>) · `raw/my-vault/Note/Research/The anxious generation-introduction.md`
+- [The Berkeley Function Calling Leaderboard (BFCL) - From Tool Use to Agentic Evaluation of Large Language Models](<../summaries/my-vault-research-the-berkeley-function-calling-leaderboard-432992a09.md>) · `raw/my-vault/Note/Research/The Berkeley Function Calling Leaderboard (BFCL) - From Tool Use to Agentic Evaluation of Large Language Models.md`
+- [Turnitin 與 iThenticate：查重與 AI Writing 使用指南](<../summaries/my-vault-research-turnitin-ithenticate-ai-writing-c4f22f94f.md>) · `raw/my-vault/Note/Research/Turnitin 與 iThenticate：查重與 AI Writing 使用指南.md`
+- [Unifying Large Language Models and Knowledge Graphs - A Roadmap](<../summaries/my-vault-research-unifying-large-language-models-and-bb6129313.md>) · `raw/my-vault/Note/Research/Unifying Large Language Models and Knowledge Graphs - A Roadmap.md`
+- [UTXO](<../summaries/my-vault-research-utxo-795ce8022.md>) · `raw/my-vault/Note/Research/UTXO.md`
+- [uva-1586-227](<../summaries/blog-uva-1586-227.md>) · `raw/my-vault/Note/Research/uva-1586-227.md`
+- [uva-272-340-0816](<../summaries/blog-uva-272-340-0816.md>) · `raw/my-vault/Note/Research/uva-272-340-0816.md`
+- [virtual-judge-hdu-1232](<../summaries/blog-virtual-judge-hdu-1232.md>) · `raw/my-vault/Note/Research/virtual-judge-hdu-1232.md`
+- [virtual-judge-p2249](<../summaries/blog-virtual-judge-p2249.md>) · `raw/my-vault/Note/Research/virtual-judge-p2249.md`
+- [WHO International Standard Terminologies on Traditional Chinese Medicine](<../summaries/my-vault-research-who-international-standard-terminologies-on-25cdb40a5.md>) · `raw/my-vault/Note/Research/WHO International Standard Terminologies on Traditional Chinese Medicine.md`
+- [ZhiFangDanTai Fine-Tuning Graph-Based Retrieval-Augmented Generation Model for Traditional Chinese Medicine Formula](<../summaries/my-vault-research-zhifangdantai-fine-tuning-graph-based-7cabc5af9.md>) · `raw/my-vault/Note/Research/ZhiFangDanTai Fine-Tuning Graph-Based Retrieval-Augmented Generation Model for Traditional Chinese Medicine Formula.md`
+- [一聽就懂的邏輯表達力](<../summaries/my-vault-research-note-f7d23c2ec.md>) · `raw/my-vault/Note/Research/一聽就懂的邏輯表達力.md`
+- [二元搜尋樹 (Binary Search Tree)](<../summaries/my-vault-research-binary-search-tree-00dff8faa.md>) · `raw/my-vault/Note/Research/二元搜尋樹 (Binary Search Tree).md`
+- [二元樹 (Binary Tree)](<../summaries/blog-binary-trees-1.md>) · `raw/my-vault/Note/Research/二元樹 (Binary Tree).md`
+- [互斥集合 (Disjoint Sets)](<../summaries/my-vault-research-disjoint-sets-1e372c2b3.md>) · `raw/my-vault/Note/Research/互斥集合 (Disjoint Sets).md`
+- [公有鏈共識演算法 (Consensus Algorithm)](<../summaries/my-vault-research-consensus-algorithm-01e8c033b.md>) · `raw/my-vault/Note/Research/公有鏈共識演算法 (Consensus Algorithm).md`
+- [區塊鏈前導](<../summaries/my-vault-research-note-8d8fa4b5e.md>) · `raw/my-vault/Note/Research/區塊鏈前導.md`
+- [圖論重點](<../summaries/my-vault-research-note-1aba7c1ae.md>) · `raw/my-vault/Note/Research/圖論重點.md`
+- [堆疊 (Stack)](<../summaries/blog-stack-1.md>) · `raw/my-vault/Note/Research/堆疊 (Stack).md`
+- [堆積 (Heap)](<../summaries/my-vault-research-heap-be744bcac.md>) · `raw/my-vault/Note/Research/堆積 (Heap).md`
+- [學術寫作：引言、文獻回顧與語言使用](<../summaries/my-vault-research-note-379eb75bf.md>) · `raw/my-vault/Note/Research/學術寫作：引言、文獻回顧與語言使用.md`
+- [學術期刊入門：出版商、索引、分區與論文類型](<../summaries/my-vault-research-note-eb8be25e8.md>) · `raw/my-vault/Note/Research/學術期刊入門：出版商、索引、分區與論文類型.md`
+- [對稱最小最大堆積 (Symmetric Min-Max Heap，SMMH)](<../summaries/my-vault-research-symmetric-min-max-heap-smmh-12e1cf243.md>) · `raw/my-vault/Note/Research/對稱最小最大堆積 (Symmetric Min-Max Heap，SMMH).md`
+- [延伸二元樹 (Extended Binary Tree)](<../summaries/my-vault-research-extended-binary-tree-9c902e4e3.md>) · `raw/my-vault/Note/Research/延伸二元樹 (Extended Binary Tree).md`
+- [引線二元樹 (Threaded Binary Tree)](<../summaries/my-vault-research-threaded-binary-tree-e78e5b45c.md>) · `raw/my-vault/Note/Research/引線二元樹 (Threaded Binary Tree).md`
+- [最小最大堆積 (Min-Max Heap)](<../summaries/my-vault-research-min-max-heap-dfd94013d.md>) · `raw/my-vault/Note/Research/最小最大堆積 (Min-Max Heap).md`
+- [樹（Tree）](<../summaries/blog-tree-introduc.md>) · `raw/my-vault/Note/Research/樹（Tree）.md`
+- [線性代數-第一章-矩陣與高斯消去法](<../summaries/my-vault-research-note-347916a26.md>) · `raw/my-vault/Note/Research/線性代數-第一章-矩陣與高斯消去法.md`
+- [線性代數-第二章](<../summaries/my-vault-research-note-25d422a56.md>) · `raw/my-vault/Note/Research/線性代數-第二章.md`
+- [複雜度計算](<../summaries/blog-algorithm-complexity.md>) · `raw/my-vault/Note/Research/複雜度計算.md`
+- [計算機組織_第九章重點](<../summaries/my-vault-research-note-31ebc5a4f.md>) · `raw/my-vault/Note/Research/計算機組織_第九章重點.md`
+- [計算機組織_第五章重要](<../summaries/my-vault-research-note-24b5cf125.md>) · `raw/my-vault/Note/Research/計算機組織_第五章重要.md`
+- [計算機組織_第四章重要](<../summaries/my-vault-research-note-6b1e24346.md>) · `raw/my-vault/Note/Research/計算機組織_第四章重要.md`
+- [計算機組織MIPS 浮點數整理](<../summaries/my-vault-research-mips-393261f3c.md>) · `raw/my-vault/Note/Research/計算機組織MIPS 浮點數整理.md`
+- [防火牆基本術語](<../summaries/my-vault-research-note-5c9860307.md>) · `raw/my-vault/Note/Research/防火牆基本術語.md`
+- [雙端堆或是雙端優先隊列 (Double-ended Heap OR  double-ended priority queue，DEPQ)](<../summaries/my-vault-research-double-ended-heap-or-double-133c3d610.md>) · `raw/my-vault/Note/Research/雙端堆或是雙端優先隊列 (Double-ended Heap OR  double-ended priority queue，DEPQ).md`
+
+## Research/ML_DL_Obsidian_Notes
+
+- [00 - ML-DL Map](<../summaries/my-vault-research-00-ml-dl-map-5e7ca515e.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/00 - ML-DL Map.md`
+- [01 - Chain Rule and Total Derivative](<../summaries/my-vault-research-01-chain-rule-and-total-99420c745.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/01 - Chain Rule and Total Derivative.md`
+- [01 - Entropy and Information](<../summaries/my-vault-research-01-entropy-and-information-904f7aa34.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/01 - Entropy and Information.md`
+- [01 - Gradient Descent and Learning Rate](<../summaries/my-vault-research-01-gradient-descent-and-learning-04260985a.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/01 - Gradient Descent and Learning Rate.md`
+- [01 - Momentum](<../summaries/my-vault-research-01-momentum-d240f3c17.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/01 - Momentum.md`
+- [01 - Neuron Features and Parameters](<../summaries/my-vault-research-01-neuron-features-and-parameters-6f6be6844.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/01 - Neuron Features and Parameters.md`
+- [01 - Train Validation and Test Sets](<../summaries/my-vault-research-01-train-validation-and-test-8fbd19a63.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/01 - Train Validation and Test Sets.md`
+- [02 - Computational Graph and Backpropagation](<../summaries/my-vault-research-02-computational-graph-and-backpropagation-099c79474.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/02 - Computational Graph and Backpropagation.md`
+- [02 - Hidden Layers and Multiple Features](<../summaries/my-vault-research-02-hidden-layers-and-multiple-68c62c9bd.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/02 - Hidden Layers and Multiple Features.md`
+- [02 - K-Fold Cross Validation](<../summaries/my-vault-research-02-k-fold-cross-validation-16ab9e9f2.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/02 - K-Fold Cross Validation.md`
+- [02 - Likelihood NLL and Cross-Entropy](<../summaries/my-vault-research-02-likelihood-nll-and-cross-7a41f9924.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/02 - Likelihood NLL and Cross-Entropy.md`
+- [02 - Local Minima Saddle Points and Critical Points](<../summaries/my-vault-research-02-local-minima-saddle-points-ecba74a9a.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/02 - Local Minima Saddle Points and Critical Points.md`
+- [02 - RMSProp](<../summaries/my-vault-research-02-rmsprop-b19d35656.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/02 - RMSProp.md`
+- [03 - Activation Functions](<../summaries/my-vault-research-03-activation-functions-9bde5ad28.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/03 - Activation Functions.md`
+- [03 - Adam](<../summaries/my-vault-research-03-adam-d35274cd5.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/03 - Adam.md`
+- [03 - Gradient Accumulation Across a Batch](<../summaries/my-vault-research-03-gradient-accumulation-across-a-ef90031c7.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/03 - Gradient Accumulation Across a Batch.md`
+- [03 - MAE and MSE](<../summaries/my-vault-research-03-mae-and-mse-5b5354b17.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/03 - MAE and MSE.md`
+- [03 - Taylor Expansion Hessian and Eigenvalues](<../summaries/my-vault-research-03-taylor-expansion-hessian-and-4e2a6e16f.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/03 - Taylor Expansion Hessian and Eigenvalues.md`
+- [03 - Underfitting Overfitting and Model Bias](<../summaries/my-vault-research-03-underfitting-overfitting-and-model-1e57ea5b9.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/03 - Underfitting Overfitting and Model Bias.md`
+- [04 - Batch Mini-batch and Batch Size](<../summaries/my-vault-research-04-batch-mini-batch-and-08a56f0ee.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/04 - Batch Mini-batch and Batch Size.md`
+- [04 - Batch Normalization](<../summaries/my-vault-research-04-batch-normalization-76a3d4447.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/04 - Batch Normalization.md`
+- [04 - Differentials Gradients and Jacobians](<../summaries/my-vault-research-04-differentials-gradients-and-jacobians-9e6bd226e.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/04 - Differentials Gradients and Jacobians.md`
+- [04 - Model Complexity Data Augmentation and Optimization Failure](<../summaries/my-vault-research-04-model-complexity-data-augmentation-b34c2883a.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/04 - Model Complexity Data Augmentation and Optimization Failure.md`
+- [04 - Optimizer Comparison](<../summaries/my-vault-research-04-optimizer-comparison-ba0473c29.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/04 - Optimizer Comparison.md`
+- [04 - Softmax](<../summaries/my-vault-research-04-softmax-412f65ce0.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/04 - Softmax.md`
+- [05 - AdaGrad and Gradient Scaling](<../summaries/my-vault-research-05-adagrad-and-gradient-scaling-99fc0cc04.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/05 - AdaGrad and Gradient Scaling.md`
+- [05 - Feature Normalization](<../summaries/my-vault-research-05-feature-normalization-75a44e2d6.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/05 - Feature Normalization.md`
+- [05 - Learning Rate Scheduling and Warm-up](<../summaries/my-vault-research-05-learning-rate-scheduling-and-68af01487.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/05 - Learning Rate Scheduling and Warm-up.md`
+- [99 - Figure Sources](<../summaries/my-vault-research-99-figure-sources-887d5858d.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/99 - Figure Sources.md`
+- [README](<../summaries/my-vault-research-readme-51228647c.md>) · `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/README.md`

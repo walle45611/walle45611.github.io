@@ -33,3 +33,7 @@
 ## Alignment With Current Wiki
 
 這份來源是目前知識庫「raw / wiki 分層、規則路由、索引與 log」設計的概念性前身；既有 `llm-wiki-worker` 與 `llm-wiki-worker-project` 摘要則分別記錄規則邊界與具體專案實作，三者應保持來源層級區分。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

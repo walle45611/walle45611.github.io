@@ -1,0 +1,801 @@
+{
+	"nodes": [
+		{
+			"id": "cecbf4b899ab21cd",
+			"type": "group",
+			"x": -1440,
+			"y": -1360,
+			"width": 3298,
+			"height": 2740,
+			"label": "回復型"
+		},
+		{
+			"id": "6ff0596570077c15",
+			"type": "group",
+			"x": -4240,
+			"y": -1200,
+			"width": 2560,
+			"height": 1809,
+			"label": "非回復"
+		},
+		{
+			"id": "791a8d817f185d6f",
+			"type": "group",
+			"x": -1440,
+			"y": 1680,
+			"width": 2640,
+			"height": 1220,
+			"label": "右移與二的冪次方除法"
+		},
+		{
+			"id": "090e59b109d6d423",
+			"type": "group",
+			"x": -1280,
+			"y": 40,
+			"width": 2199,
+			"height": 1280,
+			"label": "Hardware Friendly"
+		},
+		{
+			"id": "1f6905bb3042a3d9",
+			"type": "group",
+			"x": -1280,
+			"y": -1200,
+			"width": 1753,
+			"height": 1080,
+			"label": "Traditional"
+		},
+		{
+			"id": "f606926a1590aa6d",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_09_10_16除法運算和右移與二的冪次方除法/15-計算機組織TOPIC_09_10_16除法運算和.png",
+			"x": -4161,
+			"y": 844,
+			"width": 751,
+			"height": 240
+		},
+		{
+			"id": "b232965e32278718",
+			"type": "text",
+			"text": "MIPS 規定餘數的符號要跟被除數一樣，這個就是判斷有號數除法的方法",
+			"x": -3322,
+			"y": 922,
+			"width": 340,
+			"height": 55,
+			"color": "1"
+		},
+		{
+			"id": "3526adcd56f9608f",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_09_10_16除法運算和右移與二的冪次方除法/16-mul = s3 放到 $s1.png",
+			"x": -4161,
+			"y": 1230,
+			"width": 980,
+			"height": 480
+		},
+		{
+			"id": "23c507241d9f77be",
+			"type": "text",
+			"text": "- mfhi = move from high\n- mflo = move from low",
+			"x": -2982,
+			"y": 1380,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "ebb041a97c775dc5",
+			"type": "text",
+			"text": "- mul = $s2 * $s3 放到 $s1\n- 要小心使用 mul 這個指令，如果乘之後數值超過 32 bits 表示範圍部分 product 會消失，基本很少會有 case 會超過 32 bits 他不是 pseudo instructions 在 MIPS ISA，mul 是給 process 的設計者去設計這個指令，mult 就是上面的",
+			"x": -2973,
+			"y": 1565,
+			"width": 409,
+			"height": 181,
+			"color": "1"
+		},
+		{
+			"id": "ef93cb28dceeb5c9",
+			"type": "text",
+			"text": "mult 的速度很慢很慢循序電路，那麼 mul 通常使用組合電路",
+			"x": -2973,
+			"y": 1830,
+			"width": 329,
+			"height": 80,
+			"color": "1"
+		},
+		{
+			"id": "24feab9d0fe2727a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_09_10_16除法運算和右移與二的冪次方除法/03-非回復.png",
+			"x": -4160,
+			"y": -1052,
+			"width": 1029,
+			"height": 574
+		},
+		{
+			"id": "c6d04154a6138583",
+			"type": "text",
+			"text": "- 回復型的就是左邊的公式那麼就是我還要在加回去 Divisor\n- 那麼非回復型就是把先減如果不夠減下回合變成加那麼就結果是一樣的速度比較快",
+			"x": -3881,
+			"y": -378,
+			"width": 471,
+			"height": 91,
+			"color": "3"
+		},
+		{
+			"id": "563b9b310431b119",
+			"type": "text",
+			"text": "Control -> Quotient 的兩條線一個是為了位移一個是為了要設定 0 或是 1",
+			"x": 83,
+			"y": -704,
+			"width": 250,
+			"height": 89,
+			"color": "1"
+		},
+		{
+			"id": "58e9f8a13ad3e32c",
+			"type": "text",
+			"text": "Control -> ALU 是為了要控制 ALU 是要加還是減，如果 Dividend 不夠減 Divisor 會變成負數那麼就要把 Divisor 加回去",
+			"x": 83,
+			"y": -567,
+			"width": 280,
+			"height": 114,
+			"color": "1"
+		},
+		{
+			"id": "ba9febcedd86a449",
+			"type": "text",
+			"text": "Remainder -> Control 是要讓 Quotient 知道要放 0 或是 1，也就是看 Remainder 是正負",
+			"x": 83,
+			"y": -405,
+			"width": 250,
+			"height": 91,
+			"color": "1"
+		},
+		{
+			"id": "4e292dfeab79bcef",
+			"type": "text",
+			"text": "Control -> Remainder 就是 Load 就是看什麼時候把 ALU 的結果 Load 到 Remainder",
+			"x": 83,
+			"y": -259,
+			"width": 250,
+			"height": 85,
+			"color": "1"
+		},
+		{
+			"id": "903efc4b65462e6a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_09_10_16除法運算和右移與二的冪次方除法/01-Traditional.png",
+			"x": 53,
+			"y": -1129,
+			"width": 400,
+			"height": 367
+		},
+		{
+			"id": "a731a7cf38877ff0",
+			"type": "text",
+			"text": "## MIPS 乘除法器其實一樣只是往左或是往右 ",
+			"x": -104,
+			"y": 80,
+			"width": 529,
+			"height": 50,
+			"color": "1"
+		},
+		{
+			"id": "4c153290d5224199",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_09_10_16除法運算和右移與二的冪次方除法/12-Hardware Friendly - MIPS 乘除法器其實一樣只是往左或是往右.png",
+			"x": -110,
+			"y": 193,
+			"width": 535,
+			"height": 358
+		},
+		{
+			"id": "b8a98f4cc3dd2948",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_09_10_16除法運算和右移與二的冪次方除法/07-Traditional.png",
+			"x": -460,
+			"y": -615,
+			"width": 400,
+			"height": 210
+		},
+		{
+			"id": "b45fb90387d13e0b",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_09_10_16除法運算和右移與二的冪次方除法/02-Traditional.png",
+			"x": -460,
+			"y": -1071,
+			"width": 400,
+			"height": 309
+		},
+		{
+			"id": "db1ca7ee6711cc1e",
+			"type": "text",
+			"text": "如果是 4 個 bit 最少要做 5 輪，N 等於 Bit 數的話就是 N+1 輪，主要原因是因為 Divisor 和 Remainder 第一輪在減的時候都沒有被減到",
+			"x": -416,
+			"y": -287,
+			"width": 312,
+			"height": 113,
+			"color": "1"
+		},
+		{
+			"id": "0d3623d23f213716",
+			"type": "text",
+			"text": "MIPS 都是 32 bits 的 registry 那麼所以這邊是兩個特殊暫存器 HI/LO 兩個暫存器，平常是一般的暫存器，但是在做乘除的時候做左右移的時候會做特殊設計可以從 31 移動到 32 反之",
+			"x": 520,
+			"y": 342,
+			"width": 300,
+			"height": 138,
+			"color": "1"
+		},
+		{
+			"id": "d07b0a8bd7313dce",
+			"type": "text",
+			"text": "restore 的方法就是把 Divisor 加回 remainder 的左半邊還原 dividend 原本的數值",
+			"x": 338,
+			"y": 680,
+			"width": 250,
+			"height": 85
+		},
+		{
+			"id": "43d43652b28eca06",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_09_10_16除法運算和右移與二的冪次方除法/14-Hardware Friendly.png",
+			"x": -416,
+			"y": 680,
+			"width": 647,
+			"height": 422
+		},
+		{
+			"id": "980dffea51e72c1d",
+			"type": "text",
+			"text": "Control -> Remainder 就是 Load 就是看什麼時候把 ALU 的結果 Load 到 Remainder，那麼還有一條 shift enable 就是要不要把 Remainder shift",
+			"x": -645,
+			"y": 220,
+			"width": 324,
+			"height": 115,
+			"color": "1"
+		},
+		{
+			"id": "8de3110604d57188",
+			"type": "text",
+			"text": "Control -> ALU 是為了要控制 ALU 是要加還是減，如果 Dividend 不夠減 Divisor 會變成負數那麼就要把 Divisor 加回去",
+			"x": -645,
+			"y": 80,
+			"width": 324,
+			"height": 85,
+			"color": "1"
+		},
+		{
+			"id": "65907c8762ed29b8",
+			"type": "text",
+			"text": "Remainder -> Control 是要讓 Quotient 知道要放 0 或是 1，也就是看 Remainder 是正負",
+			"x": -645,
+			"y": 400,
+			"width": 250,
+			"height": 91,
+			"color": "1"
+		},
+		{
+			"id": "5f667f98bdae6b03",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_09_10_16除法運算和右移與二的冪次方除法/13-Hardware Friendly - 4 bit 只會跑 4 輪.png",
+			"x": -1157,
+			"y": 638,
+			"width": 658,
+			"height": 506
+		},
+		{
+			"id": "d028ef737a03ae73",
+			"type": "text",
+			"text": "0111 不夠減 0010,0000  所以 Quotient 左移",
+			"x": -829,
+			"y": -704,
+			"width": 250,
+			"height": 60
+		},
+		{
+			"id": "b42d6e3703f9278f",
+			"type": "text",
+			"text": "Divisor 右移動，這樣是一輪",
+			"x": -829,
+			"y": -529,
+			"width": 250,
+			"height": 60
+		},
+		{
+			"id": "33b9a181faa077f6",
+			"type": "text",
+			"text": "最後的結果",
+			"x": -829,
+			"y": -347,
+			"width": 250,
+			"height": 60
+		},
+		{
+			"id": "f17c02a3720ea58e",
+			"type": "text",
+			"text": "最後一輪因為餘數是錯誤的所以要把餘數往右半邊 shfit 一個 bit",
+			"x": 338,
+			"y": 864,
+			"width": 250,
+			"height": 85,
+			"color": "1"
+		},
+		{
+			"id": "a913834da856a660",
+			"type": "text",
+			"text": "第一個步驟就是把 remainder 往左移動一個 bit 這樣就可以少一輪了，也就是避免像是 Traditional 多一輪",
+			"x": 338,
+			"y": 987,
+			"width": 250,
+			"height": 115
+		},
+		{
+			"id": "3f76e91aacce5b08",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_09_10_16除法運算和右移與二的冪次方除法/11-Hardware Friendly - 4 bit 只會跑 4 輪.png",
+			"x": -1153,
+			"y": 179,
+			"width": 400,
+			"height": 221
+		},
+		{
+			"id": "dbf2e58e34110a0e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_09_10_16除法運算和右移與二的冪次方除法/05-Traditional.png",
+			"x": -1260,
+			"y": -917,
+			"width": 340,
+			"height": 80
+		},
+		{
+			"id": "e68c471c49278a3b",
+			"type": "text",
+			"text": "1. 傳統式的有 Quotient reg 但是 Hardware Friendly 沒有\n2. Hardware Friendly Divisor 1 倍長但是傳統式 2 倍長\n3. ALU 也是",
+			"x": 1040,
+			"y": -721,
+			"width": 318,
+			"height": 154,
+			"color": "1"
+		},
+		{
+			"id": "0856ef622e00a2fd",
+			"type": "text",
+			"text": "4 bit 只會跑 4 輪",
+			"x": -1078,
+			"y": 470,
+			"width": 250,
+			"height": 60,
+			"color": "2"
+		},
+		{
+			"id": "a7e858c80eeab09e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_09_10_16除法運算和右移與二的冪次方除法/06-Traditional.png",
+			"x": -1241,
+			"y": -724,
+			"width": 302,
+			"height": 100
+		},
+		{
+			"id": "65f861710eed69b5",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_09_10_16除法運算和右移與二的冪次方除法/09-Traditional - 最後的結果.png",
+			"x": -1232,
+			"y": -357,
+			"width": 285,
+			"height": 80
+		},
+		{
+			"id": "f52f05710bc11a8c",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_09_10_16除法運算和右移與二的冪次方除法/08-Traditional - Divisor 右移動,這樣是一輪.png",
+			"x": -1245,
+			"y": -543,
+			"width": 310,
+			"height": 88
+		},
+		{
+			"id": "9d414bbfcec72f98",
+			"type": "text",
+			"text": "有號數向右移不等於除以 2 的冪次方，對錯之間只會差 1 。",
+			"x": -293,
+			"y": 1824,
+			"width": 238,
+			"height": 55,
+			"color": "1"
+		},
+		{
+			"id": "a67464935670f092",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_09_10_16除法運算和右移與二的冪次方除法/17-右移與二的冪次方除法.png",
+			"x": -1420,
+			"y": 1746,
+			"width": 829,
+			"height": 415
+		},
+		{
+			"id": "760e3eb8d880074c",
+			"type": "text",
+			"text": "那麼也不一定會錯誤因為被移掉的右邊都是零的話就不會錯誤",
+			"x": -293,
+			"y": 1924,
+			"width": 278,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "7d03132d23575fed",
+			"type": "text",
+			"text": "如果要修正那麼就是你右移 bit 多少加回來多少 bit 要先加在右移",
+			"x": -293,
+			"y": 2044,
+			"width": 313,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "5f24821da89062ab",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_09_10_16除法運算和右移與二的冪次方除法/19-右移與二的冪次方除法.png",
+			"x": -1420,
+			"y": 2321,
+			"width": 829,
+			"height": 411
+		},
+		{
+			"id": "ff951816af8fdbac",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_09_10_16除法運算和右移與二的冪次方除法/18-右移與二的冪次方除法.png",
+			"x": -428,
+			"y": 2220,
+			"width": 583,
+			"height": 239
+		},
+		{
+			"id": "4547a2f36333f2cc",
+			"type": "text",
+			"text": "I 這個是 I 英文字母",
+			"x": 260,
+			"y": 2429,
+			"width": 250,
+			"height": 60
+		},
+		{
+			"id": "6b847274c6a5a092",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_09_10_16除法運算和右移與二的冪次方除法/21-右移與二的冪次方除法 - I 這個是 I 英文字母.png",
+			"x": -410,
+			"y": 2586,
+			"width": 565,
+			"height": 172
+		},
+		{
+			"id": "b5a29b5147a317c9",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_09_10_16除法運算和右移與二的冪次方除法/20-右移與二的冪次方除法.png",
+			"x": 260,
+			"y": 2542,
+			"width": 479,
+			"height": 260
+		},
+		{
+			"id": "db798bf9fb20aa35",
+			"type": "text",
+			"text": "主要原因是因為如果是負數那麼會變成全 1 然後如果是正數會變成全零然後 and 7 那麼其實就做修正了因為最後加上 I",
+			"x": 835,
+			"y": 2600,
+			"width": 250,
+			"height": 120,
+			"color": "2"
+		},
+		{
+			"id": "7694cc252e13dfc8",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_09_10_16除法運算和右移與二的冪次方除法/10-非回復.png",
+			"x": -2960,
+			"y": -149,
+			"width": 1221,
+			"height": 738
+		},
+		{
+			"id": "42e406c27584a509",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_09_10_16除法運算和右移與二的冪次方除法/04-非回復.png",
+			"x": -2955,
+			"y": -1052,
+			"width": 1215,
+			"height": 675
+		}
+	],
+	"edges": [
+		{
+			"id": "21f301142052ca2b",
+			"fromNode": "dbf2e58e34110a0e",
+			"fromSide": "bottom",
+			"toNode": "a7e858c80eeab09e",
+			"toSide": "top"
+		},
+		{
+			"id": "73db06a99fa78672",
+			"fromNode": "a7e858c80eeab09e",
+			"fromSide": "bottom",
+			"toNode": "f52f05710bc11a8c",
+			"toSide": "top"
+		},
+		{
+			"id": "42daa7b4ef53fac0",
+			"fromNode": "a7e858c80eeab09e",
+			"fromSide": "right",
+			"toNode": "d028ef737a03ae73",
+			"toSide": "left"
+		},
+		{
+			"id": "c2e89445978c0821",
+			"fromNode": "f52f05710bc11a8c",
+			"fromSide": "right",
+			"toNode": "b42d6e3703f9278f",
+			"toSide": "left"
+		},
+		{
+			"id": "26c91740f63c9af0",
+			"fromNode": "f52f05710bc11a8c",
+			"fromSide": "bottom",
+			"toNode": "65f861710eed69b5",
+			"toSide": "top"
+		},
+		{
+			"id": "5c9d4bc6982cdd06",
+			"fromNode": "65f861710eed69b5",
+			"fromSide": "right",
+			"toNode": "33b9a181faa077f6",
+			"toSide": "left"
+		},
+		{
+			"id": "394a72fcb2963c34",
+			"fromNode": "b8a98f4cc3dd2948",
+			"fromSide": "right",
+			"toNode": "58e9f8a13ad3e32c",
+			"toSide": "left"
+		},
+		{
+			"id": "c4ce5a87c5ff19b5",
+			"fromNode": "b8a98f4cc3dd2948",
+			"fromSide": "right",
+			"toNode": "ba9febcedd86a449",
+			"toSide": "left"
+		},
+		{
+			"id": "074e30912814e23a",
+			"fromNode": "b8a98f4cc3dd2948",
+			"fromSide": "right",
+			"toNode": "563b9b310431b119",
+			"toSide": "left"
+		},
+		{
+			"id": "0e93b211ba148f81",
+			"fromNode": "b8a98f4cc3dd2948",
+			"fromSide": "bottom",
+			"toNode": "db1ca7ee6711cc1e",
+			"toSide": "top"
+		},
+		{
+			"id": "5ea8e7fe0079c1a7",
+			"fromNode": "b8a98f4cc3dd2948",
+			"fromSide": "top",
+			"toNode": "b45fb90387d13e0b",
+			"toSide": "bottom"
+		},
+		{
+			"id": "6bcd799a964116c3",
+			"fromNode": "b45fb90387d13e0b",
+			"fromSide": "right",
+			"toNode": "903efc4b65462e6a",
+			"toSide": "left"
+		},
+		{
+			"id": "502aa37274c1015a",
+			"fromNode": "b8a98f4cc3dd2948",
+			"fromSide": "right",
+			"toNode": "4e292dfeab79bcef",
+			"toSide": "left"
+		},
+		{
+			"id": "50d0e4d5b7dd7319",
+			"fromNode": "3f76e91aacce5b08",
+			"fromSide": "right",
+			"toNode": "8de3110604d57188",
+			"toSide": "left"
+		},
+		{
+			"id": "987514668cd3b4d1",
+			"fromNode": "3f76e91aacce5b08",
+			"fromSide": "right",
+			"toNode": "980dffea51e72c1d",
+			"toSide": "left"
+		},
+		{
+			"id": "8caad226e73bbc18",
+			"fromNode": "3f76e91aacce5b08",
+			"fromSide": "right",
+			"toNode": "65907c8762ed29b8",
+			"toSide": "left"
+		},
+		{
+			"id": "7062cb7a799140d0",
+			"fromNode": "1f6905bb3042a3d9",
+			"fromSide": "right",
+			"toNode": "e68c471c49278a3b",
+			"toSide": "left"
+		},
+		{
+			"id": "df429fc47eab4658",
+			"fromNode": "090e59b109d6d423",
+			"fromSide": "right",
+			"toNode": "e68c471c49278a3b",
+			"toSide": "left"
+		},
+		{
+			"id": "47e6ce462de4e26c",
+			"fromNode": "3f76e91aacce5b08",
+			"fromSide": "bottom",
+			"toNode": "0856ef622e00a2fd",
+			"toSide": "top"
+		},
+		{
+			"id": "d1b30163d873f735",
+			"fromNode": "43d43652b28eca06",
+			"fromSide": "right",
+			"toNode": "d07b0a8bd7313dce",
+			"toSide": "left"
+		},
+		{
+			"id": "6764670e3c94cbd4",
+			"fromNode": "43d43652b28eca06",
+			"fromSide": "right",
+			"toNode": "f17c02a3720ea58e",
+			"toSide": "left"
+		},
+		{
+			"id": "e1f8dc0b39497ae5",
+			"fromNode": "43d43652b28eca06",
+			"fromSide": "right",
+			"toNode": "a913834da856a660",
+			"toSide": "left"
+		},
+		{
+			"id": "53592c7b5b157953",
+			"fromNode": "43d43652b28eca06",
+			"fromSide": "left",
+			"toNode": "5f667f98bdae6b03",
+			"toSide": "right"
+		},
+		{
+			"id": "74b21aaaadd128d3",
+			"fromNode": "a731a7cf38877ff0",
+			"fromSide": "bottom",
+			"toNode": "4c153290d5224199",
+			"toSide": "top"
+		},
+		{
+			"id": "2740387b698633a2",
+			"fromNode": "4c153290d5224199",
+			"fromSide": "right",
+			"toNode": "0d3623d23f213716",
+			"toSide": "left"
+		},
+		{
+			"id": "219763a545723d52",
+			"fromNode": "f606926a1590aa6d",
+			"fromSide": "right",
+			"toNode": "b232965e32278718",
+			"toSide": "left"
+		},
+		{
+			"id": "187ebdf49f7c7c62",
+			"fromNode": "3526adcd56f9608f",
+			"fromSide": "right",
+			"toNode": "23c507241d9f77be",
+			"toSide": "left"
+		},
+		{
+			"id": "87127f7cd36a8d4d",
+			"fromNode": "3526adcd56f9608f",
+			"fromSide": "right",
+			"toNode": "ebb041a97c775dc5",
+			"toSide": "left"
+		},
+		{
+			"id": "6c8ad991a82ba211",
+			"fromNode": "3526adcd56f9608f",
+			"fromSide": "right",
+			"toNode": "ef93cb28dceeb5c9",
+			"toSide": "left"
+		},
+		{
+			"id": "f2dbfe7858e53f38",
+			"fromNode": "24feab9d0fe2727a",
+			"fromSide": "bottom",
+			"toNode": "c6d04154a6138583",
+			"toSide": "top"
+		},
+		{
+			"id": "c492b920ff0f2fb3",
+			"fromNode": "090e59b109d6d423",
+			"fromSide": "left",
+			"toNode": "7694cc252e13dfc8",
+			"toSide": "right"
+		},
+		{
+			"id": "b9cd429f66bf6f4c",
+			"fromNode": "1f6905bb3042a3d9",
+			"fromSide": "left",
+			"toNode": "42e406c27584a509",
+			"toSide": "right"
+		},
+		{
+			"id": "509329ee1c76e069",
+			"fromNode": "a67464935670f092",
+			"fromSide": "bottom",
+			"toNode": "5f24821da89062ab",
+			"toSide": "top"
+		},
+		{
+			"id": "1f745d854dd9ff67",
+			"fromNode": "a67464935670f092",
+			"fromSide": "right",
+			"toNode": "9d414bbfcec72f98",
+			"toSide": "left"
+		},
+		{
+			"id": "73f9792df6c44d25",
+			"fromNode": "a67464935670f092",
+			"fromSide": "right",
+			"toNode": "760e3eb8d880074c",
+			"toSide": "left"
+		},
+		{
+			"id": "2b320a6831eb8c0b",
+			"fromNode": "a67464935670f092",
+			"fromSide": "right",
+			"toNode": "7d03132d23575fed",
+			"toSide": "left"
+		},
+		{
+			"id": "0f3d6a8f93cb72a3",
+			"fromNode": "7d03132d23575fed",
+			"fromSide": "bottom",
+			"toNode": "ff951816af8fdbac",
+			"toSide": "top"
+		},
+		{
+			"id": "f00a8ef43b29886e",
+			"fromNode": "ff951816af8fdbac",
+			"fromSide": "bottom",
+			"toNode": "6b847274c6a5a092",
+			"toSide": "top"
+		},
+		{
+			"id": "3fb26659a0de0b42",
+			"fromNode": "6b847274c6a5a092",
+			"fromSide": "right",
+			"toNode": "4547a2f36333f2cc",
+			"toSide": "left"
+		},
+		{
+			"id": "ffe0952d5e682746",
+			"fromNode": "6b847274c6a5a092",
+			"fromSide": "right",
+			"toNode": "b5a29b5147a317c9",
+			"toSide": "left"
+		},
+		{
+			"id": "cc15c5be2a1e1ca7",
+			"fromNode": "b5a29b5147a317c9",
+			"fromSide": "right",
+			"toNode": "db798bf9fb20aa35",
+			"toSide": "left"
+		}
+	]
+}

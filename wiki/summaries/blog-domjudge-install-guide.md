@@ -19,6 +19,6 @@
 - Judgehost 負責執行參賽者提交的程式，需要設定必要套件、chroot、GRUB 與 systemd 服務。
 - 原文以自動化腳本收斂重複安裝步驟；完整指令與腳本保留在 Blog source。
 
-## Related Concepts
+## Navigation
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
+- [My vault：Tech 筆記](../archives/my-vault-tech.md)

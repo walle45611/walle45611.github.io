@@ -72,3 +72,7 @@ tags:
 - 這份來源補強 `ai-assisted-research-workflows`：AI 輔助不只是加速資料整理，也可能把研究從單題深挖擴展到大量問題的廣度探索；但驗證與責任仍不能外包。
 - 這份來源補強 `harness-engineering`：形式化驗證器、社群論壇與分工流程，都是把模型輸出轉成可檢查成果的 harness，而不是單純換一個更聰明的模型。
 - 它沒有提供足夠證據建立獨立的「數學天才心理學」概念頁，因此目前保留在單一來源摘要中。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

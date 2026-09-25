@@ -18,6 +18,6 @@
 - Linear array 在元素移除後可能產生空間利用問題，Circular Queue 用索引回繞改善此限制。
 - 文章以 Queue CreateQ、IsFullQ 等操作定義抽象介面，再對照陣列與鏈結串列實作。
 
-## Related Concepts
+## Navigation
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
+- [My vault：Research 筆記](../archives/my-vault-research.md)

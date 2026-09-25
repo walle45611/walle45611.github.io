@@ -18,6 +18,6 @@
 - Command mode、Insert mode 與 Last line mode 負責不同操作；文章也提到 Visual mode 的選取用途。
 - 內容整理模式切換、文件跳轉與常用編輯命令；完整快捷鍵清單保留在 Blog source。
 
-## Related Concepts
+## Navigation
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
+- [My vault：Tech 筆記](../archives/my-vault-tech.md)

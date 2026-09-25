@@ -48,3 +48,7 @@
 
 - 這份來源延伸了 `ai-coding-tools` 裡從 Copilot 到 Agent 的趨勢，補上 vibe coding 之後更清楚的下一階段：agentic engineering。
 - 它也補強了 `harness-engineering` 與 `context-engineering` 的觀點，因為 agent-first 文件、可讀結構與上下文設計，已經是實務能力的一部分。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

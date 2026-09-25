@@ -46,3 +46,7 @@ This Hugging Face course video explains ROUGE as an automatic evaluation metric 
 ## Alignment With Current Wiki
 
 This source adds the wiki's first reusable note on automatic NLP evaluation metrics. It is most useful as background for future summarization, model comparison, and workflow evaluation notes where generated text quality needs to be measured against references.
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

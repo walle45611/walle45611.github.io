@@ -19,6 +19,6 @@
 - 高階管理階層需要對資訊安全政策、角色責任與資源承諾負責。
 - 規劃面涵蓋風險評鑑、風險處理、資訊安全目標與變更規劃。
 
-## Related Concepts
+## Navigation
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
+- [My vault：Tech 筆記](../archives/my-vault-tech.md)

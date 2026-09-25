@@ -18,6 +18,6 @@
 - uWSGI 負責連接 Django 與 Nginx，讓 Python 應用以較適合部署的方式運行。
 - 原文以 Dockerfile、entrypoint.sh 與 nginx.conf 組成啟動流程，包含 migrate、collectstatic 與服務啟動。
 
-## Related Concepts
+## Navigation
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
+- [My vault：Tech 筆記](../archives/my-vault-tech.md)

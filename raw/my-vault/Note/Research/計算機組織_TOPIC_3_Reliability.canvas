@@ -1,0 +1,74 @@
+{
+	"nodes": [
+		{
+			"id": "b45710128258cbde",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Reliability/02-Dependability 概念.png",
+			"x": -280,
+			"y": 180,
+			"width": 399,
+			"height": 112
+		},
+		{
+			"id": "2121e5d62721e7be",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Reliability/01-Dependability 概念.png",
+			"x": -280,
+			"y": -120,
+			"width": 399,
+			"height": 125
+		},
+		{
+			"id": "f009b0f674e57ef1",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_3_Reliability/03-提升 MTTF 重點.png",
+			"x": -280,
+			"y": 604,
+			"width": 399,
+			"height": 203
+		},
+		{
+			"id": "c7d3885fa9352c09",
+			"type": "text",
+			"text": "# 提升 MTTF 重點\n\n> [!summary] 核心觀念\n\n- 提升 **元件品質**，或把系統設計成即使部分元件失效仍可運作。\n    \n\n## 三種提升 MTTF 的方法\n\n1. **Fault avoidance（避錯）**  \n    以設計與工程手段避免故障發生。\n    \n2. **Fault tolerance（容錯）**  \n    透過冗餘讓服務在發生故障時仍符合規格，主要用於硬體。\n    \n3. **Fault forecasting（預測故障）**  \n    預測故障的出現與形成（含硬體與軟體），在失效前更換或修復元件。",
+			"x": 380,
+			"y": 501,
+			"width": 600,
+			"height": 419,
+			"color": "1"
+		},
+		{
+			"id": "fc122d07c647de08",
+			"type": "text",
+			"text": "# Dependability 概念\n\n> [!summary] 重點\n\n* **Dependability**：整體服務可信與可用程度（含可靠性、可維修性、可用性、安全）。\n\n* **Reliability**：在時間區間內持續正確服務的能力，常用 **MTTF** 衡量。\n* **Availability** :系統好的時間\n\n## 定義\n\n* **MTTF**：平均運轉到故障時間\n\n* **MTTR**：平均修復時間\n\n* **MTBF**：兩次故障間平均時間\n\n$$\n\n\\text{MTBF}=\\text{MTTF}+\\text{MTTR}\n\n$$\n\n* **Availability（可用度）**\n\n$$\n\nA=\\frac{\\text{MTTF}}{\\text{MTTF}+\\text{MTTR}}=\\frac{\\text{MTTF}}{\\text{MTBF}}\n\n$$\n\n## 範例\n\n* 已知：MTTF $(=100 \\mathrm{h})，MTTR (=4 \\mathrm{h})$\n\n* 計算：\n\n$$\n\n\\text{MTBF}=100+4=104\\ \\mathrm{h}\n\n$$\n\n$$\n\nA=\\frac{100}{104}\\approx 0.9615=96.15%\n\n$$",
+			"x": 380,
+			"y": -582,
+			"width": 700,
+			"height": 702,
+			"color": "1"
+		}
+	],
+	"edges": [
+		{
+			"id": "0931edae42734cd6",
+			"fromNode": "2121e5d62721e7be",
+			"fromSide": "right",
+			"toNode": "fc122d07c647de08",
+			"toSide": "left"
+		},
+		{
+			"id": "1a8492fe608e4604",
+			"fromNode": "b45710128258cbde",
+			"fromSide": "right",
+			"toNode": "fc122d07c647de08",
+			"toSide": "left"
+		},
+		{
+			"id": "45b60c8a7a574882",
+			"fromNode": "f009b0f674e57ef1",
+			"fromSide": "right",
+			"toNode": "c7d3885fa9352c09",
+			"toSide": "left"
+		}
+	]
+}

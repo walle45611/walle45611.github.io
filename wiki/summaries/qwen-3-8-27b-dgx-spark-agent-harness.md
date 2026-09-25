@@ -69,3 +69,7 @@
 - 它補充 `llm-serving-compatibility`：model card、格式、推論引擎、Docker image、CUDA 與 ARM/統一記憶體架構的匹配，都是「能否真的跑起來」的一部分。
 - 它補充 `model-quantization` 與 `context-engineering`：低精度降低權重占用，但 KV cache、context 與併發仍會重新分配記憶體預算。
 - 地端模型與隔離執行邊界的組合在既有 wiki 尚未獨立成頁，因此新增 `local-llm-deployment` 作為後續累積硬體、runtime 與資料邊界案例的概念頁。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

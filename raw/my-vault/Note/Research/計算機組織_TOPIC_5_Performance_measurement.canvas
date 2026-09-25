@@ -1,0 +1,186 @@
+{
+	"nodes": [
+		{
+			"id": "da4a3c38b8f9ea39",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_Performance_measurement/06-instr. memory.png",
+			"x": -280,
+			"y": 220,
+			"width": 420,
+			"height": 226
+		},
+		{
+			"id": "d3a86cad47572ce6",
+			"type": "text",
+			"text": "- instr. memory\n\t- 重點是在於 $1 \\times \\text{Miss-rate} \\times \\text{Miss Penalty}$\n\t- 主要原因是因為一定會抓指令呀\n- Data Memory\n\t- 不一定會抓指令，所以要依照 SPEC 給他機率所以就會變成 $(\\text{Memory instr. rate}) \\times \\text{Miss Rate}\\times \\text{Miss Penalty}$",
+			"x": 240,
+			"y": 380,
+			"width": 544,
+			"height": 190,
+			"color": "1"
+		},
+		{
+			"id": "6922629e2f946765",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_Performance_measurement/04-instr. memory.png",
+			"x": -269,
+			"y": -80,
+			"width": 399,
+			"height": 221
+		},
+		{
+			"id": "114599a9e4219ffe",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_Performance_measurement/02-instr. memory.png",
+			"x": -269,
+			"y": -280,
+			"width": 398,
+			"height": 87
+		},
+		{
+			"id": "50b465b61f90f658",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_Performance_measurement/07-instr. memory.png",
+			"x": -269,
+			"y": 520,
+			"width": 399,
+			"height": 222
+		},
+		{
+			"id": "d18c3cd5fe77da8f",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_Performance_measurement/09-最後加起來.png",
+			"x": -260,
+			"y": 860,
+			"width": 399,
+			"height": 143
+		},
+		{
+			"id": "365faf1fa19b2f2a",
+			"type": "text",
+			"text": "- 最後加起來",
+			"x": 262,
+			"y": 902,
+			"width": 250,
+			"height": 60,
+			"color": "5"
+		},
+		{
+			"id": "62c329fb06f4a121",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_Performance_measurement/01-計算機組織_TOPIC_5_Performanc.png",
+			"x": -1060,
+			"y": -280,
+			"width": 400,
+			"height": 87
+		},
+		{
+			"id": "20c71ce305b7f06a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_Performance_measurement/03-計算機組織_TOPIC_5_Performanc.png",
+			"x": -1060,
+			"y": -120,
+			"width": 400,
+			"height": 223
+		},
+		{
+			"id": "8349f6bef644b913",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_Performance_measurement/05-計算機組織_TOPIC_5_Performanc.png",
+			"x": -1060,
+			"y": 220,
+			"width": 414,
+			"height": 240
+		},
+		{
+			"id": "0da4c3f7f81189f5",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_Performance_measurement/08-計算機組織_TOPIC_5_Performanc.png",
+			"x": -1046,
+			"y": 600,
+			"width": 399,
+			"height": 216
+		},
+		{
+			"id": "4a240617ba862c92",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_5_Performance_measurement/10-計算機組織_TOPIC_5_Performanc.png",
+			"x": -1058,
+			"y": 916,
+			"width": 424,
+			"height": 184
+		}
+	],
+	"edges": [
+		{
+			"id": "954c19d04dcc60ff",
+			"fromNode": "6922629e2f946765",
+			"fromSide": "bottom",
+			"toNode": "da4a3c38b8f9ea39",
+			"toSide": "top"
+		},
+		{
+			"id": "7987507bd3ae3283",
+			"fromNode": "114599a9e4219ffe",
+			"fromSide": "bottom",
+			"toNode": "6922629e2f946765",
+			"toSide": "top"
+		},
+		{
+			"id": "61aacfcbb509ca77",
+			"fromNode": "da4a3c38b8f9ea39",
+			"fromSide": "right",
+			"toNode": "d3a86cad47572ce6",
+			"toSide": "left"
+		},
+		{
+			"id": "702089bbe16eb043",
+			"fromNode": "50b465b61f90f658",
+			"fromSide": "right",
+			"toNode": "d3a86cad47572ce6",
+			"toSide": "left"
+		},
+		{
+			"id": "a0878bc939efc3b9",
+			"fromNode": "50b465b61f90f658",
+			"fromSide": "bottom",
+			"toNode": "d18c3cd5fe77da8f",
+			"toSide": "top"
+		},
+		{
+			"id": "41a51837c84b1013",
+			"fromNode": "d18c3cd5fe77da8f",
+			"fromSide": "right",
+			"toNode": "365faf1fa19b2f2a",
+			"toSide": "left"
+		},
+		{
+			"id": "1fda889885eefb0a",
+			"fromNode": "62c329fb06f4a121",
+			"fromSide": "bottom",
+			"toNode": "20c71ce305b7f06a",
+			"toSide": "top"
+		},
+		{
+			"id": "c37c8cb5f7f40738",
+			"fromNode": "20c71ce305b7f06a",
+			"fromSide": "bottom",
+			"toNode": "8349f6bef644b913",
+			"toSide": "top"
+		},
+		{
+			"id": "eed32a77802f86df",
+			"fromNode": "8349f6bef644b913",
+			"fromSide": "bottom",
+			"toNode": "0da4c3f7f81189f5",
+			"toSide": "top"
+		},
+		{
+			"id": "8c9a5bb450303cf5",
+			"fromNode": "0da4c3f7f81189f5",
+			"fromSide": "bottom",
+			"toNode": "4a240617ba862c92",
+			"toSide": "top"
+		}
+	]
+}

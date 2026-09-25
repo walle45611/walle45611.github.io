@@ -19,6 +19,6 @@
 - 原文提醒刪除或備份既有設定、clone 配置並讓 Neovim 首次啟動安裝插件。
 - 具體命令與個人配置仍以 Blog source 為準。
 
-## Related Concepts
+## Navigation
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
+- [My vault：Tech 筆記](../archives/my-vault-tech.md)

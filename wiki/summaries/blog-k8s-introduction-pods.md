@@ -21,5 +21,8 @@
 
 ## Related Concepts
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
 - [microk8s-production-readiness](../concepts/microk8s-production-readiness.md)
+
+## Navigation
+
+- [My vault：Tech 筆記](../archives/my-vault-tech.md)

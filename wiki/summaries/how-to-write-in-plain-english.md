@@ -34,3 +34,7 @@
 ## Alignment With Current Wiki
 
 這份來源與 Academic Style 互補：前者強調讀者導向、清晰與可及性，後者補充學術文本中的作者位置、hedging 與證據支撐。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

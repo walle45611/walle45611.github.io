@@ -59,3 +59,7 @@
 - 這份來源補上目前 wiki 尚未獨立整理的 `ai-assisted research workflow` 主題，把資料檢索、文獻矩陣、驗證與模擬質疑串成單一研究流程。
 - 它和 `effective-learning` 一致之處在於，都強調比較、壓縮與結構化處理比機械累積更重要；但這份來源把場景進一步限定到學術研究與文獻回顧。
 - 它也延伸了 `harness-engineering` 與 `agentic-knowledge-base-maintenance` 的思路：關鍵不只是用 AI，而是設計可控、可追溯、有人類負責的工作流。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

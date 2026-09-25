@@ -472,3 +472,11 @@
 - updated: 原始 My vault 及 `raw/my-vault/00_Dashboard/資料結構和演算法 Overview.md`、六篇刷題筆記、`sites/sync-vault-posts.py`、`sites/README.md`。
 - created: 原始 My vault 與本機副本的 `00_Dashboard/刷題 Overview.md`。
 - notes: 刷題總覽依圖論與搜尋、二分搜尋、字串與模擬、貪心與矩陣、SQL 語句類型列出實際題號；既有 SQL Overview 改以資料庫安裝與 SQL 語句為主，並交叉連結刷題總覽。資料結構與演算法總覽連至刷題總覽，六篇公開刷題文章以 `blog_topic: problem-solving` 維持網站分類。兩份新整理的主題總覽留在完整 Vault 副本，不加入公開 Git。
+
+## [2026-09-26] ingest | My vault 與 Web Clipper 全量筆記歸檔
+
+- source: `raw/my-vault/Note/`、`raw/my-vault/00_Dashboard/`、`raw/web-clipper/`。
+- created: `wiki/summaries/` 中 313 篇 My vault 摘要、`wiki/archives/` 中四份來源索引、`sites/archive-vault-notes.py`。
+- updated: `wiki/index.md`、既有摘要的歸檔導覽、`AGENTS.md`、`sites/README.md`、`sites/stage-blog-sources.py`、`.gitignore`。
+- removed: `wiki/concepts/blog-knowledge-migration.md` 及指向該頁的現行連結；歷史 log 保留。
+- notes: 核對 387 份 Markdown 來源（My vault 的 325 篇 Note、17 篇 Dashboard 與 45 篇 Web Clipper），其中 74 份已有摘要，新增 313 份；來源涵蓋率與相對 Markdown 連結檢查通過。依使用者要求，My vault 筆記與摘要納入公開 Git；`Assets/` 只追蹤 Blog 文章實際引用的 172 個檔案。含有上傳金鑰的插件設定、裝置工作區狀態、暫存垃圾桶及本機代理設定不加入 Git。新摘要依來源文字與章節整理；原文為準，沒有另行查證其技術主張。

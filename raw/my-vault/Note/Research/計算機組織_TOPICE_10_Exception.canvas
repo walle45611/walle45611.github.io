@@ -1,0 +1,465 @@
+{
+	"nodes": [
+		{
+			"id": "763244408a66cf23",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPICE_10_Exception/05-計算機組織_TOPICE_10_Exceptio.png",
+			"x": -220,
+			"y": -200,
+			"width": 400,
+			"height": 75
+		},
+		{
+			"id": "30babd0324d54a25",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPICE_10_Exception/06-計算機組織_TOPICE_10_Exceptio.png",
+			"x": -220,
+			"y": -60,
+			"width": 400,
+			"height": 131
+		},
+		{
+			"id": "6da3f14635c4684d",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPICE_10_Exception/04-計算機組織_TOPICE_10_Exceptio.png",
+			"x": 340,
+			"y": -236,
+			"width": 400,
+			"height": 222
+		},
+		{
+			"id": "3eedf47ec6ca6e3a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPICE_10_Exception/08-計算機組織_TOPICE_10_Exceptio.png",
+			"x": 340,
+			"y": 40,
+			"width": 399,
+			"height": 223
+		},
+		{
+			"id": "fe2bfe72bb0471f7",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPICE_10_Exception/10-計算機組織_TOPICE_10_Exceptio.png",
+			"x": 340,
+			"y": 320,
+			"width": 399,
+			"height": 224
+		},
+		{
+			"id": "fc9915c8521aaf7f",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPICE_10_Exception/12-發生 printf 發生 Exception.png",
+			"x": 340,
+			"y": 600,
+			"width": 400,
+			"height": 226
+		},
+		{
+			"id": "9e8e7080b4837aac",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPICE_10_Exception/16-發生 printf 發生 Exception.png",
+			"x": 340,
+			"y": 900,
+			"width": 400,
+			"height": 224
+		},
+		{
+			"id": "e573ede438aae49d",
+			"type": "text",
+			"text": "1. 發生 printf 發生 Exception\n2. 跳到 OS Exception service routine，然後把資料丟給 Screen controller，然後丟完後\n3. restore process-2\n4. 然後 Screen controller 顯示 A 後把 interrupt 訊號線設定成 1 然後 CPU 就會定期去看這個線的數值是不是 1，如果是 1 那麼就是有 Interrupt\n5. 接收到 interrupt 那麼就是 OS 就會去做 interrupt service routine，那也會 store process-2\n6. 然後控制全給 process-1",
+			"x": 1000,
+			"y": 868,
+			"width": 472,
+			"height": 288,
+			"color": "1"
+		},
+		{
+			"id": "4563a429111c0c7a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPICE_10_Exception/14-計算機組織_TOPICE_10_Exceptio.png",
+			"x": -1012,
+			"y": 660,
+			"width": 399,
+			"height": 194
+		},
+		{
+			"id": "e38f50735a7c1daa",
+			"type": "text",
+			"text": "1. 那裡造成 exception 那麼就是用 EPC 存下來這個位置\n2. 那麼 cause register 是紀錄原因\n3. 控制全交給 OS\n4. 都是 core process 0 裡面的暫存器並不是 MIPS 本尊",
+			"x": -1560,
+			"y": -335,
+			"width": 443,
+			"height": 128,
+			"color": "1"
+		},
+		{
+			"id": "b61bd918c8676b63",
+			"type": "text",
+			"text": "如果是嚴重的 Exception 把這個 process 砍了，如果是別種那麼就是結束 exception 然後繼續往下執行",
+			"x": -1560,
+			"y": -123,
+			"width": 425,
+			"height": 69,
+			"color": "1"
+		},
+		{
+			"id": "29c7c8c2a8a763cc",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPICE_10_Exception/07-計算機組織_TOPICE_10_Exceptio.png",
+			"x": -1046,
+			"y": 40,
+			"width": 466,
+			"height": 260
+		},
+		{
+			"id": "fa811380dd43c397",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPICE_10_Exception/11-計算機組織_TOPICE_10_Exceptio.png",
+			"x": -1066,
+			"y": 380,
+			"width": 507,
+			"height": 180
+		},
+		{
+			"id": "6b765067553fe9f4",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPICE_10_Exception/03-計算機組織_TOPICE_10_Exceptio.png",
+			"x": -1040,
+			"y": -271,
+			"width": 460,
+			"height": 217
+		},
+		{
+			"id": "62ea4a5ef384621c",
+			"type": "text",
+			"text": "那麼 MIPS 和課本為例只有 溢位的 Excption 那麼現在會砍掉 add, slt, lw 後面的指令原因有 \n1. 可能會汙染後面的其他指令，注意是在下一個 clock 才清除也就是把 pipeline 清空而已\n2. 因為會根據 epc 後面的指令開始重新執行",
+			"x": -407,
+			"y": 380,
+			"width": 387,
+			"height": 171,
+			"color": "1"
+		},
+		{
+			"id": "71e37d3c3b8963fc",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPICE_10_Exception/13-計算機組織_TOPICE_10_Exceptio.png",
+			"x": -548,
+			"y": 613,
+			"width": 670,
+			"height": 241
+		},
+		{
+			"id": "4bfad1f690daf886",
+			"type": "text",
+			"text": "硬體一定會存錯，EPC 那麼 OS 再把它扣掉就好了 (-4)",
+			"x": -338,
+			"y": 952,
+			"width": 250,
+			"height": 55,
+			"color": "1"
+		},
+		{
+			"id": "7bbfd7d4e9b7db80",
+			"type": "text",
+			"text": "這個 sw 是 MIPS 處理 Exception 的第一個指令也就是 80000180 的位置",
+			"x": -972,
+			"y": 940,
+			"width": 320,
+			"height": 69,
+			"color": "1"
+		},
+		{
+			"id": "842b16ad6eadbd10",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPICE_10_Exception/17-計算機組織_TOPICE_10_Exceptio.png",
+			"x": -997,
+			"y": 1160,
+			"width": 876,
+			"height": 524
+		},
+		{
+			"id": "d849baea11308a1e",
+			"type": "text",
+			"text": "ALU 的 Overflow 那條線應該要拉到 Control",
+			"x": -751,
+			"y": 1760,
+			"width": 384,
+			"height": 50,
+			"color": "1"
+		},
+		{
+			"id": "86cae92103f37771",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPICE_10_Exception/19-計算機組織_TOPICE_10_Exceptio.png",
+			"x": -47,
+			"y": 1299,
+			"width": 587,
+			"height": 246
+		},
+		{
+			"id": "04633f80df244848",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPICE_10_Exception/20-計算機組織_TOPICE_10_Exceptio.png",
+			"x": -80,
+			"y": 1616,
+			"width": 653,
+			"height": 137
+		},
+		{
+			"id": "74032d1cb36d01b2",
+			"type": "text",
+			"text": "其實就是跟處理猜錯 control hazard 一樣",
+			"x": 71,
+			"y": 1820,
+			"width": 351,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "4afb75c9daa18088",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPICE_10_Exception/01-計算機組織_TOPICE_10_Exceptio.png",
+			"x": -2742,
+			"y": -325,
+			"width": 639,
+			"height": 360
+		},
+		{
+			"id": "f69732644dc1eaf1",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPICE_10_Exception/09-計算機組織_TOPICE_10_Exceptio.png",
+			"x": -2800,
+			"y": 115,
+			"width": 755,
+			"height": 457
+		},
+		{
+			"id": "027a95c6eaec5829",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPICE_10_Exception/15-計算機組織_TOPICE_10_Exceptio.png",
+			"x": -2800,
+			"y": 675,
+			"width": 755,
+			"height": 451
+		},
+		{
+			"id": "5318d3df1f385a42",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPICE_10_Exception/18-計算機組織_TOPICE_10_Exceptio.png",
+			"x": -2792,
+			"y": 1215,
+			"width": 740,
+			"height": 339
+		},
+		{
+			"id": "9976b029f2187065",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPICE_10_Exception/02-計算機組織_TOPICE_10_Exceptio.png",
+			"x": 1560,
+			"y": -272,
+			"width": 1129,
+			"height": 311
+		},
+		{
+			"id": "38f904957f61d91f",
+			"type": "text",
+			"text": "- 其實就是他知道哪個 stage 出現 exceptions 如果知道就是 precise 反知不知道就是 imprecise\n- ARM 或是 MIPS 都是 precise exceptions，因為他知道所以就是看情況處理\n- x86 就是不知道就是 imprecise exceptions，那麼他不知道所以他把程式碼直接停止",
+			"x": 1865,
+			"y": 171,
+			"width": 520,
+			"height": 184,
+			"color": "1"
+		}
+	],
+	"edges": [
+		{
+			"id": "56e66309ab4e0af7",
+			"fromNode": "763244408a66cf23",
+			"fromSide": "bottom",
+			"toNode": "30babd0324d54a25",
+			"toSide": "top"
+		},
+		{
+			"id": "41d43798571e3a67",
+			"fromNode": "30babd0324d54a25",
+			"fromSide": "right",
+			"toNode": "6da3f14635c4684d",
+			"toSide": "left"
+		},
+		{
+			"id": "54fcd9db80768469",
+			"fromNode": "6da3f14635c4684d",
+			"fromSide": "bottom",
+			"toNode": "3eedf47ec6ca6e3a",
+			"toSide": "top"
+		},
+		{
+			"id": "08b9d699fe270d1a",
+			"fromNode": "3eedf47ec6ca6e3a",
+			"fromSide": "bottom",
+			"toNode": "fe2bfe72bb0471f7",
+			"toSide": "top"
+		},
+		{
+			"id": "bb95d3c0f435ed82",
+			"fromNode": "fe2bfe72bb0471f7",
+			"fromSide": "bottom",
+			"toNode": "fc9915c8521aaf7f",
+			"toSide": "top"
+		},
+		{
+			"id": "f379902c0a249c30",
+			"fromNode": "fc9915c8521aaf7f",
+			"fromSide": "bottom",
+			"toNode": "9e8e7080b4837aac",
+			"toSide": "top"
+		},
+		{
+			"id": "cd07046c28d943b5",
+			"fromNode": "9e8e7080b4837aac",
+			"fromSide": "right",
+			"toNode": "e573ede438aae49d",
+			"toSide": "left"
+		},
+		{
+			"id": "143082b17e6385c5",
+			"fromNode": "763244408a66cf23",
+			"fromSide": "left",
+			"toNode": "6b765067553fe9f4",
+			"toSide": "right"
+		},
+		{
+			"id": "3fdeec555c5974ed",
+			"fromNode": "6b765067553fe9f4",
+			"fromSide": "left",
+			"toNode": "e38f50735a7c1daa",
+			"toSide": "right"
+		},
+		{
+			"id": "fcaff9c27036d9a2",
+			"fromNode": "6b765067553fe9f4",
+			"fromSide": "left",
+			"toNode": "b61bd918c8676b63",
+			"toSide": "right"
+		},
+		{
+			"id": "5410c16528ffa0c7",
+			"fromNode": "6b765067553fe9f4",
+			"fromSide": "bottom",
+			"toNode": "29c7c8c2a8a763cc",
+			"toSide": "top"
+		},
+		{
+			"id": "bfe4402a1bc40cf5",
+			"fromNode": "29c7c8c2a8a763cc",
+			"fromSide": "bottom",
+			"toNode": "fa811380dd43c397",
+			"toSide": "top"
+		},
+		{
+			"id": "8200dd9e3217c335",
+			"fromNode": "fa811380dd43c397",
+			"fromSide": "right",
+			"toNode": "62ea4a5ef384621c",
+			"toSide": "left"
+		},
+		{
+			"id": "dd8461228af0a51e",
+			"fromNode": "fa811380dd43c397",
+			"fromSide": "bottom",
+			"toNode": "4563a429111c0c7a",
+			"toSide": "top"
+		},
+		{
+			"id": "ca5dc386693d05d2",
+			"fromNode": "62ea4a5ef384621c",
+			"fromSide": "bottom",
+			"toNode": "71e37d3c3b8963fc",
+			"toSide": "top"
+		},
+		{
+			"id": "2208317ab5867716",
+			"fromNode": "71e37d3c3b8963fc",
+			"fromSide": "bottom",
+			"toNode": "4bfad1f690daf886",
+			"toSide": "top"
+		},
+		{
+			"id": "71fb24327c899c35",
+			"fromNode": "4bfad1f690daf886",
+			"fromSide": "bottom",
+			"toNode": "842b16ad6eadbd10",
+			"toSide": "top"
+		},
+		{
+			"id": "00853cc7c6f75ecb",
+			"fromNode": "842b16ad6eadbd10",
+			"fromSide": "bottom",
+			"toNode": "d849baea11308a1e",
+			"toSide": "top"
+		},
+		{
+			"id": "02ac31b60ff3bbfe",
+			"fromNode": "4563a429111c0c7a",
+			"fromSide": "bottom",
+			"toNode": "7bbfd7d4e9b7db80",
+			"toSide": "top"
+		},
+		{
+			"id": "e5ddb9196c454b41",
+			"fromNode": "7bbfd7d4e9b7db80",
+			"fromSide": "bottom",
+			"toNode": "842b16ad6eadbd10",
+			"toSide": "top"
+		},
+		{
+			"id": "a6a9a6af40002123",
+			"fromNode": "842b16ad6eadbd10",
+			"fromSide": "right",
+			"toNode": "86cae92103f37771",
+			"toSide": "left"
+		},
+		{
+			"id": "d1a859459d61dfc9",
+			"fromNode": "86cae92103f37771",
+			"fromSide": "bottom",
+			"toNode": "04633f80df244848",
+			"toSide": "top"
+		},
+		{
+			"id": "c60edfcd21d230e5",
+			"fromNode": "04633f80df244848",
+			"fromSide": "bottom",
+			"toNode": "74032d1cb36d01b2",
+			"toSide": "top"
+		},
+		{
+			"id": "0ad42f788419f491",
+			"fromNode": "4afb75c9daa18088",
+			"fromSide": "bottom",
+			"toNode": "f69732644dc1eaf1",
+			"toSide": "top"
+		},
+		{
+			"id": "4ca04502e8e10967",
+			"fromNode": "f69732644dc1eaf1",
+			"fromSide": "bottom",
+			"toNode": "027a95c6eaec5829",
+			"toSide": "top"
+		},
+		{
+			"id": "bd2265dc2f6311ab",
+			"fromNode": "027a95c6eaec5829",
+			"fromSide": "bottom",
+			"toNode": "5318d3df1f385a42",
+			"toSide": "top"
+		},
+		{
+			"id": "418354a2dcf82e40",
+			"fromNode": "9976b029f2187065",
+			"fromSide": "bottom",
+			"toNode": "38f904957f61d91f",
+			"toSide": "top"
+		}
+	]
+}

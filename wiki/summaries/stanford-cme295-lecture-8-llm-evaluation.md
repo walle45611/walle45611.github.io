@@ -53,3 +53,7 @@
 ## Alignment With Current Wiki
 
 本來源將既有的 reference-overlap 指標放進更大的 LLM 評估框架，補上 LLM-as-a-Judge、factuality decomposition、agent failure taxonomy 與 benchmark selection。它與既有 ROUGE 摘要一致，但進一步明確指出 ROUGE、judge 與 benchmark 都只是針對特定目標的 proxy，不能單獨代表整體品質。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

@@ -1,0 +1,548 @@
+{
+	"nodes": [
+		{
+			"id": "12d8317e9c0532ac",
+			"type": "group",
+			"x": 233,
+			"y": -200,
+			"width": 2487,
+			"height": 4200,
+			"label": "建構步驟"
+		},
+		{
+			"id": "0362a45c540095e9",
+			"type": "group",
+			"x": 2880,
+			"y": -200,
+			"width": 1408,
+			"height": 2302,
+			"label": "Jump 指令建構 Datapath"
+		},
+		{
+			"id": "d903101e7711d60b",
+			"type": "group",
+			"x": 350,
+			"y": -60,
+			"width": 2283,
+			"height": 620,
+			"label": "R-Type"
+		},
+		{
+			"id": "259ab3dfb193694b",
+			"type": "group",
+			"x": 350,
+			"y": 3160,
+			"width": 2050,
+			"height": 671,
+			"label": "Branch Instructions"
+		},
+		{
+			"id": "baa68f29ecc07a81",
+			"type": "group",
+			"x": 350,
+			"y": 680,
+			"width": 1510,
+			"height": 831,
+			"label": "Immediate Instruction"
+		},
+		{
+			"id": "fc7f5a41b219abe9",
+			"type": "group",
+			"x": 350,
+			"y": 1640,
+			"width": 1430,
+			"height": 680,
+			"label": "Load Instructions"
+		},
+		{
+			"id": "729145dd128d2c10",
+			"type": "group",
+			"x": 350,
+			"y": 2400,
+			"width": 1349,
+			"height": 680,
+			"label": "Store Instructions"
+		},
+		{
+			"id": "c630a2eb08c2210a",
+			"type": "group",
+			"x": 2880,
+			"y": 2400,
+			"width": 872,
+			"height": 900,
+			"label": "畫圖方式"
+		},
+		{
+			"id": "a7023132c55c55bd",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Datapath_construction/11-Immediate Instruction - 加完 S0 直接存 T0.png",
+			"x": 370,
+			"y": 720,
+			"width": 640,
+			"height": 534
+		},
+		{
+			"id": "4c066ce6aa4693b5",
+			"type": "text",
+			"text": "主要原因是下一個 clock 需要 add PC 抓取下一個指令",
+			"x": 435,
+			"y": 380,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "dd712debc2fc7fd9",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Datapath_construction/08-計算機組織_TOPIC_2_Datapath_c.png",
+			"x": -480,
+			"y": 40,
+			"width": 555,
+			"height": 260
+		},
+		{
+			"id": "c37c8046d11e6b4a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Datapath_construction/02-計算機組織_TOPIC_2_Datapath_c.png",
+			"x": -458,
+			"y": -200,
+			"width": 510,
+			"height": 140
+		},
+		{
+			"id": "b5768531c6bf83ac",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Datapath_construction/05-R-Type.png",
+			"x": 860,
+			"y": 22,
+			"width": 447,
+			"height": 288
+		},
+		{
+			"id": "eea77333411b1ae8",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Datapath_construction/10-Immediate Instruction.png",
+			"x": 1190,
+			"y": 700,
+			"width": 650,
+			"height": 554
+		},
+		{
+			"id": "6fa8b333524fbf78",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Datapath_construction/07-R-Type.png",
+			"x": 360,
+			"y": 31,
+			"width": 400,
+			"height": 279
+		},
+		{
+			"id": "3af0e0c11ee06476",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Datapath_construction/04-R-Type.png",
+			"x": 2120,
+			"y": -31,
+			"width": 493,
+			"height": 394
+		},
+		{
+			"id": "9869f91d59927962",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Datapath_construction/06-R-Type.png",
+			"x": 1400,
+			"y": 22,
+			"width": 574,
+			"height": 288
+		},
+		{
+			"id": "4af4f7ffc9aa760f",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Datapath_construction/17-Store Instructions.png",
+			"x": 370,
+			"y": 2440,
+			"width": 545,
+			"height": 385
+		},
+		{
+			"id": "ee7f58a2c0c860ac",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Datapath_construction/18-Store Instructions.png",
+			"x": 1043,
+			"y": 2449,
+			"width": 604,
+			"height": 376
+		},
+		{
+			"id": "c43188b1386f94c1",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Datapath_construction/01-計算機組織_TOPIC_2_Datapath_c.png",
+			"x": 4880,
+			"y": -201,
+			"width": 1361,
+			"height": 742
+		},
+		{
+			"id": "a808ce11e84a641b",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Datapath_construction/03-Jump 指令建構 Datapath.png",
+			"x": 3013,
+			"y": -180,
+			"width": 814,
+			"height": 471
+		},
+		{
+			"id": "73489ceadb98ce10",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Datapath_construction/09-Jump 指令建構 Datapath.png",
+			"x": 2966,
+			"y": 411,
+			"width": 907,
+			"height": 568
+		},
+		{
+			"id": "f850ed3589e9a577",
+			"type": "text",
+			"text": "最後因為是有可能是從 ALU 或是 Memo，寫入到 Reg 的話那就需要一個 MUX 來幫助選擇",
+			"x": 1198,
+			"y": 2200,
+			"width": 404,
+			"height": 55,
+			"color": "1"
+		},
+		{
+			"id": "9a585656346e8401",
+			"type": "text",
+			"text": "這邊會從 Reg 直接把內容寫到  Read data2 -> Memory",
+			"x": 1219,
+			"y": 2973,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "4e3f68b7d9fbe19d",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Datapath_construction/20-Branch Instructions.png",
+			"x": 370,
+			"y": 3240,
+			"width": 548,
+			"height": 400
+		},
+		{
+			"id": "a2fe18727b9100b4",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Datapath_construction/21-Branch Instructions.png",
+			"x": 1100,
+			"y": 3260,
+			"width": 552,
+			"height": 360
+		},
+		{
+			"id": "babca48fb2aa308e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Datapath_construction/22-Branch Instructions.png",
+			"x": 1780,
+			"y": 3260,
+			"width": 532,
+			"height": 360
+		},
+		{
+			"id": "69f6c72319d9d445",
+			"type": "text",
+			"text": "- **PC+4**：分支指令先跳到下一條 → 1000 + 4 = 1004。\n    \n- **offset=3**：這裡的 3 不是 byte，而是「3 條指令」，簡單來說就是為了要同步**單位**",
+			"x": 1156,
+			"y": 3720,
+			"width": 441,
+			"height": 91,
+			"color": "1"
+		},
+		{
+			"id": "df9b61feaac149fb",
+			"type": "text",
+			"text": "最後用 MUX 區分出是要從 PC+4 後的結果還是要從 Beq 指令後的結果去更新 PC",
+			"x": 1877,
+			"y": 3756,
+			"width": 339,
+			"height": 55,
+			"color": "1"
+		},
+		{
+			"id": "6dce1a8beeb510c3",
+			"type": "text",
+			"text": "加完 S0 直接存 T0 ",
+			"x": 385,
+			"y": 1370,
+			"width": 185,
+			"height": 50,
+			"color": "1"
+		},
+		{
+			"id": "061b488b0bb43521",
+			"type": "text",
+			"text": "ALUSrc 0 的時候，直接從輸入加入選擇資料就不從 reg 選擇資料了",
+			"x": 760,
+			"y": 1370,
+			"width": 250,
+			"height": 85,
+			"color": "1"
+		},
+		{
+			"id": "e3627a9a059e4516",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Datapath_construction/13-Load Instructions.png",
+			"x": 370,
+			"y": 1680,
+			"width": 546,
+			"height": 400
+		},
+		{
+			"id": "b60663322b987ec7",
+			"type": "text",
+			"text": "- **位元寬度不一致**：暫存器與 ALU 都是 32 位元，而立即數只有 16 位元 → 必須擴展。\n    \n- **符號擴展而不是零擴展**：因為立即數可能是負數，必須保留正負號。也就是複製最高位元 (bit 15) 到擴展後的高 16 位。",
+			"x": 1255,
+			"y": 1370,
+			"width": 520,
+			"height": 121,
+			"color": "1"
+		},
+		{
+			"id": "c2f423ad8f8c7549",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Datapath_construction/14-Load Instructions.png",
+			"x": 1120,
+			"y": 1680,
+			"width": 559,
+			"height": 400
+		},
+		{
+			"id": "0e321e9c2e66b54d",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Datapath_construction/12-Jump 指令建構 Datapath.png",
+			"x": 3013,
+			"y": 1131,
+			"width": 868,
+			"height": 440
+		},
+		{
+			"id": "900b4e1c2732de22",
+			"type": "text",
+			"text": "最後面量為直接接地然後，跟然後 PC+4 直接取代原本的位置，這樣也正常因為這樣才知道要跳到哪邊",
+			"x": 4018,
+			"y": 1308,
+			"width": 250,
+			"height": 115,
+			"color": "1"
+		},
+		{
+			"id": "d2f490a656ddbd92",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Datapath_construction/15-Jump 指令建構 Datapath.png",
+			"x": 2900,
+			"y": 1691,
+			"width": 1094,
+			"height": 391
+		},
+		{
+			"id": "4cc988b7243681ae",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Datapath_construction/16-畫圖方式.png",
+			"x": 2900,
+			"y": 2420,
+			"width": 826,
+			"height": 320
+		},
+		{
+			"id": "376bb233daaa7280",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Datapath_construction/19-畫圖方式.png",
+			"x": 2920,
+			"y": 2800,
+			"width": 797,
+			"height": 460
+		}
+	],
+	"edges": [
+		{
+			"id": "7008b48151e470fc",
+			"fromNode": "c37c8046d11e6b4a",
+			"fromSide": "bottom",
+			"toNode": "dd712debc2fc7fd9",
+			"toSide": "top"
+		},
+		{
+			"id": "a5d644d167337097",
+			"fromNode": "dd712debc2fc7fd9",
+			"fromSide": "right",
+			"toNode": "6fa8b333524fbf78",
+			"toSide": "left"
+		},
+		{
+			"id": "d8eb983409ed7454",
+			"fromNode": "6fa8b333524fbf78",
+			"fromSide": "bottom",
+			"toNode": "4c066ce6aa4693b5",
+			"toSide": "top"
+		},
+		{
+			"id": "6bb66b1476c14ac1",
+			"fromNode": "6fa8b333524fbf78",
+			"fromSide": "right",
+			"toNode": "b5768531c6bf83ac",
+			"toSide": "left"
+		},
+		{
+			"id": "ab9a649802cc6d19",
+			"fromNode": "b5768531c6bf83ac",
+			"fromSide": "right",
+			"toNode": "9869f91d59927962",
+			"toSide": "left"
+		},
+		{
+			"id": "efdba6ed3cf2d8f2",
+			"fromNode": "9869f91d59927962",
+			"fromSide": "right",
+			"toNode": "3af0e0c11ee06476",
+			"toSide": "left"
+		},
+		{
+			"id": "60b1fa8cf325fdab",
+			"fromNode": "a7023132c55c55bd",
+			"fromSide": "bottom",
+			"toNode": "6dce1a8beeb510c3",
+			"toSide": "top"
+		},
+		{
+			"id": "4872f1a8058231ec",
+			"fromNode": "a7023132c55c55bd",
+			"fromSide": "bottom",
+			"toNode": "061b488b0bb43521",
+			"toSide": "top"
+		},
+		{
+			"id": "9865617851f2606f",
+			"fromNode": "eea77333411b1ae8",
+			"fromSide": "bottom",
+			"toNode": "b60663322b987ec7",
+			"toSide": "top"
+		},
+		{
+			"id": "0c707db7792e71d6",
+			"fromNode": "a7023132c55c55bd",
+			"fromSide": "right",
+			"toNode": "eea77333411b1ae8",
+			"toSide": "left"
+		},
+		{
+			"id": "e250512a17e637a1",
+			"fromNode": "e3627a9a059e4516",
+			"fromSide": "right",
+			"toNode": "c2f423ad8f8c7549",
+			"toSide": "left"
+		},
+		{
+			"id": "458508a6f88706f6",
+			"fromNode": "c2f423ad8f8c7549",
+			"fromSide": "bottom",
+			"toNode": "f850ed3589e9a577",
+			"toSide": "top"
+		},
+		{
+			"id": "d354663c2e33c5f2",
+			"fromNode": "4af4f7ffc9aa760f",
+			"fromSide": "right",
+			"toNode": "ee7f58a2c0c860ac",
+			"toSide": "left"
+		},
+		{
+			"id": "dbb8ac0fc3788936",
+			"fromNode": "ee7f58a2c0c860ac",
+			"fromSide": "bottom",
+			"toNode": "9a585656346e8401",
+			"toSide": "top"
+		},
+		{
+			"id": "04e3c42864327861",
+			"fromNode": "4e3f68b7d9fbe19d",
+			"fromSide": "right",
+			"toNode": "a2fe18727b9100b4",
+			"toSide": "left"
+		},
+		{
+			"id": "1d6c30469bfbfe35",
+			"fromNode": "a2fe18727b9100b4",
+			"fromSide": "bottom",
+			"toNode": "69f6c72319d9d445",
+			"toSide": "top"
+		},
+		{
+			"id": "d9cceab5967f20bf",
+			"fromNode": "a2fe18727b9100b4",
+			"fromSide": "right",
+			"toNode": "babca48fb2aa308e",
+			"toSide": "left"
+		},
+		{
+			"id": "6b0a75e5f97e785f",
+			"fromNode": "babca48fb2aa308e",
+			"fromSide": "bottom",
+			"toNode": "df9b61feaac149fb",
+			"toSide": "top"
+		},
+		{
+			"id": "4fd21e349f1ee80e",
+			"fromNode": "fc7f5a41b219abe9",
+			"fromSide": "bottom",
+			"toNode": "729145dd128d2c10",
+			"toSide": "top"
+		},
+		{
+			"id": "f0b25eb7f5684eac",
+			"fromNode": "729145dd128d2c10",
+			"fromSide": "bottom",
+			"toNode": "259ab3dfb193694b",
+			"toSide": "top"
+		},
+		{
+			"id": "8ba63c7fe91cddc8",
+			"fromNode": "baa68f29ecc07a81",
+			"fromSide": "bottom",
+			"toNode": "fc7f5a41b219abe9",
+			"toSide": "top"
+		},
+		{
+			"id": "a61cda8a49c5db94",
+			"fromNode": "d903101e7711d60b",
+			"fromSide": "bottom",
+			"toNode": "baa68f29ecc07a81",
+			"toSide": "top"
+		},
+		{
+			"id": "6faeda9dda3f17cf",
+			"fromNode": "0e321e9c2e66b54d",
+			"fromSide": "right",
+			"toNode": "900b4e1c2732de22",
+			"toSide": "left"
+		},
+		{
+			"id": "31b47919d315b89c",
+			"fromNode": "a808ce11e84a641b",
+			"fromSide": "bottom",
+			"toNode": "73489ceadb98ce10",
+			"toSide": "top"
+		},
+		{
+			"id": "a568c2f7047ba61e",
+			"fromNode": "73489ceadb98ce10",
+			"fromSide": "bottom",
+			"toNode": "0e321e9c2e66b54d",
+			"toSide": "top"
+		},
+		{
+			"id": "68fcab51018224c1",
+			"fromNode": "0e321e9c2e66b54d",
+			"fromSide": "bottom",
+			"toNode": "d2f490a656ddbd92",
+			"toSide": "top"
+		}
+	]
+}

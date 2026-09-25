@@ -19,6 +19,6 @@
 - GitHub Actions 必須在安裝相依套件後、build 前完成必要檔案與設定。
 - 本頁只保存歷史 Hexo 設定脈絡；目前 Site 的 GA4 設定應以目前部署程式碼為準。
 
-## Related Concepts
+## Navigation
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
+- [My vault：Tech 筆記](../archives/my-vault-tech.md)

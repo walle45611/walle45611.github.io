@@ -1,0 +1,147 @@
+{
+	"nodes": [
+		{
+			"id": "7bfd84c4f6d871d1",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_10_AdddressingIO/02-計算機組織_TOPIC_10_Adddressi.png",
+			"x": -280,
+			"y": 0,
+			"width": 400,
+			"height": 143
+		},
+		{
+			"id": "65ad9001ceeb4bea",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_10_AdddressingIO/01-計算機組織_TOPIC_10_Adddressi.png",
+			"x": -280,
+			"y": -320,
+			"width": 400,
+			"height": 204
+		},
+		{
+			"id": "61733e7aacc7b6fc",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_10_AdddressingIO/04-計算機組織_TOPIC_10_Adddressi.png",
+			"x": -32,
+			"y": 340,
+			"width": 399,
+			"height": 222
+		},
+		{
+			"id": "dda9ec1d13065640",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_10_AdddressingIO/03-計算機組織_TOPIC_10_Adddressi.png",
+			"x": -532,
+			"y": 340,
+			"width": 420,
+			"height": 229
+		},
+		{
+			"id": "a48c080b5705f625",
+			"type": "text",
+			"text": "他比較便宜，都使用 Lw/Sw 等等 memory access 指令",
+			"x": 43,
+			"y": 640,
+			"width": 250,
+			"height": 55,
+			"color": "1"
+		},
+		{
+			"id": "450de451792e9be8",
+			"type": "text",
+			"text": "- processor = OS 這邊，那麼就是今天要取得 IO 那麼他要先給他位置那麼就有兩種定址方式 memory-mapped I/O 和 special I/O instr. (I/O mapped I/O)\n- Memory-mapped I/O 在 memory 高位的地方寫入或是讀取這個位址就是在給 I/O device 指令\n- RISC 都是使用 Memory-mapped I/O\n- CISC 都是使用 I/O mapped I/O （special I/O）",
+			"x": 208,
+			"y": -46,
+			"width": 412,
+			"height": 236,
+			"color": "1"
+		},
+		{
+			"id": "71ac5df1cfb99264",
+			"type": "text",
+			"text": "- OS 寫去檢查 HD Controller 的 reg 裡面，只少都需要這三個 reg",
+			"x": 208,
+			"y": -262,
+			"width": 391,
+			"height": 89,
+			"color": "1"
+		},
+		{
+			"id": "a2c8ca95fd556ee1",
+			"type": "text",
+			"text": "特別使用 I/O Bus 那有專門的指令 Input/Output，Input 丟進去，Output 讀出來，那麼 I/O 編號跟 Memory 沒有關係",
+			"x": -367,
+			"y": 695,
+			"width": 335,
+			"height": 85,
+			"color": "1"
+		},
+		{
+			"id": "67d98f046a402dbb",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_10_AdddressingIO/05-計算機組織_TOPIC_10_Adddressi.png",
+			"x": -900,
+			"y": 695,
+			"width": 400,
+			"height": 94
+		}
+	],
+	"edges": [
+		{
+			"id": "924a50994c847fcf",
+			"fromNode": "65ad9001ceeb4bea",
+			"fromSide": "right",
+			"toNode": "71ac5df1cfb99264",
+			"toSide": "left"
+		},
+		{
+			"id": "0ae796214b627ad9",
+			"fromNode": "65ad9001ceeb4bea",
+			"fromSide": "bottom",
+			"toNode": "7bfd84c4f6d871d1",
+			"toSide": "top"
+		},
+		{
+			"id": "ac3f9eb932f8aeab",
+			"fromNode": "7bfd84c4f6d871d1",
+			"fromSide": "right",
+			"toNode": "450de451792e9be8",
+			"toSide": "left"
+		},
+		{
+			"id": "6619dd382564199f",
+			"fromNode": "7bfd84c4f6d871d1",
+			"fromSide": "bottom",
+			"toNode": "61733e7aacc7b6fc",
+			"toSide": "top"
+		},
+		{
+			"id": "ff6f8b7ab63fdd69",
+			"fromNode": "7bfd84c4f6d871d1",
+			"fromSide": "bottom",
+			"toNode": "dda9ec1d13065640",
+			"toSide": "top"
+		},
+		{
+			"id": "7b07ada3d3c15988",
+			"fromNode": "61733e7aacc7b6fc",
+			"fromSide": "bottom",
+			"toNode": "a48c080b5705f625",
+			"toSide": "top"
+		},
+		{
+			"id": "35fcbb7fb5869930",
+			"fromNode": "dda9ec1d13065640",
+			"fromSide": "bottom",
+			"toNode": "a2c8ca95fd556ee1",
+			"toSide": "top"
+		},
+		{
+			"id": "6d7d10996cf945bf",
+			"fromNode": "dda9ec1d13065640",
+			"fromSide": "bottom",
+			"toNode": "67d98f046a402dbb",
+			"toSide": "top"
+		}
+	]
+}

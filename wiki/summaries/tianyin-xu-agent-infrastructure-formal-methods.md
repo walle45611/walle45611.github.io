@@ -27,3 +27,7 @@
 本頁依本地訪談逐字稿與章節整理；逐字稿有重複、混語與疑似轉錄錯誤，不將可疑模型名稱或口語案例升格為已查證技術事實。訪談中的未來使用者比例與效能預測也不是已驗證統計。
 
 本來源補強 [[harness-engineering]] 的外部回饋與執行邊界，並與 [[ai-assisted-research-workflows]] 的人類判斷責任一致。其 model checking、SDD 與需求邊界整合於 [[formal-verification-for-ai-generated-software]]。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

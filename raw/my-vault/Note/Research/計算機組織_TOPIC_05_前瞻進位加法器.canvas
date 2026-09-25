@@ -1,0 +1,490 @@
+{
+	"nodes": [
+		{
+			"id": "99cd61ea11f845ea",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_前瞻進位加法器/02-計算機組織_TOPIC_05_前瞻進位加法器.png",
+			"x": -1299,
+			"y": -367,
+			"width": 400,
+			"height": 143
+		},
+		{
+			"id": "9673949efde7b3b5",
+			"type": "text",
+			"text": "這個是 4-bits ripple carry adder",
+			"x": -1225,
+			"y": -522,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "439d6e53f24cc83c",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_前瞻進位加法器/03-計算機組織_TOPIC_05_前瞻進位加法器.png",
+			"x": -1300,
+			"y": -187,
+			"width": 400,
+			"height": 216
+		},
+		{
+			"id": "f566a4e7ca7599a5",
+			"type": "text",
+			"text": "- Critical path delay 跟其他數位邏輯不同，那這邊的是所有的 Carry 什麼時候對需要幾個 gate delay",
+			"x": -820,
+			"y": -123,
+			"width": 320,
+			"height": 88,
+			"color": "1"
+		},
+		{
+			"id": "b73e6437994b793e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_前瞻進位加法器/07-這樣的寫法就是 Sum of Product.png",
+			"x": -1300,
+			"y": 120,
+			"width": 400,
+			"height": 150
+		},
+		{
+			"id": "a349552ce771a89c",
+			"type": "text",
+			"text": "輸入可以直接計算 C1 C2 C3 C4，一直往下帶就可以了",
+			"x": -780,
+			"y": 165,
+			"width": 307,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "0b7a01c9899e7ee3",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_前瞻進位加法器/04-計算機組織_TOPIC_05_前瞻進位加法器.png",
+			"x": -320,
+			"y": -183,
+			"width": 400,
+			"height": 205
+		},
+		{
+			"id": "e0c7f4ae83500cd9",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_前瞻進位加法器/06-計算機組織_TOPIC_05_前瞻進位加法器.png",
+			"x": -320,
+			"y": 97,
+			"width": 400,
+			"height": 193
+		},
+		{
+			"id": "101c2d7be8f78b7d",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_前瞻進位加法器/11-這樣的寫法就是 Sum of Product.png",
+			"x": -320,
+			"y": 377,
+			"width": 400,
+			"height": 191
+		},
+		{
+			"id": "e710a1dd81eb1cba",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_前瞻進位加法器/10-可以用來取代上面那邊一堆電路 XOR.png",
+			"x": 160,
+			"y": 371,
+			"width": 400,
+			"height": 204
+		},
+		{
+			"id": "490fc3f8ac6720b8",
+			"type": "text",
+			"text": "可以用來取代上面那邊一堆電路 XOR",
+			"x": 234,
+			"y": 195,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "12d00a815ae91fdd",
+			"type": "text",
+			"text": "這樣的寫法就是 Sum of Product",
+			"x": -780,
+			"y": 300,
+			"width": 307,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "d9357bec5458147d",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_前瞻進位加法器/09-這樣的寫法就是 Sum of Product.png",
+			"x": -1300,
+			"y": 360,
+			"width": 400,
+			"height": 96
+		},
+		{
+			"id": "97cf2e835aac12ce",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_前瞻進位加法器/12-計算機組織_TOPIC_05_前瞻進位加法器.png",
+			"x": -1300,
+			"y": 560,
+			"width": 400,
+			"height": 241
+		},
+		{
+			"id": "f6df30bc96b9fc39",
+			"type": "text",
+			"text": "這些 carry 就可以用上面那個邏輯閘的方式建構出來",
+			"x": -759,
+			"y": 644,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "25d147e430f3bcbb",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_前瞻進位加法器/14-無窮硬體加法器,成本最高的.png",
+			"x": -1300,
+			"y": 920,
+			"width": 400,
+			"height": 221
+		},
+		{
+			"id": "ac3ade33f69f4cb2",
+			"type": "text",
+			"text": "無窮硬體加法器，成本最高的",
+			"x": -759,
+			"y": 1000,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "f8ec74838fc80dc9",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_前瞻進位加法器/01-真值表可以簡化成這樣.png",
+			"x": -2714,
+			"y": -496,
+			"width": 634,
+			"height": 227
+		},
+		{
+			"id": "8cf6c2b81efc112b",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_前瞻進位加法器/05-真值表可以簡化成這樣.png",
+			"x": -2714,
+			"y": -167,
+			"width": 634,
+			"height": 349
+		},
+		{
+			"id": "b9693f95df88b4f3",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_前瞻進位加法器/08-真值表可以簡化成這樣.png",
+			"x": -2714,
+			"y": 320,
+			"width": 634,
+			"height": 322
+		},
+		{
+			"id": "b168f15c8ef49c71",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_前瞻進位加法器/13-計算機組織_TOPIC_05_前瞻進位加法器.png",
+			"x": -2694,
+			"y": 760,
+			"width": 594,
+			"height": 320
+		},
+		{
+			"id": "81b4d7b233a8c6a1",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_前瞻進位加法器/15-計算機組織_TOPIC_05_前瞻進位加法器.png",
+			"x": -2720,
+			"y": 1200,
+			"width": 639,
+			"height": 336
+		},
+		{
+			"id": "381937fef4c81d9c",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_前瞻進位加法器/16-計算機組織_TOPIC_05_前瞻進位加法器.png",
+			"x": -2720,
+			"y": 1680,
+			"width": 640,
+			"height": 352
+		},
+		{
+			"id": "98de5416a8505d77",
+			"type": "text",
+			"text": "- 真值表可以簡化成這樣\n\t- 其中有一個 1 那麼就是看 carry\n\t- 如果都是 0 那麼就是 0\n\t- 然後如果兩個輸入都是 1 不用管 $C_{in}$ 他一定是 1 ",
+			"x": -1920,
+			"y": -56,
+			"width": 441,
+			"height": 128,
+			"color": "1"
+		},
+		{
+			"id": "6424e3648baffb09",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_前瞻進位加法器/17-計算機組織_TOPIC_05_前瞻進位加法器.png",
+			"x": -2720,
+			"y": 2160,
+			"width": 640,
+			"height": 329
+		},
+		{
+			"id": "ad8cbe48601d248d",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_前瞻進位加法器/18-計算機組織_TOPIC_05_前瞻進位加法器.png",
+			"x": -3008,
+			"y": 2640,
+			"width": 517,
+			"height": 280
+		},
+		{
+			"id": "c13bca254ff06d01",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_前瞻進位加法器/19-計算機組織_TOPIC_05_前瞻進位加法器.png",
+			"x": -2468,
+			"y": 2640,
+			"width": 567,
+			"height": 280
+		},
+		{
+			"id": "e15183f856583095",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_前瞻進位加法器/20-計算機組織_TOPIC_05_前瞻進位加法器.png",
+			"x": -2749,
+			"y": 3120,
+			"width": 669,
+			"height": 380
+		},
+		{
+			"id": "d63fb31ef98208bf",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_前瞻進位加法器/21-計算機組織_TOPIC_05_前瞻進位加法器.png",
+			"x": -2765,
+			"y": 3580,
+			"width": 701,
+			"height": 350
+		},
+		{
+			"id": "a48a67bc94e9cd4d",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_前瞻進位加法器/22-計算機組織_TOPIC_05_前瞻進位加法器.png",
+			"x": -2821,
+			"y": 4080,
+			"width": 814,
+			"height": 320
+		},
+		{
+			"id": "da596796a4545d52",
+			"type": "text",
+			"text": "- Critical path delay 就是上面那些 full adder 的時間(1) 加上裡面兩層的 gates (2) 再加上最外面那層 P G 的 gate delay(2)\n- sum delay 就是今天大 C 傳入進去前要先花 5 個 gate delay 然後，那放進去之後因為原本的小 c 都是錯的所以要重新計算 sum 3 個 full adder(3)，然後還有 2-level gates 內部的所以要重新給 c 加(2)",
+			"x": -1644,
+			"y": 4202,
+			"width": 384,
+			"height": 231,
+			"color": "1"
+		}
+	],
+	"edges": [
+		{
+			"id": "37ccf87961782d5c",
+			"fromNode": "0b7a01c9899e7ee3",
+			"fromSide": "bottom",
+			"toNode": "e0c7f4ae83500cd9",
+			"toSide": "top"
+		},
+		{
+			"id": "028813dab236996f",
+			"fromNode": "e0c7f4ae83500cd9",
+			"fromSide": "bottom",
+			"toNode": "101c2d7be8f78b7d",
+			"toSide": "top"
+		},
+		{
+			"id": "8d2461595f0b84d5",
+			"fromNode": "101c2d7be8f78b7d",
+			"fromSide": "right",
+			"toNode": "e710a1dd81eb1cba",
+			"toSide": "left"
+		},
+		{
+			"id": "5c3853b1e211d103",
+			"fromNode": "e710a1dd81eb1cba",
+			"fromSide": "top",
+			"toNode": "490fc3f8ac6720b8",
+			"toSide": "bottom"
+		},
+		{
+			"id": "12030479dcaf0437",
+			"fromNode": "99cd61ea11f845ea",
+			"fromSide": "top",
+			"toNode": "9673949efde7b3b5",
+			"toSide": "bottom"
+		},
+		{
+			"id": "a7f48147f2f9318a",
+			"fromNode": "99cd61ea11f845ea",
+			"fromSide": "bottom",
+			"toNode": "439d6e53f24cc83c",
+			"toSide": "top"
+		},
+		{
+			"id": "b6cc28ef52eb257a",
+			"fromNode": "439d6e53f24cc83c",
+			"fromSide": "right",
+			"toNode": "f566a4e7ca7599a5",
+			"toSide": "left"
+		},
+		{
+			"id": "cea1d2079e304835",
+			"fromNode": "b73e6437994b793e",
+			"fromSide": "right",
+			"toNode": "a349552ce771a89c",
+			"toSide": "left"
+		},
+		{
+			"id": "03c9fa3f75596846",
+			"fromNode": "e0c7f4ae83500cd9",
+			"fromSide": "left",
+			"toNode": "a349552ce771a89c",
+			"toSide": "right"
+		},
+		{
+			"id": "cb1a57c24a4daf86",
+			"fromNode": "439d6e53f24cc83c",
+			"fromSide": "bottom",
+			"toNode": "b73e6437994b793e",
+			"toSide": "top"
+		},
+		{
+			"id": "355eb3c12b4e32c5",
+			"fromNode": "b73e6437994b793e",
+			"fromSide": "right",
+			"toNode": "12d00a815ae91fdd",
+			"toSide": "left"
+		},
+		{
+			"id": "1186eabb14552c42",
+			"fromNode": "b73e6437994b793e",
+			"fromSide": "bottom",
+			"toNode": "d9357bec5458147d",
+			"toSide": "top"
+		},
+		{
+			"id": "e058a0deefa76d0f",
+			"fromNode": "d9357bec5458147d",
+			"fromSide": "bottom",
+			"toNode": "97cf2e835aac12ce",
+			"toSide": "top"
+		},
+		{
+			"id": "0b43b2b040dab439",
+			"fromNode": "97cf2e835aac12ce",
+			"fromSide": "right",
+			"toNode": "f6df30bc96b9fc39",
+			"toSide": "left"
+		},
+		{
+			"id": "551f6f24c3033043",
+			"fromNode": "97cf2e835aac12ce",
+			"fromSide": "bottom",
+			"toNode": "25d147e430f3bcbb",
+			"toSide": "top"
+		},
+		{
+			"id": "d325a262b25a7266",
+			"fromNode": "25d147e430f3bcbb",
+			"fromSide": "right",
+			"toNode": "ac3ade33f69f4cb2",
+			"toSide": "left"
+		},
+		{
+			"id": "755f200fc865faed",
+			"fromNode": "f8ec74838fc80dc9",
+			"fromSide": "bottom",
+			"toNode": "8cf6c2b81efc112b",
+			"toSide": "top"
+		},
+		{
+			"id": "2a6f767d4eb2fffa",
+			"fromNode": "8cf6c2b81efc112b",
+			"fromSide": "right",
+			"toNode": "98de5416a8505d77",
+			"toSide": "left"
+		},
+		{
+			"id": "f9734ca210f30ade",
+			"fromNode": "8cf6c2b81efc112b",
+			"fromSide": "bottom",
+			"toNode": "b9693f95df88b4f3",
+			"toSide": "top"
+		},
+		{
+			"id": "ffb005d13d0638df",
+			"fromNode": "b9693f95df88b4f3",
+			"fromSide": "bottom",
+			"toNode": "b168f15c8ef49c71",
+			"toSide": "top"
+		},
+		{
+			"id": "b48009bca18d8ec6",
+			"fromNode": "b168f15c8ef49c71",
+			"fromSide": "bottom",
+			"toNode": "81b4d7b233a8c6a1",
+			"toSide": "top"
+		},
+		{
+			"id": "ed9080e29148775f",
+			"fromNode": "81b4d7b233a8c6a1",
+			"fromSide": "bottom",
+			"toNode": "381937fef4c81d9c",
+			"toSide": "top"
+		},
+		{
+			"id": "207336d5c2a084e9",
+			"fromNode": "381937fef4c81d9c",
+			"fromSide": "bottom",
+			"toNode": "6424e3648baffb09",
+			"toSide": "top"
+		},
+		{
+			"id": "52d44bd595002d0d",
+			"fromNode": "ad8cbe48601d248d",
+			"fromSide": "bottom",
+			"toNode": "e15183f856583095",
+			"toSide": "top"
+		},
+		{
+			"id": "259e1dcee301af3d",
+			"fromNode": "c13bca254ff06d01",
+			"fromSide": "bottom",
+			"toNode": "e15183f856583095",
+			"toSide": "top"
+		},
+		{
+			"id": "f77af59f71b21b23",
+			"fromNode": "e15183f856583095",
+			"fromSide": "bottom",
+			"toNode": "d63fb31ef98208bf",
+			"toSide": "top"
+		},
+		{
+			"id": "12eaf9f8afec7d94",
+			"fromNode": "d63fb31ef98208bf",
+			"fromSide": "bottom",
+			"toNode": "a48a67bc94e9cd4d",
+			"toSide": "top"
+		},
+		{
+			"id": "6d7c695c76583ce2",
+			"fromNode": "a48a67bc94e9cd4d",
+			"fromSide": "right",
+			"toNode": "da596796a4545d52",
+			"toSide": "left"
+		}
+	]
+}

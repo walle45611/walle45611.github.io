@@ -28,3 +28,7 @@
 ---
 
 *This summary is generated from the raw source and includes the partial list of books up to 2026.*
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

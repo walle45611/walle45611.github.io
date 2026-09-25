@@ -37,3 +37,7 @@ The release positions image generation as a strategic design tool rather than a 
 ## Alignment With Current Wiki
 
 This summary extends the existing knowledge on image generation models and aligns with the harness‑engineering and context‑engineering concepts, illustrating how new features can be integrated into the LLM‑Wiki‑Worker pipeline for automated ingestion and summarization.
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

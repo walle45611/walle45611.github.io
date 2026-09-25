@@ -1,0 +1,435 @@
+{
+	"nodes": [
+		{
+			"id": "f34d20a912b0fde1",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_快取一致性/02-計算機組織_TOPIC_05_快取一致性.png",
+			"x": -280,
+			"y": -260,
+			"width": 399,
+			"height": 222
+		},
+		{
+			"id": "1f5f8ad332241469",
+			"type": "text",
+			"text": "Cache Coherence Pb. 是指橫向的 cache 跟 cache 之間不一致，如果是單一個 cache 跟 main memory 那個叫做 inconsistent",
+			"x": -255,
+			"y": 20,
+			"width": 351,
+			"height": 85,
+			"color": "1"
+		},
+		{
+			"id": "bb47310030933249",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_快取一致性/03-計算機組織_TOPIC_05_快取一致性.png",
+			"x": -280,
+			"y": 180,
+			"width": 400,
+			"height": 107
+		},
+		{
+			"id": "59fe5dd2fbd7191c",
+			"type": "text",
+			"text": "解決 Cache coherence Pb. 就叫做 Cache coherence protocols",
+			"x": 180,
+			"y": 206,
+			"width": 279,
+			"height": 55,
+			"color": "1"
+		},
+		{
+			"id": "88370512c89da3d4",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_快取一致性/05-兩種 protocol.png",
+			"x": -280,
+			"y": 360,
+			"width": 399,
+			"height": 141
+		},
+		{
+			"id": "328e3eeeed24b3e5",
+			"type": "text",
+			"text": "- 兩種 protocol \n\t1. 寫之前先把廣播出去，讓其他人的 Cache 改成無效 block\n\t2. 那麼另一個就是把 Cache 要更改的時候會把最新的資料廣播出去讓其他更新",
+			"x": 180,
+			"y": 339,
+			"width": 353,
+			"height": 184,
+			"color": "1"
+		},
+		{
+			"id": "f902743aa5841628",
+			"type": "text",
+			"text": "垂直方向的策略會影響到橫向的策略複雜度例如選擇 write-back 那麼設計橫向的 protocol 會比較複雜",
+			"x": 620,
+			"y": 598,
+			"width": 250,
+			"height": 115,
+			"color": "1"
+		},
+		{
+			"id": "6e8df3e6746d12b9",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_快取一致性/06-兩種 protocol.png",
+			"x": 156,
+			"y": 600,
+			"width": 399,
+			"height": 113
+		},
+		{
+			"id": "342d21501abb8ede",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_快取一致性/08-兩種 protocol.png",
+			"x": -20,
+			"y": 840,
+			"width": 400,
+			"height": 240
+		},
+		{
+			"id": "60e2a674bdfc913f",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_快取一致性/09-計算機組織_TOPIC_05_快取一致性.png",
+			"x": 470,
+			"y": 840,
+			"width": 400,
+			"height": 253
+		},
+		{
+			"id": "06324f4241901472",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_快取一致性/01-計算機組織_TOPIC_05_快取一致性.png",
+			"x": -880,
+			"y": -260,
+			"width": 472,
+			"height": 222
+		},
+		{
+			"id": "652adc674e6f3089",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_快取一致性/04-計算機組織_TOPIC_05_快取一致性.png",
+			"x": -880,
+			"y": 319,
+			"width": 468,
+			"height": 224
+		},
+		{
+			"id": "6b15b121487b1506",
+			"type": "text",
+			"text": "那麼透過 snoop tag 用來處理或是接收的硬體",
+			"x": -1200,
+			"y": 404,
+			"width": 250,
+			"height": 55,
+			"color": "1"
+		},
+		{
+			"id": "208b8b99bb37fa54",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_快取一致性/07-計算機組織_TOPIC_05_快取一致性.png",
+			"x": -902,
+			"y": 683,
+			"width": 512,
+			"height": 277
+		},
+		{
+			"id": "c07ac3213e93ef33",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_快取一致性/11-這邊是接收者的狀態轉換.png",
+			"x": -919,
+			"y": 1040,
+			"width": 546,
+			"height": 180
+		},
+		{
+			"id": "2722c992ae371d3f",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_快取一致性/17-這邊是在說 sender 的狀態轉換.png",
+			"x": -1495,
+			"y": 1600,
+			"width": 400,
+			"height": 372
+		},
+		{
+			"id": "966ff96fdbb85365",
+			"type": "text",
+			"text": "- 這邊是在說 sender 的狀態轉換\n- shared\n\t- read hit 在 shared 狀態的時候根本就不用換狀態，然後 CPU read miss 搬 block 上來，並且也要廣播出去，那麼也不用轉換狀態。\n\t- CPU write hit 那麼就發送廣播把其他人幹掉跑到 Exclusive\n\t- CPU write miss 那麼廣播出去，然後不管他怎麼處理，再寫入 memory，然後髒掉了所以要跑到 Exclusive\n- exclusive\n\t- CPU write-hit 和 read hit 都是保持在該狀態\n\t- 那 write-miss 也是一樣要廣播其他人怎麼處理是他們，然後 write-back 到 memory 再搬上來新的 block 然後一樣保持在這裡。\n\t- read-miss 也是一樣廣播然後 write-back 寫回去 block，然後沒有寫所以狀態跑回去 shared，讓大家都可以讀寫。\n- Invalid \n\t- CPU 讀也就是 read miss 廣播出去然後轉到 shared 狀態。\n\t- 然後 CPU write miss 一樣寫資料變髒髒了，就讓其他人不能使用就廣播然後，轉狀態到 Exclusive",
+			"x": -1580,
+			"y": 2062,
+			"width": 600,
+			"height": 478,
+			"color": "1"
+		},
+		{
+			"id": "22138a8b2f064d7f",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_快取一致性/10-這邊是接收者的狀態轉換.png",
+			"x": -1520,
+			"y": 993,
+			"width": 400,
+			"height": 275
+		},
+		{
+			"id": "01295546df502486",
+			"type": "text",
+			"text": "- 這邊是接收者的狀態轉換",
+			"x": -1445,
+			"y": 1353,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "37c5b1342f8c3f69",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_快取一致性/16-計算機組織_TOPIC_05_快取一致性.png",
+			"x": -2240,
+			"y": 1427,
+			"width": 519,
+			"height": 225
+		},
+		{
+			"id": "00622409f209bdd7",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_快取一致性/14-計算機組織_TOPIC_05_快取一致性.png",
+			"x": -3320,
+			"y": 1352,
+			"width": 548,
+			"height": 300
+		},
+		{
+			"id": "5d1f9ad961c9ea6a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_快取一致性/19-計算機組織_TOPIC_05_快取一致性.png",
+			"x": -3320,
+			"y": 1752,
+			"width": 548,
+			"height": 303
+		},
+		{
+			"id": "68afdc5f1e57b309",
+			"type": "text",
+			"text": "write update 所以基本上就是有 write 就會有在 bus 上 (資料)",
+			"x": -2640,
+			"y": 1479,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "9eda529dfa14ef52",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_快取一致性/13-計算機組織_TOPIC_05_快取一致性.png",
+			"x": -4040,
+			"y": 1352,
+			"width": 586,
+			"height": 300
+		},
+		{
+			"id": "71065c425b49794e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_快取一致性/18-計算機組織_TOPIC_05_快取一致性.png",
+			"x": -4019,
+			"y": 1752,
+			"width": 545,
+			"height": 303
+		},
+		{
+			"id": "295691edfe8bb07a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_快取一致性/12-計算機組織_TOPIC_05_快取一致性.png",
+			"x": -4497,
+			"y": 1255,
+			"width": 399,
+			"height": 97
+		},
+		{
+			"id": "17d44fdb541899ed",
+			"type": "text",
+			"text": "False sharing 就是不相關的資料，被放在同一個 block 狀態也會受到改變也就是兩個數值都會被影響，也就是把高關聯度放在同個 block 就可以減少了",
+			"x": -4459,
+			"y": 1435,
+			"width": 325,
+			"height": 134,
+			"color": "1"
+		},
+		{
+			"id": "0df0713685aaf638",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_05_快取一致性/15-計算機組織_TOPIC_05_快取一致性.png",
+			"x": -5120,
+			"y": 1370,
+			"width": 567,
+			"height": 282
+		}
+	],
+	"edges": [
+		{
+			"id": "ce802d4fada9f0e6",
+			"fromNode": "f34d20a912b0fde1",
+			"fromSide": "bottom",
+			"toNode": "1f5f8ad332241469",
+			"toSide": "top"
+		},
+		{
+			"id": "bad0d29a31984dba",
+			"fromNode": "1f5f8ad332241469",
+			"fromSide": "bottom",
+			"toNode": "bb47310030933249",
+			"toSide": "top"
+		},
+		{
+			"id": "3673a026ced4943e",
+			"fromNode": "bb47310030933249",
+			"fromSide": "right",
+			"toNode": "59fe5dd2fbd7191c",
+			"toSide": "left"
+		},
+		{
+			"id": "2d19e261f8e8ca0a",
+			"fromNode": "bb47310030933249",
+			"fromSide": "bottom",
+			"toNode": "88370512c89da3d4",
+			"toSide": "top"
+		},
+		{
+			"id": "360bf534c7d6ff0c",
+			"fromNode": "88370512c89da3d4",
+			"fromSide": "right",
+			"toNode": "328e3eeeed24b3e5",
+			"toSide": "left"
+		},
+		{
+			"id": "0978dbd1e79c7b00",
+			"fromNode": "328e3eeeed24b3e5",
+			"fromSide": "bottom",
+			"toNode": "6e8df3e6746d12b9",
+			"toSide": "top"
+		},
+		{
+			"id": "a03be4756a98786a",
+			"fromNode": "6e8df3e6746d12b9",
+			"fromSide": "right",
+			"toNode": "f902743aa5841628",
+			"toSide": "left"
+		},
+		{
+			"id": "0522de59ab076e45",
+			"fromNode": "6e8df3e6746d12b9",
+			"fromSide": "bottom",
+			"toNode": "342d21501abb8ede",
+			"toSide": "top"
+		},
+		{
+			"id": "74949382d6d2b79f",
+			"fromNode": "6e8df3e6746d12b9",
+			"fromSide": "bottom",
+			"toNode": "60e2a674bdfc913f",
+			"toSide": "top"
+		},
+		{
+			"id": "8a773a87ac1301e5",
+			"fromNode": "88370512c89da3d4",
+			"fromSide": "left",
+			"toNode": "652adc674e6f3089",
+			"toSide": "right"
+		},
+		{
+			"id": "0610b2ae5c887296",
+			"fromNode": "652adc674e6f3089",
+			"fromSide": "left",
+			"toNode": "6b15b121487b1506",
+			"toSide": "right"
+		},
+		{
+			"id": "53e5b77fe2ffc08b",
+			"fromNode": "652adc674e6f3089",
+			"fromSide": "bottom",
+			"toNode": "208b8b99bb37fa54",
+			"toSide": "top"
+		},
+		{
+			"id": "f0f3323d1ac2b91e",
+			"fromNode": "208b8b99bb37fa54",
+			"fromSide": "bottom",
+			"toNode": "c07ac3213e93ef33",
+			"toSide": "top"
+		},
+		{
+			"id": "0a483121718ef4aa",
+			"fromNode": "208b8b99bb37fa54",
+			"fromSide": "left",
+			"toNode": "2722c992ae371d3f",
+			"toSide": "right"
+		},
+		{
+			"id": "781c79f6c856cd6a",
+			"fromNode": "2722c992ae371d3f",
+			"fromSide": "bottom",
+			"toNode": "966ff96fdbb85365",
+			"toSide": "top"
+		},
+		{
+			"id": "283cde218087cf6d",
+			"fromNode": "208b8b99bb37fa54",
+			"fromSide": "left",
+			"toNode": "22138a8b2f064d7f",
+			"toSide": "right"
+		},
+		{
+			"id": "b02af203937f1a91",
+			"fromNode": "22138a8b2f064d7f",
+			"fromSide": "bottom",
+			"toNode": "01295546df502486",
+			"toSide": "top"
+		},
+		{
+			"id": "2a73441bb201572c",
+			"fromNode": "22138a8b2f064d7f",
+			"fromSide": "left",
+			"toNode": "37c5b1342f8c3f69",
+			"toSide": "right"
+		},
+		{
+			"id": "477b6982047de758",
+			"fromNode": "2722c992ae371d3f",
+			"fromSide": "left",
+			"toNode": "37c5b1342f8c3f69",
+			"toSide": "right"
+		},
+		{
+			"id": "7d2f8936682ff594",
+			"fromNode": "00622409f209bdd7",
+			"fromSide": "bottom",
+			"toNode": "5d1f9ad961c9ea6a",
+			"toSide": "top"
+		},
+		{
+			"id": "51442f8465f52cb6",
+			"fromNode": "00622409f209bdd7",
+			"fromSide": "right",
+			"toNode": "68afdc5f1e57b309",
+			"toSide": "left"
+		},
+		{
+			"id": "f52472b569e25c73",
+			"fromNode": "9eda529dfa14ef52",
+			"fromSide": "bottom",
+			"toNode": "71065c425b49794e",
+			"toSide": "top"
+		},
+		{
+			"id": "3e900817767d8b81",
+			"fromNode": "9eda529dfa14ef52",
+			"fromSide": "left",
+			"toNode": "17d44fdb541899ed",
+			"toSide": "right"
+		},
+		{
+			"id": "a8dfc7d2812a1cdf",
+			"fromNode": "295691edfe8bb07a",
+			"fromSide": "bottom",
+			"toNode": "17d44fdb541899ed",
+			"toSide": "top"
+		}
+	]
+}

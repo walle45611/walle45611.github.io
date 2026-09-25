@@ -1,0 +1,649 @@
+{
+	"nodes": [
+		{
+			"id": "08a30b9b3e5f7824",
+			"type": "group",
+			"x": -500,
+			"y": 765,
+			"width": 5200,
+			"height": 3075,
+			"label": "循序電路"
+		},
+		{
+			"id": "103546a7f928529f",
+			"type": "group",
+			"x": -520,
+			"y": 4240,
+			"width": 3720,
+			"height": 1360,
+			"label": "組合電路"
+		},
+		{
+			"id": "6605439fd43abf06",
+			"type": "group",
+			"x": -280,
+			"y": 2360,
+			"width": 2380,
+			"height": 1240,
+			"label": "Booth's Algo"
+		},
+		{
+			"id": "b1bdf139a066f2ec",
+			"type": "group",
+			"x": 2380,
+			"y": 2360,
+			"width": 2060,
+			"height": 1217,
+			"label": "Booth's Algo Modify"
+		},
+		{
+			"id": "350e85be6844588b",
+			"type": "group",
+			"x": 1156,
+			"y": 4475,
+			"width": 1932,
+			"height": 978,
+			"label": "Fast Multiplier"
+		},
+		{
+			"id": "27b1c828efbccca7",
+			"type": "group",
+			"x": -491,
+			"y": 4475,
+			"width": 1397,
+			"height": 1004,
+			"label": "Parallel Fast Multiplier"
+		},
+		{
+			"id": "0c5dd2ef994e37dc",
+			"type": "group",
+			"x": 1240,
+			"y": 965,
+			"width": 1140,
+			"height": 1180,
+			"label": "Hardware Friendly"
+		},
+		{
+			"id": "9447b13f98d4b6a2",
+			"type": "group",
+			"x": -280,
+			"y": 1320,
+			"width": 1100,
+			"height": 680,
+			"label": "傳統式"
+		},
+		{
+			"id": "6f9b5ed80a242170",
+			"type": "group",
+			"x": -2720,
+			"y": 765,
+			"width": 1472,
+			"height": 329,
+			"label": "題目"
+		},
+		{
+			"id": "86693aeddfc86b36",
+			"type": "text",
+			"text": "基本上跟 Hardware Friendly 一樣",
+			"x": -220,
+			"y": 2400,
+			"width": 280,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "bd5a088428855e7f",
+			"type": "text",
+			"text": "## Seq 的電路他的成本就是比較低，速度慢",
+			"x": -284,
+			"y": 880,
+			"width": 504,
+			"height": 73,
+			"color": "1"
+		},
+		{
+			"id": "9cea03c6b8f8b4f8",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_07_08乘法運算/01-題目 - ANS 1,4.png",
+			"x": -2701,
+			"y": 846,
+			"width": 761,
+			"height": 229
+		},
+		{
+			"id": "a399bb05076d6efd",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_07_08乘法運算/16-計算機組織TOPIC_07_08乘法運算.png",
+			"x": -4000,
+			"y": 3424,
+			"width": 1078,
+			"height": 513
+		},
+		{
+			"id": "ea931bc2366f832e",
+			"type": "text",
+			"text": "ANS 1,4\n\n第二個選項是三次加四次減法\n![[Assets/Note/Research/計算機組織TOPIC_07_08乘法運算/01-計算機組織TOPIC 07 08乘法運算.png]]\n第三個選項 Booth's 不一定會比傳統來的少，平均來說是但是不是一定",
+			"x": -1767,
+			"y": 784,
+			"width": 501,
+			"height": 291
+		},
+		{
+			"id": "a4a490849e9a5cc2",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_07_08乘法運算/15-計算機組織TOPIC_07_08乘法運算.png",
+			"x": -2720,
+			"y": 3419,
+			"width": 1479,
+			"height": 545
+		},
+		{
+			"id": "8f5988d07c245777",
+			"type": "text",
+			"text": "整體精神",
+			"x": 495,
+			"y": 3399,
+			"width": 123,
+			"height": 50,
+			"color": "2"
+		},
+		{
+			"id": "9a0b2594d38522e9",
+			"type": "text",
+			"text": "## Comb 的電路他的成本就是比較高，速度快",
+			"x": -473,
+			"y": 4280,
+			"width": 533,
+			"height": 73,
+			"color": "1"
+		},
+		{
+			"id": "c301f890e2c3f55b",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_07_08乘法運算/11-Booth's Algo.png",
+			"x": 1340,
+			"y": 2500,
+			"width": 602,
+			"height": 418
+		},
+		{
+			"id": "7ad66f293ac75fc2",
+			"type": "text",
+			"text": "- 優點： \n\t1. 可以做有號數乘法\n\t2. 平均速度比較快於傳統式和 Hardware friendy\n- 特例：\n\t 1. Worst 的狀態 010101 是最差的狀態也就是 01 交錯，因為 10 交錯會少做一次\n\t2. Best 就是全部都是 1 課本給的，全零不太算是因為硬體可以提前知道就直接 return 0",
+			"x": 1340,
+			"y": 3040,
+			"width": 580,
+			"height": 240,
+			"color": "1"
+		},
+		{
+			"id": "e08840d25a655547",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_07_08乘法運算/14-Booth's Algo - 整體精神.png",
+			"x": 661,
+			"y": 3291,
+			"width": 400,
+			"height": 266
+		},
+		{
+			"id": "11165deb0ce42ecb",
+			"type": "text",
+			"text": "在 Booth’s 演算法裡，我們只看 **乘數最低位 Q0** 和 **上一輪的 Q-1**：\n\n- **00**：沒變化，區間內都是 0，不做事。\n    \n- **11**：沒變化，區間內都是 1，延續，不做事。\n    \n- **01**：從 0 → 1 的變化，表示「一段 1 區間開始」 → 要 **+M**。\n    \n- **10**：從 1 → 0 的變化，表示「一段 1 區間結束」 → 要 **-M**。",
+			"x": 495,
+			"y": 3040,
+			"width": 566,
+			"height": 178,
+			"color": "1"
+		},
+		{
+			"id": "767e832446a488d3",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_07_08乘法運算/10-Booth's Algo.png",
+			"x": 355,
+			"y": 2500,
+			"width": 844,
+			"height": 470
+		},
+		{
+			"id": "e8f9336a9c0ff5bf",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_07_08乘法運算/12-Booth's Algo.png",
+			"x": -220,
+			"y": 2587,
+			"width": 399,
+			"height": 296
+		},
+		{
+			"id": "2ae2972d87d3afb9",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_07_08乘法運算/03-Hardware Friendly.png",
+			"x": 1875,
+			"y": 1185,
+			"width": 379,
+			"height": 244
+		},
+		{
+			"id": "1d0931de827d1561",
+			"type": "text",
+			"text": "由上往下看 Control 連接的線\n1. Op Control 第一條線\n2. Load 是 1 才能把 ALU 結果載入到 Product\n3. 還有一個 shift enable \n4. 檢查 Multiplier 的最後一個 bit\n",
+			"x": 1875,
+			"y": 1502,
+			"width": 379,
+			"height": 177,
+			"color": "1"
+		},
+		{
+			"id": "9e608d83ee32793b",
+			"type": "text",
+			"text": "三個暫存器 \nmultiplicand\nmultiplier\nproduct",
+			"x": 220,
+			"y": 1340,
+			"width": 280,
+			"height": 115,
+			"color": "1"
+		},
+		{
+			"id": "bf4c482d0bf4db3a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_07_08乘法運算/04-Hardware Friendly - 由上往下看 Control 連接的線.png",
+			"x": 1280,
+			"y": 1469,
+			"width": 400,
+			"height": 210
+		},
+		{
+			"id": "5a025a0b01cccacc",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_07_08乘法運算/07-Hardware Friendly - 由上往下看 Control 連接的線.png",
+			"x": 1280,
+			"y": 1785,
+			"width": 599,
+			"height": 340
+		},
+		{
+			"id": "b703f75c12dcf58a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_07_08乘法運算/02-Hardware Friendly.png",
+			"x": 1280,
+			"y": 1028,
+			"width": 400,
+			"height": 225
+		},
+		{
+			"id": "16db4db8c9c95bcb",
+			"type": "text",
+			"text": "其實可以把 Multiplier 放到 Product 的右半邊因為都是向右移動，可以省空間",
+			"x": 1780,
+			"y": 1028,
+			"width": 250,
+			"height": 85,
+			"color": "1"
+		},
+		{
+			"id": "06d61adbe90e40e3",
+			"type": "text",
+			"text": "32 bit 需要 31 個家法器，然後要有五層 $2^5$，五層只要 gate delay 5 層加器的電路",
+			"x": -322,
+			"y": 4533,
+			"width": 353,
+			"height": 115,
+			"color": "1"
+		},
+		{
+			"id": "8102ea095108a555",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_07_08乘法運算/05-傳統式 - 三個暫存器.png",
+			"x": 280,
+			"y": 1561,
+			"width": 501,
+			"height": 359
+		},
+		{
+			"id": "7c39953e7e574d24",
+			"type": "text",
+			"text": "- 優點：iteration 次數變少\n- 缺點：硬體成本增加\n- 3 bits Booth's algo 不一定會比 2 bits 來的少次，但頻均來說是",
+			"x": 2707,
+			"y": 3280,
+			"width": 513,
+			"height": 94,
+			"color": "1"
+		},
+		{
+			"id": "b1a114a711671cbf",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_07_08乘法運算/08-Booth's Algo Modify.png",
+			"x": 2400,
+			"y": 2380,
+			"width": 872,
+			"height": 494
+		},
+		{
+			"id": "29c99bdceab76a84",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_07_08乘法運算/06-傳統式 - 三個暫存器.png",
+			"x": -260,
+			"y": 1617,
+			"width": 400,
+			"height": 174
+		},
+		{
+			"id": "9480ebc8df4a054f",
+			"type": "text",
+			"text": "傳統的就是 Multiplicand 一直往左移動然後如果是 1 的 Multiplier 就往下加如果是 0 就 do not think，Multiplicand 要八位因為他會一直往左所以要八位，然後 Multiplier 要往右移省電路空間和提升速度每次只看最後一位去判斷要不要加，Iteration 就是你 bit 數量",
+			"x": -260,
+			"y": 1340,
+			"width": 400,
+			"height": 160
+		},
+		{
+			"id": "0e834a348799f8bc",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_07_08乘法運算/17-Fast Multiplier - Fast 就是一加二加三.png",
+			"x": 2387,
+			"y": 4475,
+			"width": 672,
+			"height": 495
+		},
+		{
+			"id": "e853b9a39bb1524f",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_07_08乘法運算/19-Fast Multiplier - Fast 就是一加二加三.png",
+			"x": 1186,
+			"y": 5063,
+			"width": 772,
+			"height": 360
+		},
+		{
+			"id": "d547cb97c1aaf1de",
+			"type": "text",
+			"text": "- Fast 就是一加二加三",
+			"x": 1387,
+			"y": 4636,
+			"width": 570,
+			"height": 88,
+			"color": "1"
+		},
+		{
+			"id": "896e1091987a2acb",
+			"type": "text",
+			"text": "32 bit 快速乘法器，那麼 gate delay 31 個加法電路，因為第一個是輸入所以需要 -1",
+			"x": 2459,
+			"y": 5181,
+			"width": 368,
+			"height": 125
+		},
+		{
+			"id": "a5cd5ee9737e8f6e",
+			"type": "text",
+			"text": "課本的電路設計都有問題，因為如果 Product 的  bit 數只有這樣，會 overflow 導致正數變負數，是不對的所以其實在真正的硬體上面應該要 +1 bit 才是正確的，但是不用管他還是照算",
+			"x": 3799,
+			"y": 3074,
+			"width": 361,
+			"height": 114,
+			"color": "2"
+		},
+		{
+			"id": "6f2b801092830b83",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_07_08乘法運算/09-Booth's Algo Modify.png",
+			"x": 3360,
+			"y": 2445,
+			"width": 799,
+			"height": 182
+		},
+		{
+			"id": "24a8c079d7a9850f",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_07_08乘法運算/13-Booth's Algo Modify.png",
+			"x": 3580,
+			"y": 2677,
+			"width": 680,
+			"height": 328
+		},
+		{
+			"id": "53f0a75cfa543078",
+			"type": "text",
+			"text": "-  Parallel Fast 就是兩兩相加",
+			"x": 303,
+			"y": 4871,
+			"width": 482,
+			"height": 85,
+			"color": "1"
+		},
+		{
+			"id": "e113e4ad9ad4e0b6",
+			"type": "text",
+			"text": "Current bits 兩個決定出來家或是減是兩倍，那麼 Previous 和一個 Current bits 是一倍，主要原因是因為 Product 他會位移所兩個 bits 所以就等於乘 2。\n\n也就是說 011，01 是代表要加兩倍 11 不用動所以，最後操作會有 Operation",
+			"x": 2707,
+			"y": 3060,
+			"width": 493,
+			"height": 165,
+			"color": "2"
+		},
+		{
+			"id": "19d3384e9296d3af",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_07_08乘法運算/18-Parallel Fast Multiplier - Parallel Fast 就是兩兩相加.png",
+			"x": -421,
+			"y": 4765,
+			"width": 565,
+			"height": 297
+		},
+		{
+			"id": "f79c18eb03e0fe04",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_07_08乘法運算/21-Parallel Fast Multiplier.png",
+			"x": -421,
+			"y": 5146,
+			"width": 565,
+			"height": 268
+		},
+		{
+			"id": "d32f25a6e4bad2ba",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_07_08乘法運算/20-Parallel Fast Multiplier - Parallel Fast 就是兩兩相加.png",
+			"x": 264,
+			"y": 5141,
+			"width": 564,
+			"height": 272
+		}
+	],
+	"edges": [
+		{
+			"id": "4afb5c4e858c08a2",
+			"fromNode": "9480ebc8df4a054f",
+			"fromSide": "bottom",
+			"toNode": "29c99bdceab76a84",
+			"toSide": "top"
+		},
+		{
+			"id": "c2fbd6a0fa47a8af",
+			"fromNode": "29c99bdceab76a84",
+			"fromSide": "right",
+			"toNode": "8102ea095108a555",
+			"toSide": "left"
+		},
+		{
+			"id": "856931544e520678",
+			"fromNode": "9e608d83ee32793b",
+			"fromSide": "bottom",
+			"toNode": "29c99bdceab76a84",
+			"toSide": "top"
+		},
+		{
+			"id": "a0de03933c36b52d",
+			"fromNode": "b703f75c12dcf58a",
+			"fromSide": "right",
+			"toNode": "16db4db8c9c95bcb",
+			"toSide": "left"
+		},
+		{
+			"id": "cd7c2fab235d9027",
+			"fromNode": "16db4db8c9c95bcb",
+			"fromSide": "right",
+			"toNode": "2ae2972d87d3afb9",
+			"toSide": "top"
+		},
+		{
+			"id": "4af3a3a845cab7b8",
+			"fromNode": "2ae2972d87d3afb9",
+			"fromSide": "left",
+			"toNode": "bf4c482d0bf4db3a",
+			"toSide": "top"
+		},
+		{
+			"id": "57f43b6e504c3db8",
+			"fromNode": "bf4c482d0bf4db3a",
+			"fromSide": "right",
+			"toNode": "1d0931de827d1561",
+			"toSide": "left"
+		},
+		{
+			"id": "f1d6a08398ea31c1",
+			"fromNode": "bf4c482d0bf4db3a",
+			"fromSide": "bottom",
+			"toNode": "5a025a0b01cccacc",
+			"toSide": "top"
+		},
+		{
+			"id": "98dd9f1c481bff8a",
+			"fromNode": "e8f9336a9c0ff5bf",
+			"fromSide": "right",
+			"toNode": "767e832446a488d3",
+			"toSide": "left"
+		},
+		{
+			"id": "1d6a9b21687df3dc",
+			"fromNode": "0c5dd2ef994e37dc",
+			"fromSide": "bottom",
+			"toNode": "6605439fd43abf06",
+			"toSide": "top"
+		},
+		{
+			"id": "912f8b77ea1aaa60",
+			"fromNode": "767e832446a488d3",
+			"fromSide": "bottom",
+			"toNode": "11165deb0ce42ecb",
+			"toSide": "top"
+		},
+		{
+			"id": "d4334759649c4ef1",
+			"fromNode": "767e832446a488d3",
+			"fromSide": "right",
+			"toNode": "c301f890e2c3f55b",
+			"toSide": "left"
+		},
+		{
+			"id": "8662dd6c271897b3",
+			"fromNode": "8f5988d07c245777",
+			"fromSide": "right",
+			"toNode": "e08840d25a655547",
+			"toSide": "left"
+		},
+		{
+			"id": "dd19c21d8ac28e18",
+			"fromNode": "9cea03c6b8f8b4f8",
+			"fromSide": "right",
+			"toNode": "ea931bc2366f832e",
+			"toSide": "left"
+		},
+		{
+			"id": "0fa69cfc438a50a5",
+			"fromNode": "b1a114a711671cbf",
+			"fromSide": "bottom",
+			"toNode": "e113e4ad9ad4e0b6",
+			"toSide": "top"
+		},
+		{
+			"id": "c5d198358201c3aa",
+			"fromNode": "b1a114a711671cbf",
+			"fromSide": "right",
+			"toNode": "6f2b801092830b83",
+			"toSide": "left"
+		},
+		{
+			"id": "ae763e0540fae3f6",
+			"fromNode": "6605439fd43abf06",
+			"fromSide": "right",
+			"toNode": "b1bdf139a066f2ec",
+			"toSide": "left"
+		},
+		{
+			"id": "f5cd49f7a55a6dd1",
+			"fromNode": "24a8c079d7a9850f",
+			"fromSide": "bottom",
+			"toNode": "a5cd5ee9737e8f6e",
+			"toSide": "top"
+		},
+		{
+			"id": "b9b5549d0434c818",
+			"fromNode": "a399bb05076d6efd",
+			"fromSide": "right",
+			"toNode": "a4a490849e9a5cc2",
+			"toSide": "left"
+		},
+		{
+			"id": "edb01c4286c282d5",
+			"fromNode": "e853b9a39bb1524f",
+			"fromSide": "top",
+			"toNode": "d547cb97c1aaf1de",
+			"toSide": "bottom"
+		},
+		{
+			"id": "fcb108a3261cc268",
+			"fromNode": "d32f25a6e4bad2ba",
+			"fromSide": "left",
+			"toNode": "f79c18eb03e0fe04",
+			"toSide": "right"
+		},
+		{
+			"id": "e56194494a86e0b8",
+			"fromNode": "d32f25a6e4bad2ba",
+			"fromSide": "top",
+			"toNode": "53f0a75cfa543078",
+			"toSide": "bottom"
+		},
+		{
+			"id": "d9ab8fd2510b6f90",
+			"fromNode": "53f0a75cfa543078",
+			"fromSide": "left",
+			"toNode": "19d3384e9296d3af",
+			"toSide": "right"
+		},
+		{
+			"id": "4ebe635bf643213d",
+			"fromNode": "19d3384e9296d3af",
+			"fromSide": "top",
+			"toNode": "06d61adbe90e40e3",
+			"toSide": "bottom"
+		},
+		{
+			"id": "6d98e0587c8e64c7",
+			"fromNode": "d547cb97c1aaf1de",
+			"fromSide": "right",
+			"toNode": "0e834a348799f8bc",
+			"toSide": "left"
+		},
+		{
+			"id": "f9b7addcc0f05717",
+			"fromNode": "0e834a348799f8bc",
+			"fromSide": "bottom",
+			"toNode": "896e1091987a2acb",
+			"toSide": "top"
+		},
+		{
+			"id": "43efc9e4085929bf",
+			"fromNode": "a4a490849e9a5cc2",
+			"fromSide": "right",
+			"toNode": "08a30b9b3e5f7824",
+			"toSide": "left"
+		},
+		{
+			"id": "3d1e98147d6de675",
+			"fromNode": "a4a490849e9a5cc2",
+			"fromSide": "right",
+			"toNode": "103546a7f928529f",
+			"toSide": "left"
+		}
+	]
+}

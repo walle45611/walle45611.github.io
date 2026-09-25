@@ -14,3 +14,7 @@
   - In-app browser for precise instructions.
   - GPT-image-1.5 for image generation.
   - 90+ plugins for various tools.
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

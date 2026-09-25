@@ -29,3 +29,7 @@
 ## 參考
 
 - Wikipedia: 林宅血案
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

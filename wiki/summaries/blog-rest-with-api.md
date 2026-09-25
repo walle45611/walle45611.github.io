@@ -19,6 +19,6 @@
 - REST 強調統一介面、stateless、cacheable、client-server 與 layered system 等約束。
 - 原文也整理 RESTful API 的可擴展性、彈性、獨立性與 URI 設計方向。
 
-## Related Concepts
+## Navigation
 
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
+- [My vault：Tech 筆記](../archives/my-vault-tech.md)

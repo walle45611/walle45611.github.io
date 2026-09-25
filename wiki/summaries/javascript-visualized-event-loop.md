@@ -34,3 +34,7 @@
 
 - [javascript-event-loop](../concepts/javascript-event-loop.md)
 - [作業系統：競爭條件與同步](./blog-race-condition-and-synchronization.md)
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

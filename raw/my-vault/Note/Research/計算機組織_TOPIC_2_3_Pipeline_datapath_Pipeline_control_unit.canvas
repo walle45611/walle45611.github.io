@@ -1,0 +1,295 @@
+{
+	"nodes": [
+		{
+			"id": "22c1662c1491ecda",
+			"type": "group",
+			"x": -320,
+			"y": -280,
+			"width": 1199,
+			"height": 2087,
+			"label": "Datapath 建構"
+		},
+		{
+			"id": "5457a1c2147049f5",
+			"type": "group",
+			"x": 1100,
+			"y": -280,
+			"width": 1108,
+			"height": 1510,
+			"label": "Control"
+		},
+		{
+			"id": "e2734e60c6bd318d",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_3_Pipeline_datapath_Pipeline_control_unit/02-Datapath 建構 - IF ID 64 bits.png",
+			"x": -300,
+			"y": -260,
+			"width": 399,
+			"height": 231
+		},
+		{
+			"id": "642fcc9462aebe72",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_3_Pipeline_datapath_Pipeline_control_unit/04-Datapath 建構 - IF ID 64 bits.png",
+			"x": -300,
+			"y": 40,
+			"width": 399,
+			"height": 231
+		},
+		{
+			"id": "a166e5a12f4d9d0b",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_3_Pipeline_datapath_Pipeline_control_unit/06-Datapath 建構 - IF ID 64 bits.png",
+			"x": -300,
+			"y": 360,
+			"width": 400,
+			"height": 233
+		},
+		{
+			"id": "546fff68687b98a2",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_3_Pipeline_datapath_Pipeline_control_unit/08-Datapath 建構.png",
+			"x": -300,
+			"y": 700,
+			"width": 400,
+			"height": 237
+		},
+		{
+			"id": "535c0ba6199321ec",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_3_Pipeline_datapath_Pipeline_control_unit/09-Datapath 建構.png",
+			"x": -300,
+			"y": 1140,
+			"width": 400,
+			"height": 232
+		},
+		{
+			"id": "cd80ec7b46697edc",
+			"type": "text",
+			"text": "- **WB 階段 (Write Back)**：在時脈週期的 **前半段**，先把資料寫回 Register File。\n    \n- **ID 階段 (Instruction Decode)**：在時脈週期的 **後半段**，去讀 Register File。\n    \n\n這樣即使 **WB 與 ID 在同一個 cycle 發生**，也不會有衝突：\n\n- WB 先完成寫入。\n    \n- ID 隨後讀，就能拿到最新的值。\n    \n\n✅ 總結：這張圖就是在說 **透過「正半週寫、負半週讀」的技巧，避免 pipeline 同 cycle 的 register hazard**。",
+			"x": 200,
+			"y": 1126,
+			"width": 659,
+			"height": 260
+		},
+		{
+			"id": "f8be6f3e4298dc52",
+			"type": "text",
+			"text": "這個紅線就是 **Write-back (WB) 階段的資料回饋 (feedback path)**。原因是：\n\n1. **最後才決定要不要寫入**\n    \n    - 指令必須等到 **WB 階段** 才確定是否真的要把資料寫回暫存器檔 (Register File)。\n        \n    - 例如：R-type 算術指令會在 WB 把 ALU 結果寫回；lw 會在 WB 把記憶體讀出的資料寫回；sw、beq、j 則不會寫回。\n        \n2. **為什麼要拉到後面**\n    \n    - 因為只有 WB 階段知道「這條指令到底有沒有 write back 動作」。\n        \n    - 所以控制訊號 (RegWrite) 必須隨著 pipeline register 一路傳下去，最終在 WB 才作用。\n        \n3. **紅線的角色**\n    \n    - 這條路徑就是把 **WB 階段的結果** (ALU output 或 Memory output) 拉回去 **Register File** 的 Write Data port。\n        \n    - 它必須跨過所有 stage，確保寫回資料正確送到暫存器。",
+			"x": 200,
+			"y": 627,
+			"width": 659,
+			"height": 384
+		},
+		{
+			"id": "e4b30b9a5ede477a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_3_Pipeline_datapath_Pipeline_control_unit/10-Datapath 建構.png",
+			"x": -300,
+			"y": 1560,
+			"width": 399,
+			"height": 227
+		},
+		{
+			"id": "0d3bd53439592cc5",
+			"type": "text",
+			"text": "- IF/ID 64 bits\n- ID/EX 128 bits \n- EX/MEM 97 bits\n- MEM/WB 64 bits",
+			"x": 200,
+			"y": 413,
+			"width": 250,
+			"height": 127,
+			"color": "1"
+		},
+		{
+			"id": "647156c4cd2a8eb8",
+			"type": "text",
+			"text": "最後把每個 Pipeline 接上 Clock",
+			"x": 200,
+			"y": 1644,
+			"width": 257,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "b372b5d8a6a3cd25",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_3_Pipeline_datapath_Pipeline_control_unit/03-Control.png",
+			"x": 1120,
+			"y": -260,
+			"width": 439,
+			"height": 247
+		},
+		{
+			"id": "77233adfb977f096",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_3_Pipeline_datapath_Pipeline_control_unit/05-Control.png",
+			"x": 1120,
+			"y": 80,
+			"width": 440,
+			"height": 252
+		},
+		{
+			"id": "4f480bc329561ab5",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_3_Pipeline_datapath_Pipeline_control_unit/07-Control.png",
+			"x": 1120,
+			"y": 417,
+			"width": 440,
+			"height": 247
+		},
+		{
+			"id": "c5d1b5ab40f067a2",
+			"type": "text",
+			"text": "- 把 MUX 放到 ID/EX 之後，選好的目標暫存器號碼才會正確被保存，並隨 pipeline register 傳遞到 MEM/WB。\n- 這樣 WB 階段才會正確寫入「當前指令」的目的暫存器。\n- 主要原因就是 **ID 階段解碼還不算最終確定**，而且必須確保控制訊號和目標暫存器號碼一路隨 pipeline 帶到 WB，避免被覆蓋，才能保證正確寫回。",
+			"x": 1640,
+			"y": 449,
+			"width": 548,
+			"height": 184,
+			"color": "1"
+		},
+		{
+			"id": "c875a127fd1e2a95",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_第五章重要/01-Pipeline Control 和完整電路.png",
+			"x": 1130,
+			"y": 760,
+			"width": 419,
+			"height": 121
+		},
+		{
+			"id": "de622c7aea070cd9",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_第五章重要/02-Pipeline Control 和完整電路.png",
+			"x": 1120,
+			"y": 960,
+			"width": 430,
+			"height": 250
+		},
+		{
+			"id": "7dd9dc667fb0921f",
+			"type": "text",
+			"text": "| 元件                              | 功能與時序設計                                      |\n| ------------------------------- | -------------------------------------------- |\n| **IM (Instruction Memory)**     | 通常只讀，若設計特殊可用負半週取值，但不一定必要                     |\n| **Reg (Register File)**         | 正半週寫入（WB）；負半週讀取（ID），避免寫 → 讀衝突                |\n| **ALU (Arithmetic Logic Unit)** | 純 combinational，無半週操作，pipeline register 順勢同步 |",
+			"x": 2880,
+			"y": -267,
+			"width": 552,
+			"height": 217,
+			"color": "1"
+		},
+		{
+			"id": "7f816813726f65cf",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_3_Pipeline_datapath_Pipeline_control_unit/01-元件 功能與時序設計.png",
+			"x": 2320,
+			"y": -280,
+			"width": 400,
+			"height": 243
+		}
+	],
+	"edges": [
+		{
+			"id": "45dec3ca36e998d1",
+			"fromNode": "e2734e60c6bd318d",
+			"fromSide": "bottom",
+			"toNode": "642fcc9462aebe72",
+			"toSide": "top"
+		},
+		{
+			"id": "cd68dbcbb00aa83c",
+			"fromNode": "a166e5a12f4d9d0b",
+			"fromSide": "right",
+			"toNode": "0d3bd53439592cc5",
+			"toSide": "left"
+		},
+		{
+			"id": "fa05bcd3ed119f81",
+			"fromNode": "642fcc9462aebe72",
+			"fromSide": "bottom",
+			"toNode": "a166e5a12f4d9d0b",
+			"toSide": "top"
+		},
+		{
+			"id": "d5771895446ea3db",
+			"fromNode": "a166e5a12f4d9d0b",
+			"fromSide": "bottom",
+			"toNode": "546fff68687b98a2",
+			"toSide": "top"
+		},
+		{
+			"id": "2473e59ff1611d1c",
+			"fromNode": "546fff68687b98a2",
+			"fromSide": "right",
+			"toNode": "f8be6f3e4298dc52",
+			"toSide": "left"
+		},
+		{
+			"id": "befbc0424c42ae7a",
+			"fromNode": "546fff68687b98a2",
+			"fromSide": "bottom",
+			"toNode": "535c0ba6199321ec",
+			"toSide": "top"
+		},
+		{
+			"id": "d0e22dfff9d093a7",
+			"fromNode": "535c0ba6199321ec",
+			"fromSide": "right",
+			"toNode": "cd80ec7b46697edc",
+			"toSide": "left"
+		},
+		{
+			"id": "4e4a76caa7109061",
+			"fromNode": "535c0ba6199321ec",
+			"fromSide": "bottom",
+			"toNode": "e4b30b9a5ede477a",
+			"toSide": "top"
+		},
+		{
+			"id": "3c423da09c065119",
+			"fromNode": "e4b30b9a5ede477a",
+			"fromSide": "right",
+			"toNode": "647156c4cd2a8eb8",
+			"toSide": "left"
+		},
+		{
+			"id": "e631101a4eb48dd5",
+			"fromNode": "b372b5d8a6a3cd25",
+			"fromSide": "bottom",
+			"toNode": "77233adfb977f096",
+			"toSide": "top"
+		},
+		{
+			"id": "53dbc9203f8372bc",
+			"fromNode": "77233adfb977f096",
+			"fromSide": "bottom",
+			"toNode": "4f480bc329561ab5",
+			"toSide": "top"
+		},
+		{
+			"id": "dff075c0d0ba24b0",
+			"fromNode": "4f480bc329561ab5",
+			"fromSide": "right",
+			"toNode": "c5d1b5ab40f067a2",
+			"toSide": "left"
+		},
+		{
+			"id": "76cdb6873eb947b6",
+			"fromNode": "4f480bc329561ab5",
+			"fromSide": "bottom",
+			"toNode": "c875a127fd1e2a95",
+			"toSide": "top"
+		},
+		{
+			"id": "99d5b9b115967d9d",
+			"fromNode": "c875a127fd1e2a95",
+			"fromSide": "bottom",
+			"toNode": "de622c7aea070cd9",
+			"toSide": "top"
+		},
+		{
+			"id": "7cf278cbe18afa30",
+			"fromNode": "7f816813726f65cf",
+			"fromSide": "right",
+			"toNode": "7dd9dc667fb0921f",
+			"toSide": "left"
+		}
+	]
+}

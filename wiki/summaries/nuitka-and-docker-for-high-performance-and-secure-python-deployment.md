@@ -19,7 +19,10 @@ This article explains how to combine Nuitka, a Python-to-C compiler, with Docker
 ## Related Concepts
 - [microk8s-production-readiness](../concepts/microk8s-production-readiness.md)
 - [cloudflare-workers-ai-pricing-model](../concepts/cloudflare-workers-ai-pricing-model.md)
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
 
 ## Alignment With Current Wiki
 This summary adds a new deployment‑engineering concept that complements existing Docker and CI/CD topics. It links to microk8s and cloudflare workers for broader deployment contexts.
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

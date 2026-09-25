@@ -1,0 +1,483 @@
+{
+	"nodes": [
+		{
+			"id": "1b6e5e88addba8bb",
+			"type": "text",
+			"text": "### 即時系統衡量指標\n\n- hard：重點在能否保證準時 (schedulability)。\n- soft：服務品質指標：miss ratio、累積價值、response time。\n- 系統面：最佳性、超載/模式切換處理、穩定性與 jitter，常需混合考量。",
+			"x": -345,
+			"y": 250,
+			"width": 650,
+			"height": 149
+		},
+		{
+			"id": "text-edf",
+			"type": "text",
+			"text": "### Earliest Deadline First (EDF) 概要\n\n- 原理：絕對截止時間最早者優先；動態優先權，可搶佔。\n- 假設：週期任務、d = p、獨立且無不可搶佔資源。\n- 例子：T1(c=1,p=2)、T2(c=2,p=7)；依尚餘期限決定順序。",
+			"x": 3600,
+			"y": 1360,
+			"width": 500,
+			"height": 149
+		},
+		{
+			"id": "79d2e40ff7f3f2e8",
+			"type": "file",
+			"file": "Assets/Note/Research/real-time-system Uniprocessor Process Scheduling/12-real-time-system Uniproc.png",
+			"x": 3650,
+			"y": 905,
+			"width": 400,
+			"height": 294
+		},
+		{
+			"id": "0533859ed76cec99",
+			"type": "file",
+			"file": "Assets/Note/Research/real-time-system Uniprocessor Process Scheduling/05-行程模型與參數.png",
+			"x": -1010,
+			"y": -140,
+			"width": 400,
+			"height": 248
+		},
+		{
+			"id": "f9dcb8b52e519bf2",
+			"type": "text",
+			"text": "### 行程模型與參數\n\n- Periodic：固定頻率到達；參數 r (ready), p (period), c (WCET), d (relative deadline)。常見控制/展示任務。\n- Sporadic：非週期但到達間隔有下限 p，可估最大負載；例：使用者觸發。\n- 附加要件：先後順序、臨界區保護、任務價值等，會影響排程與分析。",
+			"x": -1160,
+			"y": 220,
+			"width": 700,
+			"height": 179
+		},
+		{
+			"id": "35eb6c5108bbcf97",
+			"type": "file",
+			"file": "Assets/Note/Research/real-time-system Uniprocessor Process Scheduling/06-排程觀念速覽.png",
+			"x": 520,
+			"y": -128,
+			"width": 400,
+			"height": 206
+		},
+		{
+			"id": "eb5d8304bd6b1dec",
+			"type": "text",
+			"text": "### 排程觀念速覽\n\n- Preemptive vs non-preemptive：是否允許高優先權插隊。\n- Online vs offline：決策在執行時即時計算或事先表格化。\n- Static vs dynamic scheduling：任務集合是否固定、排程結果是否會變。\n- Firm vs hard/soft：過期後價值歸零、致命或僅降低品質。\n- Fixed- vs dynamic-priority：優先權是否隨時間/狀態調整。",
+			"x": 440,
+			"y": 195,
+			"width": 560,
+			"height": 234
+		},
+		{
+			"id": "8aa25dd091434a52",
+			"type": "text",
+			"text": "### Rate Monotonic (RM) 概要\n\n- 原理：週期越短優先權越高；可搶佔的固定優先權排程。\n- 假設：任務皆週期、d = p、彼此獨立且無不可搶佔資源。\n- 例子：T1(p=4,c=2)、T2(p=5,c=1)；高頻任務必要時會搶占低頻以保期限。",
+			"x": 1100,
+			"y": 195,
+			"width": 600,
+			"height": 149
+		},
+		{
+			"id": "8a7d3bdf7c04c5f8",
+			"type": "file",
+			"file": "Assets/Note/Research/real-time-system Uniprocessor Process Scheduling/02-Rate Monotonic (RM) 概要.png",
+			"x": 1200,
+			"y": -171,
+			"width": 400,
+			"height": 293
+		},
+		{
+			"id": "text-critical-instant",
+			"type": "text",
+			"text": "### Critical Instant 意義\n\n- 定義：某任務與所有更高優先權任務同時到達時，完成/回應時間達最大值。\n- 用途：作為最糟情境；此時可準時則其他到達模式也可準時。",
+			"x": 1800,
+			"y": 195,
+			"width": 520,
+			"height": 145
+		},
+		{
+			"id": "bf3ebfcfa935153c",
+			"type": "file",
+			"file": "Assets/Note/Research/real-time-system Uniprocessor Process Scheduling/03-Critical Instant 意義.png",
+			"x": 1890,
+			"y": -171,
+			"width": 340,
+			"height": 285
+		},
+		{
+			"id": "text-rma-analysis",
+			"type": "text",
+			"text": "### RM 回應時間分析 (RMA)\n\n- 概念：critical instant 後至時間 $t$，高優先任務會重複到達，各貢獻 $c_j \\cdot \\lceil t/p_j \\rceil$。\n- 檢查：找 $t$（取自高優先週期的倍數）使 $W_i(t)=\\sum_{j=1}^{i} c_j \\cdot \\lceil t/p_j \\rceil \\le t \\le d_i$。\n- 結果：若找到滿足的 $t$ 即可準時；否則需調整參數/優先權。",
+			"x": 2280,
+			"y": 824,
+			"width": 480,
+			"height": 229,
+			"color": "1"
+		},
+		{
+			"id": "7a71f0d3bd00c4e0",
+			"type": "text",
+			"text": "### RM 可排程測試\n\n- 利用率界線：總 $\\sum (c_i/p_i) \\le n(2^{1/n}-1)$ 則保證可排程（充分但非必要），$n=1$ 是 $100\\%$ 。\n- 前 $i$ 任務穩定性：$\\sum_{j=1}^{i} c_j/p_j \\le i(2^{1/i}-1)$。\n- 超過界線不必然失敗，但需更精確分析。",
+			"x": 2400,
+			"y": 165,
+			"width": 430,
+			"height": 205,
+			"color": "1"
+		},
+		{
+			"id": "8497b74b35efae22",
+			"type": "file",
+			"file": "Assets/Note/Research/real-time-system Uniprocessor Process Scheduling/01-RM 可排程測試.png",
+			"x": 2445,
+			"y": -193,
+			"width": 385,
+			"height": 307
+		},
+		{
+			"id": "text-rm-adoption",
+			"type": "text",
+			"text": "### RM/RMA 實務背景\n\n- 採用案例：Space Station Freedom、FAA AAS。\n- 影響：促成 IEEE Futurebus+ 等規格。\n- 用途：RMA 常用於 time-critical 系統的離線驗證。",
+			"x": 3025,
+			"y": 1300,
+			"width": 400,
+			"height": 205
+		},
+		{
+			"id": "bb32373bcd53987a",
+			"type": "file",
+			"file": "Assets/Note/Research/real-time-system Uniprocessor Process Scheduling/11-RM RMA 實務背景.png",
+			"x": 3025,
+			"y": 878,
+			"width": 400,
+			"height": 295
+		},
+		{
+			"id": "6ca2cd84e0dbc3fb",
+			"type": "file",
+			"file": "Assets/Note/Research/real-time-system Uniprocessor Process Scheduling/07-RM 回應時間分析 (RMA).png",
+			"x": 3040,
+			"y": 370,
+			"width": 385,
+			"height": 307
+		},
+		{
+			"id": "21edf5a181b0c864",
+			"type": "file",
+			"file": "Assets/Note/Research/real-time-system Uniprocessor Process Scheduling/04-即時系統衡量指標.png",
+			"x": -220,
+			"y": -160,
+			"width": 400,
+			"height": 247
+		},
+		{
+			"id": "text-pcp-example",
+			"type": "text",
+			"text": "### PCP 範例重點\n\n- tau2 先持有 S1；tau1 嘗試鎖 S2 被擋；tau0 之後鎖 S2。\n- 因 ceiling，tau2 在 t3 前被阻塞並提升優先權，t4 解鎖後恢復。\n- 效果：避免 chain blocking，封鎖次數與長度可控。",
+			"x": 6179,
+			"y": 1836,
+			"width": 430,
+			"height": 205
+		},
+		{
+			"id": "text-pcp-protocol",
+			"type": "text",
+			"text": "### PCP 運作步驟\n\n- 定義每個 semaphore 的 ceiling 為可能鎖住它的最高優先權。\n- 鎖請求僅在請求者優先權高於所有已鎖資源 ceiling 時允許。\n- 如被阻塞，持鎖任務繼承請求者優先權直到解鎖 (priority inheritance)。",
+			"x": 5107,
+			"y": 1824,
+			"width": 450,
+			"height": 229
+		},
+		{
+			"id": "ec8bcf77a39d9250",
+			"type": "file",
+			"file": "Assets/Note/Research/real-time-system Uniprocessor Process Scheduling/13-EDF 可排程測試.png",
+			"x": 4320,
+			"y": 914,
+			"width": 390,
+			"height": 294
+		},
+		{
+			"id": "text-edf-test",
+			"type": "text",
+			"text": "### EDF 可排程測試\n\n- 充分且必要：$\\sum c_j/p_j \\le 1$ 即可排程。\n- 特性：對獨立任務為最佳動態優先權；但在固定優先權 OS 上有額外開銷，且過載時表現可能退化。",
+			"x": 4320,
+			"y": 1368,
+			"width": 420,
+			"height": 145
+		},
+		{
+			"id": "text-pcp-assumptions",
+			"type": "text",
+			"text": "### Priority Ceiling Protocol (PCP) 概念\n\n- 情境：固定優先權、d=p，資源以 semaphore 保護。\n- 目的：限制 priority inversion 次數與時間；阻塞時暫時提升被阻塞任務的優先權。\n- 成果：以資源配置策略保障最低效能並維持可排程性。",
+			"x": 4846,
+			"y": 986,
+			"width": 521,
+			"height": 179,
+			"color": "1"
+		},
+		{
+			"id": "716bf0b7fb8fd98a",
+			"type": "file",
+			"file": "Assets/Note/Research/real-time-system Uniprocessor Process Scheduling/14-PCP 運作步驟.png",
+			"x": 5592,
+			"y": 1368,
+			"width": 433,
+			"height": 283
+		},
+		{
+			"id": "2345f0c1aea33368",
+			"type": "file",
+			"file": "Assets/Note/Research/real-time-system Uniprocessor Process Scheduling/15-PCP 範例重點.png",
+			"x": 6179,
+			"y": 1368,
+			"width": 517,
+			"height": 307
+		},
+		{
+			"id": "text-pcp-variations",
+			"type": "text",
+			"text": "### PCP 延伸\n\n- Stack Resource Policy：所有資源到位才開始，可處理多單元資源，支援動態/固定優先權。\n- Dynamic PCP：將 ceiling 概念延伸到 EDF。",
+			"x": 6228,
+			"y": 1024,
+			"width": 420,
+			"height": 145
+		},
+		{
+			"id": "text-pcp-properties",
+			"type": "text",
+			"text": "### PCP 性質與測試\n\n- 性質：進入 critical section 前最多被阻塞一次；可防死鎖。\n- 近似阻塞：\n  $S_j =$ 被 $\\tau_j$ 使用的 semaphore 集合。\n  $BS_i = \\{\\tau_j \\mid j>i \\land \\max_{s \\in S_j}(\\text{ceiling}(s)) \\ge \\text{priority}(\\tau_i)\\}$。\n  $B_i = \\max_{\\tau_j \\in BS_i} |\\text{critical section}|$。\n- 可排程 (RM 序)：$\\sum_{j=1}^{i-1} c_j/p_j + (c_i+B_i)/p_i \\le i(2^{1/i}-1)$。",
+			"x": 5539,
+			"y": 931,
+			"width": 500,
+			"height": 232,
+			"color": "1"
+		},
+		{
+			"id": "33df90d50172586f",
+			"type": "file",
+			"file": "Assets/Note/Research/real-time-system Uniprocessor Process Scheduling/09-real-time-system Uniproc.png",
+			"x": 4876,
+			"y": 603,
+			"width": 400,
+			"height": 283
+		},
+		{
+			"id": "623f6f74d38aa331",
+			"type": "file",
+			"file": "Assets/Note/Research/real-time-system Uniprocessor Process Scheduling/08-PCP 性質與測試.png",
+			"x": 5539,
+			"y": 565,
+			"width": 400,
+			"height": 306
+		},
+		{
+			"id": "79ddf8ce413901aa",
+			"type": "file",
+			"file": "Assets/Note/Research/real-time-system Uniprocessor Process Scheduling/10-PCP 延伸.png",
+			"x": 6228,
+			"y": 684,
+			"width": 400,
+			"height": 247
+		}
+	],
+	"edges": [
+		{
+			"id": "12ccc255fd9c80c0",
+			"fromNode": "21edf5a181b0c864",
+			"fromSide": "bottom",
+			"toNode": "1b6e5e88addba8bb",
+			"toSide": "top"
+		},
+		{
+			"id": "1e1ff3118621bb7b",
+			"fromNode": "0533859ed76cec99",
+			"fromSide": "bottom",
+			"toNode": "f9dcb8b52e519bf2",
+			"toSide": "top"
+		},
+		{
+			"id": "b4f7e884db2cb42a",
+			"fromNode": "35eb6c5108bbcf97",
+			"fromSide": "bottom",
+			"toNode": "eb5d8304bd6b1dec",
+			"toSide": "top"
+		},
+		{
+			"id": "e5a1846a2bc9711e",
+			"fromNode": "8a7d3bdf7c04c5f8",
+			"fromSide": "bottom",
+			"toNode": "8aa25dd091434a52",
+			"toSide": "top"
+		},
+		{
+			"id": "34471ea4b07df3fa",
+			"fromNode": "8497b74b35efae22",
+			"fromSide": "bottom",
+			"toNode": "7a71f0d3bd00c4e0",
+			"toSide": "top"
+		},
+		{
+			"id": "ee023a1aeea1832c",
+			"fromNode": "bf3ebfcfa935153c",
+			"fromSide": "bottom",
+			"toNode": "text-critical-instant",
+			"toSide": "top"
+		},
+		{
+			"id": "1aa77905173055af",
+			"fromNode": "33df90d50172586f",
+			"fromSide": "bottom",
+			"toNode": "text-pcp-assumptions",
+			"toSide": "top"
+		},
+		{
+			"id": "57678780375bbdf7",
+			"fromNode": "716bf0b7fb8fd98a",
+			"fromSide": "bottom",
+			"toNode": "text-pcp-protocol",
+			"toSide": "top"
+		},
+		{
+			"id": "edge-rma-analysis",
+			"fromNode": "6ca2cd84e0dbc3fb",
+			"fromSide": "bottom",
+			"toNode": "text-rma-analysis",
+			"toSide": "top"
+		},
+		{
+			"id": "edge-rm-adoption",
+			"fromNode": "bb32373bcd53987a",
+			"fromSide": "bottom",
+			"toNode": "text-rm-adoption",
+			"toSide": "top"
+		},
+		{
+			"id": "edge-edf",
+			"fromNode": "79d2e40ff7f3f2e8",
+			"fromSide": "bottom",
+			"toNode": "text-edf",
+			"toSide": "top"
+		},
+		{
+			"id": "edge-edf-test",
+			"fromNode": "ec8bcf77a39d9250",
+			"fromSide": "bottom",
+			"toNode": "text-edf-test",
+			"toSide": "top"
+		},
+		{
+			"id": "edge-pcp-example",
+			"fromNode": "2345f0c1aea33368",
+			"fromSide": "bottom",
+			"toNode": "text-pcp-example",
+			"toSide": "top"
+		},
+		{
+			"id": "edge-pcp-properties",
+			"fromNode": "623f6f74d38aa331",
+			"fromSide": "bottom",
+			"toNode": "text-pcp-properties",
+			"toSide": "top"
+		},
+		{
+			"id": "edge-pcp-variations",
+			"fromNode": "79ddf8ce413901aa",
+			"fromSide": "bottom",
+			"toNode": "text-pcp-variations",
+			"toSide": "top"
+		},
+		{
+			"id": "flow-basics-metrics",
+			"fromNode": "f9dcb8b52e519bf2",
+			"fromSide": "right",
+			"toNode": "1b6e5e88addba8bb",
+			"toSide": "left"
+		},
+		{
+			"id": "flow-metrics-sched",
+			"fromNode": "1b6e5e88addba8bb",
+			"fromSide": "right",
+			"toNode": "eb5d8304bd6b1dec",
+			"toSide": "left"
+		},
+		{
+			"id": "flow-sched-rm",
+			"fromNode": "eb5d8304bd6b1dec",
+			"fromSide": "right",
+			"toNode": "8aa25dd091434a52",
+			"toSide": "left"
+		},
+		{
+			"id": "flow-rm-critical",
+			"fromNode": "8aa25dd091434a52",
+			"fromSide": "right",
+			"toNode": "text-critical-instant",
+			"toSide": "left"
+		},
+		{
+			"id": "flow-critical-schedtest",
+			"fromNode": "text-critical-instant",
+			"fromSide": "right",
+			"toNode": "7a71f0d3bd00c4e0",
+			"toSide": "left"
+		},
+		{
+			"id": "flow-schedtest-rma",
+			"fromNode": "7a71f0d3bd00c4e0",
+			"fromSide": "bottom",
+			"toNode": "text-rma-analysis",
+			"toSide": "top"
+		},
+		{
+			"id": "flow-rma-adoption",
+			"fromNode": "text-rma-analysis",
+			"fromSide": "right",
+			"toNode": "text-rm-adoption",
+			"toSide": "left"
+		},
+		{
+			"id": "flow-rm-edf",
+			"fromNode": "text-rm-adoption",
+			"fromSide": "right",
+			"toNode": "text-edf",
+			"toSide": "left"
+		},
+		{
+			"id": "flow-edf-test",
+			"fromNode": "text-edf",
+			"fromSide": "right",
+			"toNode": "text-edf-test",
+			"toSide": "left"
+		},
+		{
+			"id": "flow-edf-pcp",
+			"fromNode": "text-edf-test",
+			"fromSide": "right",
+			"toNode": "text-pcp-assumptions",
+			"toSide": "left"
+		},
+		{
+			"id": "flow-pcp-protocol",
+			"fromNode": "text-pcp-assumptions",
+			"fromSide": "bottom",
+			"toNode": "text-pcp-protocol",
+			"toSide": "top"
+		},
+		{
+			"id": "flow-pcp-prop",
+			"fromNode": "text-pcp-assumptions",
+			"fromSide": "right",
+			"toNode": "text-pcp-properties",
+			"toSide": "left"
+		},
+		{
+			"id": "flow-pcp-example",
+			"fromNode": "text-pcp-protocol",
+			"fromSide": "right",
+			"toNode": "text-pcp-example",
+			"toSide": "left"
+		},
+		{
+			"id": "flow-pcp-variations",
+			"fromNode": "text-pcp-properties",
+			"fromSide": "right",
+			"toNode": "text-pcp-variations",
+			"toSide": "left"
+		}
+	]
+}

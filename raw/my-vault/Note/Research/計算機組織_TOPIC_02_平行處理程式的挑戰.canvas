@@ -1,0 +1,279 @@
+{
+	"nodes": [
+		{
+			"id": "8d8739e2a1a06f96",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_02_平行處理程式的挑戰/03-這是4個平行程式的挑戰.png",
+			"x": -240,
+			"y": -240,
+			"width": 400,
+			"height": 81
+		},
+		{
+			"id": "765d1c6b9bc6e711",
+			"type": "text",
+			"text": "1. 這是4個平行程式的挑戰",
+			"x": 225,
+			"y": -230,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "88803b1ad921cb79",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_02_平行處理程式的挑戰/05-這個跟 OS 一樣。.png",
+			"x": -240,
+			"y": -100,
+			"width": 399,
+			"height": 186
+		},
+		{
+			"id": "9f7638673a6e7e62",
+			"type": "text",
+			"text": "這個跟 OS 一樣。",
+			"x": 236,
+			"y": -32,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "a8b4bb1305fc96dc",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_02_平行處理程式的挑戰/02-計算機組織_TOPIC_02_平行處理程式的挑戰.png",
+			"x": 600,
+			"y": -290,
+			"width": 400,
+			"height": 122
+		},
+		{
+			"id": "d5d2f73f9b34241e",
+			"type": "text",
+			"text": "scalar 不能平行處理，但是如果今天是 sum 就可以，這個題目常考，所以才都是 $10 \\times t$",
+			"x": 1076,
+			"y": -272,
+			"width": 250,
+			"height": 85,
+			"color": "1"
+		},
+		{
+			"id": "348905d96016ff10",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_02_平行處理程式的挑戰/04-計算機組織_TOPIC_02_平行處理程式的挑戰.png",
+			"x": 600,
+			"y": -130,
+			"width": 400,
+			"height": 146
+		},
+		{
+			"id": "b1d349925499c74a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_02_平行處理程式的挑戰/07-這個跟 OS 一樣。.png",
+			"x": 600,
+			"y": 70,
+			"width": 400,
+			"height": 147
+		},
+		{
+			"id": "b751cfdd6110a6ee",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_02_平行處理程式的挑戰/08-計算機組織_TOPIC_02_平行處理程式的挑戰.png",
+			"x": 600,
+			"y": 280,
+			"width": 400,
+			"height": 130
+		},
+		{
+			"id": "b737ded582fb45b2",
+			"type": "text",
+			"text": "意思就是有 $110$ task然後除可平行處理 $100$ 所以就是 $100/110$ 表示可平行處理之比例",
+			"x": 1080,
+			"y": 303,
+			"width": 280,
+			"height": 85,
+			"color": "1"
+		},
+		{
+			"id": "1c2c8180c21bc8ee",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_02_平行處理程式的挑戰/09-計算機組織_TOPIC_02_平行處理程式的挑戰.png",
+			"x": 600,
+			"y": 500,
+			"width": 400,
+			"height": 138
+		},
+		{
+			"id": "040dc881e5d77c5a",
+			"type": "text",
+			"text": "1. 你把 problem 變大代表說你的平行處理的比例可以變告\n2. Strong scaling 就是不用 Problem size 不用增加但是可以增加 speedup\n3. Weak scaling 就是在說我等比例的增加 problem size 和 cpu 的個數那麼也可以獲得預期 speedup",
+			"x": 1080,
+			"y": 477,
+			"width": 416,
+			"height": 184,
+			"color": "1"
+		},
+		{
+			"id": "fb6a353bde2237da",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_02_平行處理程式的挑戰/11-計算機組織_TOPIC_02_平行處理程式的挑戰.png",
+			"x": 600,
+			"y": 820,
+			"width": 399,
+			"height": 188
+		},
+		{
+			"id": "39fce46de06cb43a",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_02_平行處理程式的挑戰/10-計算機組織_TOPIC_02_平行處理程式的挑戰.png",
+			"x": 600,
+			"y": 680,
+			"width": 399,
+			"height": 96
+		},
+		{
+			"id": "e1608734c96e0fb1",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_02_平行處理程式的挑戰/12-計算機組織_TOPIC_02_平行處理程式的挑戰.png",
+			"x": 1080,
+			"y": 892,
+			"width": 396,
+			"height": 44
+		},
+		{
+			"id": "9de56de09bae1634",
+			"type": "text",
+			"text": "簡單來說就是 load balance 很重要",
+			"x": 1580,
+			"y": 892,
+			"width": 318,
+			"height": 52,
+			"color": "1"
+		},
+		{
+			"id": "dc275b46a202216c",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_02_平行處理程式的挑戰/01-計算機組織_TOPIC_02_平行處理程式的挑戰.png",
+			"x": 1898,
+			"y": -291,
+			"width": 489,
+			"height": 151
+		},
+		{
+			"id": "65e7e9975a871705",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_02_平行處理程式的挑戰/06-計算機組織_TOPIC_02_平行處理程式的挑戰.png",
+			"x": 1898,
+			"y": -60,
+			"width": 489,
+			"height": 192
+		}
+	],
+	"edges": [
+		{
+			"id": "348634407927a9aa",
+			"fromNode": "8d8739e2a1a06f96",
+			"fromSide": "right",
+			"toNode": "765d1c6b9bc6e711",
+			"toSide": "left"
+		},
+		{
+			"id": "385aa517f872074d",
+			"fromNode": "8d8739e2a1a06f96",
+			"fromSide": "bottom",
+			"toNode": "88803b1ad921cb79",
+			"toSide": "top"
+		},
+		{
+			"id": "97b14782b95b68ad",
+			"fromNode": "88803b1ad921cb79",
+			"fromSide": "right",
+			"toNode": "9f7638673a6e7e62",
+			"toSide": "left"
+		},
+		{
+			"id": "3498a388c4428541",
+			"fromNode": "a8b4bb1305fc96dc",
+			"fromSide": "right",
+			"toNode": "d5d2f73f9b34241e",
+			"toSide": "left"
+		},
+		{
+			"id": "3a6e7264d9f04992",
+			"fromNode": "a8b4bb1305fc96dc",
+			"fromSide": "bottom",
+			"toNode": "348905d96016ff10",
+			"toSide": "top"
+		},
+		{
+			"id": "ae990866b789541d",
+			"fromNode": "348905d96016ff10",
+			"fromSide": "bottom",
+			"toNode": "b1d349925499c74a",
+			"toSide": "top"
+		},
+		{
+			"id": "2515fc261b130a7d",
+			"fromNode": "b1d349925499c74a",
+			"fromSide": "bottom",
+			"toNode": "b751cfdd6110a6ee",
+			"toSide": "top"
+		},
+		{
+			"id": "785d6b3e10a5ddc4",
+			"fromNode": "b751cfdd6110a6ee",
+			"fromSide": "right",
+			"toNode": "b737ded582fb45b2",
+			"toSide": "left"
+		},
+		{
+			"id": "c53b4d4b087975f6",
+			"fromNode": "b751cfdd6110a6ee",
+			"fromSide": "bottom",
+			"toNode": "1c2c8180c21bc8ee",
+			"toSide": "top"
+		},
+		{
+			"id": "92adf0710242351c",
+			"fromNode": "1c2c8180c21bc8ee",
+			"fromSide": "right",
+			"toNode": "040dc881e5d77c5a",
+			"toSide": "left"
+		},
+		{
+			"id": "7f65d708092653d4",
+			"fromNode": "39fce46de06cb43a",
+			"fromSide": "bottom",
+			"toNode": "fb6a353bde2237da",
+			"toSide": "top"
+		},
+		{
+			"id": "d20ab7feb727db38",
+			"fromNode": "1c2c8180c21bc8ee",
+			"fromSide": "bottom",
+			"toNode": "39fce46de06cb43a",
+			"toSide": "top"
+		},
+		{
+			"id": "92f04ee69f90d86e",
+			"fromNode": "fb6a353bde2237da",
+			"fromSide": "right",
+			"toNode": "e1608734c96e0fb1",
+			"toSide": "left"
+		},
+		{
+			"id": "5511c5103ce2cec5",
+			"fromNode": "e1608734c96e0fb1",
+			"fromSide": "right",
+			"toNode": "9de56de09bae1634",
+			"toSide": "left"
+		},
+		{
+			"id": "cd4578770ce5befa",
+			"fromNode": "dc275b46a202216c",
+			"fromSide": "bottom",
+			"toNode": "65e7e9975a871705",
+			"toSide": "top"
+		}
+	]
+}

@@ -46,3 +46,7 @@
 
 - 這份來源補上目前 wiki 尚未明確整理的 execution pattern 視角，把 agent workflow 拆成 single / sequential / parallel 三種結構選擇。
 - 與既有 `harness-engineering` 一致，但更聚焦在工作流拓撲與 latency / control / flexibility 的取捨，而不是安全與工具邊界本身。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

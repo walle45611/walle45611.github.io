@@ -1,0 +1,577 @@
+{
+	"nodes": [
+		{
+			"id": "3542be801b962e3c",
+			"type": "group",
+			"x": -1662,
+			"y": -2020,
+			"width": 3325,
+			"height": 4040,
+			"label": "路徑"
+		},
+		{
+			"id": "24712828a19f4aaa",
+			"type": "group",
+			"x": -1562,
+			"y": -1900,
+			"width": 2521,
+			"height": 1481,
+			"label": "R-Type 的路徑"
+		},
+		{
+			"id": "5ed271e675195dda",
+			"type": "group",
+			"x": 143,
+			"y": -320,
+			"width": 1275,
+			"height": 1860,
+			"label": "最重要"
+		},
+		{
+			"id": "951ec7783ef512c2",
+			"type": "group",
+			"x": -1497,
+			"y": 160,
+			"width": 1374,
+			"height": 575,
+			"label": "Sw 路徑"
+		},
+		{
+			"id": "56b5f94a90eb95a3",
+			"type": "group",
+			"x": -1483,
+			"y": 790,
+			"width": 1246,
+			"height": 500,
+			"label": "Beq 路徑"
+		},
+		{
+			"id": "06ae0f955acfcae5",
+			"type": "group",
+			"x": -1497,
+			"y": -320,
+			"width": 1364,
+			"height": 380,
+			"label": "Lw 路徑"
+		},
+		{
+			"id": "3960f81a0c3908ad",
+			"type": "group",
+			"x": -1484,
+			"y": 1460,
+			"width": 1213,
+			"height": 340,
+			"label": "addi 相關指令路徑"
+		},
+		{
+			"id": "03d1d9ad47c50101",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Single_cycle_machine_performancce/03-R-Type 的路徑.png",
+			"x": -1467,
+			"y": -1731,
+			"width": 420,
+			"height": 265
+		},
+		{
+			"id": "73b7bd49549e7dca",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Single_cycle_machine_performancce/14-Sw 路徑.png",
+			"x": -1477,
+			"y": 180,
+			"width": 620,
+			"height": 351
+		},
+		{
+			"id": "693cd1fedb8053e4",
+			"type": "text",
+			"text": "只是為了分步驟 single cycle machine 並沒有分步驟都是 one cycle",
+			"x": -1408,
+			"y": -1857,
+			"width": 301,
+			"height": 55,
+			"color": "1"
+		},
+		{
+			"id": "b96e2f5ff076a263",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Single_cycle_machine_performancce/05-R-Type 的路徑.png",
+			"x": -937,
+			"y": -1725,
+			"width": 400,
+			"height": 253
+		},
+		{
+			"id": "258eca17cd7fe2fa",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Single_cycle_machine_performancce/10-R-Type 的路徑.png",
+			"x": -1448,
+			"y": -1165,
+			"width": 448,
+			"height": 253
+		},
+		{
+			"id": "b66b0727cc3659ec",
+			"type": "text",
+			"text": "- 有四個沒有用到 MemRead, RegWrite, RegDst, MemtoReg\n\t- RegDst 因為沒有寫入 Reg 所以就是 Don't care\n\t- MemtoReg 也是 Don't care 因為不用 Write back\n\t- 其他都設成 0",
+			"x": -1406,
+			"y": 588,
+			"width": 478,
+			"height": 127,
+			"color": "1"
+		},
+		{
+			"id": "9687f987b2f9d437",
+			"type": "text",
+			"text": "其實會有 PC -> Instruction memory -> Sign extend -> MUX -> Data Memory 這條路線但是因為 Sign extend + MUX 時間一定比較短所以用 Reg 這個",
+			"x": -608,
+			"y": 600,
+			"width": 316,
+			"height": 115,
+			"color": "1"
+		},
+		{
+			"id": "58a17b34f712739b",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Single_cycle_machine_performancce/12-Lw 路徑.png",
+			"x": -1477,
+			"y": -300,
+			"width": 597,
+			"height": 340
+		},
+		{
+			"id": "e426020a4c04c65f",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Single_cycle_machine_performancce/09-R-Type 的路徑 - 控制流程.png",
+			"x": -838,
+			"y": -1168,
+			"width": 455,
+			"height": 256
+		},
+		{
+			"id": "f173318ac44cc26a",
+			"type": "text",
+			"text": "- **主控制器**看 `opcode`，決定輸出 ALUOp。\n    \n    - R-type → ALUOp = `10`\n        \n    - beq → ALUOp = `01`\n        \n    - lw/sw → ALUOp = `00`\n        \n- **ALU Control**同時接收：\n    \n    - ALUOp (2 bits)\n        \n    - funct (6 bits, R-type 才有用)\n        \n- **ALU Control 輸出 4-bit/3-bit ALUCtrl**，告訴 ALU要做 `add/sub/and/or/slt`。",
+			"x": -1542,
+			"y": -859,
+			"width": 635,
+			"height": 245,
+			"color": "1"
+		},
+		{
+			"id": "b366189dd1dc34e3",
+			"type": "text",
+			"text": "MemRead 和 MemWrite 都沒有使用到設定成 0",
+			"x": -763,
+			"y": -865,
+			"width": 306,
+			"height": 55,
+			"color": "1"
+		},
+		{
+			"id": "114e9660af41072c",
+			"type": "text",
+			"text": "### 控制流程\n\n1. **Instruction memory** 讀出指令 → 上圖紅線分開各欄位。\n    \n2. **Control Unit** 看到 opcode=000000 → 輸出 `ALUOp=10`。\n    \n3. **Register File**\n    \n    - rs (25-21) → 讀 `$t1`\n        \n    - rt (20-16) → 讀 `$t2`\n        \n    - rd (15-11) → 當作目標暫存器地址（因為 RegDst=1）。\n        \n4. **ALU Control** 收到 ALUOp=10 + funct=100000 → 產生 ALUCtrl=0010 (代表加法)。\n    \n5. **ALU** 執行 `$t1 + $t2`，結果寫回 `$t0`。",
+			"x": -237,
+			"y": -754,
+			"width": 539,
+			"height": 315
+		},
+		{
+			"id": "bbe45ca739679989",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Single_cycle_machine_performancce/04-R-Type 的路徑.png",
+			"x": -457,
+			"y": -1728,
+			"width": 456,
+			"height": 259
+		},
+		{
+			"id": "7fc40ef9217547fc",
+			"type": "text",
+			"text": "ALUSrc 0 才能知道是從 Reg 過來給 ALU 去計算的",
+			"x": -353,
+			"y": -1425,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "61c8a1dc70ada0e1",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Single_cycle_machine_performancce/13-Lw 路徑.png",
+			"x": -757,
+			"y": -300,
+			"width": 604,
+			"height": 340
+		},
+		{
+			"id": "eb0347b17a472195",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Single_cycle_machine_performancce/15-Sw 路徑.png",
+			"x": -757,
+			"y": 180,
+			"width": 614,
+			"height": 351
+		},
+		{
+			"id": "7c683e2f23ee8b88",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Single_cycle_machine_performancce/16-Beq 路徑.png",
+			"x": -1463,
+			"y": 810,
+			"width": 536,
+			"height": 300
+		},
+		{
+			"id": "e3b741b63c2a37bf",
+			"type": "text",
+			"text": "這很重要要記得",
+			"x": 567,
+			"y": -840,
+			"width": 250,
+			"height": 60,
+			"color": "1"
+		},
+		{
+			"id": "6838e19b35cd2370",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_第四章重要/08-Single cycle machine.png",
+			"x": 163,
+			"y": 216,
+			"width": 1122,
+			"height": 507
+		},
+		{
+			"id": "32b738801852e226",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_第四章重要/07-Single cycle machine.png",
+			"x": 174,
+			"y": -300,
+			"width": 1140,
+			"height": 376
+		},
+		{
+			"id": "c418ce07572c9e18",
+			"type": "text",
+			"text": "有時候會把 MUX 的 0 1 對調要記住",
+			"x": 583,
+			"y": 836,
+			"width": 284,
+			"height": 80,
+			"color": "1"
+		},
+		{
+			"id": "87e899a912009ab4",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_第四章重要/02-Single Cycle machine.png",
+			"x": 163,
+			"y": 960,
+			"width": 1184,
+			"height": 520
+		},
+		{
+			"id": "ed3ab6f8f58529a0",
+			"type": "text",
+			"text": "### 拿 `add $t0, $t1, $t2` 舉例\n\n意思是：`$t0 = $t1 + $t2`\n\n- **opcode [31-26] = 000000** → 主控制器判斷這是 R-type。\n    \n- **rs [25-21] = $t1** → 第一個來源暫存器。\n    \n- **rt [20-16] = $t2** → 第二個來源暫存器。\n    \n- **rd [15-11] = $t0** → 結果要寫回的目的暫存器。\n    \n- **shamt [10-6] = 00000** → 移位量，對 add 沒用。\n    \n- **funct [5-0] = 100000 (32)** → ALU Control 看這個，決定是「做加法」。",
+			"x": -237,
+			"y": -1203,
+			"width": 478,
+			"height": 326
+		},
+		{
+			"id": "b7a2babb41c51b83",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Single_cycle_machine_performancce/08-R-Type 的路徑 - 控制流程.png",
+			"x": 463,
+			"y": -1190,
+			"width": 457,
+			"height": 300
+		},
+		{
+			"id": "e3bdef3d12f6e22c",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Single_cycle_machine_performancce/02-無條件.png",
+			"x": 3471,
+			"y": -2046,
+			"width": 788,
+			"height": 480
+		},
+		{
+			"id": "c253cacf0acf2179",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Single_cycle_machine_performancce/07-無條件.png",
+			"x": 3865,
+			"y": -1330,
+			"width": 878,
+			"height": 440
+		},
+		{
+			"id": "b2a33e7f97a56551",
+			"type": "text",
+			"text": "無條件",
+			"x": 3471,
+			"y": -1140,
+			"width": 250,
+			"height": 60,
+			"color": "5"
+		},
+		{
+			"id": "89150b40bcc25e79",
+			"type": "text",
+			"text": "有條件，因為有測條件更久",
+			"x": 3471,
+			"y": -416,
+			"width": 250,
+			"height": 60,
+			"color": "5"
+		},
+		{
+			"id": "8f8a1de032f29722",
+			"type": "text",
+			"text": "因為沒有使用到 RegDst, MemoToReg, 和 MemR/W, RegWrite 五個控制訊號線，但是因為 RegWrite 都變成 0 了所以 MemToReg 和 RegDst 變成 Don't care",
+			"x": -1397,
+			"y": 1170,
+			"width": 404,
+			"height": 100,
+			"color": "1"
+		},
+		{
+			"id": "aa0eac5041ff6c45",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Single_cycle_machine_performancce/18-addi 相關指令路徑.png",
+			"x": -1464,
+			"y": 1480,
+			"width": 527,
+			"height": 300
+		},
+		{
+			"id": "ba07a11be64bc072",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Single_cycle_machine_performancce/17-Beq 路徑.png",
+			"x": -824,
+			"y": 810,
+			"width": 533,
+			"height": 300
+		},
+		{
+			"id": "f349a2fdcb8ce92f",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Single_cycle_machine_performancce/01-計算機組織_TOPIC_4_Single_cyc.png",
+			"x": 2320,
+			"y": -2086,
+			"width": 1113,
+			"height": 520
+		},
+		{
+			"id": "a6252470ef44d0f7",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Single_cycle_machine_performancce/19-addi 相關指令路徑.png",
+			"x": -825,
+			"y": 1480,
+			"width": 534,
+			"height": 300
+		},
+		{
+			"id": "5221bb0b819459f4",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Single_cycle_machine_performancce/06-無條件.png",
+			"x": 2430,
+			"y": -1389,
+			"width": 892,
+			"height": 561
+		},
+		{
+			"id": "c2be28b02d715465",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_4_Single_cycle_machine_performancce/11-有條件,因為有測條件更久.png",
+			"x": 2430,
+			"y": -686,
+			"width": 892,
+			"height": 600
+		}
+	],
+	"edges": [
+		{
+			"id": "5f3878c655d5ceb7",
+			"fromNode": "b96e2f5ff076a263",
+			"fromSide": "right",
+			"toNode": "bbe45ca739679989",
+			"toSide": "left"
+		},
+		{
+			"id": "4b727e4e4b0c9357",
+			"fromNode": "03d1d9ad47c50101",
+			"fromSide": "right",
+			"toNode": "b96e2f5ff076a263",
+			"toSide": "left"
+		},
+		{
+			"id": "385554de4d7f45d8",
+			"fromNode": "e426020a4c04c65f",
+			"fromSide": "bottom",
+			"toNode": "b366189dd1dc34e3",
+			"toSide": "top"
+		},
+		{
+			"id": "7c462f927b087af0",
+			"fromNode": "e426020a4c04c65f",
+			"fromSide": "right",
+			"toNode": "ed3ab6f8f58529a0",
+			"toSide": "left"
+		},
+		{
+			"id": "ecb49b5b43fc1963",
+			"fromNode": "e426020a4c04c65f",
+			"fromSide": "right",
+			"toNode": "114e9660af41072c",
+			"toSide": "left"
+		},
+		{
+			"id": "06bd02090b052cab",
+			"fromNode": "258eca17cd7fe2fa",
+			"fromSide": "right",
+			"toNode": "e426020a4c04c65f",
+			"toSide": "left"
+		},
+		{
+			"id": "06e5bea5fb6776fe",
+			"fromNode": "bbe45ca739679989",
+			"fromSide": "bottom",
+			"toNode": "7fc40ef9217547fc",
+			"toSide": "top"
+		},
+		{
+			"id": "3d4ad7d1f408f257",
+			"fromNode": "7fc40ef9217547fc",
+			"fromSide": "bottom",
+			"toNode": "258eca17cd7fe2fa",
+			"toSide": "top"
+		},
+		{
+			"id": "43d58c0686acd641",
+			"fromNode": "ed3ab6f8f58529a0",
+			"fromSide": "right",
+			"toNode": "b7a2babb41c51b83",
+			"toSide": "left"
+		},
+		{
+			"id": "e2b7046facd2345a",
+			"fromNode": "114e9660af41072c",
+			"fromSide": "right",
+			"toNode": "b7a2babb41c51b83",
+			"toSide": "left"
+		},
+		{
+			"id": "e64428f045cee066",
+			"fromNode": "b7a2babb41c51b83",
+			"fromSide": "bottom",
+			"toNode": "e3b741b63c2a37bf",
+			"toSide": "top"
+		},
+		{
+			"id": "ab635cdcc94adf25",
+			"fromNode": "7c683e2f23ee8b88",
+			"fromSide": "right",
+			"toNode": "ba07a11be64bc072",
+			"toSide": "left"
+		},
+		{
+			"id": "b87c0cb9de415b7e",
+			"fromNode": "7c683e2f23ee8b88",
+			"fromSide": "bottom",
+			"toNode": "8f8a1de032f29722",
+			"toSide": "top"
+		},
+		{
+			"id": "f6d31eecf40ca7f9",
+			"fromNode": "58a17b34f712739b",
+			"fromSide": "right",
+			"toNode": "61c8a1dc70ada0e1",
+			"toSide": "left"
+		},
+		{
+			"id": "2f18701929288d61",
+			"fromNode": "aa0eac5041ff6c45",
+			"fromSide": "right",
+			"toNode": "a6252470ef44d0f7",
+			"toSide": "left"
+		},
+		{
+			"id": "57ed1620fc7925a3",
+			"fromNode": "73b7bd49549e7dca",
+			"fromSide": "bottom",
+			"toNode": "b66b0727cc3659ec",
+			"toSide": "top"
+		},
+		{
+			"id": "1d434310a5934b1c",
+			"fromNode": "73b7bd49549e7dca",
+			"fromSide": "right",
+			"toNode": "eb0347b17a472195",
+			"toSide": "left"
+		},
+		{
+			"id": "51162358f1aea422",
+			"fromNode": "eb0347b17a472195",
+			"fromSide": "bottom",
+			"toNode": "9687f987b2f9d437",
+			"toSide": "top"
+		},
+		{
+			"id": "e8f2756773b1b032",
+			"fromNode": "03d1d9ad47c50101",
+			"fromSide": "top",
+			"toNode": "693cd1fedb8053e4",
+			"toSide": "bottom"
+		},
+		{
+			"id": "4df9b34cd30c9d3f",
+			"fromNode": "258eca17cd7fe2fa",
+			"fromSide": "bottom",
+			"toNode": "f173318ac44cc26a",
+			"toSide": "top"
+		},
+		{
+			"id": "92c2202146fe31f3",
+			"fromNode": "6838e19b35cd2370",
+			"fromSide": "bottom",
+			"toNode": "c418ce07572c9e18",
+			"toSide": "top"
+		},
+		{
+			"id": "66e09cfaad2bd45f",
+			"fromNode": "c2be28b02d715465",
+			"fromSide": "right",
+			"toNode": "89150b40bcc25e79",
+			"toSide": "left"
+		},
+		{
+			"id": "293f4a120dd1517b",
+			"fromNode": "5221bb0b819459f4",
+			"fromSide": "bottom",
+			"toNode": "c2be28b02d715465",
+			"toSide": "top"
+		},
+		{
+			"id": "c7ddbbf4b1edae54",
+			"fromNode": "f349a2fdcb8ce92f",
+			"fromSide": "bottom",
+			"toNode": "5221bb0b819459f4",
+			"toSide": "top"
+		},
+		{
+			"id": "8fc207a627168d8c",
+			"fromNode": "f349a2fdcb8ce92f",
+			"fromSide": "right",
+			"toNode": "e3bdef3d12f6e22c",
+			"toSide": "left"
+		},
+		{
+			"id": "56be0d76f6e81337",
+			"fromNode": "5221bb0b819459f4",
+			"fromSide": "right",
+			"toNode": "b2a33e7f97a56551",
+			"toSide": "left"
+		}
+	]
+}

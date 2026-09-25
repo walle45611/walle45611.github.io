@@ -1,0 +1,427 @@
+{
+	"nodes": [
+		{
+			"id": "900c23624c0991ed",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_14_精確的算術運算/08-計算機組織TOPIC_14_精確的算術運算.png",
+			"x": -280,
+			"y": -320,
+			"width": 399,
+			"height": 299
+		},
+		{
+			"id": "b51601d0b00d1c81",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_14_精確的算術運算/09-計算機組織TOPIC_14_精確的算術運算.png",
+			"x": 280,
+			"y": -285,
+			"width": 460,
+			"height": 234
+		},
+		{
+			"id": "3ec28105bd6401f5",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_14_精確的算術運算/13-計算機組織TOPIC_14_精確的算術運算.png",
+			"x": 290,
+			"y": 13,
+			"width": 440,
+			"height": 249
+		},
+		{
+			"id": "3654e29fae5d17c3",
+			"type": "text",
+			"text": "Guard 和 Round 已經過半了所以要進位，之後再捨棄",
+			"x": 812,
+			"y": 54,
+			"width": 250,
+			"height": 60,
+			"color": "2"
+		},
+		{
+			"id": "63c8f8f9b12f5415",
+			"type": "text",
+			"text": "最後比較哪個離無窮硬體就是實際數值哪個比較接近，with GR 比較接近",
+			"x": 815,
+			"y": 159,
+			"width": 250,
+			"height": 85,
+			"color": "1"
+		},
+		{
+			"id": "38eb6360613c7bee",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_14_精確的算術運算/07-計算機組織TOPIC_14_精確的算術運算.png",
+			"x": -356,
+			"y": -440,
+			"width": 552,
+			"height": 50
+		},
+		{
+			"id": "2df9dd7a43a8833f",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_14_精確的算術運算/14-計算機組織TOPIC_14_精確的算術運算.png",
+			"x": -281,
+			"y": 340,
+			"width": 399,
+			"height": 194
+		},
+		{
+			"id": "417626637b108e86",
+			"type": "text",
+			"text": "- 50 的話就是看 Significand 是不是偶數如果是偶數就捨去如果不是就進位",
+			"x": -237,
+			"y": 85,
+			"width": 314,
+			"height": 88,
+			"color": "1"
+		},
+		{
+			"id": "574f306c28f6de4e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_14_精確的算術運算/12-計算機組織TOPIC_14_精確的算術運算.png",
+			"x": -1600,
+			"y": -3,
+			"width": 477,
+			"height": 133
+		},
+		{
+			"id": "e009a58819b39b20",
+			"type": "text",
+			"text": "ULP 就是 least significant 誤差的 bit 數目介於在真實的數和最小的數，只能是整數因為是誤差的 bits 數目",
+			"x": -1486,
+			"y": 180,
+			"width": 250,
+			"height": 115,
+			"color": "1"
+		},
+		{
+			"id": "631f7316d8105ad4",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_14_精確的算術運算/10-不只運算要做四捨五入那麼把數字轉成浮點數也要.png",
+			"x": -1040,
+			"y": -271,
+			"width": 566,
+			"height": 50
+		},
+		{
+			"id": "31cec1889c1cd1f3",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_14_精確的算術運算/11-計算機組織TOPIC_14_精確的算術運算.png",
+			"x": -975,
+			"y": -14,
+			"width": 435,
+			"height": 265
+		},
+		{
+			"id": "f1e90a9e241d6e99",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_14_精確的算術運算/15-計算機組織TOPIC_14_精確的算術運算.png",
+			"x": -1646,
+			"y": 437,
+			"width": 569,
+			"height": 309
+		},
+		{
+			"id": "b04d9be1cb07713e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_14_精確的算術運算/06-計算機組織TOPIC_14_精確的算術運算.png",
+			"x": -317,
+			"y": -820,
+			"width": 473,
+			"height": 260
+		},
+		{
+			"id": "156f408418b91dc3",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_14_精確的算術運算/04-計算機組織TOPIC_14_精確的算術運算.png",
+			"x": -241,
+			"y": -1300,
+			"width": 323,
+			"height": 400
+		},
+		{
+			"id": "04320f243d5725e0",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_14_精確的算術運算/16-計算機組織TOPIC_14_精確的算術運算.png",
+			"x": -997,
+			"y": 746,
+			"width": 480,
+			"height": 266
+		},
+		{
+			"id": "343734949ca72bcc",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_14_精確的算術運算/01-計算機組織TOPIC_14_精確的算術運算.png",
+			"x": -1060,
+			"y": -1560,
+			"width": 599,
+			"height": 323
+		},
+		{
+			"id": "77711ae98e02ee44",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_14_精確的算術運算/02-計算機組織TOPIC_14_精確的算術運算.png",
+			"x": 280,
+			"y": -1560,
+			"width": 675,
+			"height": 360
+		},
+		{
+			"id": "e989f9fc5533f00f",
+			"type": "text",
+			"text": "IEEE 754 有四套四捨五入的方式但是都只用一種就是 round to nearest even 因為四套全做太慢了 ISA 也會太大，然後並且 MIPS 也是用 round to nearest even",
+			"x": 196,
+			"y": -1099,
+			"width": 338,
+			"height": 115,
+			"color": "1"
+		},
+		{
+			"id": "0727ca8aac1d391a",
+			"type": "text",
+			"text": "1. 朝向正無窮大，意思就是數四捨五入後要比較大，正數進位，負數就捨去\n2. 朝向負無窮大，意思就是四捨五入後會比較小，正數直接捨去，負數進位\n3. 截尾法就是不做任何直接切掉\n4. 就是 MIPS 使用的方式，也就是筆記這邊的方法",
+			"x": 660,
+			"y": -1099,
+			"width": 580,
+			"height": 128,
+			"color": "1"
+		},
+		{
+			"id": "b079456755f64a69",
+			"type": "text",
+			"text": "$1/2=0.5_{10}$\n$1/9=0.1111111..._{10}=0.000111..._{2}$  循環 ",
+			"x": -1520,
+			"y": -1439,
+			"width": 333,
+			"height": 85
+		},
+		{
+			"id": "6cab25c5bf99418e",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_14_精確的算術運算/03-計算機組織TOPIC_14_精確的算術運算.png",
+			"x": -2240,
+			"y": -1557,
+			"width": 620,
+			"height": 320
+		},
+		{
+			"id": "34eb3629093401bb",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織TOPIC_14_精確的算術運算/05-計算機組織TOPIC_14_精確的算術運算.png",
+			"x": -2233,
+			"y": -1077,
+			"width": 613,
+			"height": 280
+		},
+		{
+			"id": "bd28541c869d4a07",
+			"type": "text",
+			"text": "## 不只運算要做四捨五入那麼把數字轉成浮點數也要",
+			"x": -1060,
+			"y": -820,
+			"width": 622,
+			"height": 86,
+			"color": "1"
+		},
+		{
+			"id": "7a6ace62569ef232",
+			"type": "text",
+			"text": "- 如果 Guard Round 是 50 的時候才會用到 Sticky bit 如果右邊有數字被截掉了那麼 Sticky 就變成 1 *直接進位*，沒有就變成 0\n- 如果用數位邏輯的方式就是右邊的數字用 OR 就行了，XOR 都是錯的\n- Round to nearest even 又叫做 unbiased rounding",
+			"x": -990,
+			"y": 380,
+			"width": 450,
+			"height": 184,
+			"color": "1"
+		},
+		{
+			"id": "bc65547884cfd98a",
+			"type": "text",
+			"text": "**Mantissa**（尾數）是另一個常用來指稱這部分位元的術語。",
+			"x": -966,
+			"y": -1160,
+			"width": 486,
+			"height": 60,
+			"color": "2"
+		},
+		{
+			"id": "e2f4e6967b9c35b2",
+			"type": "text",
+			"text": "ULP 描述你的誤差也就是評判精不精確，越多誤差越大，越小越精確",
+			"x": -1940,
+			"y": 21,
+			"width": 250,
+			"height": 85,
+			"color": "1"
+		}
+	],
+	"edges": [
+		{
+			"id": "d2ef179e5b33bf08",
+			"fromNode": "900c23624c0991ed",
+			"fromSide": "bottom",
+			"toNode": "417626637b108e86",
+			"toSide": "top"
+		},
+		{
+			"id": "87507412583cfb89",
+			"fromNode": "38eb6360613c7bee",
+			"fromSide": "bottom",
+			"toNode": "900c23624c0991ed",
+			"toSide": "top"
+		},
+		{
+			"id": "12ebd48b4cf7cd7f",
+			"fromNode": "b51601d0b00d1c81",
+			"fromSide": "bottom",
+			"toNode": "3ec28105bd6401f5",
+			"toSide": "top"
+		},
+		{
+			"id": "d1d53e4df2c4c57c",
+			"fromNode": "900c23624c0991ed",
+			"fromSide": "right",
+			"toNode": "b51601d0b00d1c81",
+			"toSide": "left"
+		},
+		{
+			"id": "bd05b5428c5027a3",
+			"fromNode": "3ec28105bd6401f5",
+			"fromSide": "right",
+			"toNode": "3654e29fae5d17c3",
+			"toSide": "left"
+		},
+		{
+			"id": "36546ee0d57d0625",
+			"fromNode": "3ec28105bd6401f5",
+			"fromSide": "right",
+			"toNode": "63c8f8f9b12f5415",
+			"toSide": "left"
+		},
+		{
+			"id": "07d3d8fe893619db",
+			"fromNode": "417626637b108e86",
+			"fromSide": "bottom",
+			"toNode": "2df9dd7a43a8833f",
+			"toSide": "top"
+		},
+		{
+			"id": "3a5aeb6f103c6127",
+			"fromNode": "900c23624c0991ed",
+			"fromSide": "left",
+			"toNode": "31cec1889c1cd1f3",
+			"toSide": "top"
+		},
+		{
+			"id": "dc451ca3948090ca",
+			"fromNode": "417626637b108e86",
+			"fromSide": "left",
+			"toNode": "31cec1889c1cd1f3",
+			"toSide": "right"
+		},
+		{
+			"id": "6b9d1027c28e7619",
+			"fromNode": "31cec1889c1cd1f3",
+			"fromSide": "bottom",
+			"toNode": "7a6ace62569ef232",
+			"toSide": "top"
+		},
+		{
+			"id": "0d8ff96ebcc6d1d6",
+			"fromNode": "631f7316d8105ad4",
+			"fromSide": "bottom",
+			"toNode": "31cec1889c1cd1f3",
+			"toSide": "top"
+		},
+		{
+			"id": "830120eef59d6af0",
+			"fromNode": "7a6ace62569ef232",
+			"fromSide": "bottom",
+			"toNode": "04320f243d5725e0",
+			"toSide": "top"
+		},
+		{
+			"id": "06bc813f90fae1cf",
+			"fromNode": "574f306c28f6de4e",
+			"fromSide": "bottom",
+			"toNode": "e009a58819b39b20",
+			"toSide": "top"
+		},
+		{
+			"id": "db79dea12f570812",
+			"fromNode": "900c23624c0991ed",
+			"fromSide": "left",
+			"toNode": "574f306c28f6de4e",
+			"toSide": "top"
+		},
+		{
+			"id": "6141ca176ff3113a",
+			"fromNode": "e009a58819b39b20",
+			"fromSide": "bottom",
+			"toNode": "f1e90a9e241d6e99",
+			"toSide": "top"
+		},
+		{
+			"id": "87ffb48bcc160ef2",
+			"fromNode": "38eb6360613c7bee",
+			"fromSide": "top",
+			"toNode": "b04d9be1cb07713e",
+			"toSide": "bottom"
+		},
+		{
+			"id": "eb8dad35b6591c5f",
+			"fromNode": "b04d9be1cb07713e",
+			"fromSide": "top",
+			"toNode": "156f408418b91dc3",
+			"toSide": "bottom"
+		},
+		{
+			"id": "5acede2844fc8a10",
+			"fromNode": "156f408418b91dc3",
+			"fromSide": "left",
+			"toNode": "343734949ca72bcc",
+			"toSide": "right"
+		},
+		{
+			"id": "04a30af1795186cc",
+			"fromNode": "77711ae98e02ee44",
+			"fromSide": "bottom",
+			"toNode": "e989f9fc5533f00f",
+			"toSide": "top"
+		},
+		{
+			"id": "b07cab75edbc4e6f",
+			"fromNode": "77711ae98e02ee44",
+			"fromSide": "bottom",
+			"toNode": "0727ca8aac1d391a",
+			"toSide": "top"
+		},
+		{
+			"id": "064496bc17a7e579",
+			"fromNode": "6cab25c5bf99418e",
+			"fromSide": "right",
+			"toNode": "b079456755f64a69",
+			"toSide": "left"
+		},
+		{
+			"id": "81309a21915a7958",
+			"fromNode": "6cab25c5bf99418e",
+			"fromSide": "bottom",
+			"toNode": "34eb3629093401bb",
+			"toSide": "top"
+		},
+		{
+			"id": "20ff1c9963d37cf5",
+			"fromNode": "343734949ca72bcc",
+			"fromSide": "bottom",
+			"toNode": "bc65547884cfd98a",
+			"toSide": "top"
+		},
+		{
+			"id": "525ad5a7d38d6140",
+			"fromNode": "574f306c28f6de4e",
+			"fromSide": "left",
+			"toNode": "e2f4e6967b9c35b2",
+			"toSide": "right"
+		}
+	]
+}

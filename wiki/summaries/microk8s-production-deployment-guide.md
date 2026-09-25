@@ -42,9 +42,12 @@
 
 - [microk8s-production-readiness](../concepts/microk8s-production-readiness.md)
 - [kubernetes-gitops-delivery](../concepts/kubernetes-gitops-delivery.md)
-- [blog-knowledge-migration](../concepts/blog-knowledge-migration.md)
 
 ## Alignment With Current Wiki
 
 - 這是知識庫第一份 Kubernetes/MicroK8s 主題來源，屬於新領域擴充，現階段無既有結論衝突。
 - 新來源同時引入「平台可用性」與「GitOps 交付」兩條可持續累積的概念軸線。
+
+## Navigation
+
+- [Web Clipper 來源](../archives/web-clipper.md)

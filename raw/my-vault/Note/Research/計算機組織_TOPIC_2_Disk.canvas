@@ -1,0 +1,218 @@
+{
+	"nodes": [
+		{
+			"id": "4464d50e93e16624",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Disk/01-計算機組織_TOPIC_2_Disk.png",
+			"x": -300,
+			"y": -320,
+			"width": 399,
+			"height": 347
+		},
+		{
+			"id": "ebecf1209b789280",
+			"type": "text",
+			"text": "- 最小的單位是 File 每個檔案一定要有一個 block，-\n- Cylinder 就是磁柱",
+			"x": 220,
+			"y": -213,
+			"width": 250,
+			"height": 91,
+			"color": "1"
+		},
+		{
+			"id": "da812b2399b6a004",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Disk/03-Seek time 考試會給.png",
+			"x": -386,
+			"y": 120,
+			"width": 573,
+			"height": 300
+		},
+		{
+			"id": "85e578d81c4b514a",
+			"type": "text",
+			"text": "- Seek time 考試會給\n\t\n- Rotation Time 大概是磁碟轉動要轉磁碟半圈，考試會考\n\t\n- Data transfer time 就是從讀取頭傳到 Memory，考試會考\n\t- 舉例來說，如果要讀取一個 512 位元組的磁區，而磁碟的傳輸速率是 100 MB/秒，那麼傳輸時間就是： `0.5 KB / 100 MB/sec = 0.005 ms`\n\t\t\n\t- **Transfer rate** 指的是磁碟每秒可以傳輸的資料量。這個數值可以透過磁碟的物理參數計算出來。\n\t\n- Controller overhead 從指令轉成實際動作的所需時間，考試會給\n\t\n- Waiting time 就是等待可能其他 process 在存取需要等待的時間，考試通常都不會有，或是考試會給",
+			"x": 280,
+			"y": 125,
+			"width": 601,
+			"height": 291,
+			"color": "2"
+		},
+		{
+			"id": "2c5c2aaddce3e5fd",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Disk/02-計算機組織_TOPIC_2_Disk.png",
+			"x": -1140,
+			"y": -296,
+			"width": 681,
+			"height": 300
+		},
+		{
+			"id": "c600a0dda12934fb",
+			"type": "text",
+			"text": "- 傳統磁碟的限制：在 ZBR 技術出現之前，磁碟上所有的磁軌（tracks）都擁有相同數量的磁區（sectors）和位元。然而，外圈磁軌的圓周比內圈磁軌長，這意味著外圈磁軌的儲存密度較低，空間沒有被充分利用。\n\t\n- ZBR 的改進：ZBR 技術改變了這種固定的設計。它讓磁碟外圈的磁軌可以擁有比內圈更多的磁區和位元。",
+			"x": -1050,
+			"y": 80,
+			"width": 501,
+			"height": 181,
+			"color": "2"
+		},
+		{
+			"id": "4e27779098a988eb",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Disk/04-Seek time 考試會給.png",
+			"x": -366,
+			"y": 500,
+			"width": 532,
+			"height": 260
+		},
+		{
+			"id": "ff09b3ae17f72db8",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Disk/07-Seek time 考試會給.png",
+			"x": -376,
+			"y": 820,
+			"width": 553,
+			"height": 180
+		},
+		{
+			"id": "c09f1d9cf276b8a3",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Disk/05-Seek time 考試會給.png",
+			"x": 360,
+			"y": 500,
+			"width": 659,
+			"height": 157
+		},
+		{
+			"id": "a4cb5e1ef9bf6ea1",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Disk/06-Seek time 考試會給.png",
+			"x": 360,
+			"y": 759,
+			"width": 723,
+			"height": 221
+		},
+		{
+			"id": "1eb8bef0708cde7c",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Disk/08-計算機組織_TOPIC_2_Disk.png",
+			"x": 360,
+			"y": 1100,
+			"width": 676,
+			"height": 320
+		},
+		{
+			"id": "8792eb80108b87b0",
+			"type": "file",
+			"file": "Assets/Note/Research/計算機組織_TOPIC_2_Disk/09-計算機組織_TOPIC_2_Disk.png",
+			"x": 396,
+			"y": 1520,
+			"width": 640,
+			"height": 199
+		},
+		{
+			"id": "ee3c78bd280a3266",
+			"type": "text",
+			"text": "# 磁碟 transfer rate 與 transfer time 計算（Obsidian 版）\n\n**已知**\n\n- RPM (=3600)\n    \n- 每 sector 大小 $(B=512\\ \\text{bytes})$\n    \n- 每軌 sectors 數 (S=64)\n## 1) 一圈時間\n\n$$  \nT_{\\text{rev}}=\\frac{60}{\\text{RPM}}=\\frac{60}{3600}=0.016667\\ \\text{s}=16.667\\ \\text{ms}  \n$$\n\n## 2) 一軌位元組\n\n$$  \nB_{\\text{track}}=S\\cdot B=64\\cdot512=32768\\ \\text{bytes}=32\\ \\text{KiB}  \n$$\n\n## 3) Transfer rate\n\n$$  \nR=\\frac{B_{\\text{track}}}{T_{\\text{rev}}}  \n=(32\\ \\text{KiB})\\times 3600/60  \n=1920\\ \\text{KiB/s}\\approx 1.875\\ \\text{MiB/s}  \n$$\n\n## 4) Transfer time\n\n讀 (k) 個連續 sector：  \n$$  \nT_{\\text{xfer}}=\\frac{k}{S}\\cdot T_{\\text{rev}}  \n$$\n\n讀 (D) bytes：  \n$$  \nT_{\\text{xfer}}=\\frac{D}{R}  \n$$",
+			"x": 1300,
+			"y": -91,
+			"width": 762,
+			"height": 724,
+			"color": "1"
+		}
+	],
+	"edges": [
+		{
+			"id": "01dec0d96951849a",
+			"fromNode": "4464d50e93e16624",
+			"fromSide": "right",
+			"toNode": "ebecf1209b789280",
+			"toSide": "left"
+		},
+		{
+			"id": "5ed1f27150ff6623",
+			"fromNode": "4464d50e93e16624",
+			"fromSide": "bottom",
+			"toNode": "da812b2399b6a004",
+			"toSide": "top"
+		},
+		{
+			"id": "d9d0f36536d90261",
+			"fromNode": "da812b2399b6a004",
+			"fromSide": "right",
+			"toNode": "85e578d81c4b514a",
+			"toSide": "left"
+		},
+		{
+			"id": "e23776676a0d9083",
+			"fromNode": "4464d50e93e16624",
+			"fromSide": "left",
+			"toNode": "2c5c2aaddce3e5fd",
+			"toSide": "right"
+		},
+		{
+			"id": "734ef5933bd1e612",
+			"fromNode": "2c5c2aaddce3e5fd",
+			"fromSide": "bottom",
+			"toNode": "c600a0dda12934fb",
+			"toSide": "top"
+		},
+		{
+			"id": "fca513f2645db629",
+			"fromNode": "da812b2399b6a004",
+			"fromSide": "bottom",
+			"toNode": "4e27779098a988eb",
+			"toSide": "top"
+		},
+		{
+			"id": "7441d88c4f63c34b",
+			"fromNode": "4e27779098a988eb",
+			"fromSide": "bottom",
+			"toNode": "ff09b3ae17f72db8",
+			"toSide": "top"
+		},
+		{
+			"id": "ae183ab3ee4fc08d",
+			"fromNode": "4e27779098a988eb",
+			"fromSide": "right",
+			"toNode": "c09f1d9cf276b8a3",
+			"toSide": "left"
+		},
+		{
+			"id": "520b12f529070e5d",
+			"fromNode": "ff09b3ae17f72db8",
+			"fromSide": "right",
+			"toNode": "c09f1d9cf276b8a3",
+			"toSide": "left"
+		},
+		{
+			"id": "476bc3e23250e3fa",
+			"fromNode": "c09f1d9cf276b8a3",
+			"fromSide": "bottom",
+			"toNode": "a4cb5e1ef9bf6ea1",
+			"toSide": "top"
+		},
+		{
+			"id": "4e0256f6e73f7457",
+			"fromNode": "ff09b3ae17f72db8",
+			"fromSide": "right",
+			"toNode": "1eb8bef0708cde7c",
+			"toSide": "left"
+		},
+		{
+			"id": "e11bc538c1308dbc",
+			"fromNode": "1eb8bef0708cde7c",
+			"fromSide": "bottom",
+			"toNode": "8792eb80108b87b0",
+			"toSide": "top"
+		},
+		{
+			"id": "4d2fe3de5941490f",
+			"fromNode": "85e578d81c4b514a",
+			"fromSide": "right",
+			"toNode": "ee3c78bd280a3266",
+			"toSide": "left"
+		}
+	]
+}

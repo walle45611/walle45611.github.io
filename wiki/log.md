@@ -533,3 +533,15 @@
 - checked: GitHub Actions 的新文章部署失敗，缺少 `TeXstudio-F5-編譯與預覽.gif`；核對本篇引用的兩張 MiKTeX 圖與一個 GIF 都是 Blog 實際使用的素材。
 - fixed: 使用既有 Rust `site-builder stage-assets`，將這三個先前被忽略的素材加入 Git；未加入其他未使用附件。
 - verified: 暫存區新增三個素材，沒有移除既有素材。
+
+## [2026-09-26] daily | 2026-09-26 summary and reviewed-source supplement
+
+- basis: 313 summaries selected from [[wiki/index.md]]; full per-summary basis is recorded in [[wiki/assets/daily/2026-09-26.md]]
+- updated: wiki/assets/daily/2026-09-26.md
+- notes: 313 summaries processed (Dashboard 17, Research 185, Tech 111). Daily used the indexed 2026-09-26 summaries only and did not rescan `raw/`; reviewed-source supplement covered the repository plus the public references actually verified during that run. This entry repairs the missing log step from the prior Daily execution.
+
+## [2026-09-27] daily | 2026-09-27 summary and reviewed-source supplement
+
+- basis: [[wiki/index.md]]
+- updated: wiki/assets/daily/2026-09-27.md
+- notes: 0 summaries processed. `wiki/index.md` has no 2026-09-27 archived summary. The supplement records today's verified GitHub repository checks and Cisco references used while reviewing STP/RSTP convergence plus CEF/FIB/TCAM forwarding concepts; it does not change the formal summary count.

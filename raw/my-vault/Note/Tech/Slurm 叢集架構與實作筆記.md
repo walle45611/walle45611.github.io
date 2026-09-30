@@ -15,13 +15,13 @@ Slurm 是 Linux 計算叢集的資源管理與作業排程系統。使用者提�
 
 本筆記整理「丁組郵件架構解析」對話中的 Slurm 實驗；已知主機為 `slurm-ctl`、`node01`、`node02`，測試帳號為 `hpcuser`。這份紀錄聚焦架構、操作與排錯，不是已驗證的完整安裝程序。
 
-```text
-hpcuser（sbatch / srun）
-          │
-          ▼
-slurm-ctl（slurmctld：資源分配與作業管理）
-          ├── node01（slurmd）── 執行 task / batch script
-          └── node02（slurmd）── 執行 task
+```mermaid
+flowchart TD
+    U[使用者 hpcuser] -->|sbatch / srun| C[slurm-ctl：slurmctld]
+    C -->|資源分配與作業管理| N1[node01：slurmd]
+    C -->|資源分配與作業管理| N2[node02：slurmd]
+    N1 --> J1[執行 task / batch script]
+    N2 --> J2[執行 task]
 ```
 
 | 元件 | 職責 | 本實驗位置 |
@@ -169,12 +169,11 @@ scp hpcuser@node01:/home/hpcuser/hello-6.out .
 
 ## 6. Slurm 與共享儲存的關係
 
-```text
-共享檔案服務（例如 NFS）
-          ├── slurm-ctl：/shared
-          ├── node01：/shared
-          └── node02：/shared
-              同一個 export、同一份資料
+```mermaid
+flowchart TD
+    S[共享檔案服務：例如 NFS] --- C[slurm-ctl：同一掛載路徑]
+    S --- N1[node01：同一掛載路徑]
+    S --- N2[node02：同一掛載路徑]
 ```
 
 若三台都把同一個 export 掛載到 `/shared`，node01 寫入 `/shared/hello-6.out` 後，controller 才能透過該掛載看到同一份檔案。目錄必須存在、掛載成功，且 `hpcuser` 的 UID/GID 與權限設定須一致。
@@ -261,6 +260,7 @@ squeue
 
 ## 來源與驗證範圍
 
+- [Slurm 官方管理員快速入門（Quick Start Administrator Guide）](https://slurm.schedmd.com/quickstart_admin.html)：叢集安裝、設定與管理的入門參考。
 - [原始對話：丁組郵件架構解析](chatgpt-conversation://6abd4b82-6454-83ee-b5ed-bd00d5d7920e)：使用者提供的實驗輸出與近期對話紀錄；本筆記僅整理其中 Slurm 段落。
 - 官方文件查閱日期：2026-10-01；各節的連結提供架構、指令與設定依據，實際指令選項仍應配合已安裝版本。
 - 已有實驗證據：controller 名稱解析錯誤、雙節點 hostname 測試成功、job 6 曾在 node01 執行、controller 找不到輸出檔。

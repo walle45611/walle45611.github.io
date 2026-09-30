@@ -647,6 +647,31 @@ fn render_page(
     } else {
         ""
     };
+    let mermaid_markup = if page_type == "article" && body.contains("<pre lang=\"mermaid\">") {
+        r#"<script type="module">
+      const diagrams = document.querySelectorAll('.prose pre[lang="mermaid"]');
+      try {
+        const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid@12.0.0/dist/mermaid.esm.min.mjs');
+        mermaid.initialize({ startOnLoad: false, securityLevel: 'strict', theme: 'neutral' });
+        await document.fonts.ready;
+        for (const [index, source] of diagrams.entries()) {
+          try {
+            const { svg } = await mermaid.render(`mermaid-diagram-${index}`, source.textContent);
+            const diagram = document.createElement('div');
+            diagram.className = 'mermaid-diagram';
+            diagram.innerHTML = svg;
+            source.replaceWith(diagram);
+          } catch (error) {
+            console.error('Mermaid diagram rendering failed', error);
+          }
+        }
+      } catch (error) {
+        console.error('Mermaid could not load; keeping diagram source visible', error);
+      }
+    </script>"#
+    } else {
+        ""
+    };
     format!(
         r##"<!doctype html>
 <html lang="en">
@@ -662,7 +687,7 @@ fn render_page(
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous">
     <meta name="color-scheme" content="light">
     <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="/styles.css?v=6">
+    <link rel="stylesheet" href="/styles.css?v=7">
     <meta property="og:type" content="{}">
     <meta property="og:title" content="{}">
     <meta property="og:description" content="{}">
@@ -684,6 +709,7 @@ fn render_page(
     <main class="site-main">{}</main>
     <footer class="site-footer">Walle Blog · Notes for later.</footer>
     {}
+    {}
   </body>
 </html>
 "##,
@@ -697,7 +723,8 @@ fn render_page(
         page_url(pathname),
         math_markup,
         body,
-        analytics_markup()
+        analytics_markup(),
+        mermaid_markup
     )
 }
 
@@ -1007,6 +1034,25 @@ mod tests {
         let html = render_markdown_to_html("# Heading\n\n`code`");
         assert!(html.contains("<h1"));
         assert!(html.contains("<code>code</code>"));
+    }
+
+    #[test]
+    fn loads_mermaid_only_for_articles_with_mermaid_fences() {
+        let diagram = render_markdown_to_html("```mermaid\nflowchart TD\nA --> B\n```\n");
+        let page = render_page("Diagram", "", "/test/", &diagram, "article");
+        assert!(page.contains("mermaid@12.0.0"));
+        assert!(page.contains("securityLevel: 'strict'"));
+        assert!(page.contains("<pre lang=\"mermaid\"><code>"));
+        let plain = render_page(
+            "Code",
+            "",
+            "/test/",
+            "<pre lang=\"bash\">echo hi</pre>",
+            "article",
+        );
+        assert!(!plain.contains("mermaid@"));
+        let index = render_page("Index", "", "/", &diagram, "website");
+        assert!(!index.contains("mermaid@"));
     }
 
     #[test]

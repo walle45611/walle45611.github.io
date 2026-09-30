@@ -567,3 +567,9 @@
 - updated: 整合遠端 2026-09-26 至 2026-09-29 的四份 Daily 與既有日誌，每日紀錄入口由 66 篇補至 70 篇。
 - verified: 516 份 wiki Markdown 均可從 index 到達，內部連結沒有失效目標；原先未提交的來源與設定檔雜湊一致；日誌衝突保留遠端每日紀錄、本次歸檔紀錄與原先未提交的 STP 紀錄；Git 無未解衝突，diff 檢查通過。
 - scope: 只提交本次每日紀錄索引與本筆日誌；原先的 AGENTS.md、README、raw、STP 日誌修改保留為未提交變更，autostash 備份保留。
+
+## [2026-09-30] daily | 2026-09-30 summary and reviewed-source supplement
+
+- basis: [[wiki/summaries/introduction-to-memory-management-in-linux.md]]
+- updated: wiki/assets/daily/2026-09-30.md
+- notes: 1 summary processed. 正式 Daily 只整理 `wiki/index.md` 中 `ingested_at = 2026-09-30` 的 Linux 記憶體管理 summary，未重掃 `raw/`；補充紀錄包含本次實際核對的 GitHub repository、summary 保存的 YouTube 原始來源、Konsulko 講座頁、Linux man-pages 的 `mlock(2)` 與 Linux Kernel DMA mapping 文件。補充來源不改變正式 summary count，也不宣稱是完整瀏覽器歷史。

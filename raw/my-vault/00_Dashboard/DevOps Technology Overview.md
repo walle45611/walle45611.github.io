@@ -104,7 +104,7 @@
 
 ## HPC 與作業排程
 
-[[Slurm 叢集架構與實作筆記]]
+[[Slurm 叢集架構與實作筆記|Slurm 安裝與雙節點叢集實作]]
 
 ## Kubernetes
 

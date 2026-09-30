@@ -560,3 +560,10 @@
 - verified: `archive --check` 為 sources=388 archived=388 missing=0 changed=0；512 份 wiki Markdown 全部可從 index 到達，沒有無入站頁面，內容頁均有出站連結；排除程式碼示例後內部檔案連結無失效目標；摘要索引日期符合 ingested_at；2,954 個 raw 檔案雜湊未改變；`git diff --check` 通過；Linux 概念頁以 Obsidian 閱讀模式與截圖檢視，SQL 概念頁抽查閱讀模式結構。
 - scope: 未同步 My vault，未修改或提交來源與 Blog metadata；保留任務開始前的 AGENTS.md、README、raw 與日誌變更。本次版本提交只納入本次 wiki 修改與這筆日誌。
 - gaps: Linux 講座的 32-bit 與 4 KiB 示例保留年代／架構限制；`mlock()` 模式與 DMA 的平台操作仍需補正式文件或實驗。部分筆記仍只有歸檔導航，可日後按有實質關聯的主題逐步整合；未進行全部內容的事實或矛盾審查。
+
+## [2026-09-30] lint | 整合遠端每日紀錄導覽
+
+- authorization: 使用者確認「好幫我推送」，授權保留既有修改、整合遠端並推送本次 wiki 整理。
+- updated: 整合遠端 2026-09-26 至 2026-09-29 的四份 Daily 與既有日誌，每日紀錄入口由 66 篇補至 70 篇。
+- verified: 516 份 wiki Markdown 均可從 index 到達，內部連結沒有失效目標；原先未提交的來源與設定檔雜湊一致；日誌衝突保留遠端每日紀錄、本次歸檔紀錄與原先未提交的 STP 紀錄；Git 無未解衝突，diff 檢查通過。
+- scope: 只提交本次每日紀錄索引與本筆日誌；原先的 AGENTS.md、README、raw、STP 日誌修改保留為未提交變更，autostash 備份保留。

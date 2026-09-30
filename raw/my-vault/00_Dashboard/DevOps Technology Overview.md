@@ -102,6 +102,10 @@
 
 ---
 
+## HPC 與作業排程
+
+[[Slurm 叢集架構與實作筆記]]
+
 ## Kubernetes
 
 [[K8s 各 Component 說明]]

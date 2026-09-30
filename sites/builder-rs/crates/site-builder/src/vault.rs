@@ -302,6 +302,15 @@ pub fn export(vault: &Path, build_dir: &Path) -> Result<()> {
     let algorithm_names: HashSet<_> = links(algorithms.1).into_iter().collect();
     let mut posts = Vec::<Post>::new();
     let mut all_note_names = HashSet::new();
+    for source in files_under(&vault.join("00_Dashboard"), "md")? {
+        all_note_names.insert(
+            source
+                .file_stem()
+                .unwrap_or_default()
+                .to_string_lossy()
+                .into_owned(),
+        );
+    }
     let mut slugs = HashSet::new();
     for source in files_under(&vault.join("Note"), "md")? {
         all_note_names.insert(
@@ -439,4 +448,47 @@ pub fn export(vault: &Path, build_dir: &Path) -> Result<()> {
         expected_assets.len()
     );
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn dashboard_links_render_as_text_without_publishing_dashboard() {
+        let root = std::env::temp_dir().join(format!(
+            "site-builder-dashboard-links-{}-{}",
+            std::process::id(),
+            std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .unwrap()
+                .as_nanos()
+        ));
+        let vault = root.join("vault");
+        let build = root.join("build");
+        fs::create_dir_all(vault.join("00_Dashboard")).unwrap();
+        fs::create_dir_all(vault.join("Note/Tech")).unwrap();
+        fs::write(
+            vault.join("00_Dashboard/資料結構和演算法 Overview.md"),
+            "# 演算法\n",
+        )
+        .unwrap();
+        fs::write(
+            vault.join("00_Dashboard/DevOps Technology Overview.md"),
+            "[[Slurm]]\n",
+        )
+        .unwrap();
+        fs::write(
+            vault.join("Note/Tech/Slurm.md"),
+            "---\nblog: true\nblog_title: Slurm\nblog_date: '2026-10-01'\nblog_url: https://blog.walle4561.com/articles/posts/slurm/\n---\n\nBack to [[DevOps Technology Overview]].\n",
+        )
+        .unwrap();
+
+        export(&vault, &build).unwrap();
+        let post = fs::read_to_string(build.join("vault-posts/slurm.md")).unwrap();
+        assert!(post.contains("Back to DevOps Technology Overview."));
+        assert!(!post.contains("[["));
+        assert_eq!(fs::read_dir(build.join("vault-posts")).unwrap().count(), 1);
+        fs::remove_dir_all(root).unwrap();
+    }
 }

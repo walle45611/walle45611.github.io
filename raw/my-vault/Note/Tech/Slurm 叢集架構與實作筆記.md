@@ -68,21 +68,35 @@ cat /etc/os-release
 timedatectl status
 ```
 
-Controller 使用本案例的 `192.168.139.46`；兩台 node 的實際 IP 需自行填入。讓三台主機都能透過 DNS 或 `/etc/hosts` 解析這三個名字。例如編輯 `/etc/hosts`：
+三台位址為 controller `192.168.139.46`、node01 `192.168.139.118`、node02 `192.168.139.128`。讓三台主機都能透過 DNS 或 `/etc/hosts` 解析這三個名字。例如編輯 `/etc/hosts`：
 
 ```text
 192.168.139.46 slurm-ctl
-<NODE01_IP> node01
-<NODE02_IP> node02
+192.168.139.118 node01
+192.168.139.128 node02
 ```
 
-`<NODE01_IP>`、`<NODE02_IP>` 是待替換欄位，不可原樣貼入。確認 VM 網路可互通後再繼續：
+以上是本 Lab 的實際 IP；重建其他環境時替換成自己的位址。確認 VM 網路可互通後再繼續：
 
 ```bash
 getent hosts slurm-ctl node01 node02
 ```
 
-本例沒有 SSH 自動部署要求；後續的 `scp` 範例假設管理員已可透過 SSH 登入各節點。請使用既有管理帳號與管理通道，不必為 Slurm 開啟 root 的遠端登入。
+後續的 `ssh`／`scp` 都使用 `hpcuser@IP`。先以管理者建立 `hpcuser`、設定登入密碼或 SSH key，並讓這個 Lab 帳號具有 `sudo` 權限；此後登入各 VM 執行設定都使用 `hpcuser`。
+
+### 登入方式
+
+帳號準備完成、node 的 SSH 服務已啟動後，從 controller 的 `hpcuser` terminal 直接使用：
+
+```bash
+# node01
+ssh hpcuser@192.168.139.118
+
+# node02
+ssh hpcuser@192.168.139.128
+```
+
+登入後以 `sudo` 執行該節點的安裝與設定指令，完成一台後用 `exit` 回到 controller，再處理另一台。三台帳號的準備步驟需先在各 VM 的主控台以既有管理者執行。
 
 ### 2.2 統一使用者 UID／GID 與時間
 
@@ -99,9 +113,11 @@ id hpcuser
 ```bash
 sudo groupadd --gid 2000 hpcuser
 sudo useradd --uid 2000 --gid 2000 --create-home --shell /bin/bash hpcuser
+sudo passwd hpcuser
+sudo usermod -aG sudo hpcuser
 ```
 
-若帳號已存在，直接核對，不要重複建立或任意更換既有 UID。使用現有 NTP 服務保持三台時間同步；MUNGE 憑證有時效，時鐘偏差可能造成驗證失敗。
+若帳號已存在，直接核對，不要重複建立或任意更換既有 UID。上面的 sudo 群組設定供這個 Lab 的管理操作使用；重新登入 `hpcuser` 後，用 `sudo -v` 確認權限。使用現有 NTP 服務保持三台時間同步；MUNGE 憑證有時效，時鐘偏差可能造成驗證失敗。
 
 ## 3. 按角色安裝套件
 
@@ -119,6 +135,7 @@ sudo apt install -y munge slurmctld slurm-client openssh-client netcat-openbsd
 ```bash
 sudo apt update
 sudo apt install -y munge slurmd slurm-client openssh-server netcat-openbsd
+sudo systemctl enable --now ssh
 ```
 
 套件安裝後先核對三台的 Slurm 版本與服務定義：
@@ -170,17 +187,17 @@ munge -n | unmunge
 
 ### 4.2 將同一把金鑰安全傳給兩台 node
 
-透過已授權的 SSH／管理通道，把 controller 的 `/etc/munge/munge.key` 放到兩台 node 的相同路徑。使用一般管理帳號 `ADMIN_USER` 時，可先建立只有管理者能讀的暫存檔，再傳送：
+透過已授權的 SSH／管理通道，把 controller 的 `/etc/munge/munge.key` 放到兩台 node 的相同路徑。使用本例的 `hpcuser` 管理帳號時，可先建立只有管理者能讀的暫存檔，再傳送：
 
 ```bash
-# Controller；ADMIN_USER 請替換成自己的管理帳號
-sudo install -m 600 -o "$(id -un)" -g "$(id -gn)" \
+# Controller；以 hpcuser 登入 controller 後操作
+sudo install -m 600 -o hpcuser -g hpcuser \
   /etc/munge/munge.key "$HOME/munge.key.transfer"
-scp "$HOME/munge.key.transfer" ADMIN_USER@node01:munge.key.transfer
-scp "$HOME/munge.key.transfer" ADMIN_USER@node02:munge.key.transfer
+scp "$HOME/munge.key.transfer" hpcuser@192.168.139.118:munge.key.transfer
+scp "$HOME/munge.key.transfer" hpcuser@192.168.139.128:munge.key.transfer
 ```
 
-在 node01、node02 分別以該管理帳號執行：
+在 node01、node02 分別以 `hpcuser` 登入後執行：
 
 ```bash
 sudo systemctl stop munge
@@ -201,15 +218,15 @@ rm "$HOME/munge.key.transfer"
 
 ```bash
 sudo -iu hpcuser
-munge -n | ssh hpcuser@node01 unmunge
-munge -n | ssh hpcuser@node02 unmunge
+munge -n | ssh hpcuser@192.168.139.118 unmunge
+munge -n | ssh hpcuser@192.168.139.128 unmunge
 ```
 
 若出現 `Invalid credential`，核對金鑰與服務是否已載入新金鑰；`Expired credential`／`Rewound credential` 則核對時間。MUNGE 操作參考：[官方 Installation Guide](https://github.com/dun/munge/wiki/Installation-Guide)。
 
 ## 5. 複製範本並建立 slurm.conf
 
-以下回到 controller 的管理帳號操作。
+以下以 `hpcuser` 在 controller 操作。
 
 ### 5.1 找到 /usr/share 下的範本
 
@@ -279,22 +296,22 @@ SelectTypeParameters=CR_Core_Memory
 ProctrackType=proctrack/linuxproc
 TaskPlugin=task/none
 
-NodeName=node01 CPUs=1 Sockets=1 CoresPerSocket=1 ThreadsPerCore=1 RealMemory=1024 State=UNKNOWN
-NodeName=node02 CPUs=1 Sockets=1 CoresPerSocket=1 ThreadsPerCore=1 RealMemory=1024 State=UNKNOWN
+NodeName=node01 NodeAddr=192.168.139.118 CPUs=1 Sockets=1 CoresPerSocket=1 ThreadsPerCore=1 RealMemory=1024 State=UNKNOWN
+NodeName=node02 NodeAddr=192.168.139.128 CPUs=1 Sockets=1 CoresPerSocket=1 ThreadsPerCore=1 RealMemory=1024 State=UNKNOWN
 PartitionName=debug Nodes=node[01-02] Default=YES MaxTime=INFINITE State=UP
 ```
 
-`slurm-ctl(192.168.139.46)` 明確指定 controller 的通訊 IP；node 名稱則仍透過前面的 DNS／hosts 設定解析。若要直接指定 node IP，可在各自 `NodeName` 那行加上實際的 `NodeAddr`。CPU topology 與記憶體不一致可能使 node 無法正常註冊。
+`slurm-ctl(192.168.139.46)` 明確指定 controller 的通訊 IP；兩台 node 也由各自的 `NodeAddr` 直接指定通訊 IP。`/etc/hosts` 的名字仍可用於人工檢查與其他服務，但下方 SSH／SCP 範例直接使用 IP。CPU topology 與記憶體不一致可能使 node 無法正常註冊。
 
 這個最小範例使用 `task/none` 與 `proctrack/linuxproc`，沒有提供以 cgroup 強制限制作業資源的隔離。進一步啟用 `task/cgroup`／`proctrack/cgroup` 時，需依安裝版本及 cgroup v1/v2 環境另配 `cgroup.conf`，不能只改一個欄位就視為完成。
 
 ### 5.4 複製同一份設定到 node01、node02
 
-在 controller 執行，`ADMIN_USER` 使用可在 node 上操作 `sudo` 的管理帳號：
+以 `hpcuser` 在 controller 執行：
 
 ```bash
-scp /etc/slurm/slurm.conf ADMIN_USER@node01:slurm.conf.transfer
-scp /etc/slurm/slurm.conf ADMIN_USER@node02:slurm.conf.transfer
+scp /etc/slurm/slurm.conf hpcuser@192.168.139.118:slurm.conf.transfer
+scp /etc/slurm/slurm.conf hpcuser@192.168.139.128:slurm.conf.transfer
 ```
 
 在 node01、node02 分別執行：
@@ -362,7 +379,7 @@ scontrol show node node02
 
 若 node 顯示 `DOWN`、`DRAIN` 或註冊錯誤，先查 `Reason` 與對應日誌，確認名稱解析、通訊、MUNGE、CPU topology 和記憶體。排除原因後才由管理員決定是否恢復節點狀態。
 
-最後以一般使用者執行雙節點測試：
+最後以 `hpcuser` 執行雙節點測試：
 
 ```bash
 sudo -iu hpcuser
@@ -480,10 +497,10 @@ scontrol show job 6
 核對 `JobState`、`BatchHost`／`NodeList`、`WorkDir`、`StdOut`、`StdErr`。再依查到的節點與路徑檢查；以下沿用本案例：
 
 ```bash
-ssh hpcuser@node01 'ls -ld /home/hpcuser; ls -l /home/hpcuser/hello-6.out'
-ssh hpcuser@node01 'cat /home/hpcuser/hello-6.out'
+ssh hpcuser@192.168.139.118 'ls -ld /home/hpcuser; ls -l /home/hpcuser/hello-6.out'
+ssh hpcuser@192.168.139.118 'cat /home/hpcuser/hello-6.out'
 findmnt -T /home/hpcuser
-ssh hpcuser@node01 'findmnt -T /home/hpcuser'
+ssh hpcuser@192.168.139.118 'findmnt -T /home/hpcuser'
 ```
 
 SSH 是此處的人工檢查工具，不代表 Slurm 必須靠使用者 SSH 登入才能執行作業。若輸出不存在，查看 node01 日誌，尋找切換工作目錄、建立輸出檔或啟動程序的錯誤：
@@ -495,7 +512,7 @@ sudo journalctl -u slurmd -n 100 --no-pager
 若確認檔案只在 node01，可先取回單一結果：
 
 ```bash
-scp hpcuser@node01:/home/hpcuser/hello-6.out .
+scp hpcuser@192.168.139.118:/home/hpcuser/hello-6.out .
 ```
 
 注意 `cat hello-*.out` 才會展開萬用字元；`cat 'hello-*.out'` 或 `cat hello-\*.out` 會尋找字面上的星號檔名。已知 Job ID 時直接使用 `cat hello-6.out` 更明確。

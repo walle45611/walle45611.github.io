@@ -1,7 +1,8 @@
 # 刷題
 
 - source: `raw/my-vault/00_Dashboard/刷題 Overview.md`
-- source_sha256: `a48093c6378190a8ee37c1f105601ef2d80b8f1fb037202ebf79d97c47fb5ede`
+- source_sha256: `f08a00a66af6d72e8d79ca8e118bb1f6b8cce239a007e2bb48f1f0aaa8c258bb`
+- source_reviewed: 2026-09-30
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Dashboard
@@ -19,3 +20,7 @@
 ## Navigation
 
 - [回到 Dashboard 歸檔](<../archives/my-vault-dashboard.md>)
+
+## 相關概念
+
+- [[database-and-sql]]：依保留列、配對、聚合與分類需求選擇語句。

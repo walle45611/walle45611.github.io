@@ -551,3 +551,12 @@
 - basis: [[wiki/index.md]]
 - updated: wiki/assets/daily/2026-09-28.md
 - notes: 0 summaries processed. `wiki/index.md` has no 2026-09-28 archived summary. The supplement records today's verified GitHub repository checks plus Linux namespaces/autofs and Taiwan vehicle inspection references; it does not change the formal summary count.
+
+## [2026-09-30] ingest + lint | Linux 記憶體管理歸檔與孤立節點整理
+
+- source: `raw/web-clipper/Introduction to Memory Management in Linux.md`；六份來源版本變更的 My vault 筆記與 Dashboard；既有 wiki 連結結構。
+- created: Linux 記憶體管理摘要、`linux-memory-management` 與 `database-and-sql` 概念頁、每日紀錄與維護規則的歸檔入口。
+- updated: 六份摘要的內容／來源雜湊與檢閱日期，保留原 ingested_at；SQL、STP、郵件與防火牆的概念導航；Nuitka 來源的反向連結；Worker 操作文件導航；不存在的人名與概念連結改為原文字，保留作者和概念名稱；修正 2026-04-29 Daily 的相對連結。
+- verified: `archive --check` 為 sources=388 archived=388 missing=0 changed=0；512 份 wiki Markdown 全部可從 index 到達，沒有無入站頁面，內容頁均有出站連結；排除程式碼示例後內部檔案連結無失效目標；摘要索引日期符合 ingested_at；2,954 個 raw 檔案雜湊未改變；`git diff --check` 通過；Linux 概念頁以 Obsidian 閱讀模式與截圖檢視，SQL 概念頁抽查閱讀模式結構。
+- scope: 未同步 My vault，未修改或提交來源與 Blog metadata；保留任務開始前的 AGENTS.md、README、raw 與日誌變更。本次版本提交只納入本次 wiki 修改與這筆日誌。
+- gaps: Linux 講座的 32-bit 與 4 KiB 示例保留年代／架構限制；`mlock()` 模式與 DMA 的平台操作仍需補正式文件或實驗。部分筆記仍只有歸檔導航，可日後按有實質關聯的主題逐步整合；未進行全部內容的事實或矛盾審查。

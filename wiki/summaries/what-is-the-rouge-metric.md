@@ -3,7 +3,7 @@
 - source: `raw/web-clipper/What is the ROUGE metric?.md`
 - source link: https://www.youtube.com/watch?v=TMshhnrEXlg
 - original title: What is the ROUGE metric?
-- author: [[Hugging Face]]
+- author: Hugging Face
 - published: 2021-11-15
 - created: 2026-05-14
 - type: YouTube transcript

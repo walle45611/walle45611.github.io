@@ -23,3 +23,7 @@ User namespace 將程序看到的 UID/GID 與 capabilities 限定在一個權限
 ## Sources
 
 - [michael-kerrisk-understanding-linux-user-namespaces](../summaries/michael-kerrisk-understanding-linux-user-namespaces.md)
+
+## 相鄰主題
+
+- [[linux-memory-management]]：區分位址映射、共享 backing 與同步／權限隔離。

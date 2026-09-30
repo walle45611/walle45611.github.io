@@ -19,3 +19,7 @@
 ## Navigation
 
 - [回到 Tech 歸檔](<../archives/my-vault-tech.md>)
+
+## 相關概念
+
+- [[database-and-sql]]：依保留列、配對、聚合與分類需求選擇語句。

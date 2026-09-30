@@ -4,7 +4,7 @@
 - blog source: `blog/source/_posts/Nuitka-與-Docker-打造高效能且安全的-Python-應用部署方案.md`
 - source link: https://blog.walle4561.com/20250721/111f/#more
 - original title: Nuitka 與 Docker 打造高效能且安全的 Python 應用部署方案
-- author: [[Walle]]
+- author: Walle
 - published: 2025-07-22
 - type: blog post
 ## Summary
@@ -26,3 +26,7 @@ This summary adds a new deployment‑engineering concept that complements existi
 ## Navigation
 
 - [Web Clipper 來源](../archives/web-clipper.md)
+
+## 主題入口
+
+- [[nuitka-and-docker-deployment]]：本來源的編譯與容器部署概念整合。

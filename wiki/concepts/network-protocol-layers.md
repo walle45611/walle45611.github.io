@@ -21,3 +21,9 @@
 - [IP](../summaries/my-vault-research-ip-internet-protocol-c8fb1204a.md)
 - [TCP 與 UDP](../summaries/my-vault-research-tcp-udp-ed699ac3f.md)
 - [DNS](../summaries/my-vault-research-dns-domain-name-service-5c6d0878f.md)
+
+## 實作與排錯來源
+
+- [[my-vault-research-stp-spanning-tree-9eeb1ba1d]]：二層樹與 TC／MAC aging。
+- [[my-vault-tech-linux-mail-server-postfix-dovecot-49492796d]]：SMTP 路由、投遞與 IMAP 讀信的角色。
+- [[my-vault-tech-windows-defender-9b233a1db]]：主機網路設定檔與防火牆規則；來源的命令仍需依環境核對。

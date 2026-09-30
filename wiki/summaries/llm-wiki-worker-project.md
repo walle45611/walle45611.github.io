@@ -3,7 +3,7 @@
 - source: `raw/web-clipper/LLM-Wiki-Worker 開源專案.md`
 - source link: https://github.com/walle45611/LLM-Wiki-Worker/blob/main/README.md
 - original title: walle45611-LLM-Wiki-Worker
-- author: [[Walle]]
+- author: Walle
 - published: 
 - created: 2026-04-23
 - type: project documentation

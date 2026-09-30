@@ -46,3 +46,7 @@
 - [container-networking-from-scratch](../summaries/container-networking-from-scratch.md)
 
 - [kubernetes-design-principles-understand-the-why](../summaries/kubernetes-design-principles-understand-the-why.md)
+
+## 相鄰交付主題
+
+- [[nuitka-and-docker-deployment]]：應用映像的建置與打包；部署環境的運維基線仍另行評估。

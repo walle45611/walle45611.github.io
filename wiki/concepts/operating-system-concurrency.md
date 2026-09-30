@@ -21,3 +21,7 @@
 - [Mutex Locks & Semaphores](../summaries/my-vault-research-mutex-locks-semaphores-f4379acfc.md)
 - [Famous Synchronization Problems](../summaries/my-vault-research-famous-synchronization-problems-e91233fa5.md)
 - [死結管理](../summaries/blog-deadlock-management.md)
+
+## 相鄰主題
+
+- [[linux-memory-management]]：區分位址映射、共享 backing 與同步／權限隔離。

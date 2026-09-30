@@ -45,3 +45,10 @@
 3. 禁止把 `upsert_file` 用於 `wiki/` 以外路徑。
 4. 禁止只使用這份 rule 就回答問題，必須依照使用者需求讀取其他的 rules。
 5. 禁止結尾語的產生這個是不必要的。
+
+## Navigation
+
+此頁保存既有 Worker 操作規則，不是新的來源摘要；現行任務路由以 [[wiki/rules/router-rules]] 為準。
+
+- [[agentic-knowledge-base-maintenance]]：知識庫維護的分層與工具邊界。
+- [[llm-wiki-worker-project]]：專案來源摘要。

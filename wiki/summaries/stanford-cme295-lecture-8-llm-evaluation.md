@@ -3,7 +3,7 @@
 - source: `raw/web-clipper/Stanford CME295 Transformers & LLMs  Autumn 2025  Lecture 8 - LLM Evaluation.md`
 - source link: https://www.youtube.com/watch?v=8fNP4N46RRo
 - original title: Stanford CME295 Transformers & LLMs | Autumn 2025 | Lecture 8 - LLM Evaluation
-- author: [[Stanford Online]]
+- author: Stanford Online
 - published: 2025-12-03
 - lecture date: 2025-11-21
 - created: 2026-07-11

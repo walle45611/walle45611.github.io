@@ -3,7 +3,7 @@
 - source: `raw/web-clipper/LoRA & QLoRA Fine-tuning Explained In-Depth.md`
 - source link: https://www.youtube.com/watch?v=t1caDsMzWBk&t=139s
 - original title: LoRA & QLoRA Fine-tuning Explained In-Depth
-- author: [[Mark Hennings]]
+- author: Mark Hennings
 - published: 2023-12-15
 - created: 2026-04-25
 - type: video

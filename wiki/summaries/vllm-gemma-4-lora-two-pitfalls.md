@@ -4,7 +4,7 @@
 - blog source: `blog/source/_posts/vllm-gemma4-lora-pitfalls.md`
 - source link: https://blog.walle4561.com/20260427/2316/#more
 - original title: vLLM + Gemma 4 + LoRA：我踩過的兩個坑
-- author: [[Walle]]
+- author: Walle
 - published: 2026-04-28
 - created: 2026-04-28
 - type: blog post

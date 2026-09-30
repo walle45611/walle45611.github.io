@@ -1,7 +1,8 @@
 # 網路位置與 Windows Defender 防火牆設定指南
 
 - source: `raw/my-vault/Note/Tech/網路位置與 Windows Defender 防火牆設定指南.md`
-- source_sha256: `c15b64c2849ca289473a9cdf4c12b37bb0cea29612bc0c06c07e6c67af8654bb`
+- source_sha256: `bbcd198d66e6c4b635a6a1ef218e0a9e6de0cc71e7bdffe6b118d97ddf5816f1`
+- source_reviewed: 2026-09-30
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Tech
@@ -19,3 +20,7 @@
 ## Navigation
 
 - [回到 Tech 歸檔](<../archives/my-vault-tech.md>)
+
+## 相關概念
+
+- [[network-protocol-layers]]：將二層拓樸、SMTP／IMAP 服務與主機防火牆放回各自的排錯層次。

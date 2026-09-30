@@ -24,3 +24,7 @@
 - [圖與 DFS/BFS](../summaries/my-vault-research-graph-dfs-bfs-6d2b56ce5.md)
 - [排序](../summaries/my-vault-research-sorting-algo-e54a59046.md)
 - [0/1 背包](../summaries/my-vault-research-01-01-knapsack-problem-a4021e9c5.md)
+
+## 相鄰主題
+
+- [[database-and-sql]]：SQL 刷題先確認查詢語意；與資料結構／演算法練習共享分類入口。

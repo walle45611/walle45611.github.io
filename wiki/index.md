@@ -7,9 +7,15 @@
 - [My vault：Tech 筆記](./archives/my-vault-tech.md)
 - [Web Clipper 來源](./archives/web-clipper.md)
 
+- [每日整理紀錄](./archives/daily-records.md)
+- [知識庫維護入口](./archives/wiki-maintenance.md)
+
 ## Concepts
 
 ### 資料結構與系統基礎
+
+- [linux-memory-management](./concepts/linux-memory-management.md): 區分 MMU、TLB、page tables、fault 與 DMA 位址，保留架構與年代界線。
+- [database-and-sql](./concepts/database-and-sql.md): 串連 JOIN、反連接、分組、日期視窗與 CASE WHEN 的查詢語意。
 
 - [data-structures-and-algorithms](./concepts/data-structures-and-algorithms.md): 連接陣列、樹、圖、排序與最佳化筆記，區分概念和刷題紀錄。
 - [operating-system-concurrency](./concepts/operating-system-concurrency.md): 整理競爭條件、同步工具、經典問題與死結管理。
@@ -63,16 +69,18 @@
 
 ## Summaries
 
+- [introduction-to-memory-management-in-linux](./summaries/introduction-to-memory-management-in-linux.md) · 2026-09-30: 整理 Linux 位址映射、共享記憶體、延遲配置與 swap，標示 TLB／DMA 簡化的限制。
+
 - [my-vault-dashboard-ai-overview-839780b37](./summaries/my-vault-dashboard-ai-overview-839780b37.md) · 2026-09-26: 整理「AI Overview」的原筆記內容與章節。
 - [my-vault-dashboard-devops-technology-overview-387ae5533](./summaries/my-vault-dashboard-devops-technology-overview-387ae5533.md) · 2026-09-26: 整理「DevOps Technology Overview」的原筆記內容與章節。
 - [my-vault-dashboard-iso-27001-overview-8912118af](./summaries/my-vault-dashboard-iso-27001-overview-8912118af.md) · 2026-09-26: 整理「ISO 27001 Overview」的原筆記內容與章節。
 - [my-vault-dashboard-networking-overview-895167887](./summaries/my-vault-dashboard-networking-overview-895167887.md) · 2026-09-26: 整理「TCP/OSI 網路模型完整指南」的原筆記內容與章節。
 - [my-vault-dashboard-python-overview-61c23fcc5](./summaries/my-vault-dashboard-python-overview-61c23fcc5.md) · 2026-09-26: 整理「Python Overview」的原筆記內容與章節。
 - [my-vault-dashboard-reading-overview-22e585fb5](./summaries/my-vault-dashboard-reading-overview-22e585fb5.md) · 2026-09-26: 整理「閱讀筆記」的原筆記內容與章節。
-- [my-vault-dashboard-sql-overview-bad041aa8](./summaries/my-vault-dashboard-sql-overview-bad041aa8.md) · 2026-09-26: 整理「資料庫與 SQL」的原筆記內容與章節。
+- [my-vault-dashboard-sql-overview-bad041aa8](./summaries/my-vault-dashboard-sql-overview-bad041aa8.md) · 2026-09-26: 整理資料庫安裝與四類 SQL 語句的主題入口。
 - [my-vault-dashboard-cmu-sage-ai-overview-4c83c6ba6](./summaries/my-vault-dashboard-cmu-sage-ai-overview-4c83c6ba6.md) · 2026-09-26: 整理「cmu-sage-ai Overview」的原筆記內容與章節。
 - [my-vault-dashboard-overview-807b8620a](./summaries/my-vault-dashboard-overview-807b8620a.md) · 2026-09-26: 整理「作業系統 Overview」的原筆記內容與章節。
-- [my-vault-dashboard-overview-4e3b3b280](./summaries/my-vault-dashboard-overview-4e3b3b280.md) · 2026-09-26: 整理「刷題」的原筆記內容與章節。
+- [my-vault-dashboard-overview-4e3b3b280](./summaries/my-vault-dashboard-overview-4e3b3b280.md) · 2026-09-26: 按圖論、二分搜尋、模擬、貪心與 SQL 語句分類題號。
 - [my-vault-dashboard-overview-73072b9f0](./summaries/my-vault-dashboard-overview-73072b9f0.md) · 2026-09-26: 整理「區塊鏈 Overview」的原筆記內容與章節。
 - [my-vault-dashboard-overview-539863ae6](./summaries/my-vault-dashboard-overview-539863ae6.md) · 2026-09-26: 整理「比賽題目 Overview」的原筆記內容與章節。
 - [my-vault-dashboard-overview-b9f2958d1](./summaries/my-vault-dashboard-overview-b9f2958d1.md) · 2026-09-26: 整理「筆記」的原筆記內容與章節。
@@ -219,7 +227,7 @@
 - [my-vault-research-roformer-enhanced-transformer-with-rotary-f8f618898](./summaries/my-vault-research-roformer-enhanced-transformer-with-rotary-f8f618898.md) · 2026-09-26: 整理「RoFormer: Enhanced Transformer with Rotary Position Embedding」的原筆記內容與章節。
 - [my-vault-research-rod-cutting-problem-7f6a075c1](./summaries/my-vault-research-rod-cutting-problem-7f6a075c1.md) · 2026-09-26: 整理「Rod-Cutting Problem」的原筆記內容與章節。
 - [my-vault-research-routing-d3f96a8fc](./summaries/my-vault-research-routing-d3f96a8fc.md) · 2026-09-26: 整理「Routing 基本技術」的原筆記內容與章節。
-- [my-vault-research-stp-spanning-tree-9eeb1ba1d](./summaries/my-vault-research-stp-spanning-tree-9eeb1ba1d.md) · 2026-09-26: 整理「STP (Spanning tree) 完整指南」的原筆記內容與章節。
+- [my-vault-research-stp-spanning-tree-9eeb1ba1d](./summaries/my-vault-research-stp-spanning-tree-9eeb1ba1d.md) · 2026-09-26: 整理 STP 選舉、TCN／TCA／TC、Max Age 與 MAC aging 的差別及故障圖解邊界。
 - [my-vault-research-selection-problem-91fa4d063](./summaries/my-vault-research-selection-problem-91fa4d063.md) · 2026-09-26: 整理「定義和問題」的原筆記內容與章節。
 - [my-vault-research-sequence-to-sequence-learning-with-2cdc8336b](./summaries/my-vault-research-sequence-to-sequence-learning-with-2cdc8336b.md) · 2026-09-26: 整理「Sequence to Sequence Learning with Neural Networks」的原筆記內容與章節。
 - [my-vault-research-single-source-shortest-paths-problem-d55d9b70e](./summaries/my-vault-research-single-source-shortest-paths-problem-d55d9b70e.md) · 2026-09-26: 整理「Single-Source Shortest Paths 演算法總覽」的原筆記內容與章節。
@@ -313,7 +321,7 @@
 - [my-vault-tech-linux-gre-tunnel-82e4fc21a](./summaries/my-vault-tech-linux-gre-tunnel-82e4fc21a.md) · 2026-09-26: 整理「Linux GRE tunnel 設定指南」的原筆記內容與章節。
 - [my-vault-tech-linux-isc-dhcp-server-isc-4a459c33c](./summaries/my-vault-tech-linux-isc-dhcp-server-isc-4a459c33c.md) · 2026-09-26: 整理「Linux ISC DHCP Server 與 ISC DHCP Relay 設定指南」的原筆記內容與章節。
 - [my-vault-tech-linux-l2tp-over-ipsec-4ac55948a](./summaries/my-vault-tech-linux-l2tp-over-ipsec-4ac55948a.md) · 2026-09-26: 整理「Linux L2TP over IPSec 設定指南」的原筆記內容與章節。
-- [my-vault-tech-linux-mail-server-postfix-dovecot-49492796d](./summaries/my-vault-tech-linux-mail-server-postfix-dovecot-49492796d.md) · 2026-09-26: 整理「Linux Mail Server：Postfix、Dovecot 與 Maildir 設定指南」的原筆記內容與章節。
+- [my-vault-tech-linux-mail-server-postfix-dovecot-49492796d](./summaries/my-vault-tech-linux-mail-server-postfix-dovecot-49492796d.md) · 2026-09-26: 整理 Postfix／Dovecot／Maildir 分工、CDB 路由、map 重建與測試範圍。
 - [my-vault-tech-linux-nis-786adfe67](./summaries/my-vault-tech-linux-nis-786adfe67.md) · 2026-09-26: 整理「Linux NIS 設定指南」的原筆記內容與章節。
 - [my-vault-tech-linux-ntp-server-and-client-9034ec430](./summaries/my-vault-tech-linux-ntp-server-and-client-9034ec430.md) · 2026-09-26: 整理「Linux NTP Server and Client 設定與原理說明」的原筆記內容與章節。
 - [my-vault-tech-linux-nginx-web-server-43bc8f600](./summaries/my-vault-tech-linux-nginx-web-server-43bc8f600.md) · 2026-09-26: 整理「Linux Nginx Web Server 設定指南」的原筆記內容與章節。
@@ -334,7 +342,7 @@
 - [my-vault-tech-oracle-database-19c-oracle-linux-faa98a53b](./summaries/my-vault-tech-oracle-database-19c-oracle-linux-faa98a53b.md) · 2026-09-26: 整理「Oracle Database 19c 在 Oracle Linux 安裝指南」的原筆記內容與章節。
 - [my-vault-tech-python-e3ca165fa](./summaries/my-vault-tech-python-e3ca165fa.md) · 2026-09-26: 整理「Python 專案初始化」的原筆記內容與章節。
 - [my-vault-tech-python-regex-4624bd6e2](./summaries/my-vault-tech-python-regex-4624bd6e2.md) · 2026-09-26: 整理「Python 正規表達式 Regex」的原筆記內容與章節。
-- [my-vault-tech-case-when-affdf4577](./summaries/my-vault-tech-case-when-affdf4577.md) · 2026-09-26: 整理「CASE WHEN 條件判斷」的原筆記內容與章節。
+- [my-vault-tech-case-when-affdf4577](./summaries/my-vault-tech-case-when-affdf4577.md) · 2026-09-26: 以三角形判斷區分 CASE WHEN 逐列分類、WHERE 篩列及常見語法錯誤。
 - [my-vault-tech-join-cecad0b21](./summaries/my-vault-tech-join-cecad0b21.md) · 2026-09-26: 整理「JOIN 與反連接」的原筆記內容與章節。
 - [my-vault-tech-note-08db955d8](./summaries/my-vault-tech-note-08db955d8.md) · 2026-09-26: 整理「分組與資料修改」的原筆記內容與章節。
 - [my-vault-tech-note-8413de499](./summaries/my-vault-tech-note-8413de499.md) · 2026-09-26: 整理「日期與視窗函數」的原筆記內容與章節。
@@ -375,7 +383,7 @@
 - [my-vault-tech-windows-server-ad-with-linux-4f26bff01](./summaries/my-vault-tech-windows-server-ad-with-linux-4f26bff01.md) · 2026-09-26: 整理「windows server AD with Linux bind9」的原筆記內容與章節。
 - [my-vault-tech-note-57d9d348e](./summaries/my-vault-tech-note-57d9d348e.md) · 2026-09-26: 整理「人月神話-軟體專案管理之道」的原筆記內容與章節。
 - [my-vault-tech-nuitka-docker-python-5cb3b6987](./summaries/my-vault-tech-nuitka-docker-python-5cb3b6987.md) · 2026-09-26: 整理「使用 Nuitka 與 Docker 打造高效能且安全的 Python 應用部署方案」的原筆記內容與章節。
-- [my-vault-tech-windows-defender-9b233a1db](./summaries/my-vault-tech-windows-defender-9b233a1db.md) · 2026-09-26: 整理「網路位置與 Windows Defender 防火牆設定指南」的原筆記內容與章節。
+- [my-vault-tech-windows-defender-9b233a1db](./summaries/my-vault-tech-windows-defender-9b233a1db.md) · 2026-09-26: 整理網路位置、連線設定檔與 Windows Defender 防火牆操作來源。
 - [my-vault-tech-note-64626b227](./summaries/my-vault-tech-note-64626b227.md) · 2026-09-26: 整理「重構的時機與實作」的原筆記內容與章節。
 
 - [michael-kerrisk-understanding-linux-user-namespaces](./summaries/michael-kerrisk-understanding-linux-user-namespaces.md) · 2026-09-25: 整理 Kerrisk 的 user namespace 演講，聚焦內外 UID/GID、capabilities 與容器權限邊界。

@@ -13,7 +13,7 @@ tags:
 - source: `raw/web-clipper/How I Use AI to Learn Things.md`
 - source link: https://www.youtube.com/watch?v=kzcI5F4tGiU
 - original title: How I Use AI to Learn Things
-- author: [[Eero Alvar]]
+- author: Eero Alvar
 - published: 2026-08-14
 - source_created: 2026-08-24
 - ingested_at: 2026-08-25

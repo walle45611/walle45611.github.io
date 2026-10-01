@@ -609,10 +609,3 @@ squeue
 ```
 
 前提是 `debug` 有兩台可用節點、允許上述時間與資源要求，且執行節點的工作目錄可用。第一個作業占用節點期間，第二個通常會等待；是否顯示 `Resources`、`Priority` 或其他原因，應以當下 `squeue` 的 Reason 為準。
-
-## 參考資料與驗證範圍
-
-- [Slurm 官方管理員快速入門（Quick Start Administrator Guide）](https://slurm.schedmd.com/quickstart_admin.html)：叢集安裝、設定與管理的入門參考。
-- 官方文件查閱日期：2026-10-01；各節的連結提供架構、指令與設定依據，實際指令選項仍應配合已安裝版本。
-- 已有實驗證據：controller 名稱解析錯誤、雙節點 hostname 測試成功、job 6 曾在 node01 執行、controller 找不到輸出檔。
-- 尚未確認：job 6 最終退出碼、node01 的輸出內容、共享儲存掛載、重啟緩慢根因與 accounting 設定。本文新增的安裝流程依官方與發行版文件補齊，尚未在全新 VM 逐步重跑。

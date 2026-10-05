@@ -767,7 +767,7 @@ area number filter-list prefix name {in | out}
     R1(config-router)#area 34 filter-list prefix filter-into-area-34 in
     ```
 	
-	![[Pasted image 20260922113709.png]]
+	![[Assets/Pasted image 20260922113709.png]]
 	
     ```Plain
     R2(config)#ip prefix-list filter-into-area-0 seq 5 deny 10.16.2.0/23 ge 24 le 24
@@ -779,7 +779,7 @@ area number filter-list prefix name {in | out}
     
     ![[Assets/Note/Research/OSPFv2 與 OSPFv3 全面整理：原理、流程、LSA 類型與實作案例/36-case.png|36-case.png]]
     
-	![[Pasted image 20260922114053.png]]
+	![[Assets/Pasted image 20260922114053.png]]
 ### filter OSPF path 防止新增到 routing table
 
 - 例如 area有20台router，想要過濾其中的5台router，但是使用type 3 LSA filter沒辦法達成這項功能，所以就需要利用distribute list進行過濾。

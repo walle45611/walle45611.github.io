@@ -1,3 +1,11 @@
+---
+blog: true
+tags:
+  - 網路與作業系統
+blog_title: "Cisco VTP（VLAN Trunking Protocol）"
+blog_date: '2026-10-05'
+blog_url: https://blog.walle4561.com/articles/posts/cisco-vtp-guide/
+---
 
 ![[Assets/Note/Tech/Cisco VTP (VLAN Trunking Protocol)/01-Cisco VTP (VLAN Trunking Protocol).png]]
 ## VTP working mode

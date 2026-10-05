@@ -1,5 +1,7 @@
 ---
 blog: true
+tags:
+  - 網路與作業系統
 blog_title: "STP（Spanning Tree Protocol）完整指南"
 blog_date: '2026-10-05'
 blog_url: https://blog.walle4561.com/articles/posts/stp-spanning-tree-guide/

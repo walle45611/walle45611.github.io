@@ -1,3 +1,12 @@
+---
+blog: true
+tags:
+  - 網路與作業系統
+blog_title: "OSPFv2 與 OSPFv3 全面整理：原理、流程、LSA 類型與實作案例"
+blog_date: '2026-10-05'
+blog_url: https://blog.walle4561.com/articles/posts/ospfv2-ospfv3-guide/
+---
+
 # OSPFv2
 
 ## OSPF概念

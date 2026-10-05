@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "Lamport's Bakery Algorithm (LBA)"
+blog_date: '2026-10-05'
+blog_url: https://blog.walle4561.com/articles/posts/lamports-bakery-algorithm-lba/
+tags:
+  - 網路與作業系統
+---
+
 
 由 **Leslie Lamport** 於 1974 年提出，這是一個具有里程碑意義的演算法。它證明了在沒有硬體原子指令 (Atomic Instructions) 的支援下，僅使用最基礎的 **安全暫存器 (Safe Registers)** 讀寫操作，就能解決 $N$ 個 Process 的互斥問題。
 

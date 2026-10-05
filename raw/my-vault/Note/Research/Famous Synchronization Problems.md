@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "Famous Synchronization Problems"
+blog_date: '2026-10-05'
+blog_url: https://blog.walle4561.com/articles/posts/famous-synchronization-problems/
+tags:
+  - 網路與作業系統
+---
+
 []d
 ## 1. Bounded-Buffer Problem (Producer-Consumer)
 

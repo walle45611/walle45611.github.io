@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "real-time system RMA 與實務排程分析整理"
+blog_date: '2026-10-05'
+blog_url: https://blog.walle4561.com/articles/posts/real-time-system-rma-scheduling-analysis/
+tags:
+  - 網路與作業系統
+---
+
 ## 一、RMA 基本模型與測試
 
 ### 1. 基本假設

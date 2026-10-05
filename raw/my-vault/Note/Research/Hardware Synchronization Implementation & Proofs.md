@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "Hardware Synchronization Implementation & Proofs"
+blog_date: '2026-10-05'
+blog_url: https://blog.walle4561.com/articles/posts/hardware-synchronization-implementation-proofs/
+tags:
+  - 網路與作業系統
+---
+
 ## 1. Memory Barriers
 
 ### Proof of Failure by Reordering

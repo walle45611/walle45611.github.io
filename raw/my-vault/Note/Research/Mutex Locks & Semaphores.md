@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "Mutex Locks & Semaphores"
+blog_date: '2026-10-05'
+blog_url: https://blog.walle4561.com/articles/posts/mutex-locks-semaphores/
+tags:
+  - 網路與作業系統
+---
+
 ## 1. Hardware-based Mutex Implementation
 
 現代 Mutex 通常依賴 **Atomic Hardware Instructions** 來保證操作的不可分割性。

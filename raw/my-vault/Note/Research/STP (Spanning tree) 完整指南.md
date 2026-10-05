@@ -1,3 +1,10 @@
+---
+blog: true
+blog_title: "STP（Spanning Tree Protocol）完整指南"
+blog_date: '2026-10-05'
+blog_url: https://blog.walle4561.com/articles/posts/stp-spanning-tree-guide/
+---
+
 ## 為什麼需要
 
 因為switch備援路線會導致網路有回環產生進而產生出廣播風暴和Mac address泛洪的問題，所以要解決這個問題就有人提出使用Spanning tree這項演算法來解決此問題。
@@ -36,7 +43,7 @@
 
 BPDU分成兩種類型一種是
 
-- config BPDU再設定的時候會發佈
+- Configuration BPDU：用於選舉與持續維護拓樸，穩定時仍會週期性傳播；也攜帶 TC／TCA flags。
 - TCN網路topology有改變時會發佈
 - BPDU訊息內容
     
@@ -46,14 +53,14 @@ BPDU分成兩種類型一種是
 |---|---|---|
 |2|協議|代表上層協議(BPDU)，必為0。|
 |1|版本|(802.1D為0)。|
-|1|message TYPE|Config BPDU為0，Topology change BPDU為80。|
+|1|message TYPE|Configuration BPDU 為 0x00，TCN BPDU 為 0x80（十進位 128）。|
 |1|Flag|LSB最低有效為表示TC標示 ; MSB最高有效未表示TCA標示。|
 |8|Root ID|Root Switch ID收斂後就是Root Switch保持不變。|
 |4|Cost|到達Root Switch的cost。|
 |8|bridger ID|發送BPDU的switch的ID。|
 |2|Port ID|BPDU發送的bridger的Port ID(優先及(預設為128)+Port ID)。|
-|2|Message age 訊息壽命|從Root SW發出的BPDU之後的秒數，每經過一個SW就減一，所以本質上是達到Root SW的跳數。|
-|2|Max age 最大壽命|當一段時間未收到任何BPDU，生存騎到達Max age時，SW認為該Port故障。default 20s。|
+|2|Message age 訊息壽命|STP 資訊的累積年齡；Root 發出時為 0，中繼交換器會增加此值（Cisco 通常每跳加 1 秒），不是減一，也不是單純的 hop count。|
+|2|Max age 最大壽命|該 port 保存的 BPDU 資訊累積年齡達此值時失效，預設 20 秒；不代表實體 port 一定故障。|
 |2|HELLO時間|Root SW連續發送BPDU之間的時間間隔。default 2s|
 |2|轉發Delay|在listen和學習狀態所停留的時間間隔。default 15s|
     
@@ -168,7 +175,7 @@ SW1(config-if)#spanning-tree port-priority <0-192 64的倍數>
     
     - priority是STP的優先權數越小的越先預設值32768
     - mac address是所有介面卡網卡的第一個mac address
-    - 一開始所有的Switch都會發送BPDU訊息等到網路收斂完畢，也就是選出Root Switch就會只有Root Switch發送BPDU訊息
+    - 一開始所有的Switch都會發送BPDU訊息等到網路收斂完畢，Root 會週期性產生 Configuration BPDU，非 Root 依收到的資訊更新欄位，再從 DP 發送自己的 Configuration BPDU
     - 從RP收到Root Switch的BPDU訊息之後從DP傳送出去這個動作稱為Relay
 2. 在非Root bridge上選出一個RP
     
@@ -231,7 +238,7 @@ SW1(config-if)#spanning-tree port-priority <0-192 64的倍數>
 |---|---|
 |hello|組態BPDU的間隔時間|
 |forwarding delay|進入forwarding狀態，所處listening和Learing狀態的時間而|
-|max age|在沒有收到更新之前保存BPDU的最長時間；到期表示遇到DP或是root bridge壞掉了|
+|max age|保存 STP 資訊的年齡上限；到期表示舊資訊失效，無法單憑此判斷哪台設備故障|
 
 - command
     - hello timer 
@@ -263,25 +270,97 @@ SW1(config-if)#spanning-tree port-priority <0-192 64的倍數>
 
 ## 802.1D TC(Topology change)機制
 
-![[Assets/Note/Research/STP (Spanning tree) 完整指南/08-802.1D TC(Topology change)機制.png|08-802.1D TC(Topology change)機制.png]]
+以下討論傳統 **802.1D STP**，假設未啟用 UplinkFast／BackboneFast 等加速機制。重新選擇 RP／DP 是為了建立無迴圈路徑；TCN／TC 則通知網路加速淘汰舊的動態 MAC 紀錄。**TCN 本身不負責選路，也不攜帶完整新拓樸。**
 
-|欄位描述|byte number|
-|---|---|
-|協定ID 0|2|
-|版本必為0|1|
-|配置或 TCN BPDU|1|
+![[Assets/Note/Research/STP (Spanning tree) 完整指南/08-802.1D TC(Topology change)機制.png|600]]
 
-當交換器的port轉移到forwarding stata或是forwarding或learning轉到blocking狀態時，即topology change。換句話說交換port的狀態不是up 就是down，TCN BPDU只是發送拓樸變更消息不是攜帶有關資料。如果開啟portfast不會發送TCN BPDU Message。
+### TCN、TC、TCA 的差別
 
-交換機會隔hello時間發送TCN BPDU直到上游鄰居確認直到root bridge ack，當root bridge收到TCN BPDU會將自己的BPDU topology change flag設定，並將該BPDU傳到其他bridge。
+|名稱|承載方式|方向與用途|
+|---|---|---|
+|TCN（Topology Change Notification）|獨立的 TCN BPDU，Type = `0x80`|非 Root 從自己的 RP 通知上游，逐跳向 Root 報告變更|
+|TCA（Topology Change Acknowledgment）|Configuration BPDU 的 TCA flag（bit 7）|上游從收到 TCN 的 DP 回覆直接下游，確認「這一跳已收到」|
+|TC（Topology Change）|Configuration BPDU 的 TC flag（bit 0）|Root 啟動通知，各交換器沿 DP 向下傳播，促使動態 MAC 紀錄加速老化|
 
-### 直接拓樸變更
+TCN BPDU 的協定內容只有 4 bytes：Protocol ID（2）、Version（1）、Type（1）。它沒有 Root ID、Cost 或 Flags；TC／TCA 都在 **Configuration BPDU** 裡。
 
-是可以偵測的一種類型例如說，少一條trunk線路斷掉，鏈路一端的switch就會立刻偵測，因此改變topology。
+傳統 STP 的典型變更包含 port 進入 Forwarding，或原本 Forwarding 的 port 停止轉送；不能只用實體 link up／down 判斷。Cisco PortFast port 的主機端狀態變更通常不產生 TCN。Root 自己偵測到變更時，直接啟動 TC 通知，不需要往上送 TCN，因為 Root 沒有 RP。
 
-### 間接拓樸變更
+### 逐跳通報與確認，不是一般 Ethernet flooding
 
-也就是說不是沒有檢測鏈路損壞，但是BPDU packet無法送達，這時候因為沒有偵測topology發生的工具，所以就只能依靠max age timer等到期了就會自動發送新的BPDU，這時候就會有新的topology。
+假設 SW1 是 Root，SW3 現在經由 SW2 到達 Root：
+
+```text
+TCN 往 Root：
+SW3 ──TCN──→ SW2 ──新的 TCN──→ SW1（Root）
+
+TCA 確認每一跳：
+SW3 ←──Config + TCA── SW2 ←──Config + TCA── SW1
+
+TC 向下通知：
+SW1 ──Config + TC──→ SW2 ──Config + TC──→ SW3
+```
+
+1. SW3 從 RP 發送 TCN；尚未收到上游確認時，依 Hello Time 重送。
+2. SW2 收到後，在連向 SW3 的 DP 回覆 `TCA = 1`。SW3 收到這個確認即可停止該次 TCN 重送，**不必等待 SW1 的端到端確認**。
+3. SW2 自己從 RP 向 SW1 通報，並等待 SW1 的 TCA；不是把 SW3 原本的 Ethernet frame 原封不動轉送。
+4. Root 收到後回覆 TCA，並在發出的 Configuration BPDU 設定 `TC = 1`。TC 通知期間為 Max Age + Forward Delay，預設 35 秒；後續變更可能延長此期間。
+
+TCN 應描述為 **hop-by-hop propagation toward the Root Bridge**。它只往 RP 方向通報，不是往所有可用 port 複製 frame。Configuration BPDU 也由各橋接器處理後沿 DP 產生／傳播；即使文件廣義使用 flooding 描述通知擴散，也不等於一般 Broadcast／Unknown Unicast flooding。
+
+### Max Age 與 MAC aging 是兩件事
+
+|機制|影響的資料|作用|
+|---|---|---|
+|Max Age|每個 port 保存的 STP／BPDU 資訊|資訊未被有效更新而過期後，重新計算角色與路徑|
+|收到 TC 後的 MAC aging|動態 MAC address table（CAM table）|暫時將老化時間縮短為 Forward Delay，預設 15 秒，讓舊轉送紀錄較快淘汰|
+
+**Max Age 到期不是清空整張 MAC 表；收到 TC 也不是一律立即刪除所有 MAC。** 已超過縮短後期限的動態紀錄可能很快被移除，持續被流量更新的紀錄則可保留。靜態 MAC 不適用此動態老化流程。
+
+### 圖一：SW1–SW3 link 仍 up，但 SW3 收不到有效 BPDU
+
+![[Assets/Note/Research/STP (Spanning tree) 完整指南/20-stp-indirect-bpdu-loss.png|680]]
+
+原本 SW3 的 Gi1/0/1 是 RP；Gi1/0/2 朝向 SW2，處於 Blocking。這張圖的前提是故障也讓 SW1 的有效 BPDU 無法到達 SW3；若只有一般資料受損而 BPDU 仍正常，不能直接套用以下流程。
+
+1. SW3 沒有偵測到實體 link down，因此暫時保留 Gi1/0/1 原本的最佳路徑資訊。
+2. SW2 仍收到 SW1 的資訊，並持續從 DP 向 SW3 發送 Configuration BPDU。SW3 的 Blocking port **可以接收及處理 BPDU**，不必等到 Forwarding 才收到它。
+3. SW3 的 Gi1/0/1 上舊資訊無法再更新，累積年齡達 Max Age 後，由 **SW3 自己將該 port 的 STP 資訊判定失效**。這不是 Root 發指令要求它清除。
+4. SW3 重新比較有效路徑，將通往 SW2 的 Gi1/0/2 選為新 RP，再經 Listening → Learning → Forwarding。
+5. 新 port 進入 Forwarding 時會觸發拓樸變更通報：`SW3 → SW2 → SW1`。Root 的 TC 通知則沿新樹走 `SW1 → SW2 → SW3`；改選 RP 不表示 SW1 被換成別台 Root。
+
+```text
+舊 RP 資訊到期 → 重新選 RP → Listening 15s → Learning 15s → Forwarding
+```
+
+Max Age 預設 20 秒，實際剩餘等待取決於已累積的資訊年齡；接收時以 BPDU 的 Message Age 為起點繼續計時，並非每次故障一律重新等滿 20 秒。教學常以約 `20 + 15 + 15 = 50 秒` 表示此類傳統 STP 收斂。
+
+SW1 在仍為 DP 且 link up 的原 SW1–SW3 port 上仍可能發送 BPDU，但故障使 SW3 無法有效收到；成功的 TC 通知可經 SW2 到達 SW3。
+
+### 圖二：SW1–SW2 實體斷線，SW3 等待舊資訊失效
+
+![[Assets/Note/Research/STP (Spanning tree) 完整指南/21-stp-link-failure-tcn.png|680]]
+
+這張圖和圖一的斷線位置不同：**故障對 SW1／SW2 是直接故障，對 SW3 則是間接得知的變更。**
+
+1. SW1 與 SW2 立即偵測直連 link down。SW2 原 RP 已斷，無法經它把 TCN 送到 SW1；SW1 本身是 Root，直接在仍可用的 DP（往 SW3）發送帶 TC 的 Configuration BPDU。
+2. SW2 暫時沒有更好的 Root 資訊，於是宣告自己是 Root，向 SW3 發送 Configuration BPDU。SW3 仍可直接到達 SW1，知道 SW1 的 Root ID 更好，因此 SW2 的宣告是 **inferior BPDU**。
+3. SW3 的 Gi1/0/2 仍保存先前由 SW2 通告、以 SW1 為 Root 的舊資訊。傳統 STP 不會用 SW2 新的較差宣告立刻取代它，而是等待這份舊資訊到期；**等待的是 Gi1/0/2 的資訊，並非 SW3 朝向 SW1 的 RP。**
+4. 舊資訊到期後，SW3 的 Gi1/0/2 成為該 segment 的 DP，進入 Listening，開始向 SW2 通告仍以 SW1 為 Root 的 Configuration BPDU。控制 BPDU 不必等到 Forwarding 才能送。
+5. SW2 收到較佳資訊，把 Gi1/0/3 選為新 RP，重新經由 `SW2 → SW3 → SW1` 到達 Root；需要轉入 Forwarding 的 port 仍經過 Listening／Learning。
+6. 此後 SW2 的 TCN 可以沿 `SW2 → SW3 → SW1` 通報，TC 通知則沿 `SW1 → SW3 → SW2` 傳播。
+
+> [!note] 圖上的簡化用語
+> 圖二的「flushes the MAC address table」應配合傳統 STP 的縮短老化時間理解，不能當作立即清空整張表的通則。「discards SW2’s BPDUs」指不採納 SW2 較差的 Root 宣告，不是 SW3 完全不接收 BPDU。收到 TC 也不會跳過 Max Age 或 Listening／Learning 等待。
+
+### 與 RSTP 的界線及參考
+
+上述 TCN 往 Root、TCA 逐跳確認、Root 再向下傳 TC 是傳統 STP 機制。RSTP 原生使用帶 TC 的 RST BPDU 擴散變更，不必先等 Root 統一通知；只有與舊 STP 互通時才涉及傳統 TCN 流程，不能混用。
+
+- 討論來源：[TCAM 中文解釋](chatgpt-conversation://6ab8daaa-5e28-83e8-b18a-c4f1e07b3a79)，依本次提供的對話片段補充。
+- 圖片來源：使用者於 2026-09-28 提供的兩張附圖；原始出版來源未提供，保留圖片原文並在圖下釐清簡化敘述。
+- [Cisco — Understand and Tune Spanning Tree Protocol Timers](https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/19120-122.html)：Message Age、Max Age 與 Forward Delay。
+- [Cisco — Understand Rapid Spanning Tree Protocol (802.1w)](https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/24062-146.html)：傳統 STP 的 TC／MAC aging，以及與 RSTP 的差異。
 
 ---
 
@@ -748,3 +827,7 @@ RSTP的問題，RSTP都是Pre-VLAN Base也就是說STP的樹木就等於VLAN數�
 |顯示BPDUGuard、BPDUfilter、loopGuard 的狀態|show spanning-tree summary|
 |顯示一個或所有switch port udld狀態|show udld [type mode/num]|
 |遭到udld童用的errdisable port|udld reset|
+
+## 參考資料
+
+- 故障案例圖參考：Brad Edgeworth、Ramiro Garza Rios、Jason Gooley、David Hucaby，《CCNP and CCIE Enterprise Core ENCOR 350-401 Official Cert Guide》第 2 版，第 2 章圖 2-4、2-5（[Pearson 書籍資料](https://www.pearson.com/en-us/subject-catalog/p/ccnp-and-ccie-enterprise-core-encor-350-401-official-cert-guide/P200000011247)）。

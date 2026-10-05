@@ -87,11 +87,31 @@ fn parse_post(source: &Path, note: &str) -> Result<Option<Post>> {
     if title.trim().is_empty() {
         return Err(fail(format!("Empty blog title in {}", source.display())));
     }
-    let topic = properties
+    let explicit_topic = properties
         .get("blog_topic")
         .and_then(serde_yaml::Value::as_str)
         .unwrap_or_default();
-    if !topic.is_empty() && !["data-structures", "algorithms", "problem-solving"].contains(&topic) {
+    let has_network_operating_systems_tag = properties
+        .get("tags")
+        .and_then(serde_yaml::Value::as_sequence)
+        .is_some_and(|tags| {
+            tags.iter()
+                .any(|tag| tag.as_str() == Some("網路與作業系統"))
+        });
+    let topic = if explicit_topic.is_empty() && has_network_operating_systems_tag {
+        "network-operating-systems"
+    } else {
+        explicit_topic
+    };
+    if !topic.is_empty()
+        && ![
+            "data-structures",
+            "algorithms",
+            "problem-solving",
+            "network-operating-systems",
+        ]
+        .contains(&topic)
+    {
         return Err(fail(format!("Invalid blog topic in {}", source.display())));
     }
     let body = note[capture.get(0).expect("front matter match").end()..].trim();

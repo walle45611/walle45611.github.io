@@ -330,6 +330,12 @@ fn build_site(config: &BuilderConfig, articles: &[Article]) -> std::io::Result<(
         &render_data_structures_topic(articles),
     )?;
     write_output(
+        &config
+            .out_dir
+            .join("topics/network-operating-systems/index.html"),
+        &render_network_operating_systems_topic(articles),
+    )?;
+    write_output(
         &config.out_dir.join("404.html"),
         &render_page(
             "Not found",
@@ -458,6 +464,7 @@ fn render_sitemap(articles: &[Article]) -> String {
         "/".to_string(),
         "/articles/".to_string(),
         "/topics/data-structures-algorithms/".to_string(),
+        "/topics/network-operating-systems/".to_string(),
     ];
     urls.extend(articles.iter().map(|a| a.route.clone()));
     let entries = urls
@@ -523,6 +530,25 @@ fn render_data_structures_topic(articles: &[Article]) -> String {
         "資料結構與演算法",
         "依照 My vault 整理的資料結構與演算法筆記。",
         "/topics/data-structures-algorithms/",
+        &body,
+        "website",
+    )
+}
+
+fn render_network_operating_systems_topic(articles: &[Article]) -> String {
+    let posts = articles
+        .iter()
+        .filter(|a| a.topic_section.as_deref() == Some("network-operating-systems"))
+        .cloned()
+        .collect::<Vec<_>>();
+    let body = format!(
+        "<section class=\"intro\"><h1>OS &amp; Networking</h1></section>{}",
+        render_post_list(&posts, true)
+    );
+    render_page(
+        "OS & Networking",
+        "Notes on operating systems and networking.",
+        "/topics/network-operating-systems/",
         &body,
         "website",
     )
@@ -701,7 +727,8 @@ fn render_page(
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="/">Home</a>
         <a href="/articles/">Archive</a>
-        <a href="/topics/data-structures-algorithms/">資料結構與演算法</a>
+        <a href="/topics/data-structures-algorithms/">DSA</a>
+        <a href="/topics/network-operating-systems/">OS &amp; Networking</a>
         <a href="https://linktr.ee/walle4561" target="_blank" rel="noopener noreferrer">Linktree</a>
         <a href="/feed.xml">RSS</a>
     </nav>

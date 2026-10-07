@@ -536,14 +536,20 @@ fn render_data_structures_topic(articles: &[Article]) -> String {
 }
 
 fn render_network_operating_systems_topic(articles: &[Article]) -> String {
-    let posts = articles
+    let os = articles
         .iter()
-        .filter(|a| a.topic_section.as_deref() == Some("network-operating-systems"))
+        .filter(|a| a.topic_section.as_deref() == Some("operating-systems"))
+        .cloned()
+        .collect::<Vec<_>>();
+    let networking = articles
+        .iter()
+        .filter(|a| a.topic_section.as_deref() == Some("networking"))
         .cloned()
         .collect::<Vec<_>>();
     let body = format!(
-        "<section class=\"intro\"><h1>OS &amp; Networking</h1></section>{}",
-        render_post_list(&posts, true)
+        "<section class=\"intro\"><h1>OS &amp; Networking</h1></section><section><h2>OS</h2>{}</section><section><h2>Networking</h2>{}</section>",
+        render_post_list(&os, true),
+        render_post_list(&networking, true)
     );
     render_page(
         "OS & Networking",

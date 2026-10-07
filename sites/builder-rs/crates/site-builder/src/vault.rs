@@ -109,6 +109,8 @@ fn parse_post(source: &Path, note: &str) -> Result<Option<Post>> {
             "algorithms",
             "problem-solving",
             "network-operating-systems",
+            "operating-systems",
+            "networking",
         ]
         .contains(&topic)
     {
@@ -320,6 +322,14 @@ pub fn export(vault: &Path, build_dir: &Path) -> Result<()> {
         .split_once("# 演算法")
         .ok_or_else(|| fail("Dashboard lacks algorithm section"))?;
     let algorithm_names: HashSet<_> = links(algorithms.1).into_iter().collect();
+    let os_overview = vault.join("00_Dashboard/作業系統 Overview.md");
+    let os_names: HashSet<_> = if os_overview.exists() {
+        links(&fs::read_to_string(os_overview)?)
+            .into_iter()
+            .collect()
+    } else {
+        HashSet::new()
+    };
     let mut posts = Vec::<Post>::new();
     let mut all_note_names = HashSet::new();
     for source in files_under(&vault.join("00_Dashboard"), "md")? {
@@ -399,7 +409,13 @@ pub fn export(vault: &Path, build_dir: &Path) -> Result<()> {
         if tikz.is_match(&body) {
             return Err(fail(format!("TikZ remains in {}", post.source.display())));
         }
-        let topic = if !post.topic.is_empty() {
+        let topic = if post.topic == "network-operating-systems" {
+            Some(if os_names.contains(&post.name) {
+                "operating-systems"
+            } else {
+                "networking"
+            })
+        } else if !post.topic.is_empty() {
             Some(post.topic.as_str())
         } else if algorithm_names.contains(&post.name) {
             Some("algorithms")

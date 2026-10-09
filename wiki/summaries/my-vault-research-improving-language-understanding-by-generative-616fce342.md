@@ -1,7 +1,7 @@
 # Improving Language Understanding by Generative Pre-Training
 
 - source: `raw/my-vault/Note/Research/Improving Language Understanding by Generative Pre-Training.md`
-- source_sha256: `7c2c16e0e5b777689fa5cae30512bc3d2115ccd6c2fa2332906e50e988aebddc`
+- source_sha256: `a676c4e0401aff35d8e315d4471178660de31baf3eb6a2e41a8206d87a704c50`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

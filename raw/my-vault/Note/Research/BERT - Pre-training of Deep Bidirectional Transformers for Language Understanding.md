@@ -1,6 +1,33 @@
+---
+id: "bert-pre-training-of-deep-bidirectional-transformers-for-language-understanding"
+type: "paper-conference"
+title: "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"
+issued:
+  date-parts:
+    - - 2019
+container-title: "Proceedings of NAACL-HLT 2019"
+language: "en"
+author:
+  - family: "Devlin"
+    given: "Jacob"
+  - family: "Chang"
+    given: "Ming-Wei"
+  - family: "Lee"
+    given: "Kenton"
+  - family: "Toutanova"
+    given: "Kristina"
+year: "2019"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"
+  - "BERT - Pre-training of Deep Bidirectional Transformers for Language Understanding"
+tags:
+  - "literature_note"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/BERT - Pre-training of Deep Bidirectional Transformers for Language Understanding.pdf|PDF]]"
+---
 # BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
-
-[[Assets/Note/Research/Papers/BERT - Pre-training of Deep Bidirectional Transformers for Language Understanding/BERT - Pre-training of Deep Bidirectional Transformers for Language Understanding.pdf|論文 PDF]]
 
 ## 初讀摘要
 

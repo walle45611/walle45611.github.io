@@ -1,6 +1,40 @@
+---
+id: "the-berkeley-function-calling-leaderboard-bfcl-from-tool-use-to-agentic-evaluation-of-large-language-models"
+type: "paper-conference"
+title: "The Berkeley Function Calling Leaderboard (BFCL): From Tool Use to Agentic Evaluation of Large Language Models"
+issued:
+  date-parts:
+    - - 2025
+container-title: "Proceedings of the 42nd International Conference on Machine Learning"
+language: "en"
+author:
+  - family: "Patil"
+    given: "Shishir G."
+  - family: "Mao"
+    given: "Huanzhi"
+  - family: "Yan"
+    given: "Fanjia"
+  - family: "Ji"
+    given: "Charlie Cheng-Jie"
+  - family: "Suresh"
+    given: "Vishnu"
+  - family: "Stoica"
+    given: "Ion"
+  - family: "Gonzalez"
+    given: "Joseph E."
+year: "2025"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "The Berkeley Function Calling Leaderboard (BFCL): From Tool Use to Agentic Evaluation of Large Language Models"
+  - "The Berkeley Function Calling Leaderboard (BFCL) - From Tool Use to Agentic Evaluation of Large Language Models"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/The Berkeley Function Calling Leaderboard (BFCL) - From Tool Use to Agentic Evaluation of Large Language Models.pdf|PDF]]"
+---
 # The Berkeley Function Calling Leaderboard (BFCL): From Tool Use to Agentic Evaluation of Large Language Models
-
-[[Assets/Note/Research/Papers/The Berkeley Function Calling Leaderboard (BFCL) - From Tool Use to Agentic Evaluation of Large Language Models/The Berkeley Function Calling Leaderboard (BFCL) - From Tool Use to Agentic Evaluation of Large Language Models.pdf|論文 PDF]]
 
 ## 初讀摘要
 

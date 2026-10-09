@@ -101,8 +101,8 @@ $$
 單向 RNN 的 $h_t$ 依賴 $h_{t-1}$，同一序列的狀態計算有先後依賴。Self-attention 則可直接建立位置間的連結；causal Transformer 訓練時可以平行處理已知輸入位置，但自回歸生成仍需逐步產生新 token。
 
 [[Attention Is All You Need]]
-[[Note/Research/ML_DL_Obsidian_Notes/01 - Chain Rule and Total Derivative|Chain Rule 與路徑梯度相加]]
-[[Note/Research/ML_DL_Obsidian_Notes/02 - Computational Graph and Backpropagation|Computational Graph 與 Backpropagation]]
+[[Note/Research/01 - Chain Rule and Total Derivative|Chain Rule 與路徑梯度相加]]
+[[Note/Research/02 - Computational Graph and Backpropagation|Computational Graph 與 Backpropagation]]
 
 ## 手寫原稿
 

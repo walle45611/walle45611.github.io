@@ -4,7 +4,6 @@
 - [[#實現多層交換]]
     - [[#RoS (單臂路由)]]
     - [[#L3交換]]
-    - [[# VRF-Lite (Virtual Routing and Forwarding)]]
 
 ## 多層交換機概述(MLS，multilayer switching)
 
@@ -18,9 +17,9 @@ catalys switch 基本可以分為兩種基本MLS
     
 - topology based
     
-    MLS採用特殊的硬體，同樣分成SE和PR。第三層會見立即預先占用一個具備整體已知的網路拓樸資料;資料庫以硬體的方提供表格查詢，使得SE能迅速的轉發。如果topology有發生變更database 資料也會更新
+    MLS採用特殊的硬體，同樣分成 SE 和 PR。第三層會見立即預先占用一個具備整體已知的網路拓樸資料;資料庫以硬體的方提供表格查詢，使得SE能迅速的轉發。如果topology有發生變更database 資料也會更新
     
-    這種稱為cisco express forwarding(CEF)，其中的資料庫又成為FIB(forwarding informatin base)
+    這種稱為 Cisco express forwarding(CEF)，其中的資料庫又成為 FIB(forwarding informatin base)
     
 
 ### CAM
@@ -135,143 +134,4 @@ mac address 記錄在CAM，所以switch會在cam中進行轉發，為了管理CA
          1 packets output, 60 bytes, 0 underruns
          0 output errors, 0 interface resets
          0 unknown protocol drops
-    ```
-    
-
-### VRF-Lite (Virtual Routing and Forwarding)
-
-- VRF是可以分流不同類型流量的工具，在一台路由器上有許多個virtual router的概念
-- 這個日本網站有好的解釋
-    
-    > [!info] VRF-Liteとは、Ciscoコンフィグ設定例  
-    > ◆　です。 VRF-Lite の VRF-Liteとは 　主な特徴は以下の4点です。 　2.  
-    > [https://www.infraexpert.com/study/mpls12.html](https://www.infraexpert.com/study/mpls12.html)  
-    
-
-- case
-    
-    ![[Assets/Note/Research/MLS (MLS，multilayer switching)/03-VRF-Lite (Virtual Routing and Forwar.png|03-VRF-Lite (Virtual Routing and Forwar.png]]
-    
-    ![[Assets/Note/Research/MLS (MLS，multilayer switching)/04-VRF-Lite (Virtual Routing and Forwar.png|04-VRF-Lite (Virtual Routing and Forwar.png]]
-    
-    ```Plain
-    R1(config)#ip vrf VOICE
-    R1(config-vrf)#ip vrf VOIDE
-    R1(config-vrf)#ip vrf DATA
-    !
-    interface Loopback0
-     ip address 1.1.1.1 255.255.255.255
-    !
-    interface Ethernet0/0
-     no ip address
-    !
-    interface Ethernet0/0.2
-     encapsulation dot1Q 2
-     ip vrf forwarding VOICE
-     ip address 192.0.2.1 255.255.255.252
-     ip ospf 1 area 0
-    !
-    interface Ethernet0/0.3
-     encapsulation dot1Q 3
-     ip vrf forwarding DATA
-     ip address 198.51.100.1 255.255.255.252
-     ip ospf 2 area 0
-    !
-    interface Ethernet0/0.4
-     encapsulation dot1Q 4
-     ip vrf forwarding VIDEO
-     ip address 203.0.113.1 255.255.255.252
-     ip ospf 3 area 0
-    !
-    router ospf 1 vrf VOICE
-     router-id 1.1.1.1
-    !
-    router ospf 2 vrf DATA
-    !
-    router ospf 3 vrf VIDEO
-    ```
-    
-    ```Plain
-    SW1
-    !
-    interface GigabitEthernet0/0
-     switchport trunk encapsulation dot1q
-     switchport mode trunk
-     media-type rj45
-     negotiation auto
-    !
-    interface GigabitEthernet0/1
-     switchport access vlan 2
-     switchport trunk encapsulation dot1q
-     switchport mode access
-     media-type rj45
-     negotiation auto
-    !
-    interface GigabitEthernet0/2
-     switchport access vlan 3
-     switchport trunk encapsulation dot1q
-     switchport mode access
-     media-type rj45
-     negotiation auto
-    !
-    interface GigabitEthernet0/3
-     switchport access vlan 4
-     switchport trunk encapsulation dot1q
-     switchport mode access
-     media-type rj45
-     negotiation auto
-    ```
-    
-    ```Plain
-    R2
-    !
-    interface Loopback0
-     ip address 2.2.2.2 255.255.255.255
-    !
-    interface Ethernet0/0
-     ip address 192.0.2.2 255.255.255.252
-     ip ospf 1 area 0
-    !
-    interface Ethernet0/1
-     ip address 10.1.1.1 255.255.255.0
-     ip ospf 1 area 0
-    !
-    router ospf 1
-     router-id 2.2.2.2
-    ```
-    
-    ```Plain
-    R3
-    !
-    interface Loopback0
-     ip address 3.3.3.3 255.255.255.255
-    !
-    interface Ethernet0/0
-     ip address 198.51.100.2 255.255.255.252
-     ip ospf 1 area 0
-    !
-    interface Ethernet0/1
-     ip address 172.16.1.1 255.255.255.0
-     ip ospf 1 area 0
-    !
-    router ospf 1
-     router-id 3.3.3.3
-    ```
-    
-    ```Plain
-    R4
-    !
-    interface Loopback0
-     ip address 4.4.4.4 255.255.255.255
-    !
-    interface Ethernet0/0
-     ip address 203.0.113.2 255.255.255.252
-     ip ospf 1 area 0
-    !
-    interface Ethernet0/1
-     ip address 192.168.1.1 255.255.255.0
-     ip ospf 1 area 0
-    !
-    router ospf 1
-     router-id 4.4.4.4
     ```

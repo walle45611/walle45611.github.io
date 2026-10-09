@@ -1,7 +1,7 @@
 # Neuron, Features and Parameters
 
-- source: `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/01 - Neuron Features and Parameters.md`
-- source_sha256: `ec2feadb8b5526a81028db3348065d5b18cef7a942ce78dad053033f1ae4cb6c`
+- source: `raw/my-vault/Note/Research/01 - Neuron Features and Parameters.md`
+- source_sha256: `33c03fffe6062ecdf3410ffab19e129421fb672b8c4cff9d85d92a94a112f5b1`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

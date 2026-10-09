@@ -4,7 +4,7 @@
 
 ### Long Contexts
 
-[[Lost in the Middle How Language Models Use Long Contexts|Lost in the Middle: How Language Models Use Long Contexts]]
+[[@lostmiddlehow2024|Lost in the Middle: How Language Models Use Long Contexts]]
 
 ### Agents
 

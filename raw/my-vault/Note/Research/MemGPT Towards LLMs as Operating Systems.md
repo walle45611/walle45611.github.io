@@ -1,4 +1,39 @@
-[[Assets/Note/Research/Papers/MemGPT - Towards LLMs as Operating Systems/MemGPT - Towards LLMs as Operating Systems.pdf|論文 PDF]]
+---
+id: "memgpt-towards-llms-as-operating-systems"
+type: "manuscript"
+title: "MemGPT: Towards LLMs as Operating Systems"
+issued:
+  date-parts:
+    - - 2023
+URL: "https://arxiv.org/abs/2310.08560"
+language: "en"
+author:
+  - family: "Packer"
+    given: "Charles"
+  - family: "Wooders"
+    given: "Sarah"
+  - family: "Lin"
+    given: "Kevin"
+  - family: "Fang"
+    given: "Vivian"
+  - family: "Patil"
+    given: "Shishir G."
+  - family: "Stoica"
+    given: "Ion"
+  - family: "Gonzalez"
+    given: "Joseph E."
+year: "2023"
+dateCreated: "2026-10-08"
+reading-status: "reading"
+aliases:
+  - "MemGPT: Towards LLMs as Operating Systems"
+  - "MemGPT Towards LLMs as Operating Systems"
+tags:
+  - "literature_note"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/MemGPT - Towards LLMs as Operating Systems.pdf|PDF]]"
+---
+# MemGPT: Towards LLMs as Operating Systems
 
 ## 初讀摘要
 
@@ -36,7 +71,7 @@ LLM 的根本限制是 **context window 有限**。
 
 第二類是 **長文件 / 多文件分析問題**。法律文件、財報、醫療紀錄、Wikipedia 文件集合，很容易超過模型一次能看的長度。即使有些模型支援 128k tokens，也不代表真實任務都塞得進去，更不代表模型能有效使用所有 token。
 
-![[Assets/Note/Research/Papers/MemGPT - Towards LLMs as Operating Systems/memgpt-context-window-comparison.png|600]]
+![[Assets/Note/Research/MemGPT - Towards LLMs as Operating Systems/memgpt-context-window-comparison.png|600]]
 
 這張圖說明不同模型的 context window 大小差很多，但再大的 context window 仍然是有限資源。論文的重點不是否定長 context，而是指出「只靠變長」不夠。
 
@@ -75,7 +110,7 @@ MemGPT 把這個概念搬到 LLM：
 
 ## 3. MemGPT 的記憶體階層
 
-![[Assets/Note/Research/Papers/MemGPT - Towards LLMs as Operating Systems/memgpt-memory-hierarchy.png|700]]
+![[Assets/Note/Research/MemGPT - Towards LLMs as Operating Systems/memgpt-memory-hierarchy.png|700]]
 
 MemGPT 把記憶體分成兩大層：
 
@@ -100,7 +135,7 @@ MemGPT 的 main context 不是一整坨文字，而是分成三個區塊：
 
 `System Instructions` 可以理解成 MemGPT 的 system prompt。它是唯讀、靜態的，告訴 LLM 如何操作 MemGPT 系統。
 
-![[Assets/Note/Research/Papers/MemGPT - Towards LLMs as Operating Systems/memgpt-function-executor.png|650]]
+![[Assets/Note/Research/MemGPT - Towards LLMs as Operating Systems/memgpt-function-executor.png|650]]
 
 這張圖中的重點是：system instructions 包含兩大部分。
 
@@ -143,7 +178,7 @@ Working context 通常保存「當前任務或長期互動中最重要、必須�
 它可以想成模型桌面上的重要便條紙。它不是完整聊天紀錄，也不是大型資料庫，而是當前最應該一直留在 context 裡的狀態。
 
 Figure 4 的例子說明了 working context 的可更新性：
-![[Assets/Note/Research/Papers/MemGPT - Towards LLMs as Operating Systems/memgpt-working-context-update-example.png|600]]
+![[Assets/Note/Research/MemGPT - Towards LLMs as Operating Systems/memgpt-working-context-update-example.png|600]]
 
 這表示 MemGPT 不只是會「記住」，也會「更新記憶」。對長期對話代理來說，這比單純保存舊資訊更重要，因為使用者狀態會改變；如果記憶不能演化，記憶反而會變成錯誤來源。
 
@@ -353,7 +388,7 @@ flush 時會發生幾件事：
 
 在普通 LLM 中，模型輸出通常只是文字。但在 MemGPT 中，LLM 的 completion tokens 可以被解析成 function call。
 
-![[Assets/Note/Research/Papers/MemGPT - Towards LLMs as Operating Systems/memgpt-archival-search-nobel-example.png|600]]
+![[Assets/Note/Research/MemGPT - Towards LLMs as Operating Systems/memgpt-archival-search-nobel-example.png|600]]
 Function Executor 會解析 LLM 的輸出，檢查 function arguments 是否有效。如果有效，就執行函式。
 
 執行結果會回傳給 LLM，放入 main context。如果出錯，例如 context 已滿、argument 格式錯、查詢沒有結果，錯誤也會回傳給 LLM，讓模型可以修正下一步。

@@ -1,7 +1,7 @@
 # Differentials, Gradients and Jacobians
 
-- source: `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/04 - Differentials Gradients and Jacobians.md`
-- source_sha256: `0c37ba7a08ebf00cddd8b15f2ab20f64571d688bd2132a65e250528ad68f3ddf`
+- source: `raw/my-vault/Note/Research/04 - Differentials Gradients and Jacobians.md`
+- source_sha256: `fe41afd62074a1c4242f20bb2d23f15a0c6a20baf52fd832756bdde1d8501f47`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

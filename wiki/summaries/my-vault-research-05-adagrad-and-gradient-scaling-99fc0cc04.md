@@ -1,7 +1,7 @@
 # AdaGrad and Gradient Scaling
 
-- source: `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/05 - AdaGrad and Gradient Scaling.md`
-- source_sha256: `5ea75420cbfb5a78734ba946681cecc98714354dd92b59c4509dc60fcff380f8`
+- source: `raw/my-vault/Note/Research/05 - AdaGrad and Gradient Scaling.md`
+- source_sha256: `2bf123c6e2274d0479bc4d5885b2d7303eed0bc27648953ae537ef02a1d9912a`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

@@ -1,7 +1,7 @@
 # Model Complexity, Data Augmentation and Optimization Failure
 
-- source: `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/04 - Model Complexity Data Augmentation and Optimization Failure.md`
-- source_sha256: `f757721ee86862fdcf63b2d0d2cd9917d3778b3ca61a77416fda97aa2b40b689`
+- source: `raw/my-vault/Note/Research/04 - Model Complexity Data Augmentation and Optimization Failure.md`
+- source_sha256: `56c1cfac27d06684360343f46ff665b5a9333b6b45f4db627644581b5dec75fb`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

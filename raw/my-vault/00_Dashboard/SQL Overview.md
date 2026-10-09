@@ -21,5 +21,3 @@
 ### CASE WHEN 條件判斷
 
 [[Note/Tech/SQL/CASE WHEN 條件判斷]]
-
-題號與解題分類見 [[刷題 Overview]]。

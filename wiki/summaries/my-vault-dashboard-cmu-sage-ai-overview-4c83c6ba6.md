@@ -1,7 +1,7 @@
 # cmu-sage-ai Overview
 
 - source: `raw/my-vault/00_Dashboard/cmu-sage-ai Overview.md`
-- source_sha256: `567303ad8b185e57b018dae880fe3af80297cf542e989a9d75f4edaa29ed4f92`
+- source_sha256: `3b998170fd063c902913fb02949bc43096b4c42ac7a8d354bfaf2b01c43565c7`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Dashboard

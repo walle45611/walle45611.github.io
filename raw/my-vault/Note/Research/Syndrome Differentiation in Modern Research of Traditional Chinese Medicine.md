@@ -1,6 +1,41 @@
+---
+id: "syndrome-differentiation-in-modern-research-of-traditional-chinese-medicine"
+type: "article-journal"
+title: "Syndrome Differentiation in Modern Research of Traditional Chinese Medicine"
+issued:
+  date-parts:
+    - - 2012
+URL: "https://doi.org/10.1016/j.jep.2012.01.033"
+DOI: "10.1016/j.jep.2012.01.033"
+container-title: "Journal of Ethnopharmacology"
+language: "en"
+author:
+  - family: "Jiang"
+    given: "Miao"
+  - family: "Lu"
+    given: "Cheng"
+  - family: "Zhang"
+    given: "Chi"
+  - family: "Yang"
+    given: "Jing"
+  - family: "Tan"
+    given: "Yong"
+  - family: "Lu"
+    given: "Aiping"
+  - family: "Chan"
+    given: "Kelvin"
+year: "2012"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "Syndrome Differentiation in Modern Research of Traditional Chinese Medicine"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Syndrome Differentiation in Modern Research of Traditional Chinese Medicine.pdf|PDF]]"
+---
 # Syndrome Differentiation in Modern Research of Traditional Chinese Medicine
-
-[[Assets/Note/Research/Papers/Syndrome Differentiation in Modern Research of Traditional Chinese Medicine/Syndrome Differentiation in Modern Research of Traditional Chinese Medicine.pdf|論文 PDF]]
 
 ## 初讀摘要
 

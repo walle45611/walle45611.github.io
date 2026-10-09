@@ -1,7 +1,7 @@
 # Likelihood, NLL and Cross-Entropy
 
-- source: `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/02 - Likelihood NLL and Cross-Entropy.md`
-- source_sha256: `d361d1dd4736011867ce1101379255dc003968f4c8b7e0665e3c2ae7d46e8138`
+- source: `raw/my-vault/Note/Research/02 - Likelihood NLL and Cross-Entropy.md`
+- source_sha256: `9967b24c8621248eecc22265c3384736e5151ced1fa2d9eac28a762750b6c22e`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

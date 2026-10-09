@@ -1,7 +1,7 @@
 # Language Models are Unsupervised Multitask Learners
 
 - source: `raw/my-vault/Note/Research/Language Models are Unsupervised Multitask Learners.md`
-- source_sha256: `8d06304c015687b8bd5a8e253f83d4cc137dda77f69eba13b26136431ca38a2f`
+- source_sha256: `50bccc6085d4dc576589276051468965fc555a549683c03d46d52cb33330866b`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

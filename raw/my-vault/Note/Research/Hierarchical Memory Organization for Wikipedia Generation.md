@@ -1,6 +1,43 @@
+---
+id: "hierarchical-memory-organization-for-wikipedia-generation"
+type: "paper-conference"
+title: "Hierarchical Memory Organization for Wikipedia Generation"
+issued:
+  date-parts:
+    - - 2025
+container-title: "Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)"
+language: "en"
+author:
+  - family: "Yu"
+    given: "Eugene J."
+  - family: "Zhu"
+    given: "Dawei"
+  - family: "Song"
+    given: "Yifan"
+  - family: "Wong"
+    given: "Xiangyu"
+  - family: "Zhang"
+    given: "Jiebin"
+  - family: "Shi"
+    given: "Wenxuan"
+  - family: "Li"
+    given: "Xiaoguang"
+  - family: "Liu"
+    given: "Qun"
+  - family: "Li"
+    given: "Sujian"
+year: "2025"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "Hierarchical Memory Organization for Wikipedia Generation"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Hierarchical Memory Organization for Wikipedia Generation.pdf|PDF]]"
+---
 # Hierarchical Memory Organization for Wikipedia Generation
-
-[[Assets/Note/Research/Papers/Hierarchical Memory Organization for Wikipedia Generation/Hierarchical Memory Organization for Wikipedia Generation.pdf|論文 PDF]]
 
 ## 初讀摘要
 

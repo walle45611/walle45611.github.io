@@ -1,6 +1,53 @@
+---
+id: "llama-open-and-efficient-foundation-language-models"
+type: "manuscript"
+title: "LLaMA: Open and Efficient Foundation Language Models"
+issued:
+  date-parts:
+    - - 2023
+URL: "https://arxiv.org/abs/2302.13971"
+language: "en"
+author:
+  - family: "Touvron"
+    given: "Hugo"
+  - family: "Lavril"
+    given: "Thibaut"
+  - family: "Izacard"
+    given: "Gautier"
+  - family: "Martinet"
+    given: "Xavier"
+  - family: "Lachaux"
+    given: "Marie-Anne"
+  - family: "Lacroix"
+    given: "Timothee"
+  - family: "Rozière"
+    given: "Baptiste"
+  - family: "Goyal"
+    given: "Naman"
+  - family: "Hambro"
+    given: "Eric"
+  - family: "Azhar"
+    given: "Faisal"
+  - family: "Rodriguez"
+    given: "Aurelien"
+  - family: "Joulin"
+    given: "Armand"
+  - family: "Grave"
+    given: "Edouard"
+  - family: "Lample"
+    given: "Guillaume"
+year: "2023"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "LLaMA: Open and Efficient Foundation Language Models"
+  - "LLaMA - Open and Efficient Foundation Language Models"
+tags:
+  - "literature_note"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/LLaMA - Open and Efficient Foundation Language Models.pdf|PDF]]"
+---
 # LLaMA: Open and Efficient Foundation Language Models
-
-[[Assets/Note/Research/Papers/LLaMA - Open and Efficient Foundation Language Models/LLaMA - Open and Efficient Foundation Language Models.pdf|論文 PDF]]
 
 ## 初讀摘要
 

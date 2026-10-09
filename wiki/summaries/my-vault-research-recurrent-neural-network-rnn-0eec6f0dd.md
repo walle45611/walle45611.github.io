@@ -1,7 +1,7 @@
 # Recurrent Neural Network (RNN)
 
 - source: `raw/my-vault/Note/Research/Recurrent Neural Network (RNN).md`
-- source_sha256: `3f2b16e78aa905c60deb5f2fe3065cd9903f93bb3ef01367e2455213d2a03561`
+- source_sha256: `22b709f66e16fcac548155e9e9bb8f71d46e4a84ae9283f191a1ce5e44627974`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

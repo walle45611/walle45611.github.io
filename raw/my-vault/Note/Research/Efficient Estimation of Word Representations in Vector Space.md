@@ -1,6 +1,32 @@
+---
+id: "efficient-estimation-of-word-representations-in-vector-space"
+type: "manuscript"
+title: "Efficient Estimation of Word Representations in Vector Space"
+issued:
+  date-parts:
+    - - 2013
+URL: "https://arxiv.org/abs/1301.3781"
+language: "en"
+author:
+  - family: "Mikolov"
+    given: "Tomas"
+  - family: "Chen"
+    given: "Kai"
+  - family: "Corrado"
+    given: "Greg"
+  - family: "Dean"
+    given: "Jeffrey"
+year: "2013"
+dateCreated: "2026-10-08"
+reading-status: "reading"
+aliases:
+  - "Efficient Estimation of Word Representations in Vector Space"
+tags:
+  - "literature_note"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Efficient Estimation of Word Representations in Vector Space.pdf|PDF]]"
+---
 # Efficient Estimation of Word Representations in Vector Space
-
-[[Assets/Note/Research/Papers/Efficient Estimation of Word Representations in Vector Space/Efficient Estimation of Word Representations in Vector Space.pdf|論文 PDF]]
 
 ## 初讀摘要
 
@@ -229,7 +255,7 @@ $$
 
 **CBOW vs. Skip-gram**
 
-![[Assets/Note/Research/Papers/Efficient Estimation of Word Representations in Vector Space/Word2Vec CBOW vs Skip-gram.png|578]]
+![[Assets/Note/Research/Efficient Estimation of Word Representations in Vector Space/Word2Vec CBOW vs Skip-gram.png|578]]
 
 *CBOW 使用周圍 words 預測 center word；Skip-gram 使用 center word 預測周圍 words。*
 

@@ -1,7 +1,7 @@
 # Taylor Expansion, Hessian and Eigenvalues
 
-- source: `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/03 - Taylor Expansion Hessian and Eigenvalues.md`
-- source_sha256: `9572f207a87915ca5d4cc0a4630364860054d05d94ea96507e77bfb047d69a05`
+- source: `raw/my-vault/Note/Research/03 - Taylor Expansion Hessian and Eigenvalues.md`
+- source_sha256: `e05cbb55d3badf004a79a68aeeb4c39fa6e4d2f402b80c84a2d5751ce878986a`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

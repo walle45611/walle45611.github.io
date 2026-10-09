@@ -1,7 +1,7 @@
 # MemGPT Towards LLMs as Operating Systems
 
 - source: `raw/my-vault/Note/Research/MemGPT Towards LLMs as Operating Systems.md`
-- source_sha256: `7913f63073c944e3dedcf11d163a518db3a61e30493c458ff0309b4e286bdf87`
+- source_sha256: `7f81b6fc348d705ddf17739623814279ec3a363a9cc3351b117205715bc6218a`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

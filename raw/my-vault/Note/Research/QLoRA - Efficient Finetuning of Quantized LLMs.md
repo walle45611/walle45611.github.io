@@ -1,6 +1,34 @@
+---
+id: "qlora-efficient-finetuning-of-quantized-llms"
+type: "paper-conference"
+title: "QLoRA: Efficient Finetuning of Quantized LLMs"
+issued:
+  date-parts:
+    - - 2023
+container-title: "Advances in Neural Information Processing Systems"
+language: "en"
+author:
+  - family: "Dettmers"
+    given: "Tim"
+  - family: "Pagnoni"
+    given: "Artidoro"
+  - family: "Holtzman"
+    given: "Ari"
+  - family: "Zettlemoyer"
+    given: "Luke"
+year: "2023"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "QLoRA: Efficient Finetuning of Quantized LLMs"
+  - "QLoRA - Efficient Finetuning of Quantized LLMs"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/QLoRA - Efficient Finetuning of Quantized LLMs.pdf|PDF]]"
+---
 # QLoRA: Efficient Finetuning of Quantized LLMs
-
-[[Assets/Note/Research/Papers/QLoRA - Efficient Finetuning of Quantized LLMs/QLoRA - Efficient Finetuning of Quantized LLMs.pdf|論文 PDF]]
 
 ## 初讀摘要
 

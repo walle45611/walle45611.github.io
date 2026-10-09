@@ -1,6 +1,38 @@
+---
+id: "cprs-a-clinical-protocol-recommendation-system-based-on-llms"
+type: "article-journal"
+title: "CPRS: A Clinical Protocol Recommendation System Based on LLMs"
+issued:
+  date-parts:
+    - - 2025
+URL: "https://doi.org/10.1016/j.ijmedinf.2024.105746"
+DOI: "10.1016/j.ijmedinf.2024.105746"
+container-title: "International Journal of Medical Informatics"
+language: "en"
+author:
+  - family: "Ruan"
+    given: "Jingkai"
+  - family: "Su"
+    given: "Qianmin"
+  - family: "Chen"
+    given: "Zihang"
+  - family: "Huang"
+    given: "Jihan"
+  - family: "Li"
+    given: "Ying"
+year: "2025"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "CPRS: A Clinical Protocol Recommendation System Based on LLMs"
+  - "CPRS - A Clinical Protocol Recommendation System Based on LLMs"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/CPRS - A Clinical Protocol Recommendation System Based on LLMs.pdf|PDF]]"
+---
 # CPRS: A Clinical Protocol Recommendation System Based on LLMs
-
-[[Assets/Note/Research/Papers/CPRS - A Clinical Protocol Recommendation System Based on LLMs/CPRS - A Clinical Protocol Recommendation System Based on LLMs.pdf|論文 PDF]]
 
 ## 初讀摘要
 

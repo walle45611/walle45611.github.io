@@ -1,7 +1,7 @@
 # Chain Rule and Total Derivative
 
-- source: `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/01 - Chain Rule and Total Derivative.md`
-- source_sha256: `a06459ad2eab0d252f1fe9500f749f329588c82bff20293a5620a76dc0334414`
+- source: `raw/my-vault/Note/Research/01 - Chain Rule and Total Derivative.md`
+- source_sha256: `b8db6b17a2493226078abafb4537031925a707eeccdcc212d072cd5d647b780b`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

@@ -1,6 +1,34 @@
+---
+id: "kgapg-knowledge-aware-neural-group-representation-learning-for-attentive-prescription-generation-of-traditional-chinese-medicine"
+type: "paper-conference"
+title: "KGAPG: Knowledge-Aware Neural Group Representation Learning for Attentive Prescription Generation of Traditional Chinese Medicine"
+issued:
+  date-parts:
+    - - 2021
+URL: "https://doi.org/10.1109/BIBM52615.2021.9669769"
+DOI: "10.1109/BIBM52615.2021.9669769"
+container-title: "2021 IEEE International Conference on Bioinformatics and Biomedicine (BIBM)"
+language: "en"
+author:
+  - family: "Li"
+    given: "Shuchen"
+  - family: "Wang"
+    given: "Wei"
+  - family: "He"
+    given: "Jieyue"
+year: "2021"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "KGAPG: Knowledge-Aware Neural Group Representation Learning for Attentive Prescription Generation of Traditional Chinese Medicine"
+  - "KGAPG - Knowledge-Aware Neural Group Representation Learning for Attentive Prescription Generation of Traditional Chinese Medicine"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/KGAPG - Knowledge-Aware Neural Group Representation Learning for Attentive Prescription Generation of Traditional Chinese Medicine.pdf|PDF]]"
+---
 # KGAPG: Knowledge-Aware Neural Group Representation Learning for Attentive Prescription Generation of Traditional Chinese Medicine
-
-[[Assets/Note/Research/Papers/KGAPG - Knowledge-Aware Neural Group Representation Learning for Attentive Prescription Generation of Traditional Chinese Medicine/KGAPG - Knowledge-Aware Neural Group Representation Learning for Attentive Prescription Generation of Traditional Chinese Medicine.pdf|論文 PDF]]
 
 ## 初讀摘要
 

@@ -1,6 +1,25 @@
+---
+id: "who-international-standard-terminologies-on-traditional-chinese-medicine"
+type: "book"
+title: "WHO International Standard Terminologies on Traditional Chinese Medicine"
+issued:
+  date-parts:
+    - - 2022
+language: "en"
+author:
+  - literal: "World Health Organization"
+year: "2022"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "WHO International Standard Terminologies on Traditional Chinese Medicine"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/WHO International Standard Terminologies on Traditional Chinese Medicine.pdf|PDF]]"
+---
 # WHO International Standard Terminologies on Traditional Chinese Medicine
-
-[[Assets/Note/Research/Papers/WHO International Standard Terminologies on Traditional Chinese Medicine/WHO International Standard Terminologies on Traditional Chinese Medicine.pdf|論文 PDF]]
 
 ## 初讀摘要
 

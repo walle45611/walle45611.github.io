@@ -42,7 +42,7 @@
 
 ### LLMs and Long Contexts
 
-[[Lost in the Middle How Language Models Use Long Contexts]]
+[[@lostmiddlehow2024|Lost in the Middle: How Language Models Use Long Contexts]]
 
 ### Agents and Memory Systems
 
@@ -87,48 +87,48 @@
 
 [[Logistic Regression 與 Log-Odds 計算|Logistic Regression and Log-Odds]]
 
-[[Note/Research/ML_DL_Obsidian_Notes/01 - Entropy and Information|Entropy and Information]]
-[[Note/Research/ML_DL_Obsidian_Notes/02 - Likelihood NLL and Cross-Entropy|Likelihood, NLL and Cross-Entropy]]
-[[Note/Research/ML_DL_Obsidian_Notes/03 - MAE and MSE|MAE and MSE]]
-[[Note/Research/ML_DL_Obsidian_Notes/04 - Softmax|Softmax]]
-[[Note/Research/ML_DL_Obsidian_Notes/05 - Feature Normalization|Feature Normalization]]
+[[Note/Research/01 - Entropy and Information|Entropy and Information]]
+[[Note/Research/02 - Likelihood NLL and Cross-Entropy|Likelihood, NLL and Cross-Entropy]]
+[[Note/Research/03 - MAE and MSE|MAE and MSE]]
+[[Note/Research/04 - Softmax|Softmax]]
+[[Note/Research/05 - Feature Normalization|Feature Normalization]]
 
 ### Neural Networks and Activation Functions
 
-[[Note/Research/ML_DL_Obsidian_Notes/01 - Neuron Features and Parameters|Neuron, Features and Parameters]]
-[[Note/Research/ML_DL_Obsidian_Notes/02 - Hidden Layers and Multiple Features|Hidden Layers and Multiple Features]]
-[[Note/Research/ML_DL_Obsidian_Notes/03 - Activation Functions|Sigmoid and ReLU]]
-[[Note/Research/ML_DL_Obsidian_Notes/04 - Batch Normalization|Batch Normalization]]
+[[Note/Research/01 - Neuron Features and Parameters|Neuron, Features and Parameters]]
+[[Note/Research/02 - Hidden Layers and Multiple Features|Hidden Layers and Multiple Features]]
+[[Note/Research/03 - Activation Functions|Sigmoid and ReLU]]
+[[Note/Research/04 - Batch Normalization|Batch Normalization]]
 
 ### Gradient Descent and Optimization Basics
 
-[[Note/Research/ML_DL_Obsidian_Notes/01 - Gradient Descent and Learning Rate|Gradient Descent and Learning Rate]]
-[[Note/Research/ML_DL_Obsidian_Notes/02 - Local Minima Saddle Points and Critical Points|Local Minima, Saddle Points and Critical Points]]
-[[Note/Research/ML_DL_Obsidian_Notes/03 - Taylor Expansion Hessian and Eigenvalues|Taylor Expansion, Hessian and Eigenvalues]]
-[[Note/Research/ML_DL_Obsidian_Notes/04 - Batch Mini-batch and Batch Size|Batch / Mini-batch / Batch Size]]
-[[Note/Research/ML_DL_Obsidian_Notes/05 - Learning Rate Scheduling and Warm-up|Learning Rate Scheduling and Warm-up]]
+[[Note/Research/01 - Gradient Descent and Learning Rate|Gradient Descent and Learning Rate]]
+[[Note/Research/02 - Local Minima Saddle Points and Critical Points|Local Minima, Saddle Points and Critical Points]]
+[[Note/Research/03 - Taylor Expansion Hessian and Eigenvalues|Taylor Expansion, Hessian and Eigenvalues]]
+[[Note/Research/04 - Batch Mini-batch and Batch Size|Batch / Mini-batch / Batch Size]]
+[[Note/Research/05 - Learning Rate Scheduling and Warm-up|Learning Rate Scheduling and Warm-up]]
 
 ### Optimizers
 
-[[Note/Research/ML_DL_Obsidian_Notes/01 - Momentum|Momentum]]
-[[Note/Research/ML_DL_Obsidian_Notes/02 - RMSProp|RMSProp]]
-[[Note/Research/ML_DL_Obsidian_Notes/03 - Adam|Adam]]
-[[Note/Research/ML_DL_Obsidian_Notes/04 - Optimizer Comparison|Optimizer Comparison]]
-[[Note/Research/ML_DL_Obsidian_Notes/05 - AdaGrad and Gradient Scaling|AdaGrad and Gradient Scaling]]
+[[Note/Research/01 - Momentum|Momentum]]
+[[Note/Research/02 - RMSProp|RMSProp]]
+[[Note/Research/03 - Adam|Adam]]
+[[Note/Research/04 - Optimizer Comparison|Optimizer Comparison]]
+[[Note/Research/05 - AdaGrad and Gradient Scaling|AdaGrad and Gradient Scaling]]
 
 ### Backpropagation
 
-[[Note/Research/ML_DL_Obsidian_Notes/01 - Chain Rule and Total Derivative|Chain Rule and Total Derivative]]
-[[Note/Research/ML_DL_Obsidian_Notes/02 - Computational Graph and Backpropagation|Computational Graph and Backpropagation]]
-[[Note/Research/ML_DL_Obsidian_Notes/03 - Gradient Accumulation Across a Batch|Gradient Accumulation Across a Batch]]
-[[Note/Research/ML_DL_Obsidian_Notes/04 - Differentials Gradients and Jacobians|Differentials Gradients and Jacobians]]
+[[Note/Research/01 - Chain Rule and Total Derivative|Chain Rule and Total Derivative]]
+[[Note/Research/02 - Computational Graph and Backpropagation|Computational Graph and Backpropagation]]
+[[Note/Research/03 - Gradient Accumulation Across a Batch|Gradient Accumulation Across a Batch]]
+[[Note/Research/04 - Differentials Gradients and Jacobians|Differentials Gradients and Jacobians]]
 
 ### Generalization and Model Evaluation
 
-[[Note/Research/ML_DL_Obsidian_Notes/01 - Train Validation and Test Sets|Train / Validation / Test]]
-[[Note/Research/ML_DL_Obsidian_Notes/02 - K-Fold Cross Validation|K-Fold Cross Validation]]
-[[Note/Research/ML_DL_Obsidian_Notes/03 - Underfitting Overfitting and Model Bias|Underfitting / Overfitting / Model Bias]]
-[[Note/Research/ML_DL_Obsidian_Notes/04 - Model Complexity Data Augmentation and Optimization Failure|Model Complexity / Data Augmentation / Optimization Failure]]
+[[Note/Research/01 - Train Validation and Test Sets|Train / Validation / Test]]
+[[Note/Research/02 - K-Fold Cross Validation|K-Fold Cross Validation]]
+[[Note/Research/03 - Underfitting Overfitting and Model Bias|Underfitting / Overfitting / Model Bias]]
+[[Note/Research/04 - Model Complexity Data Augmentation and Optimization Failure|Model Complexity / Data Augmentation / Optimization Failure]]
 
 ### Sequence Models
 

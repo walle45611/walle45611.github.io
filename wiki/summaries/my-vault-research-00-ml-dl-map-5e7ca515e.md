@@ -1,7 +1,7 @@
 # ML / DL 筆記地圖
 
-- source: `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/00 - ML-DL Map.md`
-- source_sha256: `d86a428d0afc20b8f459459f91a6817d5a3090588cd15c2fdba1913d86417ff3`
+- source: `raw/my-vault/Note/Research/00 - ML-DL Map.md`
+- source_sha256: `7a64577b94d7a5073479e49a6392b7e68188544afa8a5212a46fcd2ec8ea98c4`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

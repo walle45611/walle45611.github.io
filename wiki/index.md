@@ -7,7 +7,7 @@
 - [My vault：Tech 筆記](./archives/my-vault-tech.md)
 - [Web Clipper 來源](./archives/web-clipper.md)
 
-- [每日整理紀錄](./archives/daily-records.md)
+- [每日整理紀錄](./archives/daily-records.md)：按月份導覽既有 Daily。
 - [知識庫維護入口](./archives/wiki-maintenance.md)
 
 ## Concepts
@@ -166,7 +166,7 @@
 - [my-vault-research-link-list-8ad5d3ef6](./summaries/my-vault-research-link-list-8ad5d3ef6.md) · 2026-09-26: 整理「Link List」的原筆記內容與章節。
 - [my-vault-research-lora-low-rank-adaptation-of-a671ad0ce](./summaries/my-vault-research-lora-low-rank-adaptation-of-a671ad0ce.md) · 2026-09-26: 整理「LoRA: Low-Rank Adaptation of Large Language Models」的原筆記內容與章節。
 - [my-vault-research-logistic-regression-log-odds-29b3a26f1](./summaries/my-vault-research-logistic-regression-log-odds-29b3a26f1.md) · 2026-09-26: 整理「Logistic Regression 與 Log-Odds 計算」的原筆記內容與章節。
-- [my-vault-research-lost-in-the-middle-how-0aac0a675](./summaries/my-vault-research-lost-in-the-middle-how-0aac0a675.md) · 2026-09-26: 整理「Lost in the Middle: How Language Models Use Long Contexts」的原筆記內容與章節。
+- [my-vault-research-lost-in-the-middle-how-0aac0a675](./summaries/my-vault-research-lost-in-the-middle-how-0aac0a675.md) · 2026-09-26: 整理「Lost in the Middle: How Language Models Use Long Contexts」的原筆記內容與章節；來源筆記為 `@lostmiddlehow2024.md`。
 - [my-vault-research-low-cost-fpga-enhanced-cnn-13449d2d8](./summaries/my-vault-research-low-cost-fpga-enhanced-cnn-13449d2d8.md) · 2026-09-26: 整理「Low-Cost FPGA-Enhanced CNN Accelerator for Real-Time YOLO Object Detection & Classification」的原筆記內容與章節。
 - [my-vault-research-m-way-degree-search-tree-54cf4dbb8](./summaries/my-vault-research-m-way-degree-search-tree-54cf4dbb8.md) · 2026-09-26: 整理「M-Way Search」的原筆記內容與章節。
 - [my-vault-research-mls-mls-multilayer-switching-61f7c8912](./summaries/my-vault-research-mls-mls-multilayer-switching-61f7c8912.md) · 2026-09-26: 整理「MLS (MLS，multilayer switching)」的原筆記內容與章節。
@@ -221,7 +221,7 @@
 - [my-vault-research-rip-routing-information-protocols-3cb471576](./summaries/my-vault-research-rip-routing-information-protocols-3cb471576.md) · 2026-09-26: 整理「RIP (Routing information Protocols)」的原筆記內容與章節。
 - [my-vault-research-react-synergizing-reasoning-and-acting-9837cf319](./summaries/my-vault-research-react-synergizing-reasoning-and-acting-9837cf319.md) · 2026-09-26: 整理「ReAct: Synergizing Reasoning and Acting in Language Models」的原筆記內容與章節。
 - [my-vault-research-recurrent-neural-network-rnn-0eec6f0dd](./summaries/my-vault-research-recurrent-neural-network-rnn-0eec6f0dd.md) · 2026-09-26: 整理「Recurrent Neural Network (RNN)」的原筆記內容與章節。
-- [my-vault-research-red-black-tree-1741e2b72](./summaries/my-vault-research-red-black-tree-1741e2b72.md) · 2026-09-26: 整理「properties」的原筆記內容與章節。
+- [my-vault-research-red-black-tree-1741e2b72](./summaries/my-vault-research-red-black-tree-1741e2b72.md) · 2026-09-26: 紅黑樹性質、黑高證明、插入版本差異與 2-3-4 Tree 對應。
 - [my-vault-research-reduction-problem-types-aa20007f7](./summaries/my-vault-research-reduction-problem-types-aa20007f7.md) · 2026-09-26: 整理「Reduction & Problem Types」的原筆記內容與章節。
 - [my-vault-research-retrieval-augmented-generation-for-knowledge-00564a249](./summaries/my-vault-research-retrieval-augmented-generation-for-knowledge-00564a249.md) · 2026-09-26: 整理「Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks」的原筆記內容與章節。
 - [my-vault-research-roformer-enhanced-transformer-with-rotary-f8f618898](./summaries/my-vault-research-roformer-enhanced-transformer-with-rotary-f8f618898.md) · 2026-09-26: 整理「RoFormer: Enhanced Transformer with Rotary Position Embedding」的原筆記內容與章節。

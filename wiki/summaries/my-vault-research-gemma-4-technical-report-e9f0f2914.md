@@ -1,7 +1,7 @@
 # Gemma 4 Technical Report
 
 - source: `raw/my-vault/Note/Research/Gemma 4 Technical Report.md`
-- source_sha256: `3115ef7ca3912c7fc96395520aaf8267c6cfb1aec384ea273215bf7af838564c`
+- source_sha256: `c325dbb7426b24b51f59d9da3c5e9cb663b147ab40ea6d4bc89547bf65b410c4`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

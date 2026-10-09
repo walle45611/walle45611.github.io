@@ -552,6 +552,13 @@
 - updated: wiki/assets/daily/2026-09-28.md
 - notes: 0 summaries processed. `wiki/index.md` has no 2026-09-28 archived summary. The supplement records today's verified GitHub repository checks plus Linux namespaces/autofs and Taiwan vehicle inspection references; it does not change the formal summary count.
 
+## [2026-09-28] note-update | STP TCN 細節與故障圖解
+
+- source: 使用者提供的「TCAM 中文解釋」對話片段、兩張附圖及 Cisco STP timers／RSTP 官方文件。
+- updated: 依使用者明確指定，直接補充 `raw/my-vault/Note/Research/STP (Spanning tree) 完整指南.md` 的 802.1D TC 章節，修正相關 BPDU／timer 敘述；加入兩張原圖至同名附件資料夾。
+- verified: 全部圖片嵌入路徑存在，新增兩圖 SHA-256 與附件原檔一致。
+- scope: 本次為指定原筆記編輯，未另建摘要、未同步原始 My vault、未建置或發佈 Blog；未執行 Obsidian 閱讀模式視覺驗證。
+
 ## [2026-09-30] ingest + lint | Linux 記憶體管理歸檔與孤立節點整理
 
 - source: `raw/web-clipper/Introduction to Memory Management in Linux.md`；六份來源版本變更的 My vault 筆記與 Dashboard；既有 wiki 連結結構。
@@ -568,8 +575,112 @@
 - verified: 516 份 wiki Markdown 均可從 index 到達，內部連結沒有失效目標；原先未提交的來源與設定檔雜湊一致；日誌衝突保留遠端每日紀錄、本次歸檔紀錄與原先未提交的 STP 紀錄；Git 無未解衝突，diff 檢查通過。
 - scope: 只提交本次每日紀錄索引與本筆日誌；原先的 AGENTS.md、README、raw、STP 日誌修改保留為未提交變更，autostash 備份保留。
 
-## [2026-09-30] daily | 2026-09-30 summary and reviewed-source supplement
+## [2026-10-01] lint | 每日紀錄按月份整理
 
-- basis: [[wiki/summaries/introduction-to-memory-management-in-linux.md]]
-- updated: wiki/assets/daily/2026-09-30.md
-- notes: 1 summary processed. 正式 Daily 只整理 `wiki/index.md` 中 `ingested_at = 2026-09-30` 的 Linux 記憶體管理 summary，未重掃 `raw/`；補充紀錄包含本次實際核對的 GitHub repository、summary 保存的 YouTube 原始來源、Konsulko 講座頁、Linux man-pages 的 `mlock(2)` 與 Linux Kernel DMA mapping 文件。補充來源不改變正式 summary count，也不宣稱是完整瀏覽器歷史。
+- checked: `wiki/assets/` 僅有 70 份 Daily，涵蓋 2026-04 至 2026-09，沒有圖片或其他附件。
+- fixed: 將 Daily 移至 `wiki/assets/daily/YYYY-MM/YYYY-MM-DD.md` 六個月份資料夾；既有每日紀錄索引按月份與日期分組；更新 index 說明、daily/review 規則與 2026-04-29 的相對摘要連結。
+- verified: 70 份紀錄完整保留；69 份內容完全一致，1 份僅修正相對連結；70 個索引目標與 Daily 中的 wiki 路徑連結均存在；既有 raw、AGENTS.md、sites/README.md 雜湊未變；歷史日誌保留原文；diff 空白檢查通過。
+- scope: 未同步來源、建站、提交或推送；未執行 Obsidian 閱讀模式視覺驗證。Daily 與歷史日誌中的當時路徑／外部引用保留原文，可透過每日紀錄索引找到目前位置。
+- gaps: 本次僅整理目錄與導航，未審查每日紀錄的技術內容；沒有新增缺日資料或新來源。
+
+## [2026-10-04] note-update | 紅黑樹筆記校正
+
+- authorization: 使用者確認直接修正目前筆記。
+- updated: `raw/my-vault/Note/Research/Red-Black tree.md`；對應摘要、來源雜湊與 index 描述。
+- fixed: 黑高統一為不含起點、含 NIL；修正哨兵父指標用途、Top-down／CLRS 旋轉界限、AVL 插入，以及 2-3-4 紅色 link 與高度計數。
+- verified: 發佈 metadata 與全部 11 個圖片嵌入保留；摘要雜湊與修正來源一致。
+- scope: 直接修改現有副本；My vault 舊來源路徑不存在，未同步其他來源；未建站、部署、提交或推送；未逐張校正手寫圖或進行閱讀模式視覺驗證。
+
+## [2026-10-04] deploy | 紅黑樹筆記修正上線
+
+- authorization: 使用者要求重新部署。
+- committed: `8cd2c68`，只納入紅黑樹來源筆記與對應摘要；其他既有修改保留。
+- verified: 本機建站與 diff 檢查通過；GitHub Actions `37138221892` 建站、Rust tests／fmt／clippy 與 Cloudflare Pages 部署通過；公開文章確認包含黑高、版本差異與紅色 link 修正。
+- url: https://blog.walle4561.com/articles/posts/red-black-tree/
+- scope: index 描述與本機工作紀錄仍未提交，避免夾帶其中既有變更。
+
+## [2026-10-06] note-update | DDIA 閱讀筆記
+
+- authorization: 使用者要求記錄提供內容，並確認新增 DDIA 閱讀筆記。
+- created: `raw/my-vault/Note/Tech/DDIA.md`，收錄 latency／percentiles／SLI／SLO／SLA、maintainability、scalability／shared-nothing 與 polyglot persistence。
+- updated: `raw/my-vault/00_Dashboard/Reading Overview.md` 的 Tech 區加入 DDIA；DDIA 加入回到閱讀總覽的連結。
+- notes: polyglot persistence 的銀行案例標為假設，補註 batch 同步延遲與交易資料需求。
+- verified: 四個主題與雙向連結存在，閱讀總覽連結無重複。
+- scope: 直接記錄使用者提供的閱讀筆記，未執行全 vault 同步、wiki 歸檔、發佈、提交或推送。
+
+## [2026-10-07] note-update | FortiGate OSPF Lab 與 UTM Containerlab
+
+- authorization: 使用者要求記錄這次拓樸、FortiGate 安裝與 Routing，並將 UTM 安裝問題整合到既有 Containerlab 指南；不加入對話出處說明，尚未實作 IaC。
+- created: `raw/my-vault/Note/Tech/FortiGate 與 Cisco IOL：UTM OSPF Lab.md`；兩張圈選截圖與兩張原圖存於對應 `Assets/Note/Tech/` 目錄。
+- updated: `raw/my-vault/Note/Tech/Containerlab 安裝與設定指南.md` 加入 UTM／Rosetta／bridge／IOL 排錯；`raw/my-vault/00_Dashboard/DevOps Technology Overview.md` 加入新筆記連結。
+- verified: 原始截圖確認 FortiGate Router ID、鄰居與八筆路由；圈選圖片視覺檢查、嵌入目標與程式碼區塊檢查通過；新筆記未加入對話引用與 Terraform 規劃。
+- gaps: 補充對話僅返回近期 Windows Server／AD FS 內容，較早 UTM 安裝錯誤不可讀；未將缺少輸出的安裝步驟或排查猜測寫成已驗證事實。
+- scope: 直接維護使用者筆記；目前 vault 沒有獨立 `Note/` 來源目錄，修改現存 `raw/my-vault/`；未執行同步、wiki 歸檔、Blog 發佈、提交或推送；未在實際 VM 重跑實驗。
+
+## [2026-10-07] note-update | FortiGate 接線與 Containerlab 安裝內容調整
+
+- authorization: 使用者要求 Rosetta 說明歸入 Containerlab 指南，Debian bridge 指令保留在 FortiGate 實驗筆記。
+- updated: FortiGate 筆記移除 Rosetta 說明，在 2.2 節補回 bridge 建立、介面加入與檢查指令；Containerlab 指南保留 Rosetta 安裝說明，bridge 段落改連結至 FortiGate 接線章節。
+- verified: FortiGate 筆記無 Rosetta 文字；bridge 指令與雙向章節連結存在；程式碼區塊配對與差異空白檢查通過。
+- scope: 僅調整筆記與紀錄；未重跑 VM、同步、歸檔、發佈、提交或推送。
+
+## [2026-10-07] note-update | 移除 FortiGate 筆記的問題章節
+
+- authorization: 使用者指出第六節內容不適合當成遇到的問題。
+- updated: FortiGate 筆記移除「遇到的問題與處理」章節，延伸連通測試改為第六節；Alpine 登入與 IP 設定移入 Containerlab 指南的操作補充；移除重複的 IOL 排錯連結與上網提醒。
+- verified: 問題章節已移除，章節編號與程式碼區塊配對正常，差異空白檢查通過。
+- scope: 僅更新筆記與紀錄；未同步、歸檔、發佈、提交或推送。
+
+## [2026-10-08] lint | K8s Dashboard 分類統一
+
+- authorization: 使用者指定 K8s 內容應歸入 DevOps Technology Overview。
+- checked: DevOps 與 Networking Dashboard、現有 10 篇 K8s／MicroK8s 技術筆記的索引連結。
+- fixed: DevOps 保留 Kubernetes 專區完整索引，移除開發與部署區的兩個重複入口；Networking 的兩篇獨立入口改為連到 DevOps 的 Kubernetes 專區。
+- verified: 10 篇筆記在 DevOps 各有一個入口，跨 Dashboard 章節連結目標存在。
+- scope: 修改現存 raw/my-vault Dashboard 與本紀錄；未搬動筆記、同步、歸檔、發佈、提交或推送。
+
+## [2026-10-08] note-update | 從 MLS 抽離 VRF-Lite
+
+- authorization: 使用者要求將 VRF 相關內容從 MLS 筆記抽離。
+- created: `raw/my-vault/Note/Research/VRF-Lite (Virtual Routing and Forwarding).md`；保留原說明、外部參考連結、兩張拓樸圖與 R1／SW1／R2–R4 設定範例。
+- updated: MLS 移除 VRF-Lite 章節與舊目錄項，加入獨立筆記連結；新筆記連回 MLS；Networking Overview 在 Network Layer 加入路由隔離入口。
+- assets: 兩張 VRF-Lite 圖片搬至同名附件資料夾，更新嵌入路徑。
+- verified: 抽離內容與原章節一致（僅新增標題、屬性、相關連結並更新附件路徑），附件存在、程式碼圍欄配對正常。
+- scope: 修改目前 vault 的 raw/my-vault 筆記與附件；無獨立 Note/ 原始來源目錄；未執行同步、wiki 歸檔、Blog 發佈、提交或推送。
+
+## [2026-10-08] lint | 攤平 ML/DL 筆記與整理貼上圖片
+
+- authorization: 使用者要求移除 Research 下的 ML_DL_Obsidian_Notes 資料夾層級，並重新命名、歸類 Assets 的 Pasted Image。
+- moved: 30 份 Markdown 直接移至 `raw/my-vault/Note/Research/`；移除空的 ML_DL_Obsidian_Notes 目錄。
+- updated: 筆記、AI Overview、既有摘要的來源路徑及 Research 歸檔索引；保留既有摘要檔名與歷史紀錄。
+- assets: 3 張 Pasted image 依 OSPF Type 3 LSA 查詢內容命名，移入 OSPF 筆記的附件資料夾；更新兩處嵌入，保留未被引用的指令標頭截圖。
+- verified: 無檔名衝突；30 份筆記已搬移、作用中舊筆記路徑已清除、地圖與 AI Overview 的筆記連結存在；3 張附件搬移前後雜湊一致，Assets 已無 Pasted Image 檔名。
+- scope: 修改目前 raw/my-vault 及相關 wiki 路徑；無獨立原始 Note/ 來源；未同步、執行全量歸檔、發佈、提交或推送。
+
+## [2026-10-08] lint | Papers PDF 目錄攤平
+
+- authorization: 使用者要求 Papers 直接放 PDF，移除每篇論文的多餘資料夾。
+- moved: 53 份 PDF 直接移至 `raw/my-vault/Assets/Note/Research/Papers/`；19 張 PNG／JPG 移至 `Assets/Note/Research/` 下各篇對應的附件資料夾。
+- updated: 相關筆記的 PDF 連結與圖片嵌入；僅在既有 source_sha256 符合變更前來源時更新摘要雜湊。
+- verified: 無檔名衝突；Papers 僅含 53 份 PDF、無子資料夾；72 份附件搬移前後雜湊一致，作用中的舊附件路徑已清除，新連結目標存在。
+- scope: 修改目前 raw/my-vault 與必要 wiki 雜湊、紀錄；未同步、執行全量歸檔、發佈、提交或推送。
+
+## [2026-10-08] note-update | Lost in the Middle 改名後更新入口
+
+- authorization: 使用者要求更新 AI Overview 與 cmu-sage-ai Overview 的 Lost in the Middle 入口。
+- updated: 兩份 Dashboard 改連到 `@lostmiddlehow2024`，顯示完整論文標題；既有 Research 摘要、歸檔索引與總索引修正來源路徑，保留摘要檔名與收錄日期。
+- hashes: 兩份 Dashboard 摘要的既有雜湊均符合變更前來源，已更新至變更後雜湊；Research 摘要原已落後來源內容，保留原雜湊供後續歸檔檢查。
+- verified: 新筆記存在，兩份 Dashboard 各有一個有效入口；相關來源路徑已修正，差異空白檢查通過。
+- scope: 僅修正改名後的連結與來源定位；未同步、執行內容歸檔、發佈、提交或推送。
+
+## [2026-10-08] lint | 依 BibLib 統一文獻筆記
+
+- authorization: 使用者要求參照 Lost in the Middle 格式統一論文筆記、補上 cmu-sage-ai tag 並清理 metadata；確認保留檔名、改用 BibLib、PDF 保持原樣，附件僅在 attachment 屬性使用 Link。
+- updated: 53 份文獻筆記（含 4 份參考規範）補齊可確認的 CSL 書目欄位、標題、閱讀狀態、別名與附件；所有原始摘要、正文及手寫附件保留。
+- tags: 全部使用 literature_note，cmu-sage-ai Overview 的 35 份文獻均加上 cmu-sage-ai；無重複 tag。
+- cleanup: 移除 citation-key 冗餘欄位、空巢狀 related 與指向不存在頁面的 author-links；正文不再重複列出 PDF，attachment 均連到現有 PDF。
+- metadata: 依本機 PDF 與既有範例核對；6 份缺少可確認出版年份的來源省略 issued/year。Lost in the Middle 依正文設為 read，ZhiFangDanTai 依 Overview 設為 reading。其餘 id 保持唯一、檔名不改，BibLib 以 id 與 literature_note 識別。
+- biblib: 核對已安裝 BibLib 1.8.2 的設定與附件解析程式；實際開啟 BibLib Edit literature note，確認 Lost in the Middle 書目、作者與日期可辨識，附件顯示 Link。未匯入或搬動 PDF，未重建全文。
+- wiki: 更新 52 份原本與來源一致的既有摘要雜湊；已落後的 Lost in the Middle 摘要保留原雜湊。
+- verified: 53 份 YAML 可解析、正文保留、attachment 目標存在且僅於屬性列出；35 份 Overview 文獻 tag 完整；最終檢查前後 53 份 PDF 雜湊相同。
+- scope: 修改目前 raw/my-vault 文獻、必要摘要雜湊及本紀錄；未同步、全量歸檔、Blog 發佈、提交或推送。

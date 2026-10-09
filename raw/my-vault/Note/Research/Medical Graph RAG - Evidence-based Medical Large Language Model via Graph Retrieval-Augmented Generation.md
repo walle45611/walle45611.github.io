@@ -1,6 +1,42 @@
+---
+id: "medical-graph-rag-evidence-based-medical-large-language-model-via-graph-retrieval-augmented-generation"
+type: "paper-conference"
+title: "Medical Graph RAG: Evidence-based Medical Large Language Model via Graph Retrieval-Augmented Generation"
+issued:
+  date-parts:
+    - - 2025
+container-title: "Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)"
+language: "en"
+author:
+  - family: "Wu"
+    given: "Junde"
+  - family: "Zhu"
+    given: "Jiayuan"
+  - family: "Qi"
+    given: "Yunli"
+  - family: "Chen"
+    given: "Jingkun"
+  - family: "Xu"
+    given: "Min"
+  - family: "Menolascina"
+    given: "Filippo"
+  - family: "Jin"
+    given: "Yueming"
+  - family: "Grau"
+    given: "Vicente"
+year: "2025"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "Medical Graph RAG: Evidence-based Medical Large Language Model via Graph Retrieval-Augmented Generation"
+  - "Medical Graph RAG - Evidence-based Medical Large Language Model via Graph Retrieval-Augmented Generation"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Medical Graph RAG - Evidence-based Medical Large Language Model via Graph Retrieval-Augmented Generation.pdf|PDF]]"
+---
 # Medical Graph RAG: Evidence-based Medical Large Language Model via Graph Retrieval-Augmented Generation
-
-[[Assets/Note/Research/Papers/Medical Graph RAG - Evidence-based Medical Large Language Model via Graph Retrieval-Augmented Generation/Medical Graph RAG - Evidence-based Medical Large Language Model via Graph Retrieval-Augmented Generation.pdf|論文 PDF]]
 
 ## 初讀摘要
 

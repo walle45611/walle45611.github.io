@@ -1,13 +1,20 @@
-# 知識庫維護
+# 知識庫與 Blog 維護
 
-本專案保留原始資料於 `raw/`，並將整理後的知識寫入 `wiki/`。
+- `raw/my-vault/`：My vault 筆記、附件與 Dashboard 的來源副本。
+- `raw/web-clipper/`：網頁剪藏；`wiki/`：整理後的摘要、概念、索引與紀錄。
+- `sites/`：Blog 工具，操作見 [sites/README.md](sites/README.md)。`.build/` 與根目錄 `.obsidian/` 不提交 Git。
 
-- `raw/my-vault/`：My vault 的副本，包含筆記、附件與 Obsidian 設定。
-- `raw/web-clipper/`：Obsidian Web Clipper 與其他網頁剪藏的原始資料。
-- `wiki/`：可更新的摘要、索引、規則及工作紀錄。
+## 工作原則
 
-每次任務先讀 `wiki/rules/router-rules.md`，再依路由讀必要規則；回覆前讀 `wiki/rules/output-rules.md`。需記錄時按 `wiki/rules/log-rules.md` 追加 `wiki/log.md`。
+1. 先讀 `wiki/rules/router-rules.md`，按任務讀必要規則；回覆遵循 `wiki/rules/output-rules.md`，紀錄依 `wiki/rules/log-rules.md` 追加。
+2. `raw/` 預設唯讀；使用者要求或同意新增、修改、匯入、重新分類或發佈筆記，即授權處理相關來源與必要連結，不需重複確認。
+3. 依目前 vault 的實際路徑定位筆記。若有獨立的原始 My vault，優先修改原始來源；保留出處，避免來源與副本分歧。
+4. 優先整合既有頁面；新建 wiki 檔名使用小寫連字號，每份來源最多一份摘要。
 
-`raw/` 預設只讀；使用者要求匯入、同步或重新分類時，才修改相關來源。保留來源內容與可追溯路徑。新建的 wiki 筆記使用小寫連字號檔名；每份來源最多對應一份摘要，避免重複歸檔。Rust 工具 `site-builder archive --check` 用於檢查來源涵蓋率及已產生摘要的來源版本。
+## Blog 與工具
 
-Blog 每次建置掃描 `raw/` 的發佈 metadata。`raw/my-vault/Note/Research` 與 `Note/Tech` 是 Blog 文章的唯一筆記來源；只有明確標記 `blog: true` 的 My vault 筆記會發佈。網站轉換檔及圖片為暫存產物，不作為另一份筆記維護。
+- Blog 僅發佈使用者選定的 `raw/my-vault/Note/` 下 `Research/`、`Tech/` 筆記，須有 `blog: true` 及有效的 `blog_title`、`blog_date`、`blog_url`；連結到的筆記不連帶發佈。
+- 文章以筆記來源為準；`wiki/` 不作為文章來源，`.build/site/` 是產物，不直接編輯。
+- `sync-vault`：僅在授權同步時執行；會覆寫、刪除同步副本內容並更新外掛與 snippets，先核對來源與目標。
+- `archive`：更新 My vault 摘要與索引；唯讀檢查用 `archive --check`，Web Clipper 摘要依攝取規則整理。
+- `stage-assets`：建置後執行，暫存引用附件並取消追蹤未引用附件（保留本機檔案）；完成後檢查暫存差異。

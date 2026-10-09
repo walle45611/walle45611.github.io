@@ -1,7 +1,7 @@
 # Softmax
 
-- source: `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/04 - Softmax.md`
-- source_sha256: `dc18482b4ef298e274599f2c4ea6ecd6e592772f331fd17eea9c860914d7f7ac`
+- source: `raw/my-vault/Note/Research/04 - Softmax.md`
+- source_sha256: `78db0e15b6f969f2f2f2c1923f0536deecc5ee33c7a4f6875c541056648ce6d9`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

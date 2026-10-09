@@ -1,6 +1,44 @@
+---
+id: "tcmeval-sdt-a-benchmark-dataset-for-syndrome-differentiation-thought-of-traditional-chinese-medicine"
+type: "article-journal"
+title: "TCMEval-SDT: A Benchmark Dataset for Syndrome Differentiation Thought of Traditional Chinese Medicine"
+issued:
+  date-parts:
+    - - 2025
+URL: "https://doi.org/10.1038/s41597-025-04772-9"
+DOI: "10.1038/s41597-025-04772-9"
+container-title: "Scientific Data"
+language: "en"
+author:
+  - family: "Wang"
+    given: "Zhe"
+  - family: "Hao"
+    given: "Meng"
+  - family: "Peng"
+    given: "Suyuan"
+  - family: "Huang"
+    given: "Yuyan"
+  - family: "Lu"
+    given: "Yiwei"
+  - family: "Yao"
+    given: "Keyu"
+  - family: "Yang"
+    given: "Xiaolin"
+  - family: "Zhu"
+    given: "Yan"
+year: "2025"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "TCMEval-SDT: A Benchmark Dataset for Syndrome Differentiation Thought of Traditional Chinese Medicine"
+  - "TCMEval-SDT - A Benchmark Dataset for Syndrome Differentiation Thought of Traditional Chinese Medicine"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/TCMEval-SDT - A Benchmark Dataset for Syndrome Differentiation Thought of Traditional Chinese Medicine.pdf|PDF]]"
+---
 # TCMEval-SDT: A Benchmark Dataset for Syndrome Differentiation Thought of Traditional Chinese Medicine
-
-[[Assets/Note/Research/Papers/TCMEval-SDT - A Benchmark Dataset for Syndrome Differentiation Thought of Traditional Chinese Medicine/TCMEval-SDT - A Benchmark Dataset for Syndrome Differentiation Thought of Traditional Chinese Medicine.pdf|論文 PDF]]
 
 ## 初讀摘要
 

@@ -1,7 +1,7 @@
 # Agentic Retrieval-Augmented Generation: A Survey on Agentic RAG
 
 - source: `raw/my-vault/Note/Research/Agentic Retrieval-Augmented Generation - A Survey on Agentic RAG.md`
-- source_sha256: `1a66b3d11b0c02ae02f8753a00cd25a661fd44a6071109cdc71ce761c7a7b819`
+- source_sha256: `edb2b302dfa22f6fc79a4696d01a5737d61e14c8d81cb2ab7a5633556560adbe`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

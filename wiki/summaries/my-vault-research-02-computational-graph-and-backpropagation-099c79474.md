@@ -1,7 +1,7 @@
 # Computational Graph and Backpropagation
 
-- source: `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/02 - Computational Graph and Backpropagation.md`
-- source_sha256: `d6cf7ace0c2cf6bab80279639f0d08f4dab448209e78431cbc561ad6b191bcd4`
+- source: `raw/my-vault/Note/Research/02 - Computational Graph and Backpropagation.md`
+- source_sha256: `55f0de7a1d699d9bc27a976f0c70cb302f4a928f15f99fabb0b9dc6b77e70ea8`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

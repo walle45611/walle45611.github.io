@@ -1,7 +1,7 @@
 # MAE and MSE
 
-- source: `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/03 - MAE and MSE.md`
-- source_sha256: `d71a32ebe98f1c37fbc6eda1c1dccbfbe980f332026d6e25307359148d5e8902`
+- source: `raw/my-vault/Note/Research/03 - MAE and MSE.md`
+- source_sha256: `e0e921e0a9127c8127bb883ebf5999d14d0b5b5941153cf716afa42cbc00bdd9`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

@@ -1,6 +1,35 @@
+---
+id: "agentic-ai-and-the-rise-of-in-silico-team-science-in-biomedical-research"
+type: "article-journal"
+title: "Agentic AI and the Rise of in Silico Team Science in Biomedical Research"
+issued:
+  date-parts:
+    - - 2026
+URL: "https://doi.org/10.1038/s41587-026-03035-1"
+DOI: "10.1038/s41587-026-03035-1"
+container-title: "Nature Biotechnology"
+language: "en"
+author:
+  - family: "Li"
+    given: "Binglan"
+  - family: "Saini"
+    given: "Anil Kumar"
+  - family: "Hernandez"
+    given: "Jose Guadalupe"
+  - family: "Moore"
+    given: "Jason H."
+year: "2026"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "Agentic AI and the Rise of in Silico Team Science in Biomedical Research"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Agentic AI and the Rise of in Silico Team Science in Biomedical Research.pdf|PDF]]"
+---
 # Agentic AI and the Rise of in Silico Team Science in Biomedical Research
-
-[[Assets/Note/Research/Papers/Agentic AI and the Rise of in Silico Team Science in Biomedical Research/Agentic AI and the Rise of in Silico Team Science in Biomedical Research.pdf|論文 PDF]]
 
 ## 初讀摘要
 

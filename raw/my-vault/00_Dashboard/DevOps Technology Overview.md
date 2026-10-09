@@ -143,6 +143,8 @@
 ### 模擬環境
 [[EVE-NG 安裝與設定指南]]
 [[GNS3 安裝與設定指南]]
+[[Containerlab 安裝與設定指南]]
+[[FortiGate 與 Cisco IOL：UTM OSPF Lab]]
 
 ---
 
@@ -156,8 +158,6 @@
 [[git-worktree|Git Worktree]]
 [[django-uwsgi-nginx|Django、uWSGI 與 Nginx]]
 [[domjudge-install-guide|DOMjudge 安裝]]
-[[K8s 中的 Pod 是什麼]]
-[[MicroK8s 高可用安裝與設定]]
 [[rest-with-api|RESTful 與 API]]
 [[neovim-settings|LazyVim 設定]]
 [[introduce-vim|Vim 快捷鍵]]

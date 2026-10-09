@@ -1,7 +1,7 @@
 # Taiwan Herbal Pharmacopeia 4th Edition English Version
 
 - source: `raw/my-vault/Note/Research/Taiwan Herbal Pharmacopeia 4th Edition English Version.md`
-- source_sha256: `1e5773971d61011f97fd4d6ef16d6fbc38d1e6fc0e52cbdcfdfd67253945c23d`
+- source_sha256: `5320ebf436b46c11b2ecf59cee30246e3b7ff8c910f354b09cddfafb311bbaa8`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

@@ -1,7 +1,7 @@
 # Agentic AI: Autonomous Intelligence for Complex Goals---A Comprehensive Survey
 
 - source: `raw/my-vault/Note/Research/Agentic AI - Autonomous Intelligence for Complex Goals - A Comprehensive Survey.md`
-- source_sha256: `54bf09aeb3b628a71f8d989d6a5e26e976c2a85b87b6a66ed1bfd83a42a243bb`
+- source_sha256: `cf22a1d5cf99121197631f9edffd8d53173362fe1bd682c847a76be0992a1d0b`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

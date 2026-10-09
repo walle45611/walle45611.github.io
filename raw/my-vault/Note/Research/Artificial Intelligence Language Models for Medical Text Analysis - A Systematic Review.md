@@ -1,6 +1,38 @@
+---
+id: "artificial-intelligence-language-models-for-medical-text-analysis-a-systematic-review"
+type: "article-journal"
+title: "Artificial Intelligence Language Models for Medical Text Analysis: A Systematic Review"
+issued:
+  date-parts:
+    - - 2026
+URL: "https://doi.org/10.1016/j.artmed.2026.103441"
+DOI: "10.1016/j.artmed.2026.103441"
+container-title: "Artificial Intelligence in Medicine"
+language: "en"
+author:
+  - family: "Azar"
+    given: "Amir Sorayaie"
+  - family: "Mohasefi"
+    given: "Jamshid Bagherzadeh"
+  - family: "Wiil"
+    given: "Uffe Kock"
+  - family: "Naemi"
+    given: "Amin"
+  - family: "Ebrahimi"
+    given: "Ali"
+year: "2026"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "Artificial Intelligence Language Models for Medical Text Analysis: A Systematic Review"
+  - "Artificial Intelligence Language Models for Medical Text Analysis - A Systematic Review"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Artificial Intelligence Language Models for Medical Text Analysis - A Systematic Review.pdf|PDF]]"
+---
 # Artificial Intelligence Language Models for Medical Text Analysis: A Systematic Review
-
-[[Assets/Note/Research/Papers/Artificial Intelligence Language Models for Medical Text Analysis - A Systematic Review/Artificial Intelligence Language Models for Medical Text Analysis - A Systematic Review.pdf|論文 PDF]]
 
 ## 初讀摘要
 

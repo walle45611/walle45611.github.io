@@ -1,7 +1,7 @@
 # Adam
 
-- source: `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/03 - Adam.md`
-- source_sha256: `e6fb9be01ab41e1c49ddb185ad5ec89b69cc2489b847317f37e2683a82233f21`
+- source: `raw/my-vault/Note/Research/03 - Adam.md`
+- source_sha256: `d9c1763d71f8fad1a197ee4beed5517968b5e74fbf95f64edb2387957e485cb0`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

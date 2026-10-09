@@ -1,7 +1,7 @@
 # Learning Rate Scheduling and Warm-up
 
-- source: `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/05 - Learning Rate Scheduling and Warm-up.md`
-- source_sha256: `984ab567312230b3deee605c03c31f184675d19e3d35ea3fddd8e5164d2918ae`
+- source: `raw/my-vault/Note/Research/05 - Learning Rate Scheduling and Warm-up.md`
+- source_sha256: `0960b47ef23bdf6ca04d630e9defa4ea092528f9f2c9a67f90c644b5d54d514e`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

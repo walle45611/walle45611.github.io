@@ -27,11 +27,11 @@ $$
 
 若 $p=0.8$，勝算是 $0.8/0.2=4$，log-odds 為 $\ln4\approx1.3863$，再套 sigmoid 就回到 $0.8$。
 
-[[Note/Research/ML_DL_Obsidian_Notes/03 - Activation Functions|Sigmoid 與其他活化函數]]
-[[Note/Research/ML_DL_Obsidian_Notes/02 - Likelihood NLL and Cross-Entropy|Likelihood、NLL 與 Cross-Entropy]]
+[[Note/Research/03 - Activation Functions|Sigmoid 與其他活化函數]]
+[[Note/Research/02 - Likelihood NLL and Cross-Entropy|Likelihood、NLL 與 Cross-Entropy]]
 [[Attention Is All You Need]]
 
 ## 手寫原稿
 
 > [!note]- 照片 6：手寫原稿
-> ![[Assets/Note/Research/Papers/Attention Is All You Need/Photo 6.jpg|800]]
+> ![[Assets/Note/Research/Attention Is All You Need/Photo 6.jpg|800]]

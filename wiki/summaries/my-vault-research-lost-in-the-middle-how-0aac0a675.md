@@ -1,6 +1,6 @@
 # Lost in the Middle: How Language Models Use Long Contexts
 
-- source: `raw/my-vault/Note/Research/Lost in the Middle How Language Models Use Long Contexts.md`
+- source: `raw/my-vault/Note/Research/@lostmiddlehow2024.md`
 - source_sha256: `a99cb04fcd6bd30044ddec0c385469eea154fbe37779fd458dccb9d8c1d3f9fc`
 - ingested_at: 2026-09-26
 - type: my-vault note summary

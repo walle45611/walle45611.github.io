@@ -1,4 +1,40 @@
-[[Assets/Note/Research/Papers/Generative Agents - Interactive Simulacra of Human Behavior/Generative Agents - Interactive Simulacra of Human Behavior.pdf|論文 PDF]]
+---
+id: "generative-agents-interactive-simulacra-of-human-behavior"
+type: "paper-conference"
+title: "Generative Agents: Interactive Simulacra of Human Behavior"
+issued:
+  date-parts:
+    - - 2023
+URL: "https://doi.org/10.1145/3586183.3606763"
+DOI: "10.1145/3586183.3606763"
+container-title: "UIST ’23"
+language: "en"
+author:
+  - family: "Park"
+    given: "Joon Sung"
+  - family: "O’Brien"
+    given: "Joseph C."
+  - family: "Cai"
+    given: "Carrie J."
+  - family: "Morris"
+    given: "Meredith Ringel"
+  - family: "Liang"
+    given: "Percy"
+  - family: "Bernstein"
+    given: "Michael S."
+year: "2023"
+dateCreated: "2026-10-08"
+reading-status: "reading"
+aliases:
+  - "Generative Agents: Interactive Simulacra of Human Behavior"
+  - "Generative Agents Interactive Simulacra of Human Behavior"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Generative Agents - Interactive Simulacra of Human Behavior.pdf|PDF]]"
+---
+# Generative Agents: Interactive Simulacra of Human Behavior
 
 ## 初讀摘要
 
@@ -21,7 +57,7 @@
 
 這一整段 Section 3 的作用很明確：它不是在正式介紹 memory stream 的演算法，而是在展示 **這個 agent 架構跑起來後，看起來會產生什麼行為**。也就是說，它先給你看現象：日常作息、自然語言互動、使用者干預、資訊擴散、關係形成、活動協調；後面的 Section 4 才解釋這些行為背後靠的是 memory、reflection、planning。
 
-![[Assets/Note/Research/Papers/Generative Agents - Interactive Simulacra of Human Behavior/generative-agent-memory-architecture.png]]
+![[Assets/Note/Research/Generative Agents - Interactive Simulacra of Human Behavior/generative-agent-memory-architecture.png]]
 
 第一，**Perception**。Agent 會觀察環境，例如看到某人、聽到對話、發現咖啡機狀態改變、看到某人在做某件事。這些 observation 不是用完就丟，而是會進入 memory stream。
 
@@ -38,7 +74,7 @@
 
 ## Section 4.3：Planning and Reacting
 
-![[Assets/Note/Research/Papers/Generative Agents - Interactive Simulacra of Human Behavior/generative-agent-memory-stream-retrieval.png]]
+![[Assets/Note/Research/Generative Agents - Interactive Simulacra of Human Behavior/generative-agent-memory-stream-retrieval.png]]
 
 Planning 解決的是「agent 行為不能只靠當下反應」的問題。沒有 planning，agent 可能每個時間點都做出看似合理但整體很荒謬的行為，例如一直吃午餐、一直跑來跑去、或計畫不連貫。作者說 plan 會描述 agent 未來一連串 action，包含 location、starting time、duration，並且 plans 也會存入 memory stream，讓 agent 後續行動時能一起考慮。
 

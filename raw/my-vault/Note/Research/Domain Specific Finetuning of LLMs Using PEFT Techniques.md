@@ -1,6 +1,41 @@
+---
+id: "domain-specific-finetuning-of-llms-using-peft-techniques"
+type: "paper-conference"
+title: "Domain Specific Finetuning of LLMs Using PEFT Techniques"
+issued:
+  date-parts:
+    - - 2025
+URL: "https://doi.org/10.1109/CCWC62904.2025.10903789"
+DOI: "10.1109/CCWC62904.2025.10903789"
+container-title: "2025 IEEE 15th Annual Computing and Communication Workshop and Conference (CCWC)"
+language: "en"
+author:
+  - family: "Gajulamandyam"
+    given: "Deva Kumar"
+  - family: "Veerla"
+    given: "Sainath"
+  - family: "Emami"
+    given: "Yasaman"
+  - family: "Lee"
+    given: "Kichang"
+  - family: "Li"
+    given: "Yuanting"
+  - family: "Mamillapalli"
+    given: "Jinthy Swetha"
+  - family: "Shim"
+    given: "Simon"
+year: "2025"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "Domain Specific Finetuning of LLMs Using PEFT Techniques"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Domain Specific Finetuning of LLMs Using PEFT Techniques.pdf|PDF]]"
+---
 # Domain Specific Finetuning of LLMs Using PEFT Techniques
-
-[[Assets/Note/Research/Papers/Domain Specific Finetuning of LLMs Using PEFT Techniques/Domain Specific Finetuning of LLMs Using PEFT Techniques.pdf|論文 PDF]]
 
 ## 初讀摘要
 

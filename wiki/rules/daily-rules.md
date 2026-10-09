@@ -2,7 +2,7 @@
 
 ## 任務目標
 
-建立或更新 `wiki/assets/daily/YYYY-MM-DD.md`，把當日已歸檔的 summary 整理成可快速瀏覽的日報。
+建立或更新 `wiki/assets/daily/YYYY-MM/YYYY-MM-DD.md`，把當日已歸檔的 summary 整理成可快速瀏覽的日報。
 
 ## 選材流程
 
@@ -14,9 +14,9 @@
 
 ## 輸出路徑
 
-固定寫入：
+固定寫入（`YYYY-MM` 為日期所屬月份；月份資料夾不存在時先建立）：
 
-`wiki/assets/daily/YYYY-MM-DD.md`
+`wiki/assets/daily/YYYY-MM/YYYY-MM-DD.md`
 
 ## Daily 模板
 

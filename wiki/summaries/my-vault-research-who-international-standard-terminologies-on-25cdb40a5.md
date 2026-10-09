@@ -1,7 +1,7 @@
 # WHO International Standard Terminologies on Traditional Chinese Medicine
 
 - source: `raw/my-vault/Note/Research/WHO International Standard Terminologies on Traditional Chinese Medicine.md`
-- source_sha256: `ed54d4786cb5ac43348227c456c85faa0c6ef355be54591150565f52d64a3db0`
+- source_sha256: `24eac9261a869e964fef3d9da22bc5eb121d0846faeb46f765ac76c9161e367a`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

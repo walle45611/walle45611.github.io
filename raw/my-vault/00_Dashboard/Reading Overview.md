@@ -9,5 +9,6 @@
 
 ## Tech
 
+[[DDIA ：Designing Data-Intensive Applications]]
 [[人月神話-軟體專案管理之道]]
 [[重構的時機與實作]]

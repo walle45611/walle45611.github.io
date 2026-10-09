@@ -1,6 +1,25 @@
+---
+id: "taiwan-herbal-pharmacopeia-4th-edition"
+type: "book"
+title: "Taiwan Herbal Pharmacopeia, 4th Edition"
+issued:
+  date-parts:
+    - - 2021
+language: "zh-TW"
+author:
+  - literal: "衛生福利部"
+year: "2021"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "Taiwan Herbal Pharmacopeia, 4th Edition"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Taiwan Herbal Pharmacopeia, 4th Edition.pdf|PDF]]"
+---
 # Taiwan Herbal Pharmacopeia, 4th Edition
-
-[[Assets/Note/Research/Papers/Taiwan Herbal Pharmacopeia, 4th Edition/Taiwan Herbal Pharmacopeia, 4th Edition.pdf|論文 PDF]]
 
 ## 初讀摘要
 

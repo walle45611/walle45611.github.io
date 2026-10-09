@@ -1,7 +1,7 @@
 # The Berkeley Function Calling Leaderboard (BFCL): From Tool Use to Agentic Evaluation of Large Language Models
 
 - source: `raw/my-vault/Note/Research/The Berkeley Function Calling Leaderboard (BFCL) - From Tool Use to Agentic Evaluation of Large Language Models.md`
-- source_sha256: `ce5c47627bf8826d3ea79f75b6f9e3ba58453f6a972f7bc9970588e71e401d16`
+- source_sha256: `7b8d8c0277eb87f7b41e851b233c6c8723063756d847cb73340da42111801b84`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

@@ -1,7 +1,7 @@
 # Low-Cost FPGA-Enhanced CNN Accelerator for Real-Time YOLO Object Detection & Classification
 
 - source: `raw/my-vault/Note/Research/Low-Cost FPGA-Enhanced CNN Accelerator for Real-Time YOLO Object Detection & Classification.md`
-- source_sha256: `b3b8b276d48ed151df04cbc6507e418da1ed2e251c26d45e52e962651adfc860`
+- source_sha256: `9d95e7af8e59be8c27b6eecdaab2de28aac1e3f852b979fcf96de6c4b574b4ef`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

@@ -1,6 +1,75 @@
+---
+id: "performance-of-a-large-language-model-on-the-reasoning-tasks-of-a-physician"
+type: "article-journal"
+title: "Performance of a Large Language Model on the Reasoning Tasks of a Physician"
+issued:
+  date-parts:
+    - - 2026
+container-title: "Science"
+language: "en"
+author:
+  - family: "Brodeur"
+    given: "Peter G."
+  - family: "Buckley"
+    given: "Thomas A."
+  - family: "Kanjee"
+    given: "Zahir"
+  - family: "Goh"
+    given: "Ethan"
+  - family: "Ling"
+    given: "Evelyn Bin"
+  - family: "Jain"
+    given: "Priyank"
+  - family: "Cabral"
+    given: "Stephanie"
+  - family: "Abdulnour"
+    given: "Raja-Elie"
+  - family: "Haimovich"
+    given: "Adrian D."
+  - family: "Freed"
+    given: "Jason A."
+  - family: "Olson"
+    given: "Andrew"
+  - family: "Morgan"
+    given: "Daniel J."
+  - family: "Hom"
+    given: "Jason"
+  - family: "Gallo"
+    given: "Robert"
+  - family: "McCoy"
+    given: "Liam G."
+  - family: "Mombini"
+    given: "Haadi"
+  - family: "Lucas"
+    given: "Christopher"
+  - family: "Fotoohi"
+    given: "Misha"
+  - family: "Gwiazdon"
+    given: "Matthew"
+  - family: "Restifo"
+    given: "Daniele"
+  - family: "Restrepo"
+    given: "Daniel"
+  - family: "Horvitz"
+    given: "Eric"
+  - family: "Chen"
+    given: "Jonathan"
+  - family: "Manrai"
+    given: "Arjun K."
+  - family: "Rodman"
+    given: "Adam"
+year: "2026"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "Performance of a Large Language Model on the Reasoning Tasks of a Physician"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Performance of a Large Language Model on the Reasoning Tasks of a Physician.pdf|PDF]]"
+---
 # Performance of a Large Language Model on the Reasoning Tasks of a Physician
-
-[[Assets/Note/Research/Papers/Performance of a Large Language Model on the Reasoning Tasks of a Physician/Performance of a Large Language Model on the Reasoning Tasks of a Physician.pdf|論文 PDF]]
 
 ## 初讀摘要
 

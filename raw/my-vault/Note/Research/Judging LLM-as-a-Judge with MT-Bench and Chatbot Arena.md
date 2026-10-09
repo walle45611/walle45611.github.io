@@ -1,6 +1,52 @@
+---
+id: "judging-llm-as-a-judge-with-mt-bench-and-chatbot-arena"
+type: "paper-conference"
+title: "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena"
+issued:
+  date-parts:
+    - - 2023
+URL: "https://arxiv.org/abs/2306.05685"
+container-title: "Advances in Neural Information Processing Systems"
+language: "en"
+author:
+  - family: "Zheng"
+    given: "Lianmin"
+  - family: "Chiang"
+    given: "Wei-Lin"
+  - family: "Sheng"
+    given: "Ying"
+  - family: "Zhuang"
+    given: "Siyuan"
+  - family: "Wu"
+    given: "Zhanghao"
+  - family: "Zhuang"
+    given: "Yonghao"
+  - family: "Lin"
+    given: "Zi"
+  - family: "Li"
+    given: "Zhuohan"
+  - family: "Li"
+    given: "Dacheng"
+  - family: "Xing"
+    given: "Eric P."
+  - family: "Zhang"
+    given: "Hao"
+  - family: "Gonzalez"
+    given: "Joseph E."
+  - family: "Stoica"
+    given: "Ion"
+year: "2023"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena.pdf|PDF]]"
+---
 # Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena
-
-[[Assets/Note/Research/Papers/Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena/Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena.pdf|論文 PDF]]
 
 ## 初讀摘要
 

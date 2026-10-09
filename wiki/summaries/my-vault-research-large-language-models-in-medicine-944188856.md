@@ -1,7 +1,7 @@
 # Large Language Models in Medicine
 
 - source: `raw/my-vault/Note/Research/Large Language Models in Medicine.md`
-- source_sha256: `610d31f5429b9348533172aa6581f3f028469783f62f5da2d7c52567ecdf8525`
+- source_sha256: `84f70bbe9ed37b3824c049f038b039baea2563ef7fa6bdd5dbc400cfecf128f9`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

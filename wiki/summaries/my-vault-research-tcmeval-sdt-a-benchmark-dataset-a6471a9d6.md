@@ -1,7 +1,7 @@
 # TCMEval-SDT: A Benchmark Dataset for Syndrome Differentiation Thought of Traditional Chinese Medicine
 
 - source: `raw/my-vault/Note/Research/TCMEval-SDT - A Benchmark Dataset for Syndrome Differentiation Thought of Traditional Chinese Medicine.md`
-- source_sha256: `7ae17b8c1a8fca99e3b80675a4fa5aa49150e6afac35f3e909e845455dfe76f2`
+- source_sha256: `fba795230168e86aa7a072475bb009698addad3a7277dd93d402869834c1c59f`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

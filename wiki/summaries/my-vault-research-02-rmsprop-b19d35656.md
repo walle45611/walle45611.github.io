@@ -1,7 +1,7 @@
 # RMSProp
 
-- source: `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/02 - RMSProp.md`
-- source_sha256: `afa1f4bb8d9c7c10326a22ee6fbfe92653456ecfeb83e7ebaba9b117d18c92a5`
+- source: `raw/my-vault/Note/Research/02 - RMSProp.md`
+- source_sha256: `8a534be5cb58a9c7e54c198df44c0d9e5c368ff73ae959346aa57bd228be0448`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

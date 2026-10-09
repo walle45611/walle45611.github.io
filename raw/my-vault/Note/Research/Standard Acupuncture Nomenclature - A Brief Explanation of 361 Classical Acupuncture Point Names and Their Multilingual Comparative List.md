@@ -1,6 +1,22 @@
+---
+id: "standard-acupuncture-nomenclature-a-brief-explanation-of-361-classical-acupuncture-point-names-and-their-multilingual-comparative-list"
+type: "book"
+title: "Standard Acupuncture Nomenclature: A Brief Explanation of 361 Classical Acupuncture Point Names and Their Multilingual Comparative List"
+language: "en"
+author:
+  - literal: "World Health Organization"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "Standard Acupuncture Nomenclature: A Brief Explanation of 361 Classical Acupuncture Point Names and Their Multilingual Comparative List"
+  - "Standard Acupuncture Nomenclature - A Brief Explanation of 361 Classical Acupuncture Point Names and Their Multilingual Comparative List"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Standard Acupuncture Nomenclature - A Brief Explanation of 361 Classical Acupuncture Point Names and Their Multilingual Comparative List.pdf|PDF]]"
+---
 # Standard Acupuncture Nomenclature: A Brief Explanation of 361 Classical Acupuncture Point Names and Their Multilingual Comparative List
-
-[[Assets/Note/Research/Papers/Standard Acupuncture Nomenclature - A Brief Explanation of 361 Classical Acupuncture Point Names and Their Multilingual Comparative List/Standard Acupuncture Nomenclature - A Brief Explanation of 361 Classical Acupuncture Point Names and Their Multilingual Comparative List.pdf|論文 PDF]]
 
 ## 初讀摘要
 

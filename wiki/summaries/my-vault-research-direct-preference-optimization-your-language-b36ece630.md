@@ -1,7 +1,7 @@
 # Direct Preference Optimization: Your Language Model is Secretly a Reward Model
 
 - source: `raw/my-vault/Note/Research/Direct Preference Optimization Your Language Model is Secretly a Reward Model.md`
-- source_sha256: `7c362829f00e07cda5174738ab70631cc4fb6d7f458356833e4e0592cd85dd3d`
+- source_sha256: `ff23119e47110eedda6ba117286d266ff7b054f8eea13719bf8e74273a8ba1ee`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

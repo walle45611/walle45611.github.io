@@ -38,5 +38,3 @@
 ### 條件判斷
 
 - [[Note/Tech/SQL/CASE WHEN 條件判斷|LeetCode 610]]
-
-SQL 語句與資料庫主題整理見 [[SQL Overview]]。

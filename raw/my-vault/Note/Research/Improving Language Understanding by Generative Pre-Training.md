@@ -1,6 +1,27 @@
+---
+id: "improving-language-understanding-by-generative-pre-training"
+type: "report"
+title: "Improving Language Understanding by Generative Pre-Training"
+language: "en"
+author:
+  - family: "Radford"
+    given: "Alec"
+  - family: "Narasimhan"
+    given: "Karthik"
+  - family: "Salimans"
+    given: "Tim"
+  - family: "Sutskever"
+    given: "Ilya"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "Improving Language Understanding by Generative Pre-Training"
+tags:
+  - "literature_note"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Improving Language Understanding by Generative Pre-Training.pdf|PDF]]"
+---
 # Improving Language Understanding by Generative Pre-Training
-
-[[Assets/Note/Research/Papers/Improving Language Understanding by Generative Pre-Training/Improving Language Understanding by Generative Pre-Training.pdf|論文 PDF]]
 
 ## 初讀摘要
 

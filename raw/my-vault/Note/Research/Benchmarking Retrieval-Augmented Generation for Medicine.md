@@ -1,6 +1,33 @@
+---
+id: "benchmarking-retrieval-augmented-generation-for-medicine"
+type: "paper-conference"
+title: "Benchmarking Retrieval-Augmented Generation for Medicine"
+issued:
+  date-parts:
+    - - 2024
+container-title: "Findings of the Association for Computational Linguistics: ACL 2024"
+language: "en"
+author:
+  - family: "Xiong"
+    given: "Guangzhi"
+  - family: "Jin"
+    given: "Qiao"
+  - family: "Lu"
+    given: "Zhiyong"
+  - family: "Zhang"
+    given: "Aidong"
+year: "2024"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "Benchmarking Retrieval-Augmented Generation for Medicine"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Benchmarking Retrieval-Augmented Generation for Medicine.pdf|PDF]]"
+---
 # Benchmarking Retrieval-Augmented Generation for Medicine
-
-[[Assets/Note/Research/Papers/Benchmarking Retrieval-Augmented Generation for Medicine/Benchmarking Retrieval-Augmented Generation for Medicine.pdf|論文 PDF]]
 
 ## 初讀摘要
 

@@ -1,6 +1,34 @@
+---
+id: "agentic-ai-autonomous-intelligence-for-complex-goals-a-comprehensive-survey"
+type: "article-journal"
+title: "Agentic AI: Autonomous Intelligence for Complex Goals---A Comprehensive Survey"
+issued:
+  date-parts:
+    - - 2025
+URL: "https://doi.org/10.1109/ACCESS.2025.3532853"
+DOI: "10.1109/ACCESS.2025.3532853"
+container-title: "IEEE Access"
+language: "en"
+author:
+  - family: "Acharya"
+    given: "Deepak Bhaskar"
+  - family: "Kuppan"
+    given: "Karthigeyan"
+  - family: "Divya"
+    given: "B."
+year: "2025"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "Agentic AI: Autonomous Intelligence for Complex Goals---A Comprehensive Survey"
+  - "Agentic AI - Autonomous Intelligence for Complex Goals - A Comprehensive Survey"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Agentic AI - Autonomous Intelligence for Complex Goals - A Comprehensive Survey.pdf|PDF]]"
+---
 # Agentic AI: Autonomous Intelligence for Complex Goals---A Comprehensive Survey
-
-[[Assets/Note/Research/Papers/Agentic AI - Autonomous Intelligence for Complex Goals - A Comprehensive Survey/Agentic AI - Autonomous Intelligence for Complex Goals - A Comprehensive Survey.pdf|論文 PDF]]
 
 ## 初讀摘要
 

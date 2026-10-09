@@ -1,6 +1,30 @@
+---
+id: "sequence-to-sequence-learning-with-neural-networks"
+type: "manuscript"
+title: "Sequence to Sequence Learning with Neural Networks"
+issued:
+  date-parts:
+    - - 2014
+URL: "https://arxiv.org/abs/1409.3215"
+language: "en"
+author:
+  - family: "Sutskever"
+    given: "Ilya"
+  - family: "Vinyals"
+    given: "Oriol"
+  - family: "Le"
+    given: "Quoc V."
+year: "2014"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "Sequence to Sequence Learning with Neural Networks"
+tags:
+  - "literature_note"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Sequence to Sequence Learning with Neural Networks.pdf|PDF]]"
+---
 # Sequence to Sequence Learning with Neural Networks
-
-[[Assets/Note/Research/Papers/Sequence to Sequence Learning with Neural Networks/Sequence to Sequence Learning with Neural Networks.pdf|論文 PDF]]
 
 ## 初讀摘要
 

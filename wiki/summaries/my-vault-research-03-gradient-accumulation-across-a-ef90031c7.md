@@ -1,7 +1,7 @@
 # Gradient Accumulation Across a Batch
 
-- source: `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/03 - Gradient Accumulation Across a Batch.md`
-- source_sha256: `aad3b0747653bf4ce5334130bc45da7ea9a56217eaa452e8e0eff4fc8dc3d217`
+- source: `raw/my-vault/Note/Research/03 - Gradient Accumulation Across a Batch.md`
+- source_sha256: `e7a0de61fc572d51693411e8c977e703912999485db78155496d76a0be0d8cfd`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

@@ -1,6 +1,29 @@
+---
+id: "distributed-representations-of-words-and-phrases-and-their-compositionality"
+type: "manuscript"
+title: "Distributed Representations of Words and Phrases and their Compositionality"
+language: "en"
+author:
+  - family: "Mikolov"
+    given: "Tomas"
+  - family: "Sutskever"
+    given: "Ilya"
+  - family: "Chen"
+    given: "Kai"
+  - family: "Corrado"
+    given: "Greg"
+  - family: "Dean"
+    given: "Jeffrey"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "Distributed Representations of Words and Phrases and their Compositionality"
+tags:
+  - "literature_note"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Distributed Representations of Words and Phrases and their Compositionality.pdf|PDF]]"
+---
 # Distributed Representations of Words and Phrases and their Compositionality
-
-[[Assets/Note/Research/Papers/Distributed Representations of Words and Phrases and their Compositionality/Distributed Representations of Words and Phrases and their Compositionality.pdf|論文 PDF]]
 
 ## 初讀摘要
 

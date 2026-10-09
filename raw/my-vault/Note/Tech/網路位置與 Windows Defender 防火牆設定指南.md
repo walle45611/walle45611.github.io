@@ -1,7 +1,3 @@
----
-Type:
-  - windows Basic
----
 ## Network Location（網路位置）
 
 Network Location 可以分成以下幾種類型：

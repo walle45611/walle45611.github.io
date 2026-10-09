@@ -1,7 +1,7 @@
 # Syndrome Differentiation in Modern Research of Traditional Chinese Medicine
 
 - source: `raw/my-vault/Note/Research/Syndrome Differentiation in Modern Research of Traditional Chinese Medicine.md`
-- source_sha256: `9ed8e586b2213c5eb43c4ad9e6c5021d71e1d12d592e1d13b5afe95bddca73c8`
+- source_sha256: `2aef0c6d1961af0b133e6d43cee4cc15f6d21f3c7316912c9cd715e23761f4d4`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

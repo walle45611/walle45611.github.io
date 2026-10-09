@@ -1,7 +1,7 @@
 # KGAPG: Knowledge-Aware Neural Group Representation Learning for Attentive Prescription Generation of Traditional Chinese Medicine
 
 - source: `raw/my-vault/Note/Research/KGAPG - Knowledge-Aware Neural Group Representation Learning for Attentive Prescription Generation of Traditional Chinese Medicine.md`
-- source_sha256: `80f75c1e9de62a321a15f0c8d1f57e0df09a8f94350086c7b5013326aa16743f`
+- source_sha256: `b6eddfc85ecdfa5a6daca67eeb073a79b2ae0846afc51864c99cc7c2579585bc`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

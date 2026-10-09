@@ -1,7 +1,7 @@
 # Gradient Descent and Learning Rate
 
-- source: `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/01 - Gradient Descent and Learning Rate.md`
-- source_sha256: `c383e87d9737014d8bcbbef603bfbdcfb439d3af2facdd99674a29a47efccd80`
+- source: `raw/my-vault/Note/Research/01 - Gradient Descent and Learning Rate.md`
+- source_sha256: `77c2eec935a8f31189ecc26608ad4f30608589e7b9ec791f627e618ae37cf050`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

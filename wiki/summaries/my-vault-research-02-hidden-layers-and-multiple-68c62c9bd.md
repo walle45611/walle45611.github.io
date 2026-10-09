@@ -1,7 +1,7 @@
 # Hidden Layers and Multiple Features
 
-- source: `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/02 - Hidden Layers and Multiple Features.md`
-- source_sha256: `584fdff88f1f18380dfd3706572550e9c7348857f0ee5f4fa9f1869c5b33cac6`
+- source: `raw/my-vault/Note/Research/02 - Hidden Layers and Multiple Features.md`
+- source_sha256: `b991fbe3950f6f8113b6ae8e5b8d36f06eaec9af6e60da2f4789fde48a026c9c`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

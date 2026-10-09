@@ -1,7 +1,7 @@
 # Local Minima, Saddle Points and Critical Points
 
-- source: `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/02 - Local Minima Saddle Points and Critical Points.md`
-- source_sha256: `10f6cdcf5461efa89c6d0976c4e66691ec869138cb14bf6a9c940ce040e945f0`
+- source: `raw/my-vault/Note/Research/02 - Local Minima Saddle Points and Critical Points.md`
+- source_sha256: `6656c6b927d79cb7b321a9b3f378b8e81933ae86d98b0c8936b99b6660e92aa8`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

@@ -1,6 +1,40 @@
+---
+id: "attention-is-all-you-need"
+type: "paper-conference"
+title: "Attention Is All You Need"
+issued:
+  date-parts:
+    - - 2017
+container-title: "Advances in Neural Information Processing Systems"
+language: "en"
+author:
+  - family: "Vaswani"
+    given: "Ashish"
+  - family: "Shazeer"
+    given: "Noam"
+  - family: "Parmar"
+    given: "Niki"
+  - family: "Uszkoreit"
+    given: "Jakob"
+  - family: "Jones"
+    given: "Llion"
+  - family: "Gomez"
+    given: "Aidan N."
+  - family: "Kaiser"
+    given: "Łukasz"
+  - family: "Polosukhin"
+    given: "Illia"
+year: "2017"
+dateCreated: "2026-10-08"
+reading-status: "reading"
+aliases:
+  - "Attention Is All You Need"
+tags:
+  - "literature_note"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Attention Is All You Need.pdf|PDF]]"
+---
 # Attention Is All You Need
-
-[[Assets/Note/Research/Papers/Attention Is All You Need/Attention Is All You Need.pdf|論文 PDF]]
 
 ## 初讀摘要
 
@@ -256,22 +290,22 @@ $$
 ## 手寫原稿
 
 > [!note]- 照片 1：手寫原稿
-> ![[Assets/Note/Research/Papers/Attention Is All You Need/Photo 1.jpg|800]]
+> ![[Assets/Note/Research/Attention Is All You Need/Photo 1.jpg|800]]
 
 > [!note]- 照片 2：手寫原稿
-> ![[Assets/Note/Research/Papers/Attention Is All You Need/Photo 2.jpg|800]]
+> ![[Assets/Note/Research/Attention Is All You Need/Photo 2.jpg|800]]
 
 > [!note]- 照片 3：手寫原稿
-> ![[Assets/Note/Research/Papers/Attention Is All You Need/Photo 3.jpg|800]]
+> ![[Assets/Note/Research/Attention Is All You Need/Photo 3.jpg|800]]
 
 > [!note]- 照片 4：手寫原稿
-> ![[Assets/Note/Research/Papers/Attention Is All You Need/Photo 4.jpg|800]]
+> ![[Assets/Note/Research/Attention Is All You Need/Photo 4.jpg|800]]
 
 > [!note]- 照片 5：手寫原稿
-> ![[Assets/Note/Research/Papers/Attention Is All You Need/Photo 5.jpg|800]]
+> ![[Assets/Note/Research/Attention Is All You Need/Photo 5.jpg|800]]
 
 > [!note]- 照片 6：手寫原稿
-> ![[Assets/Note/Research/Papers/Attention Is All You Need/Photo 6.jpg|800]]
+> ![[Assets/Note/Research/Attention Is All You Need/Photo 6.jpg|800]]
 
 > [!note]- 照片 7：手寫原稿
-> ![[Assets/Note/Research/Papers/Attention Is All You Need/Photo 7.jpg|800]]
+> ![[Assets/Note/Research/Attention Is All You Need/Photo 7.jpg|800]]

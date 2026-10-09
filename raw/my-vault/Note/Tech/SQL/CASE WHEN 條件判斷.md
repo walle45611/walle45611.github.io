@@ -45,5 +45,3 @@ FROM Triangle;
 - 語法是 `CASE WHEN 條件 THEN 結果 ELSE 結果 END`，不要寫成 `CASE WHERE`。
 - 先分清楚需求是「替每列計算分類值」還是「只留下符合條件的列」：前者用 `CASE`，後者用 `WHERE`。
 - 回傳文字時注意題目要求的標籤大小寫；本題範例是 `Yes` 和 `No`。
-
-來源：ChatGPT 對話「SQL子查詢解法」。

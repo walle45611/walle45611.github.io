@@ -1,6 +1,31 @@
+---
+id: "language-models-are-unsupervised-multitask-learners"
+type: "report"
+title: "Language Models are Unsupervised Multitask Learners"
+language: "en"
+author:
+  - family: "Radford"
+    given: "Alec"
+  - family: "Wu"
+    given: "Jeffrey"
+  - family: "Child"
+    given: "Rewon"
+  - family: "Luan"
+    given: "David"
+  - family: "Amodei"
+    given: "Dario"
+  - family: "Sutskever"
+    given: "Ilya"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "Language Models are Unsupervised Multitask Learners"
+tags:
+  - "literature_note"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Language Models are Unsupervised Multitask Learners.pdf|PDF]]"
+---
 # Language Models are Unsupervised Multitask Learners
-
-[[Assets/Note/Research/Papers/Language Models are Unsupervised Multitask Learners/Language Models are Unsupervised Multitask Learners.pdf|論文 PDF]]
 
 ## 初讀摘要
 

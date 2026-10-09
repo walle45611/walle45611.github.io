@@ -1,6 +1,35 @@
+---
+id: "agentic-retrieval-augmented-generation-a-survey-on-agentic-rag"
+type: "manuscript"
+title: "Agentic Retrieval-Augmented Generation: A Survey on Agentic RAG"
+issued:
+  date-parts:
+    - - 2025
+URL: "https://arxiv.org/abs/2501.09136"
+language: "en"
+author:
+  - family: "Singh"
+    given: "Aditi"
+  - family: "Ehtesham"
+    given: "Abul"
+  - family: "Kumar"
+    given: "Saket"
+  - family: "Khoei"
+    given: "Tala Talaei"
+  - family: "Vasilakos"
+    given: "Athanasios V."
+year: "2025"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "Agentic Retrieval-Augmented Generation: A Survey on Agentic RAG"
+  - "Agentic Retrieval-Augmented Generation - A Survey on Agentic RAG"
+tags:
+  - "literature_note"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Agentic Retrieval-Augmented Generation - A Survey on Agentic RAG.pdf|PDF]]"
+---
 # Agentic Retrieval-Augmented Generation: A Survey on Agentic RAG
-
-[[Assets/Note/Research/Papers/Agentic Retrieval-Augmented Generation - A Survey on Agentic RAG/Agentic Retrieval-Augmented Generation - A Survey on Agentic RAG.pdf|論文 PDF]]
 
 ## 初讀摘要
 

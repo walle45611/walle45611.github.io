@@ -1,6 +1,47 @@
+---
+id: "tcmpr-tcm-prescription-recommendation-based-on-subnetwork-term-mapping-and-deep-learning"
+type: "article-journal"
+title: "TCMPR: TCM Prescription Recommendation Based on Subnetwork Term Mapping and Deep Learning"
+issued:
+  date-parts:
+    - - 2022
+URL: "https://doi.org/10.1155/2022/4845726"
+DOI: "10.1155/2022/4845726"
+language: "en"
+author:
+  - family: "Dong"
+    given: "Xin"
+  - family: "Zheng"
+    given: "Yi"
+  - family: "Shu"
+    given: "Zixin"
+  - family: "Chang"
+    given: "Kai"
+  - family: "Xia"
+    given: "Jianan"
+  - family: "Zhu"
+    given: "Qiang"
+  - family: "Zhong"
+    given: "Kunyu"
+  - family: "Wang"
+    given: "Xinyan"
+  - family: "Yang"
+    given: "Kuo"
+  - family: "Zhou"
+    given: "Xuezhong"
+year: "2022"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "TCMPR: TCM Prescription Recommendation Based on Subnetwork Term Mapping and Deep Learning"
+  - "TCMPR - TCM Prescription Recommendation Based on Subnetwork Term Mapping and Deep Learning"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/TCMPR - TCM Prescription Recommendation Based on Subnetwork Term Mapping and Deep Learning.pdf|PDF]]"
+---
 # TCMPR: TCM Prescription Recommendation Based on Subnetwork Term Mapping and Deep Learning
-
-[[Assets/Note/Research/Papers/TCMPR - TCM Prescription Recommendation Based on Subnetwork Term Mapping and Deep Learning/TCMPR - TCM Prescription Recommendation Based on Subnetwork Term Mapping and Deep Learning.pdf|論文 PDF]]
 
 ## 初讀摘要
 

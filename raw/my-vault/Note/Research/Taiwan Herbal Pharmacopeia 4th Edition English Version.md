@@ -1,6 +1,21 @@
+---
+id: "taiwan-herbal-pharmacopeia-4th-edition-english-version"
+type: "book"
+title: "Taiwan Herbal Pharmacopeia 4th Edition English Version"
+language: "en"
+author:
+  - literal: "Ministry of Health and Welfare"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "Taiwan Herbal Pharmacopeia 4th Edition English Version"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Taiwan Herbal Pharmacopeia 4th Edition English Version.pdf|PDF]]"
+---
 # Taiwan Herbal Pharmacopeia 4th Edition English Version
-
-[[Assets/Note/Research/Papers/Taiwan Herbal Pharmacopeia 4th Edition English Version/Taiwan Herbal Pharmacopeia 4th Edition English Version.pdf|論文 PDF]]
 
 ## 初讀摘要
 

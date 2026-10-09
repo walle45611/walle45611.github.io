@@ -1,7 +1,7 @@
 # ML / DL 手寫筆記整理版
 
-- source: `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/README.md`
-- source_sha256: `92fe80dd8f2817e3b91b335082d47ef550afcca651ba8e1fc893cf9674e8db94`
+- source: `raw/my-vault/Note/Research/README.md`
+- source_sha256: `9adf6f3c285020eed1ff13d87622a0aae5e46f38fa794b5b442f3154edfaf4e1`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

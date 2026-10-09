@@ -1,15 +1,5 @@
----
-title: Linux Mail Server：Postfix、Dovecot 與 Maildir 設定指南
-tags:
-  - Linux
-  - MailServer
-  - DevOps
----
 
 # Linux Mail Server：Postfix、Dovecot 與 Maildir 設定指南
-
-來源：[MailServer 設定對話](chatgpt-conversation://6aad7afb-391c-83e8-acce-c9d8c8be4b1d)  
-目錄：[[DevOps Technology Overview]]
 
 本實驗先完成單台主機的本機投遞與 IMAP 讀信，再設定兩台 Postfix 之間的 SMTP 路由。以下整理最後採用的 **CDB + IP transport map**，保留實際操作中遇到的問題。
 

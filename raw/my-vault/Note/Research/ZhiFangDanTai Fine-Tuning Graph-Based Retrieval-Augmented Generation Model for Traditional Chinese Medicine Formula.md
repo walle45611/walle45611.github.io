@@ -1,6 +1,36 @@
+---
+id: "zhifangdantai-fine-tuning-graph-based-retrieval-augmented-generation-model-for-traditional-chinese-medicine-formula"
+type: "article-journal"
+title: "ZhiFangDanTai: Fine-Tuning Graph-Based Retrieval-Augmented Generation Model for Traditional Chinese Medicine Formula"
+issued:
+  date-parts:
+    - - 2026
+URL: "https://doi.org/10.1109/JBHI.2025.3607819"
+DOI: "10.1109/JBHI.2025.3607819"
+container-title: "IEEE Journal of Biomedical and Health Informatics"
+language: "en"
+author:
+  - family: "Zhang"
+    given: "Zixuan"
+  - family: "Hao"
+    given: "Bowen"
+  - family: "Li"
+    given: "Yingjie"
+  - family: "Yin"
+    given: "Hongzhi"
+year: "2026"
+dateCreated: "2026-10-08"
+reading-status: "reading"
+aliases:
+  - "ZhiFangDanTai: Fine-Tuning Graph-Based Retrieval-Augmented Generation Model for Traditional Chinese Medicine Formula"
+  - "ZhiFangDanTai Fine-Tuning Graph-Based Retrieval-Augmented Generation Model for Traditional Chinese Medicine Formula"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/ZhiFangDanTai - Fine-Tuning Graph-Based Retrieval-Augmented Generation Model for Traditional Chinese Medicine Formula.pdf|PDF]]"
+---
 # ZhiFangDanTai: Fine-Tuning Graph-Based Retrieval-Augmented Generation Model for Traditional Chinese Medicine Formula
-
-[[Assets/Note/Research/Papers/ZhiFangDanTai - Fine-Tuning Graph-Based Retrieval-Augmented Generation Model for Traditional Chinese Medicine Formula/ZhiFangDanTai - Fine-Tuning Graph-Based Retrieval-Augmented Generation Model for Traditional Chinese Medicine Formula.pdf|論文 PDF]]
 
 ## 初讀摘要
 
@@ -134,18 +164,18 @@ $$
 
 ## 相關筆記
 
-[[Note/Research/ML_DL_Obsidian_Notes/03 - Taylor Expansion Hessian and Eigenvalues|Taylor Expansion、Hessian 與特徵值]]
-[[Note/Research/ML_DL_Obsidian_Notes/01 - Gradient Descent and Learning Rate|Gradient Descent 與 Learning Rate]]
-[[Note/Research/ML_DL_Obsidian_Notes/01 - Entropy and Information|Entropy 與資訊量]]
+[[Note/Research/03 - Taylor Expansion Hessian and Eigenvalues|Taylor Expansion、Hessian 與特徵值]]
+[[Note/Research/01 - Gradient Descent and Learning Rate|Gradient Descent 與 Learning Rate]]
+[[Note/Research/01 - Entropy and Information|Entropy 與資訊量]]
 [[Direct Preference Optimization Your Language Model is Secretly a Reward Model|DPO（閱讀中）]]
 
 ## 手寫原稿
 
 > [!note]- 照片 1：Proposition 1 與條件互資訊
-> ![[Assets/Note/Research/Papers/ZhiFangDanTai - Fine-Tuning Graph-Based Retrieval-Augmented Generation Model for Traditional Chinese Medicine Formula/Photo 1.jpg|800]]
+> ![[Assets/Note/Research/ZhiFangDanTai - Fine-Tuning Graph-Based Retrieval-Augmented Generation Model for Traditional Chinese Medicine Formula/Photo 1.jpg|800]]
 
 > [!note]- 照片 2：Taylor 展開與步長最佳化
-> ![[Assets/Note/Research/Papers/ZhiFangDanTai - Fine-Tuning Graph-Based Retrieval-Augmented Generation Model for Traditional Chinese Medicine Formula/Photo 2.jpg|800]]
+> ![[Assets/Note/Research/ZhiFangDanTai - Fine-Tuning Graph-Based Retrieval-Augmented Generation Model for Traditional Chinese Medicine Formula/Photo 2.jpg|800]]
 
 > [!note]- 照片 3：梯度下降上界與係數化簡
-> ![[Assets/Note/Research/Papers/ZhiFangDanTai - Fine-Tuning Graph-Based Retrieval-Augmented Generation Model for Traditional Chinese Medicine Formula/Photo 3.jpg|800]]
+> ![[Assets/Note/Research/ZhiFangDanTai - Fine-Tuning Graph-Based Retrieval-Augmented Generation Model for Traditional Chinese Medicine Formula/Photo 3.jpg|800]]

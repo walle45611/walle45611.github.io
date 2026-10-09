@@ -1,6 +1,6 @@
 # Containerlab 安裝與設定指南
 
-以 Apple Silicon Mac 搭配 OrbStack 的 Debian ARM64 Linux machine 建立網路實驗環境，先驗證 Containerlab，再加入 Cisco IOL Router 與 Switch。
+以 Apple Silicon Mac 搭配 Debian ARM64 建立網路實驗環境，涵蓋 OrbStack 與 UTM 兩種主機方式。先驗證 Containerlab，再加入 Cisco IOL Router 與 Switch；UTM 額外記錄 Rosetta 與外部 FortiGate VM 的橋接。
 
 來源：[Mac安裝網路模擬器](chatgpt-conversation://6aaf0ebe-f2b0-83ee-96dc-a5b133d99eed)；整理日期：2026-09-20。
 
@@ -289,3 +289,106 @@ ip route add 192.168.20.0/24 via 192.168.10.1 dev eth1
 PC20 也需要相對應的回程路由。這是 Host 路由設定，與 Router 之間使用 OSPF 交換路由是不同問題。
 
 原對話已有兩台 Alpine 容器運行、實驗介面建立，以及成功進入 Cisco R1 CLI 的輸出；本筆記是流程整理，沒有重新執行安裝，也不將未提供結果的連通測試視為已通過。
+
+## UTM Debian ARM64：安裝與排錯
+
+整理日期：2026-10-07。這次使用 UTM Debian ARM64 執行 Docker、Containerlab 與 Cisco IOL，並橋接到獨立的 FortiGate ARM64 VM。FortiGate 的安裝與 Routing 結果另見 [[FortiGate 與 Cisco IOL：UTM OSPF Lab]]。
+
+```text
+Apple Silicon Mac → UTM
+├── FortiGate ARM64 VM
+│   ├── port1：管理／Shared NAT
+│   └── port2：實驗連線
+└── Debian ARM64 VM
+    ├── enp0s1：管理
+    ├── enp0s2 → br-fgt → Containerlab R1
+    └── Rosetta → x86_64 Cisco IOL
+```
+
+### 與 OrbStack 安裝的差別
+
+| 項目 | OrbStack | UTM |
+| --- | --- | --- |
+| Debian 進入方式 | `orb -m containerlab` | VM Console 或 SSH |
+| x86_64 IOL | 使用 OrbStack 的轉譯能力並實際驗證 | 配置 Apple Virtualization 的 Rosetta 支援並註冊執行處理器 |
+| 外部 VM 接線 | 依 OrbStack 網路方式配置 | Debian 第二張網卡與 FortiGate port2 接到可互通的二層網路，再加入 Linux bridge |
+| Docker Engine | Linux machine 內 | Debian VM 內 |
+
+UTM Rosetta 只適用支援該功能的 Apple Virtualization backend；與 QEMU VM 的設定不同。依 [UTM Rosetta 文件](https://docs.getutm.app/advanced/rosetta/)完成配置。安裝程序是否成功，要用 amd64 容器與 IOL 實際啟動測試確認。
+
+### Debian 安裝 Docker、Containerlab 與 IOL 映像
+
+Cisco IOL 映像建置沿用本篇第 4 節；改用 UTM 後，所有 Docker 與 Containerlab 操作仍須在同一台 Debian VM 執行。
+
+```bash
+uname -m
+ip -br link
+sudo apt update
+sudo apt install -y curl ca-certificates git make iproute2 tcpdump
+curl -sL https://containerlab.dev/setup | sudo -E bash -s "all"
+docker version
+clab version
+docker run --rm --platform linux/amd64 alpine:latest uname -m
+docker images vrnetlab/cisco_iol
+```
+
+最後一個執行測試預期輸出 `x86_64`，但仍須用實際 IOL 啟動結果驗證轉譯。IOL 原始檔須自行準備並透過 vrnetlab 建置；YAML 中的 image tag 必須與 Debian Docker Engine 內的映像一致。安裝入口見 [Containerlab Installation](https://containerlab.dev/install/)。
+
+### 外部 FortiGate VM 的 bridge 接線
+
+本次 `enp0s2 → br-fgt → R1` 的 bridge 建立與檢查指令，集中記錄在 [[FortiGate 與 Cisco IOL：UTM OSPF Lab#2.2 在 Debian 建立 bridge，接到 Containerlab]]，依實驗拓樸設定後再部署。
+
+### IOL redeploy 後仍無法 SSH
+
+
+現象：重新部署仍無法登入；Docker 管理 IP 與 IOS 管理介面狀態可能不一致。判斷方向是管理 bootstrap 是否正確套用，不能只看容器為 running 就視為 SSH 已就緒。
+
+處理方式：檢查 `docker logs clab-forti-lab-r1`／R2、管理介面 `Ethernet0/0`、管理 VRF 與 SSH。以 `.partial` startup-config 保留 Containerlab 管理設定，並預先建立 Loopback0，再清理重建。Loopback0 是這次提出的排查方案，尚缺獨立登入成功輸出，不能記成已證實的根因或通用修復。
+
+
+### 排查順序
+
+1. **架構與轉譯**：確認 Debian 為 ARM64，以及 amd64 測試容器可執行；若顯示 `exec format error`，先查 Rosetta／binfmt，而不是先改 Cisco OSPF。
+2. **映像**：在 Debian 執行 `docker images`，確認 IOL 映像與 YAML tag 一致。Mac 上其他 Docker Engine 的 image 不會自動出現在這台 VM。
+3. **啟動**：檢查 `docker logs`，確認 IOL 未停在初始化或 setup dialog；Docker 分配管理 IP 不等於 IOS 管理配置完成。
+4. **管理面**：檢查 IOS `Ethernet0/0`、management VRF 與 SSH；自訂設定檔包含 `.partial` 時會附加在預設管理配置後方，完整設定檔則需自行保留管理設定。見 [Cisco IOL 官方文件](https://containerlab.dev/manual/kinds/cisco_iol/)。
+5. **實驗接線**：檢查 `bridge link`、兩端資料介面狀態、位址及同一二層網路；必要時在 Debian 用 `tcpdump -ni br-fgt proto 89` 查看 OSPF 封包。
+6. **重建狀態**：修改 startup-config 後，既有 NVRAM 可能仍優先；保存所需設定後再 clean redeploy。
+
+此處的 `exec format error` 與橋接檢查是排錯參考，不表示本次都實際發生過。這次明確留下的問題是 IOL redeploy 後仍無法登入；更早的 UTM 安裝錯誤訊息與 Rosetta 註冊命令尚待補齊。
+
+## Alpine 節點操作補充
+
+以下使用 FortiGate Lab 的 PC1／Server 作為操作示例。
+
+### 登入 Alpine 節點
+
+```text
+ssh admin@clab-forti-lab-server
+Permission denied, please try again.
+```
+
+Server 使用 `ghcr.io/srl-labs/alpine`，不是 Cisco IOL，不能把 Cisco 的 `admin / admin` 套用到所有節點。這次採用的 Alpine 預設帳密資訊為 `admin / srllabs@123`；尚未留下成功登入結果，若映像版本有變更應再核對。
+
+也可以從 Debian 直接進入容器：
+
+```bash
+docker exec -it clab-forti-lab-server sh
+docker exec -it clab-forti-lab-pc1 sh
+```
+
+### 設定 Alpine 實驗介面
+
+PC1／Server 是 Alpine container，使用 `ip` 指令或 YAML `exec` 初始化即可；Debian 主機只有在使用 NetworkManager 時才適合 `nmtui`／`nmcli`。
+
+手動示例（Server container 內）：
+
+```bash
+ip addr replace 10.20.20.10/24 dev eth1
+ip link set eth1 up
+ip route replace default via 10.20.20.1 dev eth1
+ip -br addr
+ip route
+```
+
+手動設定會隨容器重建消失，應回寫 YAML。Containerlab 管理 eth0 與實驗 eth1 的路由要分清楚；若只測試內網且想保留管理 default route，可改為針對目的網段加入靜態路由。

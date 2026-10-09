@@ -1,7 +1,7 @@
 # TCMLLM-PR: Evaluation of Large Language Models for Prescription Recommendation in Traditional Chinese Medicine
 
 - source: `raw/my-vault/Note/Research/TCMLLM-PR - Evaluation of Large Language Models for Prescription Recommendation in Traditional Chinese Medicine.md`
-- source_sha256: `7a6b8947ec55ab2fab7986c96cf5dd8f78efbb67a80ce60beaab47603db61cab`
+- source_sha256: `14a595e70308f358103946fb1b7cd48b20bb4f29922eab5648db1c5a7d6227d9`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

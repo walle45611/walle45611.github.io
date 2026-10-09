@@ -1,6 +1,27 @@
+---
+id: "deep-residual-learning-for-image-recognition"
+type: "manuscript"
+title: "Deep Residual Learning for Image Recognition"
+language: "en"
+author:
+  - family: "He"
+    given: "Kaiming"
+  - family: "Zhang"
+    given: "Xiangyu"
+  - family: "Ren"
+    given: "Shaoqing"
+  - family: "Sun"
+    given: "Jian"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "Deep Residual Learning for Image Recognition"
+tags:
+  - "literature_note"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Deep Residual Learning for Image Recognition.pdf|PDF]]"
+---
 # Deep Residual Learning for Image Recognition
-
-[[Assets/Note/Research/Papers/Deep Residual Learning for Image Recognition/Deep Residual Learning for Image Recognition.pdf|論文 PDF]]
 
 ## 初讀摘要
 

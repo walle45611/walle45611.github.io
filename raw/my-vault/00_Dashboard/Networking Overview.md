@@ -230,6 +230,10 @@ R1(config-if)#ip address dhcp
 
 提供 hop-to-hop routing，負責封包選路與邏輯位址（IP）處理
 
+#### 路由隔離
+
+- [[VRF-Lite (Virtual Routing and Forwarding)]]
+
 #### 通訊協定
 
 參考資料：
@@ -319,16 +323,9 @@ $ traceroute 8.8.8.8
 - [[NTP (Network Time Protocol)]]
 #### 網路模擬器
 
-參考資料：
 - [[EVE-NG 安裝與設定指南]]
 - [[GNS3 安裝與設定指南]]
 - [[Containerlab 安裝與設定指南]]
-
-
-## Kubernetes Networking
-
-[[K8s CNI 比較：Cilium、Calico 與 Flannel]]
-[[K8s Cilium 與 Containerlab 網路實驗]]
 
 ## 網路認證與 VPN 排錯
 

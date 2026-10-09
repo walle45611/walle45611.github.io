@@ -1,7 +1,7 @@
 # Generative Agents Interactive Simulacra of Human Behavior
 
 - source: `raw/my-vault/Note/Research/Generative Agents Interactive Simulacra of Human Behavior.md`
-- source_sha256: `0d34cf7e18a9280156cc0fef5d9f7d0d4bde46ce40a7e995d4d21cee0cf690f4`
+- source_sha256: `92627ea3d13282635e00fac6c126f7d49e387c5533a80c491381c5bb2226b9a5`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

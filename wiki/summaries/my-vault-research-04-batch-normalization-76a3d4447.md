@@ -1,7 +1,7 @@
 # Batch Normalization
 
-- source: `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/04 - Batch Normalization.md`
-- source_sha256: `68f698518c9d6354638eeaf50b1148a6ca37a8cb6aa1b294b2fd04ab5277743d`
+- source: `raw/my-vault/Note/Research/04 - Batch Normalization.md`
+- source_sha256: `0919e6b95b9733684a5bf64a828fbc116cd43dcf13395b91d46d1f32e7f11812`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

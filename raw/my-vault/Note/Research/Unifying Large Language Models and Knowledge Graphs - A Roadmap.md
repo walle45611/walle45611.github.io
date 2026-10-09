@@ -1,6 +1,40 @@
+---
+id: "unifying-large-language-models-and-knowledge-graphs-a-roadmap"
+type: "article-journal"
+title: "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+issued:
+  date-parts:
+    - - 2024
+URL: "https://doi.org/10.1109/TKDE.2024.3352100"
+DOI: "10.1109/TKDE.2024.3352100"
+container-title: "IEEE Transactions on Knowledge and Data Engineering"
+language: "en"
+author:
+  - family: "Pan"
+    given: "Shirui"
+  - family: "Luo"
+    given: "Linhao"
+  - family: "Wang"
+    given: "Yufei"
+  - family: "Chen"
+    given: "Chen"
+  - family: "Wang"
+    given: "Jiapu"
+  - family: "Wu"
+    given: "Xindong"
+year: "2024"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+  - "Unifying Large Language Models and Knowledge Graphs - A Roadmap"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Unifying Large Language Models and Knowledge Graphs - A Roadmap.pdf|PDF]]"
+---
 # Unifying Large Language Models and Knowledge Graphs: A Roadmap
-
-[[Assets/Note/Research/Papers/Unifying Large Language Models and Knowledge Graphs - A Roadmap/Unifying Large Language Models and Knowledge Graphs - A Roadmap.pdf|論文 PDF]]
 
 ## 初讀摘要
 

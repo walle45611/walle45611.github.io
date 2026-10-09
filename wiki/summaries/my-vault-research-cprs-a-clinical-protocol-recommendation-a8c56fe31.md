@@ -1,7 +1,7 @@
 # CPRS: A Clinical Protocol Recommendation System Based on LLMs
 
 - source: `raw/my-vault/Note/Research/CPRS - A Clinical Protocol Recommendation System Based on LLMs.md`
-- source_sha256: `126e1a150d298bde3cf889f9d5410301211d2a689e2ef696a4fde9e6961af669`
+- source_sha256: `77327fc399ba4314e447fa55ebce8e65990f8178b3c50aff3b23ace29e8c7108`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

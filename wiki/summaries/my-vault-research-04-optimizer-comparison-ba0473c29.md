@@ -1,7 +1,7 @@
 # Optimizer Comparison
 
-- source: `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/04 - Optimizer Comparison.md`
-- source_sha256: `8d7c044163d2062c8b2d27d0f30c3f5f26a26e9e7873452e48b7a761a4b527cd`
+- source: `raw/my-vault/Note/Research/04 - Optimizer Comparison.md`
+- source_sha256: `5ff75ccfe6c0b42230487cccd2c2e351046d76b9d164b95d34ff300c660ac203`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

@@ -1,7 +1,7 @@
 # Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena
 
 - source: `raw/my-vault/Note/Research/Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena.md`
-- source_sha256: `a1f444e1db04d1882e32c04e456ccac0de8d826ea1284ae0da87c3fbbf5d760c`
+- source_sha256: `cde51d393f7c0368f31e321254584132a881de30625688e42c34a36a81f337d0`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

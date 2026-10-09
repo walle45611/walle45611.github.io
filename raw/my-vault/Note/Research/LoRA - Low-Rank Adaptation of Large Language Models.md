@@ -1,6 +1,41 @@
+---
+id: "lora-low-rank-adaptation-of-large-language-models"
+type: "manuscript"
+title: "LoRA: Low-Rank Adaptation of Large Language Models"
+issued:
+  date-parts:
+    - - 2021
+URL: "https://arxiv.org/abs/2106.09685"
+language: "en"
+author:
+  - family: "Hu"
+    given: "Edward"
+  - family: "Shen"
+    given: "Yelong"
+  - family: "Wallis"
+    given: "Phillip"
+  - family: "Allen-Zhu"
+    given: "Zeyuan"
+  - family: "Li"
+    given: "Yuanzhi"
+  - family: "Wang"
+    given: "Shean"
+  - family: "Wang"
+    given: "Lu"
+  - family: "Chen"
+    given: "Weizhu"
+year: "2021"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "LoRA: Low-Rank Adaptation of Large Language Models"
+  - "LoRA - Low-Rank Adaptation of Large Language Models"
+tags:
+  - "literature_note"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/LoRA - Low-Rank Adaptation of Large Language Models.pdf|PDF]]"
+---
 # LoRA: Low-Rank Adaptation of Large Language Models
-
-[[Assets/Note/Research/Papers/LoRA - Low-Rank Adaptation of Large Language Models/LoRA - Low-Rank Adaptation of Large Language Models.pdf|論文 PDF]]
 
 ## 初讀摘要
 

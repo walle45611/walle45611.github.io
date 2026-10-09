@@ -1,6 +1,32 @@
+---
+id: "energy-efficient-implementation-of-yolov8-instance-segmentation-and-pose-detection-on-risc-v-soc"
+type: "article-journal"
+title: "Energy-efficient implementation of YOLOv8, instance segmentation, and pose detection on RISC-V SoC"
+issued:
+  date-parts:
+    - - 2024
+URL: "https://doi.org/10.1109/ACCESS.2024.3397536"
+DOI: "10.1109/ACCESS.2024.3397536"
+container-title: "IEEE Access"
+language: "en"
+author:
+  - family: "Wang"
+    given: "Hansen"
+  - family: "Li"
+    given: "Dongju"
+  - family: "Isshiki"
+    given: "Tsuyoshi"
+year: "2024"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "Energy-efficient implementation of YOLOv8, instance segmentation, and pose detection on RISC-V SoC"
+tags:
+  - "literature_note"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Energy-efficient implementation of YOLOv8, instance segmentation, and pose detection on RISC-V SoC.pdf|PDF]]"
+---
 # Energy-efficient implementation of YOLOv8, instance segmentation, and pose detection on RISC-V SoC
-
-[[Assets/Note/Research/Papers/Energy-efficient implementation of YOLOv8, instance segmentation, and pose detection on RISC-V SoC/Energy-efficient implementation of YOLOv8, instance segmentation, and pose detection on RISC-V SoC.pdf|論文 PDF]]
 
 ## 初讀摘要
 

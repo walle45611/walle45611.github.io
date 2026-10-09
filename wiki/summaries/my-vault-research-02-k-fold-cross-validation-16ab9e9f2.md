@@ -1,7 +1,7 @@
 # K-Fold Cross Validation
 
-- source: `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/02 - K-Fold Cross Validation.md`
-- source_sha256: `25bf8728237546fb5e297a5d8026d8c8e740e5276e6d2964fa20a9cf0dfae8dc`
+- source: `raw/my-vault/Note/Research/02 - K-Fold Cross Validation.md`
+- source_sha256: `1b4db53c4b74e7a87de508616c5490e46cfef2ad36b6c2496283173ea9e08bbc`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

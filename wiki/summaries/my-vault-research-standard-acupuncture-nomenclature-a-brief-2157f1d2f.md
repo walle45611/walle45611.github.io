@@ -1,7 +1,7 @@
 # Standard Acupuncture Nomenclature: A Brief Explanation of 361 Classical Acupuncture Point Names and Their Multilingual Comparative List
 
 - source: `raw/my-vault/Note/Research/Standard Acupuncture Nomenclature - A Brief Explanation of 361 Classical Acupuncture Point Names and Their Multilingual Comparative List.md`
-- source_sha256: `dd809a95a008058e3dcaae381bb0b2c8ebd0f4cc1494344a7a6e9e7ed88c6b33`
+- source_sha256: `8738dc3b7ba5a0f74934790a374eb3db6da0b40712b72a973608cc2f19d9886a`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

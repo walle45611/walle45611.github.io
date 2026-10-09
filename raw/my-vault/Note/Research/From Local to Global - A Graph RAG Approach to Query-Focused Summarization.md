@@ -1,6 +1,46 @@
+---
+id: "from-local-to-global-a-graph-rag-approach-to-query-focused-summarization"
+type: "manuscript"
+title: "From Local to Global: A Graph RAG Approach to Query-Focused Summarization"
+issued:
+  date-parts:
+    - - 2024
+URL: "https://arxiv.org/abs/2404.16130"
+language: "en"
+author:
+  - family: "Edge"
+    given: "Darren"
+  - family: "Trinh"
+    given: "Ha"
+  - family: "Cheng"
+    given: "Newman"
+  - family: "Bradley"
+    given: "Joshua"
+  - family: "Chao"
+    given: "Alex"
+  - family: "Mody"
+    given: "Apurva"
+  - family: "Truitt"
+    given: "Steven"
+  - family: "Metropolitansky"
+    given: "Dasha"
+  - family: "Ness"
+    given: "Robert Osazuwa"
+  - family: "Larson"
+    given: "Jonathan"
+year: "2024"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "From Local to Global: A Graph RAG Approach to Query-Focused Summarization"
+  - "From Local to Global - A Graph RAG Approach to Query-Focused Summarization"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/From Local to Global - A Graph RAG Approach to Query-Focused Summarization.pdf|PDF]]"
+---
 # From Local to Global: A Graph RAG Approach to Query-Focused Summarization
-
-[[Assets/Note/Research/Papers/From Local to Global - A Graph RAG Approach to Query-Focused Summarization/From Local to Global - A Graph RAG Approach to Query-Focused Summarization.pdf|論文 PDF]]
 
 ## 初讀摘要
 

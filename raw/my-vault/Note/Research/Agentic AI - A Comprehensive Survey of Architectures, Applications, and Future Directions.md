@@ -1,6 +1,34 @@
+---
+id: "agentic-ai-a-comprehensive-survey-of-architectures-applications-and-future-directions"
+type: "article-journal"
+title: "Agentic AI: A Comprehensive Survey of Architectures, Applications, and Future Directions"
+issued:
+  date-parts:
+    - - 2026
+URL: "https://doi.org/10.1007/s10462-025-11422-4"
+DOI: "10.1007/s10462-025-11422-4"
+container-title: "Artificial Intelligence Review"
+language: "en"
+author:
+  - family: "Abou Ali"
+    given: "Mohamad"
+  - family: "Dornaika"
+    given: "Fadi"
+  - family: "Charafeddine"
+    given: "Jinan"
+year: "2026"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "Agentic AI: A Comprehensive Survey of Architectures, Applications, and Future Directions"
+  - "Agentic AI - A Comprehensive Survey of Architectures, Applications, and Future Directions"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Agentic AI - A Comprehensive Survey of Architectures, Applications, and Future Directions.pdf|PDF]]"
+---
 # Agentic AI: A Comprehensive Survey of Architectures, Applications, and Future Directions
-
-[[Assets/Note/Research/Papers/Agentic AI - A Comprehensive Survey of Architectures, Applications, and Future Directions/Agentic AI - A Comprehensive Survey of Architectures, Applications, and Future Directions.pdf|論文 PDF]]
 
 ## 初讀摘要
 

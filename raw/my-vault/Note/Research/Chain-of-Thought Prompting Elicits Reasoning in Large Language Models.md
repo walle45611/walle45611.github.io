@@ -1,6 +1,43 @@
+---
+id: "chain-of-thought-prompting-elicits-reasoning-in-large-language-models"
+type: "paper-conference"
+title: "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models"
+issued:
+  date-parts:
+    - - 2022
+container-title: "Advances in Neural Information Processing Systems"
+language: "en"
+author:
+  - family: "Wei"
+    given: "Jason"
+  - family: "Wang"
+    given: "Xuezhi"
+  - family: "Schuurmans"
+    given: "Dale"
+  - family: "Bosma"
+    given: "Maarten"
+  - family: "Ichter"
+    given: "Brian"
+  - family: "Xia"
+    given: "Fei"
+  - family: "Chi"
+    given: "Ed H."
+  - family: "Le"
+    given: "Quoc V."
+  - family: "Zhou"
+    given: "Denny"
+year: "2022"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Chain-of-Thought Prompting Elicits Reasoning in Large Language Models.pdf|PDF]]"
+---
 # Chain-of-Thought Prompting Elicits Reasoning in Large Language Models
-
-[[Assets/Note/Research/Papers/Chain-of-Thought Prompting Elicits Reasoning in Large Language Models/Chain-of-Thought Prompting Elicits Reasoning in Large Language Models.pdf|論文 PDF]]
 
 ## 初讀摘要
 

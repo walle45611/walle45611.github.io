@@ -1,7 +1,7 @@
 # QLoRA: Efficient Finetuning of Quantized LLMs
 
 - source: `raw/my-vault/Note/Research/QLoRA - Efficient Finetuning of Quantized LLMs.md`
-- source_sha256: `6d7695f37c88f37407996fd74bbe701e8294e55ec96a8b1f592c9c045e8ed790`
+- source_sha256: `99756e6c137587b82df00628c68d80c85f3bd783677000ac6a7491f90b43a24d`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

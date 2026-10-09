@@ -1,7 +1,7 @@
 # Batch, Mini-batch and Batch Size
 
-- source: `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/04 - Batch Mini-batch and Batch Size.md`
-- source_sha256: `50a1e31a8481838f6131f776d33ff1a76cdf86c9010975f6b83aabe97324cb89`
+- source: `raw/my-vault/Note/Research/04 - Batch Mini-batch and Batch Size.md`
+- source_sha256: `380c3198daa32f5aa5441d7d5dbc94a9cad28ed04f3895e866b63f6b994f4208`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

@@ -1,6 +1,39 @@
+---
+id: "large-language-models-in-medicine"
+type: "article-journal"
+title: "Large Language Models in Medicine"
+issued:
+  date-parts:
+    - - 2023
+URL: "https://doi.org/10.1038/s41591-023-02448-8"
+DOI: "10.1038/s41591-023-02448-8"
+container-title: "Nature Medicine"
+language: "en"
+author:
+  - family: "Thirunavukarasu"
+    given: "Arun James"
+  - family: "Ting"
+    given: "Darren Shu Jeng"
+  - family: "Elangovan"
+    given: "Kabilan"
+  - family: "Gutierrez"
+    given: "Laura"
+  - family: "Tan"
+    given: "Ting Fang"
+  - family: "Ting"
+    given: "Daniel Shu Wei"
+year: "2023"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "Large Language Models in Medicine"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Large Language Models in Medicine.pdf|PDF]]"
+---
 # Large Language Models in Medicine
-
-[[Assets/Note/Research/Papers/Large Language Models in Medicine/Large Language Models in Medicine.pdf|論文 PDF]]
 
 ## 初讀摘要
 

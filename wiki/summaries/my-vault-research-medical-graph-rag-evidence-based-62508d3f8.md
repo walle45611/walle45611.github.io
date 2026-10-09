@@ -1,7 +1,7 @@
 # Medical Graph RAG: Evidence-based Medical Large Language Model via Graph Retrieval-Augmented Generation
 
 - source: `raw/my-vault/Note/Research/Medical Graph RAG - Evidence-based Medical Large Language Model via Graph Retrieval-Augmented Generation.md`
-- source_sha256: `0ff73bc1d948a68a17d8d22ec092d942fffa0c90e0411ef33404b5b6362df779`
+- source_sha256: `79f73c38315afaff96c6ffb64849fb17e1030a564991012c601479a30be43919`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

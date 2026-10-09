@@ -1,6 +1,38 @@
+---
+id: "direct-preference-optimization-your-language-model-is-secretly-a-reward-model"
+type: "paper-conference"
+title: "Direct Preference Optimization: Your Language Model is Secretly a Reward Model"
+issued:
+  date-parts:
+    - - 2023
+URL: "https://arxiv.org/abs/2305.18290"
+container-title: "Advances in Neural Information Processing Systems"
+language: "en"
+author:
+  - family: "Rafailov"
+    given: "Rafael"
+  - family: "Sharma"
+    given: "Archit"
+  - family: "Mitchell"
+    given: "Eric"
+  - family: "Ermon"
+    given: "Stefano"
+  - family: "Manning"
+    given: "Christopher D."
+  - family: "Finn"
+    given: "Chelsea"
+year: "2023"
+dateCreated: "2026-10-08"
+reading-status: "reading"
+aliases:
+  - "Direct Preference Optimization: Your Language Model is Secretly a Reward Model"
+  - "Direct Preference Optimization Your Language Model is Secretly a Reward Model"
+tags:
+  - "literature_note"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Direct Preference Optimization - Your Language Model is Secretly a Reward Model.pdf|PDF]]"
+---
 # Direct Preference Optimization: Your Language Model is Secretly a Reward Model
-
-[[Assets/Note/Research/Papers/Direct Preference Optimization - Your Language Model is Secretly a Reward Model/Direct Preference Optimization - Your Language Model is Secretly a Reward Model.pdf|論文 PDF]]
 
 ## 初讀摘要
 
@@ -109,9 +141,9 @@ $$
 以上留待後續閱讀補上，不視為已完成的推導。
 
 [[Logistic Regression 與 Log-Odds 計算|Sigmoid 與 log-odds]]
-[[Note/Research/ML_DL_Obsidian_Notes/02 - Likelihood NLL and Cross-Entropy|Likelihood 與負對數似然]]
+[[Note/Research/02 - Likelihood NLL and Cross-Entropy|Likelihood 與負對數似然]]
 
 ## 手寫原稿
 
 > [!note]- 照片 1：偏好機率、reward modeling 與 RLHF 目標
-> ![[Assets/Note/Research/Papers/Direct Preference Optimization - Your Language Model is Secretly a Reward Model/Photo 1.jpg|800]]
+> ![[Assets/Note/Research/Direct Preference Optimization - Your Language Model is Secretly a Reward Model/Photo 1.jpg|800]]

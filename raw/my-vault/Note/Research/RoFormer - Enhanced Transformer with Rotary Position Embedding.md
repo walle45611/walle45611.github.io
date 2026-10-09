@@ -1,6 +1,37 @@
+---
+id: "roformer-enhanced-transformer-with-rotary-position-embedding"
+type: "manuscript"
+title: "RoFormer: Enhanced Transformer with Rotary Position Embedding"
+issued:
+  date-parts:
+    - - 2021
+URL: "https://arxiv.org/abs/2104.09864"
+language: "en"
+author:
+  - family: "Su"
+    given: "Jianlin"
+  - family: "Lu"
+    given: "Yu"
+  - family: "Pan"
+    given: "Shengfeng"
+  - family: "Murtadha"
+    given: "Ahmed"
+  - family: "Wen"
+    given: "Bo"
+  - family: "Liu"
+    given: "Yunfeng"
+year: "2021"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "RoFormer: Enhanced Transformer with Rotary Position Embedding"
+  - "RoFormer - Enhanced Transformer with Rotary Position Embedding"
+tags:
+  - "literature_note"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/RoFormer - Enhanced Transformer with Rotary Position Embedding.pdf|PDF]]"
+---
 # RoFormer: Enhanced Transformer with Rotary Position Embedding
-
-[[Assets/Note/Research/Papers/RoFormer - Enhanced Transformer with Rotary Position Embedding/RoFormer - Enhanced Transformer with Rotary Position Embedding.pdf|論文 PDF]]
 
 ## 初讀摘要
 

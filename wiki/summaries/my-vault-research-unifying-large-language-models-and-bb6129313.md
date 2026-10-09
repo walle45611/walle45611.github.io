@@ -1,7 +1,7 @@
 # Unifying Large Language Models and Knowledge Graphs: A Roadmap
 
 - source: `raw/my-vault/Note/Research/Unifying Large Language Models and Knowledge Graphs - A Roadmap.md`
-- source_sha256: `0f2cf95f436c635f53af2c1e55442b71cd2571fe98993f163e569b3aac0d98dd`
+- source_sha256: `e58b76d17527b05d9f838b8d8a13d815c122dc5ce23bd8e5ec5d9daeb861e309`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

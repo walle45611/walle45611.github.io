@@ -1,6 +1,40 @@
+---
+id: "react-synergizing-reasoning-and-acting-in-language-models"
+type: "paper-conference"
+title: "ReAct: Synergizing Reasoning and Acting in Language Models"
+issued:
+  date-parts:
+    - - 2023
+container-title: "International Conference on Learning Representations"
+language: "en"
+author:
+  - family: "Yao"
+    given: "Shunyu"
+  - family: "Zhao"
+    given: "Jeffrey"
+  - family: "Yu"
+    given: "Dian"
+  - family: "Du"
+    given: "Nan"
+  - family: "Shafran"
+    given: "Izhak"
+  - family: "Narasimhan"
+    given: "Karthik"
+  - family: "Cao"
+    given: "Yuan"
+year: "2023"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "ReAct: Synergizing Reasoning and Acting in Language Models"
+  - "ReAct - Synergizing Reasoning and Acting in Language Models"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/ReAct - Synergizing Reasoning and Acting in Language Models.pdf|PDF]]"
+---
 # ReAct: Synergizing Reasoning and Acting in Language Models
-
-[[Assets/Note/Research/Papers/ReAct - Synergizing Reasoning and Acting in Language Models/ReAct - Synergizing Reasoning and Acting in Language Models.pdf|論文 PDF]]
 
 ## 初讀摘要
 

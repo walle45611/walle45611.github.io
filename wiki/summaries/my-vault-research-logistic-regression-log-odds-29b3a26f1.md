@@ -1,7 +1,7 @@
 # Logistic Regression 與 Log-Odds 計算
 
 - source: `raw/my-vault/Note/Research/Logistic Regression 與 Log-Odds 計算.md`
-- source_sha256: `362b518491f9313fae13da7918d45d6918955589cf2efbcb98bd557fcfeea2c8`
+- source_sha256: `e921be0d0cf7a50beacfb8d57fcca017f30d23c3d0933f587e71e19bb1e51cc9`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

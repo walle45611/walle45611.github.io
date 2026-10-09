@@ -1,7 +1,7 @@
 # Efficient Estimation of Word Representations in Vector Space
 
 - source: `raw/my-vault/Note/Research/Efficient Estimation of Word Representations in Vector Space.md`
-- source_sha256: `9e4260c2cebea52d66e0ffd2c18afcc4c6934e0cafad4a10ebc3a9af50feae01`
+- source_sha256: `a131774a403e289e58bef43cd42bb530f3c291d71f766d45e4f7fa2ff16ad7ab`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

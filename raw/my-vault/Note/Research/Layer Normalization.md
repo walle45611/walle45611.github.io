@@ -1,6 +1,30 @@
+---
+id: "layer-normalization"
+type: "manuscript"
+title: "Layer Normalization"
+issued:
+  date-parts:
+    - - 2016
+URL: "https://arxiv.org/abs/1607.06450"
+language: "en"
+author:
+  - family: "Ba"
+    given: "Jimmy Lei"
+  - family: "Kiros"
+    given: "Jamie Ryan"
+  - family: "Hinton"
+    given: "Geoffrey E."
+year: "2016"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "Layer Normalization"
+tags:
+  - "literature_note"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Layer Normalization.pdf|PDF]]"
+---
 # Layer Normalization
-
-[[Assets/Note/Research/Papers/Layer Normalization/Layer Normalization.pdf|論文 PDF]]
 
 ## 初讀摘要
 

@@ -1,6 +1,26 @@
+---
+id: "gemma-4-technical-report"
+type: "report"
+title: "Gemma 4 Technical Report"
+issued:
+  date-parts:
+    - - 2026
+URL: "https://arxiv.org/abs/2607.02770"
+language: "en"
+author:
+  - literal: "Gemma Team, Google DeepMind"
+year: "2026"
+dateCreated: "2026-10-08"
+reading-status: "to-read"
+aliases:
+  - "Gemma 4 Technical Report"
+tags:
+  - "literature_note"
+  - "cmu-sage-ai"
+attachment:
+  - "[[raw/my-vault/Assets/Note/Research/Papers/Gemma 4 Technical Report.pdf|PDF]]"
+---
 # Gemma 4 Technical Report
-
-[[Assets/Note/Research/Papers/Gemma 4 Technical Report/Gemma 4 Technical Report.pdf|論文 PDF]]
 
 ## 初讀摘要
 

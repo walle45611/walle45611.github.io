@@ -1,7 +1,7 @@
 # Momentum
 
-- source: `raw/my-vault/Note/Research/ML_DL_Obsidian_Notes/01 - Momentum.md`
-- source_sha256: `edc9db2f86415fdb83531feec7c22023edb4993c2b526af81e8755d1ffff2f08`
+- source: `raw/my-vault/Note/Research/01 - Momentum.md`
+- source_sha256: `bac683baaa28f9e61391e7304856ba412a28b3c53629b251fb888fde75f2c268`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

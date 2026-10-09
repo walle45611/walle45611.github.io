@@ -1,7 +1,7 @@
 # LLaMA: Open and Efficient Foundation Language Models
 
 - source: `raw/my-vault/Note/Research/LLaMA - Open and Efficient Foundation Language Models.md`
-- source_sha256: `51d7939d44b8ca3950f1ba3c248d586fb49838499bf52015243f4d8676baee22`
+- source_sha256: `fcc886ab8aa20fbb3d6b2270bf5b7ea0e1c4e300facad7af21aaec23e1d60f37`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

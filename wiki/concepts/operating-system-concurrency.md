@@ -25,3 +25,11 @@
 ## 相鄰主題
 
 - [[linux-memory-management]]：區分位址映射、共享 backing 與同步／權限隔離。
+
+## 2026-10-09：作業排程與叢集管理的邊界
+
+[[slurm-cluster-practice]] 補充 controller／compute node／job step 的實際角色，以及認證、資源設定與輸出檔排錯。Slurm 資源排程不等同即時系統 RMA 的 deadline 保證，也不等同臨界區互斥證明；來源尚未驗證 cgroup 隔離與共享儲存。通訊排錯見 [[network-protocol-layers]]。
+
+## 同步來源待核對
+
+[[my-vault-research-monitor-f68b5966b]] 的 notification／資源計數用語，以及 [[my-vault-research-lamport-s-bakery-algorithm-lba-33f7f2dbf]] 的號碼成長／退出清零描述存在易混淆處；保留來源並標記疑義，不視為通用語言實作保證。

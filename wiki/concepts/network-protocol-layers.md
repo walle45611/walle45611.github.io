@@ -27,3 +27,7 @@
 - [[my-vault-research-stp-spanning-tree-9eeb1ba1d]]：二層樹與 TC／MAC aging。
 - [[my-vault-tech-linux-mail-server-postfix-dovecot-49492796d]]：SMTP 路由、投遞與 IMAP 讀信的角色。
 - [[my-vault-tech-windows-defender-9b233a1db]]：主機網路設定檔與防火牆規則；來源的命令仍需依環境核對。
+
+## 2026-10-09：隔離、路由與實驗證據
+
+[[vrf-lite-routing-isolation]] 記錄 VLAN 子介面配合 VRF／OSPF 的隔離設計，但來源存在 VOIDE／VIDEO 名稱不一致，設定仍須核對。[[fortigate-cisco-iol-utm-ospf-lab]] 已記錄路由傳播，未證明完整 NAT／防火牆與外網連通。[[containerlab-network-labs-as-code]] 補充實驗版本化；[[slurm-cluster-practice]] 的名稱解析、TCP 可達與 MUNGE 認證亦須分層觀察。封包實作層見 [[container-networking]]。

@@ -52,3 +52,7 @@
 ## 2026-09-06：與 Attention 機制的區分
 
 [[stanford-cme295-lecture-1-transformer]] 與 [[transformer-attention-fundamentals]] 補上模型層背景：attention 依 query-key 權重聚合 value，產生每個位置的上下文化表示；這與將對話改寫成短摘要、按需檢索或裁剪工具輸出的 context 管理不同。模型具有 attention，也不代表它能可靠使用任意長度或任意位置的資訊。
+
+## 2026-10-09：實作與 review 的上下文分工
+
+[[matt-pocock-pr-review-bottleneck]] 建議詳細 coding standards 在 review 階段按需載入，減少實作 context 同時承擔的工作。這是特定工作流經驗，仍需驗證實作品質與審查成本，不能推論所有規則都應移除。[[harness-engineering]] 提供硬控制及工具治理的相鄰邊界。

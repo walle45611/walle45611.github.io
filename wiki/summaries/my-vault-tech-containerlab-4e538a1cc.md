@@ -1,7 +1,8 @@
 # Containerlab 安裝與設定指南
 
 - source: `raw/my-vault/Note/Tech/Containerlab 安裝與設定指南.md`
-- source_sha256: `818dc6cf8c4d1346e944ac30c1157cdd8abc8fc71b9ab68f54ff3687c6ccdd7d`
+- source_sha256: `2b7240120fa72f40dd6d218e2e6d791a5549ee86e18307505c2d010599aa2f2d`
+- source_reviewed: 2026-10-09
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Tech
@@ -19,3 +20,9 @@
 ## Navigation
 
 - [回到 Tech 歸檔](<../archives/my-vault-tech.md>)
+
+## 2026-10-09 來源複核
+
+來源現含 UTM Debian ARM64、Rosetta／IOL 與 Alpine 登入／IP 操作補充；br-fgt 接線留在 [[fortigate-cisco-iol-utm-ospf-lab]]。不同 VM 平台、架構與節點 kind 的前提不可混用。
+
+目前來源章節：Containerlab 安裝與設定指南、環境架構、1. 建立並進入 Debian machine、2. 安裝 Docker 與 Containerlab、3. 建立最小測試 Lab、4. 建置 Cisco IOL 映像、5. 部署 Cisco Router 與 Switch、6. 查看拓撲與管理 Lab、常見問題、UTM Debian ARM64：安裝與排錯、與 OrbStack 安裝的差別、Debian 安裝 Docker、Containerlab 與 IOL 映像、外部 FortiGate VM 的 bridge 接線、IOL redeploy 後仍無法 SSH、排查順序、Alpine 節點操作補充、登入 Alpine 節點、設定 Alpine 實驗介面。

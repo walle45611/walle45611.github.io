@@ -25,3 +25,7 @@ Overlay 是一種連通方式，不是所有容器網路的必要條件。MTU、
 
 - [container-networking-from-scratch](../summaries/container-networking-from-scratch.md)
 - [michael-kerrisk-understanding-linux-user-namespaces](../summaries/michael-kerrisk-understanding-linux-user-namespaces.md)
+
+## 2026-10-09：Kubernetes 與可重建網路 Lab
+
+[[understanding-kubernetes-networking-in-30-minutes]] 補上 Pod 共用 network namespace、CNI 配置介面／路由、Service 後端映射與 CoreDNS 的責任分工；bridge 與每節點 Pod CIDR 是示範方式，不是所有 CNI 必然採用。[[containerlab-network-labs-as-code]] 以 YAML、映像與 startup-config 將拓樸版本化；[[fortigate-cisco-iol-utm-ospf-lab]] 記錄外部 VM 經主機 bridge 接入的實驗。網路模型見 [[kubernetes-design-principles]]，部署基線見 [[microk8s-production-readiness]]。

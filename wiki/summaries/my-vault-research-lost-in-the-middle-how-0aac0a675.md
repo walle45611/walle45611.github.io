@@ -1,7 +1,8 @@
 # Lost in the Middle: How Language Models Use Long Contexts
 
 - source: `raw/my-vault/Note/Research/@lostmiddlehow2024.md`
-- source_sha256: `a99cb04fcd6bd30044ddec0c385469eea154fbe37779fd458dccb9d8c1d3f9fc`
+- source_sha256: `5d77d92ae9e612ff46bbeea029a4e4c7375457fa893dc17289d9ff9b621ae208`
+- source_reviewed: 2026-10-09
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research
@@ -18,3 +19,9 @@
 ## Navigation
 
 - [回到 Research 歸檔](<../archives/my-vault-research.md>)
+
+## 2026-10-09 來源複核
+
+來源已記錄讀完狀態，完整筆記仍待補。Table 1 區分 Closed-book 與只含答案文件的 Oracle；Figure 5 比較混入干擾文件後的位置效應。UUID key-value 檢索也可出現中間位置劣化，不能只歸因於 QA 語意推理。既有初讀摘要保留，新增結果補強 [[long-context-position-effects]]。
+
+目前來源章節：Lost in the Middle: How Language Models Use Long Contexts、初讀摘要。

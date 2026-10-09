@@ -29,3 +29,7 @@ Level-triggered 指依目前狀態決定行動，不等於不使用事件。工�
 ## Sources
 
 - [kubernetes-design-principles-understand-the-why](../summaries/kubernetes-design-principles-understand-the-why.md)
+
+## 2026-10-09：網路模型的實作邊界
+
+[[understanding-kubernetes-networking-in-30-minutes]] 說明網路模型由 CNI 等元件實作、Service 以 API 狀態映射可變後端；DNS 名稱解決應用發現，不能取代底層可達性。實作見 [[container-networking]]；實際運維見 [[microk8s-production-readiness]]。

@@ -35,3 +35,7 @@
 ## Sources
 
 - [lost-in-the-middle-how-language-models-use-long-context-explained](../summaries/lost-in-the-middle-how-language-models-use-long-context-explained.md)
+
+## 2026-10-09：Lost in the Middle 閱讀補充
+
+[[my-vault-research-lost-in-the-middle-how-0aac0a675]] 的來源現補記 Closed-book／Oracle 基準、混入干擾文件的位置效應，以及 UUID key-value retrieval。資料簡化後仍可出現位置效應，支持它不僅是自然語言 QA 語意問題；這仍是該研究與筆記範圍，不代表所有當前模型均有相同幅度。

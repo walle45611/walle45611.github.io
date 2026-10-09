@@ -26,3 +26,7 @@
 - [[my-vault-tech-note-08db955d8]]
 - [[my-vault-tech-note-8413de499]]
 - [[my-vault-tech-case-when-affdf4577]]
+
+## 2026-10-09：相鄰主題：資料儲存架構
+
+[[ddia-reliability-scalability-maintainability]] 補充 workload 驅動的 scale-up／scale-out 與 polyglot persistence。每日 batch 的銀行例子是來源假設；查詢語法頁不能證明跨資料庫原子性、即時一致性或失敗重試設計。系統設計中可維護性的關聯見 [[harness-engineering]]。

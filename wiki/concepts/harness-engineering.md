@@ -73,3 +73,7 @@
 ## 2026-09-06：可恢復操作與形式化驗證
 
 [[tianyin-xu-agent-infrastructure-formal-methods]] 補充了 agent 介面的另一個要求：容忍錯誤、給出回饋，並支援 undo／恢復。[[max-tegmark-vericoding-ipam-2026]] 的二手簡介則提出生成程式與證明、交外部檢查器把關的方向。兩者整合於 [[formal-verification-for-ai-generated-software]]；需區分驗證模型、檢查證明與確保真實需求正確，不能把通過檢查解讀成無條件可靠。
+
+## 2026-10-09：PR 品質與系統回饋
+
+[[matt-pocock-pr-review-bottleneck]] 補充三層品質檢查、實作與按規範重構分工，以及把重複意見轉為檢查。詳細規範按需放到 review context 是講者的流程建議，並非刪除必要任務規則；可撤回程式碼與不可撤回外部副作用須分開判斷。相鄰概念：[[ai-coding-tools]]、[[context-engineering]]。

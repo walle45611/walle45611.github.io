@@ -50,3 +50,7 @@
 ## 相鄰交付主題
 
 - [[nuitka-and-docker-deployment]]：應用映像的建置與打包；部署環境的運維基線仍另行評估。
+
+## 2026-10-09：部署與封包路徑的分工
+
+[[understanding-kubernetes-networking-in-30-minutes]] 補充 Pod／Service／DNS 排錯模型；運作中的叢集不代表 NetworkPolicy、入口流量或所有 CNI 行為已驗證。相關底層機制見 [[container-networking]]，API 設計邊界見 [[kubernetes-design-principles]]。

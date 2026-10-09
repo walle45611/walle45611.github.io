@@ -684,3 +684,18 @@
 - wiki: 更新 52 份原本與來源一致的既有摘要雜湊；已落後的 Lost in the Middle 摘要保留原雜湊。
 - verified: 53 份 YAML 可解析、正文保留、attachment 目標存在且僅於屬性列出；35 份 Overview 文獻 tag 完整；最終檢查前後 53 份 PDF 雜湊相同。
 - scope: 修改目前 raw/my-vault 文獻、必要摘要雜湊及本紀錄；未同步、全量歸檔、Blog 發佈、提交或推送。
+
+## [2026-10-09] ingest | 補齊未歸檔來源並複核既有摘要
+
+- source: 現存 raw/my-vault 筆記、Dashboard 與 raw/web-clipper，未執行 sync-vault。
+- created: 7 份摘要（Containerlab、Kubernetes networking、Matt Pocock PR review、DDIA、Slurm、VRF-Lite、FortiGate）。
+- updated: 16 份來源已變更摘要、10 份概念頁、wiki/index.md 與 3 份分類歸檔入口；保留既有 ingested_at。
+- verified: archive --check 為 sources=395、archived=395、missing=0、changed=0。
+- notes: 依來源邊界區分範例與實測，並標記 VRF 名稱、同步語意與待補實驗證據；原始來源未修改。
+
+## [2026-10-09] lint | wiki health check
+
+- checked: wiki 內部檔案連結、summary 索引、入站連結、來源重複與相關概念內容抽查。
+- fixed: 補交叉連結、MLS 抽離導覽、Lost in the Middle 閱讀補記、STP 圖片出處更新及無時效的「最新模型」表述。
+- report: [[wiki-lint-2026-10-09]]，並掛回知識庫維護入口。
+- gaps: VRF 設定、Monitor／Bakery 表述、Slurm 儲存與收尾、FortiGate 外網／NAT、CNI 與政策實作待補證據；未驗證全部來源附件與標題錨點。

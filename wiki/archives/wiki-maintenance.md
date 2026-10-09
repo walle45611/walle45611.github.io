@@ -15,3 +15,7 @@
 - [review-rules](../rules/review-rules.md)
 - [router-rules](../rules/router-rules.md)
 - [social-post-rules](../rules/social-post-rules.md)
+
+## Lint 報告
+
+- [[wiki-lint-2026-10-09]]：歸檔涵蓋、連結檢查、內容疑義與待補來源。

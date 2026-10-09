@@ -28,10 +28,12 @@
 - [Cloud Shell](<../summaries/my-vault-tech-cloud-shell-e8005f054.md>) · `raw/my-vault/Note/Tech/Cloud Shell.md`
 - [Colima + containerd 指令小抄](<../summaries/my-vault-tech-colima-containerd-abe3009c8.md>) · `raw/my-vault/Note/Tech/Colima + containerd 指令小抄.md`
 - [Containerlab 安裝與設定指南](<../summaries/my-vault-tech-containerlab-4e538a1cc.md>) · `raw/my-vault/Note/Tech/Containerlab 安裝與設定指南.md`
+- [DDIA ：Designing Data-Intensive Applications](<../summaries/ddia-reliability-scalability-maintainability.md>) · `raw/my-vault/Note/Tech/DDIA ：Designing Data-Intensive Applications.md`
 - [deadlock-management](<../summaries/blog-deadlock-management.md>) · `raw/my-vault/Note/Tech/deadlock-management.md`
 - [django-uwsgi-nginx](<../summaries/blog-django-uwsgi-nginx.md>) · `raw/my-vault/Note/Tech/django-uwsgi-nginx.md`
 - [domjudge-install-guide](<../summaries/blog-domjudge-install-guide.md>) · `raw/my-vault/Note/Tech/domjudge-install-guide.md`
 - [EVE-NG 安裝與設定指南](<../summaries/my-vault-tech-eve-ng-d3ad43ece.md>) · `raw/my-vault/Note/Tech/EVE-NG 安裝與設定指南.md`
+- [FortiGate 與 Cisco IOL：UTM OSPF Lab](<../summaries/fortigate-cisco-iol-utm-ospf-lab.md>) · `raw/my-vault/Note/Tech/FortiGate 與 Cisco IOL：UTM OSPF Lab.md`
 - [git-worktree](<../summaries/blog-git-worktree.md>) · `raw/my-vault/Note/Tech/git-worktree.md`
 - [GLBP  熱備份路由協定指南](<../summaries/my-vault-tech-glbp-5571b5098.md>) · `raw/my-vault/Note/Tech/GLBP  熱備份路由協定指南.md`
 - [GNS3 安裝與設定指南](<../summaries/my-vault-tech-gns3-f238533e1.md>) · `raw/my-vault/Note/Tech/GNS3 安裝與設定指南.md`
@@ -88,6 +90,7 @@
 - [setting-hexo-ga](<../summaries/blog-setting-hexo-ga.md>) · `raw/my-vault/Note/Tech/setting-hexo-ga.md`
 - [setting-hoex](<../summaries/blog-setting-hexo.md>) · `raw/my-vault/Note/Tech/setting-hoex.md`
 - [setup-openssh-server-in-windows-with-guacamole-sftp](<../summaries/blog-setup-openssh-server-in-windows-with-guacamole-sftp.md>) · `raw/my-vault/Note/Tech/setup-openssh-server-in-windows-with-guacamole-sftp.md`
+- [Slurm 叢集架構與實作筆記](<../summaries/slurm-cluster-practice.md>) · `raw/my-vault/Note/Tech/Slurm 叢集架構與實作筆記.md`
 - [style-guide-for-python-code](<../summaries/blog-style-guide-for-python-code.md>) · `raw/my-vault/Note/Tech/style-guide-for-python-code.md`
 - [Terraform (IaC) 和 Hyper-V指南](<../summaries/my-vault-tech-terraform-iac-hyper-v-5b9362f35.md>) · `raw/my-vault/Note/Tech/Terraform (IaC) 和 Hyper-V指南.md`
 - [vLLM + Gemma4 LoRA 安裝與啟動流程](<../summaries/my-vault-tech-vllm-gemma4-lora-f0bb65d34.md>) · `raw/my-vault/Note/Tech/vLLM + Gemma4 LoRA 安裝與啟動流程.md`

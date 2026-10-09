@@ -69,14 +69,22 @@
 
 ## Summaries
 
+- [containerlab-network-labs-as-code](./summaries/containerlab-network-labs-as-code.md) · 2026-10-09: 整理Containerlab：以程式碼管理網路實驗及來源限制。
+- [understanding-kubernetes-networking-in-30-minutes](./summaries/understanding-kubernetes-networking-in-30-minutes.md) · 2026-10-09: 整理Kubernetes 網路：從 Linux 到 Pod、Service 與 DNS及來源限制。
+- [matt-pocock-pr-review-bottleneck](./summaries/matt-pocock-pr-review-bottleneck.md) · 2026-10-09: 整理Matt Pocock：解決 PR 審查瓶頸的五個心法及來源限制。
+- [ddia-reliability-scalability-maintainability](./summaries/ddia-reliability-scalability-maintainability.md) · 2026-10-09: 整理DDIA：延遲、可維護性、擴展與多資料庫及來源限制。
+- [slurm-cluster-practice](./summaries/slurm-cluster-practice.md) · 2026-10-09: 整理Slurm 安裝與雙節點叢集實作及來源限制。
+- [vrf-lite-routing-isolation](./summaries/vrf-lite-routing-isolation.md) · 2026-10-09: 整理VRF-Lite：路由隔離設定案例及來源限制。
+- [fortigate-cisco-iol-utm-ospf-lab](./summaries/fortigate-cisco-iol-utm-ospf-lab.md) · 2026-10-09: 整理FortiGate 與 Cisco IOL：UTM OSPF Lab及來源限制。
+
 - [introduction-to-memory-management-in-linux](./summaries/introduction-to-memory-management-in-linux.md) · 2026-09-30: 整理 Linux 位址映射、共享記憶體、延遲配置與 swap，標示 TLB／DMA 簡化的限制。
 
 - [my-vault-dashboard-ai-overview-839780b37](./summaries/my-vault-dashboard-ai-overview-839780b37.md) · 2026-09-26: 整理「AI Overview」的原筆記內容與章節。
-- [my-vault-dashboard-devops-technology-overview-387ae5533](./summaries/my-vault-dashboard-devops-technology-overview-387ae5533.md) · 2026-09-26: 整理「DevOps Technology Overview」的原筆記內容與章節。
+- [my-vault-dashboard-devops-technology-overview-387ae5533](./summaries/my-vault-dashboard-devops-technology-overview-387ae5533.md) · 2026-09-26: 整理目前來源內容與章節，並補記 2026-10-09 來源複核。
 - [my-vault-dashboard-iso-27001-overview-8912118af](./summaries/my-vault-dashboard-iso-27001-overview-8912118af.md) · 2026-09-26: 整理「ISO 27001 Overview」的原筆記內容與章節。
-- [my-vault-dashboard-networking-overview-895167887](./summaries/my-vault-dashboard-networking-overview-895167887.md) · 2026-09-26: 整理「TCP/OSI 網路模型完整指南」的原筆記內容與章節。
+- [my-vault-dashboard-networking-overview-895167887](./summaries/my-vault-dashboard-networking-overview-895167887.md) · 2026-09-26: 整理目前來源內容與章節，並補記 2026-10-09 來源複核。
 - [my-vault-dashboard-python-overview-61c23fcc5](./summaries/my-vault-dashboard-python-overview-61c23fcc5.md) · 2026-09-26: 整理「Python Overview」的原筆記內容與章節。
-- [my-vault-dashboard-reading-overview-22e585fb5](./summaries/my-vault-dashboard-reading-overview-22e585fb5.md) · 2026-09-26: 整理「閱讀筆記」的原筆記內容與章節。
+- [my-vault-dashboard-reading-overview-22e585fb5](./summaries/my-vault-dashboard-reading-overview-22e585fb5.md) · 2026-09-26: 整理目前來源內容與章節，並補記 2026-10-09 來源複核。
 - [my-vault-dashboard-sql-overview-bad041aa8](./summaries/my-vault-dashboard-sql-overview-bad041aa8.md) · 2026-09-26: 整理資料庫安裝與四類 SQL 語句的主題入口。
 - [my-vault-dashboard-cmu-sage-ai-overview-4c83c6ba6](./summaries/my-vault-dashboard-cmu-sage-ai-overview-4c83c6ba6.md) · 2026-09-26: 整理「cmu-sage-ai Overview」的原筆記內容與章節。
 - [my-vault-dashboard-overview-807b8620a](./summaries/my-vault-dashboard-overview-807b8620a.md) · 2026-09-26: 整理「作業系統 Overview」的原筆記內容與章節。
@@ -122,7 +130,7 @@
 - [my-vault-research-energy-efficient-implementation-of-yolov8-6ef7c1275](./summaries/my-vault-research-energy-efficient-implementation-of-yolov8-6ef7c1275.md) · 2026-09-26: 整理「Energy-efficient implementation of YOLOv8, instance segmentation, and pose detection on RISC-V SoC」的原筆記內容與章節。
 - [my-vault-research-etherchannel-4257dd934](./summaries/my-vault-research-etherchannel-4257dd934.md) · 2026-09-26: 整理「EtherChannel 介紹」的原筆記內容與章節。
 - [my-vault-research-ethernet-e5226b687](./summaries/my-vault-research-ethernet-e5226b687.md) · 2026-09-26: 整理「Ethernet 乙太網路協定指南」的原筆記內容與章節。
-- [my-vault-research-famous-synchronization-problems-e91233fa5](./summaries/my-vault-research-famous-synchronization-problems-e91233fa5.md) · 2026-09-26: 整理「Famous Synchronization Problems」的原筆記內容與章節。
+- [my-vault-research-famous-synchronization-problems-e91233fa5](./summaries/my-vault-research-famous-synchronization-problems-e91233fa5.md) · 2026-09-26: 整理目前來源內容與章節，並補記 2026-10-09 來源複核。
 - [my-vault-research-frame-relay-4878e7ef7](./summaries/my-vault-research-frame-relay-4878e7ef7.md) · 2026-09-26: 整理「Frame Relay 介紹」的原筆記內容與章節。
 - [my-vault-research-from-local-to-global-a-ab25c0a9a](./summaries/my-vault-research-from-local-to-global-a-ab25c0a9a.md) · 2026-09-26: 整理「From Local to Global: A Graph RAG Approach to Query-Focused Summarization」的原筆記內容與章節。
 - [my-vault-research-gre-c0c578d91](./summaries/my-vault-research-gre-c0c578d91.md) · 2026-09-26: 整理「GRE 介紹」的原筆記內容與章節。
@@ -133,7 +141,7 @@
 - [my-vault-research-hdlc-431ed99d3](./summaries/my-vault-research-hdlc-431ed99d3.md) · 2026-09-26: 整理「HDLC 介紹」的原筆記內容與章節。
 - [my-vault-research-http-hypertext-transfer-protocol-5a9d6fd7a](./summaries/my-vault-research-http-hypertext-transfer-protocol-5a9d6fd7a.md) · 2026-09-26: 整理「HTTP (Hypertext Transfer Protocol)」的原筆記內容與章節。
 - [my-vault-research-hamiltonian-7b03d6f6a](./summaries/my-vault-research-hamiltonian-7b03d6f6a.md) · 2026-09-26: 整理「Hamiltonian」的原筆記內容與章節。
-- [my-vault-research-hardware-synchronization-implementation-proofs-5dcea0ae1](./summaries/my-vault-research-hardware-synchronization-implementation-proofs-5dcea0ae1.md) · 2026-09-26: 整理「Hardware Synchronization Implementation & Proofs」的原筆記內容與章節。
+- [my-vault-research-hardware-synchronization-implementation-proofs-5dcea0ae1](./summaries/my-vault-research-hardware-synchronization-implementation-proofs-5dcea0ae1.md) · 2026-09-26: 整理目前來源內容與章節，並補記 2026-10-09 來源複核。
 - [my-vault-research-hashing-dd3537714](./summaries/my-vault-research-hashing-dd3537714.md) · 2026-09-26: 整理「名詞解釋和定義」的原筆記內容與章節。
 - [my-vault-research-hierarchical-memory-organization-for-wikipedia-2b84c89c6](./summaries/my-vault-research-hierarchical-memory-organization-for-wikipedia-2b84c89c6.md) · 2026-09-26: 整理「Hierarchical Memory Organization for Wikipedia Generation」的原筆記內容與章節。
 - [my-vault-research-how-to-read-and-do-222a4ab5e](./summaries/my-vault-research-how-to-read-and-do-222a4ab5e.md) · 2026-09-26: 整理「How to read and do proofs」的原筆記內容與章節。
@@ -155,7 +163,7 @@
 - [my-vault-research-ldap-light-weight-directory-access-43173b353](./summaries/my-vault-research-ldap-light-weight-directory-access-43173b353.md) · 2026-09-26: 整理「LDAP (Light-weight Directory Access Protocol)」的原筆記內容與章節。
 - [my-vault-research-llama-open-and-efficient-foundation-c61b6120e](./summaries/my-vault-research-llama-open-and-efficient-foundation-c61b6120e.md) · 2026-09-26: 整理「LLaMA: Open and Efficient Foundation Language Models」的原筆記內容與章節。
 - [my-vault-research-latex-70dfb1772](./summaries/my-vault-research-latex-70dfb1772.md) · 2026-09-26: 整理「LaTeX 論文協作使用指南」的原筆記內容與章節。
-- [my-vault-research-lamport-s-bakery-algorithm-lba-33f7f2dbf](./summaries/my-vault-research-lamport-s-bakery-algorithm-lba-33f7f2dbf.md) · 2026-09-26: 整理「Lamport's Bakery Algorithm (LBA)」的原筆記內容與章節。
+- [my-vault-research-lamport-s-bakery-algorithm-lba-33f7f2dbf](./summaries/my-vault-research-lamport-s-bakery-algorithm-lba-33f7f2dbf.md) · 2026-09-26: 整理目前來源內容與章節，並補記 2026-10-09 來源複核。
 - [my-vault-research-language-models-are-unsupervised-multitask-5e6b96109](./summaries/my-vault-research-language-models-are-unsupervised-multitask-5e6b96109.md) · 2026-09-26: 整理「Language Models are Unsupervised Multitask Learners」的原筆記內容與章節。
 - [my-vault-research-large-language-models-in-medicine-944188856](./summaries/my-vault-research-large-language-models-in-medicine-944188856.md) · 2026-09-26: 整理「Large Language Models in Medicine」的原筆記內容與章節。
 - [my-vault-research-layer-normalization-953a00c04](./summaries/my-vault-research-layer-normalization-953a00c04.md) · 2026-09-26: 整理「Layer Normalization」的原筆記內容與章節。
@@ -166,10 +174,10 @@
 - [my-vault-research-link-list-8ad5d3ef6](./summaries/my-vault-research-link-list-8ad5d3ef6.md) · 2026-09-26: 整理「Link List」的原筆記內容與章節。
 - [my-vault-research-lora-low-rank-adaptation-of-a671ad0ce](./summaries/my-vault-research-lora-low-rank-adaptation-of-a671ad0ce.md) · 2026-09-26: 整理「LoRA: Low-Rank Adaptation of Large Language Models」的原筆記內容與章節。
 - [my-vault-research-logistic-regression-log-odds-29b3a26f1](./summaries/my-vault-research-logistic-regression-log-odds-29b3a26f1.md) · 2026-09-26: 整理「Logistic Regression 與 Log-Odds 計算」的原筆記內容與章節。
-- [my-vault-research-lost-in-the-middle-how-0aac0a675](./summaries/my-vault-research-lost-in-the-middle-how-0aac0a675.md) · 2026-09-26: 整理「Lost in the Middle: How Language Models Use Long Contexts」的原筆記內容與章節；來源筆記為 `@lostmiddlehow2024.md`。
+- [my-vault-research-lost-in-the-middle-how-0aac0a675](./summaries/my-vault-research-lost-in-the-middle-how-0aac0a675.md) · 2026-09-26: 整理目前來源內容與章節，並補記 2026-10-09 來源複核。
 - [my-vault-research-low-cost-fpga-enhanced-cnn-13449d2d8](./summaries/my-vault-research-low-cost-fpga-enhanced-cnn-13449d2d8.md) · 2026-09-26: 整理「Low-Cost FPGA-Enhanced CNN Accelerator for Real-Time YOLO Object Detection & Classification」的原筆記內容與章節。
 - [my-vault-research-m-way-degree-search-tree-54cf4dbb8](./summaries/my-vault-research-m-way-degree-search-tree-54cf4dbb8.md) · 2026-09-26: 整理「M-Way Search」的原筆記內容與章節。
-- [my-vault-research-mls-mls-multilayer-switching-61f7c8912](./summaries/my-vault-research-mls-mls-multilayer-switching-61f7c8912.md) · 2026-09-26: 整理「MLS (MLS，multilayer switching)」的原筆記內容與章節。
+- [my-vault-research-mls-mls-multilayer-switching-61f7c8912](./summaries/my-vault-research-mls-mls-multilayer-switching-61f7c8912.md) · 2026-09-26: 整理目前來源內容與章節，並補記 2026-10-09 來源複核。
 - [my-vault-research-00-ml-dl-map-5e7ca515e](./summaries/my-vault-research-00-ml-dl-map-5e7ca515e.md) · 2026-09-26: 整理「ML / DL 筆記地圖」的原筆記內容與章節。
 - [my-vault-research-01-chain-rule-and-total-99420c745](./summaries/my-vault-research-01-chain-rule-and-total-99420c745.md) · 2026-09-26: 整理「Chain Rule and Total Derivative」的原筆記內容與章節。
 - [my-vault-research-01-entropy-and-information-904f7aa34](./summaries/my-vault-research-01-entropy-and-information-904f7aa34.md) · 2026-09-26: 整理「Entropy and Information」的原筆記內容與章節。
@@ -203,18 +211,18 @@
 - [my-vault-research-matrix-chain-multiplication-4442fe425](./summaries/my-vault-research-matrix-chain-multiplication-4442fe425.md) · 2026-09-26: 整理「Matrix-chain Multiplication」的原筆記內容與章節。
 - [my-vault-research-medical-graph-rag-evidence-based-62508d3f8](./summaries/my-vault-research-medical-graph-rag-evidence-based-62508d3f8.md) · 2026-09-26: 整理「Medical Graph RAG: Evidence-based Medical Large Language Model via Graph Retrieval-Augmented Generation」的原筆記內容與章節。
 - [my-vault-research-memgpt-towards-llms-as-operating-4f65677be](./summaries/my-vault-research-memgpt-towards-llms-as-operating-4f65677be.md) · 2026-09-26: 整理「MemGPT Towards LLMs as Operating Systems」的原筆記內容與章節。
-- [my-vault-research-mutex-locks-semaphores-f4379acfc](./summaries/my-vault-research-mutex-locks-semaphores-f4379acfc.md) · 2026-09-26: 整理「Mutex Locks & Semaphores」的原筆記內容與章節。
+- [my-vault-research-mutex-locks-semaphores-f4379acfc](./summaries/my-vault-research-mutex-locks-semaphores-f4379acfc.md) · 2026-09-26: 整理目前來源內容與章節，並補記 2026-10-09 來源複核。
 - [my-vault-research-nat-network-address-translation-b22f534f7](./summaries/my-vault-research-nat-network-address-translation-b22f534f7.md) · 2026-09-26: 整理「NAT (Network Address Translation) 介紹」的原筆記內容與章節。
 - [my-vault-research-ndp-neighbor-discovery-protocol-1dc5210dc](./summaries/my-vault-research-ndp-neighbor-discovery-protocol-1dc5210dc.md) · 2026-09-26: 整理「NDP (Neighbor Discovery Protocol) 基本介紹」的原筆記內容與章節。
 - [my-vault-research-np-c-a64e6a2c5](./summaries/my-vault-research-np-c-a64e6a2c5.md) · 2026-09-26: 整理「NP-C常見的問題」的原筆記內容與章節。
 - [my-vault-research-ntp-network-time-protocol-2a5cd5d36](./summaries/my-vault-research-ntp-network-time-protocol-2a5cd5d36.md) · 2026-09-26: 整理「NTP (Network Time Protocol)」的原筆記內容與章節。
 - [my-vault-research-neural-machine-translation-by-jointly-0ff4a0101](./summaries/my-vault-research-neural-machine-translation-by-jointly-0ff4a0101.md) · 2026-09-26: 整理「Neural Machine Translation by Jointly Learning to Align and Translate」的原筆記內容與章節。
 - [my-vault-research-obst-optimal-binary-search-tree-26ca19d23](./summaries/my-vault-research-obst-optimal-binary-search-tree-26ca19d23.md) · 2026-09-26: 整理「問題背景」的原筆記內容與章節。
-- [my-vault-research-ospfv2-ospfv3-lsa-ed1c0f1f2](./summaries/my-vault-research-ospfv2-ospfv3-lsa-ed1c0f1f2.md) · 2026-09-26: 整理「OSPFv2」的原筆記內容與章節。
+- [my-vault-research-ospfv2-ospfv3-lsa-ed1c0f1f2](./summaries/my-vault-research-ospfv2-ospfv3-lsa-ed1c0f1f2.md) · 2026-09-26: 整理目前來源內容與章節，並補記 2026-10-09 來源複核。
 - [my-vault-research-pki-public-key-infrastructure-f023e2d22](./summaries/my-vault-research-pki-public-key-infrastructure-f023e2d22.md) · 2026-09-26: 整理「PKI (Public key infrastructure)公鑰基礎設施」的原筆記內容與章節。
 - [my-vault-research-ppp-pppoe-de8e0672a](./summaries/my-vault-research-ppp-pppoe-de8e0672a.md) · 2026-09-26: 整理「PPP (Point to Point)」的原筆記內容與章節。
 - [my-vault-research-performance-of-a-large-language-22c5383ec](./summaries/my-vault-research-performance-of-a-large-language-22c5383ec.md) · 2026-09-26: 整理「Performance of a Large Language Model on the Reasoning Tasks of a Physician」的原筆記內容與章節。
-- [my-vault-research-peterson-s-solution-2d712149a](./summaries/my-vault-research-peterson-s-solution-2d712149a.md) · 2026-09-26: 整理「Peterson's Solution」的原筆記內容與章節。
+- [my-vault-research-peterson-s-solution-2d712149a](./summaries/my-vault-research-peterson-s-solution-2d712149a.md) · 2026-09-26: 整理目前來源內容與章節，並補記 2026-10-09 來源複核。
 - [my-vault-research-proving-np-completeness-38e352bcb](./summaries/my-vault-research-proving-np-completeness-38e352bcb.md) · 2026-09-26: 整理「Proving NP-Completeness」的原筆記內容與章節。
 - [my-vault-research-qlora-efficient-finetuning-of-quantized-52761c370](./summaries/my-vault-research-qlora-efficient-finetuning-of-quantized-52761c370.md) · 2026-09-26: 整理「QLoRA: Efficient Finetuning of Quantized LLMs」的原筆記內容與章節。
 - [my-vault-research-radius-remote-authentication-dial-in-862748b19](./summaries/my-vault-research-radius-remote-authentication-dial-in-862748b19.md) · 2026-09-26: 整理「RADIUS (Remote Authentication Dial In User Service)」的原筆記內容與章節。
@@ -227,7 +235,7 @@
 - [my-vault-research-roformer-enhanced-transformer-with-rotary-f8f618898](./summaries/my-vault-research-roformer-enhanced-transformer-with-rotary-f8f618898.md) · 2026-09-26: 整理「RoFormer: Enhanced Transformer with Rotary Position Embedding」的原筆記內容與章節。
 - [my-vault-research-rod-cutting-problem-7f6a075c1](./summaries/my-vault-research-rod-cutting-problem-7f6a075c1.md) · 2026-09-26: 整理「Rod-Cutting Problem」的原筆記內容與章節。
 - [my-vault-research-routing-d3f96a8fc](./summaries/my-vault-research-routing-d3f96a8fc.md) · 2026-09-26: 整理「Routing 基本技術」的原筆記內容與章節。
-- [my-vault-research-stp-spanning-tree-9eeb1ba1d](./summaries/my-vault-research-stp-spanning-tree-9eeb1ba1d.md) · 2026-09-26: 整理 STP 選舉、TCN／TCA／TC、Max Age 與 MAC aging 的差別及故障圖解邊界。
+- [my-vault-research-stp-spanning-tree-9eeb1ba1d](./summaries/my-vault-research-stp-spanning-tree-9eeb1ba1d.md) · 2026-09-26: 整理目前來源內容與章節，並補記 2026-10-09 來源複核。
 - [my-vault-research-selection-problem-91fa4d063](./summaries/my-vault-research-selection-problem-91fa4d063.md) · 2026-09-26: 整理「定義和問題」的原筆記內容與章節。
 - [my-vault-research-sequence-to-sequence-learning-with-2cdc8336b](./summaries/my-vault-research-sequence-to-sequence-learning-with-2cdc8336b.md) · 2026-09-26: 整理「Sequence to Sequence Learning with Neural Networks」的原筆記內容與章節。
 - [my-vault-research-single-source-shortest-paths-problem-d55d9b70e](./summaries/my-vault-research-single-source-shortest-paths-problem-d55d9b70e.md) · 2026-09-26: 整理「Single-Source Shortest Paths 演算法總覽」的原筆記內容與章節。
@@ -251,8 +259,8 @@
 - [my-vault-research-unifying-large-language-models-and-bb6129313](./summaries/my-vault-research-unifying-large-language-models-and-bb6129313.md) · 2026-09-26: 整理「Unifying Large Language Models and Knowledge Graphs: A Roadmap」的原筆記內容與章節。
 - [my-vault-research-who-international-standard-terminologies-on-25cdb40a5](./summaries/my-vault-research-who-international-standard-terminologies-on-25cdb40a5.md) · 2026-09-26: 整理「WHO International Standard Terminologies on Traditional Chinese Medicine」的原筆記內容與章節。
 - [my-vault-research-zhifangdantai-fine-tuning-graph-based-7cabc5af9](./summaries/my-vault-research-zhifangdantai-fine-tuning-graph-based-7cabc5af9.md) · 2026-09-26: 整理「ZhiFangDanTai: Fine-Tuning Graph-Based Retrieval-Augmented Generation Model for Traditional Chinese Medicine Formula」的原筆記內容與章節。
-- [my-vault-research-monitor-f68b5966b](./summaries/my-vault-research-monitor-f68b5966b.md) · 2026-09-26: 整理「同步原語互轉實作 (Semaphore $\Leftrightarrow$ Monitor)」的原筆記內容與章節。
-- [my-vault-research-real-time-system-rma-8e0d277ac](./summaries/my-vault-research-real-time-system-rma-8e0d277ac.md) · 2026-09-26: 整理「real-time system RMA 與實務排程分析整理」的原筆記內容與章節。
+- [my-vault-research-monitor-f68b5966b](./summaries/my-vault-research-monitor-f68b5966b.md) · 2026-09-26: 整理目前來源內容與章節，並補記 2026-10-09 來源複核。
+- [my-vault-research-real-time-system-rma-8e0d277ac](./summaries/my-vault-research-real-time-system-rma-8e0d277ac.md) · 2026-09-26: 整理目前來源內容與章節，並補記 2026-10-09 來源複核。
 - [my-vault-research-note-f7d23c2ec](./summaries/my-vault-research-note-f7d23c2ec.md) · 2026-09-26: 整理「一聽就懂的邏輯表達力」的原筆記內容與章節。
 - [my-vault-research-binary-search-tree-00dff8faa](./summaries/my-vault-research-binary-search-tree-00dff8faa.md) · 2026-09-26: 整理「二元搜尋樹 (Binary Search Tree)」的原筆記內容與章節。
 - [my-vault-research-disjoint-sets-1e372c2b3](./summaries/my-vault-research-disjoint-sets-1e372c2b3.md) · 2026-09-26: 整理「互斥集合 (Disjoint Sets)」的原筆記內容與章節。
@@ -288,7 +296,7 @@
 - [my-vault-tech-cisco-stackwise-flexstack-6bd1af4cb](./summaries/my-vault-tech-cisco-stackwise-flexstack-6bd1af4cb.md) · 2026-09-26: 整理「Cisco StackWise FlexStack」的原筆記內容與章節。
 - [my-vault-tech-cisco-switch-security-2f6c09047](./summaries/my-vault-tech-cisco-switch-security-2f6c09047.md) · 2026-09-26: 整理「Cisco Switch Security 設定」的原筆記內容與章節。
 - [my-vault-tech-cisco-syslog-43addf7a4](./summaries/my-vault-tech-cisco-syslog-43addf7a4.md) · 2026-09-26: 整理「Cisco Syslog 設定」的原筆記內容與章節。
-- [my-vault-tech-cisco-vtp-vlan-trunking-protocol-b925ddb90](./summaries/my-vault-tech-cisco-vtp-vlan-trunking-protocol-b925ddb90.md) · 2026-09-26: 整理「Cisco VTP (VLAN Trunking Protocol)」的原筆記內容與章節。
+- [my-vault-tech-cisco-vtp-vlan-trunking-protocol-b925ddb90](./summaries/my-vault-tech-cisco-vtp-vlan-trunking-protocol-b925ddb90.md) · 2026-09-26: 整理目前來源內容與章節，並補記 2026-10-09 來源複核。
 - [my-vault-tech-cisco-device-security-6f1cfdcf2](./summaries/my-vault-tech-cisco-device-security-6f1cfdcf2.md) · 2026-09-26: 整理「Cisco device Security」的原筆記內容與章節。
 - [my-vault-tech-cisco-errordisable-c32952ca3](./summaries/my-vault-tech-cisco-errordisable-c32952ca3.md) · 2026-09-26: 整理「Cisco errordisable 指令使用」的原筆記內容與章節。
 - [my-vault-tech-cisco-ssh-and-telnet-729a3eec1](./summaries/my-vault-tech-cisco-ssh-and-telnet-729a3eec1.md) · 2026-09-26: 整理「Cisco ssh and telnet 安全設定」的原筆記內容與章節。
@@ -297,7 +305,7 @@
 - [my-vault-tech-cisco-route-redistribute-0b0dc757c](./summaries/my-vault-tech-cisco-route-redistribute-0b0dc757c.md) · 2026-09-26: 整理「Cisco 路由重分配 (route redistribute)」的原筆記內容與章節。
 - [my-vault-tech-cloud-shell-e8005f054](./summaries/my-vault-tech-cloud-shell-e8005f054.md) · 2026-09-26: 整理「Cloud Shell」的原筆記內容與章節。
 - [my-vault-tech-colima-containerd-abe3009c8](./summaries/my-vault-tech-colima-containerd-abe3009c8.md) · 2026-09-26: 整理「Colima + containerd 指令小抄」的原筆記內容與章節。
-- [my-vault-tech-containerlab-4e538a1cc](./summaries/my-vault-tech-containerlab-4e538a1cc.md) · 2026-09-26: 整理「Containerlab 安裝與設定指南」的原筆記內容與章節。
+- [my-vault-tech-containerlab-4e538a1cc](./summaries/my-vault-tech-containerlab-4e538a1cc.md) · 2026-09-26: 整理目前來源內容與章節，並補記 2026-10-09 來源複核。
 - [my-vault-tech-eve-ng-d3ad43ece](./summaries/my-vault-tech-eve-ng-d3ad43ece.md) · 2026-09-26: 整理「EVE-NG 安裝與設定指南」的原筆記內容與章節。
 - [my-vault-tech-glbp-5571b5098](./summaries/my-vault-tech-glbp-5571b5098.md) · 2026-09-26: 整理「GLBP  熱備份路由協定指南」的原筆記內容與章節。
 - [my-vault-tech-gns3-f238533e1](./summaries/my-vault-tech-gns3-f238533e1.md) · 2026-09-26: 整理「GNS3 安裝與設定指南」的原筆記內容與章節。

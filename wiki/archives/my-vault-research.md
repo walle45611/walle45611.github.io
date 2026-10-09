@@ -4,7 +4,37 @@
 
 ## Research
 
+- [00 - ML-DL Map](<../summaries/my-vault-research-00-ml-dl-map-5e7ca515e.md>) · `raw/my-vault/Note/Research/00 - ML-DL Map.md`
+- [01 - Chain Rule and Total Derivative](<../summaries/my-vault-research-01-chain-rule-and-total-99420c745.md>) · `raw/my-vault/Note/Research/01 - Chain Rule and Total Derivative.md`
+- [01 - Entropy and Information](<../summaries/my-vault-research-01-entropy-and-information-904f7aa34.md>) · `raw/my-vault/Note/Research/01 - Entropy and Information.md`
+- [01 - Gradient Descent and Learning Rate](<../summaries/my-vault-research-01-gradient-descent-and-learning-04260985a.md>) · `raw/my-vault/Note/Research/01 - Gradient Descent and Learning Rate.md`
+- [01 - Momentum](<../summaries/my-vault-research-01-momentum-d240f3c17.md>) · `raw/my-vault/Note/Research/01 - Momentum.md`
+- [01 - Neuron Features and Parameters](<../summaries/my-vault-research-01-neuron-features-and-parameters-6f6be6844.md>) · `raw/my-vault/Note/Research/01 - Neuron Features and Parameters.md`
+- [01 - Train Validation and Test Sets](<../summaries/my-vault-research-01-train-validation-and-test-8fbd19a63.md>) · `raw/my-vault/Note/Research/01 - Train Validation and Test Sets.md`
 - [01 背包問題 (01 Knapsack Problem)](<../summaries/my-vault-research-01-01-knapsack-problem-a4021e9c5.md>) · `raw/my-vault/Note/Research/01 背包問題 (01 Knapsack Problem).md`
+- [02 - Computational Graph and Backpropagation](<../summaries/my-vault-research-02-computational-graph-and-backpropagation-099c79474.md>) · `raw/my-vault/Note/Research/02 - Computational Graph and Backpropagation.md`
+- [02 - Hidden Layers and Multiple Features](<../summaries/my-vault-research-02-hidden-layers-and-multiple-68c62c9bd.md>) · `raw/my-vault/Note/Research/02 - Hidden Layers and Multiple Features.md`
+- [02 - K-Fold Cross Validation](<../summaries/my-vault-research-02-k-fold-cross-validation-16ab9e9f2.md>) · `raw/my-vault/Note/Research/02 - K-Fold Cross Validation.md`
+- [02 - Likelihood NLL and Cross-Entropy](<../summaries/my-vault-research-02-likelihood-nll-and-cross-7a41f9924.md>) · `raw/my-vault/Note/Research/02 - Likelihood NLL and Cross-Entropy.md`
+- [02 - Local Minima Saddle Points and Critical Points](<../summaries/my-vault-research-02-local-minima-saddle-points-ecba74a9a.md>) · `raw/my-vault/Note/Research/02 - Local Minima Saddle Points and Critical Points.md`
+- [02 - RMSProp](<../summaries/my-vault-research-02-rmsprop-b19d35656.md>) · `raw/my-vault/Note/Research/02 - RMSProp.md`
+- [03 - Activation Functions](<../summaries/my-vault-research-03-activation-functions-9bde5ad28.md>) · `raw/my-vault/Note/Research/03 - Activation Functions.md`
+- [03 - Adam](<../summaries/my-vault-research-03-adam-d35274cd5.md>) · `raw/my-vault/Note/Research/03 - Adam.md`
+- [03 - Gradient Accumulation Across a Batch](<../summaries/my-vault-research-03-gradient-accumulation-across-a-ef90031c7.md>) · `raw/my-vault/Note/Research/03 - Gradient Accumulation Across a Batch.md`
+- [03 - MAE and MSE](<../summaries/my-vault-research-03-mae-and-mse-5b5354b17.md>) · `raw/my-vault/Note/Research/03 - MAE and MSE.md`
+- [03 - Taylor Expansion Hessian and Eigenvalues](<../summaries/my-vault-research-03-taylor-expansion-hessian-and-4e2a6e16f.md>) · `raw/my-vault/Note/Research/03 - Taylor Expansion Hessian and Eigenvalues.md`
+- [03 - Underfitting Overfitting and Model Bias](<../summaries/my-vault-research-03-underfitting-overfitting-and-model-1e57ea5b9.md>) · `raw/my-vault/Note/Research/03 - Underfitting Overfitting and Model Bias.md`
+- [04 - Batch Mini-batch and Batch Size](<../summaries/my-vault-research-04-batch-mini-batch-and-08a56f0ee.md>) · `raw/my-vault/Note/Research/04 - Batch Mini-batch and Batch Size.md`
+- [04 - Batch Normalization](<../summaries/my-vault-research-04-batch-normalization-76a3d4447.md>) · `raw/my-vault/Note/Research/04 - Batch Normalization.md`
+- [04 - Differentials Gradients and Jacobians](<../summaries/my-vault-research-04-differentials-gradients-and-jacobians-9e6bd226e.md>) · `raw/my-vault/Note/Research/04 - Differentials Gradients and Jacobians.md`
+- [04 - Model Complexity Data Augmentation and Optimization Failure](<../summaries/my-vault-research-04-model-complexity-data-augmentation-b34c2883a.md>) · `raw/my-vault/Note/Research/04 - Model Complexity Data Augmentation and Optimization Failure.md`
+- [04 - Optimizer Comparison](<../summaries/my-vault-research-04-optimizer-comparison-ba0473c29.md>) · `raw/my-vault/Note/Research/04 - Optimizer Comparison.md`
+- [04 - Softmax](<../summaries/my-vault-research-04-softmax-412f65ce0.md>) · `raw/my-vault/Note/Research/04 - Softmax.md`
+- [05 - AdaGrad and Gradient Scaling](<../summaries/my-vault-research-05-adagrad-and-gradient-scaling-99fc0cc04.md>) · `raw/my-vault/Note/Research/05 - AdaGrad and Gradient Scaling.md`
+- [05 - Feature Normalization](<../summaries/my-vault-research-05-feature-normalization-75a44e2d6.md>) · `raw/my-vault/Note/Research/05 - Feature Normalization.md`
+- [05 - Learning Rate Scheduling and Warm-up](<../summaries/my-vault-research-05-learning-rate-scheduling-and-68af01487.md>) · `raw/my-vault/Note/Research/05 - Learning Rate Scheduling and Warm-up.md`
+- [99 - Figure Sources](<../summaries/my-vault-research-99-figure-sources-887d5858d.md>) · `raw/my-vault/Note/Research/99 - Figure Sources.md`
+- [@lostmiddlehow2024](<../summaries/my-vault-research-lost-in-the-middle-how-0aac0a675.md>) · `raw/my-vault/Note/Research/@lostmiddlehow2024.md`
 - [Activity Network](<../summaries/my-vault-research-activity-network-30dafc487.md>) · `raw/my-vault/Note/Research/Activity Network.md`
 - [Adelson-Velsky and Landis tree(AVL Tree)](<../summaries/my-vault-research-adelson-velsky-and-landis-tree-6eaf640b5.md>) · `raw/my-vault/Note/Research/Adelson-Velsky and Landis tree(AVL Tree).md`
 - [Agentic AI - A Comprehensive Survey of Architectures, Applications, and Future Directions](<../summaries/my-vault-research-agentic-ai-a-comprehensive-survey-5be73f5b1.md>) · `raw/my-vault/Note/Research/Agentic AI - A Comprehensive Survey of Architectures, Applications, and Future Directions.md`
@@ -84,7 +114,6 @@
 - [LLaMA - Open and Efficient Foundation Language Models](<../summaries/my-vault-research-llama-open-and-efficient-foundation-c61b6120e.md>) · `raw/my-vault/Note/Research/LLaMA - Open and Efficient Foundation Language Models.md`
 - [Logistic Regression 與 Log-Odds 計算](<../summaries/my-vault-research-logistic-regression-log-odds-29b3a26f1.md>) · `raw/my-vault/Note/Research/Logistic Regression 與 Log-Odds 計算.md`
 - [LoRA - Low-Rank Adaptation of Large Language Models](<../summaries/my-vault-research-lora-low-rank-adaptation-of-a671ad0ce.md>) · `raw/my-vault/Note/Research/LoRA - Low-Rank Adaptation of Large Language Models.md`
-- [Lost in the Middle How Language Models Use Long Contexts](<../summaries/my-vault-research-lost-in-the-middle-how-0aac0a675.md>) · `raw/my-vault/Note/Research/@lostmiddlehow2024.md`
 - [Low-Cost FPGA-Enhanced CNN Accelerator for Real-Time YOLO Object Detection & Classification](<../summaries/my-vault-research-low-cost-fpga-enhanced-cnn-13449d2d8.md>) · `raw/my-vault/Note/Research/Low-Cost FPGA-Enhanced CNN Accelerator for Real-Time YOLO Object Detection & Classification.md`
 - [M-Way(Degree) Search tree And B-Tree](<../summaries/my-vault-research-m-way-degree-search-tree-54cf4dbb8.md>) · `raw/my-vault/Note/Research/M-Way(Degree) Search tree And B-Tree.md`
 - [Matrix-chain Multiplication](<../summaries/my-vault-research-matrix-chain-multiplication-4442fe425.md>) · `raw/my-vault/Note/Research/Matrix-chain Multiplication.md`
@@ -109,6 +138,7 @@
 - [queue-1](<../summaries/blog-queue-1.md>) · `raw/my-vault/Note/Research/queue-1.md`
 - [RADIUS (Remote Authentication Dial In User Service)](<../summaries/my-vault-research-radius-remote-authentication-dial-in-862748b19.md>) · `raw/my-vault/Note/Research/RADIUS (Remote Authentication Dial In User Service).md`
 - [ReAct - Synergizing Reasoning and Acting in Language Models](<../summaries/my-vault-research-react-synergizing-reasoning-and-acting-9837cf319.md>) · `raw/my-vault/Note/Research/ReAct - Synergizing Reasoning and Acting in Language Models.md`
+- [README](<../summaries/my-vault-research-readme-51228647c.md>) · `raw/my-vault/Note/Research/README.md`
 - [real-time system RMA 與實務排程分析整理](<../summaries/my-vault-research-real-time-system-rma-8e0d277ac.md>) · `raw/my-vault/Note/Research/real-time system RMA 與實務排程分析整理.md`
 - [Recurrent Neural Network (RNN)](<../summaries/my-vault-research-recurrent-neural-network-rnn-0eec6f0dd.md>) · `raw/my-vault/Note/Research/Recurrent Neural Network (RNN).md`
 - [Red-Black tree](<../summaries/my-vault-research-red-black-tree-1741e2b72.md>) · `raw/my-vault/Note/Research/Red-Black tree.md`
@@ -144,6 +174,7 @@
 - [uva-272-340-0816](<../summaries/blog-uva-272-340-0816.md>) · `raw/my-vault/Note/Research/uva-272-340-0816.md`
 - [virtual-judge-hdu-1232](<../summaries/blog-virtual-judge-hdu-1232.md>) · `raw/my-vault/Note/Research/virtual-judge-hdu-1232.md`
 - [virtual-judge-p2249](<../summaries/blog-virtual-judge-p2249.md>) · `raw/my-vault/Note/Research/virtual-judge-p2249.md`
+- [VRF-Lite (Virtual Routing and Forwarding)](<../summaries/vrf-lite-routing-isolation.md>) · `raw/my-vault/Note/Research/VRF-Lite (Virtual Routing and Forwarding).md`
 - [WHO International Standard Terminologies on Traditional Chinese Medicine](<../summaries/my-vault-research-who-international-standard-terminologies-on-25cdb40a5.md>) · `raw/my-vault/Note/Research/WHO International Standard Terminologies on Traditional Chinese Medicine.md`
 - [ZhiFangDanTai Fine-Tuning Graph-Based Retrieval-Augmented Generation Model for Traditional Chinese Medicine Formula](<../summaries/my-vault-research-zhifangdantai-fine-tuning-graph-based-7cabc5af9.md>) · `raw/my-vault/Note/Research/ZhiFangDanTai Fine-Tuning Graph-Based Retrieval-Augmented Generation Model for Traditional Chinese Medicine Formula.md`
 - [一聽就懂的邏輯表達力](<../summaries/my-vault-research-note-f7d23c2ec.md>) · `raw/my-vault/Note/Research/一聽就懂的邏輯表達力.md`
@@ -171,35 +202,3 @@
 - [計算機組織MIPS 浮點數整理](<../summaries/my-vault-research-mips-393261f3c.md>) · `raw/my-vault/Note/Research/計算機組織MIPS 浮點數整理.md`
 - [防火牆基本術語](<../summaries/my-vault-research-note-5c9860307.md>) · `raw/my-vault/Note/Research/防火牆基本術語.md`
 - [雙端堆或是雙端優先隊列 (Double-ended Heap OR  double-ended priority queue，DEPQ)](<../summaries/my-vault-research-double-ended-heap-or-double-133c3d610.md>) · `raw/my-vault/Note/Research/雙端堆或是雙端優先隊列 (Double-ended Heap OR  double-ended priority queue，DEPQ).md`
-
-
-- [00 - ML-DL Map](<../summaries/my-vault-research-00-ml-dl-map-5e7ca515e.md>) · `raw/my-vault/Note/Research/00 - ML-DL Map.md`
-- [01 - Chain Rule and Total Derivative](<../summaries/my-vault-research-01-chain-rule-and-total-99420c745.md>) · `raw/my-vault/Note/Research/01 - Chain Rule and Total Derivative.md`
-- [01 - Entropy and Information](<../summaries/my-vault-research-01-entropy-and-information-904f7aa34.md>) · `raw/my-vault/Note/Research/01 - Entropy and Information.md`
-- [01 - Gradient Descent and Learning Rate](<../summaries/my-vault-research-01-gradient-descent-and-learning-04260985a.md>) · `raw/my-vault/Note/Research/01 - Gradient Descent and Learning Rate.md`
-- [01 - Momentum](<../summaries/my-vault-research-01-momentum-d240f3c17.md>) · `raw/my-vault/Note/Research/01 - Momentum.md`
-- [01 - Neuron Features and Parameters](<../summaries/my-vault-research-01-neuron-features-and-parameters-6f6be6844.md>) · `raw/my-vault/Note/Research/01 - Neuron Features and Parameters.md`
-- [01 - Train Validation and Test Sets](<../summaries/my-vault-research-01-train-validation-and-test-8fbd19a63.md>) · `raw/my-vault/Note/Research/01 - Train Validation and Test Sets.md`
-- [02 - Computational Graph and Backpropagation](<../summaries/my-vault-research-02-computational-graph-and-backpropagation-099c79474.md>) · `raw/my-vault/Note/Research/02 - Computational Graph and Backpropagation.md`
-- [02 - Hidden Layers and Multiple Features](<../summaries/my-vault-research-02-hidden-layers-and-multiple-68c62c9bd.md>) · `raw/my-vault/Note/Research/02 - Hidden Layers and Multiple Features.md`
-- [02 - K-Fold Cross Validation](<../summaries/my-vault-research-02-k-fold-cross-validation-16ab9e9f2.md>) · `raw/my-vault/Note/Research/02 - K-Fold Cross Validation.md`
-- [02 - Likelihood NLL and Cross-Entropy](<../summaries/my-vault-research-02-likelihood-nll-and-cross-7a41f9924.md>) · `raw/my-vault/Note/Research/02 - Likelihood NLL and Cross-Entropy.md`
-- [02 - Local Minima Saddle Points and Critical Points](<../summaries/my-vault-research-02-local-minima-saddle-points-ecba74a9a.md>) · `raw/my-vault/Note/Research/02 - Local Minima Saddle Points and Critical Points.md`
-- [02 - RMSProp](<../summaries/my-vault-research-02-rmsprop-b19d35656.md>) · `raw/my-vault/Note/Research/02 - RMSProp.md`
-- [03 - Activation Functions](<../summaries/my-vault-research-03-activation-functions-9bde5ad28.md>) · `raw/my-vault/Note/Research/03 - Activation Functions.md`
-- [03 - Adam](<../summaries/my-vault-research-03-adam-d35274cd5.md>) · `raw/my-vault/Note/Research/03 - Adam.md`
-- [03 - Gradient Accumulation Across a Batch](<../summaries/my-vault-research-03-gradient-accumulation-across-a-ef90031c7.md>) · `raw/my-vault/Note/Research/03 - Gradient Accumulation Across a Batch.md`
-- [03 - MAE and MSE](<../summaries/my-vault-research-03-mae-and-mse-5b5354b17.md>) · `raw/my-vault/Note/Research/03 - MAE and MSE.md`
-- [03 - Taylor Expansion Hessian and Eigenvalues](<../summaries/my-vault-research-03-taylor-expansion-hessian-and-4e2a6e16f.md>) · `raw/my-vault/Note/Research/03 - Taylor Expansion Hessian and Eigenvalues.md`
-- [03 - Underfitting Overfitting and Model Bias](<../summaries/my-vault-research-03-underfitting-overfitting-and-model-1e57ea5b9.md>) · `raw/my-vault/Note/Research/03 - Underfitting Overfitting and Model Bias.md`
-- [04 - Batch Mini-batch and Batch Size](<../summaries/my-vault-research-04-batch-mini-batch-and-08a56f0ee.md>) · `raw/my-vault/Note/Research/04 - Batch Mini-batch and Batch Size.md`
-- [04 - Batch Normalization](<../summaries/my-vault-research-04-batch-normalization-76a3d4447.md>) · `raw/my-vault/Note/Research/04 - Batch Normalization.md`
-- [04 - Differentials Gradients and Jacobians](<../summaries/my-vault-research-04-differentials-gradients-and-jacobians-9e6bd226e.md>) · `raw/my-vault/Note/Research/04 - Differentials Gradients and Jacobians.md`
-- [04 - Model Complexity Data Augmentation and Optimization Failure](<../summaries/my-vault-research-04-model-complexity-data-augmentation-b34c2883a.md>) · `raw/my-vault/Note/Research/04 - Model Complexity Data Augmentation and Optimization Failure.md`
-- [04 - Optimizer Comparison](<../summaries/my-vault-research-04-optimizer-comparison-ba0473c29.md>) · `raw/my-vault/Note/Research/04 - Optimizer Comparison.md`
-- [04 - Softmax](<../summaries/my-vault-research-04-softmax-412f65ce0.md>) · `raw/my-vault/Note/Research/04 - Softmax.md`
-- [05 - AdaGrad and Gradient Scaling](<../summaries/my-vault-research-05-adagrad-and-gradient-scaling-99fc0cc04.md>) · `raw/my-vault/Note/Research/05 - AdaGrad and Gradient Scaling.md`
-- [05 - Feature Normalization](<../summaries/my-vault-research-05-feature-normalization-75a44e2d6.md>) · `raw/my-vault/Note/Research/05 - Feature Normalization.md`
-- [05 - Learning Rate Scheduling and Warm-up](<../summaries/my-vault-research-05-learning-rate-scheduling-and-68af01487.md>) · `raw/my-vault/Note/Research/05 - Learning Rate Scheduling and Warm-up.md`
-- [99 - Figure Sources](<../summaries/my-vault-research-99-figure-sources-887d5858d.md>) · `raw/my-vault/Note/Research/99 - Figure Sources.md`
-- [README](<../summaries/my-vault-research-readme-51228647c.md>) · `raw/my-vault/Note/Research/README.md`

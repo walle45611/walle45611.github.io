@@ -1,8 +1,8 @@
 # STP (Spanning tree) 完整指南
 
 - source: `raw/my-vault/Note/Research/STP (Spanning tree) 完整指南.md`
-- source_sha256: `d49accdbf68da93dddf2dfaed34e775d838404cfec0aab6531348c8a74dbf7b5`
-- source_reviewed: 2026-09-30
+- source_sha256: `49c829d997cc2ca6310f2783810ab371542fdc608bb2e51ce07e9e2e954084a0`
+- source_reviewed: 2026-10-09
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research
@@ -22,7 +22,7 @@
 
 ## 來源邊界
 
-本次更新依來源內的 2026-09-28 補充與 Cisco 參考連結整理；兩張故障圖的原始出版來源未提供。未執行設備實驗，不以圖中簡化文字推導立即清空 MAC 或跳過 STP timer。
+本次更新依來源內的 2026-09-28 補充與 Cisco 參考連結整理；來源現已補上 ENCOR 350-401 Official Cert Guide 第 2 版第 2 章圖 2-4、2-5。未執行設備實驗，不以圖中簡化文字推導立即清空 MAC 或跳過 STP timer。
 
 ## Navigation
 
@@ -31,3 +31,9 @@
 ## 相關概念
 
 - [[network-protocol-layers]]：將二層拓樸、SMTP／IMAP 服務與主機防火牆放回各自的排錯層次。
+
+## 2026-10-09 來源複核
+
+來源已補齊故障圖書籍出處；仍需保留傳統 STP 與 RSTP 流程、TC 通知與 MAC aging 的差異，不把圖示當成設備實測。
+
+目前來源章節：為什麼需要、Spanning-tree standards、STP 802.1D、BPDU (bridge protocol data unit)、Bridge ID、STP Cost、port id、802.1D STP 狀態、802.1D STP Role、802.1D STP 選舉的整體流程、手動計算STP、802.1D 選路範例、case 1、case 2、802.1D timer、802.1D TC(Topology change)機制、TCN、TC、TCA 的差別、逐跳通報與確認，不是一般 Ethernet flooding、Max Age 與 MAC aging 是兩件事、圖一：SW1–SW3 link 仍 up，但 SW3 收不到有效 BPDU、圖二：SW1–SW2 實體斷線，SW3 等待舊資訊失效、與 RSTP 的界線及參考、RSTP 802.1W、802.1W 狀態、802.1W interface Role、802.1W BPDU、Link Type、802.1W Sync、802.1W TC機制、802.1W設定、MST 802.1S (**Multiple Spanning Tree Protocol**)、MST 概觀、MST area、MST內部的STP、MSTP設定、保護STP的topology、防止非預期的BPDU、portfast、RootGuard、BPDUguard、BPDUfilter、防止BPDU意外遺失、LoopGuard、UDLD (Unidirectional link detection)、uplinkfast、BackboneFast、保護STP的topology的指令總結、參考資料。

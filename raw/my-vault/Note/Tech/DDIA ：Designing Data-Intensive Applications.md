@@ -116,6 +116,8 @@ DDIA 書中對 **Sloppy Quorum** 的預設行為比較是：Cassandra 預設停�
 
 整體而言，Key Range Partitioning 著重於保留資料排序與 Range Query 效率，Hash Partitioning 著重於改善資料分布，Consistent Hashing 主要解決 Node 增減時的資料重新分配問題，而 Key Salting 則是針對相同 Key 的大量請求所造成的 Hot Spot 進行改善。
 
+**Partitioning and Secondary Indexes（分區與二級索引）**：當資料依照 Primary Key 進行 Partitioning 時，可以直接定位對應的 Partition，但透過 Secondary Index 查詢時，符合條件的資料可能分散在不同 Partition，因此主要有 **Document-Based Partitioning（依文件分區）** 與 **Term-Based Partitioning（依索引詞分區）** 兩種方式。前者讓每個 Partition 維護自己的 **Local Index（本地索引）**，寫入時只需要更新資料所在的 Partition，但讀取時可能需要透過 **Scatter/Gather** 查詢多個 Partition 並合併結果，例如 MongoDB 與 Elasticsearch；後者則根據 Index Term 分配索引資料，形成 **Global Index（全域索引）**，可以減少索引查詢時需要存取的 Partition 數量，但寫入時可能涉及跨 Partition 更新索引，增加 **Write Amplification**、Network I/O 與一致性維護成本，例如 DynamoDB 的 Global Secondary Index。整體而言，Document-Based 通常有較簡單的索引維護流程，而 Term-Based 能改善特定索引查詢的效率，但實際效能仍取決於 Workload、資料分布與查詢模式。
+
 ## 參考資料
 
 [分布式系统&DDIA | 土妹土妹](https://youtube.com/playlist?list=PLeRPcJf8vjt3pQjcgSAxeXvYCyTa-luOc&si=Ek-fff2djNvASZMu)

@@ -140,6 +140,37 @@ DDIA 書中對 **Sloppy Quorum** 的預設行為比較是：Cassandra 預設停�
 
 整體而言，Document-Based 通常有較簡單的索引維護流程，而 Term-Based 能改善特定索引查詢的效率，但實際效能仍取決於 Workload、資料分布與查詢模式。
 
+## Rebalancing（重新平衡）
+
+**定義與目的**：當 Cluster 新增或移除 Node，或不同 Node 的負載分布失衡時，需要將資料與請求負載從一個 Node 移至另一個 Node。這個重新分配負載的過程稱為 **Rebalancing（重新平衡）**，主要有三個目標：
+
+- 重新平衡後，資料儲存量與讀寫請求負載應合理分散至各個 Node；若節點容量不同，也需要考量其承載能力。
+- 重新平衡進行期間，資料庫應持續接受讀取與寫入。
+- 只搬移必要的資料，以縮短重新平衡時間，並降低 Network I/O 與 Disk I/O 負載。
+
+**為什麼不直接使用 Hash Mod N**：如果直接透過 `hash(key) % N` 決定資料所在的 Node，其中 N 是 Node 數量，當 N 改變時，大量 Key 的對應位置也會改變。例如同一個 Hash Value：`123456 % 10 = 6`，但 `123456 % 11 = 3`。因此，即使只增加一個 Node，也可能需要搬移大量資料，難以達成「只搬移必要資料」的目標，並增加搬移期間維持讀寫服務的成本。問題在於直接將 Node 數量作為取餘數的基準；若使用固定的邏輯 Partition 數量，再另外維護 Partition 到 Node 的對應，就不需要因 Node 數量改變而重新計算所有 Key 的 Partition。
+
+**Fixed Number of Partitions（固定分區數量）**：一種較簡單的做法是預先建立比 Node 數量多的 Partition，再讓每個 Node 負責多個 Partition。例如 10 個 Nodes 分配 1,000 個 Partitions，在負載均勻且不計 Replica 的假設下，每個 Node 約負責 100 個 Partitions。新增一個 Node 時，可以從原有 Nodes 各移交少量 Partitions，使新 Node 分擔負載。這裡的數量是概念示例，實際分區數仍需依資料量、節點資源與系統限制規劃。
+
+![[Assets/Note/Tech/DDIA/ddia-fixed-partitions-rebalancing.png]]
+
+圖中從 4 個 Nodes 擴充為 5 個 Nodes，Partition 總數仍維持 20；原有 Nodes 分別將 `p4`、`p9`、`p14`、`p19` 移交給 Node 4。**Partition 的邊界與 Key 到 Partition 的對應保持不變，改變的是 Partition 所在的 Node**，因此只需搬移被重新分配的 Partitions，而不是重新分配大部分 Key。若各 Partition 大小或流量不同，仍需依實際負載選擇搬移對象，不能只看 Partition 數量。
+
+書中以 **Elasticsearch** 與 **Riak** 作為這類設計的例子。[Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html) 的 Primary Shard 數量在建立 Index 時決定，Node 增減時可以重新分配 Shards；若要調整 Shard 數量，則需使用 Split、Shrink 或 Reindex 等額外操作。[Riak](https://docs.riak.com/riak/kv/2.2.0/setup/planning/cluster-capacity.1.html) 則透過 Ring Size 決定邏輯 Partition 數量，再分配至 Nodes。
+
+固定分區數量的限制是需要**預先估計適合的 Partition 數量**。太少時，每個 Partition 可能過大，降低負載調整的細緻程度，也限制能有效利用的 Nodes 數量；太多時，則會增加 Metadata、記憶體與管理成本。若資料量日後大幅成長或縮小，原先選定的數量可能不再合適，因此固定分區數量不保證在所有資料規模下都能維持最佳效能。
+
+**Dynamic Partitioning（動態分區）**：相較於固定分區數量，動態分區讓 Partition 的數量與邊界隨資料量調整。Partition 過大時，可以拆成兩個較小的 Partitions；相鄰 Partitions 過小時，也可以視系統支援與策略合併。這對 **Key Range Partitioning（依鍵值範圍分區）** 特別有用，因為初始 Key 分布可能難以預測，固定邊界容易造成部分 Partitions 過大、其他 Partitions 幾乎沒有資料。切分後的 Partitions 可以再分配至其他 Nodes，但切分與搬移本身仍有成本，也不一定能解決單一 Hot Key 的負載問題。
+
+這個概念可以類比 **B+ Tree** 在資料增加時分裂頁面、資料減少時合併頁面：兩者都會依容量調整管理單位。不過，分散式 Partition 還涉及跨 Node 搬移、Routing Metadata、Replication 與持續讀寫，因此只是概念上的相似，並不是同一個機制。[HBase](https://hbase.apache.org/book.html) 的 Region 自動切分就是動態分區的例子。
+
+**Pre-Splitting（預先切分）與初始分區**：如果一開始沒有資料，系統可能先從單一 Partition 開始，尚未累積到切分門檻前，初期負載就會集中在一個 Node。若能預估 Key 分布，可以先建立一組初始分區邊界，也就是 Pre-Splitting，讓初期寫入就能分散。這是一種可選的規劃方式，並非一定要手動設定；邊界設計仍需配合實際 Key 分布，例如單調遞增的 Key 即使預先切分，也可能持續集中在最後一個範圍。
+
+**MongoDB 的 Range 與 Hashed Sharding**：MongoDB 支援依原始 Shard Key 的範圍分區，也支援先對 Shard Key 進行 Hash，再將 Hash Value 的範圍劃分為 Chunks／Ranges。因此，**使用 Hash 與動態調整分區並不互斥**，Hash 描述 Key 如何映射，動態分區則描述分區數量與邊界如何管理。空集合的初始分區方式依版本、Shard Key 類型與設定而異；Hashed Sharding 在支援的條件下可以自動建立並分配初始 Chunks，不一定需要手動 Pre-Splitting。參考：[MongoDB Shard Keys](https://www.mongodb.com/docs/manual/core/sharding-shard-key/)、[初始資料分區](https://www.mongodb.com/docs/manual/core/sharding-data-partitioning/)。
+
+> [!note] 書中機制與 MongoDB 版本差異
+> DDIA 描述的 MongoDB 自動 Chunk 切分需放在當時版本的背景理解。從 MongoDB 6.0.3 起，原本的 Automatic Chunk Splitting 不再執行，不能直接將「Partition 超過門檻就自動切分」當成目前所有 MongoDB 版本的行為；應依版本的 Balancer 與 Range Migration 機制判斷。參考：[MongoDB Auto-Splitting 說明](https://www.mongodb.com/docs/manual/reference/method/sh.status/)。
+
 ## 參考資料
 
 [分布式系统&DDIA | 土妹土妹](https://youtube.com/playlist?list=PLeRPcJf8vjt3pQjcgSAxeXvYCyTa-luOc&si=Ek-fff2djNvASZMu)

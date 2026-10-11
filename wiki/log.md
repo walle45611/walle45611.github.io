@@ -699,3 +699,11 @@
 - fixed: 補交叉連結、MLS 抽離導覽、Lost in the Middle 閱讀補記、STP 圖片出處更新及無時效的「最新模型」表述。
 - report: [[wiki-lint-2026-10-09]]，並掛回知識庫維護入口。
 - gaps: VRF 設定、Monitor／Bakery 表述、Slurm 儲存與收尾、FortiGate 外網／NAT、CNI 與政策實作待補證據；未驗證全部來源附件與標題錨點。
+
+## [2026-10-12] blog-publish | Containerlab 安裝與設定指南
+
+- authorization: 使用者要求將既有「Containerlab 安裝與設定指南」發布到 Blog。
+- updated: 在 `raw/my-vault/Note/Tech/Containerlab 安裝與設定指南.md` 加入 `blog: true`、標題、2026-10-12 日期、Networking 分類與固定網址；將 ChatGPT 對話內部連結改為整理日期文字，保留原安裝、IOL、UTM／Rosetta 與故障排查內容。
+- verified: 已確認 frontmatter 寫入 GitHub main，變更提交 `a703b436a657b9949afc28d1b411dcc74c07c3df`；Cloudflare Pages workflow 於檢查時為 `in_progress`，尚未確認正式網站部署完成。
+- url: https://blog.walle4561.com/articles/posts/containerlab-installation-guide/
+- scope: 修改選定文章與本紀錄；未執行 `sync-vault`、全量歸檔或在本地原始 My vault 上寫入。

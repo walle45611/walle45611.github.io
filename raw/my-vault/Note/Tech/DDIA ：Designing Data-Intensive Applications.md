@@ -128,7 +128,17 @@ DDIA 書中對 **Sloppy Quorum** 的預設行為比較是：Cassandra 預設停�
 
 不過，查詢時的缺點是容易放大 **Tail Latency（尾端延遲）**：若要取得完整結果，就必須等待所有參與查詢的 Partition 回應，因此整體延遲容易受到最慢的 Partition 影響，還要加上網路傳輸與結果合併的成本。參與的 Partition 越多，遇到慢節點的機會也越高，使少數慢查詢更容易拉高 P95、P99 等尾端延遲。這類本地索引設計可見於 [MongoDB](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/)、[Riak 的 Secondary Indexes（2i）](https://docs.riak.com/riak/kv/latest/using/reference/secondary-indexes/index.html)、[Cassandra 的傳統 Secondary Indexes（2i）](https://cassandra.apache.org/doc/latest/cassandra/developing/cql/indexing/indexing-concepts.html)，以及 [Elasticsearch](https://www.elastic.co/docs/deploy-manage/distributed-architecture/reading-and-writing-documents)；實際需要查詢的範圍仍取決於 Routing、Partition Key 與索引實作。
 
-**Secondary Indexing by Term（依索引詞建立次級索引）**：根據 Index Term 分配索引資料，形成 **Global Index（全域索引）**，可以減少索引查詢時需要存取的 Partition 數量，但寫入時可能涉及跨 Partition 更新索引，增加 **Write Amplification**、Network I/O 與一致性維護成本，例如 DynamoDB 的 Global Secondary Index。整體而言，Document-Based 通常有較簡單的索引維護流程，而 Term-Based 能改善特定索引查詢的效率，但實際效能仍取決於 Workload、資料分布與查詢模式。
+**Secondary Indexing by Term（依索引詞建立次級索引）**：除了原始資料以外，也對次級索引本身進行 Partitioning，根據 **Index Term（索引詞）** 將索引項目分配至不同 Partition，形成 **Global Secondary Index（全域次級索引）**。這裡的 Global 指索引涵蓋所有資料 Partition 的內容，不代表整份索引集中在同一個 Node。Term 可以透過 **Hash** 分配至不同索引 Partition，以改善分布；也可以依 Term 的範圍分區，以保留範圍查詢能力。
+
+![[Assets/Note/Tech/DDIA/ddia-term-secondary-index-global.png]]
+
+以圖中的紅色汽車查詢為例，`color:red` 的索引集中在 Partition 0，包含文件 ID `191`、`306`、`768`，即使原始文件分別存放在 Partition 0 與 Partition 1，也可以先到負責這個 Term 的索引 Partition 取得符合條件的 ID。因此，**單一 Term 的索引查詢通常不必對所有資料 Partition 執行 Scatter/Gather**，能減少查詢需要等待的 Partition 數量，降低大量分散查詢造成的 **Tail Latency Amplification（尾端延遲放大）**。不過，若要取回原始文件，仍可能需要存取多個資料 Partition；多 Term 查詢也可能涉及多個索引 Partition，所以並非完全不會有 Scatter/Gather 或 Tail Latency，熱門 Term 也可能形成 Hot Spot。
+
+這種方式的代價是**索引管理與寫入流程較複雜**：原始資料與索引可能位於不同 Partition，一次寫入可能需要更新多個索引 Partition，增加 **Write Amplification**、Network I/O 與協調成本，使寫入較慢或耗用更多資源；系統也需要額外管理索引 Partition 的分布、擴縮容、故障恢復，以及資料與索引之間的一致性。部分系統會採用非同步索引更新來降低同步寫入成本，但查詢可能暫時看不到最新資料，例如 [DynamoDB 的 Global Secondary Index](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html) 就採用非同步更新與最終一致性。
+
+**Term 名稱的由來**：這個名稱來自 **Full-Text Index（全文索引）**，它是一種次級索引，其中的 Terms 指文件中出現、經過文字分析後用於索引與查詢的詞彙。將這個概念延伸到一般欄位索引時，Term 也可以是 `color:red`、`make:Ford` 這樣的欄位與值組合，不一定是自然語言中的單字。參考：[全文檢索與倒排索引](https://www.elastic.co/docs/solutions/search/full-text/how-full-text-works)。
+
+整體而言，Document-Based 通常有較簡單的索引維護流程，而 Term-Based 能改善特定索引查詢的效率，但實際效能仍取決於 Workload、資料分布與查詢模式。
 
 ## 參考資料
 

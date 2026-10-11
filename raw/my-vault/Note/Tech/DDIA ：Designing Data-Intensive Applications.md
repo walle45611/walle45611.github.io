@@ -187,6 +187,12 @@ DDIA 書中對 **Sloppy Quorum** 的預設行為比較是：Cassandra 預設停�
 | Dynamic Partitioning | Dataset 大小與切分／合併門檻 | 增加 Partitions，讓大小維持在目標範圍附近 | 可搬移既有 Partitions；總數不必隨 Nodes 等比例增加 |
 | Partitioning Proportionally to Nodes | Node 數量 × 每 Node 的邏輯分區數 | 平均 Partition 大小增加 | 增加 Token／Partitions，切分部分既有範圍，使平均大小下降 |
 
+**Operations：自動與人工 Rebalancing 的取捨**：Rebalancing 在操作上需要考量 **Automation（自動化）與可控性之間的 Trade-off**。全自動重新平衡可以降低人工負擔，並快速回應 Node 增減與故障，但資料搬移會消耗 Network I/O、Disk I/O，並改變請求的流向，使系統在高負載或故障期間的行為較難預測。人工控制則能選擇搬移時機與範圍，但也增加操作成本，並可能延後恢復或負載調整。因此，書中提出可以讓系統自動產生搬移建議，再由管理者確認，保留 **Human in the Loop（人工介入）**，而不是所有重新平衡都直接自動執行。
+
+**Automatic Failure Detection 與 Cascading Failure（連鎖故障）**：自動重新平衡與自動故障偵測結合時尤其需要注意。例如 Node A 因負載過高而回應變慢，其他 Nodes 可能將它誤判為故障，開始把 A 的 Partitions 或請求負載轉移到其他 Nodes。如果接手的 Nodes 原本就接近容量上限，再加上資料搬移、複製與重試流量，就可能使它們也過載、回應變慢，進一步觸發更多故障判定與負載轉移，形成連鎖故障。即使 A 確實故障，剩餘 Nodes 也必須有足夠的餘裕承接負載，否則自動恢復仍可能放大問題。書中的重點是：**故障偵測無法只靠逾時就可靠區分節點故障與暫時過載，恢復動作本身也會產生額外負載**。
+
+**以 Kubernetes 作為延伸例子**：Kubernetes 可以偵測 Node 狀態，並由 Controllers 與 Scheduler 建立、排程替代 Pods；但 Kubernetes 本身不會直接理解或搬移資料庫的 Partitions，這部分通常由資料庫的複製／重新平衡機制或 Operator 處理。若 Pod 重排程與資料庫資料恢復同時發生，仍需考量接手 Nodes 的資源餘裕、儲存限制，以及恢復時的 I/O 負載。實務上可依系統需求限制搬移速率與並行數量、保留故障時的容量餘裕，並在高負載或大規模搬移時保留人工介入的機會。這是對書中原則的應用，不代表 Kubernetes 會自動替所有資料庫完成 Partition Rebalancing。參考：[Kubernetes Scheduling、Preemption 與 Eviction](https://kubernetes.io/docs/concepts/scheduling-eviction/)。
+
 ## 參考資料
 
 [分布式系统&DDIA | 土妹土妹](https://youtube.com/playlist?list=PLeRPcJf8vjt3pQjcgSAxeXvYCyTa-luOc&si=Ek-fff2djNvASZMu)

@@ -171,6 +171,22 @@ DDIA 書中對 **Sloppy Quorum** 的預設行為比較是：Cassandra 預設停�
 > [!note] 書中機制與 MongoDB 版本差異
 > DDIA 描述的 MongoDB 自動 Chunk 切分需放在當時版本的背景理解。從 MongoDB 6.0.3 起，原本的 Automatic Chunk Splitting 不再執行，不能直接將「Partition 超過門檻就自動切分」當成目前所有 MongoDB 版本的行為；應依版本的 Balancer 與 Range Migration 機制判斷。參考：[MongoDB Auto-Splitting 說明](https://www.mongodb.com/docs/manual/reference/method/sh.status/)。
 
+**Partitioning Proportionally to Nodes（分區數量與節點數量成比例）**：第三種策略是讓每個 Node 負責固定數量的邏輯 Partitions，使 Cluster 的 Partition 總數隨 Node 數量增加，書中以 **Cassandra** 與 **Ketama** 為例。在 Node 數量不變時，Dataset 成長會使每個 Partition 的平均資料量增加；新增 Nodes 後，Partition 總數增加，平均 Partition 大小又會縮小。如果資料量與 Node 數量大致同步成長，就能讓平均 Partition 大小維持相對穩定，但實際負載仍取決於 Key 分布、流量與各 Node 的能力。
+
+**新增 Node 與 Token Range 切分**：書中描述的隨機分配方式，是讓新 Node 在 Hash Ring 上選取固定數量的新 Token 位置。每個位置會切開原有的 Token Range，新 Node 接手其中一段，其餘部分仍由原有 Node 負責。這可以理解為從多個既有 Partitions 各分走一部分，而不是將所有 Key 重新映射；分割位置是隨機的，不保證每次都恰好分成大小相等的兩半。Token／Virtual Node 數量足夠多時，可以藉由多次分配降低隨機偏差，使新 Node 較有機會取得合理的負載份額，但也會增加 Metadata 與管理成本。
+
+這裡的 Partition 指 **Token Range／Virtual Node 所代表的分布單位**，不等於 Cassandra 資料模型中由同一個 Partition Key 所識別的資料分區。書中提到當時 Cassandra 每個 Node 預設有 256 個 Virtual Nodes，並指出 Cassandra 3.0 引入另一種 Token 分配演算法，以改善隨機分配造成的不均。這個預設值具有版本背景，目前官方配置文件列出的 `num_tokens` 預設值為 16，實際仍需依版本與設定確認。參考：[Cassandra Token 分配](https://cassandra.apache.org/doc/latest/cassandra/managing/operating/topo_changes.html)、[num_tokens 配置](https://cassandra.apache.org/doc/latest/cassandra/managing/configuration/cass_yaml_file.html)。
+
+**與 Consistent Hashing 的關係**：在 Hash Function 的輸出範圍中選取 Token，並以這些位置切分 Hash Ring，對應到原始 Consistent Hashing 的設計。新增 Node 時主要搬移它新接手的 Token Ranges，避免直接使用 `hash(key) % N` 在 N 改變後造成大量重新映射。這種隨機邊界的策略需要以 Hash Value 作為分區空間；有些其他雜湊分配演算法也能達到減少資料搬移的效果，並使用較少的 Metadata，但其實作不一定採用相同的 Hash Ring 與 Virtual Nodes。
+
+**三種分區管理策略比較**：以下描述平均情況，仍需考量資料與請求是否均勻分布。
+
+| 策略 | Partition 總數主要由什麼決定 | Dataset 成長、Node 數量不變時 | 新增 Node 時 |
+| --- | --- | --- | --- |
+| Fixed Number of Partitions | 預先設定的固定數量 | 平均 Partition 大小增加 | 搬移既有 Partitions，通常不改變邊界與總數 |
+| Dynamic Partitioning | Dataset 大小與切分／合併門檻 | 增加 Partitions，讓大小維持在目標範圍附近 | 可搬移既有 Partitions；總數不必隨 Nodes 等比例增加 |
+| Partitioning Proportionally to Nodes | Node 數量 × 每 Node 的邏輯分區數 | 平均 Partition 大小增加 | 增加 Token／Partitions，切分部分既有範圍，使平均大小下降 |
+
 ## 參考資料
 
 [分布式系统&DDIA | 土妹土妹](https://youtube.com/playlist?list=PLeRPcJf8vjt3pQjcgSAxeXvYCyTa-luOc&si=Ek-fff2djNvASZMu)

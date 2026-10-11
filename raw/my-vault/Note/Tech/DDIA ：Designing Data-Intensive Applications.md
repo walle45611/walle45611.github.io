@@ -196,3 +196,5 @@ DDIA 書中對 **Sloppy Quorum** 的預設行為比較是：Cassandra 預設停�
 ## 參考資料
 
 [分布式系统&DDIA | 土妹土妹](https://youtube.com/playlist?list=PLeRPcJf8vjt3pQjcgSAxeXvYCyTa-luOc&si=Ek-fff2djNvASZMu)
+
+[DDIA 中文翻譯，第 5 章 | Vonng](https://vonng.gitbook.io/vonng/content/zh/ch5)

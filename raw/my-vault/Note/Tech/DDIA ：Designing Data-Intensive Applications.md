@@ -118,7 +118,17 @@ DDIA 書中對 **Sloppy Quorum** 的預設行為比較是：Cassandra 預設停�
 
 **Partitioning and Secondary Indexes（分區與次級索引）**：Secondary Index（次級索引）讓系統能透過 Primary Key 以外的欄位查詢資料，例如 Email、商品類別或訂單狀態。只提供依 Key 讀寫功能的純 **Key-Value Store** 不一定內建次級索引，但部分 Key-Value 資料庫仍提供這類功能，因此不能一概而論。次級索引在 **RDBMS** 中很常見，例如 [PostgreSQL](https://www.postgresql.org/docs/current/indexes-intro.html) 可以在非主鍵欄位建立一般索引；**Elasticsearch** 也會為欄位建立適合查詢的索引，例如全文檢索使用的 **[Inverted Index（倒排索引）](https://www.elastic.co/docs/solutions/search/full-text/how-full-text-works)**，讓使用者能依文件 ID 以外的內容搜尋資料。兩者都支援依其他欄位查詢，但使用的索引結構與查詢方式可能不同。
 
-當資料依照 Primary Key 進行 Partitioning 時，可以直接定位對應的 Partition，但透過 Secondary Index 查詢時，符合條件的資料可能分散在不同 Partition，因此主要有 **Document-Based Partitioning（依文件分區）** 與 **Term-Based Partitioning（依索引詞分區）** 兩種方式。前者讓每個 Partition 維護自己的 **Local Index（本地索引）**，寫入時只需要更新資料所在的 Partition，但讀取時可能需要透過 **Scatter/Gather** 查詢多個 Partition 並合併結果，例如 MongoDB 與 Elasticsearch；後者則根據 Index Term 分配索引資料，形成 **Global Index（全域索引）**，可以減少索引查詢時需要存取的 Partition 數量，但寫入時可能涉及跨 Partition 更新索引，增加 **Write Amplification**、Network I/O 與一致性維護成本，例如 DynamoDB 的 Global Secondary Index。整體而言，Document-Based 通常有較簡單的索引維護流程，而 Term-Based 能改善特定索引查詢的效率，但實際效能仍取決於 Workload、資料分布與查詢模式。
+當資料依照 Primary Key 進行 Partitioning 時，可以直接定位對應的 Partition，但透過 Secondary Index 查詢時，符合條件的資料可能分散在不同 Partition，因此主要有 **Document-Based Partitioning（依文件分區）** 與 **Term-Based Partitioning（依索引詞分區）** 兩種方式。前者讓每個 Partition 維護自己的 **Local Index（本地索引）**，寫入時只需要更新資料所在的 Partition，但讀取時可能需要透過 **Scatter/Gather** 查詢多個 Partition 並合併結果，例如 MongoDB 與 Elasticsearch。
+
+**Secondary Indexing by Document（依文件建立次級索引）與 Scatter/Gather**：每個 Partition 只為自己儲存的文件維護次級索引。以圖中的紅色汽車查詢為例，系統先將 `color:red` 查詢分散到各個可能包含資料的 Partition（**Scatter**），各 Partition 分別查詢本地索引，再將符合條件的文件 ID 或資料收集並合併（**Gather**）。當查詢條件無法定位特定 Partition 時，就可能需要查詢所有 Partition。
+
+![[Assets/Note/Tech/DDIA/ddia-document-secondary-index-scatter-gather.png]]
+
+這種方式在**資料庫管理與索引維護**方面比較簡單，因為資料與對應的次級索引由同一個 Partition 管理，寫入時通常只需要更新該 Partition 的本地索引，不必為每次資料變更另外協調跨 Partition 的全域索引更新。
+
+不過，查詢時的缺點是容易放大 **Tail Latency（尾端延遲）**：若要取得完整結果，就必須等待所有參與查詢的 Partition 回應，因此整體延遲容易受到最慢的 Partition 影響，還要加上網路傳輸與結果合併的成本。參與的 Partition 越多，遇到慢節點的機會也越高，使少數慢查詢更容易拉高 P95、P99 等尾端延遲。這類本地索引設計可見於 [MongoDB](https://www.mongodb.com/docs/manual/core/sharded-cluster-query-router/)、[Riak 的 Secondary Indexes（2i）](https://docs.riak.com/riak/kv/latest/using/reference/secondary-indexes/index.html)、[Cassandra 的傳統 Secondary Indexes（2i）](https://cassandra.apache.org/doc/latest/cassandra/developing/cql/indexing/indexing-concepts.html)，以及 [Elasticsearch](https://www.elastic.co/docs/deploy-manage/distributed-architecture/reading-and-writing-documents)；實際需要查詢的範圍仍取決於 Routing、Partition Key 與索引實作。
+
+**Secondary Indexing by Term（依索引詞建立次級索引）**：根據 Index Term 分配索引資料，形成 **Global Index（全域索引）**，可以減少索引查詢時需要存取的 Partition 數量，但寫入時可能涉及跨 Partition 更新索引，增加 **Write Amplification**、Network I/O 與一致性維護成本，例如 DynamoDB 的 Global Secondary Index。整體而言，Document-Based 通常有較簡單的索引維護流程，而 Term-Based 能改善特定索引查詢的效率，但實際效能仍取決於 Workload、資料分布與查詢模式。
 
 ## 參考資料
 

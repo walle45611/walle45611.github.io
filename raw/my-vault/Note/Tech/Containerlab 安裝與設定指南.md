@@ -1,8 +1,16 @@
+---
+blog: true
+blog_title: 'Containerlab 安裝與設定指南'
+blog_date: '2026-10-12'
+blog_url: https://blog.walle4561.com/articles/posts/containerlab-installation-guide/
+blog_topic: networking
+---
+
 # Containerlab 安裝與設定指南
 
 以 Apple Silicon Mac 搭配 Debian ARM64 建立網路實驗環境，涵蓋 OrbStack 與 UTM 兩種主機方式。先驗證 Containerlab，再加入 Cisco IOL Router 與 Switch；UTM 額外記錄 Rosetta 與外部 FortiGate VM 的橋接。
 
-來源：[Mac安裝網路模擬器](chatgpt-conversation://6aaf0ebe-f2b0-83ee-96dc-a5b133d99eed)；整理日期：2026-09-20。
+初次整理：2026-09-20；UTM 實驗補充：2026-10-07。
 
 ## 環境架構
 

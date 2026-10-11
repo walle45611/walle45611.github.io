@@ -10,8 +10,6 @@ blog_topic: networking
 
 以 Apple Silicon Mac 搭配 Debian ARM64 建立網路實驗環境，涵蓋 OrbStack 與 UTM 兩種主機方式。先驗證 Containerlab，再加入 Cisco IOL Router 與 Switch；UTM 額外記錄 Rosetta 與外部 FortiGate VM 的橋接。
 
-初次整理：2026-09-20；UTM 實驗補充：2026-10-07。
-
 ## 環境架構
 
 ```text

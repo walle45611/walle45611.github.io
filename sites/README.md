@@ -49,6 +49,8 @@ blog_url: https://blog.walle4561.com/articles/posts/example-article/
 
 ## 本機建置
 
+`/publications/` 是獨立的論文頁，內容維護於 `sites/publications.html`，依 Journal 與 Conference 分類並採 IEEE 引用格式。審稿中的稿件需明確標示狀態；作者使用投稿時的拼寫，不自行推定期刊、DOI 或頁碼。建站器會產生此頁、主選單連結與 sitemap 項目。
+
 需有 Rust／Cargo。以下命令皆從專案根目錄執行；首次建置需能取得 Cargo 相依套件。
 
 ```bash

@@ -324,6 +324,10 @@ fn build_site(config: &BuilderConfig, articles: &[Article]) -> std::io::Result<(
         &render_archive(articles),
     )?;
     write_output(
+        &config.out_dir.join("publications/index.html"),
+        &render_publications(),
+    )?;
+    write_output(
         &config
             .out_dir
             .join("topics/data-structures-algorithms/index.html"),
@@ -463,6 +467,7 @@ fn render_sitemap(articles: &[Article]) -> String {
     let mut urls = vec![
         "/".to_string(),
         "/articles/".to_string(),
+        "/publications/".to_string(),
         "/topics/data-structures-algorithms/".to_string(),
         "/topics/network-operating-systems/".to_string(),
     ];
@@ -489,6 +494,16 @@ fn render_home(articles: &[Article]) -> String {
         "Notes on software, systems, and language models.",
         "/",
         &body,
+        "website",
+    )
+}
+
+fn render_publications() -> String {
+    render_page(
+        "Publications",
+        "Journal and conference papers by Kuo-Wei Ho, including manuscripts under peer review.",
+        "/publications/",
+        include_str!("../../../../publications.html"),
         "website",
     )
 }
@@ -719,7 +734,7 @@ fn render_page(
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous">
     <meta name="color-scheme" content="light">
     <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="/styles.css?v=7">
+    <link rel="stylesheet" href="/styles.css?v=8">
     <meta property="og:type" content="{}">
     <meta property="og:title" content="{}">
     <meta property="og:description" content="{}">
@@ -733,6 +748,7 @@ fn render_page(
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="/">Home</a>
         <a href="/articles/">Archive</a>
+        <a href="/publications/">Publications</a>
         <a href="/topics/data-structures-algorithms/">DSA</a>
         <a href="/topics/network-operating-systems/">OS &amp; Networking</a>
         <a href="https://linktr.ee/walle4561" target="_blank" rel="noopener noreferrer">Linktree</a>

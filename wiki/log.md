@@ -443,3 +443,13 @@
 - updated: 納入既有 wiki concepts／摘要整合、扁平 daily、移除總索引／獨立 report 與規則精簡；archive 工具不再要求 wiki/index.md。依 2026-10-18 的 30 天期限再清除 9 份早於 2026-09-19 的本地 daily，保留 11 份並更新導航；log 保留期限內原有條目及此次本機紀錄。
 - verified: 整合後所有既有來源筆記／剪藏逐檔雜湊與備份一致，唯獲授權的兩個 R2 圖片嵌入改為本地。12 項 Rust 測試、fmt、clippy -D warnings 通過；建站產生 83 篇文章、302 個輸出附件，各來源雜湊符合 manifest。stage-assets 新增 R2 附件，未取消追蹤其他發佈附件；作用中 wiki Markdown 連結目標無缺漏。
 - gaps: /tmp 備份屬暫存，舊提交另有 Git 備份分支；既有剪藏的 Markdown 行尾雙空白及筆記尾端空白保留，以免改寫來源。未將未引用附件或本機私密設定加入 Git；提交後另核對推送與部署。
+
+## [2026-10-18] blog-publish | 外部圖床圖片遷移為本機附件
+
+- authorization: 使用者要求下載 Imgur 等外部圖床圖片、改成本地附件連結，完成後 commit、push 並確認 Blog 部署正常。
+- checked: 實際發佈的 Research／Tech 筆記有 60 個外部圖片網址，分布於 21 篇文章：54 個 imgur.com、5 個 i.imgur.com、1 個 i.ibb.co；比對 Web Clipper 未發現引用同批網址的來源。未發佈筆記的 Wikimedia 插圖不在此次 Blog 遷移範圍。
+- updated: 成功下載並完整驗證 60 張原圖（57 PNG、2 JPEG、1 WebP，共 26,024,778 bytes），依實際內容格式存入 `raw/my-vault/Assets/External/imgur/`、`imgbb/`，21 份筆記改用本地 Obsidian 嵌入；原說明文字及既有尺寸屬性保留。來源 URL、下載 URL、原檔 SHA-256、尺寸與引用筆記記錄於 `sites/external-assets.json`，README 加入維護說明。
+- updated: 建站器使用圖片嵌入的說明文字作 alt 並進行 HTML escaping；純數字及 800x600 之類尺寸提示仍使用檔名作預設 alt，新增回歸測試。既有過期摘要雜湊未冒充刷新，無摘要雜湊符合遷移前來源可直接更新。
+- verified: 60 張圖通過解碼／格式／尺寸與 SHA-256 驗證，無 Imgur 刪除提示圖或重複內容；21 份筆記除圖片引用外逐字一致。13 項 Rust 測試、fmt、clippy -D warnings 與 git diff --check 通過；實際建站產生 83 篇文章、361 個輸出附件。逐篇檢查外部 img src 為 0、本機圖片缺檔為 0，60 張遷移圖片的建站輸出與原檔雜湊完全一致。
+- verified: 建站後執行 stage-assets，新增 60 個附件，未移除其他 Git 附件；暫存變更僅含本次圖片遷移及必要渲染／紀錄檔。
+- gaps: 不刪除外部圖床原檔，不更動帳號或圖床設定；提交後再核對 GitHub Actions 與正式 Blog。

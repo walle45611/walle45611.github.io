@@ -21,7 +21,7 @@ blog_url: https://blog.walle4561.com/articles/posts/windows-l2tp-connect-error-7
 
 <!--more-->
 
-![圖 1. : Blog Image](https://imgur.com/TpAWGlJ.png)
+![[Assets/External/imgur/TpAWGlJ.png|圖 1. : Blog Image]]
 
 ## WAN mini port definition
 
@@ -33,19 +33,19 @@ WAN mini ports are typically installed automatically when a computer is connecte
 
 ## 開始除錯
 
-![圖 2. : Windows VPN 連接錯誤](https://imgur.com/44XrYRw.png)
+![[Assets/External/imgur/44XrYRw.png|圖 2. : Windows VPN 連接錯誤]]
 
 1. 我一定先確定對方的電腦可不可以 ping 到公司的對外連 ip。
 2. 開始交叉測試帳號密碼是不是可以，為了測試 Radius 是不是有問題。
 3. 我問了這個發生錯誤電腦的主人說這個錯誤訊息是為什麼發生的他說他**重置**了他的**網路介面卡**
 4. 我開始查詢 Windows Events log 我想說走到這步了，我看看是什麼 Error Code 說不定會遇到以前遇過的錯誤訊息，然後就出現了 720
 
-    ![圖 3. : Windows Events log](https://imgur.com/OTXieNt.png)
+    ![[Assets/External/imgur/OTXieNt.png|圖 3. : Windows Events log]]
 
 5. 然後我就突然想到某個夜晚的除錯，哈哈哈，簡單來說就是 Windows TCP/IP 出現故障所以呢需要把這個 WAN Miniport(IP) 解除安裝此 Driver 再重開機，重新讓 Windows 安裝。
    1. control -> 裝置和印表機 -> 裝置管理員
 
-        ![圖 4. : Driver 示意圖](https://imgur.com/fq6lEsr.png)
+        ![[Assets/External/imgur/fq6lEsr.png|圖 4. : Driver 示意圖]]
 
 ## 參考
 

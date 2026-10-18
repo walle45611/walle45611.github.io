@@ -23,7 +23,7 @@ blog_url: https://blog.walle4561.com/articles/posts/virtual-judge-p2249/
 
 <!--more-->
 
-![1. Blog Image](https://imgur.com/LLJNmPR.png)
+![[Assets/External/imgur/LLJNmPR.png|1. Blog Image]]
 
 * [P2249 題目連結](https://www.luogu.com.cn/problem/P2249)
 * 這題解題思路主要是使用二分搜尋法來解決問題。透過不斷縮小範圍來尋找目標數字的位置，當找到相同的數字時，即可將其所在的中間位置輸出。

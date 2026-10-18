@@ -17,7 +17,7 @@ blog_url: https://blog.walle4561.com/articles/posts/tree-introduc/
 
   
 
-![圖 2. : A sample tree](https://imgur.com/LzDtjZ9.png)
+![[Assets/External/imgur/LzDtjZ9.png|圖 2. : A sample tree]]
 
   
 
@@ -45,7 +45,7 @@ blog_url: https://blog.walle4561.com/articles/posts/tree-introduc/
 
 * 也可以使用以下方法 $(A(B, C(E, F), D))$ 下圖為資料結構中真實的樣子，以該樹的 degree 為三，所以要開四格一格為自己的資料如下圖：
 
-![圖 3. : List Representtation](https://imgur.com/hiqw0DL.png)
+![[Assets/External/imgur/hiqw0DL.png|圖 3. : List Representtation]]
 
   
 
@@ -79,4 +79,4 @@ $$
 
 * 以 *(A(B, C(E, F), D))* 為例如下圖：
 
-![圖 4. : ](https://imgur.com/scqhzkk.png)
+![[Assets/External/imgur/scqhzkk.png|圖 4. : ]]

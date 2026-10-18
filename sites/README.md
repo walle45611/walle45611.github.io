@@ -47,6 +47,8 @@ blog_url: https://blog.walle4561.com/articles/posts/example-article/
 
 建站僅接受 `raw/my-vault/Note/Research/` 與 `raw/my-vault/Note/Tech/`（含子目錄）中明確設為 YAML 布林值 `blog: true` 的筆記；僅有 `Blog` tag、`blog: "true"` 或位於其他目錄的筆記均不發佈。`raw/web-clipper/` 不作為 Blog 來源。建站仍掃描其他 Note 的名稱以將未發佈筆記連結轉為文字，並讀取 `raw/my-vault/00_Dashboard/資料結構和演算法 Overview.md` 作分類，該檔案及其中的演算法區段需保留。
 
+外部圖床圖片已下載至 `raw/my-vault/Assets/External/`，文章使用本地 Obsidian 嵌入；原網址、檔案格式、尺寸、雜湊與引用筆記記錄於 `sites/external-assets.json`。新圖片優先以本機附件管理，建站後再執行 `stage-assets`。
+
 ## 本機建置
 
 `/publications/` 是獨立的論文頁，內容維護於 `sites/publications.html`，依 Journal 與 Conference 分類並採 IEEE 引用格式。審稿中的稿件需明確標示狀態；作者使用投稿時的拼寫，不自行推定期刊、DOI 或頁碼。建站器會產生此頁、主選單連結與 sitemap 項目。

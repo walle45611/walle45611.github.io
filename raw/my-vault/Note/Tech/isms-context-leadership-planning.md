@@ -20,7 +20,7 @@ blog_url: https://blog.walle4561.com/articles/posts/isms-context-leadership-plan
 
 <!--more-->
 
-![圖 1. : Blog Image](https://imgur.com/EUKBYfy.png)
+![[Assets/External/imgur/EUKBYfy.png|圖 1. : Blog Image]]
 
 # 第四至第六章 - 組織全景、領導與規劃
 

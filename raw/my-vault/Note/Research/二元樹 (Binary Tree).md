@@ -19,7 +19,7 @@ blog_url: https://blog.walle4561.com/articles/posts/binary-trees-1/
 
   
 
-![圖 2. : different tree from binary tree](https://imgur.com/lNmehwp.png)
+![[Assets/External/imgur/lNmehwp.png|圖 2. : different tree from binary tree]]
 
   
 
@@ -70,12 +70,12 @@ $$
 
 * *full binary tree* : 這代表了是把所有編號都長滿那麼這個就是一個 full binary tree，那 full binary tree 也滿足 complete binary tree。
 
-![圖 6. : full binary tree](https://imgur.com/yD6e0g4.png)
+![[Assets/External/imgur/yD6e0g4.png|圖 6. : full binary tree]]
 
 
 
 * *Strict binary tree* : Each non-leaf node will have two children. There is no degree-1 nodes exist.
-![圖 7. : Strict binary tree](https://imgur.com/0dtk7qI.png)
+![[Assets/External/imgur/0dtk7qI.png|圖 7. : Strict binary tree]]
 
   
 

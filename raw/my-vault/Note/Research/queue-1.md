@@ -21,7 +21,7 @@ blog_url: https://blog.walle4561.com/articles/posts/queue-1/
 
 <!--more-->
 
-![圖 1. : Blog Image](https://imgur.com/lHiUPLR.png)
+![[Assets/External/imgur/lHiUPLR.png|圖 1. : Blog Image]]
 
 ## Queue 的定義
 
@@ -197,11 +197,11 @@ blog_url: https://blog.walle4561.com/articles/posts/queue-1/
 * 這個方法有一個嚴重的問題如下圖 (圖 2)，當 Job 進入或離開時，Queue 的索引（rear 和 front）會隨著作業的加入或刪除逐漸向右移動。當 $rear$ 等於 $\text{MAX_QUEUE_SIZE} - 1$ 時，這意味著隊列已滿。在這種情況下，必須通過 `queue_full` 操作將整個隊列左移，這樣 $front$ 就會回到 $-1$，而 $rear$ 也需要重新計算，以確保隊列正確排列。  
 這是一個典型的線性隊列，而不是循環隊列。當隊列滿了並且刪除了一些元素時，隊列的空間無法立即重用，因此需要整體左移來重新排列元素，這也是該隊列的限制之一。這樣花的時間是 $O(\text{MAX_QUEUE_SIZE})$，因為每次 `queue_full` 都要將所有元素往左移動。
 
-  ![圖 2. : Linear Array 問題](https://imgur.com/cznWHPR.png)
+  ![[Assets/External/imgur/cznWHPR.png|圖 2. : Linear Array 問題]]
 
 ## Array Circular queue
 
-![圖 3. : Array Circular queue](https://imgur.com/wRXfv0X.png)
+![[Assets/External/imgur/wRXfv0X.png|圖 3. : Array Circular queue]]
 
 ### 法一
 

@@ -21,7 +21,7 @@ blog_url: https://blog.walle4561.com/articles/posts/setup-openssh-server-in-wind
 
 <!--more-->
 
-![圖 1. : Blog Image](https://imgur.com/X7H6aOq.png)
+![[Assets/External/imgur/X7H6aOq.png|圖 1. : Blog Image]]
 
 ## Windows 10 / Windows Server 2019 安裝內建的 OpenSSH 工具
 
@@ -57,7 +57,7 @@ blog_url: https://blog.walle4561.com/articles/posts/setup-openssh-server-in-wind
 
    1. 檢查是否有 `OpenSSH SSH Server` 這個 `Service`
 
-        ![圖 2. : 檢查 Service](https://imgur.com/VG7CGgR.png)
+        ![[Assets/External/imgur/VG7CGgR.png|圖 2. : 檢查 Service]]
 
    2. 然後開啟 Serivce 和調整成 Automatic，那麼有兩種啟動方式一種是 powershell 的方式，和 GUI 的方式
 
@@ -69,7 +69,7 @@ blog_url: https://blog.walle4561.com/articles/posts/setup-openssh-server-in-wind
         Set-Service -Name sshd -StartupType 'Automatic'
         ```
 
-        ![圖 3. : 自動啟動 Service GUI](https://imgur.com/O7DQrVz.png){width=50%}
+        ![[Assets/External/imgur/O7DQrVz.png|圖 3. : 自動啟動 Service GUI]]{width=50%}
 
 5. 再來確定防火牆規則吧！
 
@@ -105,11 +105,11 @@ blog_url: https://blog.walle4561.com/articles/posts/setup-openssh-server-in-wind
 
 * 設定 Guacamole SFTP 那麼 hostname 當然要用自己需要遠端的 IP Address，至於我不用是因為我把它塗掉了。
 
-    ![圖 4. Guacamole SFTP 設定](https://imgur.com/YONbogM.png)
+    ![[Assets/External/imgur/YONbogM.png|圖 4. Guacamole SFTP 設定]]
 
 * 設定成功後會按下 command + ctrl + shift + esc (mac)，就會有 share devices，圖示了那麼就可以上傳檔案到這台電腦了
 
-    ![圖 5. 完成圖](https://imgur.com/4KhJy0H.png)
+    ![[Assets/External/imgur/4KhJy0H.png|圖 5. 完成圖]]
 
 ## 參考
 

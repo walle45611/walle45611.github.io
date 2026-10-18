@@ -55,7 +55,7 @@ blog_url: https://blog.walle4561.com/articles/posts/stack-1/
 
 * frame pointer 可以讓系統能夠在 function 執行完畢後，正確地回到之前的狀態並繼續執行。例如，當你從函數 B 返回到函數 A 時，需要知道函數 A 的 stack frame 位於哪裡，以便能夠繼續在 A 中執行。
 
-![圖 2. : Stack frame pointer](https://imgur.com/i0U2n1M.png)
+![[Assets/External/imgur/i0U2n1M.png|圖 2. : Stack frame pointer]]
 
   
 ## Stack 的定義
@@ -132,7 +132,7 @@ $$\dfrac{1}{n+1}\binom{2n}{n}$$
 
   
 
-![圖 3. : 107 中央資管資料結構](https://imgur.com/sdxFTPH.png)
+![[Assets/External/imgur/sdxFTPH.jpg|圖 3. : 107 中央資管資料結構]]
 
   
 
@@ -255,7 +255,7 @@ int main(){
 
 * 那麼這個是中序轉後序的寫法括弧寫好，全部都補上，然後後續就是把運算子都放在括弧後面，注意不能使得放的位置有交錯，那麼你就會得到一個後序了，反之你會得到前序。
 
-![圖 4. : 108 台大資工資料結構與演算法](https://imgur.com/jrJIbqR.png)
+![[Assets/External/imgur/jrJIbqR.jpg|圖 4. : 108 台大資工資料結構與演算法]]
 
   
 

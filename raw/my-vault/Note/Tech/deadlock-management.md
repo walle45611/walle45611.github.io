@@ -22,7 +22,7 @@ blog_url: https://blog.walle4561.com/articles/posts/deadlock-management/
 
 <!--more-->
 
-![圖 1. : Blog Image](https://imgur.com/VbrcmEY.png)
+![[Assets/External/imgur/VbrcmEY.png|圖 1. : Blog Image]]
 
 ## 系統模型 (System Model)
 
@@ -60,12 +60,12 @@ blog_url: https://blog.walle4561.com/articles/posts/deadlock-management/
 4. **環形等待 (Circular Wait)**  
    存在一組執行緒相互等待彼此持有的資源。
 
-![圖 2. : Deadlock](https://imgur.com/qo5gxaX.png){ width=80% }
+![[Assets/External/imgur/qo5gxaX.png|圖 2. : Deadlock]]{ width=80% }
 
 - 如果每個資源類型只有一個實例，那麼圖中的環就表示已發生死結。
 - 如果每個資源類型有多個實例，圖中的環不一定意味著死結。
 
-![圖 3. : Deadlock](https://imgur.com/7Jka2IQ.png){ width=80% }
+![[Assets/External/imgur/7Jka2IQ.png|圖 3. : Deadlock]]{ width=80% }
 
 - 如果資源分配圖中沒有環，那麼系統就不會處於死結狀態
 - 如果有環，那麼系統可能會或可能不會處於死結狀態
@@ -93,7 +93,7 @@ blog_url: https://blog.walle4561.com/articles/posts/deadlock-management/
     - 給每個資源分配一個唯一的編號，並要求 process 按照資源編號的升序請求資源。
     - 如果一個 process 已經持有一個資源，則只能請求比該資源編號大的其他資源。
 
-    ![圖 4. : Circular Wait](https://imgur.com/waVqieK.png)
+    ![[Assets/External/imgur/waVqieK.png|圖 4. : Circular Wait]]
 
     - **process 可以初次請求任意數量的資源 $R_i$**：
         - process P1 最初可以請求任何資源 Ri。
@@ -185,7 +185,7 @@ blog_url: https://blog.walle4561.com/articles/posts/deadlock-management/
 
     Can deadlock occur? If so, what processes are deadlocked in this state? If not, give a safe sequence for this state.
 
-    ![圖 5. : Resource-Allocation Graph](https://imgur.com/gmOIGtC.png){ width=50% }
+    ![[Assets/External/imgur/gmOIGtC.png|圖 5. : Resource-Allocation Graph]]{ width=50% }
 
 #### Resource-Allocation Graph Algorithm
 
@@ -217,7 +217,7 @@ blog_url: https://blog.walle4561.com/articles/posts/deadlock-management/
 
 ### wait-for graph
 
-![圖 6. : wait-for graph](https://imgur.com/yTPxwCP.png){ width=70% }
+![[Assets/External/imgur/yTPxwCP.png|圖 6. : wait-for graph]]{ width=70% }
 
 - 就是把 resources 移除掉，且只能使用在 **signal instance**
 - 如果有 cycle 存在那麼就是有 deadlock

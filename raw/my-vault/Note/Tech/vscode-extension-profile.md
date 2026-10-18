@@ -26,12 +26,12 @@ blog_url: https://blog.walle4561.com/articles/posts/vscode-extension-profile/
 
 * 以下以 mac 為例
 * 設定位置
-  ![vscode-extension-1](https://i.imgur.com/ZZE6ntN.png)
+  ![[Assets/External/imgur/ZZE6ntN.png|vscode-extension-1]]
   * 以下會有幾個選項，可以在這邊切換自己的 profile，也可以創建自己的 profile，或是刪除
   * `New Profile`，這邊我會選擇 `copy from` 選 `default`，或是如果想要創自己的 base 都可以自己做選擇
-    ![vscode-extension-2](https://imgur.com/xhaB7ll.png)
+    ![[Assets/External/imgur/xhaB7ll.png|vscode-extension-2]]
   * `Delete Profile`，可以選擇自己想要刪除的 profile
-    ![vscode-extension-2](https://imgur.com/ndLKodT.png)
+    ![[Assets/External/imgur/ndLKodT.png|vscode-extension-2]]
 
 ## 結論
 

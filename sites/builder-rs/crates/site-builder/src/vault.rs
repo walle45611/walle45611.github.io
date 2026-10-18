@@ -149,6 +149,18 @@ fn html_escape(value: &str) -> String {
         .replace('\'', "&#x27;")
 }
 
+fn image_alt(reference: &str, asset: &Path) -> String {
+    let caption = reference.split_once('|').map(|(_, caption)| caption);
+    let caption = caption.filter(|caption| {
+        !caption.is_empty()
+            && !caption.split('x').all(|part| {
+                !part.is_empty() && part.chars().all(|character| character.is_ascii_digit())
+            })
+    });
+    let fallback = asset.file_stem().unwrap_or_default().to_string_lossy();
+    html_escape(caption.unwrap_or(&fallback))
+}
+
 fn fence(line: &str) -> Option<(char, usize)> {
     let trimmed = line.trim_start_matches([' ', '\t']);
     let symbol = trimmed.chars().next()?;
@@ -404,7 +416,7 @@ pub fn export(vault: &Path, build_dir: &Path) -> Result<()> {
                 Ok(size) => size,
                 Err(message) => { error = Some(message.to_string()); return String::new(); }
             };
-            let alt = html_escape(asset.file_stem().unwrap_or_default().to_string_lossy().as_ref());
+            let alt = image_alt(&capture[1], &asset);
             format!("<img src=\"/vault-assets/{name}\" alt=\"{alt}\" width=\"{width}\" height=\"{height}\" decoding=\"async\">")
         }).into_owned();
         if let Some(message) = error {
@@ -494,6 +506,21 @@ pub fn export(vault: &Path, build_dir: &Path) -> Result<()> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn image_alt_preserves_captions_without_using_size_hints_as_text() {
+        let asset = Path::new("Assets/External/imgur/example.png");
+        assert_eq!(
+            image_alt(
+                "Assets/External/imgur/example.png|圖 1：<caption> \"quoted\"",
+                asset
+            ),
+            "圖 1：&lt;caption&gt; &quot;quoted&quot;"
+        );
+        assert_eq!(image_alt("example.png|800", asset), "example");
+        assert_eq!(image_alt("example.png|800x600", asset), "example");
+        assert_eq!(image_alt("example.png", asset), "example");
+    }
 
     #[test]
     fn dashboard_links_render_as_text_without_publishing_dashboard() {

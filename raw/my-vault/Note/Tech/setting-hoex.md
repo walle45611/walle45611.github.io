@@ -166,7 +166,7 @@ blog_url: https://blog.walle4561.com/articles/posts/setting-hoex/
 
 - 使用 `GitHub Action` 請先將 repo pages 的設定調整 `source` 選項到 `GitHub Action` 如下圖：
 
-  ![GithubAction](https://i.imgur.com/2gYt4Pv.png)
+  ![[Assets/External/imgur/2gYt4Pv.png|GithubAction]]
 
 - 使用 `GitHub Action` 工具部署，記得是要把整個專案上傳到 repo 中，再使用 `GitHub action`，可以使用 `GitHub` 的頁面設定，這樣就可以使用 `GitHub Pages`，以下是 `GitHub action` 的設定 yml： [參考連結](https://hexo.io/docs/github-pages#Useful-links)
   

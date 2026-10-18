@@ -1,7 +1,7 @@
 # Domain Specific Finetuning of LLMs Using PEFT Techniques
 
-- source: `raw/my-vault/Note/Research/Domain Specific Finetuning of LLMs Using PEFT Techniques.md`
-- source_sha256: `0fd603bc4b19a70fcca480ceacf5bb738b9f4f952f0d81a0c908cd9df7072c6a`
+- source: `raw/my-vault/Note/Research/@domainfinetuningpeft2025.md`
+- source_sha256: `07bb8bac56bf1fbfbd8a33af7a93d9cdaa256249f094ec7a6d0634b5258425de`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

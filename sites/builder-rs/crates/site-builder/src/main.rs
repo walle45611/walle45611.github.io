@@ -53,7 +53,6 @@ struct ContentArticleManifest {
 #[derive(Debug, Clone)]
 struct BuilderConfig {
     _project_root: PathBuf,
-    raw_dir: PathBuf,
     vault_posts_dir: PathBuf,
     vault_assets_dir: PathBuf,
     out_dir: PathBuf,
@@ -82,26 +81,12 @@ fn main() {
         std::process::exit(1);
     }
     let mut articles = Vec::new();
-    for (directory, prefix) in [(config.raw_dir.join("web-clipper"), "raw/web-clipper")] {
-        if !directory.exists() {
-            continue;
-        }
-        let mut found = read_articles(&directory).unwrap_or_else(|err| {
-            eprintln!("failed to read raw posts: {err}");
-            std::process::exit(1);
-        });
-        for article in &mut found {
-            article.source_file = format!("{prefix}/{}", article.source_file);
-        }
-        articles.extend(found);
-    }
     if config.vault_posts_dir.exists() {
         let vault_articles = read_articles(&config.vault_posts_dir).unwrap_or_else(|err| {
             eprintln!("failed to read vault posts: {err}");
             std::process::exit(1);
         });
         for mut article in vault_articles {
-            articles.retain(|old| old.slug != article.slug);
             article.source_file = format!("raw/my-vault/{}", article.source_file);
             let source = config._project_root.join(&article.source_file);
             let source_bytes = fs::read(&source).unwrap_or_else(|err| {
@@ -122,16 +107,11 @@ fn main() {
 
 fn load_config() -> BuilderConfig {
     let args: Vec<String> = env::args().skip(1).collect();
-    let mut raw_dir = None;
     let mut out_dir = None;
     let mut project_dir = None;
     let mut i = 0;
     while i < args.len() {
         match args[i].as_str() {
-            "--raw-dir" => {
-                i += 1;
-                raw_dir = args.get(i).map(PathBuf::from);
-            }
             "--out-dir" => {
                 i += 1;
                 out_dir = args.get(i).map(PathBuf::from);
@@ -153,7 +133,6 @@ fn load_config() -> BuilderConfig {
         .filter(|p| p.exists())
         .unwrap_or_else(|| detect_project_root(&cwd));
 
-    let raw_default = project_root.join("raw");
     let build_root = project_root.join(".build").join("site");
     let out_default = build_root.join("client");
 
@@ -163,12 +142,9 @@ fn load_config() -> BuilderConfig {
         .join("public")
         .join("favicon.svg");
     let manifest_path = build_root.join("content-manifest.json");
-    let raw_dir = raw_dir.map(|dir| resolve_existing_path(dir, &project_root, "raw"));
 
     BuilderConfig {
         _project_root: project_root.clone(),
-        raw_dir: raw_dir
-            .unwrap_or_else(|| resolve_existing_path(raw_default, &project_root, "raw")),
         vault_posts_dir: build_root.join("vault-posts"),
         vault_assets_dir: build_root.join("vault-assets"),
         out_dir: out_dir.unwrap_or(out_default),
@@ -178,33 +154,16 @@ fn load_config() -> BuilderConfig {
     }
 }
 
-fn resolve_existing_path(candidate: PathBuf, project_root: &Path, fallback_name: &str) -> PathBuf {
-    let fallback1 = project_root.join(fallback_name);
-    let fallback2 = project_root
-        .parent()
-        .map(|parent| parent.join(fallback_name));
-    let fallback3 = PathBuf::from(fallback_name);
-    let fallback2 = fallback2.unwrap_or_else(|| project_root.to_path_buf());
-    let candidate_for_default = candidate.clone();
-    for path in [candidate, fallback1, fallback2, fallback3].into_iter() {
-        if path.exists() {
-            return path;
-        }
-    }
-    candidate_for_default
-}
-
 fn print_usage_and_exit(code: i32) -> ! {
     println!(
         "\
 Usage:
-  site-builder [--raw-dir <path>] [--out-dir <path>] [--project-dir <path>]
+  site-builder [--out-dir <path>] [--project-dir <path>]
   site-builder sync-vault [--source <path>]
   site-builder archive [--check | --refresh-generated]
   site-builder stage-assets
 
 Options:
-  --raw-dir      Path to raw markdown source (default: <project>/raw)
   --out-dir      Output path for static files (default: <project>/.build/site/client)
   --project-dir  Project root for relative references
 "
@@ -402,8 +361,7 @@ fn build_site(config: &BuilderConfig, articles: &[Article]) -> std::io::Result<(
 
     let manifest = ContentManifest {
         source: "../raw".to_string(),
-        selector: "blog metadata in raw; raw/my-vault is authoritative for matching slugs"
-            .to_string(),
+        selector: "blog: true in raw/my-vault/Note/Research or raw/my-vault/Note/Tech".to_string(),
         articles: manifest_articles,
     };
 
@@ -868,43 +826,7 @@ fn parse_front_matter(source: &str) -> (HashMap<String, Value>, String) {
 }
 
 fn has_blog_marker(front_matter: &HashMap<String, Value>) -> bool {
-    if bool_from_value(front_matter.get("blog")) {
-        return true;
-    }
-
-    let tags = tags_from_value(front_matter.get("tags"));
-    if tags.iter().any(|tag| tag.eq_ignore_ascii_case("blog")) {
-        return true;
-    }
-
-    false
-}
-
-fn bool_from_value(value: Option<&Value>) -> bool {
-    match value {
-        Some(Value::Bool(true)) => true,
-        Some(Value::String(value)) => matches!(
-            value.trim().to_ascii_lowercase().as_str(),
-            "true" | "yes" | "blog" | "post" | "1"
-        ),
-        _ => false,
-    }
-}
-
-fn tags_from_value(value: Option<&Value>) -> Vec<String> {
-    match value {
-        Some(Value::Sequence(values)) => values
-            .iter()
-            .filter_map(|item| item.as_str())
-            .map(|item| item.to_lowercase())
-            .collect(),
-        Some(Value::String(value)) => value
-            .split(',')
-            .map(|item| item.trim().to_lowercase())
-            .filter(|item| !item.is_empty())
-            .collect(),
-        _ => Vec::new(),
-    }
+    front_matter.get("blog").and_then(Value::as_bool) == Some(true)
 }
 
 fn front_matter_value_str(front_matter: &HashMap<String, Value>, key: &str) -> Option<String> {

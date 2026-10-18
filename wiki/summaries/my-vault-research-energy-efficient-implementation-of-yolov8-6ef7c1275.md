@@ -1,7 +1,7 @@
 # Energy-efficient implementation of YOLOv8, instance segmentation, and pose detection on RISC-V SoC
 
-- source: `raw/my-vault/Note/Research/Energy-efficient implementation of YOLOv8, instance segmentation, and pose detection on RISC-V SoC.md`
-- source_sha256: `b8e571765d6d6b893db07acda5e1d9dd1dcaeae5a2ae882248c49d704ce89213`
+- source: `raw/my-vault/Note/Research/@yolov8riscv2024.md`
+- source_sha256: `e746720ba4cfc7c727ef6e896d210cf92685963d1d9c6ec377817b87ece5bb37`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

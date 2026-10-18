@@ -1,7 +1,7 @@
 # TCM-FTP: Fine-Tuning Large Language Models for Herbal Prescription Prediction
 
-- source: `raw/my-vault/Note/Research/TCM-FTP - Fine-Tuning Large Language Models for Herbal Prescription Prediction.md`
-- source_sha256: `5f47ccfa242ea31c8e22bc591cdf854963d925b97ebf547042d74f6892969838`
+- source: `raw/my-vault/Note/Research/@tcmftp2024.md`
+- source_sha256: `97baf835002038f5f46a43941a4bb96bb7e6ed143e1975060bea0f0d79929330`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

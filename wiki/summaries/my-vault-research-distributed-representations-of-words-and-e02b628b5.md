@@ -1,7 +1,7 @@
 # Distributed Representations of Words and Phrases and their Compositionality
 
-- source: `raw/my-vault/Note/Research/Distributed Representations of Words and Phrases and their Compositionality.md`
-- source_sha256: `979f722e9eb4b5d0f4d966638ded4bd603e5f6ef5fcdfe758e26fe2181c5af17`
+- source: `raw/my-vault/Note/Research/@distributedwordsphrases2013.md`
+- source_sha256: `62a7cd98758c47bb183c492e191c5e66c49646f6f2299ff60ff56db7a7d56b8f`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

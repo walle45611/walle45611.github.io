@@ -1,7 +1,7 @@
 # Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks
 
-- source: `raw/my-vault/Note/Research/Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks.md`
-- source_sha256: `9b906335f0c8caa459495fb9ace9545c9ad3c5c6a9eb9db7e1e198ac6bbd62aa`
+- source: `raw/my-vault/Note/Research/@rag2020.md`
+- source_sha256: `63b859ae81fb1be45033d4c9b5825c064748150cf3859a5fc935b119afd7e4b9`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

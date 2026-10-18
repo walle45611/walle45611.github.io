@@ -1,7 +1,7 @@
 # Layer Normalization
 
-- source: `raw/my-vault/Note/Research/Layer Normalization.md`
-- source_sha256: `be4abf201f68651b27f9134df93ab8dacd37b92e05cc2765efa785fc165e2872`
+- source: `raw/my-vault/Note/Research/@layernorm2016.md`
+- source_sha256: `6495e4e2ba8f04741a93b55450a0ee8503e7f68d17179e68da2fc928e103ac84`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

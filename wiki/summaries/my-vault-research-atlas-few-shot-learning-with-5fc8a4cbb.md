@@ -1,7 +1,7 @@
 # Atlas: Few-shot Learning with Retrieval Augmented Language Models
 
-- source: `raw/my-vault/Note/Research/Atlas - Few-shot Learning with Retrieval Augmented Language Models.md`
-- source_sha256: `7ed7d8c92cd822d4b9c81335b030282d1882699c0e2eda71bc3b40cb89be309d`
+- source: `raw/my-vault/Note/Research/@atlas2023.md`
+- source_sha256: `5d8683c5302bec6173014a90dce4e08866aec58bd7e3849415770a3626bc9d3b`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

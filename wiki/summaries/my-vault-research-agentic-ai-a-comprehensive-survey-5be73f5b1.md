@@ -1,7 +1,7 @@
 # Agentic AI: A Comprehensive Survey of Architectures, Applications, and Future Directions
 
-- source: `raw/my-vault/Note/Research/Agentic AI - A Comprehensive Survey of Architectures, Applications, and Future Directions.md`
-- source_sha256: `2925c36b9afb5532cbb43cc0c9920fa356a9631b7742b781061c3c990412ba5c`
+- source: `raw/my-vault/Note/Research/@agenticarchitecturessurvey2026.md`
+- source_sha256: `9c1ccc65bbaed8e393632ee007cd06f3b2204d3ae55d417675e933247c7d9335`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

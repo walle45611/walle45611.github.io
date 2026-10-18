@@ -1,7 +1,7 @@
 # From Local to Global: A Graph RAG Approach to Query-Focused Summarization
 
-- source: `raw/my-vault/Note/Research/From Local to Global - A Graph RAG Approach to Query-Focused Summarization.md`
-- source_sha256: `22945a461fc0bc6698988f87d9759ca7eba8b053f4d0dabbe204689bad92ee08`
+- source: `raw/my-vault/Note/Research/@localglobalgraphrag2024.md`
+- source_sha256: `0bba9acb5c2b974a1eeaf2c4f578a7edced4af8ea49b3f2456b0ab7fa6687267`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

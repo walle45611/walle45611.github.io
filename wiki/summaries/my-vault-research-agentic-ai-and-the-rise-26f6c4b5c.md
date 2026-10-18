@@ -1,7 +1,7 @@
 # Agentic AI and the Rise of in Silico Team Science in Biomedical Research
 
-- source: `raw/my-vault/Note/Research/Agentic AI and the Rise of in Silico Team Science in Biomedical Research.md`
-- source_sha256: `e5acbf2ff7df191bd61513ca6d9ca5ea0736381aa4c39913e7c5df8f0b8e0a48`
+- source: `raw/my-vault/Note/Research/@agenticteamscience2026.md`
+- source_sha256: `225a954b0fe8ac6076e6bafae8a95c1ad07873ed569ca3a82bc6f5818769922f`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

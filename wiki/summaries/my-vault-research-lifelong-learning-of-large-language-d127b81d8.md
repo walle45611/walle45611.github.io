@@ -1,7 +1,7 @@
 # Lifelong Learning of Large Language Model Based Agents: A Roadmap
 
-- source: `raw/my-vault/Note/Research/Lifelong Learning of Large Language Model Based Agents - A Roadmap.md`
-- source_sha256: `1a3f78e889852721569806e03f8ae80bb40189105bb985d3848c177414b868dd`
+- source: `raw/my-vault/Note/Research/@lifelongagents2026.md`
+- source_sha256: `452f850ed080f55cff8e84bf52b3ed38d22a3f97c9b17985605b20c355bac543`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

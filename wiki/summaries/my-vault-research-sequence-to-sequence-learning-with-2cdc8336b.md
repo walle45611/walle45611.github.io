@@ -1,7 +1,7 @@
 # Sequence to Sequence Learning with Neural Networks
 
-- source: `raw/my-vault/Note/Research/Sequence to Sequence Learning with Neural Networks.md`
-- source_sha256: `44ecc9081d361fcfdbceaeb40153bde25897d99470aa0bf7a8c4fc2900168423`
+- source: `raw/my-vault/Note/Research/@seq2seq2014.md`
+- source_sha256: `1e3bb4120bd962350e1ae3b0683c3bcd30a17a6869e702c1f7212a48ef780145`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

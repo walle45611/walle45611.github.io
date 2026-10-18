@@ -1,7 +1,7 @@
 # TCMPR: TCM Prescription Recommendation Based on Subnetwork Term Mapping and Deep Learning
 
-- source: `raw/my-vault/Note/Research/TCMPR - TCM Prescription Recommendation Based on Subnetwork Term Mapping and Deep Learning.md`
-- source_sha256: `77977e0bac2e57b558064a802a320097b709bd9fbca357e3201890f2347114b9`
+- source: `raw/my-vault/Note/Research/@tcmpr2022.md`
+- source_sha256: `40bb6d38342d13fde582d6b94ebd097620eed7503b8b9a6fa71939809a078239`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

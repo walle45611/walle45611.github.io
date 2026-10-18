@@ -1,7 +1,7 @@
 # Chain-of-Thought Prompting Elicits Reasoning in Large Language Models
 
-- source: `raw/my-vault/Note/Research/Chain-of-Thought Prompting Elicits Reasoning in Large Language Models.md`
-- source_sha256: `b3f9526c83afa0430b464f437e6cb89affc0d88e46154071346688b8dbfb3f59`
+- source: `raw/my-vault/Note/Research/@chainofthought2022.md`
+- source_sha256: `0106f072cf0ba8c5425864d2a7ed5d3d58e510a2f3cae692bb34dd0c968a88c4`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

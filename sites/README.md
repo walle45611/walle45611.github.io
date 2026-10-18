@@ -45,7 +45,7 @@ blog_url: https://blog.walle4561.com/articles/posts/example-article/
 
 `blog_url` 必須符合上述網址形式，slug 不可重複；`blog_date` 使用 `YYYY-MM-DD`。選填的 `blog_topic` 支援 `data-structures`、`algorithms`、`problem-solving`、`operating-systems`、`networking`。帶有 `網路與作業系統` tag 的文章依「作業系統 Overview」連結分為 OS，其餘歸入 Networking，在 OS & Networking 頁面分區呈現；也可用 `blog_topic` 明確指定分類。未發佈筆記的內部連結會轉為文字，避免產生不存在的文章網址。
 
-目前匯出器實際掃描整個 `raw/my-vault/Note/`，建站器也保留 `raw/web-clipper/` 發佈 metadata 的相容入口；這不改變本專案限定的發佈範圍。同 slug 時，My vault 文章優先。建站還會讀取 `raw/my-vault/00_Dashboard/資料結構和演算法 Overview.md`，該檔案及其中的演算法區段需保留。
+建站僅接受 `raw/my-vault/Note/Research/` 與 `raw/my-vault/Note/Tech/`（含子目錄）中明確設為 YAML 布林值 `blog: true` 的筆記；僅有 `Blog` tag、`blog: "true"` 或位於其他目錄的筆記均不發佈。`raw/web-clipper/` 不作為 Blog 來源。建站仍掃描其他 Note 的名稱以將未發佈筆記連結轉為文字，並讀取 `raw/my-vault/00_Dashboard/資料結構和演算法 Overview.md` 作分類，該檔案及其中的演算法區段需保留。
 
 ## 本機建置
 

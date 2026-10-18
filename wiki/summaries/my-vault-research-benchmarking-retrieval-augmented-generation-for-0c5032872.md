@@ -1,7 +1,7 @@
 # Benchmarking Retrieval-Augmented Generation for Medicine
 
-- source: `raw/my-vault/Note/Research/Benchmarking Retrieval-Augmented Generation for Medicine.md`
-- source_sha256: `78dc601035a0b4bfdd1f16a06d571e9d7025f0434ab61c4552fc289ec4f20c1f`
+- source: `raw/my-vault/Note/Research/@benchmarkingragmedicine2024.md`
+- source_sha256: `4a8189a3e1c993d86317adf56ebcd6d0844f407fd604a833aa929bdaae0aa4d0`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

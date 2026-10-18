@@ -1,7 +1,7 @@
 # Hierarchical Memory Organization for Wikipedia Generation
 
-- source: `raw/my-vault/Note/Research/Hierarchical Memory Organization for Wikipedia Generation.md`
-- source_sha256: `c8de745a3e9fa9780fad373aa545d83fb0c1fac1789d30e5573b87668ac3d5dc`
+- source: `raw/my-vault/Note/Research/@hierarchicalmemorywiki2025.md`
+- source_sha256: `cec45fb62ff4d55a901d423e8aea3ca3fe3b2061f70b3e3d7ba736a31de9d309`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

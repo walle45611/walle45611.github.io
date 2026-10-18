@@ -4,41 +4,41 @@
 
 ### NLP and Representation Learning
 
-[[Efficient Estimation of Word Representations in Vector Space]]
-[[Attention Is All You Need]]
+[[@efficientwordrepresentations2013|Efficient Estimation of Word Representations in Vector Space]]
+[[@attention2017|Attention Is All You Need]]
 
-[[BERT - Pre-training of Deep Bidirectional Transformers for Language Understanding|BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding]]
-[[Chain-of-Thought Prompting Elicits Reasoning in Large Language Models|Chain-of-Thought Prompting Elicits Reasoning in Large Language Models]]
-[[Distributed Representations of Words and Phrases and their Compositionality|Distributed Representations of Words and Phrases and their Compositionality]]
-[[Gemma 4 Technical Report|Gemma 4 Technical Report]]
-[[Improving Language Understanding by Generative Pre-Training|Improving Language Understanding by Generative Pre-Training]]
-[[LLaMA - Open and Efficient Foundation Language Models|LLaMA: Open and Efficient Foundation Language Models]]
-[[Language Models are Unsupervised Multitask Learners|Language Models are Unsupervised Multitask Learners]]
-[[Neural Machine Translation by Jointly Learning to Align and Translate|Neural Machine Translation by Jointly Learning to Align and Translate]]
-[[RoFormer - Enhanced Transformer with Rotary Position Embedding|RoFormer: Enhanced Transformer with Rotary Position Embedding]]
-[[Sequence to Sequence Learning with Neural Networks|Sequence to Sequence Learning with Neural Networks]]
+[[@bert2019|BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding]]
+[[@chainofthought2022|Chain-of-Thought Prompting Elicits Reasoning in Large Language Models]]
+[[@distributedwordsphrases2013|Distributed Representations of Words and Phrases and their Compositionality]]
+[[@gemma42026|Gemma 4 Technical Report]]
+[[@generativepretraining2018|Improving Language Understanding by Generative Pre-Training]]
+[[@llama2023|LLaMA: Open and Efficient Foundation Language Models]]
+[[@unsupervisedmultitask2019|Language Models are Unsupervised Multitask Learners]]
+[[@aligntranslate2015|Neural Machine Translation by Jointly Learning to Align and Translate]]
+[[@roformer2021|RoFormer: Enhanced Transformer with Rotary Position Embedding]]
+[[@seq2seq2014|Sequence to Sequence Learning with Neural Networks]]
 
 ### RAG, Knowledge Graphs and Domain Applications
 
-[[ZhiFangDanTai Fine-Tuning Graph-Based Retrieval-Augmented Generation Model for Traditional Chinese Medicine Formula|ZhiFangDanTai（閱讀中）]]
+[[@zhifangdantai2026|ZhiFangDanTai（閱讀中）]]
 
-[[Agentic Retrieval-Augmented Generation - A Survey on Agentic RAG|Agentic Retrieval-Augmented Generation: A Survey on Agentic RAG]]
-[[Atlas - Few-shot Learning with Retrieval Augmented Language Models|Atlas: Few-shot Learning with Retrieval Augmented Language Models]]
-[[Benchmarking Retrieval-Augmented Generation for Medicine|Benchmarking Retrieval-Augmented Generation for Medicine]]
-[[From Local to Global - A Graph RAG Approach to Query-Focused Summarization|From Local to Global: A Graph RAG Approach to Query-Focused Summarization]]
-[[Hierarchical Memory Organization for Wikipedia Generation|Hierarchical Memory Organization for Wikipedia Generation]]
-[[Medical Graph RAG - Evidence-based Medical Large Language Model via Graph Retrieval-Augmented Generation|Medical Graph RAG: Evidence-based Medical Large Language Model via Graph Retrieval-Augmented Generation]]
-[[Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks|Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks]]
-[[Unifying Large Language Models and Knowledge Graphs - A Roadmap|Unifying Large Language Models and Knowledge Graphs: A Roadmap]]
+[[@agenticragsurvey2025|Agentic Retrieval-Augmented Generation: A Survey on Agentic RAG]]
+[[@atlas2023|Atlas: Few-shot Learning with Retrieval Augmented Language Models]]
+[[@benchmarkingragmedicine2024|Benchmarking Retrieval-Augmented Generation for Medicine]]
+[[@localglobalgraphrag2024|From Local to Global: A Graph RAG Approach to Query-Focused Summarization]]
+[[@hierarchicalmemorywiki2025|Hierarchical Memory Organization for Wikipedia Generation]]
+[[@medicalgraphrag2025|Medical Graph RAG: Evidence-based Medical Large Language Model via Graph Retrieval-Augmented Generation]]
+[[@rag2020|Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks]]
+[[@llmkgroadmap2024|Unifying Large Language Models and Knowledge Graphs: A Roadmap]]
 
 ### LLM Preference Learning and Alignment
 
-[[Direct Preference Optimization Your Language Model is Secretly a Reward Model|Direct Preference Optimization（DPO，閱讀中）]]
+[[@dpo2023|Direct Preference Optimization（DPO，閱讀中）]]
 
-[[Domain Specific Finetuning of LLMs Using PEFT Techniques|Domain Specific Finetuning of LLMs Using PEFT Techniques]]
-[[LoRA - Low-Rank Adaptation of Large Language Models|LoRA: Low-Rank Adaptation of Large Language Models]]
-[[QLoRA - Efficient Finetuning of Quantized LLMs|QLoRA: Efficient Finetuning of Quantized LLMs]]
-[[TCM-FTP - Fine-Tuning Large Language Models for Herbal Prescription Prediction|TCM-FTP: Fine-Tuning Large Language Models for Herbal Prescription Prediction]]
+[[@domainfinetuningpeft2025|Domain Specific Finetuning of LLMs Using PEFT Techniques]]
+[[@lora2021|LoRA: Low-Rank Adaptation of Large Language Models]]
+[[@qlora2023|QLoRA: Efficient Finetuning of Quantized LLMs]]
+[[@tcmftp2024|TCM-FTP: Fine-Tuning Large Language Models for Herbal Prescription Prediction]]
 
 ### LLMs and Long Contexts
 
@@ -46,40 +46,40 @@
 
 ### Agents and Memory Systems
 
-[[MemGPT Towards LLMs as Operating Systems]]
-[[Generative Agents Interactive Simulacra of Human Behavior]]
+[[@memgpt2023|MemGPT Towards LLMs as Operating Systems]]
+[[@generativeagents2023|Generative Agents Interactive Simulacra of Human Behavior]]
 
-[[Agentic AI - A Comprehensive Survey of Architectures, Applications, and Future Directions|Agentic AI: A Comprehensive Survey of Architectures, Applications, and Future Directions]]
+[[@agenticarchitecturessurvey2026|Agentic AI: A Comprehensive Survey of Architectures, Applications, and Future Directions]]
 [[Agentic AI - Autonomous Intelligence for Complex Goals - A Comprehensive Survey|Agentic AI: Autonomous Intelligence for Complex Goals---A Comprehensive Survey]]
-[[Agentic AI and the Rise of in Silico Team Science in Biomedical Research|Agentic AI and the Rise of in Silico Team Science in Biomedical Research]]
-[[Lifelong Learning of Large Language Model Based Agents - A Roadmap|Lifelong Learning of Large Language Model Based Agents: A Roadmap]]
-[[ReAct - Synergizing Reasoning and Acting in Language Models|ReAct: Synergizing Reasoning and Acting in Language Models]]
+[[@agenticteamscience2026|Agentic AI and the Rise of in Silico Team Science in Biomedical Research]]
+[[@lifelongagents2026|Lifelong Learning of Large Language Model Based Agents: A Roadmap]]
+[[@react2023|ReAct: Synergizing Reasoning and Acting in Language Models]]
 
 ### Clinical AI and Traditional Chinese Medicine
 
-[[Artificial Intelligence Language Models for Medical Text Analysis - A Systematic Review|Artificial Intelligence Language Models for Medical Text Analysis: A Systematic Review]]
-[[CPRS - A Clinical Protocol Recommendation System Based on LLMs|CPRS: A Clinical Protocol Recommendation System Based on LLMs]]
-[[KGAPG - Knowledge-Aware Neural Group Representation Learning for Attentive Prescription Generation of Traditional Chinese Medicine|KGAPG: Knowledge-Aware Neural Group Representation Learning for Attentive Prescription Generation of Traditional Chinese Medicine]]
-[[Large Language Models in Medicine|Large Language Models in Medicine]]
-[[Performance of a Large Language Model on the Reasoning Tasks of a Physician|Performance of a Large Language Model on the Reasoning Tasks of a Physician]]
-[[TCMEval-SDT - A Benchmark Dataset for Syndrome Differentiation Thought of Traditional Chinese Medicine|TCMEval-SDT: A Benchmark Dataset for Syndrome Differentiation Thought of Traditional Chinese Medicine]]
-[[TCMLLM-PR - Evaluation of Large Language Models for Prescription Recommendation in Traditional Chinese Medicine|TCMLLM-PR: Evaluation of Large Language Models for Prescription Recommendation in Traditional Chinese Medicine]]
-[[TCMPR - TCM Prescription Recommendation Based on Subnetwork Term Mapping and Deep Learning|TCMPR: TCM Prescription Recommendation Based on Subnetwork Term Mapping and Deep Learning]]
+[[@medicaltextreview2026|Artificial Intelligence Language Models for Medical Text Analysis: A Systematic Review]]
+[[@cprs2025|CPRS: A Clinical Protocol Recommendation System Based on LLMs]]
+[[@kgapg2021|KGAPG: Knowledge-Aware Neural Group Representation Learning for Attentive Prescription Generation of Traditional Chinese Medicine]]
+[[@llmmedicine2023|Large Language Models in Medicine]]
+[[@llmphysicianreasoning2026|Performance of a Large Language Model on the Reasoning Tasks of a Physician]]
+[[@tcmevalsdt2025|TCMEval-SDT: A Benchmark Dataset for Syndrome Differentiation Thought of Traditional Chinese Medicine]]
+[[@tcmllmpr2024|TCMLLM-PR: Evaluation of Large Language Models for Prescription Recommendation in Traditional Chinese Medicine]]
+[[@tcmpr2022|TCMPR: TCM Prescription Recommendation Based on Subnetwork Term Mapping and Deep Learning]]
 
 ### Computer Vision and Edge AI
 
-[[Deep Residual Learning for Image Recognition|Deep Residual Learning for Image Recognition]]
-[[Energy-efficient implementation of YOLOv8, instance segmentation, and pose detection on RISC-V SoC|Energy-efficient implementation of YOLOv8, instance segmentation, and pose detection on RISC-V SoC]]
-[[Low-Cost FPGA-Enhanced CNN Accelerator for Real-Time YOLO Object Detection & Classification|Low-Cost FPGA-Enhanced CNN Accelerator for Real-Time YOLO Object Detection & Classification]]
+[[@residuallearning2015|Deep Residual Learning for Image Recognition]]
+[[@yolov8riscv2024|Energy-efficient implementation of YOLOv8, instance segmentation, and pose detection on RISC-V SoC]]
+[[@fpgacnnyolo2026|Low-Cost FPGA-Enhanced CNN Accelerator for Real-Time YOLO Object Detection & Classification]]
 
 ### Evaluation and Benchmarks
 
-[[Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena|Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena]]
-[[The Berkeley Function Calling Leaderboard (BFCL) - From Tool Use to Agentic Evaluation of Large Language Models|The Berkeley Function Calling Leaderboard (BFCL): From Tool Use to Agentic Evaluation of Large Language Models]]
+[[@llmjudge2023|Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena]]
+[[@bfcl2025|The Berkeley Function Calling Leaderboard (BFCL): From Tool Use to Agentic Evaluation of Large Language Models]]
 
 ### Neural Network Architecture
 
-[[Layer Normalization|Layer Normalization]]
+[[@layernorm2016|Layer Normalization]]
 
 ## Concept Notes
 

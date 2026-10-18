@@ -1,7 +1,7 @@
 # BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
 
-- source: `raw/my-vault/Note/Research/BERT - Pre-training of Deep Bidirectional Transformers for Language Understanding.md`
-- source_sha256: `734f072a4982393635596b62b0f9aa8393c8705bd945b029bf90c2178bc1bff9`
+- source: `raw/my-vault/Note/Research/@bert2019.md`
+- source_sha256: `634133bcbe79067fa993a0cf85b52a0d98069b42a4fed577a845dd5c8560ec19`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

@@ -1,7 +1,7 @@
 # LoRA: Low-Rank Adaptation of Large Language Models
 
-- source: `raw/my-vault/Note/Research/LoRA - Low-Rank Adaptation of Large Language Models.md`
-- source_sha256: `8addde94c13f8b69ae280bd93c80bbbc25b13ada42687c8ad0c9b5ea8a067362`
+- source: `raw/my-vault/Note/Research/@lora2021.md`
+- source_sha256: `114f9c34e8cbd3833fa91821298ebbae461e0dba745ec6d6a6faad8e08a4c5b1`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

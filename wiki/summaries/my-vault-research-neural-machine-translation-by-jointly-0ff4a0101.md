@@ -1,7 +1,7 @@
 # Neural Machine Translation by Jointly Learning to Align and Translate
 
-- source: `raw/my-vault/Note/Research/Neural Machine Translation by Jointly Learning to Align and Translate.md`
-- source_sha256: `6c7c0edd278cf16d6ce6d33013f51fada82a5af511b6ea23bfe57c2d30a3a17e`
+- source: `raw/my-vault/Note/Research/@aligntranslate2015.md`
+- source_sha256: `faf6f9232de48ba9dfc0509e72206ae3cb3872c5bf28050ad8cd507b50aa869b`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

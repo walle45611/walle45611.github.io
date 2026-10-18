@@ -350,6 +350,11 @@ pub fn export(vault: &Path, build_dir: &Path) -> Result<()> {
                 .to_string_lossy()
                 .into_owned(),
         );
+        if !source.starts_with(vault.join("Note/Research"))
+            && !source.starts_with(vault.join("Note/Tech"))
+        {
+            continue;
+        }
         let note = fs::read_to_string(&source)?;
         if let Some(post) = parse_post(&source, &note)? {
             if !slugs.insert(post.slug.clone()) {

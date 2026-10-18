@@ -1,7 +1,7 @@
 # RoFormer: Enhanced Transformer with Rotary Position Embedding
 
-- source: `raw/my-vault/Note/Research/RoFormer - Enhanced Transformer with Rotary Position Embedding.md`
-- source_sha256: `14714bdfc5683819b26a5fef3eb8b4dbf3a424e8d2413a62ed22e333f21b96a0`
+- source: `raw/my-vault/Note/Research/@roformer2021.md`
+- source_sha256: `a00415c918664ea66ad0bdd6ed7994d35fdda34722ebe6406d4e0ca203156030`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

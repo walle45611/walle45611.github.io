@@ -29,7 +29,7 @@ $$
 
 [[Note/Research/03 - Activation Functions|Sigmoid 與其他活化函數]]
 [[Note/Research/02 - Likelihood NLL and Cross-Entropy|Likelihood、NLL 與 Cross-Entropy]]
-[[Attention Is All You Need]]
+[[@attention2017|Attention Is All You Need]]
 
 ## 手寫原稿
 

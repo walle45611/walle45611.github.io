@@ -1,7 +1,7 @@
 # Performance of a Large Language Model on the Reasoning Tasks of a Physician
 
-- source: `raw/my-vault/Note/Research/Performance of a Large Language Model on the Reasoning Tasks of a Physician.md`
-- source_sha256: `5fafd51d399921e80058d3ac670d1ce67da16d1b1c6c457fbe38cc3eabe6db33`
+- source: `raw/my-vault/Note/Research/@llmphysicianreasoning2026.md`
+- source_sha256: `d6c535374f007360fcc7576747639781a024c6f7668a0cce06f93c92886d1f09`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

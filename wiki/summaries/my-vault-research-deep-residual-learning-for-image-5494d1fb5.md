@@ -1,7 +1,7 @@
 # Deep Residual Learning for Image Recognition
 
-- source: `raw/my-vault/Note/Research/Deep Residual Learning for Image Recognition.md`
-- source_sha256: `1fe1138f5ec31efce8e7f51eae124ce3778f1083000b099ec5dd9db00aa2b79d`
+- source: `raw/my-vault/Note/Research/@residuallearning2015.md`
+- source_sha256: `3da04b73d47d28891c04dfd659ec9874c5d9a38dd6c6e0794869bdbc6fec2ecd`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

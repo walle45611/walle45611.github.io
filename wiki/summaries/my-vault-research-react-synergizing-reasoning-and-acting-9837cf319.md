@@ -1,7 +1,7 @@
 # ReAct: Synergizing Reasoning and Acting in Language Models
 
-- source: `raw/my-vault/Note/Research/ReAct - Synergizing Reasoning and Acting in Language Models.md`
-- source_sha256: `3b036f352f64b30aaf99f44f304bb2b1a92c73d7ad4c720687e827b66bc56a38`
+- source: `raw/my-vault/Note/Research/@react2023.md`
+- source_sha256: `79701db8c8a6e353fe5e0472c13b3f78da6e4071723963743ec47e031fa58966`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

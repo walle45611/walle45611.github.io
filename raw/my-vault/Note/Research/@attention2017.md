@@ -286,26 +286,3 @@ MT=\begin{bmatrix}s&c&s^2+c^2-1\\c&s&cs+sc-2sc\\s&c&s^2+c^2+2\end{bmatrix}
 $$
 
 使用了 $s^2+c^2=1$ 與 $\sin2\theta=2sc$。左側 logistic regression 另整理於 [[Logistic Regression 與 Log-Odds 計算]]。
-
-## 手寫原稿
-
-> [!note]- 照片 1：手寫原稿
-> ![[Assets/Note/Research/Attention Is All You Need/Photo 1.jpg|800]]
-
-> [!note]- 照片 2：手寫原稿
-> ![[Assets/Note/Research/Attention Is All You Need/Photo 2.jpg|800]]
-
-> [!note]- 照片 3：手寫原稿
-> ![[Assets/Note/Research/Attention Is All You Need/Photo 3.jpg|800]]
-
-> [!note]- 照片 4：手寫原稿
-> ![[Assets/Note/Research/Attention Is All You Need/Photo 4.jpg|800]]
-
-> [!note]- 照片 5：手寫原稿
-> ![[Assets/Note/Research/Attention Is All You Need/Photo 5.jpg|800]]
-
-> [!note]- 照片 6：手寫原稿
-> ![[Assets/Note/Research/Attention Is All You Need/Photo 6.jpg|800]]
-
-> [!note]- 照片 7：手寫原稿
-> ![[Assets/Note/Research/Attention Is All You Need/Photo 7.jpg|800]]

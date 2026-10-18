@@ -1,7 +1,3 @@
----
-Type:
-  - windows Server DNS
----
 ### 建立primary zone
 
 ![[Assets/Note/Tech/Windows Server DNS 設定指南/01-建立primary zone.png|01-建立primary zone.png]]

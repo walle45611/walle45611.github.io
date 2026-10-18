@@ -1,9 +1,3 @@
----
-Type:
-  - Linux Basic
-OS:
-  - Debian
----
 ### 將網卡名稱改成eth0
 
 ![[Assets/Note/Tech/Linux Ubuntu or Debian Set hostname and IP address/01-將網卡名稱改成eth0.png|01-將網卡名稱改成eth0.png]]

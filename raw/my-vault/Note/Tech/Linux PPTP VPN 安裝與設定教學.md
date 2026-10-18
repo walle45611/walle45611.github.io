@@ -1,9 +1,3 @@
----
-Type:
-  - Linux VPN
-OS:
-  - Debian
----
 ## 📦 安裝 PPTP 伺服器
 
 使用 apt 套件安裝 PPTP Daemon：

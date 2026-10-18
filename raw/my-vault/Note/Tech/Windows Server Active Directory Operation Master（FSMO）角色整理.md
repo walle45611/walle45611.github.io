@@ -1,7 +1,3 @@
----
-Type:
-  - windows Server AD
----
 ## 一、AD 架構中 FSMO 分布
 
 ### 🔍 查詢指令

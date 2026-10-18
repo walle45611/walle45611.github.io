@@ -1,7 +1,3 @@
----
-Type:
-  - windows Server P2P
----
 ![[Assets/Note/Tech/Windows Server PPTP tunnel/01-windows Server P2P.png|01-windows Server P2P.png]]
 
 ### pptp/GRE tunnel

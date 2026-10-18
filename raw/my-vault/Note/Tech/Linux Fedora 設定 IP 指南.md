@@ -1,9 +1,3 @@
----
-Type:
-  - Linux Basic
-OS:
-  - Fedora
----
 ### change NIC Name
 
 - command

@@ -1,7 +1,3 @@
----
-Type:
-  - windows Basic
----
 ## NTFS和ReFS權限種類
 
 ### 基本的檔案權限種類

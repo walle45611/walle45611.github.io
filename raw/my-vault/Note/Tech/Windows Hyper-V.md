@@ -1,6 +1,3 @@
----
-Created: 2023-02-27T20:50
----
 >[!info] win + r virtmgmt.msc
 
 ## 安裝

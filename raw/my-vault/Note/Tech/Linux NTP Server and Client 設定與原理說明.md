@@ -1,9 +1,3 @@
----
-Type:
-  - Linux NTP
-OS:
-  - Debian
----
 ## 🕰️ NTP Server（使用 `chronyd`）
 
 ### 🔧 安裝與啟用

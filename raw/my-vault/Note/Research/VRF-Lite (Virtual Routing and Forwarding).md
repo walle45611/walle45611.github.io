@@ -1,9 +1,3 @@
----
-title: VRF-Lite (Virtual Routing and Forwarding)
-aliases:
-  - VRF
-  - VRF-Lite
----
 
 # VRF-Lite (Virtual Routing and Forwarding)
 

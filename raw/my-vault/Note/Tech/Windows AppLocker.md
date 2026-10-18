@@ -1,7 +1,3 @@
----
-Type:
-  - windows Server GPO
----
 ### APPLocker
 
 - 只能支援企業版用戶端

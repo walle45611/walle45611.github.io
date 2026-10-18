@@ -1,7 +1,3 @@
----
-Type:
-  - windows Server VPN
----
 前置作業先將VPNS加入到DC網域內
 
 在DC上安裝CA

@@ -1,7 +1,3 @@
----
-Type:
-  - windows Server DFS
----
 ## 概述
 
 > [!important] win +r dfsmgmt.msc

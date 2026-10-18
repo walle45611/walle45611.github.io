@@ -1,7 +1,3 @@
----
-Type:
-  - windows Server ADCS
----
 - 可以先看
 
 - [[#種類概述]]

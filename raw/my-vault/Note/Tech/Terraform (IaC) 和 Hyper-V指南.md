@@ -1,8 +1,3 @@
----
-Created: 2023-06-02T16:03
-tags:
-  - DevOps
----
 # Hyper-V 環境設定
 
 ## 安裝與設定

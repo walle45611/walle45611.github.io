@@ -1,7 +1,3 @@
----
-Type:
-  - windows Server VPN
----
 ## l2tp/ipsec pre-share-key
 
   

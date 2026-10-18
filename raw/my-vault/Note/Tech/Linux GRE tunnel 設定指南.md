@@ -1,9 +1,3 @@
----
-Type:
-  - Linux P2P
-OS:
-  - Debian
----
 ## topology
 
 ![[Assets/Note/Tech/Linux GRE tunnel 設定指南/01-topology.png|01-topology.png]]

@@ -1,6 +1,3 @@
----
-Created: 2023-02-27T20:50
----
 ## 專業名稱
 
 ![[Assets/Note/Research/DNS (Domain Name Service)/01-專業名稱.png]]

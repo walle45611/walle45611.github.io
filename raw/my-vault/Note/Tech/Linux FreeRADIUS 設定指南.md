@@ -1,9 +1,3 @@
----
-Type:
-  - Linux RADIUS
-OS:
-  - Debian
----
 ## Cisco With Free**RADIUS**
 
 > [!important] 模擬器非常難模擬，問題一堆

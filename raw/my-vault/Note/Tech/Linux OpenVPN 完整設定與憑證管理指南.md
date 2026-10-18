@@ -1,7 +1,3 @@
----
-OS:
-  - Debian
----
 ## 📥 套件安裝與 easy-rsa 初始化
 
 ```bash

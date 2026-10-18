@@ -1,7 +1,3 @@
----
-Type:
-  - windows Server VPN
----
 ![[Assets/Note/Tech/Windows Server PPTP & GRE/01-windows Server VPN.png|01-windows Server VPN.png]]
 
 ### pptp

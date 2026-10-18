@@ -1,8 +1,3 @@
----
-Created: 2023-02-28T20:00
-tags:
-  - DevOps
----
 - Install
     
     ```Shell

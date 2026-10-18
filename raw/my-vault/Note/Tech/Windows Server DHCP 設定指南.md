@@ -1,7 +1,3 @@
----
-Type:
-  - windows Server DHCP
----
 ### DHCP server authorized
 
 並不是就可以對dhcp client提供服務還需要經過授權，為經過授權的DHCP server無法將IP address出租給用戶端。

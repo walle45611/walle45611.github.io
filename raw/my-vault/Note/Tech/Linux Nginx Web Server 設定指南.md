@@ -1,9 +1,3 @@
----
-Type:
-  - Linux Web
-OS:
-  - Debian
----
 ### 安裝nginx
 
 ```Shell

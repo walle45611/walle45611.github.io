@@ -1,9 +1,3 @@
----
-Type:
-  - iscsi
-OS:
-  - Debian
----
 # iscsi
 
 ![[Assets/Note/Tech/Linux iSCSI 設定指南/01-iscsi.png]]

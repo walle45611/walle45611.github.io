@@ -1,7 +1,3 @@
----
-Type:
-  - windows Server VPN
----
 ### DirectAccess topology
 
 ![[Assets/Note/Tech/Windows Server DirectAccess VPN 設定指南/01-DirectAccess topology.png|01-DirectAccess topology.png]]

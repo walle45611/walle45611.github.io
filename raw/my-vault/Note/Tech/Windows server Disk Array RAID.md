@@ -1,7 +1,3 @@
----
-Type:
-  - windows Server Strong Server
----
 ## 創建要求要求
 
 - 硬碟至少是四GB的

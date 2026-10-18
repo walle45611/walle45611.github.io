@@ -1,9 +1,3 @@
----
-Type:
-  - Linux Basic
-OS:
-  - Debian
----
 # Linux 基本觀念和指令
 
 整理檔案與目錄、使用者與權限、服務與日誌、套件、SELinux 及排程。網路設定與診斷見 [[Linux networking 常用指令]]。

@@ -1,7 +1,3 @@
----
-Type:
-  - windows Server GPO
----
 ## Password Policy
 
 ![[Assets/Note/Tech/Windows Server Local security Policy/01-Password Policy.png|01-Password Policy.png]]

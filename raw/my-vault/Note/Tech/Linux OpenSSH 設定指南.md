@@ -1,9 +1,3 @@
----
-Type:
-  - Linux SSH
-OS:
-  - Debian
----
 
 OpenSSH 是最常見的遠端連線協定之一，提供安全的 SSH 連線、SCP、SFTP 等功能。以下整理常見的 OpenSSH 設定方式，適用於 Linux 系統。
 

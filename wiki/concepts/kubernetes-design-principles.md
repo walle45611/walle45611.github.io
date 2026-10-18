@@ -1,35 +1,41 @@
-# Kubernetes Design Principles
+---
+title: "Kubernetes 設計、部署與 GitOps"
+tags:
+  - concept/cloud
+aliases:
+  - "microk8s-production-readiness"
+  - "kubernetes-gitops-delivery"
+---
 
-## Current View
+# Kubernetes 設計、部署與 GitOps
 
-依已收錄的設計演講，Kubernetes 可從「描述期望狀態、元件各自收斂、應用與底層實作分離」理解。這補上既有 GitOps 與 MicroK8s 部署筆記的設計理由；目前原則的直接來源主要為 2018 年演講，並非跨版本完整規格。
+Kubernetes 透過 API 保存期望狀態，由控制器及節點元件持續收斂。設計理由、叢集運維與應用交付是同一主題的不同層次，部署一次成功不表示已具長期可靠性。
 
-## Working Model
+## 宣告式設計
 
-1. **宣告目標**：API 物件保存希望系統維持的狀態，控制流程持續縮小實際狀態與期望狀態的差距。
-2. **分散執行責任**：Scheduler、kubelet 等元件透過共同 API 物件協作；元件可在恢復後重新讀取狀態，減少對單次命令送達的依賴。
-3. **降低應用耦合**：檔案與環境變數可承接設定、Secret 與 Pod 資訊，應用不一定需要內建 Kubernetes API 用戶端。
-4. **分離需求與資源**：PVC 描述儲存需求，PV 表達儲存資源；StorageClass 承接環境的佈建選擇。可攜性仍以目標環境滿足需求為條件。
-5. **以契約支援擴充**：CRD 與自訂控制器讓新類型與行為沿用 API machinery；宣告物件本身並不自動實作對應行為。
+Scheduler、kubelet 等元件讀取共同 API 物件協作；level-triggered 指依目前狀態決定行動，不等於沒有事件。恢復後讀取狀態也不表示控制面中斷時仍有完整服務能力。
 
-## 與既有部署知識的整合
+應用可由環境變數與檔案接收設定；PVC 表達需求、PV 表達資源、StorageClass 承接佈建選擇。可攜性以目標後端滿足需求為前提。CRD 與 controller 擴充 API，宣告新物件不會自動實作行為。
 
-- GitOps 把版本控制中的部署描述接到宣告式同步流程；設計原則解釋持續收斂的價值，既有 GitOps 來源則提供 Helm、Argo CD 等具體操作。
-- MicroK8s 的部署成功與長期可用性仍需分別驗證。元件可以獨立恢復，不代表控制面無需高可用；PVC 抽象也不取代後端容量、存取條件與資料保護。
+## 部署與運維
 
-## Boundaries
+MicroK8s 來源涵蓋單機基線、DNS、storage、Ingress、MetalLB、metrics、多節點與角色／taint。是否適合生產取決於 HA、網路、權限、恢復及升級流程；來源對小中型叢集的描述不作通用容量上限。較大規模或多雲方案仍需比較實際需求。
 
-Level-triggered 指依目前狀態決定行動，不等於不使用事件。工作負載收斂的最終一致性討論，不等於所有 API 或資料層的一致性語意。StorageClass 同名不保證後端能力等價；2018 年儲存實作細節須與當前環境分開看。
+Pod namespace、CNI、Service backend mapping 與 DNS 分開排錯；元件健康不證明 NetworkPolicy、入口流量及實際封包路徑已驗證。見 [[container-networking]]。
 
-## Related Concepts
+## GitOps 交付鏈
 
-- [kubernetes-gitops-delivery](./kubernetes-gitops-delivery.md)
-- [microk8s-production-readiness](./microk8s-production-readiness.md)
+Helm 套件化、Argo CD 同步、Image Updater 推進映像、Sealed Secrets 管理可進版本控制的密文，分工須配合實際版本與憑證。固定 helm 操作語境，先叢集基線再交付工具，核對管理入口、registry 認證、namespace 與 secret 範圍。
 
-## Sources
+密文入 Git 不取代金鑰備份與權限治理。NodePort／proxy 是來源的操作路徑，不是所有環境唯一正確入口；Image Updater 多 registry／多環境與外部 secret 系統的整合仍待更多案例。
 
-- [kubernetes-design-principles-understand-the-why](../summaries/kubernetes-design-principles-understand-the-why.md)
+## 限制與來源邊界
 
-## 2026-10-09：網路模型的實作邊界
+設計原則主要依 2018 年演講，網路入門依 2024 年示範，部署指南保存特定版本流程；它們不互相證明工具設定已實測。HA 恢復時間、Snap 通道及升級相容性需更多量化資料；映像打包見 [[nuitka-and-docker-deployment]]。
 
-[[understanding-kubernetes-networking-in-30-minutes]] 說明網路模型由 CNI 等元件實作、Service 以 API 狀態映射可變後端；DNS 名稱解決應用發現，不能取代底層可達性。實作見 [[container-networking]]；實際運維見 [[microk8s-production-readiness]]。
+## 來源
+
+- [[container-networking-from-scratch]]
+- [[kubernetes-design-principles-understand-the-why]]
+- [[microk8s-production-deployment-guide]]
+- [[understanding-kubernetes-networking-in-30-minutes]]

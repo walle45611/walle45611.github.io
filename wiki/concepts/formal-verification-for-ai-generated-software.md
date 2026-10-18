@@ -1,3 +1,9 @@
+---
+title: "AI 生成軟體的形式化驗證"
+tags:
+  - concept/agent
+---
+
 # AI 生成軟體的形式化驗證
 
 ## 核心觀點

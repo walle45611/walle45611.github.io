@@ -59,7 +59,6 @@
 
 - [local-llm-deployment](../concepts/local-llm-deployment.md)
 - [harness-engineering](../concepts/harness-engineering.md)
-- [llm-serving-compatibility](../concepts/llm-serving-compatibility.md)
 - [model-quantization](../concepts/model-quantization.md)
 - [context-engineering](../concepts/context-engineering.md)
 

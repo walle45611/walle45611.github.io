@@ -313,6 +313,47 @@
 - report: [[wiki-lint-2026-10-09]]，並掛回知識庫維護入口。
 - gaps: VRF 設定、Monitor／Bakery 表述、Slurm 儲存與收尾、FortiGate 外網／NAT、CNI 與政策實作待補證據；未驗證全部來源附件與標題錨點。
 
+## [2026-10-09] lint | 簡化任務規則設計
+
+- authorization: 使用者要求刪除獨立輸出規則並簡化 wiki/rules。
+- fixed: 刪除 output-rules.md；路由入口集中共通原則，8 份規則保留各任務必要流程；移除重複說明、強制 JSON schema 與制式句型模板。
+- updated: AGENTS.md、知識庫維護入口與 Worker 操作頁同步移除舊輸出規則引用；歷史 log 保留。
+- notes: 保留來源追溯、摘要唯一、日期語意、交叉連結、日誌追加、歸檔 Git 同步與外部發送授權邊界。
+- verified: rules 由 9 份／935 行縮減為 8 份／196 行；作用中舊引用已清除，規則路由連結、wiki 檔案連結與差異空白檢查通過。
+
+## [2026-10-09] lint | 合併規則至五份
+
+- authorization: 使用者同意合併日誌、回顧與每日整理規則，並指定刪除社群貼文規則。
+- updated: log 要求併入 router-rules.md；review 與 daily 合為 reading-rules.md；刪除 log-rules.md、review-rules.md、daily-rules.md、social-post-rules.md。
+- fixed: 更新 AGENTS.md、query／ingest／lint 與知識庫維護入口；未另留社群貼文專用流程。
+- notes: 保留歷史日誌與 Daily 對當時規則檔的引用，不改寫過去實際讀取紀錄。
+- verified: 現行規則共 5 份，路由與維護入口連結目標存在、作用中刪除檔引用為 0，差異空白檢查通過。
+
+## [2026-10-09] lint | Daily 僅保留最近 30 天
+
+- authorization: 使用者要求 daily 只留 30 天內容。
+- checked: wiki/assets/daily 的 70 份日期檔案；以 Asia/Taipei 今天 2026-10-09 減 29 天計算下限 2026-09-10。
+- fixed: 刪除 50 份早於下限的 daily，保留 20 份；移除空月份目錄，重建每日導航並更新總索引描述。
+- updated: reading-rules.md 加入每次 daily 寫入／維護時清理的規則；較早日期回顧改由索引與摘要取得內容。
+- verified: 留存檔案均在期限內，導航列出的檔案均存在。
+- notes: 原始來源、摘要、概念與歷史日誌保留；本次未補建缺少日期或新增排程。
+
+## [2026-10-09] lint | 簡化 daily 位置與移除獨立報告
+
+- authorization: 使用者同意 daily 改放 wiki/daily，並認為獨立 report 不需要保留。
+- updated: 20 份 daily 原文搬至 wiki/daily/YYYY-MM，移除空的 assets 層；閱讀規則與每日導航同步更新。
+- fixed: 刪除獨立 lint 報告與維護入口連結，待追蹤事項改留於日誌；先前內容疑義與檢查紀錄仍保留。
+- verified: 20 份 daily 搬移前後內容雜湊一致。
+
+## [2026-10-09] lint | 以 Concepts 導航並縮減紀錄結構
+
+- authorization: 使用者指定移除 index、重整 concepts、log 只保留 30 天，daily 不使用月份資料夾。
+- updated: concepts 由 39 頁整合為 29 頁；合併相關主題，保留來源與舊名稱 aliases，補主題標籤及相鄰概念入口。
+- fixed: 移除 wiki/index.md；將其中 33 份摘要缺少的收錄日期移回摘要，保留既有日期；歸檔工具不再依賴或建立總索引。
+- updated: 20 份 daily 攤平至 wiki/daily/YYYY-MM-DD.md，更新導航及規則；log 按條目日期移除 50 筆早於 2026-09-10 的紀錄，本次清理後既有條目保留 59 筆。
+- verified: 歸檔檢查 395 份來源均有摘要，missing=0、changed=0；458 份 wiki 文件的作用中檔案連結無斷鏈，概念及摘要均有入口，source 宣告無重複；9 項工具測試、格式與 clippy 檢查通過。
+- gaps: 未重新核對全部外部網址、附件與標題錨點；來源缺漏與歷史案例限制仍明示於相關頁面。本次未 commit 或 push。
+
 ## [2026-10-12] blog-publish | Containerlab 安裝與設定指南
 
 - authorization: 使用者要求將既有「Containerlab 安裝與設定指南」發布到 Blog。
@@ -320,6 +361,27 @@
 - verified: 已確認 frontmatter 寫入 GitHub main，變更提交 `a703b436a657b9949afc28d1b411dcc74c07c3df`；Cloudflare Pages workflow 於檢查時為 `in_progress`，尚未確認正式網站部署完成。
 - url: https://blog.walle4561.com/articles/posts/containerlab-installation-guide/
 - scope: 修改選定文章與本紀錄；未執行 `sync-vault`、全量歸檔或在本地原始 My vault 上寫入。
+
+## [2026-10-14] lint | 清理 My Vault 筆記 metadata
+
+- checked: `raw/my-vault/` 全部 Markdown 的 frontmatter；確認大小寫不同的 My vault 路徑為同一目錄，沒有獨立來源 Vault。
+- updated: 清理 69 份非論文筆記，僅保留既有 `tags`、`blog` 與 `blog_*` 欄位；53 份論文保留全部 metadata。移除一般屬性與舊版 Blog 欄位。
+- verified: 逐檔比對正文完全一致、保留欄位值一致；其餘有 frontmatter 的筆記（含論文）檔案雜湊一致。未修改 Web Clipper 與 wiki 的 metadata。
+- gaps: 未執行同步、摘要重建、Blog 建置、部署、commit 或 push；既有 Attention Is All You Need.md 修改保留。日誌依 30 天規則移除早於 2026-09-15 的條目。
+
+## [2026-10-14] lint | 依使用者澄清調整 metadata 清理範圍
+
+- authorization: 使用者指定「論文和 Blog 就不要動，其他的都刪掉」。
+- updated: 還原先前清理涉及的 Blog 筆記至本次工作開始前的完整內容；其餘非論文、非 Blog 的 My Vault 筆記移除整段 frontmatter，包括 tags。
+- verified: 論文與 Blog 筆記逐檔比對工作開始前雜湊一致；其他 My Vault 筆記沒有 frontmatter，修改僅涉及 metadata、正文保留。
+- gaps: Web Clipper 與 wiki 維持原範圍，未清理其 metadata；未提交或發佈。
+
+## [2026-10-14] lint | 整理 AD 使用者 PowerShell 腳本筆記格式
+
+- checked: `raw/my-vault/Note/Tech/Windows PowerShell Create New AD User 腳本.md` 的三組腳本與既有段落。
+- updated: 加入主標題及三個情境標題、帳號範圍與群組說明；將清單內程式碼區塊移至段落層級，統一 powershell 標記、縮排與空白。
+- verified: 三組腳本移除空白後與整理前一致；保留原有指令、參數與字串，未新增 metadata。
+- gaps: 本次僅整理格式，未在 AD 環境執行或驗證腳本功能。
 
 ## [2026-10-18] lint | 論文筆記改用精簡引用鍵檔名
 
@@ -339,13 +401,14 @@
 - verified: 12 項 workspace 測試通過，含完整執行建站器的發佈範圍回歸測試（Research／Tech 子目錄、其他目錄、Blog tag、false、字串 true、舊 post 標記、Web Clipper、舊輸出清除、取消發佈與未發佈連結）；fmt、clippy -D warnings 與差異空白檢查通過。實際建站產生 83 篇文章、303 個附件，manifest 與全部符合條件的 83 份來源集合一致，各來源雜湊與文章輸出路徑核對通過。
 - gaps: 未變更既有筆記的發佈 metadata、未同步 Vault、未執行 stage-assets、commit、push 或部署；既有其他工作變更保留。日誌以 2026-09-19 為 30 天保留下限。
 
-## [2026-10-18] blog-publish | 提交論文命名與嚴格發佈規則
+## [2026-10-18] blog-publish | 論文命名與發佈規則部署完成
 
-- authorization: 使用者要求將本次論文改名與發佈邏輯調整 commit、push，並確認部署。
-- checked: fetch 後本機 main 與 origin/main 各有 2 筆不同提交；遠端基底為 `7a9833a`。以遠端最新版本建立獨立暫存 checkout，只套用本次改名、連結與發佈選擇邏輯，保留遠端 Publications 頁與其他既有內容。
-- updated: 包含 47 份既有論文改名與 1 份原未追蹤論文以新檔名加入、相關連結／規則／日誌及發佈回歸測試。本機原先 Attention 正文、其他筆記、樣式與歷史整理變更不納入本次提交。
-- verified: 遠端基底加本次變更的實際 checkout 通過 12 項測試、fmt、clippy -D warnings；建站產生 83 篇文章與 301 個引用附件，發佈來源集合及來源雜湊符合新規則。
-- gaps: 本條寫入時尚待 push 與 GitHub Actions／正式網站驗證；不將本機其他歷史提交一起推送。
+- authorization: 使用者要求將本次論文筆記改名與發佈邏輯調整 commit、push，並確認 Blog 部署成功。
+- checked: 遠端 main 基底 `7a9833a`；原工作目錄與遠端各有 2 筆不同提交，故以獨立暫存 checkout 選取本次改名／連結／規則變更，未推送本機其他歷史提交或未完成修改。
+- updated: 已提交並推送 `c3133da85de65903d34dca5dba15579928b9d26f` 至 GitHub main，含 47 份既有論文改名與 1 份原未追蹤論文以新名稱加入，以及嚴格 Research／Tech + blog: true 發佈規則。原工作目錄 main 未切換或重設；另建立 `walle4561/paper-notes-publication-policy` 分支參照已推送提交。
+- verified: 遠端基底上的暫存 checkout 通過 12 項測試、fmt、clippy 與建站（83 篇文章、301 個附件）。[GitHub Actions #39086493180](https://github.com/walle45611/walle45611.github.io/actions/runs/39086493180) 對應該提交並以 success 完成，Cloudflare Pages 回報 [e97fa01e 部署](https://e97fa01e.walle45611-github-io.pages.dev)。
+- verified: 本次部署網址及正式 `https://blog.walle4561.com` 的首頁、文章列表、Publications、Database Internals 文章共 8 個頁面均回傳 HTTP 200；內容與本次建站產物一致（正式站僅移除已確認的 Cloudflare Insights 腳本及其換行後比較）。
+- gaps: 本紀錄為部署後本機追加，未為日誌再觸發一輪部署；本機其他筆記內容、歷史整理與樣式差異保留。
 
 ## [2026-10-18] lint | 移除 Attention 手寫原稿附錄
 
@@ -363,3 +426,20 @@
 - updated: 10 份摘要的原雜湊與修改前來源一致，已同步新雜湊；不刷新既有過期摘要。建站後 stage-assets 將 Graph Connectivity／Spanning Tree 的 2 張不再被發佈文章引用的手稿圖片移出 Git 追蹤，保留本機檔案。
 - verified: 修改區塊外內容、全部公式及 frontmatter 保留；相關獨立手稿區塊無殘留。以未修改的既有建站器執行建站，成功產生 83 篇文章、299 個輸出附件；manifest 各來源雜湊一致，兩篇受影響 Blog 文章不再含手寫照片區塊；差異空白檢查通過。
 - gaps: 原稿實體檔案與 Git 歷史未刪除；其他本機尚未提交修改保留。部署狀態於提交後另行核對。
+
+## [2026-10-18] blog-publish | 其他筆記手稿區塊清理部署完成
+
+- updated: 已將 `b1d533e20595abf5150e49b5b44fbde7edf294a8` 推送至遠端 main，原工作目錄其他修改保留。
+- verified: [GitHub Actions #39105769442](https://github.com/walle45611/walle45611.github.io/actions/runs/39105769442) 對應此提交並以 success 完成；正式 Blog 的 Graph Connectivity 與 Spanning Tree 文章均回傳 HTTP 200，手稿區塊已移除，排除 Cloudflare 分析腳本後與提交建站產物一致。
+- gaps: 此為部署後本機紀錄，未為日誌再次觸發部署。
+
+## [2026-10-18] lint | 整合本機 main、分類提交與 R2 圖片本地化
+
+- authorization: 使用者要求整合本機 main 與遠端，保留目前筆記內容，將剩餘修改分類 commit、push；追加要求下載 Blog 的 R2 圖片、改用本地附件管理。
+- checked: 更新遠端至 `b1d533e`；本機舊 HEAD 為 `47f5fc8`，其中 `a8d1b5a` 的 wiki 整理尚未整合。以 `walle4561/local-main-backup-20261018` 保存舊歷史，另將 1,248 個工作檔案與雜湊備份到 `/tmp/vault-main-integration-20261018/`。
+- updated: 暫存區原為空，採用 mixed reset 將 main 基底對齊最新遠端，保留全部工作檔案；比對 1,248 份備份雜湊完全一致。接著將剩餘 metadata、筆記內容／附件、R2 遷移、wiki 維護分批提交。
+- updated: 43 份非論文筆記 frontmatter 清理；保留本機 Database Internals 新增推導與 2 張圖片、AD PowerShell 整理、DDIA 表格格式、PostgreSQL 兩地部署筆記、新剪藏與 Dashboard 入口。
+- migrated: R2 舊 blog-images 自訂網域無法解析，改從同一 blog-images bucket 的現行 r2 自訂網域取得 Nuitka 圖片。下載後驗證 PNG、1490×138、56,857 bytes、SHA-256 `0dbee2f56d5a9d27c9a86dc8de64196e78fe6541ca86553c5a2eaf16aa20c126`，存入 `raw/my-vault/Assets/Note/Tech/Nuitka/nuitka-compiled-file-size.png`；筆記與 Web Clipper 兩處均改用本地嵌入。來源筆記／剪藏中 R2 圖片網址殘留為 0，未刪除 R2 原檔或更動帳號／圖床設定。
+- updated: 納入既有 wiki concepts／摘要整合、扁平 daily、移除總索引／獨立 report 與規則精簡；archive 工具不再要求 wiki/index.md。依 2026-10-18 的 30 天期限再清除 9 份早於 2026-09-19 的本地 daily，保留 11 份並更新導航；log 保留期限內原有條目及此次本機紀錄。
+- verified: 整合後所有既有來源筆記／剪藏逐檔雜湊與備份一致，唯獲授權的兩個 R2 圖片嵌入改為本地。12 項 Rust 測試、fmt、clippy -D warnings 通過；建站產生 83 篇文章、302 個輸出附件，各來源雜湊符合 manifest。stage-assets 新增 R2 附件，未取消追蹤其他發佈附件；作用中 wiki Markdown 連結目標無缺漏。
+- gaps: /tmp 備份屬暫存，舊提交另有 Git 備份分支；既有剪藏的 Markdown 行尾雙空白及筆記尾端空白保留，以免改寫來源。未將未引用附件或本機私密設定加入 Git；提交後另核對推送與部署。

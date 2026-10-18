@@ -1,5 +1,7 @@
 # LLM Wiki
 
+- ingested_at: 2026-08-02
+
 - source: `raw/web-clipper/llm-wiki.md`
 - source link: https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
 - original title: llm-wiki

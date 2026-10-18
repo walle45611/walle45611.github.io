@@ -1,29 +1,26 @@
-# Nuitka and Docker Deployment
+---
+title: "Python 編譯與容器打包"
+tags:
+  - concept/cloud
+---
 
-## Current View
+# Python 編譯與容器打包
 
-Nuitka is a Python‑to‑C compiler that produces native binaries. Combined with Docker multi‑stage builds, it yields lightweight images (~15 MB) and faster startup compared to traditional packaging tools like PyInstaller. The approach protects code, reduces runtime dependencies, and improves CI/CD performance.
+已收錄文章討論 Nuitka 與 Docker multi-stage build 的搭配：在 builder 階段編譯，再把需要的產物放進 runtime image，讓建置環境與交付環境分開。
 
-## Stable Conclusions
+## 編譯與打包的責任
 
-1. Nuitka compiles Python to native C11, providing strong code protection and eliminating the need for a Python interpreter at runtime.
-2. Docker multi‑stage builds with Nuitka produce lightweight images (~15 MB) and reduce deployment time by 4‑6 s.
-3. The combined approach yields faster startup, lower memory footprint, and improved CI/CD build times compared to PyInstaller or pure Docker images.
-4. The approach is suitable for micro‑service deployments, CI/CD pipelines, and production environments where image size and startup latency matter.
+Nuitka 處理 Python 編譯，Docker 管理映像與執行環境；最後仍需核對依賴、共享函式庫、目標架構、entrypoint 與運作結果。使用 minimal／scratch base 必須符合產物實際需求，不能僅複製一個 binary 就假設完整可用。
 
-## Working Heuristics
+## 來源數據與限制
 
-- Use a builder stage with Nuitka and required system libraries.
-- Compile the main application into a binary (e.g., main.bin).
-- In the runtime stage, use a scratch or minimal base image and copy the binary.
-- Set entrypoint to the binary.
-- Optionally, use uv or pip to install runtime dependencies if needed.
+舊概念頁把約 15 MB、快 4–6 秒等來源描述寫成通用結論，現改限於該文章的案例敘述。映像大小、啟動速度、memory、CI 時間與安全效果不能從工具名稱推定，需目標應用比較；編譯也不等於程式與資料已受完整保護。依賴保留與 standalone 模式條件仍需版本文件驗證。
 
-## Related Concepts
+## 相鄰概念
 
-- [microk8s-production-readiness](../concepts/microk8s-production-readiness.md)
-- [cloudflare-workers-ai-pricing-model](../concepts/cloudflare-workers-ai-pricing-model.md)
+- [[kubernetes-design-principles]]：映像交付之後的叢集運維與 GitOps。
+- [[local-llm-deployment]]：架構與 runtime 相容性也須實測。
 
-## Sources
+## 來源
 
-- [Nuitka 與 Docker 打造高效能且安全的 Python 應用部署方案](../summaries/nuitka-and-docker-for-high-performance-and-secure-python-deployment.md)
+- [[nuitka-and-docker-for-high-performance-and-secure-python-deployment]]

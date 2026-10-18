@@ -1,5 +1,7 @@
 # Introducing ChatGPT Images 2.0
 
+- ingested_at: 2026-05-22
+
 - source: `raw/web-clipper/Introducing ChatGPT Images 2.0.md`
 - source link: https://openai.com/index/introducing-chatgpt-images-2-0/#textmode
 - original title: Introducing ChatGPT Images 2.0

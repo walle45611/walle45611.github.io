@@ -1,79 +1,52 @@
-# Harness Engineering
+---
+title: "Agent 工作流與 Harness"
+tags:
+  - concept/agent
+aliases:
+  - "agent-design-patterns"
+---
 
-## Current View
+# Agent 工作流與 Harness
 
-在目前知識庫中，harness engineering 可定義為：透過規則、工具與工作流程的設計，系統性地約束並放大語言模型在多輪任務中的可用行為。它不等於 prompt wording，而是涵蓋整個 agent 執行環境的行為工程。
+Agent 的可用性取決於模型、上下文、工具與執行流程如何配合。Harness 管理整體環境；工作流拓樸決定各步驟如何分工與交換資料。
 
-## Stable Conclusions
+## 工作流選擇
 
-1. AI agent 的最終表現是「模型能力 × harness 設計」的共同結果，不能只歸因於模型參數大小。
-2. 規則檔（如 `agents.md`、`CLAUDE.md`）可作為認知框架，雖非硬約束，仍常對效率與穩定性有明顯影響。
-3. 工具與權限同時定義了能力上限與安全下限；安全性與便利性通常是可調但互相牽制的 trade-off。
-4. 對 agent 友善的工具介面不必與人類習慣一致；可摘要、可結構化、低噪音的介面通常更利於任務完成。
-5. 工作流設計（如 planner/generator/evaluator 或生成-驗證迴圈）是把模型輸出轉成可交付結果的關鍵中介層。
-6. 真正穩定的治理通常需要「harness 層硬控制」與「模型層軟約束」並用；只靠 prompt 指示不足以覆蓋高風險場景。
-7. 在 AI coding 情境中，將「架構規劃」與「代碼執行」分層，通常比單模型端到端直譯需求更能控制效能與技術債風險。
-8. 在自我修正任務中，來自檢查器、搜尋、執行器或 checklist 的 external feedback，通常比單純要求模型自我反思更穩定。
-9. 當工具與文件開始以 agent 為第一目標時，harness 的一部分也變成把安裝、部署與操作流程包裝成 agent 可直接消化的輸入，而不是只讓人類照著手動操作。
-10. 在數學等可形式化驗證的領域，harness 可以把人類提出或改寫問題、AI 生成候選解法、社群協作與形式化檢查串成可擴展的研究迴圈；驗證器讓回饋可被執行，而非只依賴模型自評。
-11. 在個人化學習中，harness 可以把理解探測、教學規劃、事實查證、視覺化、測驗回饋與學習紀錄串成一個閉環，讓模型根據學習者狀態調整教學，而不是只輸出一次性的解釋。
-12. 可用的部署 stack 不只包含模型，還包含 inference engine、相容端點、工具與 skills、tool parser、權限和隔離環境；任一層都會改變 agent 的實際能力與風險。
-13. 地端或私有模型可以縮小資料外流範圍，但不能取代 harness 層的網路政策、最小權限、工具審查與 sandbox/VM/container 隔離。
-14. 對能由固定程式或 CPU 工具完成的工作，讓模型負責選擇與編排、讓可重複工具負責執行，通常比讓模型自由生成整段操作更容易驗證。
+- Single agent 適合少量工具與簡單任務；固定步驟可用 sequential workflow，獨立子任務可用 parallel workflow，但後者需要明確的彙整責任。
+- 先定義目標、輸入輸出、共享狀態與完成條件，再決定是否拆分代理。更多 agent 不保證可靠性，協調成本、延遲與算力須一起比較。
+- 規則檔提供導航與必要約束，固定程式、可執行檢查與工具權限提供較硬的邊界。低噪音、可摘要、結構化的工具輸出有助於控制上下文負擔。
 
-## Working Heuristics
+## 生成、檢查與回饋
 
-- 先定義「第一步」與「完成條件」，再讓模型展開推理與工具調用。
-- 規則檔寫成導航地圖，不要塞滿百科式細節。
-- 編輯或執行類任務優先形成「輸出 -> 檢查 -> 回饋 -> 重試」閉環。
-- 驗證流程若要增加算力，先和同算力預算下的多樣 sampling / majority vote 比較，再決定是否值得加入昂貴 verification。
-- 依任務性質選擇 workflow pattern：簡單工具使用可用 single agent，固定步驟可改成 sequential，多個獨立子任務則考慮 parallel + aggregator。
-- 先要求模型產生含效能/複雜度約束的計畫，再交由執行型模型產碼與修正。
-- 設計工具時優先思考模型如何節省上下文，而非只思考人類操作便利。
-- 高權限工具（檔案刪除、外部執行、帳戶操作）預設加人工核准與最小權限。
-- 以隔離環境承載 agent（專用機、獨立帳號、獨立憑證），控制失誤半徑。
-- 在知識庫型 agent 中，把唯讀來源層與可寫 wiki 層分離，能讓規則與工具邊界更可執行。
-- 在可形式化驗證的任務中，將外部 proof checker 或 executable test 放進 generation-verification 迴圈，並清楚區分「擴大題目覆蓋率」與「深入解決高難度問題」。
-- 對個人化教學流程分開設計 probe、plan、teach 三階段，並在 teach 中加入週期性 quiz、外部查證與持久化 learning log，讓「理解」可以被反覆檢查。
-- 將 model 的資料邊界與 harness 的執行邊界分開 threat-model；不要因為模型在本地就省略工具、憑證與網路出口檢查。
-- 對正式 serving 同時驗證 endpoint、tool parser、模型格式、硬體架構與 isolation；不要只確認模型檔案能載入。
+編輯工作以生成 → 檢查 → 修正形成閉環。PR 審查來源提出自動檢查、AI review、人工 review 三層，並把重複意見轉成可執行檢查。詳細 coding standards 在 review 階段按需載入是特定流程經驗，不表示必要規則應全部移除。
 
-## Open Questions
+外部檢查器、搜尋或執行結果可提供回饋；verification 成本需與同預算的 sampling／majority vote 比較。研究與教學中的規劃、驗證與人類判斷也須分工，不能只依賴模型自評。
 
-- 不同模型族（如小模型/大模型）對同一套 harness 的敏感度差異仍需更多跨模型實證。
-- 規則檔長度、語氣與結構如何影響正確率，尚缺穩定可泛化的設計原則。
-- 長期運作 agent 的記憶整理與自我修復流程，哪些機制最能避免能力衰退，仍在發展中。
-- 「高精準執行模型」與「高抽象規劃模型」的分工邊界如何量化，仍缺公開、可重現 benchmark。
+## 工具與隔離
 
-## Related Concepts
+模型位於本地不會消除工具風險；資料邊界、可寫目錄、憑證、網路出口與 container／VM／sandbox 分別治理。可撤回程式碼與不可撤回外部副作用是不同保證。恢復操作與形式驗證有幫助，但需求及驗證模型仍需正確。
 
-- [context-engineering](./context-engineering.md)
-- [verbalized-feedback-learning](./verbalized-feedback-learning.md)
-- [agentic-knowledge-base-maintenance](./agentic-knowledge-base-maintenance.md)
-- [agent-design-patterns](./agent-design-patterns.md)
-- [ai-assisted-research-workflows](./ai-assisted-research-workflows.md)
-- [effective-learning](./effective-learning.md)
-- [self-correction-in-language-models](./self-correction-in-language-models.md)
-- [local-llm-deployment](./local-llm-deployment.md)
-- [llm-serving-compatibility](./llm-serving-compatibility.md)
+## 限制與未解問題
 
-## Sources
+規則長度、代理分工粒度與不同模型族對同一 harness 的反應尚無通用最佳值；需真實任務與可重現成本資料。形式驗證、上下文管理和任務評測分別見 [[formal-verification-for-ai-generated-software]]、[[context-engineering]]、[[llm-evaluation]]。
 
-- [harness-engineering-language-models-need-human-guidance](../summaries/harness-engineering-language-models-need-human-guidance.md)
-- [openclaw-ai-agent-operating-principles](../summaries/openclaw-ai-agent-operating-principles.md)
-- [ai-agent-design-patterns](../summaries/ai-agent-design-patterns.md)
-- [codex-vs-claude-vibecoding-observations](../summaries/codex-vs-claude-vibecoding-observations.md)
-- [llm-wiki-worker](../summaries/llm-wiki-worker.md)
-- [ai-self-correction-decoding-workflow-reasoning](../summaries/ai-self-correction-decoding-workflow-reasoning.md)
-- [andrej-karpathy-from-vibe-coding-to-agentic-engineering](../summaries/andrej-karpathy-from-vibe-coding-to-agentic-engineering.md)
-- [[tao-princeton-lecture-mathematical-thinking-and-ai]]
+## 來源
+
+- [[ai-agent-design-patterns]]
+- [[ai-self-correction-decoding-workflow-reasoning]]
+- [[andrej-karpathy-from-vibe-coding-to-agentic-engineering]]
+- [[codex-vs-claude-vibecoding-observations]]
+- [[harness-engineering-language-models-need-human-guidance]]
 - [[how-i-use-ai-to-learn-things]]
-- [qwen-3-8-27b-dgx-spark-agent-harness](../summaries/qwen-3-8-27b-dgx-spark-agent-harness.md)
+- [[llm-wiki-worker]]
+- [[matt-pocock-pr-review-bottleneck]]
+- [[max-tegmark-vericoding-ipam-2026]]
+- [[openclaw-ai-agent-operating-principles]]
+- [[qwen-3-8-27b-dgx-spark-agent-harness]]
+- [[tao-princeton-lecture-mathematical-thinking-and-ai]]
+- [[tianyin-xu-agent-infrastructure-formal-methods]]
 
-## 2026-09-06：可恢復操作與形式化驗證
+## 相鄰概念
 
-[[tianyin-xu-agent-infrastructure-formal-methods]] 補充了 agent 介面的另一個要求：容忍錯誤、給出回饋，並支援 undo／恢復。[[max-tegmark-vericoding-ipam-2026]] 的二手簡介則提出生成程式與證明、交外部檢查器把關的方向。兩者整合於 [[formal-verification-for-ai-generated-software]]；需區分驗證模型、檢查證明與確保真實需求正確，不能把通過檢查解讀成無條件可靠。
-
-## 2026-10-09：PR 品質與系統回饋
-
-[[matt-pocock-pr-review-bottleneck]] 補充三層品質檢查、實作與按規範重構分工，以及把重複意見轉為檢查。詳細規範按需放到 review context 是講者的流程建議，並非刪除必要任務規則；可撤回程式碼與不可撤回外部副作用須分開判斷。相鄰概念：[[ai-coding-tools]]、[[context-engineering]]。
+- [[ai-coding-tools]]：coding 工具選擇、成本與審查經驗。
+- [[microsoft-entra]]：Agent 與工作負載的身分、存取及稽核。

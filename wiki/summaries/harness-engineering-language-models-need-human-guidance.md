@@ -1,5 +1,7 @@
 # Harness Engineering：有時候語言模型不是不夠聰明，只是沒有人類好好引導
 
+- ingested_at: 2026-04-19
+
 - source: `raw/web-clipper/Harness Engineering：有時候語言模型不是不夠聰明，只是沒有人類好好引導.md`
 - source link: [https://www.youtube.com/watch?v=R6fZR_9kmIw&t=5012s](https://www.youtube.com/watch?v=R6fZR_9kmIw&t=5012s)
 - original title: Harness Engineering：有時候語言模型不是不夠聰明，只是沒有人類好好引導
@@ -41,7 +43,7 @@
 ## Related Concepts
 
 - [harness-engineering](../concepts/harness-engineering.md)
-- [verbalized-feedback-learning](../concepts/verbalized-feedback-learning.md)
+- [模型自我修正與回饋學習](../concepts/self-correction-in-language-models.md)
 
 ## Alignment With Current Wiki
 

@@ -1,5 +1,7 @@
 # 20分鐘學完所有社交英文句💬 - 問候、回應、深聊、閒聊
 
+- ingested_at: 2026-06-09
+
 - source: `raw/web-clipper/20分鐘學完所有社交英文句💬 - 問候、回應、深聊、閒聊.md`
 - source link: https://www.youtube.com/watch?v=nOlu06iKb0k
 - original title: 20分鐘學完所有社交英文句💬 - 問候、回應、深聊、閒聊

@@ -1,5 +1,7 @@
 # Introducing GPT-5.5
 
+- ingested_at: 2026-04-24
+
 - source: `raw/web-clipper/Introducing GPT-5.5.md`
 - source link: https://openai.com/index/introducing-gpt-5-5/
 - original title: Introducing GPT-5.5
@@ -35,12 +37,11 @@ OpenAI 發布了 GPT-5.5，這是目前最聰明且直覺的模型，旨在成�
 ## 與既有知識庫內容的關係
 
 - **[ai-coding-tools](../concepts/ai-coding-tools.md)**：GPT-5.5 是 AI 程式碼輔助工具從 Copilot 演進至 Agent 的重要里程碑，特別是在代理式編寫與複雜工作流處理上的表現。
-- **[opencode](../concepts/opencode.md)**：作為開源平替方案，OpenCode 的發展可與 GPT-5.5 這種頂級閉源模型的能力進行對比與研究。
+- **[AI 程式開發工具與審查](../concepts/ai-coding-tools.md)**：作為開源平替方案，OpenCode 的發展可與 GPT-5.5 這種頂級閉源模型的能力進行對比與研究。
 
 ## 相關概念連結
 
 - [[ai-coding-tools]]
-- [[opencode]]
 
 ## Navigation
 

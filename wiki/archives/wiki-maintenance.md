@@ -6,16 +6,8 @@
 
 ## 任務規則
 
-- [daily-rules](../rules/daily-rules.md)
+- [reading-rules](../rules/reading-rules.md)：閱讀回顧與每日整理。
 - [ingest-rules](../rules/ingest-rules.md)
 - [lint-rules](../rules/lint-rules.md)
-- [log-rules](../rules/log-rules.md)
-- [output-rules](../rules/output-rules.md)
 - [query-rules](../rules/query-rules.md)
-- [review-rules](../rules/review-rules.md)
 - [router-rules](../rules/router-rules.md)
-- [social-post-rules](../rules/social-post-rules.md)
-
-## Lint 報告
-
-- [[wiki-lint-2026-10-09]]：歸檔涵蓋、連結檢查、內容疑義與待補來源。

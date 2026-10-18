@@ -1,5 +1,7 @@
 # LLM-Wiki-Worker 開源專案
 
+- ingested_at: 2026-04-23
+
 - source: `raw/web-clipper/LLM-Wiki-Worker 開源專案.md`
 - source link: https://github.com/walle45611/LLM-Wiki-Worker/blob/main/README.md
 - original title: walle45611-LLM-Wiki-Worker

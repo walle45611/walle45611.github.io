@@ -1,44 +1,33 @@
-# Self-Correction in Language Models
+---
+title: "模型自我修正與回饋學習"
+tags:
+  - concept/models
+aliases:
+  - "verbalized-feedback-learning"
+---
 
-## Current View
+# 模型自我修正與回饋學習
 
-在目前知識庫中，language model self-correction 指的是：模型在沒有逐步人工介入的情況下，能偵測自身答案可能有誤，並透過 decoding、workflow 或訓練後形成的 reasoning 行為，主動修正輸出。
+自我修正包含偵測錯誤與修正錯誤；文字回饋則是改變後續行為的訊號。當前 context 中的修正、更新長期記憶與更新模型參數是不同層次，不能混稱成模型已學會。
 
-## Stable Conclusions
+## 技術層次
 
-1. 自我修正不是單一技術，而是至少可分為 decoding 介入、workflow 驅動、reasoning / RL 訓練三個層級。
-2. Contrastive decoding 類方法可在不改模型參數下提升答案品質，但本質上通常是用額外 test-time compute 換較高正確率。
-3. 單純 internal self-reflection 的效果不穩定；外部可驗證 feedback 往往比模型自行反思更可靠。
-4. 模型知道正確事實，不等於它具有自我修正能力；self-correction 可能是獨立於 factual recall 的行為能力。
-5. verification 是否值得加入，不能只看絕對正確率，還必須和同算力預算下的 majority vote、better sampling 等 baseline 比較。
-6. reasoning / RLVR 常會自然誘發 verification 與修正行為，但研究界仍在爭論 RL 是重排既有正確 path 的機率，還是真的讓模型學到新推理能力。
+- Decoding 介入，如 contrastive decoding，以額外 test-time compute 換品質；workflow 用執行器、搜尋、checklist 或驗證器提供回饋。
+- Reasoning／RL 訓練可能出現 verification 行為，但 RL 是重排既有解法機率或學到新能力仍有爭論。
+- 自然語言回饋可來自人或環境；具體、可操作、可驗證的訊息較適合接到生成 → 評估 → 再生成。錯誤回饋也可能降低品質。
 
-## Working Heuristics
+## 比較與評估
 
-- 若目標是不重訓快速增強，先評估 decoding 層方法，但要同步算清 latency 與 compute overhead。
-- 若任務有執行器、檢查器、搜尋或 checklist，優先把這些 external feedback 放進迴圈，而不是只加一句「再想想」。
-- 設計 self-correction 流程時，把 error detection 與 error correction 視為兩個不同問題。
-- 評估 self-correction 時，不只看最終答案，也要檢查中間 reasoning path 是否真的更正確。
-- 若模型過度固執或過度搖擺，反思提示詞本身就是可調控制桿，會改變 confidence 與 critic score 的平衡。
+事實記憶能力不等於修正能力。外部可驗證訊號通常比單純「再想想」更容易評估，仍須檢查訊號本身可靠性。記錄 error detection、correction、最終品質、過程與成本，並與同預算 sampling／majority vote 比較。
 
-## Related Training Source: DeepSeekMath and GRPO
+肯定式或質疑式 reflection 可能改變信心與修正傾向；模型族與任務不同，不能設定通用語氣。Judge 校準見 [[llm-evaluation]]；上下文保真見 [[context-engineering]]。
 
-新收錄的影片簡介以 DeepSeekMath 7B 為例，提到數學預訓練資料、程式碼模型能力延續，以及 GRPO 的組內相對回饋與相對 PPO 的記憶體需求改善。素材沒有逐字稿或量測；這只補充 reasoning 訓練的名詞與來源入口，不能據此確認自我修正成效，也不取代本頁對 RL 能力邊界的爭議。
+## 限制與未解問題
 
-## Open Questions
+何時把回饋轉為參數更新、如何識別可學習回饋及避免 judge 高估仍未有通用答案。DeepSeekMath／GRPO 來源僅是影片簡介，缺少逐字稿與量測；它提供名詞入口，不能證明修正成效。驗證流程治理見 [[harness-engineering]]。
 
-- 何種任務最適合用 training-free sampling / decoding 逼出既有 reasoning，而不必進入 RL 訓練，仍缺穩定選型原則。
-- RL 何時只是強化原有 path，何時真的學到新能力，目前仍取決於評測方法與訓練階段。
-- self-correction 的最佳 reward signal 該偏向最終答案、過程正確性，還是兩者混合，仍在演進中。
-- 不同模型族對肯定式 / 質疑式 reflection prompt 的敏感度差異，還缺足夠跨模型實證。
+## 來源
 
-## Related Concepts
-
-- [harness-engineering](./harness-engineering.md)
-- [verbalized-feedback-learning](./verbalized-feedback-learning.md)
-- [context-engineering](./context-engineering.md)
-
-## Sources
-
-- [ai-self-correction-decoding-workflow-reasoning](../summaries/ai-self-correction-decoding-workflow-reasoning.md)
-- [deepseekmath-grpo-introduction](../summaries/deepseekmath-grpo-introduction.md)
+- [[ai-self-correction-decoding-workflow-reasoning]]
+- [[deepseekmath-grpo-introduction]]
+- [[harness-engineering-language-models-need-human-guidance]]

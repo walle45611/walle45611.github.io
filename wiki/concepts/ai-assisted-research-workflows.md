@@ -1,10 +1,16 @@
-# AI-Assisted Research Workflows
+---
+title: "AI 輔助研究與文獻驗證"
+tags:
+  - concept/learning
+---
 
-## Current View
+# AI 輔助研究與文獻驗證
 
-在目前知識庫中，AI-assisted research workflows 指的是：在研究初期、文獻回顧、論證檢查與寫作輔助過程中，明確區分 AI 可負責的整理加速工作與研究者不可外包的判斷責任，並把整個流程設計成可追溯、可驗證、可持續修正的工作鏈。
+## 核心觀點
 
-## Stable Conclusions
+AI-assisted research workflows 指的是：在研究初期、文獻回顧、論證檢查與寫作輔助過程中，明確區分 AI 可負責的整理加速工作與研究者不可外包的判斷責任，並把整個流程設計成可追溯、可驗證、可持續修正的工作鏈。
+
+## 主要結論
 
 1. AI 讓研究的主要壓力從「取得資料」轉向「篩選、比較、驗證與負責」。
 2. 較穩健的研究流程應把文獻工作拆成 discovery、trend、expansion、verification 等不同階段，而不是把所有需求丟給單一工具。
@@ -17,7 +23,7 @@
 9. 在數學等可精確驗證的場景，AI 的近期價值也可能是「研究廣度」：掃描大量問題、找出被忽略但可處理的案例；少量成功不能推論它已能處理最難的前沿問題。
 10. 較可追溯的 AI 輔助數學工作流可分成：人類選題與改寫問題、AI 搜尋或提出候選解法、研究者簡化與說明、形式化工具驗證；成果來自角色分工，而不是單一模型的無監督輸出。
 
-## Working Heuristics
+## 實務判斷
 
 - 先問自己現在缺的是檢索詞、趨勢判斷、文獻延伸、立場查核，還是輸出控制，再選工具。
 - 用固定欄位的文獻矩陣整理研究問題、方法、主要發現與限制，避免只累積 PDF。
@@ -30,24 +36,24 @@
 - 在數學研究中分開評估 breadth 與 depth：報告題目集合、嘗試數量、成功率與題目選擇，不要用少數低門檻成功案例宣稱 AI 已解決一般性前沿問題。
 - 若領域有 Lean 或其他形式化驗證器，優先把它放在生成後的檢查迴圈，讓外部工具而不是模型自評成為主要回饋來源。
 
-## Open Questions
+## 限制與待補證據
 
 - 不同學科對 AI 輔助文獻整理與模擬審查的容忍度與效益差異，仍需更多跨領域案例。
 - 圖書館導向 AI 工具與一般商用 AI 在正確率、引用可追溯性與偏誤型態上的比較，仍缺統一評估框架。
 - 多 AI 交叉評論是否真的能穩定提升研究品質，或只是增加噪音與虛假信心，仍需要更多實證。
 
-## Related Concepts
+## 相鄰概念
 
 - [effective-learning](./effective-learning.md)
 - [harness-engineering](./harness-engineering.md)
 - [agentic-knowledge-base-maintenance](./agentic-knowledge-base-maintenance.md)
 - [writing-style-and-plain-english](./writing-style-and-plain-english.md)
 
-## Sources
+## 來源
 
 - [ai-assisted-research-workflow](../summaries/ai-assisted-research-workflow.md)
 - [[tao-princeton-lecture-mathematical-thinking-and-ai]]
 
-## 2026-09-06：問題定義與建模責任
+## 問題定義與建模責任
 
 [[tianyin-xu-agent-infrastructure-formal-methods]] 強調研究從真實問題出發，並以 AI 輔助形式化建模說明加速與責任可以分開：模型協助產生形式描述，人仍需理解系統、定義需求與故障假設。延伸見 [[formal-verification-for-ai-generated-software]] 與 [[harness-engineering]]。訪談中的建模時間對照屬個案，不是可泛化的生產力測量。

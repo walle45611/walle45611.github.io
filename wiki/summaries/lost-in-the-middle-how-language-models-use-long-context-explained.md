@@ -1,5 +1,7 @@
 # Lost in the Middle: How Language Models use Long Context - Explained!
 
+- ingested_at: 2026-05-15
+
 - source: `raw/web-clipper/Lost in the Middle How Language Models use Long Context - Explained!.md`
 - source link: https://www.youtube.com/watch?v=Kf3LeaUGwlg&t=2s
 - original title: Lost in the Middle: How Language Models use Long Context - Explained!
@@ -43,7 +45,7 @@
 ## Related Concepts
 
 - [context-engineering](../concepts/context-engineering.md)
-- [long-context-position-effects](../concepts/long-context-position-effects.md)
+- [RAG、證據排序與長上下文](../concepts/retrieval-augmented-generation.md)
 
 ## Alignment With Current Wiki
 

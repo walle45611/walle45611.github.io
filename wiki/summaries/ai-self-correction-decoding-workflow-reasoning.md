@@ -1,5 +1,7 @@
 # AI 能自我修正嗎？從 decoding、workflow 到 reasoning 的技術發展整理
 
+- ingested_at: 2026-04-28
+
 - source: `raw/web-clipper/AI 能自我修正嗎？從 decoding、workflow 到 reasoning 的技術發展整理.md`
 - source link: [https://www.youtube.com/watch?v=m3i2mk5hs8U&t=4372s](https://www.youtube.com/watch?v=m3i2mk5hs8U&t=4372s)
 - original title: AI 能自我修正嗎？從 decoding、workflow 到 reasoning 的技術發展整理
@@ -49,7 +51,6 @@
 
 - [self-correction-in-language-models](../concepts/self-correction-in-language-models.md)
 - [harness-engineering](../concepts/harness-engineering.md)
-- [verbalized-feedback-learning](../concepts/verbalized-feedback-learning.md)
 
 ## Alignment With Current Wiki
 

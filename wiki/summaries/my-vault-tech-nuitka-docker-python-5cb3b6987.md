@@ -1,7 +1,7 @@
 # 使用 Nuitka 與 Docker 打造高效能且安全的 Python 應用部署方案
 
 - source: `raw/my-vault/Note/Tech/使用 Nuitka 與 Docker 打造高效能且安全的 Python 應用部署方案.md`
-- source_sha256: `6b762520e9cb81abf6ac0fa0701512026f237456ad930b5571c04576f0037464`
+- source_sha256: `67e510ef758684206958a3aa8d5fc20cb5cd71ce3831a2dd1e396004d924f8b0`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Tech

@@ -1,5 +1,7 @@
 # PostgreSQL Books
 
+- ingested_at: 2026-04-22
+
 - source: `raw/web-clipper/PostgreSQL Books.md`
 - source link: https://www.postgresql.org/docs/books/
 - description: A curated list of PostgreSQL books with details such as title, author, publication year, format, and current version.

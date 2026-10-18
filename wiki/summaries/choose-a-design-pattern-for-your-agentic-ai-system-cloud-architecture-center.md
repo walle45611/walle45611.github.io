@@ -1,5 +1,7 @@
 # Choose a design pattern for your agentic AI system
 
+- ingested_at: 2026-04-22
+
 - source: `raw/web-clipper/Choose a design pattern for your agentic AI system    Cloud Architecture Center.md`
 - source link: https://docs.cloud.google.com/architecture/choose-design-pattern-agentic-ai-system
 - original title: Choose a design pattern for your agentic AI system
@@ -21,8 +23,7 @@ This article provides a structured approach to selecting an agentic AI system de
 
 ## Related Concepts
 
-- [agent-design-patterns](../concepts/agent-design-patterns.md)
-- [harness-engineering](../concepts/harness-engineering.md)
+- [Agent 工作流與 Harness](../concepts/harness-engineering.md)
 
 ## Alignment With Current Wiki
 

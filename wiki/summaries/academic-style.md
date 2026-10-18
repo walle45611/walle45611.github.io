@@ -1,5 +1,7 @@
 # Academic Style
 
+- ingested_at: 2026-08-02
+
 - source: `raw/web-clipper/Academic Style.md`
 - source link: https://lifelong-learning.ox.ac.uk/academic-style/
 - original title: Academic Style

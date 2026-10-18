@@ -1,31 +1,29 @@
-# Cloudflare Workers AI Pricing Model
+---
+title: "Workers AI 成本、配額與計量"
+tags:
+  - concept/cloud
+aliases:
+  - "neuron-based-ai-cost-metering"
+---
 
-## Current View
+# Workers AI 成本、配額與計量
 
-在目前知識庫中，Cloudflare Workers AI 的定價模型可視為「每日免費額度 + 超額神經元計費」：所有方案都有每日 10,000 Neurons 免費額度，僅 Paid 方案可繼續以 `$0.011 / 1,000 Neurons` 消費。此模型的運維含義是：成本控制與可用性控制是同一件事，因為超限會直接失敗。
+已收錄的 Workers AI 計價來源以 neurons 作統一帳務單位，連接不同模型與輸入／輸出成本。統一單位方便比較，並不表示相同 token 數具有相同成本。
 
-## Stable Conclusions
+## 計量與配額
 
-1. Neurons 是 Workers AI 的帳務核心單位；token 價格主要提供估算與比較視角。
-2. 免費額度是 daily reset 機制，不是累積式月額折抵。
-3. Free 與 Paid 的關鍵差異在於「能否支付超額」，不是「是否可用 Workers AI」。
-4. 超限請求會失敗，代表配額管理直接影響服務可靠性。
+- 同時看模型轉換率、輸入／輸出量及任務類型；非文字工作負載也不能直接套文字 token 價格。
+- 來源當時記錄每日免費額度 10,000 neurons、Paid 超額 $0.011／1,000 neurons、00:00 UTC 重置；這是來源的歷史定價，不視為現行報價。
+- 在來源描述的模式中，能否付費超額會影響超限失敗行為，因此成本治理亦是可用性治理。
 
-## Working Heuristics
+## 工作負載治理
 
-- 以每日配額為邊界建立 budget guardrail，並依 `00:00 UTC` 重置時點設計配額視窗。
-- 對高 neuron 任務建立降級路由（輕量模型、縮短輸出、延後批次）。
-- 在應用層追蹤輸入/輸出 token 與估算 neurons，與帳務面做每日對帳。
+估算每任務成本，依長輸出、多步工作與尖峰流量設計預算及限流；必要時採較小模型、縮短輸出或延後批次。估算值與實際帳務須對帳，平台轉換率變更時重新校準。
 
-## Open Questions
+## 限制與未解問題
 
-- Cloudflare 目前未在此來源提供配額接近上限時的官方建議降級策略範本。
-- 高峰流量下的 neuron 突增緩衝策略（例如硬上限前預警閾值）仍需更多實務資料。
+不同任務的真實 neuron 波動、尖峰緩衝與降級成效尚缺多來源實測。部署決策需核對當前文件；背景工作節奏另見 [[cloudflare-queue-consumer-modes]]。
 
-## Related Concepts
+## 來源
 
-- [neuron-based-ai-cost-metering](./neuron-based-ai-cost-metering.md)
-
-## Sources
-
-- [cloudflare-workers-ai-pricing](../summaries/cloudflare-workers-ai-pricing.md)
+- [[cloudflare-workers-ai-pricing]]

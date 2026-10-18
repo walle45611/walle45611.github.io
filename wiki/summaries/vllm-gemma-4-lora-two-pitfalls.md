@@ -1,5 +1,7 @@
 # vLLM + Gemma 4 + LoRA：我踩過的兩個坑
 
+- ingested_at: 2026-08-03
+
 - source: `raw/web-clipper/vLLM + Gemma 4 + LoRA：我踩過的兩個坑.md`
 - blog source: `blog/source/_posts/vllm-gemma4-lora-pitfalls.md`
 - source link: https://blog.walle4561.com/20260427/2316/#more
@@ -37,7 +39,7 @@
 ## Related Concepts
 
 - [parameter-efficient-fine-tuning](../concepts/parameter-efficient-fine-tuning.md)
-- [llm-serving-compatibility](../concepts/llm-serving-compatibility.md)
+- [LLM 部署、容量與相容性](../concepts/local-llm-deployment.md)
 
 ## Alignment With Current Wiki
 

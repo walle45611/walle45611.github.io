@@ -1,5 +1,7 @@
 # Andrej Karpathy: From Vibe Coding to Agentic Engineering
 
+- ingested_at: 2026-04-30
+
 - source: `raw/web-clipper/Andrej Karpathy From Vibe Coding to Agentic Engineering.md`
 - source link: https://www.youtube.com/watch?v=96jN2OCOfLs
 - original title: Andrej Karpathy: From Vibe Coding to Agentic Engineering

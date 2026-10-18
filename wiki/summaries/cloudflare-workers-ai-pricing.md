@@ -1,5 +1,7 @@
 # Cloudflare Worker AI Pricing
 
+- ingested_at: 2026-04-20
+
 - source: `raw/web-clipper/Cloudflare Worker AI Pricing.md`
 - source link: [https://developers.cloudflare.com/workers-ai/platform/pricing/](https://developers.cloudflare.com/workers-ai/platform/pricing/)
 - original title: Cloudflare Worker AI Pricing
@@ -36,7 +38,6 @@
 ## Related Concepts
 
 - [cloudflare-workers-ai-pricing-model](../concepts/cloudflare-workers-ai-pricing-model.md)
-- [neuron-based-ai-cost-metering](../concepts/neuron-based-ai-cost-metering.md)
 
 ## Alignment With Current Wiki
 

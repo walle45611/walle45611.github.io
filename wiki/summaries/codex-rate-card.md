@@ -1,5 +1,7 @@
 # Codex Rate Card
 
+- ingested_at: 2026-08-02
+
 - source: `raw/web-clipper/Codex rate card.md`
 - source link: https://help.openai.com/en/articles/20001106-codex-rate-card
 - original title: Codex rate card

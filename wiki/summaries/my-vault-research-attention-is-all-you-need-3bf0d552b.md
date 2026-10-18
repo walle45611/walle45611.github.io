@@ -1,7 +1,7 @@
 # Attention Is All You Need
 
 - source: `raw/my-vault/Note/Research/@attention2017.md`
-- source_sha256: `515808e662a95dd5d47620c0b8c629d1445219d3c6f8e37a2382568e66299705`
+- source_sha256: `1eb63e38858fa1376831393af2a97374835eb54160ee56b896aa64965b4986ca`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

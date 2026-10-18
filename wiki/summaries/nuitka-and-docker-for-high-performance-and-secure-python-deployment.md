@@ -1,5 +1,7 @@
 # Nuitka 與 Docker 打造高效能且安全的 Python 應用部署方案
 
+- ingested_at: 2026-08-03
+
 - source: `raw/web-clipper/Nuitka 與 Docker 打造高效能且安全的 Python 應用部署方案.md`
 - blog source: `blog/source/_posts/Nuitka-與-Docker-打造高效能且安全的-Python-應用部署方案.md`
 - source link: https://blog.walle4561.com/20250721/111f/#more
@@ -17,7 +19,7 @@ This article explains how to combine Nuitka, a Python-to-C compiler, with Docker
 4. The article provides a concrete Dockerfile example and performance benchmarks, making it a practical reference for production deployments.
 
 ## Related Concepts
-- [microk8s-production-readiness](../concepts/microk8s-production-readiness.md)
+- [Kubernetes 設計、部署與 GitOps](../concepts/kubernetes-design-principles.md)
 - [cloudflare-workers-ai-pricing-model](../concepts/cloudflare-workers-ai-pricing-model.md)
 
 ## Alignment With Current Wiki

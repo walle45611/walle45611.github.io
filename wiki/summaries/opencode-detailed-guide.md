@@ -1,5 +1,7 @@
 # OpenCode 詳細攻略
 
+- ingested_at: 2026-04-20
+
 - source: `raw/web-clipper/OpenCode详细攻略，开源版Claude Code，免费模型与神级插件  ai 科技 计算机 编程 coding.md`
 - source link: [https://www.youtube.com/watch?v=JYVTUU9ClUA](https://www.youtube.com/watch?v=JYVTUU9ClUA)
 - original title: "OpenCode详细攻略，开源版Claude Code，免费模型与神级插件  #ai #科技 #计算机 #编程 #coding"
@@ -19,7 +21,6 @@
 - **多種形態與環境**：介紹了 OpenCode 的四種形態與雲端環境的搭配用法。
 
 ## 相關概念
-- [[opencode]]
 - [[ai-coding-tools]]
 - Claude Code
 - MCP (Model Context Protocol)
@@ -27,7 +28,7 @@
 
 ## 與目前知識庫的關係
 
-- 目前已能連回 [[opencode]] 與 [[ai-coding-tools]] 兩個既有概念頁。
+- 目前已能連回 [[ai-coding-tools]] 與 [[ai-coding-tools]] 兩個既有概念頁。
 - Claude Code、MCP、Agent Skills 在本頁中屬重要名詞，但知識庫尚未建立對應獨立頁面，暫先保留為缺頁候選而不使用損壞連結。
 
 ## Navigation

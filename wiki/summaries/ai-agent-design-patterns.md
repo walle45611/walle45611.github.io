@@ -1,5 +1,7 @@
 # AI agent design patterns
 
+- ingested_at: 2026-04-22
+
 - source: `raw/web-clipper/AI agent design patterns.md`
 - source link: [https://www.youtube.com/watch?v=GDm_uH6VxPY](https://www.youtube.com/watch?v=GDm_uH6VxPY)
 - original title: AI agent design patterns
@@ -39,8 +41,7 @@
 
 ## Related Concepts
 
-- [agent-design-patterns](../concepts/agent-design-patterns.md)
-- [harness-engineering](../concepts/harness-engineering.md)
+- [Agent 工作流與 Harness](../concepts/harness-engineering.md)
 
 ## Alignment With Current Wiki
 

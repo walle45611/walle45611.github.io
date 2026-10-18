@@ -1,5 +1,7 @@
 # 什麼是 Microsoft Entra？
 
+- ingested_at: 2026-04-24
+
 - source: `raw/web-clipper/什麼是 Microsoft Entra？.md`
 - source link: https://learn.microsoft.com/zh-tw/entra/fundamentals/what-is-entra
 - original title: 什麼是 Microsoft Entra？

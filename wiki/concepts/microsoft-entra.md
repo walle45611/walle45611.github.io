@@ -1,6 +1,12 @@
-# Microsoft Entra
+---
+title: "Microsoft Entra 身分與存取"
+tags:
+  - concept/cloud
+---
 
-Microsoft Entra 是一系列身份與網路存取產品，旨在協助組織實施零信任 (Zero Trust) 安全策略。它涵蓋了從基礎身份管理到 AI 代理程式安全存取的完整生態系。
+# Microsoft Entra 身分與存取
+
+已收錄的 Microsoft Entra 介紹將產品家族分為身份與網路存取產品，旨在協助組織實施零信任 (Zero Trust) 安全策略。它涵蓋了從基礎身份管理到 AI 代理程式安全存取的完整生態系。
 
 ## 核心組成
 
@@ -30,3 +36,11 @@ Microsoft Entra 是一系列身份與網路存取產品，旨在協助組織實�
 
 ## 參考來源
 - [什麼是 Microsoft Entra？](../summaries/what-is-microsoft-entra.md)
+
+## 來源邊界
+
+產品名稱、授權與 Agent ID 能力依已收錄介紹保存，不作為目前方案或可用性保證；選型需另核對適用版本、租戶與授權。
+
+## 相鄰概念
+
+- [[harness-engineering]]：執行工具時的權限與隔離邊界。

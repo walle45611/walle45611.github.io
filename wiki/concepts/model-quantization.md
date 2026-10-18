@@ -1,43 +1,35 @@
-# Model Quantization
+---
+title: "模型量化與 KV 精度"
+tags:
+  - concept/models
+---
 
-## Current View
+# 模型量化與 KV 精度
 
-Model quantization reduces numeric precision of model weights or activations to lower memory usage and sometimes improve deployment feasibility. In QLoRA, quantization is used as part of the fine-tuning workflow so a large base model can be adapted on less hardware.
+模型量化降低權重或 activation 的數值精度，以改善記憶體需求；訓練、推論與儲存所需的精度可以不同，不能只看壓縮比例。
 
-## Stable Conclusions
+## 容量與訓練
 
-1. Lower precision generally reduces memory footprint.
-2. Quantization is a systems trade-off, not a free compression trick; it can affect accuracy and training behavior.
-3. QLoRA uses quantization to make fine-tuning cheaper while keeping the base model usable.
-4. When the source's explanation is right, quantized representation can be temporary during training and the model can recover a higher-precision view later.
-5. 作為粗略容量估算，FP8 約一個 byte/parameter、BF16 約兩個 byte/parameter；實際 serving 仍要加上格式開銷、KV cache、context、併發與系統保留空間。
-6. MoE 的 active parameters 主要影響每個 token 的計算量，不代表載入時只需要 active parameters 對應的記憶體。
-7. 量化格式的選擇應以目標任務的品質、延遲、context 與併發測試為準，不能只用壓縮比例或模型能否載入判斷。
+QLoRA 用量化底座配合低秩 adapter 降低微調容量需求；量化底座與運算時使用的表示須分清。來源原先「恢復高精度」的描述不表示量化已丟失的資訊可以無損恢復。
 
-## Working Heuristics
+粗估 FP8 約一 byte／parameter、BF16 約兩 byte／parameter，實際還包含格式開銷、KV cache、context、併發與系統空間。MoE active parameters 關乎每 token 計算，不能據此只載入同量權重。
 
-- Quantize when memory or deployment size is the limiting factor.
-- Validate the downstream task, not just the compression ratio.
-- Treat the exact bit-width as a task-specific choice, not a universal optimum.
-- 先用權重大小加上 KV cache 與系統餘裕估算，再在代表性 prompt、工具呼叫和長 context 下比較品質與吞吐。
+## 權重與 KV Cache
 
-## Open Questions
+權重量化與歷史 K/V 儲存量化是不同對象；除位元數也要計 scale 等開銷，儲存精度不等於全部運算精度。已收錄 KV 拆解中的約 900 bytes/token 是特定配置反推，不是整個請求快取總量。
 
-- How aggressive quantization can be before quality degrades depends on model family and use case.
-- The best quantization scheme may differ between training, inference, and storage.
+## 判斷與限制
 
-## Related Concepts
+格式與位寬依模型及 workload 驗證；比較品質、延遲、長 context 與併發，不只比較能否載入。激進量化的可用界線、訓練與推論配置仍無通用最佳值。
 
-- [parameter-efficient-fine-tuning](./parameter-efficient-fine-tuning.md)
-- [local-llm-deployment](./local-llm-deployment.md)
-- [llm-serving-compatibility](./llm-serving-compatibility.md)
-- [lora-and-qlora-fine-tuning-explained-in-depth](../summaries/lora-and-qlora-fine-tuning-explained-in-depth.md)
+## 相鄰概念
 
-## Sources
+- [[parameter-efficient-fine-tuning]]
+- [[local-llm-deployment]]
+- [[transformer-attention-fundamentals]]
 
-- [lora-and-qlora-fine-tuning-explained-in-depth](../summaries/lora-and-qlora-fine-tuning-explained-in-depth.md)
-- [qwen-3-8-27b-dgx-spark-agent-harness](../summaries/qwen-3-8-27b-dgx-spark-agent-harness.md)
+## 來源
 
-## KV Cache 量化
-
-[[deepseek-v4-1-flash-kv-cache-compression]] 補充了與權重量化不同的對象：歷史 K/V 的儲存精度。估算時除了位元數，也要計入 scale 等格式開銷，並區分儲存與運算精度；來源中約 900 bytes/token 是作者對特定全局 KV 配置的反推，不是整個請求的快取總量。低精度是否可用仍需模型、引擎與工作負載驗證。參見 [[transformer-attention-fundamentals]] 與 [[local-llm-deployment]]。
+- [[lora-and-qlora-fine-tuning-explained-in-depth]]
+- [[qwen-3-8-27b-dgx-spark-agent-harness]]
+- [[deepseek-v4-1-flash-kv-cache-compression]]

@@ -559,36 +559,6 @@ fn write_archive(project: &Path, name: &str, entries: &[(PathBuf, PathBuf)]) -> 
     Ok(())
 }
 
-fn update_index(project: &Path, added: &[(PathBuf, String)], today: &str) -> Result<()> {
-    let index = project.join("wiki/index.md");
-    let mut data = fs::read_to_string(&index)?;
-    let mut rows = Vec::new();
-    for (path, description) in added {
-        let stem = path.file_stem().unwrap_or_default().to_string_lossy();
-        let filename = path.file_name().unwrap_or_default().to_string_lossy();
-        let row = format!("- [{stem}](./summaries/{filename}) · {today}: {description}");
-        let expression = Regex::new(&format!(
-            r"(?m)^- \[{}\]\(\./summaries/{}\).*?$",
-            regex::escape(&stem),
-            regex::escape(&filename)
-        ))?;
-        if expression.is_match(&data) {
-            data = expression.replace(&data, row.as_str()).into_owned();
-        } else {
-            rows.push(row);
-        }
-    }
-    if !rows.is_empty() {
-        data = data.replacen(
-            "## Summaries\n",
-            &format!("## Summaries\n\n{}\n", rows.join("\n")),
-            1,
-        );
-    }
-    fs::write(index, data)?;
-    Ok(())
-}
-
 fn archive(project: &Path, check: bool, refresh: bool) -> Result<()> {
     let vault = project.join("raw/my-vault");
     let mut notes = markdown_under(&vault.join("Note"))?;
@@ -678,7 +648,6 @@ fn archive(project: &Path, check: bool, refresh: bool) -> Result<()> {
             .collect::<Vec<_>>();
         write_archive(project, name, &entries)?;
     }
-    update_index(project, &generated, &today)?;
     println!(
         "sources={} previously_archived={} written={} changed={}",
         sources.len(),
@@ -711,27 +680,20 @@ mod tests {
     }
 
     #[test]
-    fn archive_creates_summary_and_index_entry_for_new_note() {
+    fn archive_creates_summary_without_requiring_or_creating_index() {
         let temp = tempfile::tempdir().expect("temporary directory");
         let project = temp.path();
         let note = project.join("raw/my-vault/Note/Tech/example.md");
         fs::create_dir_all(note.parent().unwrap()).expect("note directory");
         fs::create_dir_all(project.join("wiki/summaries")).expect("summary directory");
         fs::write(&note, "# Example\n\n## Topic\n\nThis is a useful source note with enough detail to summarize.\n").expect("note");
-        fs::write(
-            project.join("wiki/index.md"),
-            "# Wiki Index\n\n## Summaries\n",
-        )
-        .expect("index");
         archive(project, false, false).expect("archive");
         let summaries = markdown_under(&project.join("wiki/summaries")).expect("summaries");
         assert_eq!(summaries.len(), 1);
         assert!(fs::read_to_string(&summaries[0])
             .unwrap()
             .contains("- source: `raw/my-vault/Note/Tech/example.md`"));
-        assert!(fs::read_to_string(project.join("wiki/index.md"))
-            .unwrap()
-            .contains("my-vault-tech-example-"));
+        assert!(!project.join("wiki/index.md").exists());
         archive(project, true, false).expect("archive check");
     }
 }

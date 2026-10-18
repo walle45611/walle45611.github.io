@@ -9,7 +9,7 @@
 ├── raw/
 │   ├── my-vault/              # My vault 同步副本
 │   └── web-clipper/           # 原始網頁剪藏
-├── wiki/                     # 摘要、索引、概念、規則與紀錄
+├── wiki/                     # 摘要、概念、Daily、規則與紀錄
 ├── sites/
 │   ├── builder-rs/
 │   │   ├── Cargo.toml        # Rust workspace
@@ -28,7 +28,7 @@
 └── .github/workflows/pages.yml
 ```
 
-My vault 經授權同步至 `raw/my-vault/`；建站讀取副本中的發佈 metadata，轉換 Obsidian 連結與附件，再輸出靜態網站。知識整理則由 `raw/` 寫入 `wiki/`，與建站分開進行。
+My vault 經授權同步至 `raw/my-vault/`；建站讀取副本中的發佈 metadata，轉換 Obsidian 連結與附件，再輸出靜態網站。知識整理則由 `raw/` 寫入 `wiki/`，與建站分開進行；主題由 `wiki/concepts/` 的頁面、標籤與交叉連結導航，daily 直接存於 `wiki/daily/YYYY-MM-DD.md`；daily 與 log 均保留最近 30 天，不維護總索引或獨立報告。
 
 ## 文章來源與 metadata
 
@@ -87,7 +87,7 @@ cargo run --manifest-path sites/builder-rs/Cargo.toml -p site-builder --release 
 
 `archive --check` 唯讀檢查 My vault 筆記、Dashboard 與 Web Clipper 的摘要涵蓋率，並比對帶有 `source_sha256` 的既有摘要。缺漏或來源變更時會回報失敗。
 
-`archive` 補建缺少的 My vault 摘要並更新索引，不會自動重寫全部既有摘要。`archive --refresh-generated` 可重建工具產生的 My vault 摘要；人工摘要仍需人工整理。缺少摘要的 Web Clipper 來源需先按 `wiki/rules/ingest-rules.md` 整理，否則歸檔會報錯。wiki 修改與工作紀錄遵循根目錄 `AGENTS.md` 及 `wiki/rules/`。
+`archive` 補建缺少的 My vault 摘要並更新分類歸檔入口，無需 `wiki/index.md`，不會自動重寫全部既有摘要。`archive --refresh-generated` 可重建工具產生的 My vault 摘要；人工摘要仍需人工整理。缺少摘要的 Web Clipper 來源需先按 `wiki/rules/ingest-rules.md` 整理，否則歸檔會報錯。wiki 修改與工作紀錄遵循根目錄 `AGENTS.md` 及 `wiki/rules/`。
 
 ### 整理發佈附件
 

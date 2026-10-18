@@ -27,5 +27,4 @@ Ricardo Katz 與 James Strong 的 2024 年演講，用 kind 示範 Linux 網路�
 ## 相關概念
 
 - [[container-networking]]
-- [[microk8s-production-readiness]]
 - [[kubernetes-design-principles]]

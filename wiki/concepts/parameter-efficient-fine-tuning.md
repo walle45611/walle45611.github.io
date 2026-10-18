@@ -1,39 +1,30 @@
-# Parameter-Efficient Fine-Tuning
+---
+title: "PEFT、LoRA 與 QLoRA"
+tags:
+  - concept/models
+---
 
-## Current View
+# PEFT、LoRA 與 QLoRA
 
-Parameter-efficient fine-tuning (PEFT) is the class of methods that adapts a pre-trained model by training a small parameter set instead of updating all weights. In this wiki, LoRA is the main representative, and QLoRA is the memory-saving variant that combines low-rank adapters with quantization. In practice, whether a PEFT setup is usable also depends on the serving runtime supporting the target model and adapter path.
+PEFT 以少量可訓練參數調整模型，減少相對 full fine-tuning 的容量與實驗成本。LoRA 用低秩矩陣表示更新，QLoRA 加入量化底座；三者的成本與自由度不同。
 
-## Stable Conclusions
+## 參數與覆蓋範圍
 
-1. Full fine-tuning remains the most direct way to adapt a model but is expensive in memory and compute.
-2. PEFT methods trade some flexibility for much lower training cost and easier experimentation.
-3. LoRA expresses updates through low-rank matrices, so the choice of rank controls capacity and parameter count.
-4. Which layers are adapted can matter as much as, or more than, the exact rank in some tasks.
-5. Rank, alpha, and dropout should be treated as coupled hyperparameters rather than independent knobs.
-6. PEFT is especially attractive when hardware is limited or when you want to try multiple task-specific adaptations cheaply.
-7. A LoRA configuration is only useful if the serving stack can actually load that model class with runtime adapters.
+Rank 控制低秩容量，alpha 影響更新尺度，dropout 與過擬合控制相關；應在目標任務中一起調整。適配哪些線性層可能與 rank 同樣重要，不能只用更高 rank 解釋成效。
 
-## Working Heuristics
+有限硬體或多任務實驗可先評估 adapter 方法，但層覆蓋、rank 與資料規模仍依任務決定。現有來源不足以提供所有架構的最佳值。
 
-- Start with adapter-based fine-tuning before full fine-tuning when memory is constrained.
-- Prefer adapting the relevant linear blocks broadly before spending effort on extreme rank increases.
-- Treat rank as a capacity knob and alpha as a scale knob; validate both on the target task.
-- Use dropout when overfitting appears or the dataset is narrow.
-- Confirm runtime adapter support before spending time on LoRA hyperparameter tuning.
+## Serving 的前提
 
-## Open Questions
+Base model 可推論，不表示 runtime 已實作 adapter hook。先確認模型類別、adapter 載入與目標引擎可用，再投入調參；量化及 runtime 相容性是不同檢查。
 
-- The best adapter placement and rank still depend heavily on architecture, dataset size, and task difficulty.
-- Some tasks may benefit more from higher rank; others may mainly care about layer coverage.
+## 相鄰概念
 
-## Related Concepts
+- [[model-quantization]]：底座與 KV 的精度取捨。
+- [[local-llm-deployment]]：runtime、adapter 與部署容量。
+- [[llm-evaluation]]：以固定資料與任務結果比較設定。
 
-- [model-quantization](./model-quantization.md)
-- [lora-and-qlora-fine-tuning-explained-in-depth](../summaries/lora-and-qlora-fine-tuning-explained-in-depth.md)
-- [llm-serving-compatibility](./llm-serving-compatibility.md)
+## 來源
 
-## Sources
-
-- [lora-and-qlora-fine-tuning-explained-in-depth](../summaries/lora-and-qlora-fine-tuning-explained-in-depth.md)
-- [vllm-gemma-4-lora-two-pitfalls](../summaries/vllm-gemma-4-lora-two-pitfalls.md)
+- [[lora-and-qlora-fine-tuning-explained-in-depth]]
+- [[vllm-gemma-4-lora-two-pitfalls]]

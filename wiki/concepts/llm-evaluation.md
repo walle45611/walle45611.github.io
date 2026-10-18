@@ -1,57 +1,42 @@
-# LLM Evaluation
+---
+title: "LLM 與 NLP 評估"
+tags:
+  - concept/models
+aliases:
+  - "nlp-evaluation-metrics"
+---
 
-## Current View
+# LLM 與 NLP 評估
 
-LLM 評估是把「模型輸出是否符合目標」拆成可觀測、可重複與可診斷的檢查。它不應被縮減成單一總分：輸出品質、任務成功、事實性、格式、安全、延遲、成本與可用性，通常需要不同的評估器與資料。
+評估先定義要判斷的性質：字面一致、語意、事實性、格式、任務成功、延遲、成本或安全。它們需要不同資料與檢查器，單一總分不能代表全部品質。
 
-## Evaluation Layers
+## 評估方式
 
-1. **Human evaluation**：最接近目標偏好，但成本高、速度慢，且評分任務可能主觀。應以清楚 guidelines 與 inter-rater agreement 檢查評分一致性。
-2. **Reference-based metrics**：以固定 reference 重複比較模型輸出，例如 METEOR、BLEU、ROUGE。適合可定義參考答案的任務，但會受字面 overlap、風格變化與 reference 完整性限制。
-3. **LLM-as-a-Judge**：輸入 prompt、回答與評分準則，產生分數與 rationale。適合開放式輸出，但必須校準人工評分並檢查 position、verbosity、self-enhancement 等 bias。
-4. **Executable or structured evaluation**：對格式、程式碼、資料庫狀態或工具結果使用 schema、測試、狀態檢查等硬性驗證，通常比再交給另一個 LLM 判斷更容易重現。
-5. **Benchmark evaluation**：用特定資料集描述模型在知識、推理、程式碼、安全或 agent 工具使用上的 profile；不能直接取代真實使用情境測試。
+| 方式 | 用途與限制 |
+| --- | --- |
+| 人工評分 | 貼近使用者偏好，但成本高；需清楚準則與評分者一致性。 |
+| Reference metrics | BLEU／METEOR／ROUGE 比對參考答案；受措辭、前處理與 reference 完整性影響。 |
+| LLM-as-a-Judge | 適合開放式判斷；需人工校準並檢查位置、長度與自偏好偏誤。 |
+| 可執行／結構檢查 | schema、測試與工具或資料庫狀態可驗證明確條件；通過不代表所有需求正確。 |
+| Benchmark | 描述指定資料集上的能力輪廓；不能代替產品任務與目標政策的測試。 |
 
-## LLM-as-a-Judge Guidelines
+## ROUGE 與生成指標
 
-- 將評估準則寫成具體、可操作的 pass/fail 條件，避免模糊的整體印象。
-- 要求 judge 先寫 rationale 再輸出 score，並用 structured output 固定 schema，讓結果可穩定解析。
-- Pairwise 評估要交換兩個回答的順序；若結果改變，應視為 position bias 的警訊。
-- 明確要求不要因回答較長就偏好它，並可用不同長度與 in-context examples 測試 verbosity bias。
-- 盡量不要讓同一模型同時生成回答與擔任 judge；至少要用人工樣本確認 judge 與目標偏好的相關性。
-- 以低 temperature 執行評估，保留 prompt、模型版本與評估設定，確保結果可重現。
+ROUGE-1／2 看 unigram／bigram 重疊，ROUGE-L 看序列關係，LSUM 對摘要整體作相應比較。應一起觀察 precision、recall、F1：只看 recall 可偏好長輸出。相同 reference、前處理與固定 cohort 才有可比較性；高 overlap 不直接證明事實正確或內容有用。
 
-## Factuality and Agent Evaluation
+## Judge 與事實查核
 
-### Factuality
+使用具體評分準則、可解析輸出與 rationale；pairwise 比較交換回答順序，測試長度偏誤，並與人工校準集對照。保存 prompt、模型與設定；低溫度不保證完全確定性。事實性可拆 atomic facts，逐項查證再依重要性聚合。
 
-事實性可先把輸出拆成 atomic facts，再逐項以 RAG、web search 或其他可信知識來源驗證，最後依重要性加權聚合。這種分解能區分「整段完全錯誤」與「大致正確但含少數錯誤」，也讓錯誤更容易追蹤。
+## Agent 與基準
 
-### Agents
+分開檢查工具選擇、參數、執行結果與結果合成，才能定位模型、context、API 描述或實作的問題。MMLU、AIME、PIQA、SWE-bench、HarmBench、Tau-bench 各有任務與政策範圍；比較須看污染、可驗證性及真實目標，避免只追分數。
 
-Agent 的評估應沿著 observe、plan、act 的循環拆解：
+## 限制與關聯
 
-- 工具選擇：是否在需要時使用工具、tool router 是否漏召回、是否產生不存在的工具。
-- 參數預測：工具與 API 正確時，參數是否完整、正確且有足夠 context。
-- 工具執行：工具是否回傳有意義且結構化的結果；錯誤或空回應是否能表達真實狀態。
-- 結果合成：模型是否正確引用工具輸出，並向使用者回報真實的任務狀態。
+修正流程同時量測最終品質與成本；judge 自評與自我修正成效不能互相證明。延伸 [[self-correction-in-language-models]]、[[retrieval-augmented-generation]]、[[harness-engineering]]。
 
-這種分類能把問題分派給模型、prompt、context、tool router、API 描述或工具實作，而不是籠統地歸咎於 LLM。
-
-## Benchmark Selection
-
-Benchmark 應服務於具體決策：MMLU 可代表多領域知識，AIME 與 PIQA 可代表數學與常識推理，SWE-bench 可用測試驗證程式碼修復，HarmBench 反映特定安全政策下的風險，Tau-bench 則把工具、政策、模擬使用者與資料庫狀態結合起來評估 agent 任務成功與可靠性。
-
-比較時要檢查資料污染、測試是否可硬性驗證、benchmark 政策與產品目標是否一致，並避免因追逐分數而違反 Goodhart's law。最終模型選擇通常要同時考量品質、成本、安全、延遲與真實任務表現。
-
-## Related Concepts
-
-- [retrieval-augmented-generation](./retrieval-augmented-generation.md)
-- [[nlp-evaluation-metrics]]
-- [[self-correction-in-language-models]]
-- [[harness-engineering]]
-- [[long-context-position-effects]]
-
-## Sources
+## 來源
 
 - [[stanford-cme295-lecture-8-llm-evaluation]]
+- [[what-is-the-rouge-metric]]

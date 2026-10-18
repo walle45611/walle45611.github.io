@@ -1,5 +1,7 @@
 # 解剖小龍蝦 — 以 OpenClaw 為例介紹 AI Agent 的運作原理
 
+- ingested_at: 2026-04-19
+
 - source: `raw/web-clipper/解剖小龍蝦 — 以 OpenClaw 為例介紹 AI Agent 的運作原理.md`
 - source link: [https://www.youtube.com/watch?v=2rcJdFuNbZQ&t=1s](https://www.youtube.com/watch?v=2rcJdFuNbZQ&t=1s)
 - original title: 解剖小龍蝦 — 以 OpenClaw 為例介紹 AI Agent 的運作原理

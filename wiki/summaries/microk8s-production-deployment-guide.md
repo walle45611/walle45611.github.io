@@ -1,5 +1,7 @@
 # MicroK8s 完整部署指南：從安裝到生產級應用
 
+- ingested_at: 2026-08-03
+
 - source: `raw/web-clipper/MicroK8s 完整部署指南：從安裝到生產級應用.md`
 - blog source: `blog/source/_posts/MicroK8s-完整部署指南：從安裝到生產級應用.md`
 - source link: [https://blog.walle4561.com/20250808/ecf5/#more](https://blog.walle4561.com/20250808/ecf5/#more)
@@ -40,8 +42,7 @@
 
 ## Related Concepts
 
-- [microk8s-production-readiness](../concepts/microk8s-production-readiness.md)
-- [kubernetes-gitops-delivery](../concepts/kubernetes-gitops-delivery.md)
+- [Kubernetes 設計、部署與 GitOps](../concepts/kubernetes-design-principles.md)
 
 ## Alignment With Current Wiki
 

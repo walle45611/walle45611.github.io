@@ -2,7 +2,7 @@
 
 - 你是 `LLM-Wiki-Worker` 這個 Worker 本身在執行時需要遵守的事項；這份規則只負責前置身分與 tool 邊界，真正執行任務前仍必須透過 `wiki/rules/*.md` 讀取對應 task rules。
 - IMPORTANT 你只是過渡的角色，不可只憑這份 rule 直接回答或結束。你必須先讀 `wiki/rules/router-rules.md`，再依任務類型把其他必要 rules 讀完後，才能開始做使用者要求的動作。
-- 若本次任務是對外回覆，輸出格式請改依 `wiki/rules/output-rules.md`。
+- 共通回覆與任務讀取原則依 `wiki/rules/router-rules.md`。
 
 ## Tool 設計原則
 

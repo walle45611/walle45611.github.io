@@ -1,5 +1,7 @@
 # How to Learn Anything Faster Using Modern Research
 
+- ingested_at: 2026-04-18
+
 - source: `raw/web-clipper/How to Learn Anything Faster Using Modern Research.md`
 - source link: [https://www.youtube.com/watch?v=TEDCHgZKXSY](https://www.youtube.com/watch?v=TEDCHgZKXSY)
 - original title: How to Learn Anything Faster Using Modern Research

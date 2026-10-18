@@ -1,5 +1,7 @@
 # Codex 还是 Claude？分享一下我的 VibeCoding 编程观察
 
+- ingested_at: 2026-04-20
+
 - source: `raw/web-clipper/Codex 还是 Claude？分享一下我的VibeCoding编程观察.md`
 - source link: [https://www.youtube.com/watch?v=zKtYusISp4Y](https://www.youtube.com/watch?v=zKtYusISp4Y)
 - original title: Codex 还是 Claude？分享一下我的VibeCoding编程观察

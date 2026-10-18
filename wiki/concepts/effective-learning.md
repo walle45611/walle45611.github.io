@@ -1,10 +1,16 @@
-# Effective Learning
+---
+title: "有效學習與回饋"
+tags:
+  - concept/learning
+---
 
-## Current View
+# 有效學習與回饋
 
-在目前知識庫中，有效學習可先被整理成一個工作定義：學習成效主要取決於學習者是否對資訊或技能進行足夠深的認知處理，並透過變化練習、模式辨識與回饋校正，把脆弱的短期表現轉成可遷移、可維持的能力。
+## 核心觀點
 
-## Stable Conclusions
+有效學習可先被整理成一個工作定義：學習成效主要取決於學習者是否對資訊或技能進行足夠深的認知處理，並透過變化練習、模式辨識與回饋校正，把脆弱的短期表現轉成可遷移、可維持的能力。
+
+## 主要結論
 
 1. 練習量本身不是最穩定的解釋變項；練習設計、策略切換與回饋品質更值得優先觀察。
 2. 深層處理比「意圖去理解」或「意圖去記住」更接近學習機制本身。
@@ -13,7 +19,7 @@
 5. 經驗若缺少穩定線索與即時回饋，容易先堆出信心，再堆出偏誤；未必能穩定形成可靠直覺。
 6. 個人化教學若能貼近學習者的實際理解邊界，便可把認知摩擦集中在材料本身；減少找資料、排順序與查證等物流，不等於消除理解所需的困難。
 
-## Working Heuristics
+## 實務判斷
 
 - 優先問「現在缺的是時數、策略，還是回饋」。
 - 如果開始 plateau，先換練法，不要只加時數。
@@ -23,20 +29,24 @@
 - 先用短測驗或其他 probe 找出前置知識邊界，再安排下一個剛好可理解的概念，不要只依賴學習者的主觀熟悉感。
 - 將教學拆成「探測理解 → 規劃依賴 → 一步教學 → 測驗回饋」，讓教學路徑與學習者狀態持續校準。
 
-## Open Questions
+## 限制與待補證據
 
 - 不同學科與任務型態下，deep processing 的最佳實作形式可能差異很大，後續需要更多來源細化。
 - 目前只有單一二手來源整理 deliberate practice、筆記、困難學習與直覺形成，仍需更多原始研究或不同作者觀點來校正。
 - 個人化 AI 教學相較於傳統教學的長期遷移效果，仍需要控制條件、保留測驗與獨立應用結果的實證比較。
 
-## Related Concepts
+## 相鄰概念
 
 - [ai-assisted-research-workflows](./ai-assisted-research-workflows.md)
 - [harness-engineering](./harness-engineering.md)
 - [social-english-and-small-talk](./social-english-and-small-talk.md)
 - [writing-style-and-plain-english](./writing-style-and-plain-english.md)
 
-## Sources
+## 來源
 
 - [how-to-learn-anything-faster-using-modern-research](../summaries/how-to-learn-anything-faster-using-modern-research.md)
 - [[how-i-use-ai-to-learn-things]]
+
+## 複習編排案例
+
+[[project-management-midterm-notes]] 保存依錯題優先度、易混概念與自測題編排的考前講義摘要。原始檔尚未找到，此處只作既有編排案例，不能當作已驗證的學習成效證據。

@@ -1,5 +1,7 @@
 # LoRA & QLoRA Fine-tuning Explained In-Depth
 
+- ingested_at: 2026-04-25
+
 - source: `raw/web-clipper/LoRA & QLoRA Fine-tuning Explained In-Depth.md`
 - source link: https://www.youtube.com/watch?v=t1caDsMzWBk&t=139s
 - original title: LoRA & QLoRA Fine-tuning Explained In-Depth

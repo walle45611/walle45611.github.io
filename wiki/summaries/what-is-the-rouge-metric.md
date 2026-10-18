@@ -1,5 +1,7 @@
 # What is the ROUGE metric?
 
+- ingested_at: 2026-05-14
+
 - source: `raw/web-clipper/What is the ROUGE metric?.md`
 - source link: https://www.youtube.com/watch?v=TMshhnrEXlg
 - original title: What is the ROUGE metric?
@@ -41,7 +43,7 @@ This Hugging Face course video explains ROUGE as an automatic evaluation metric 
 
 ## Related Concepts
 
-- [nlp-evaluation-metrics](../concepts/nlp-evaluation-metrics.md)
+- [LLM 與 NLP 評估](../concepts/llm-evaluation.md)
 
 ## Alignment With Current Wiki
 

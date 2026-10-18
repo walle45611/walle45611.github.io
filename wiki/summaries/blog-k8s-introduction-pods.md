@@ -21,7 +21,7 @@
 
 ## Related Concepts
 
-- [microk8s-production-readiness](../concepts/microk8s-production-readiness.md)
+- [Kubernetes 設計、部署與 GitOps](../concepts/kubernetes-design-principles.md)
 
 ## Navigation
 

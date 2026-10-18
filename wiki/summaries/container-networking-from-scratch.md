@@ -37,7 +37,7 @@
 補強既有 MicroK8s 部署筆記的網路原理層；部署元件清單與底層封包路徑應分別理解。
 
 - [container-networking](../concepts/container-networking.md)
-- [microk8s-production-readiness](../concepts/microk8s-production-readiness.md)
+- [Kubernetes 設計、部署與 GitOps](../concepts/kubernetes-design-principles.md)
 
 ## Navigation
 

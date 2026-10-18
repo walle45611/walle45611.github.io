@@ -255,7 +255,7 @@ nuitka --nofollow-imports --include-module=app main.py
 
 經過 Nuitka 編譯後，原本的 Python 程式碼被轉換為僅 12.4 MB 的二進位執行檔：
 
-![Nuitka編譯後檔案大小](https://blog-images.walle4561.com/Nuitka%E7%B7%A8%E8%AD%AF%E5%BE%8C%E6%AA%94%E6%A1%88%E5%A4%A7%E5%B0%8F_12.4MB.png)
+![[Assets/Note/Tech/Nuitka/nuitka-compiled-file-size.png|Nuitka編譯後檔案大小]]
 
 Nuitka編譯後檔案大小
 

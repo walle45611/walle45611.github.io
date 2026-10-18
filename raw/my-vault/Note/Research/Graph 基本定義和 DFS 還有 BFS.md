@@ -1,8 +1,10 @@
 ---
 blog: true
-blog_title: "圖論基礎：DFS 與 BFS"
+blog_title: 圖論基礎：DFS 與 BFS
 blog_date: 2026-09-24
 blog_url: https://blog.walle4561.com/articles/posts/graph-dfs-bfs/
+blog_tag: DSA
+blog_topic: 資料結構
 ---
 
 # 基本定義和術語介紹

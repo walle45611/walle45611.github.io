@@ -1,8 +1,10 @@
 ---
 blog: true
-blog_title: "延伸二元樹 (Extended Binary Tree)"
+blog_title: 延伸二元樹 (Extended Binary Tree)
 blog_date: 2026-09-24
 blog_url: https://blog.walle4561.com/articles/posts/extended-binary-tree/
+blog_tag: DSA
+blog_topic: 資料結構
 ---
 
 ## 📌 定義

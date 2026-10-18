@@ -16,6 +16,7 @@
 ## Blog 與工具
 
 - Blog 僅發佈使用者選定的 `raw/my-vault/Note/` 下 `Research/`、`Tech/` 筆記，須有 `blog: true` 及有效的 `blog_title`、`blog_date`、`blog_url`；連結到的筆記不連帶發佈。
+- Blog 分類僅讀取 `blog_tag`（頁籤，字串或清單）與 `blog_topic`（頁籤內分組，字串），依實際發佈文章自動產生；一般 tags 與 Dashboard 連結不參與分類。Blog 筆記只保留必要的 blog_* metadata，論文文獻 metadata 不套用此清理。
 - 文章以筆記來源為準；`wiki/` 不作為文章來源，`.build/site/` 是產物，不直接編輯。
 - `sync-vault`：僅在授權同步時執行；會覆寫、刪除同步副本內容並更新外掛與 snippets，先核對來源與目標。
 - `archive`：更新 My vault 摘要與分類入口；唯讀檢查用 `archive --check`，Web Clipper 摘要依攝取規則整理。

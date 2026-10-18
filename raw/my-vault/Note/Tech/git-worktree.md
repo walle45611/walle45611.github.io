@@ -1,12 +1,6 @@
 ---
-title: 使用 Git Worktree 提高開發效率與維持線性 Commit Log
-date: "2025-02-20"
-tags: [Version Control, Git, Development Tools]
-categories: Development Tools
-abbrlink: "4e9"
 blog: true
-legacy_blog_file: "source/_posts/git-worktree.md"
-blog_title: "使用 Git Worktree 提高開發效率與維持線性 Commit Log"
+blog_title: 使用 Git Worktree 提高開發效率與維持線性 Commit Log
 blog_date: 2025-02-20
 blog_url: https://blog.walle4561.com/articles/posts/git-worktree/
 ---

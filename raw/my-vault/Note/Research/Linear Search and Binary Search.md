@@ -1,8 +1,10 @@
 ---
 blog: true
-blog_title: "Linear Search and Binary Search"
+blog_title: Linear Search and Binary Search
 blog_date: 2026-09-24
 blog_url: https://blog.walle4561.com/articles/posts/linear-and-binary-search/
+blog_tag: DSA
+blog_topic: 資料結構
 ---
 
 # Linear (Sequential) Search

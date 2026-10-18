@@ -1,16 +1,6 @@
 ---
-title: 在 Windows 上正確設定 OpenSSH Server 和 Guacamole SFTP
-tags:
-  - System Administration
-  - Windows
-  - Network
-  - SSH
-categories: System Administration
-abbrlink: 16f9
-date: 2024-08-27 14:45:03
 blog: true
-legacy_blog_file: "source/_posts/Setup-OpenSSH-Server-in-Windows-With-Guacamole-SFTP.md"
-blog_title: "在 Windows 上正確設定 OpenSSH Server 和 Guacamole SFTP"
+blog_title: 在 Windows 上正確設定 OpenSSH Server 和 Guacamole SFTP
 blog_date: 2024-08-27
 blog_url: https://blog.walle4561.com/articles/posts/setup-openssh-server-in-windows-with-guacamole-sftp/
 ---

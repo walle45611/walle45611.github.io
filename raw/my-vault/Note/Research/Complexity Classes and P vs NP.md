@@ -1,8 +1,10 @@
 ---
 blog: true
-blog_title: "複雜度類別：P 與 NP"
+blog_title: 複雜度類別：P 與 NP
 blog_date: 2026-09-24
 blog_url: https://blog.walle4561.com/articles/posts/complexity-classes-p-vs-np/
+blog_tag: DSA
+blog_topic: 演算法
 ---
 
 ## 1. 基礎複雜度類別 (P 與 NP)

@@ -1,8 +1,10 @@
 ---
 blog: true
-blog_title: "堆疊 (Stack)"
+blog_title: 堆疊 (Stack)
 blog_date: 2024-08-28
 blog_url: https://blog.walle4561.com/articles/posts/stack-1/
+blog_tag: DSA
+blog_topic: 資料結構
 ---
 
 ## 前情提要

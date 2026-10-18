@@ -1,19 +1,10 @@
 ---
-title: 作業系統-死結管理
-tags:
-  - Operating System
-  - Deadlock
-  - Resource Management
-  - 網路與作業系統
-categories: System Administration
-mathjax: true
-abbrlink: 3cd8
-date: 2025-01-06 00:00:00
 blog: true
-legacy_blog_file: "source/_posts/Deadlock-Management.md"
-blog_title: "作業系統-死結管理"
+blog_title: 作業系統-死結管理
 blog_date: 2025-01-06
 blog_url: https://blog.walle4561.com/articles/posts/deadlock-management/
+blog_tag: OS & Networking
+blog_topic: OS
 ---
 
 ## 前情提要

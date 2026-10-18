@@ -1,8 +1,10 @@
 ---
 blog: true
-blog_title: "LCS vs. Minimum Edit Distance"
+blog_title: LCS vs. Minimum Edit Distance
 blog_date: 2026-09-24
 blog_url: https://blog.walle4561.com/articles/posts/lcs-and-edit-distance/
+blog_tag: DSA
+blog_topic: 演算法
 ---
 
 ## 核心差異總覽 (Core Differences)

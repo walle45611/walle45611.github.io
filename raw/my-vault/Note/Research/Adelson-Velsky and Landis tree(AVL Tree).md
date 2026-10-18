@@ -1,8 +1,10 @@
 ---
 blog: true
-blog_title: "AVL 樹：平衡條件與旋轉"
+blog_title: AVL 樹：平衡條件與旋轉
 blog_date: 2026-09-24
 blog_url: https://blog.walle4561.com/articles/posts/avl-tree/
+blog_tag: DSA
+blog_topic: 資料結構
 ---
 
 ## 基本定義

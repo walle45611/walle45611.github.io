@@ -1,18 +1,10 @@
 ---
-title: virtual-judge 刷題紀錄 08/15
-tags:
-  - Virtual Judge
-  - Algorithm
-  - dfs
-categories: Programming
-abbrlink: ceb
-date: 2024-08-15 18:31:40
 blog: true
-blog_topic: problem-solving
-legacy_blog_file: "source/_posts/virtual-judge-HDU-1232.md"
-blog_title: "HDU 1232"
+blog_title: HDU 1232
 blog_date: 2024-08-15
 blog_url: https://blog.walle4561.com/articles/posts/virtual-judge-hdu-1232/
+blog_tag: DSA
+blog_topic: 刷題
 ---
 
 這篇文章紀錄了 Virtual Judge 在 08/15 的刷題心得，挑戰了題目 HDU-1232，並使用 深度優先搜尋 (DFS) 解決問題。本題的核心在於判斷一個圖是否為連通圖，並計算需要新增的邊數來使其變成完全連通的圖。

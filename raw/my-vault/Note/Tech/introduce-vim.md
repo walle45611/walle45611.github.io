@@ -1,15 +1,6 @@
 ---
-title: 快速上手 Vim 快捷鍵
-tags:
-  - Editor
-  - Vim
-  - Development Tools
-categories: Development Tools
-abbrlink: 60a2
-date: 2024-08-14 21:26:37
 blog: true
-legacy_blog_file: "source/_posts/Introduce-VIM.md"
-blog_title: "快速上手 Vim 快捷鍵"
+blog_title: 快速上手 Vim 快捷鍵
 blog_date: 2024-08-14
 blog_url: https://blog.walle4561.com/articles/posts/introduce-vim/
 ---

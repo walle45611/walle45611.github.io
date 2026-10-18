@@ -1,8 +1,10 @@
 ---
 blog: true
-blog_title: "最小最大堆積 (Min-Max Heap)"
+blog_title: 最小最大堆積 (Min-Max Heap)
 blog_date: 2026-09-24
 blog_url: https://blog.walle4561.com/articles/posts/min-max-heap/
+blog_tag: DSA
+blog_topic: 資料結構
 ---
 
 ## 定義

@@ -1,16 +1,6 @@
 ---
-title: Windows 10 L2TP VPN 連線錯誤
-tags:
-  - Network
-  - VPN
-  - Windows
-  - Troubleshooting
-categories: System Administration
-abbrlink: c07f
-date: 2024-08-30 13:47:12
 blog: true
-legacy_blog_file: "source/_posts/windows-l2tp-connect-error-720.md"
-blog_title: "Windows 10 L2TP VPN 連線錯誤"
+blog_title: Windows 10 L2TP VPN 連線錯誤
 blog_date: 2024-08-30
 blog_url: https://blog.walle4561.com/articles/posts/windows-l2tp-connect-error-720/
 ---

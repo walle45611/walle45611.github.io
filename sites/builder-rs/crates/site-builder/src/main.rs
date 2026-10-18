@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::collections::{BTreeMap, BTreeSet, HashMap};
 use std::env;
 use std::fs::{self, File};
 use std::io::Write;
@@ -33,7 +33,8 @@ struct Article {
     kind: String,
     kind_label: String,
     route_kind: String,
-    topic_section: Option<String>,
+    blog_topic: Option<String>,
+    blog_tags: Vec<String>,
 }
 
 #[derive(Debug, Clone, Serialize)]
@@ -250,7 +251,10 @@ fn read_articles(raw_dir: &Path) -> std::io::Result<Vec<Article>> {
             kind: "post".to_string(),
             kind_label: "Post".to_string(),
             route_kind: "posts".to_string(),
-            topic_section: front_matter_value_str(&front_matter, "topic_section"),
+            blog_topic: front_matter_value_str(&front_matter, "blog_topic"),
+            blog_tags: vault::parse_blog_tags(front_matter.get("blog_tag")).map_err(|error| {
+                std::io::Error::new(std::io::ErrorKind::InvalidData, error.to_string())
+            })?,
         });
     }
 
@@ -272,32 +276,34 @@ fn sort_articles(articles: &mut [Article]) {
 }
 
 fn build_site(config: &BuilderConfig, articles: &[Article]) -> std::io::Result<()> {
+    let tags = collect_blog_tags(articles)?;
+    let navigation = render_tag_navigation(&tags);
     if config.out_dir.exists() {
         fs::remove_dir_all(&config.out_dir)?;
     }
     fs::create_dir_all(&config.out_dir)?;
 
-    write_output(&config.out_dir.join("index.html"), &render_home(articles))?;
+    write_output(
+        &config.out_dir.join("index.html"),
+        &render_home(articles, &navigation),
+    )?;
     write_output(
         &config.out_dir.join("articles/index.html"),
-        &render_archive(articles),
+        &render_archive(articles, &navigation),
     )?;
     write_output(
         &config.out_dir.join("publications/index.html"),
-        &render_publications(),
+        &render_publications(&navigation),
     )?;
-    write_output(
-        &config
-            .out_dir
-            .join("topics/data-structures-algorithms/index.html"),
-        &render_data_structures_topic(articles),
-    )?;
-    write_output(
-        &config
-            .out_dir
-            .join("topics/network-operating-systems/index.html"),
-        &render_network_operating_systems_topic(articles),
-    )?;
+    for tag in &tags {
+        write_output(
+            &config
+                .out_dir
+                .join(tag.route.trim_start_matches('/'))
+                .join("index.html"),
+            &render_tag_page(tag, articles, &navigation),
+        )?;
+    }
     write_output(
         &config.out_dir.join("404.html"),
         &render_page(
@@ -306,11 +312,12 @@ fn build_site(config: &BuilderConfig, articles: &[Article]) -> std::io::Result<(
             "/404.html",
             r#"<section class="intro"><div class="eyebrow">404</div><h1>Page not found.</h1><p><a href="/articles/">Browse the archive</a></p></section>"#,
             "website",
+            &navigation,
         ),
     )?;
 
     for article in articles {
-        let article_page = render_post(article);
+        let article_page = render_post(article, &navigation);
         write_output(
             &config.out_dir.join(format!(
                 "articles/{}/{}/index.html",
@@ -341,6 +348,10 @@ fn build_site(config: &BuilderConfig, articles: &[Article]) -> std::io::Result<(
     write_output(
         &config.out_dir.join("_headers"),
         "/styles.css\n  Cache-Control: public, max-age=0, must-revalidate\n",
+    )?;
+    write_output(
+        &config.out_dir.join("_redirects"),
+        include_str!("../../../../public/_redirects"),
     )?;
     fs::copy(&config.favicon_path, config.out_dir.join("favicon.svg"))?;
     if config.vault_assets_dir.exists() {
@@ -426,9 +437,14 @@ fn render_sitemap(articles: &[Article]) -> String {
         "/".to_string(),
         "/articles/".to_string(),
         "/publications/".to_string(),
-        "/topics/data-structures-algorithms/".to_string(),
-        "/topics/network-operating-systems/".to_string(),
     ];
+    // The same validated metadata generates pages, navigation, and sitemap entries.
+    urls.extend(
+        collect_blog_tags(articles)
+            .expect("validated blog tags")
+            .into_iter()
+            .map(|tag| tag.route),
+    );
     urls.extend(articles.iter().map(|a| a.route.clone()));
     let entries = urls
         .into_iter()
@@ -440,7 +456,7 @@ fn render_sitemap(articles: &[Article]) -> String {
     )
 }
 
-fn render_home(articles: &[Article]) -> String {
+fn render_home(articles: &[Article], navigation: &str) -> String {
     let list = render_post_list(articles, false);
     let mut body = String::new();
     body.push_str("<section>");
@@ -453,20 +469,22 @@ fn render_home(articles: &[Article]) -> String {
         "/",
         &body,
         "website",
+        navigation,
     )
 }
 
-fn render_publications() -> String {
+fn render_publications(navigation: &str) -> String {
     render_page(
         "Publications",
         "Journal and conference papers by Kuo-Wei Ho, including manuscripts under peer review.",
         "/publications/",
         include_str!("../../../../publications.html"),
         "website",
+        navigation,
     )
 }
 
-fn render_archive(articles: &[Article]) -> String {
+fn render_archive(articles: &[Article], navigation: &str) -> String {
     let list = render_post_list(articles, true);
     render_page(
         "Archive",
@@ -474,66 +492,84 @@ fn render_archive(articles: &[Article]) -> String {
         "/articles/",
         &list,
         "website",
+        navigation,
     )
 }
 
-fn render_data_structures_topic(articles: &[Article]) -> String {
-    let data = articles
+#[derive(Debug)]
+struct BlogTag {
+    name: String,
+    route: String,
+}
+
+fn collect_blog_tags(articles: &[Article]) -> std::io::Result<Vec<BlogTag>> {
+    let names = articles
         .iter()
-        .filter(|a| a.topic_section.as_deref() == Some("data-structures"))
-        .cloned()
-        .collect::<Vec<_>>();
-    let algorithms = articles
+        .flat_map(|article| article.blog_tags.iter())
+        .collect::<BTreeSet<_>>();
+    let mut routes = BTreeSet::new();
+    let mut tags = Vec::new();
+    for name in names {
+        let slug = slug_for(name, &HashMap::new());
+        if slug.is_empty() || !routes.insert(slug.clone()) {
+            return Err(std::io::Error::new(
+                std::io::ErrorKind::InvalidData,
+                format!("blog_tag has an empty or conflicting URL slug: {name}"),
+            ));
+        }
+        tags.push(BlogTag {
+            name: name.clone(),
+            route: format!("/topics/{slug}/"),
+        });
+    }
+    Ok(tags)
+}
+
+fn render_tag_navigation(tags: &[BlogTag]) -> String {
+    tags.iter()
+        .map(|tag| format!("<a href=\"{}\">{}</a>", tag.route, escape_html(&tag.name)))
+        .collect::<Vec<_>>()
+        .join("\n        ")
+}
+
+fn render_tag_page(tag: &BlogTag, articles: &[Article], navigation: &str) -> String {
+    let mut groups = BTreeMap::<String, Vec<Article>>::new();
+    for article in articles
         .iter()
-        .filter(|a| a.topic_section.as_deref() == Some("algorithms"))
-        .cloned()
-        .collect::<Vec<_>>();
-    let problems = articles
-        .iter()
-        .filter(|a| a.topic_section.as_deref() == Some("problem-solving"))
-        .cloned()
-        .collect::<Vec<_>>();
-    let body = format!(
-        "<section class=\"intro\"><h1>資料結構與演算法</h1></section><section><h2>資料結構</h2>{}</section><section><h2>演算法</h2>{}</section><section><h2>刷題</h2>{}</section>",
-        render_post_list(&data, true),
-        render_post_list(&algorithms, true),
-        render_post_list(&problems, true)
+        .filter(|article| article.blog_tags.contains(&tag.name))
+    {
+        groups
+            .entry(article.blog_topic.clone().unwrap_or_default())
+            .or_default()
+            .push(article.clone());
+    }
+    let mut body = format!(
+        "<section class=\"intro\"><h1>{}</h1></section>",
+        escape_html(&tag.name)
     );
+    for (topic, posts) in groups {
+        let heading = if topic.is_empty() {
+            "一般文章"
+        } else {
+            &topic
+        };
+        body.push_str(&format!(
+            "<section><h2>{}</h2>{}</section>",
+            escape_html(heading),
+            render_post_list(&posts, true)
+        ));
+    }
     render_page(
-        "資料結構與演算法",
-        "依照 My vault 整理的資料結構與演算法筆記。",
-        "/topics/data-structures-algorithms/",
+        &tag.name,
+        &format!("{} articles.", tag.name),
+        &tag.route,
         &body,
         "website",
+        navigation,
     )
 }
 
-fn render_network_operating_systems_topic(articles: &[Article]) -> String {
-    let os = articles
-        .iter()
-        .filter(|a| a.topic_section.as_deref() == Some("operating-systems"))
-        .cloned()
-        .collect::<Vec<_>>();
-    let networking = articles
-        .iter()
-        .filter(|a| a.topic_section.as_deref() == Some("networking"))
-        .cloned()
-        .collect::<Vec<_>>();
-    let body = format!(
-        "<section class=\"intro\"><h1>OS &amp; Networking</h1></section><section><h2>OS</h2>{}</section><section><h2>Networking</h2>{}</section>",
-        render_post_list(&os, true),
-        render_post_list(&networking, true)
-    );
-    render_page(
-        "OS & Networking",
-        "Notes on operating systems and networking.",
-        "/topics/network-operating-systems/",
-        &body,
-        "website",
-    )
-}
-
-fn render_post(article: &Article) -> String {
+fn render_post(article: &Article, navigation: &str) -> String {
     let deck = format!(
         r#"<p class="post-deck">{}</p>"#,
         escape_html(&article.excerpt)
@@ -559,6 +595,7 @@ fn render_post(article: &Article) -> String {
         &article.route,
         &body,
         "article",
+        navigation,
     )
 }
 
@@ -606,6 +643,7 @@ fn render_page(
     pathname: &str,
     body: &str,
     page_type: &str,
+    navigation: &str,
 ) -> String {
     let page_title = if title == "Walle Blog" {
         title.to_string()
@@ -707,8 +745,7 @@ fn render_page(
         <a href="/">Home</a>
         <a href="/articles/">Archive</a>
         <a href="/publications/">Publications</a>
-        <a href="/topics/data-structures-algorithms/">DSA</a>
-        <a href="/topics/network-operating-systems/">OS &amp; Networking</a>
+        {navigation}
         <a href="https://linktr.ee/walle4561" target="_blank" rel="noopener noreferrer">Linktree</a>
         <a href="/feed.xml">RSS</a>
     </nav>
@@ -958,6 +995,84 @@ mod tests {
     use tempfile::tempdir;
 
     #[test]
+    fn builds_discovered_tags_topics_and_navigation_without_a_mapping() {
+        let tmp = tempdir().unwrap();
+        let posts = tmp.path().join("posts");
+        fs::create_dir_all(&posts).unwrap();
+        for (slug, metadata) in [
+            (
+                "both",
+                "blog_tag: [DSA, 'Custom & Systems']\nblog_topic: '<new topic>'\n",
+            ),
+            ("unclassified", ""),
+            ("no-topic", "blog_tag: DSA\n"),
+            ("topic-only", "blog_topic: 'No tab'\n"),
+        ] {
+            fs::write(
+                posts.join(format!("{slug}.md")),
+                format!("---\nblog: true\ntitle: {slug}\nslug: {slug}\n{metadata}---\nBody\n"),
+            )
+            .unwrap();
+        }
+        let articles = read_articles(&posts).unwrap();
+        let favicon = tmp.path().join("favicon.svg");
+        fs::write(&favicon, "<svg/>").unwrap();
+        let config = BuilderConfig {
+            _project_root: tmp.path().to_path_buf(),
+            vault_posts_dir: posts,
+            vault_assets_dir: tmp.path().join("assets"),
+            out_dir: tmp.path().join("client"),
+            manifest_path: tmp.path().join("manifest.json"),
+            styles_path: tmp.path().join("styles.css"),
+            favicon_path: favicon,
+        };
+        build_site(&config, &articles).unwrap();
+        let redirects = fs::read_to_string(config.out_dir.join("_redirects")).unwrap();
+        assert!(redirects.contains("/topics/network-operating-systems/ /topics/os-networking/ 301"));
+        let custom =
+            fs::read_to_string(config.out_dir.join("topics/custom-systems/index.html")).unwrap();
+        let dsa = fs::read_to_string(config.out_dir.join("topics/dsa/index.html")).unwrap();
+        assert!(custom.contains("<h1>Custom &amp; Systems</h1>"));
+        assert!(custom.contains("<h2>&lt;new topic&gt;</h2>"));
+        assert!(custom.contains("/articles/posts/both/"));
+        assert!(!custom.contains("/articles/posts/unclassified/"));
+        assert!(!custom.contains("/articles/posts/topic-only/"));
+        assert!(dsa.contains("<h2>一般文章</h2>"));
+        assert!(dsa.contains("/articles/posts/no-topic/"));
+        let home = fs::read_to_string(config.out_dir.join("index.html")).unwrap();
+        assert_eq!(home.matches("/articles/posts/both/").count(), 1);
+        assert!(home.contains("/articles/posts/unclassified/"));
+        let sitemap = fs::read_to_string(config.out_dir.join("sitemap.xml")).unwrap();
+        assert!(sitemap.contains("/topics/custom-systems/"));
+        let post =
+            fs::read_to_string(config.out_dir.join("articles/posts/both/index.html")).unwrap();
+        assert!(post.contains("href=\"/topics/custom-systems/\""));
+        // Removing the last tagged article also removes stale pages and links.
+        let general = articles
+            .into_iter()
+            .filter(|a| a.blog_tags.is_empty())
+            .collect::<Vec<_>>();
+        build_site(&config, &general).unwrap();
+        assert!(!config.out_dir.join("topics/dsa/index.html").exists());
+        let sitemap = fs::read_to_string(config.out_dir.join("sitemap.xml")).unwrap();
+        assert!(!sitemap.contains("/topics/"));
+    }
+
+    #[test]
+    fn rejects_tag_routes_that_are_empty_or_collide() {
+        let tmp = tempdir().unwrap();
+        for tags in ["['A & B', 'A B']", "['!!!']"] {
+            fs::write(
+                tmp.path().join("test.md"),
+                format!("---\nblog: true\ntitle: Test\nblog_tag: {tags}\n---\nBody\n"),
+            )
+            .unwrap();
+            let articles = read_articles(tmp.path()).unwrap();
+            assert!(collect_blog_tags(&articles).is_err());
+        }
+    }
+
+    #[test]
     fn parses_front_matter_and_filters_blog_posts() {
         let tmp = tempdir().expect("tmp");
         let raw = tmp.path().join("blog.md");
@@ -1010,7 +1125,7 @@ mod tests {
     #[test]
     fn loads_mermaid_only_for_articles_with_mermaid_fences() {
         let diagram = render_markdown_to_html("```mermaid\nflowchart TD\nA --> B\n```\n");
-        let page = render_page("Diagram", "", "/test/", &diagram, "article");
+        let page = render_page("Diagram", "", "/test/", &diagram, "article", "");
         assert!(page.contains("mermaid@12.0.0"));
         assert!(page.contains("securityLevel: 'strict'"));
         assert!(page.contains("<pre lang=\"mermaid\"><code>"));
@@ -1020,9 +1135,10 @@ mod tests {
             "/test/",
             "<pre lang=\"bash\">echo hi</pre>",
             "article",
+            "",
         );
         assert!(!plain.contains("mermaid@"));
-        let index = render_page("Index", "", "/", &diagram, "website");
+        let index = render_page("Index", "", "/", &diagram, "website", "");
         assert!(!index.contains("mermaid@"));
     }
 
@@ -1040,7 +1156,8 @@ mod tests {
             kind: "post".into(),
             kind_label: "Post".into(),
             route_kind: "posts".into(),
-            topic_section: None,
+            blog_topic: None,
+            blog_tags: Vec::new(),
         };
         let feed = render_feed(&[article]);
         let channel = rss::Channel::read_from(feed.as_bytes()).expect("valid RSS XML");

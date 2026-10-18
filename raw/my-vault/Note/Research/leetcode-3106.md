@@ -1,18 +1,10 @@
 ---
-title: 刷題紀錄 leetcode-3106
-tags:
-  - LeetCode
-  - Algorithm
-  - String
-categories: Programming
-abbrlink: cbef
-date: 2024-08-15 12:20:29
 blog: true
-blog_topic: problem-solving
-legacy_blog_file: "source/_posts/leetcode-3106.md"
-blog_title: "LeetCode 3106"
+blog_title: LeetCode 3106
 blog_date: 2024-08-15
 blog_url: https://blog.walle4561.com/articles/posts/leetcode-3106/
+blog_tag: DSA
+blog_topic: 刷題
 ---
 
 ## 解題程式

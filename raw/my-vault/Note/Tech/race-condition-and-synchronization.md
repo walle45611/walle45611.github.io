@@ -1,19 +1,10 @@
 ---
-title: 作業系統-競爭條件與同步
-tags:
-  - Operating System
-  - Concurrency
-  - Critical Section
-  - Synchronization
-  - 網路與作業系統
-categories: System Administration
-abbrlink: 40a5
-date: 2025-01-04 00:00:00
 blog: true
-legacy_blog_file: "source/_posts/Race-Condition-and-Synchronization.md"
-blog_title: "作業系統-競爭條件與同步"
+blog_title: 作業系統-競爭條件與同步
 blog_date: 2025-01-04
 blog_url: https://blog.walle4561.com/articles/posts/race-condition-and-synchronization/
+blog_tag: OS & Networking
+blog_topic: OS
 ---
 
 ## 前情提要

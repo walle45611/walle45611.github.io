@@ -1,8 +1,10 @@
 ---
 blog: true
-blog_title: "雙端堆或是雙端優先隊列 (Double-ended Heap OR  double-ended priority queue，DEPQ)"
+blog_title: 雙端堆或是雙端優先隊列 (Double-ended Heap OR  double-ended priority queue，DEPQ)
 blog_date: 2026-09-24
 blog_url: https://blog.walle4561.com/articles/posts/double-ended-priority-queue/
+blog_tag: DSA
+blog_topic: 資料結構
 ---
 
 ## ✅ 定義規則

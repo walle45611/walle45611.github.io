@@ -1,8 +1,10 @@
 ---
 blog: true
-blog_title: "線性時間排序演算法"
+blog_title: 線性時間排序演算法
 blog_date: 2026-09-24
 blog_url: https://blog.walle4561.com/articles/posts/linear-time-sorting/
+blog_tag: DSA
+blog_topic: 資料結構
 ---
 
 # Counting Sort

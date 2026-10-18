@@ -1,8 +1,10 @@
 ---
 blog: true
-blog_title: "Hashing"
+blog_title: Hashing
 blog_date: 2026-09-24
 blog_url: https://blog.walle4561.com/articles/posts/hashing/
+blog_tag: DSA
+blog_topic: 資料結構
 ---
 
 # 名詞解釋和定義

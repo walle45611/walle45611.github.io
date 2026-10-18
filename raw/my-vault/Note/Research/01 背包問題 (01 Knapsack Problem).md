@@ -1,8 +1,10 @@
 ---
 blog: true
-blog_title: "0/1 背包問題"
+blog_title: 0/1 背包問題
 blog_date: 2026-09-24
 blog_url: https://blog.walle4561.com/articles/posts/zero-one-knapsack/
+blog_tag: DSA
+blog_topic: 演算法
 ---
 
 https://www.hello-algo.com/zh-hant/chapter_dynamic_programming/knapsack_problem/#__tabbed_4_6

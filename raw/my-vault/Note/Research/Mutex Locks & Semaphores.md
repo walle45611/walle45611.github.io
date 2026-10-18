@@ -1,10 +1,10 @@
 ---
 blog: true
-blog_title: "Mutex Locks & Semaphores"
+blog_title: Mutex Locks & Semaphores
 blog_date: '2026-10-05'
 blog_url: https://blog.walle4561.com/articles/posts/mutex-locks-semaphores/
-tags:
-  - 網路與作業系統
+blog_tag: OS & Networking
+blog_topic: OS
 ---
 
 ## 1. Hardware-based Mutex Implementation

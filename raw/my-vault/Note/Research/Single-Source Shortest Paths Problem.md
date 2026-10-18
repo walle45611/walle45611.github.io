@@ -1,8 +1,10 @@
 ---
 blog: true
-blog_title: "單一起點最短路徑"
+blog_title: 單一起點最短路徑
 blog_date: 2026-09-24
 blog_url: https://blog.walle4561.com/articles/posts/single-source-shortest-paths/
+blog_tag: DSA
+blog_topic: 演算法
 ---
 
 # Single-Source Shortest Paths 演算法總覽

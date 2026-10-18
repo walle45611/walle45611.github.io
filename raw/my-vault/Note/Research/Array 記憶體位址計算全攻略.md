@@ -1,8 +1,10 @@
 ---
 blog: true
-blog_title: "陣列記憶體位址計算"
+blog_title: 陣列記憶體位址計算
 blog_date: 2026-09-24
 blog_url: https://blog.walle4561.com/articles/posts/array-memory-address/
+blog_tag: DSA
+blog_topic: 資料結構
 ---
 
 ## 1. 基礎觀念：一維陣列 (1-Dim Array)

@@ -1,8 +1,10 @@
 ---
 blog: true
-blog_title: "Reduction & Problem Types"
+blog_title: Reduction & Problem Types
 blog_date: 2026-09-24
 blog_url: https://blog.walle4561.com/articles/posts/reductions-and-problem-types/
+blog_tag: DSA
+blog_topic: 演算法
 ---
 
 

@@ -1,15 +1,6 @@
 ---
-title: 利用 vscode profile 分開不同開發環境的 vscode extension
-tags:
-  - Editor
-  - VSCode
-  - Development Tools
-categories: Development Tools
-abbrlink: '4478'
-date: 2024-08-16 13:50:59
 blog: true
-legacy_blog_file: "source/_posts/vscode-extension-profile.md"
-blog_title: "利用 vscode profile 分開不同開發環境的 vscode extension"
+blog_title: 利用 vscode profile 分開不同開發環境的 vscode extension
 blog_date: 2024-08-16
 blog_url: https://blog.walle4561.com/articles/posts/vscode-extension-profile/
 ---

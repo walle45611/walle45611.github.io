@@ -1,8 +1,10 @@
 ---
 blog: true
-blog_title: "樹（Tree）"
+blog_title: 樹（Tree）
 blog_date: 2024-08-26
 blog_url: https://blog.walle4561.com/articles/posts/tree-introduc/
+blog_tag: DSA
+blog_topic: 資料結構
 ---
 
 ## Tree 定義

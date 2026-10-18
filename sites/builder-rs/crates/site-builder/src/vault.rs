@@ -16,7 +16,8 @@ struct Post {
     title: String,
     slug: String,
     date: String,
-    topic: String,
+    topic: Option<String>,
+    tags: Vec<String>,
     body: String,
 }
 
@@ -41,17 +42,28 @@ fn fail(message: impl Into<String>) -> Box<dyn Error> {
     message.into().into()
 }
 
-fn links(content: &str) -> Vec<String> {
-    let re = Regex::new(r"\[\[([^\]]+)\]\]").expect("link regex");
-    re.captures_iter(content)
-        .map(|capture| {
-            capture[1]
-                .split(['|', '#'])
-                .next()
-                .unwrap_or_default()
-                .to_string()
-        })
-        .collect()
+pub(crate) fn parse_blog_tags(value: Option<&serde_yaml::Value>) -> Result<Vec<String>> {
+    let values = match value {
+        None | Some(serde_yaml::Value::Null) => Vec::new(),
+        Some(serde_yaml::Value::String(value)) => vec![value.as_str()],
+        Some(serde_yaml::Value::Sequence(values)) => values
+            .iter()
+            .map(|value| {
+                value
+                    .as_str()
+                    .ok_or_else(|| fail("blog_tag entries must be strings"))
+            })
+            .collect::<Result<Vec<_>>>()?,
+        _ => return Err(fail("blog_tag must be a string or a list of strings")),
+    };
+    let mut tags = Vec::new();
+    for value in values {
+        let value = value.trim();
+        if !value.is_empty() && !tags.iter().any(|tag| tag == value) {
+            tags.push(value.to_string());
+        }
+    }
+    Ok(tags)
 }
 
 fn parse_post(source: &Path, note: &str) -> Result<Option<Post>> {
@@ -87,35 +99,21 @@ fn parse_post(source: &Path, note: &str) -> Result<Option<Post>> {
     if title.trim().is_empty() {
         return Err(fail(format!("Empty blog title in {}", source.display())));
     }
-    let explicit_topic = properties
-        .get("blog_topic")
-        .and_then(serde_yaml::Value::as_str)
-        .unwrap_or_default();
-    let has_network_operating_systems_tag = properties
-        .get("tags")
-        .and_then(serde_yaml::Value::as_sequence)
-        .is_some_and(|tags| {
-            tags.iter()
-                .any(|tag| tag.as_str() == Some("網路與作業系統"))
-        });
-    let topic = if explicit_topic.is_empty() && has_network_operating_systems_tag {
-        "network-operating-systems"
-    } else {
-        explicit_topic
+    let topic = match properties.get("blog_topic") {
+        None | Some(serde_yaml::Value::Null) => None,
+        Some(serde_yaml::Value::String(value)) => {
+            let value = value.trim();
+            (!value.is_empty()).then(|| value.to_string())
+        }
+        _ => {
+            return Err(fail(format!(
+                "blog_topic must be a string in {}",
+                source.display()
+            )))
+        }
     };
-    if !topic.is_empty()
-        && ![
-            "data-structures",
-            "algorithms",
-            "problem-solving",
-            "network-operating-systems",
-            "operating-systems",
-            "networking",
-        ]
-        .contains(&topic)
-    {
-        return Err(fail(format!("Invalid blog topic in {}", source.display())));
-    }
+    let tags = parse_blog_tags(properties.get("blog_tag"))
+        .map_err(|error| fail(format!("{}: {error}", source.display())))?;
     let body = note[capture.get(0).expect("front matter match").end()..].trim();
     if body.is_empty() {
         return Err(fail(format!("Empty blog body in {}", source.display())));
@@ -130,7 +128,8 @@ fn parse_post(source: &Path, note: &str) -> Result<Option<Post>> {
         title,
         slug,
         date: date.to_string(),
-        topic: topic.to_string(),
+        topic,
+        tags,
         body: body.to_string(),
     }))
 }
@@ -324,24 +323,6 @@ fn normalize_math(body: &str) -> Result<String> {
 }
 
 pub fn export(vault: &Path, build_dir: &Path) -> Result<()> {
-    let overview = fs::read_to_string(vault.join("00_Dashboard/資料結構和演算法 Overview.md"))?;
-    let names = links(&overview);
-    let all_names: HashSet<_> = names.iter().cloned().collect();
-    if names.len() != all_names.len() {
-        return Err(fail("Dashboard has duplicate note links"));
-    }
-    let algorithms = overview
-        .split_once("# 演算法")
-        .ok_or_else(|| fail("Dashboard lacks algorithm section"))?;
-    let algorithm_names: HashSet<_> = links(algorithms.1).into_iter().collect();
-    let os_overview = vault.join("00_Dashboard/作業系統 Overview.md");
-    let os_names: HashSet<_> = if os_overview.exists() {
-        links(&fs::read_to_string(os_overview)?)
-            .into_iter()
-            .collect()
-    } else {
-        HashSet::new()
-    };
     let mut posts = Vec::<Post>::new();
     let mut all_note_names = HashSet::new();
     for source in files_under(&vault.join("00_Dashboard"), "md")? {
@@ -426,21 +407,6 @@ pub fn export(vault: &Path, build_dir: &Path) -> Result<()> {
         if tikz.is_match(&body) {
             return Err(fail(format!("TikZ remains in {}", post.source.display())));
         }
-        let topic = if post.topic == "network-operating-systems" {
-            Some(if os_names.contains(&post.name) {
-                "operating-systems"
-            } else {
-                "networking"
-            })
-        } else if !post.topic.is_empty() {
-            Some(post.topic.as_str())
-        } else if algorithm_names.contains(&post.name) {
-            Some("algorithms")
-        } else if all_names.contains(&post.name) {
-            Some("data-structures")
-        } else {
-            None
-        };
         let description = format!("{}的重點整理。", post.title);
         let relative = post.source.strip_prefix(vault)?.to_string_lossy();
         let mut front = format!(
@@ -448,8 +414,14 @@ pub fn export(vault: &Path, build_dir: &Path) -> Result<()> {
             serde_json::to_string(&post.title)?,
             post.slug
         );
-        if let Some(topic) = topic {
-            front.push_str(&format!("topic_section: {topic}\n"));
+        if let Some(topic) = &post.topic {
+            front.push_str(&format!("blog_topic: {}\n", serde_json::to_string(topic)?));
+        }
+        if !post.tags.is_empty() {
+            front.push_str(&format!(
+                "blog_tag: {}\n",
+                serde_json::to_string(&post.tags)?
+            ));
         }
         front.push_str(&format!(
             "description: {}\ndate: {}\nblog: true\nvault_source: {}\n---\n\n",
@@ -508,6 +480,25 @@ mod tests {
     use super::*;
 
     #[test]
+    fn classification_uses_only_blog_metadata_and_validates_types() {
+        let source = Path::new("Note/Tech/example.md");
+        let base = "---\nblog: true\nblog_title: Example\nblog_date: '2026-10-18'\nblog_url: https://blog.walle4561.com/articles/posts/example/\n";
+        let note = format!("{base}tags: [網路與作業系統]\n---\n\nText\n");
+        let post = parse_post(source, &note).unwrap().unwrap();
+        assert!(post.tags.is_empty());
+        assert!(post.topic.is_none());
+        let note = format!(
+            "{base}blog_tag: [' New Tab ', DSA, DSA, '']\nblog_topic: ' 自訂主題 '\n---\n\nText\n"
+        );
+        let post = parse_post(source, &note).unwrap().unwrap();
+        assert_eq!(post.tags, vec!["New Tab", "DSA"]);
+        assert_eq!(post.topic.as_deref(), Some("自訂主題"));
+        for field in ["blog_tag: 42", "blog_tag: [DSA, 42]", "blog_topic: [OS]"] {
+            assert!(parse_post(source, &format!("{base}{field}\n---\n\nText\n")).is_err());
+        }
+    }
+
+    #[test]
     fn image_alt_preserves_captions_without_using_size_hints_as_text() {
         let asset = Path::new("Assets/External/imgur/example.png");
         assert_eq!(
@@ -536,11 +527,6 @@ mod tests {
         let build = root.join("build");
         fs::create_dir_all(vault.join("00_Dashboard")).unwrap();
         fs::create_dir_all(vault.join("Note/Tech")).unwrap();
-        fs::write(
-            vault.join("00_Dashboard/資料結構和演算法 Overview.md"),
-            "# 演算法\n",
-        )
-        .unwrap();
         fs::write(
             vault.join("00_Dashboard/DevOps Technology Overview.md"),
             "[[Slurm]]\n",

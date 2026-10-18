@@ -1,8 +1,10 @@
 ---
 blog: true
-blog_title: "Proving NP-Completeness"
+blog_title: Proving NP-Completeness
 blog_date: 2026-09-24
 blog_url: https://blog.walle4561.com/articles/posts/proving-np-completeness/
+blog_tag: DSA
+blog_topic: 演算法
 ---
 
 ## 1. Polynomial-Time Reduction

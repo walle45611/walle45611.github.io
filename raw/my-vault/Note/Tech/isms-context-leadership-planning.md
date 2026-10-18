@@ -1,15 +1,6 @@
 ---
-title: ISO27001 第四至第六章 - 組織全景、領導與規劃
-tags:
-  - Information Security
-  - Management
-  - ISO27001
-categories: System Administration
-abbrlink: cc2a
-date: 2024-12-01 00:00:00
 blog: true
-legacy_blog_file: "source/_posts/isms-context-leadership-planning.md"
-blog_title: "ISO27001 第四至第六章 - 組織全景、領導與規劃"
+blog_title: ISO27001 第四至第六章 - 組織全景、領導與規劃
 blog_date: 2024-12-01
 blog_url: https://blog.walle4561.com/articles/posts/isms-context-leadership-planning/
 ---

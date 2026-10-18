@@ -1,8 +1,10 @@
 ---
 blog: true
-blog_title: "堆積 (Heap)"
+blog_title: 堆積 (Heap)
 blog_date: 2026-09-24
 blog_url: https://blog.walle4561.com/articles/posts/heap/
+blog_tag: DSA
+blog_topic: 資料結構
 ---
 
 

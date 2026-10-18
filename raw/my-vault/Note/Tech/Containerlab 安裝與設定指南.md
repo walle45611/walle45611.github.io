@@ -1,9 +1,10 @@
 ---
 blog: true
-blog_title: 'Containerlab 安裝與設定指南'
+blog_title: Containerlab 安裝與設定指南
 blog_date: '2026-10-12'
 blog_url: https://blog.walle4561.com/articles/posts/containerlab-installation-guide/
-blog_topic: networking
+blog_tag: OS & Networking
+blog_topic: Networking
 ---
 
 # Containerlab 安裝與設定指南

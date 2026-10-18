@@ -1,15 +1,6 @@
 ---
-title: "vLLM + Gemma 4 + LoRA：我踩過的兩個坑"
-source: "https://blog.walle4561.com/20260427/2316/#more"
-author:
-  - "[[Walle]]"
-published: 2026-04-28
-created: 2026-04-28
-description: "最近在部署 Gemma 4 E4B + LoRA adapter 時，我連踩了兩個坑。第一個是 vLLM 版本本身還沒支援 Gemma 4 的 runtime LoRA；第二個是 升版後又碰到 CUDA wheel 與環境不相容。這篇記錄下來，給之後的自己少走一點冤枉路。"
-tags:
-  - "clippings"
 blog: true
-blog_title: "vLLM + Gemma 4 + LoRA：我踩過的兩個坑"
+blog_title: vLLM + Gemma 4 + LoRA：我踩過的兩個坑
 blog_date: 2026-04-28
 blog_url: https://blog.walle4561.com/articles/posts/vllm-gemma-4-lora-我踩過的兩個坑/
 ---

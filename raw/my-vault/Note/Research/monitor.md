@@ -1,10 +1,10 @@
 ---
 blog: true
-blog_title: "Semaphore 與 Monitor 的同步原語互轉實作"
+blog_title: Semaphore 與 Monitor 的同步原語互轉實作
 blog_date: '2026-10-05'
 blog_url: https://blog.walle4561.com/articles/posts/monitor-synchronization/
-tags:
-  - 網路與作業系統
+blog_tag: OS & Networking
+blog_topic: OS
 ---
 
 # 同步原語互轉實作 (Semaphore $\Leftrightarrow$ Monitor)

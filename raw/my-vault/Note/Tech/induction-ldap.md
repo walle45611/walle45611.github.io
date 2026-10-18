@@ -1,16 +1,6 @@
 ---
-title: 簡單認識 LDAP：讓網路認證更輕量
-tags:
-  - System Administration
-  - LDAP
-  - Network
-  - Authentication
-categories: System Administration
-abbrlink: d737
-date: 2024-08-30 00:00:00
 blog: true
-legacy_blog_file: "source/_posts/induction-ldap.md"
-blog_title: "簡單認識 LDAP：讓網路認證更輕量"
+blog_title: 簡單認識 LDAP：讓網路認證更輕量
 blog_date: 2024-08-30
 blog_url: https://blog.walle4561.com/articles/posts/induction-ldap/
 ---

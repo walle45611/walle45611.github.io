@@ -1,16 +1,6 @@
 ---
-title: Direct Image 的性質與應用
-tags:
-  - Mathematics
-  - Set Theory
-  - Function
-categories: Computer Science
-mathjax: true
-abbrlink: eeca
-date: 2024-08-22 14:45:05
 blog: true
-legacy_blog_file: "source/_posts/direct-image.md"
-blog_title: "Direct Image 的性質與應用"
+blog_title: Direct Image 的性質與應用
 blog_date: 2024-08-22
 blog_url: https://blog.walle4561.com/articles/posts/direct-image/
 ---

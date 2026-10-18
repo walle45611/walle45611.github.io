@@ -1,10 +1,10 @@
 ---
 blog: true
-blog_title: "Lamport's Bakery Algorithm (LBA)"
+blog_title: Lamport's Bakery Algorithm (LBA)
 blog_date: '2026-10-05'
 blog_url: https://blog.walle4561.com/articles/posts/lamports-bakery-algorithm-lba/
-tags:
-  - 網路與作業系統
+blog_tag: OS & Networking
+blog_topic: OS
 ---
 
 

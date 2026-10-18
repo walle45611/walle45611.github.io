@@ -1,19 +1,10 @@
 ---
-title: codeforces 刷題紀錄 08/15
-tags:
-  - CodeForces
-  - Algorithm
-  - DFS
-  - Graph Theory
-categories: Programming
-abbrlink: 15cb
-date: 2024-08-15 15:33:27
 blog: true
-blog_topic: problem-solving
-legacy_blog_file: "source/_posts/codeforces-0815.md"
-blog_title: "Codeforces 580C、1996B"
+blog_title: Codeforces 580C、1996B
 blog_date: 2024-08-15
 blog_url: https://blog.walle4561.com/articles/posts/codeforces-0815/
+blog_tag: DSA
+blog_topic: 刷題
 ---
 
 ## 前情提要

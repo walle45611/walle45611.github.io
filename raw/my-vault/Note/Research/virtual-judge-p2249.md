@@ -1,18 +1,10 @@
 ---
-title: virtual-judge 刷題紀錄 08/21
-tags:
-  - Virtual Judge
-  - Algorithm
-  - binary-search
-categories: Programming
-abbrlink: 3fea
-date: 2024-08-20 18:32:04
 blog: true
-blog_topic: problem-solving
-legacy_blog_file: "source/_posts/virtual-judge-P2249.md"
-blog_title: "Luogu P2249"
+blog_title: Luogu P2249
 blog_date: 2024-08-20
 blog_url: https://blog.walle4561.com/articles/posts/virtual-judge-p2249/
+blog_tag: DSA
+blog_topic: 刷題
 ---
 
 ## 前情提要

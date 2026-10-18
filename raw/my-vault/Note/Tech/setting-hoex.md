@@ -1,16 +1,6 @@
 ---
-title: 快入使用 Hexo 建置自己的 Blog
-tags:
-  - Hexo
-  - Web Development
-  - Static Site
-  - Blog
-categories: Web Development
-abbrlink: 7a6b
-date: 2024-08-12 18:52:26
 blog: true
-legacy_blog_file: "source/_posts/Setting-Hoex.md"
-blog_title: "快入使用 Hexo 建置自己的 Blog"
+blog_title: 快入使用 Hexo 建置自己的 Blog
 blog_date: 2024-08-12
 blog_url: https://blog.walle4561.com/articles/posts/setting-hoex/
 ---

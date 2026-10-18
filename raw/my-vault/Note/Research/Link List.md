@@ -1,8 +1,10 @@
 ---
 blog: true
-blog_title: "鏈結串列（Linked List）"
+blog_title: 鏈結串列（Linked List）
 blog_date: 2026-09-24
 blog_url: https://blog.walle4561.com/articles/posts/linked-list/
+blog_tag: DSA
+blog_topic: 資料結構
 ---
 
 ## 1. 基本概念與記憶體配置

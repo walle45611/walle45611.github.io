@@ -1,16 +1,6 @@
 ---
-title: RESTful 和 API 關係介紹
-tags:
-  - Web Development
-  - API
-  - REST
-  - Software Architecture
-categories: Web Development
-abbrlink: f35e
-date: 2024-09-12 13:39:35
 blog: true
-legacy_blog_file: "source/_posts/rest-with-api.md"
-blog_title: "RESTful 和 API 關係介紹"
+blog_title: RESTful 和 API 關係介紹
 blog_date: 2024-09-12
 blog_url: https://blog.walle4561.com/articles/posts/rest-with-api/
 ---

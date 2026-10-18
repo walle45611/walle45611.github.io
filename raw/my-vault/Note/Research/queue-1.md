@@ -1,18 +1,10 @@
 ---
-title: 資料結構-Queue篇-1
-tags:
-  - Data Structures
-  - Algorithm
-  - Queue
-categories: Computer Science
-mathjax: true
-abbrlink: '1059'
-date: 2024-09-09 11:58:09
 blog: true
-legacy_blog_file: "source/_posts/queue-1.md"
-blog_title: "資料結構-Queue篇-1"
+blog_title: 資料結構-Queue篇-1
 blog_date: 2024-09-09
 blog_url: https://blog.walle4561.com/articles/posts/queue-1/
+blog_tag: DSA
+blog_topic: 資料結構
 ---
 
 ## 前情提要

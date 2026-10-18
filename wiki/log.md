@@ -453,3 +453,19 @@
 - verified: 60 張圖通過解碼／格式／尺寸與 SHA-256 驗證，無 Imgur 刪除提示圖或重複內容；21 份筆記除圖片引用外逐字一致。13 項 Rust 測試、fmt、clippy -D warnings 與 git diff --check 通過；實際建站產生 83 篇文章、361 個輸出附件。逐篇檢查外部 img src 為 0、本機圖片缺檔為 0，60 張遷移圖片的建站輸出與原檔雜湊完全一致。
 - verified: 建站後執行 stage-assets，新增 60 個附件，未移除其他 Git 附件；暫存變更僅含本次圖片遷移及必要渲染／紀錄檔。
 - gaps: 不刪除外部圖床原檔，不更動帳號或圖床設定；提交後再核對 GitHub Actions 與正式 Blog。
+
+## [2026-10-18] blog-maintenance | Blog metadata 分類與動態頁籤
+
+- checked: 83 篇啟用 Blog 的 Research／Tech 筆記、54 篇論文筆記、Rust 分類／導覽／sitemap 邏輯、sites/README.md 與根目錄 AGENTS.md；任務開始時 Database Internals 已有本次閱讀整理的未提交內容。
+- updated: 分類僅讀 blog_tag（字串或字串清單）與 blog_topic（字串），從實際發佈文章發現頁籤並按主題分組；移除 Dashboard／一般 tags 推斷、分類白名單、固定主題頁與固定導覽。標籤網址碰撞或空 slug 會回報錯誤；未分類文章留在 Home／Archive。
+- updated: 82 篇 Blog 的 frontmatter 有實際變更，83 篇皆只保留必要 blog_* 欄位；原有分類一次性轉成明確 metadata：DSA 47 篇（資料結構 27、演算法 14、刷題 6），OS & Networking 15 篇（OS 9、Networking 6），一般文章 21 篇。論文筆記完全不動。
+- updated: README 與 AGENTS.md 記錄新規則。頁籤網址由名稱自動產生，現為 /topics/dsa/ 與 /topics/os-networking/；sites/public/_redirects 保留兩個舊分類網址的 301 轉址，僅處理歷史路由，不參與分類。
+- verified: 83 篇 Blog 正文與 54 篇論文整檔 SHA-256 均與修改前一致。16 項 Rust 測試、fmt、clippy -D warnings、git diff --check 通過；完整建站輸出 83 篇文章、364 個附件，89 個 HTML 頁面的站內連結皆可解析、導覽一致，manifest 來源雜湊一致。回歸測試涵蓋自訂／多頁籤、HTML escaping、一般文章、移除過期分類頁、metadata 型別、slug 碰撞與舊網址轉址。
+- gaps: 僅完成本機修改與建站驗證，尚未 commit、push 或部署；未執行 sync-vault、archive 或 stage-assets，既有 wiki 摘要雜湊未宣稱已刷新。
+
+## [2026-10-18] blog-publish | 部署動態分類與 Database Internals 閱讀更新
+
+- checked: 使用者要求重新部署；fetch 後本機 HEAD 與 origin/main 無分歧。核對先前已通過的 Rust 測試／fmt／clippy，以及最新本機建置的 83 篇文章與 364 個輸出附件。
+- updated: Database Internals 與 DDIA 均設定 blog_tag: OS & Networking、blog_topic: OS；最終分類為 DSA 47 篇、OS 11 篇、Networking 4 篇、一般文章 21 篇。此次一併部署動態分類、Blog metadata 清理、舊網址轉址，以及 Database Internals 的 Buffer Pool／置換／WAL／ARIES／並行控制閱讀更新。
+- verified: 最新建站中兩篇只出現在 OS 分組，不在 DSA；stage-assets 新加入 3 張實際引用圖片，未取消追蹤其他附件。git diff --check 通過，提交範圍限定此次 Blog 來源、圖片、Rust 工具、規則與紀錄。
+- gaps: 本紀錄寫入於提交推送前；推送後另查 GitHub Actions 與正式站點確認部署結果，未把尚未完成的部署記為成功。

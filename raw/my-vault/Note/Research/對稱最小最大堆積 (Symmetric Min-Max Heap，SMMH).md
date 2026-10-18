@@ -1,8 +1,10 @@
 ---
 blog: true
-blog_title: "對稱最小最大堆積 (Symmetric Min-Max Heap，SMMH)"
+blog_title: 對稱最小最大堆積 (Symmetric Min-Max Heap，SMMH)
 blog_date: 2026-09-24
 blog_url: https://blog.walle4561.com/articles/posts/symmetric-min-max-heap/
+blog_tag: DSA
+blog_topic: 資料結構
 ---
 
 ## Def

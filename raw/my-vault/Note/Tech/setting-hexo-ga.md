@@ -1,16 +1,6 @@
 ---
-title: 快速使用 Hexo 搭配 Google Analytics (GA)
-tags:
-  - Hexo
-  - Web Development
-  - Analytics
-  - Static Site
-categories: Web Development
-abbrlink: e14c
-date: 2024-08-14 00:27:38
 blog: true
-legacy_blog_file: "source/_posts/Setting-Hexo-GA.md"
-blog_title: "快速使用 Hexo 搭配 Google Analytics (GA)"
+blog_title: 快速使用 Hexo 搭配 Google Analytics (GA)
 blog_date: 2024-08-14
 blog_url: https://blog.walle4561.com/articles/posts/setting-hexo-ga/
 ---

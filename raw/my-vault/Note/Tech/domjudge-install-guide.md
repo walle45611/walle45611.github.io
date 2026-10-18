@@ -1,12 +1,6 @@
 ---
-title: DOMjudge 安裝指南
-tags: [System Administration, Installation, Linux]
-categories: System Administration
-abbrlink: 82ab
-date: 2024-10-22 00:00:00
 blog: true
-legacy_blog_file: "source/_posts/DOMjudge-Install-Guide.md"
-blog_title: "DOMjudge 安裝指南"
+blog_title: DOMjudge 安裝指南
 blog_date: 2024-10-22
 blog_url: https://blog.walle4561.com/articles/posts/domjudge-install-guide/
 ---

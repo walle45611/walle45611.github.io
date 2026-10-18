@@ -1,9 +1,10 @@
 ---
 blog: true
-blog_title: 'DDIA：Designing Data-Intensive Applications 閱讀筆記'
+blog_title: DDIA：Designing Data-Intensive Applications 閱讀筆記
 blog_date: '2026-10-10'
 blog_url: https://blog.walle4561.com/articles/posts/ddia-reading-notes/
-blog_topic: networking
+blog_tag: OS & Networking
+blog_topic: OS
 ---
 
 > [!info] 持續更新中的閱讀筆記

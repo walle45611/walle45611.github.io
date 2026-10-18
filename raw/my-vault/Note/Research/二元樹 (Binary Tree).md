@@ -1,8 +1,10 @@
 ---
 blog: true
-blog_title: "二元樹 (Binary Tree)"
+blog_title: 二元樹 (Binary Tree)
 blog_date: 2024-08-26
 blog_url: https://blog.walle4561.com/articles/posts/binary-trees-1/
+blog_tag: DSA
+blog_topic: 資料結構
 ---
 
 ## 前情提要

@@ -1,12 +1,6 @@
 ---
-title: Python 程式碼風格指南
-tags: [Python, Code Style, Software Engineering]
-categories: Development Tools
-abbrlink: 815d
-date: 2024-09-10 14:38:19
 blog: true
-legacy_blog_file: "source/_posts/style-guide-for-python-code.md"
-blog_title: "Python 程式碼風格指南"
+blog_title: Python 程式碼風格指南
 blog_date: 2024-09-10
 blog_url: https://blog.walle4561.com/articles/posts/style-guide-for-python-code/
 ---

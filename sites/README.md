@@ -40,12 +40,23 @@ blog: true
 blog_title: 範例文章
 blog_date: '2026-09-29'
 blog_url: https://blog.walle4561.com/articles/posts/example-article/
+blog_tag: DSA
+blog_topic: 資料結構
 ---
 ```
 
-`blog_url` 必須符合上述網址形式，slug 不可重複；`blog_date` 使用 `YYYY-MM-DD`。選填的 `blog_topic` 支援 `data-structures`、`algorithms`、`problem-solving`、`operating-systems`、`networking`。帶有 `網路與作業系統` tag 的文章依「作業系統 Overview」連結分為 OS，其餘歸入 Networking，在 OS & Networking 頁面分區呈現；也可用 `blog_topic` 明確指定分類。未發佈筆記的內部連結會轉為文字，避免產生不存在的文章網址。
+`blog_url` 必須符合上述網址形式，slug 不可重複；`blog_date` 使用 `YYYY-MM-DD`。
 
-建站僅接受 `raw/my-vault/Note/Research/` 與 `raw/my-vault/Note/Tech/`（含子目錄）中明確設為 YAML 布林值 `blog: true` 的筆記；僅有 `Blog` tag、`blog: "true"` 或位於其他目錄的筆記均不發佈。`raw/web-clipper/` 不作為 Blog 來源。建站仍掃描其他 Note 的名稱以將未發佈筆記連結轉為文字，並讀取 `raw/my-vault/00_Dashboard/資料結構和演算法 Overview.md` 作分類，該檔案及其中的演算法區段需保留。
+Blog 筆記只保留 `blog`、`blog_title`、`blog_date`、`blog_url` 與選填的 `blog_tag`、`blog_topic`。論文筆記保留原有文獻 metadata，不套用這項清理。
+
+- `blog_tag` 決定文章要出現在哪些主題頁籤，可填單一字串或字串清單，例如 `blog_tag: DSA` 或 `blog_tag: [DSA, "OS & Networking"]`。
+- `blog_topic` 是頁籤內的分組名稱，填單一字串，例如 `資料結構`、`演算法`、`刷題`、`OS`、`Networking`。顯示名稱直接採 metadata，不維護固定值清單或名稱對照表。
+- Rust 從實際發佈文章收集所有 `blog_tag`，自動建立導覽、主題頁及 sitemap，並依各頁籤中的 `blog_topic` 分組。同一篇可出現在多個頁籤，首頁與 Archive 仍只收錄一次。
+- 主題網址由標籤名稱正規化產生，例如 `DSA` → `/topics/dsa/`、`OS & Networking` → `/topics/os-networking/`。標籤產生空網址或與其他標籤撞名時建置失敗，避免覆寫；標籤改名會改變網址，舊網址需在 `sites/public/_redirects` 維護轉址；現有 DSA 與 OS & Networking 舊網址已保留 301 轉址。此檔只處理歷史網址，不參與文章分類。
+- 有 `blog_tag`、沒有 `blog_topic` 的文章，列於該頁籤的「一般文章」。沒有 `blog_tag` 的文章只進入一般 Blog（Home／Archive）；單填 `blog_topic` 不會新增頁籤。
+- 一般 `tags`、Dashboard 與 Overview 連結均不參與分類，也不會自動新增頁籤；沒有 `blog_tag` 的文章不再從連結推斷分類。
+
+建站僅接受 `raw/my-vault/Note/Research/` 與 `raw/my-vault/Note/Tech/`（含子目錄）中明確設為 YAML 布林值 `blog: true` 的筆記；僅有 `Blog` tag、`blog: "true"` 或位於其他目錄的筆記均不發佈。`raw/web-clipper/` 不作為 Blog 來源。建站仍掃描 Note／Dashboard 名稱，僅用來將未發佈筆記連結轉為文字；不要求特定 Dashboard、標題或演算法區段存在。
 
 外部圖床圖片已下載至 `raw/my-vault/Assets/External/`，文章使用本地 Obsidian 嵌入；原網址、檔案格式、尺寸、雜湊與引用筆記記錄於 `sites/external-assets.json`。新圖片優先以本機附件管理，建站後再執行 `stage-assets`。
 

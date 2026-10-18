@@ -1,12 +1,6 @@
 ---
-title: LazyVim 設定過程筆記
-abbrlink: 50b
-date: 2025-01-26 15:38:15
-tags: [Editor, Vim, Development Tools]
-categories: Development Tools
 blog: true
-legacy_blog_file: "source/_posts/neovim-settings.md"
-blog_title: "LazyVim 設定過程筆記"
+blog_title: LazyVim 設定過程筆記
 blog_date: 2025-01-26
 blog_url: https://blog.walle4561.com/articles/posts/neovim-settings/
 ---

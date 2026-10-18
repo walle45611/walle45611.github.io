@@ -1,8 +1,10 @@
 ---
 blog: true
-blog_title: "二項樹、二項堆與費波那契堆"
+blog_title: 二項樹、二項堆與費波那契堆
 blog_date: 2026-09-24
 blog_url: https://blog.walle4561.com/articles/posts/binomial-and-fibonacci-heaps/
+blog_tag: DSA
+blog_topic: 資料結構
 ---
 
 # Binomial Tree

@@ -1,8 +1,10 @@
 ---
 blog: true
-blog_title: "常見 NP 完全問題"
+blog_title: 常見 NP 完全問題
 blog_date: 2026-09-24
 blog_url: https://blog.walle4561.com/articles/posts/common-np-complete-problems/
+blog_tag: DSA
+blog_topic: 演算法
 ---
 
 ### 命題分析

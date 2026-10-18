@@ -1,8 +1,10 @@
 ---
 blog: true
-blog_title: "Graph Connectivity"
+blog_title: Graph Connectivity
 blog_date: 2026-09-24
 blog_url: https://blog.walle4561.com/articles/posts/graph-connectivity/
+blog_tag: DSA
+blog_topic: 演算法
 ---
 
 https://web.ntnu.edu.tw/~algo/ConnectedComponent.html

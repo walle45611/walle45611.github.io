@@ -1,6 +1,6 @@
 ---
 blog: true
-blog_title: "Nuitka 與 Docker 打造高效能且安全的 Python 應用部署方案"
+blog_title: Nuitka 與 Docker 打造高效能且安全的 Python 應用部署方案
 blog_date: 2025-07-22
 blog_url: https://blog.walle4561.com/articles/posts/nuitka-與-docker-打造高效能且安全的-python-應用部署方案/
 ---

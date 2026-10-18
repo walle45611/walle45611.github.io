@@ -1,8 +1,10 @@
 ---
 blog: true
-blog_title: "OBST (Optimal Binary Search Tree)"
+blog_title: OBST (Optimal Binary Search Tree)
 blog_date: 2026-09-24
 blog_url: https://blog.walle4561.com/articles/posts/optimal-binary-search-tree/
+blog_tag: DSA
+blog_topic: 演算法
 ---
 
 # 問題背景

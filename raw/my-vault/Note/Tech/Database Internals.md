@@ -112,6 +112,55 @@ SQLite 就採用這種將 Rightmost Pointer 獨立存放的配置：Interior B-T
 
 ![[Assets/Note/Tech/Database Internals/rightmost-pointer-split.png]]
 
+**Rebalancing（重新分配）**：當某個 Page 很滿、相鄰的兄弟 Page 卻還有空間，可以先把部分 Cells 移到較空的 Page，平衡各頁面的空間使用率（Node Occupancy），延後 Split；刪除資料時，也可以從兄弟節點移入資料，避免太早 Merge。這裡關心的是資料占用空間，而不是讀寫請求集中造成的 Hot Spot。
+
+![[Assets/Note/Tech/Database Internals/rebalancing.png]]
+
+圖中調整前，左節點有 `10、13、16`，右節點只有 `18`；調整後把 `16` 移到右節點，變成左邊 `10、13`、右邊 `16、18`。兩個節點負責的搜尋範圍改變，因此父節點的分隔 Key 也從 `18` 更新為 `16`。
+
+這次調整前後的樹高相同。長期提高節點填滿程度，才可能讓相同資料量使用更少的 Pages 與層數；不是每次 Rebalancing 都會降低樹高。另外，跨 Page 重新分配 Cells 是這裡的 Rebalancing，同一個 Page 內搬動 Cells、整理零碎空間則是 Compaction／Defragmentation。
+
+---
+
+**Right-Only Appends**：當索引 Key 單調遞增，例如自動遞增的 `ID`，新增資料就會持續落在最右側的 Leaf Page。這讓儲存引擎可以針對追加寫入優化：PostgreSQL 的 Fastpath 著重省掉重複搜尋 Leaf 的路徑，SQLite 的 Quickbalance 則著重最右側 Page 滿了以後，如何減少重新分配資料的工作。
+
+**PostgreSQL Fastpath**：記住先前使用的最右側 Leaf Page，下一次插入時先檢查這一頁是否仍符合條件、是否有足夠空間。符合條件就能直接在該頁內找到適當位置並插入，省掉從 Root 重新往下搜尋的過程；不符合條件則回到一般插入流程。這不是 First Fit：First Fit 通常是依序找第一個放得下的空間，Fastpath 則是先嘗試已知的最右側 Page。它優化的是尋找目標頁面的成本，並不代表忽略頁內排序或節點容量限制。
+
+**SQLite Quickbalance**：在符合適用條件、插入位置位於最右端且目標 Leaf Page 已滿時，可以保留原頁面的資料，另外建立一個新的最右側 Leaf Page，先放入新增的最大 Key，再更新父節點的分隔 Key 與 Child Pointer。它不要求這次把新舊兩頁的資料平均分配，因為預期後續遞增 Key 還會繼續填入新頁。這是特定追加情境的優化，不能套用到所有位置的插入。
+
+例如簡化假設每個 Leaf Page 最多容納 4 筆資料，原本左頁存放 `1、2、3、4`，最右頁存放 `5、6、7、8`。現在新增 `9`，最右頁已經沒有空間；Quickbalance 的做法是保留這兩頁，建立新的最右頁，先只存放 `9`，並讓父節點加入相應的導航資訊。之後再插入 `10、11、12`，新頁就逐步填成 `9、10、11、12`，不必為了這次插入，先把舊頁的 `5、6、7、8` 搬過去平均分配。實際頁面容量取決於 Cell 大小，這裡的 4 筆只是方便理解的假設。
+
+**填滿程度不平均，不等於樹的高度失衡。**上述例子假設父節點仍有空間，因此新增 Leaf Page 後，各 Leaf 的深度相同，樹高不變；若父節點也放不下，仍需要進一步處理，必要時向上傳遞。Quickbalance 只是接受新頁暫時較空，以減少當次搬移資料的成本，並沒有放棄 B-Tree 的結構規則。
+
+Rebalancing 與 Quickbalance 的取捨也不同：前者先利用兄弟 Page 的剩餘空間，盡量延後 Split；後者則利用「後續資料很可能繼續往右新增」的特性，保留舊頁面滿載，讓新頁承接後續寫入。Fastpath 解決的是如何更快找到可插入的頁面，Quickbalance 解決的則是特定情況下頁面已滿時如何安排資料，兩者不是完全相同的機制。
+
+---
+
+**Bulk Loading 與 Bottom-Up 建樹**：Bulk Loading 是一次載入整批資料；這裡討論的 B-Tree 建索引方式採用 **Bottom-Up（由下往上）**，先建立 Leaf Pages，再逐層建立 Internal Pages，最後形成 Root。
+
+例如要為 `1～1,000,000` 的資料建立索引，先按 Key 排序，再依序把資料填入 Leaf Pages，接著依各個 Leaf 所負責的範圍，建立上層的分隔 Key 與 Child Pointers。如果一層仍放不下所有指標，就繼續向上建立，直到形成 Root。這與逐筆插入、每次從 Root 尋找目標 Leaf，再於空間不足時進行 Split 的流程不同，可以減少重複搜尋與分裂的成本。
+
+`page-wise` 表示「以 Page 為單位」。在這個情境中，可以理解成一頁一頁建立與填入資料，再從這批頁面建立上一層，而不是每筆資料都重新走完整的插入路徑。實作上也可以保留部分可用空間，供後續插入使用，不一定把每頁填到全滿。
+
+**Bulk Loading 強調整批處理，Bottom-Up 強調建樹方向。**一般的批次匯入不一定採用 Bottom-Up；此處描述的是利用排序後的整批資料，由 Leaf 向上直接建立 B-Tree 索引的方式。
+
+---
+
+**Breadcrumbs（麵包屑）與 Parent Pointer**：Node Split 可能需要往上更新父節點，因此搜尋時可以順便記錄從 Root 往下經過的頁面，以及每一層選擇的 Child Pointer 位置。這份路徑紀錄就是 Breadcrumbs，讓操作在需要時能沿原路向上回溯。
+
+![[Assets/Note/Tech/Database Internals/breadcrumbs.png]]
+
+圖中的黑色連線表示往下搜尋的路徑，右側 Breadcrumbs 則記錄各層經過的節點與所選位置。它保存的是「這次從哪裡走下來」，並不是在每個 Child Page 裡永久增加一條指向 Parent 的連結。圖中的 1、2、2 是所選位置的示意，不代表 PostgreSQL 欄位一定使用相同的編號方式。
+
+**Parent Node 存在，不代表 Child 必須保存 Parent Pointer。除了 Root 以外，B-Tree 的每個節點都有父節點；父節點原本就透過 Child Pointer（Downlink）指向子節點。往上找 Parent 時，可以使用搜尋過程留下的 Breadcrumbs，不必再從 Child 讀取 Parent Pointer。例如下降路徑為 Root `P1`、Internal `P5`、Internal `P8`，最後到達 Leaf `P12`；若 `P12` 發生 Split，就先從 Stack 取得 `P8`，若父節點也分裂，再回到 `P5`，必要時一路處理到 Root。
+
+Breadcrumbs 通常是一次操作或 Cursor 在記憶體中的 **Traversal State（遍歷狀態）**，生命週期結束後可以釋放。它與 Buffer Pool／Page Cache 的用途不同：後者快取資料頁內容，Breadcrumbs 則記錄搜尋路徑。Parent Pointer 是另一種向上定位方式，但當子節點因 Split、Merge 或 Rebalancing 換了父節點，就需要維護對應關係。兩者可以並用，卻不是都必須存在；若沒有保留路徑，也沒有 Parent Pointer，仍可從 Root 重新尋找父節點。
+
+**PostgreSQL 的 BTStack**：PostgreSQL 的 B-Tree 使用 `BTStack` 保存下降路徑，底層由 `BTStackData` 串接成 Linked List，作為回溯用的 Stack。`bts_blkno` 記錄 Parent Page 的 Block Number，`bts_offset` 記錄該頁所選 Downlink 的位置，`bts_parent` 則指向更上一層的 Stack 紀錄。這個 `bts_parent` 屬於暫存的路徑結構，並不是持久化在 Child Page 內的 Parent Pointer。
+
+`_bt_search()` 透過 `returnstack` 決定是否建立並回傳 Stack；呼叫端不需要向上回溯時，可以省下這份配置，因此不是每次搜尋都會建立 `BTStack`。並行的 Page Split 或 Page Deletion 可能使紀錄的位置過期，使用時仍須重新確認；Breadcrumbs 提供定位線索，不保證樹的結構一直不變。
+
+
 ---
 
 ![[Assets/Note/Tech/Database Internals/b-tree-pages-and-cell-layout.png]]

@@ -181,11 +181,11 @@ DDIA 書中對 **Sloppy Quorum** 的預設行為比較是：Cassandra 預設停�
 
 **三種分區管理策略比較**：以下描述平均情況，仍需考量資料與請求是否均勻分布。
 
-| 策略 | Partition 總數主要由什麼決定 | Dataset 成長、Node 數量不變時 | 新增 Node 時 |
-| --- | --- | --- | --- |
-| Fixed Number of Partitions | 預先設定的固定數量 | 平均 Partition 大小增加 | 搬移既有 Partitions，通常不改變邊界與總數 |
-| Dynamic Partitioning | Dataset 大小與切分／合併門檻 | 增加 Partitions，讓大小維持在目標範圍附近 | 可搬移既有 Partitions；總數不必隨 Nodes 等比例增加 |
-| Partitioning Proportionally to Nodes | Node 數量 × 每 Node 的邏輯分區數 | 平均 Partition 大小增加 | 增加 Token／Partitions，切分部分既有範圍，使平均大小下降 |
+| 策略                                   | Partition 總數主要由什麼決定     | Dataset 成長、Node 數量不變時      | 新增 Node 時                            |
+| ------------------------------------ | ----------------------- | -------------------------- | ------------------------------------ |
+| Fixed Number of Partitions           | 預先設定的固定數量               | 平均 Partition 大小增加          | 搬移既有 Partitions，通常不改變邊界與總數           |
+| Dynamic Partitioning                 | Dataset 大小與切分／合併門檻      | 增加 Partitions，讓大小維持在目標範圍附近 | 可搬移既有 Partitions；總數不必隨 Nodes 等比例增加   |
+| Partitioning Proportionally to Nodes | Node 數量 × 每 Node 的邏輯分區數 | 平均 Partition 大小增加          | 增加 Token／Partitions，切分部分既有範圍，使平均大小下降 |
 
 **Operations：自動與人工 Rebalancing 的取捨**：Rebalancing 在操作上需要考量 **Automation（自動化）與可控性之間的 Trade-off**。全自動重新平衡可以降低人工負擔，並快速回應 Node 增減與故障，但資料搬移會消耗 Network I/O、Disk I/O，並改變請求的流向，使系統在高負載或故障期間的行為較難預測。人工控制則能選擇搬移時機與範圍，但也增加操作成本，並可能延後恢復或負載調整。因此，書中提出可以讓系統自動產生搬移建議，再由管理者確認，保留 **Human in the Loop（人工介入）**，而不是所有重新平衡都直接自動執行。
 

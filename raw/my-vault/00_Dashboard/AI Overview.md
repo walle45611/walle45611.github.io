@@ -46,6 +46,8 @@
 
 ### Agents and Memory Systems
 
+[[@chatprocess2026|From chat to process: A conversational agent framework for social business process management]]
+
 [[@memgpt2023|MemGPT Towards LLMs as Operating Systems]]
 [[@generativeagents2023|Generative Agents Interactive Simulacra of Human Behavior]]
 

@@ -1,7 +1,7 @@
 # ZhiFangDanTai: Fine-Tuning Graph-Based Retrieval-Augmented Generation Model for Traditional Chinese Medicine Formula
 
 - source: `raw/my-vault/Note/Research/@zhifangdantai2026.md`
-- source_sha256: `001bc5af071ccffa8fb1c6cffd9748a9e10f7839a9d29d8c24452468ecbb33dc`
+- source_sha256: `a50150ef453beace6e67cb2fbfabd352b7d1faacff28164526658c2c3906a3e2`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

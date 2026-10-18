@@ -189,9 +189,6 @@ blog_url: https://blog.walle4561.com/articles/posts/spanning-tree/
 - 總時間：$O(E\log E)$（因為 $E\log E \ge E\cdot\alpha(|V|)$）。
     
 - 空間：$O(|V|)$（並查集）或 $O(|V|+E)$（含堆）。
-### 手寫範例
-> [!note]- 手寫範例
-> ![[Assets/Note/Research/Spanning Tree/04-手寫範例.png|500]]
 ### 實作（Like C）
 
 #### CLRS 版（先整體排序）

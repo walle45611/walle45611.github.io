@@ -1,7 +1,7 @@
 # 學術寫作：引言、文獻回顧與語言使用
 
 - source: `raw/my-vault/Note/Research/學術寫作：引言、文獻回顧與語言使用.md`
-- source_sha256: `aba1ea9c8df1fe0936a305298e0441f186ce4357654326f2aca039ec2c7c9985`
+- source_sha256: `899d728fb798c08bef40fff119ce43bbf1972b586371a466f75c5843759cdad0`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

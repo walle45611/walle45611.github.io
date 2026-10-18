@@ -1,7 +1,7 @@
 # AdaGrad and Gradient Scaling
 
 - source: `raw/my-vault/Note/Research/05 - AdaGrad and Gradient Scaling.md`
-- source_sha256: `2bf123c6e2274d0479bc4d5885b2d7303eed0bc27648953ae537ef02a1d9912a`
+- source_sha256: `4e008135d40cbe5b7886f7f2e00c3fa8e9fe5fcdffeab839942927346b57aece`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

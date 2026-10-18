@@ -30,8 +30,3 @@ $$
 [[Note/Research/03 - Activation Functions|Sigmoid 與其他活化函數]]
 [[Note/Research/02 - Likelihood NLL and Cross-Entropy|Likelihood、NLL 與 Cross-Entropy]]
 [[@attention2017|Attention Is All You Need]]
-
-## 手寫原稿
-
-> [!note]- 照片 6：手寫原稿
-> ![[Assets/Note/Research/Attention Is All You Need/Photo 6.jpg|800]]

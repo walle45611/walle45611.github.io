@@ -66,14 +66,3 @@ PyTorch 的 `momentum` 是新統計量權重，即此處的 $1-\rho$；訓練前
 
 [[Note/Research/05 - Feature Normalization|05 - Feature Normalization]]
 [[Note/Research/03 - Gradient Accumulation Across a Batch|03 - Gradient Accumulation Across a Batch]]
-
-## 手寫原稿
-
-> [!note]- 照片 1：手寫原稿
-> ![[Assets/Note/Research/Photo 1.jpg|700]]
-
-> [!note]- 照片 2：手寫原稿
-> ![[Assets/Note/Research/Photo 2.jpg|700]]
-
-> [!note]- 照片 3：手寫原稿
-> ![[Assets/Note/Research/Photo 3.jpg|700]]

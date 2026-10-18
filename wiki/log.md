@@ -354,3 +354,12 @@
 - updated: 移除 Attention 筆記末尾「手寫原稿」及 7 張照片嵌入，完整保留整理後文字、公式與其他內部連結；實體照片檔未刪除，其他筆記的手稿區塊不在此次範圍。
 - verified: 移除附錄前的正文逐字一致，結果與使用者本機已移除手稿的版本一致；該筆記不在目前 83 篇 Blog 文章清單，無新增發佈 metadata。
 - gaps: 摘要原雜湊與修改前來源一致，已同步更新。未移除其他筆記仍引用的照片，亦未清除 Git 歷史。
+
+## [2026-10-18] lint | 移除其他筆記的手稿區塊
+
+- authorization: 使用者要求其他筆記的手稿區塊一併移除，保留整理好的文字與公式，並 commit、push。
+- checked: 搜尋 Note 下的手寫原稿、原始手寫筆記、手寫計算與手寫範例等標題，逐段確認僅含原稿照片附錄；原工作目錄及遠端 main 基底的獨立 checkout 同步修改。
+- updated: 12 份筆記移除 12 個獨立手稿區塊、共 22 個照片嵌入；包含 RNN、DPO、ZhiFangDanTai、微分／Jacobian、Batch Normalization、AdaGrad、Feature Normalization、Learning Rate Scheduling、Logistic Regression、學術寫作、Graph Connectivity 與 Spanning Tree。保留已整理的推導、公式、來源、其他正文與教學示意圖。
+- updated: 10 份摘要的原雜湊與修改前來源一致，已同步新雜湊；不刷新既有過期摘要。建站後 stage-assets 將 Graph Connectivity／Spanning Tree 的 2 張不再被發佈文章引用的手稿圖片移出 Git 追蹤，保留本機檔案。
+- verified: 修改區塊外內容、全部公式及 frontmatter 保留；相關獨立手稿區塊無殘留。以未修改的既有建站器執行建站，成功產生 83 篇文章、299 個輸出附件；manifest 各來源雜湊一致，兩篇受影響 Blog 文章不再含手寫照片區塊；差異空白檢查通過。
+- gaps: 原稿實體檔案與 Git 歷史未刪除；其他本機尚未提交修改保留。部署狀態於提交後另行核對。

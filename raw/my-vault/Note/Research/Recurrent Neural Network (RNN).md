@@ -103,8 +103,3 @@ $$
 [[@attention2017|Attention Is All You Need]]
 [[Note/Research/01 - Chain Rule and Total Derivative|Chain Rule 與路徑梯度相加]]
 [[Note/Research/02 - Computational Graph and Backpropagation|Computational Graph 與 Backpropagation]]
-
-## 手寫原稿
-
-> [!note]- 照片 1：手寫原稿
-> ![[Assets/Note/Research/Recurrent Neural Network (RNN)/Photo 1.jpg|800]]

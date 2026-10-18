@@ -1,7 +1,7 @@
 # Spanning Tree Concept
 
 - source: `raw/my-vault/Note/Research/Spanning Tree.md`
-- source_sha256: `14ebd9611d827ee222e4d33a5df3639be0bad05d4674ea1ff9703b56067729a1`
+- source_sha256: `4d8a4408f797ca62dc644637b74ee506a6cf8b314434d7c297af7dcf4650d2ed`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

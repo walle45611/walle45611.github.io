@@ -48,8 +48,3 @@ RAdam 論文從訓練初期 adaptive learning rate 的高變異性解釋 warm-up
 
 [[Note/Research/01 - Gradient Descent and Learning Rate|01 - Gradient Descent and Learning Rate]]
 [[Note/Research/03 - Adam|03 - Adam]]
-
-## 手寫原稿
-
-> [!note]- 照片 2：手寫原稿
-> ![[Assets/Note/Research/Photo 2.jpg|700]]

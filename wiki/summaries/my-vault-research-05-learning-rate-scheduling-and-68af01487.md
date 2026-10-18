@@ -1,7 +1,7 @@
 # Learning Rate Scheduling and Warm-up
 
 - source: `raw/my-vault/Note/Research/05 - Learning Rate Scheduling and Warm-up.md`
-- source_sha256: `0960b47ef23bdf6ca04d630e9defa4ea092528f9f2c9a67f90c644b5d54d514e`
+- source_sha256: `89a35ab96fc6deda88c0bdd55d1ef524d9cda0f0698a9ce32cace473775ee634`
 - ingested_at: 2026-09-26
 - type: my-vault note summary
 - collection: Research

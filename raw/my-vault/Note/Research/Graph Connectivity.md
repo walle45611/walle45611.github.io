@@ -184,10 +184,6 @@ int main(){
         
     - 關節：根看「子樹數」，非根看「child 的 low 是否上不去」。
 
-## 手寫計算
-> [!note]- 手寫計算
-> ![[Assets/Note/Research/Graph Connectivity/01-手寫計算.png]]
-
 # Tarjan’s Algorithm — SCC（有向圖）
 
 - 目標：在有向圖分解 **Strongly Connected Components**，時間 $O(V+E)$。

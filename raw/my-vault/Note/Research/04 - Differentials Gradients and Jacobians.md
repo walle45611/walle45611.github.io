@@ -64,8 +64,3 @@ $$
 
 [[Note/Research/01 - Chain Rule and Total Derivative|01 - Chain Rule and Total Derivative]]
 [[Note/Research/02 - Computational Graph and Backpropagation|02 - Computational Graph and Backpropagation]]
-
-## 手寫原稿
-
-> [!note]- 照片 3：手寫原稿
-> ![[Assets/Note/Research/Photo 3.jpg|700]]

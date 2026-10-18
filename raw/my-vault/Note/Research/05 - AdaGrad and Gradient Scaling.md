@@ -55,8 +55,3 @@ AdaGrad 保留全部歷史平方梯度；RMSProp 改用 $s_t=\rho s_{t-1}+(1-\rh
 [[Note/Research/02 - RMSProp|02 - RMSProp]]
 [[Note/Research/03 - Adam|03 - Adam]]
 [[Note/Research/04 - Optimizer Comparison|04 - Optimizer Comparison]]
-
-## 手寫原稿
-
-> [!note]- 照片 4：手寫原稿
-> ![[Assets/Note/Research/Photo 4.jpg|700]]

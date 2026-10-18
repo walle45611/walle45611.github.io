@@ -168,14 +168,3 @@ $$
 [[Note/Research/01 - Gradient Descent and Learning Rate|Gradient Descent 與 Learning Rate]]
 [[Note/Research/01 - Entropy and Information|Entropy 與資訊量]]
 [[@dpo2023|DPO（閱讀中）]]
-
-## 手寫原稿
-
-> [!note]- 照片 1：Proposition 1 與條件互資訊
-> ![[Assets/Note/Research/ZhiFangDanTai - Fine-Tuning Graph-Based Retrieval-Augmented Generation Model for Traditional Chinese Medicine Formula/Photo 1.jpg|800]]
-
-> [!note]- 照片 2：Taylor 展開與步長最佳化
-> ![[Assets/Note/Research/ZhiFangDanTai - Fine-Tuning Graph-Based Retrieval-Augmented Generation Model for Traditional Chinese Medicine Formula/Photo 2.jpg|800]]
-
-> [!note]- 照片 3：梯度下降上界與係數化簡
-> ![[Assets/Note/Research/ZhiFangDanTai - Fine-Tuning Graph-Based Retrieval-Augmented Generation Model for Traditional Chinese Medicine Formula/Photo 3.jpg|800]]

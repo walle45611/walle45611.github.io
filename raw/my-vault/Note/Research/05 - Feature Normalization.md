@@ -42,8 +42,3 @@ $$
 ## Related
 
 [[Note/Research/04 - Batch Normalization|04 - Batch Normalization]]
-
-## 手寫原稿
-
-> [!note]- 照片 1：手寫原稿
-> ![[Assets/Note/Research/Photo 1.jpg|700]]

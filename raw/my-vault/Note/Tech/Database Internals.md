@@ -7,6 +7,10 @@ blog_tag: OS & Networking
 blog_topic: OS
 ---
 
+這份閱讀筆記從工作負載與資料配置開始，接著追蹤索引如何定位資料頁、頁面如何進入記憶體，以及修改如何在並行與故障下維持正確。B-Tree 的基本原理與設計變種，於索引段落連結到各自的延伸筆記。
+
+## 工作負載與儲存方式
+
 **OLTP 與 OLAP**：OLTP（Online Transaction Processing）處理日常交易，著重高併發（Concurrency）、低延遲（Low Latency）、短交易（Short Transactions）與 ACID。例如電商建立訂單、扣除庫存、記錄付款、查詢訂單狀態，會頻繁執行 `INSERT`、`UPDATE`、`DELETE`、`SELECT`，每筆交易通常只處理少量資料。OLAP 則著重資料分析，常涉及複雜 `SELECT`、`JOIN` 與聚合，單次查詢可能需要處理大量資料。
 
 **TPC-C 與 TPC-H**：OLTP 是工作負載，TPC-C 則是衡量 OLTP 系統效能的 Benchmark。TPC-C 模擬批發商的訂單與庫存管理，混合執行 New-Order（建立訂單）、Payment（付款）、Order-Status（訂單狀態）、Delivery（出貨）與 Stock-Level（庫存水位）五種交易。
@@ -35,6 +39,10 @@ FTL 負責邏輯與實體位置的映射，例如 Logical Page 100 對應 Physic
 
 ---
 
+## 從資料組織到 B-Tree 索引
+
+資料放在哪裡，決定索引找到 Key 後能否直接取得 Record；索引本身則需要控制樹高、管理頁面範圍，並在資料增減時維護結構。
+
 **Index-Organized Table 與 Heap File**：Index-Organized Table 將實際 Record 放在索引的 Leaf Node，沿著 B+ Tree 找到 Leaf Node 就能取得資料。Heap File 則將資料與索引分開，索引的 Leaf Node 保存 Record Location，再透過這個位置找到 Data Block 中的 Record。
 
 **Clustered Index 與 Non-Clustered Index**：Clustered Index 依索引順序組織資料本身，一個 Table 最多有一個。Non-Clustered Index 則額外維護查找結構，透過索引定位資料，必要時回表取得完整資料。
@@ -47,81 +55,11 @@ FTL 負責邏輯與實體位置的映射，例如 Logical Page 100 對應 Physic
 
 ---
 
-**Database Page 與 OS Page Cache**：資料庫從 B+ Tree 取得 `Page ID` 後，需要先定位檔案中的位置，再把需要的資料讀進記憶體。以 Linux 使用一般 buffered `pread()` 的情況為例，OS 會先檢查 Page Cache，已有快取就能使用；沒有快取時，通常需要從 Disk 讀入，再將資料複製到資料庫的 `User`-Space Buffer。
+### 樹的基本規則與儲存引擎的實作
 
-假設 Database Page 為 8 KiB（8192 Bytes），OS Memory Page 為 4 KiB（4096 Bytes），且 `Page ID` 從 0 開始、資料頁在檔案中連續排列。讀取 Database Page 5 時，File Offset 為 `5 × 8192 = 40960 Bytes`，也就是 `0xA000`。這個 8 KiB 的資料頁涵蓋 OS File Page 10、11，檔案範圍分別為 `0xA000`–`0xAFFF`、`0xB000`–`0xBFFF`。**一個 Database Page 可以涵蓋多個 OS Pages，載入後對應的實體記憶體也不必連續。**
+B-Tree 用高 Fanout 降低樹高，節點通常以 Page 儲存。分隔 Key、子指標、Split／Merge、Rebalancing、Breadcrumbs 與 Bottom-Up 建樹的基本原理，見 [多路搜尋樹與 B-Tree](https://blog.walle4561.com/articles/posts/m-way-search-tree-and-b-tree/)；以下保留儲存引擎如何利用這些規則優化存取、安排頁面格式的細節。
 
-**Virtual Memory、TLB 與 Page Table**：資料庫同樣使用虛擬記憶體。Page Cache 查找的是檔案內容是否已在 RAM，TLB 則快取 Virtual Page 到 Physical Frame 的位址映射。兩者雖然都涉及 Page，處理的問題不同；CPU 在核心態存取 Page Cache、複製資料，以及在使用者態存取 Database Buffer 時，都涉及虛擬位址轉換。
-
-延續上例，假設 Database Buffer 的起始虛擬位址為 `0x7F0010000000`，要讀取 Buffer 內偏移 4660 Bytes 的欄位。4660 的十六進位是 `0x1234`，因此該欄位的 Virtual Address 為 `0x7F0010001234`。這個 Offset 是示範值，並不是 B+ Tree 固定的欄位位置。
-
-OS Page Size 為 4096 Bytes，也就是 2¹² Bytes，因此位址低 12 bits 是 Page Offset。`4660 = 4096 + 564`，表示資料位於 Buffer 的第二個 OS Page，距離該 Page 開頭 564 Bytes（`0x234`）；Virtual Page Number 則為 `0x7F0010001`。
-
-CPU 使用這個 Virtual Page Number 查 TLB。若 TLB Hit，就直接取得 Physical Frame；若 TLB Miss，則需要查 Page Table。假設查到的 Physical Frame 起始位址為 `0x009A7000`，加上 Page Offset `0x234`，得到 Physical Address `0x009A7234`。有效映射可以快取到 TLB，供後續存取使用。
-
-**Page Cache Miss、TLB Miss 與 Page Fault**：Page Cache Miss 表示檔案內容沒有快取，通常需要讀取 Disk；TLB Miss 表示沒有快取位址映射，需要查 Page Table；Page Fault 則表示目前頁表映射無法直接滿足存取，需要 OS 處理。**TLB Miss 不等於 Page Fault，也不等於 Page Cache Miss，更不代表一定需要 Disk I/O。**例如 `mmap()` 的檔案頁若已在 Page Cache，可能只需要 Minor Page Fault 建立映射；若還必須從儲存裝置讀入，則可能涉及 Major Page Fault。
-
-資料庫層處理 `Page ID` 到 File Offset，Page Cache 處理檔案內容的快取，Virtual Memory 則處理 Virtual Page 到 Physical Frame。把這三層分開，才能理解從 B+ Tree 找到 Page，到 CPU 實際存取資料之間的流程。
-
----
-
-**B-Tree Complexity**：以 M 表示資料總數（Total Data Number）、k 表示 Fanout、h 表示 Tree Height，可以用以下關係理解樹高：
-
-$$
-k^h \approx M
-$$
-
-$$
-h \approx \log_k M
-$$
-
-延伸閱讀：[M-Way Search Tree 與 B-Tree](https://blog.walle4561.com/articles/posts/m-way-search-tree-and-b-tree/)。
-
-**B+ Tree 的 Leaf Links**：典型的 B+ Tree 會把相鄰 Leaf Nodes 串接起來，讓範圍查詢先沿樹找到起始 Leaf，再沿葉節點連結依序讀取後面的資料，不必反覆回到父節點尋找下一頁。這主要用來提高範圍查詢與順序掃描的效率；只有 Leaf Nodes 相連，並不足以判定這是一棵 B-link Tree。
-
-**B-link Tree 的 Right Links 與 High Key**：B-link Tree 在 B-tree／B+ Tree 的結構上加入同層節點的 Right Sibling Link，並配合 High Key 標示頁面範圍，這個機制也涵蓋 Internal Nodes。它的關鍵用途是處理並行搜尋與節點分裂：即使父節點尚未更新，搜尋仍可能先落到分裂前的舊頁面，再藉由 High Key 判斷目標已超出範圍，沿 Right Link 找到新的右側頁面。
-
-![[Assets/Note/Tech/Database Internals/sibling-links.png]]
-
-因此，B+ Tree 的葉節點串接與 B-link Tree 的橫向連結可以同時存在，不能只靠「有沒有兄弟連結」區分。圖中的 Internal Nodes 也有橫向連結，應搭配 B-link Tree 的機制理解，而不只解釋成葉節點的範圍掃描。PostgreSQL 採用 Lehman–Yao 的 B-link Tree 思路，並在各層維護左右兄弟連結。
-
-**Rightmost Pointer（最右側子節點指標）**：Internal Node 有 N 個分隔 Key，就需要 `N+1` 個 Child Pointers，因為 N 個 Key 將搜尋範圍分成 `N+1` 段。例如只有 10、20 兩個 Key，仍需要三個 Child Pointers，而不是三個 Key。依圖中的邊界慣例，三段分別是小於 10、大於等於 10 且小於 20，以及大於等於 20。
-
-![[Assets/Note/Tech/Database Internals/rightmost-pointer.png]]
-
-圖中的 `Kₛ` 是 Search Key，也就是正在查找的值；它用來與 `K₁`、`K₂`、`K₃` 比較，決定走哪一個 Child Pointer，並不是額外放到最右側的 Key。當 `Kₛ` 大於等於 `K₃`，就沿 Rightmost Pointer 往下查找。頁面內可以把每個 Key 與左側 Child Pointer 放進同一個 Cell，再把多出來的最右側 Pointer 獨立存放在 Header 中。
-
-SQLite 就採用這種將 Rightmost Pointer 獨立存放的配置：Interior B-Tree Page 的 Header 在 Offset 8 保存一個 4 Bytes 的最右側子頁面編號，Leaf Page 則沒有這個欄位。不過相等值的路由慣例要分開看：SQLite 官方描述的是左側子樹包含小於等於分隔 Key 的值，右側子樹包含大於分隔 Key 的值，因此不能直接套用圖中的所有不等號。
-
-**Rightmost Pointer 與 High Key 的配對**：假設 Internal Node 有 20、50 兩個分隔 Key，以及 `P₀`、`P₁`、`P₂` 三個 Child Pointers。採用左閉右開的範圍慣例時，`P₀` 負責小於 20 的子樹，`P₁` 負責 `20 ≤ Key < 50`，`P₂` 則負責 `Key ≥ 50`。例如查詢 30，因為 `20 ≤ 30 < 50`，所以沿 `P₁` 向下查找。`P₂` 稱為 Rightmost Pointer，是因為它指向目前節點最右側的子樹。
-
-如果把每個 Pointer 與其搜尋範圍的上界配對，就會得到`（P₀, 20）`、`（P₁, 50）`，但 `P₂` 在目前節點內沒有下一個一般分隔 Key 可以配對。這不代表它的範圍一定無限延伸；非根節點的整體範圍仍受到祖先節點的分隔條件限制。
-
-假設目前節點管理的範圍上界為 80，可以將這個上界記為 **`High Key = 80`**。在把最右側 Child Pointer 與節點 High Key 放進同一個 Cell 的配置中，三個 Cell 就能統一表示為 **`（P₀, 20）`、`（P₁, 50）`、`（P₂, 80）`**。其中 `P₂` 對應的範圍為 `50 ≤ Key < 80`；所有子樹也都受到目前節點整體下界的限制。
-
-![[Assets/Note/Tech/Database Internals/high-key-pointer-ranges.png]]
-
-圖 a 的 `K₁`、`K₂` 將範圍切成三段，分別由 `P₀`、`P₁`、`P₂` 指向對應子樹；`P₂` 在這個節點內沒有額外的 Key 標示上界，圖中以 `+∞` 表示。圖 b 則加入 `K₃` 作為目前節點的 High Key，讓最右側的 `P₂` 也有明確的範圍上界，可以和 `K₃` 放在同一個 Cell。`K₃` 並沒有增加第四個 Child Pointer，而是為原本的最右側子樹補上上界。
-
-**一般分隔 Key 與 High Key**：20、50 用來區分目前節點內不同子樹的搜尋範圍；80 則表示整個目前節點的範圍上界。在上述配置中，High Key 同時提供最右側子樹的上界，讓 `P₂` 也能採用與其他 Child Pointers 相同的 Cell 格式，不必另外保留獨立的 Rightmost Pointer 欄位。這是另一種頁面配置選擇，與前面 SQLite 將 Rightmost Pointer 獨立存放在 Header 的方式不同。
-
-**High Key 與 Right Sibling Pointer**：延續 `High Key = 80`、上界不包含 80 的假設，搜尋 90 時，因為 `90 ≥ 80`，表示目標已超出目前節點的範圍。在 B-link Tree 中，可以沿 Right Sibling Pointer 前往同一層右側的兄弟節點，繼續尋找目標所屬的範圍。
-
-**Rightmost Child Pointer 是向下走，Right Sibling Pointer 則是向右走。**前者指向目前節點最右側的子樹，後者指向同一層的相鄰節點。High Key 的用途是標示節點範圍；把它與 Rightmost Child Pointer 配成一個 Cell，是利用這個上界統一儲存格式，並非 High Key 必須依賴這種配對才能存在，也不是所有 B-link Tree 都必須使用相同的實體配置。此處的比較條件沿用範例的左閉右開慣例，實作時仍須依資料庫對邊界相等值的規則判斷。
-
-**Split 與 Rightmost Pointer 更新**：圖中右側子節點分裂後，原本的一個 Child 變成兩個，父節點需要加入分隔 Key `K₄`，以及對應的 Child Pointer。父節點原本的最右側路徑也要調整，讓 Rightmost Pointer 指向分裂後最右邊的新節點，其他搜尋範圍則由相應的 Cell 引導。
-
-![[Assets/Note/Tech/Database Internals/rightmost-pointer-split.png]]
-
-**Rebalancing（重新分配）**：當某個 Page 很滿、相鄰的兄弟 Page 卻還有空間，可以先把部分 Cells 移到較空的 Page，平衡各頁面的空間使用率（Node Occupancy），延後 Split；刪除資料時，也可以從兄弟節點移入資料，避免太早 Merge。這裡關心的是資料占用空間，而不是讀寫請求集中造成的 Hot Spot。
-
-![[Assets/Note/Tech/Database Internals/rebalancing.png]]
-
-圖中調整前，左節點有 `10、13、16`，右節點只有 `18`；調整後把 `16` 移到右節點，變成左邊 `10、13`、右邊 `16、18`。兩個節點負責的搜尋範圍改變，因此父節點的分隔 Key 也從 `18` 更新為 `16`。
-
-這次調整前後的樹高相同。長期提高節點填滿程度，才可能讓相同資料量使用更少的 Pages 與層數；不是每次 Rebalancing 都會降低樹高。另外，跨 Page 重新分配 Cells 是這裡的 Rebalancing，同一個 Page 內搬動 Cells、整理零碎空間則是 Compaction／Defragmentation。
-
----
+B-link Tree 的 High Key 與橫向連結，以及 CoW／LMDB、WiredTiger、LA-Tree、FD-Tree、Bw-Tree 和 Cache-Oblivious 的取捨，見 [B-Tree Variants](https://blog.walle4561.com/articles/posts/b-tree-variants/)。
 
 **Right-Only Appends**：當索引 Key 單調遞增，例如自動遞增的 `ID`，新增資料就會持續落在最右側的 Leaf Page。這讓儲存引擎可以針對追加寫入優化：PostgreSQL 的 Fastpath 著重省掉重複搜尋 Leaf 的路徑，SQLite 的 Quickbalance 則著重最右側 Page 滿了以後，如何減少重新分配資料的工作。
 
@@ -133,29 +71,11 @@ SQLite 就採用這種將 Rightmost Pointer 獨立存放的配置：Interior B-T
 
 **填滿程度不平均，不等於樹的高度失衡。**上述例子假設父節點仍有空間，因此新增 Leaf Page 後，各 Leaf 的深度相同，樹高不變；若父節點也放不下，仍需要進一步處理，必要時向上傳遞。Quickbalance 只是接受新頁暫時較空，以減少當次搬移資料的成本，並沒有放棄 B-Tree 的結構規則。
 
-Rebalancing 與 Quickbalance 的取捨也不同：前者先利用兄弟 Page 的剩餘空間，盡量延後 Split；後者則利用「後續資料很可能繼續往右新增」的特性，保留舊頁面滿載，讓新頁承接後續寫入。Fastpath 解決的是如何更快找到可插入的頁面，Quickbalance 解決的則是特定情況下頁面已滿時如何安排資料，兩者不是完全相同的機制。
+前述基本樹操作中的 Rebalancing，與這裡 Quickbalance 的取捨也不同：前者先利用兄弟 Page 的剩餘空間，盡量延後 Split；後者則利用「後續資料很可能繼續往右新增」的特性，保留舊頁面滿載，讓新頁承接後續寫入。Fastpath 解決的是如何更快找到可插入的頁面，Quickbalance 解決的則是特定情況下頁面已滿時如何安排資料，兩者不是完全相同的機制。
 
 ---
 
-**Bulk Loading 與 Bottom-Up 建樹**：Bulk Loading 是一次載入整批資料；這裡討論的 B-Tree 建索引方式採用 **Bottom-Up（由下往上）**，先建立 Leaf Pages，再逐層建立 Internal Pages，最後形成 Root。
-
-例如要為 `1～1,000,000` 的資料建立索引，先按 Key 排序，再依序把資料填入 Leaf Pages，接著依各個 Leaf 所負責的範圍，建立上層的分隔 Key 與 Child Pointers。如果一層仍放不下所有指標，就繼續向上建立，直到形成 Root。這與逐筆插入、每次從 Root 尋找目標 Leaf，再於空間不足時進行 Split 的流程不同，可以減少重複搜尋與分裂的成本。
-
-`page-wise` 表示「以 Page 為單位」。在這個情境中，可以理解成一頁一頁建立與填入資料，再從這批頁面建立上一層，而不是每筆資料都重新走完整的插入路徑。實作上也可以保留部分可用空間，供後續插入使用，不一定把每頁填到全滿。
-
-**Bulk Loading 強調整批處理，Bottom-Up 強調建樹方向。**一般的批次匯入不一定採用 Bottom-Up；此處描述的是利用排序後的整批資料，由 Leaf 向上直接建立 B-Tree 索引的方式。
-
----
-
-**Breadcrumbs（麵包屑）與 Parent Pointer**：Node Split 可能需要往上更新父節點，因此搜尋時可以順便記錄從 Root 往下經過的頁面，以及每一層選擇的 Child Pointer 位置。這份路徑紀錄就是 Breadcrumbs，讓操作在需要時能沿原路向上回溯。
-
-![[Assets/Note/Tech/Database Internals/breadcrumbs.png]]
-
-圖中的黑色連線表示往下搜尋的路徑，右側 Breadcrumbs 則記錄各層經過的節點與所選位置。它保存的是「這次從哪裡走下來」，並不是在每個 Child Page 裡永久增加一條指向 Parent 的連結。圖中的 1、2、2 是所選位置的示意，不代表 PostgreSQL 欄位一定使用相同的編號方式。
-
-**Parent Node 存在，不代表 Child 必須保存 Parent Pointer。除了 Root 以外，B-Tree 的每個節點都有父節點；父節點原本就透過 Child Pointer（Downlink）指向子節點。往上找 Parent 時，可以使用搜尋過程留下的 Breadcrumbs，不必再從 Child 讀取 Parent Pointer。例如下降路徑為 Root `P1`、Internal `P5`、Internal `P8`，最後到達 Leaf `P12`；若 `P12` 發生 Split，就先從 Stack 取得 `P8`，若父節點也分裂，再回到 `P5`，必要時一路處理到 Root。
-
-Breadcrumbs 通常是一次操作或 Cursor 在記憶體中的 **Traversal State（遍歷狀態）**，生命週期結束後可以釋放。它與 Buffer Pool／Page Cache 的用途不同：後者快取資料頁內容，Breadcrumbs 則記錄搜尋路徑。Parent Pointer 是另一種向上定位方式，但當子節點因 Split、Merge 或 Rebalancing 換了父節點，就需要維護對應關係。兩者可以並用，卻不是都必須存在；若沒有保留路徑，也沒有 Parent Pointer，仍可從 Root 重新尋找父節點。
+搜尋時可把下降路徑記在暫存 Stack，供 Split 後向上更新父節點；Breadcrumbs 與 Parent Pointer 的基本差異見 [多路搜尋樹與 B-Tree](https://blog.walle4561.com/articles/posts/m-way-search-tree-and-b-tree/)。
 
 **PostgreSQL 的 BTStack**：PostgreSQL 的 B-Tree 使用 `BTStack` 保存下降路徑，底層由 `BTStackData` 串接成 Linked List，作為回溯用的 Stack。`bts_blkno` 記錄 Parent Page 的 Block Number，`bts_offset` 記錄該頁所選 Downlink 的位置，`bts_parent` 則指向更上一層的 Stack 紀錄。這個 `bts_parent` 屬於暫存的路徑結構，並不是持久化在 Child Page 內的 Parent Pointer。
 
@@ -163,6 +83,14 @@ Breadcrumbs 通常是一次操作或 Cursor 在記憶體中的 **Traversal State
 
 
 ---
+
+**Rightmost Pointer 的實體配置**：頁面內可以把每個 Key 與左側 Child Pointer 放進同一個 Cell，再把多出來的最右側 Pointer 獨立存放在 Header 中。
+
+SQLite 就採用這種將 Rightmost Pointer 獨立存放的配置：Interior B-Tree Page 的 Header 在 Offset 8 保存一個 4 Bytes 的最右側子頁面編號，Leaf Page 則沒有這個欄位。不過相等值的路由慣例要分開看：SQLite 官方描述的是左側子樹包含小於等於分隔 Key 的值，右側子樹包含大於分隔 Key 的值，因此判斷邊界相等值時，須依 SQLite 的路由規則，不能直接套用其他 B+ Tree 範例的不等號。
+
+### 從邏輯節點到 Page 與 Cell
+
+樹上的 Key 與 Pointer，最後都要編碼成 Page 裡的位元組。Slotted Page 用 Slot 間接定位 Cell；變長 Record 則讓容量判斷與 Overflow Pages 成為必要的頁面管理工作。
 
 ![[Assets/Note/Tech/Database Internals/b-tree-pages-and-cell-layout.png]]
 
@@ -202,11 +130,31 @@ Breadcrumbs 通常是一次操作或 Cursor 在記憶體中的 **Traversal State
 
 ---
 
-**Transaction Processing and Recovery（交易處理與恢復）**：交易處理需要考慮 ACID，也就是 Atomicity（原子性）、Consistency（一致性）、Isolation（隔離性）與 Durability（持久性）。這一段先從資料頁如何在記憶體與磁碟之間移動開始，理解快取中的修改何時寫回，以及頁面空間不足時如何處理。
+## 資料頁如何進入記憶體
+
+找到 B-Tree 的目標頁面後，下一步是把檔案內容載入記憶體，再讓 CPU 存取頁內資料。這一段依序連起 Database Page、OS Page Cache、虛擬位址，以及 DBMS 自行管理的 Buffer Pool。
+
+**Database Page 與 OS Page Cache**：資料庫從 B+ Tree 取得 `Page ID` 後，需要先定位檔案中的位置，再把需要的資料讀進記憶體。以 Linux 使用一般 buffered `pread()` 的情況為例，OS 會先檢查 Page Cache，已有快取就能使用；沒有快取時，通常需要從 Disk 讀入，再將資料複製到資料庫的 `User`-Space Buffer。
+
+假設 Database Page 為 8 KiB（8192 Bytes），OS Memory Page 為 4 KiB（4096 Bytes），且 `Page ID` 從 0 開始、資料頁在檔案中連續排列。讀取 Database Page 5 時，File Offset 為 `5 × 8192 = 40960 Bytes`，也就是 `0xA000`。這個 8 KiB 的資料頁涵蓋 OS File Page 10、11，檔案範圍分別為 `0xA000`–`0xAFFF`、`0xB000`–`0xBFFF`。**一個 Database Page 可以涵蓋多個 OS Pages，載入後對應的實體記憶體也不必連續。**
+
+**Virtual Memory、TLB 與 Page Table**：資料庫同樣使用虛擬記憶體。Page Cache 查找的是檔案內容是否已在 RAM，TLB 則快取 Virtual Page 到 Physical Frame 的位址映射。兩者雖然都涉及 Page，處理的問題不同；CPU 在核心態存取 Page Cache、複製資料，以及在使用者態存取 Database Buffer 時，都涉及虛擬位址轉換。
+
+延續上例，假設 Database Buffer 的起始虛擬位址為 `0x7F0010000000`，要讀取 Buffer 內偏移 4660 Bytes 的欄位。4660 的十六進位是 `0x1234`，因此該欄位的 Virtual Address 為 `0x7F0010001234`。這個 Offset 是示範值，並不是 B+ Tree 固定的欄位位置。
+
+OS Page Size 為 4096 Bytes，也就是 2¹² Bytes，因此位址低 12 bits 是 Page Offset。`4660 = 4096 + 564`，表示資料位於 Buffer 的第二個 OS Page，距離該 Page 開頭 564 Bytes（`0x234`）；Virtual Page Number 則為 `0x7F0010001`。
+
+CPU 使用這個 Virtual Page Number 查 TLB。若 TLB Hit，就直接取得 Physical Frame；若 TLB Miss，則需要查 Page Table。假設查到的 Physical Frame 起始位址為 `0x009A7000`，加上 Page Offset `0x234`，得到 Physical Address `0x009A7234`。有效映射可以快取到 TLB，供後續存取使用。
+
+**Page Cache Miss、TLB Miss 與 Page Fault**：Page Cache Miss 表示檔案內容沒有快取，通常需要讀取 Disk；TLB Miss 表示沒有快取位址映射，需要查 Page Table；Page Fault 則表示目前頁表映射無法直接滿足存取，需要 OS 處理。**TLB Miss 不等於 Page Fault，也不等於 Page Cache Miss，更不代表一定需要 Disk I/O。**例如 `mmap()` 的檔案頁若已在 Page Cache，可能只需要 Minor Page Fault 建立映射；若還必須從儲存裝置讀入，則可能涉及 Major Page Fault。
+
+資料庫層處理 `Page ID` 到 File Offset，Page Cache 處理檔案內容的快取，Virtual Memory 則處理 Virtual Page 到 Physical Frame。把這三層分開，才能理解從 B+ Tree 找到 Page，到 CPU 實際存取資料之間的流程。
+
+### DBMS 的 Buffer Pool 與頁面生命週期
 
 **Buffer Pool 與 Page Cache**：資料庫不會每次存取 B-Tree Page 都重新讀取 Disk，而是把部分頁面保留在記憶體中。Buffer Pool 是 DBMS 管理資料頁快取的空間；書中也可能以 Page Cache 描述這類功能，但必須與前面提到的 **OS Page Cache** 區分，後者由 Kernel 管理。使用一般 Buffered I/O 時，同一份檔案內容可能同時存在於 OS Page Cache 與 DBMS Buffer Pool，形成兩層快取。
 
-這種把部分資料留在記憶體、需要時再從磁碟載入的思路，可以類比 Virtual Memory。DBMS 自行管理 Buffer Pool，也不代表它必須使用 `mmap()`，或讓 OS 直接決定所有 Database Pages 的去留。
+這層記憶體快取讓上層仍以磁碟頁面為單位存取：命中時直接使用記憶體內容，未命中才載入實體儲存中的頁面。書中將這個抽象稱為 **Virtual Disk**，也就是這裡的 Page Cache／Buffer Pool。它管理的是資料頁的快取；前面 Virtual Memory 管理的則是虛擬位址到實體記憶體的映射。DBMS 可以自行管理 Buffer Pool，不必透過 `mmap()`。
 
 ![[Assets/Note/Tech/Database Internals/buffer-pool-and-disk.png]]
 
@@ -234,6 +182,8 @@ Flush 是寫回，Eviction 是移出快取。Flush 後的頁面仍可留在 Buff
 
 ---
 
+### 快取空間有限：頁面置換與准入
+
 **FIFO、LRU 與 Belady’s Anomaly**：FIFO（First-In, First-Out）依照頁面進入快取的先後順序淘汰，Hit 不會改變排隊順序；LRU（Least Recently Used）則淘汰最久沒有被存取的頁面，Hit 時也會更新最近使用順序。LRU 關心的是「最近何時使用」，不是單純累計使用次數。
 
 **Belady’s Anomaly（Belady 異常現象）**是指在相同參考序列與置換規則下，增加可容納頁面的 Frame 數量，Miss／Page Fault 反而變多。這裡增加的是 **Page Frames 的數量，不是 Page Size**。例如從空快取開始，依序存取 `1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5`，FIFO 使用 3 個 Frames 時有 9 次 Miss，增加到 4 個 Frames，反而有 10 次。
@@ -250,7 +200,7 @@ Full 2Q 命中 `A1in` 時，保留 FIFO 順序，不直接升到 `Am`，避免�
 
 **Full 2Q 的空間回收規則**：有空閒 Frame 時先使用，不會只因 `A1in` 達到某個固定格數，就讓其他空間閒置。整個 Buffer 已滿時，原論文依 `A1in` 的大小與 `Kin` 門檻決定回收來源：`A1in` 大於門檻時，淘汰其 FIFO 最舊頁並把 ID 放入 `A1out`；否則淘汰 `Am` 的 LRU 頁，這個頁面不加入 `A1out`。Ghost 紀錄超過 `Kout` 時，刪除最舊 ID。因此，`Kin` 是選擇回收來源的門檻，不能直接當成不可借用的固定分區容量。參考 [Johnson 與 Shasha：2Q 原論文，Section 2](https://www.cs.cmu.edu/~natassa/courses/15-721/papers/P439.PDF)。
 
-**對話中的 2Q 演算：固定分區教學變體**：原對話使用 4 個 Frames，將 `A1in` 與 `Am` 各限制為 2 個資料頁，`A1out` 最多記錄 2 個 ID。這個假設可示範 FIFO、Ghost 與 LRU 的互動，卻不是原論文共用空閒 Frames 的完整回收規則。以下保留這個固定分區假設；所有 Queue 都以左邊最舊、右邊最新表示，存取序列為 `A, B, A, C, A, D, B, E, C, B`。
+**2Q 演算範例：固定分區教學變體**：以下範例使用 4 個 Frames，將 `A1in` 與 `Am` 各限制為 2 個資料頁，`A1out` 最多記錄 2 個 ID。這個假設可示範 FIFO、Ghost 與 LRU 的互動，卻不是原論文共用空閒 Frames 的完整回收規則。以下保留這個固定分區假設；所有 Queue 都以左邊最舊、右邊最新表示，存取序列為 `A, B, A, C, A, D, B, E, C, B`。
 
 前兩步載入 A、B，`A1in = [A, B]`，皆為 Miss。第三步再次讀取 A，為 Hit，`A1in` 的 FIFO 順序不變。第四步讀取 C，因固定的 `A1in` 分區已滿，移除 A 並記錄其 ID，得到 `A1in = [B, C]`、`A1out = [A]`；即使 `Am` 尚有空間，這個教學變體仍先淘汰 A。
 
@@ -298,6 +248,10 @@ LFU 也有取捨：若只累計歷史次數，曾經熱門、現在已經不常�
 
 ---
 
+## 修改如何持久化：WAL 與當機恢復
+
+Buffer Pool 中的修改與磁碟資料頁不會隨時一致。交易處理需要同時維持 ACID；這裡先用帳戶例子理解提交、寫回與恢復的關係，再看並行交易的隔離問題。
+
 **WAL、Write-Ahead Log 與 Commit Log**：WAL 可以指 Write-Ahead Logging（預寫式日誌機制），也可以指 Write-Ahead Log（日誌本身）。它的核心規則是：**資料頁寫入持久化儲存之前，必須先持久化足以恢復該頁修改的相關日誌。**資料可以先在 Buffer Pool 中被修改，不必每次都先同步日誌才允許修改記憶體；必須遵守的是 Log 與 Data Page 的持久化順序。
 
 部分系統把這類日誌稱為 Commit Log，例如 Cassandra；名稱仍依系統而定，不能因此理解成日誌只包含已提交交易，或只在 Commit 時才產生記錄。對支援交易的儲存引擎而言，交易進行中的修改與提交狀態，都可能需要記錄。參考 [Cassandra：Storage Engine](https://cassandra.apache.org/doc/stable/cassandra/architecture/storage-engine.html)。
@@ -310,13 +264,13 @@ LFU 也有取捨：若只累計歷史次數，曾經熱門、現在已經不常�
 
 **FORCE 與 NO-FORCE**：FORCE 要求交易完成提交時，其修改的資料頁都已寫回持久化儲存；NO-FORCE 允許提交完成後，資料頁仍留在 Buffer Pool，稍後才寫回。帳戶 B 就是 NO-FORCE 的情況。NO-FORCE 可以降低提交時等待資料頁 I/O 的成本，但在傳統恢復模型中需要 REDO，補回已提交卻尚未落盤的修改。**FORCE 討論的是資料頁，不是只把 WAL Flush。**
 
-**為什麼可以同時使用 STEAL + NO-FORCE？**：這組政策允許磁碟上的資料頁暫時包含未提交修改，也暫時缺少已提交修改，因此不能把資料頁本身當成完整的交易結果。正確性要由資料頁、持久化日誌、交易狀態與恢復機制共同保證。關鍵是 WAL 的順序：資料頁落盤之前，相關恢復資訊必須先持久化；在本例要求的同步持久化提交模式下，回覆提交成功之前，必要修改日誌與 Commit Record 也必須先持久化。日誌只留在記憶體或 OS Page Cache，都不足以提供這項保證。
+**STEAL + NO-FORCE 的恢復條件**：這組政策允許磁碟上的資料頁暫時包含未提交修改，也暫時缺少已提交修改，因此不能把資料頁本身當成完整的交易結果。正確性要由資料頁、持久化日誌、交易狀態與恢復機制共同保證。關鍵是 WAL 的順序：資料頁落盤之前，相關恢復資訊必須先持久化；在本例要求的同步持久化提交模式下，回覆提交成功之前，必要修改日誌與 Commit Record 也必須先持久化。日誌只留在記憶體或 OS Page Cache，都不足以提供這項保證。
 
-**REDO 為什麼在 Buffer 消失後仍能作用？**：DB 重新啟動會建立新的 Buffer Pool，將磁碟上的資料頁讀進來，再利用持久化 WAL 中的重做資訊，重新套用必要修改。帳戶 B 原本的 Buffer 雖然已經消失，磁碟資料頁與 WAL 仍在，所以可以從磁碟上的 2,000 元重建出 2,500 元，再於適當時機寫回。重做資訊可能是新值、頁面變更或操作描述，依日誌格式而定；不需要找回當機前的記憶體。
+**REDO：從資料頁與持久化日誌重建 Buffer**：DB 重新啟動會建立新的 Buffer Pool，將磁碟上的資料頁讀進來，再利用持久化 WAL 中的重做資訊，重新套用必要修改。帳戶 B 原本的 Buffer 雖然已經消失，磁碟資料頁與 WAL 仍在，所以可以從磁碟上的 2,000 元重建出 2,500 元，再於適當時機寫回。重做資訊可能是新值、頁面變更或操作描述，依日誌格式而定；不需要找回當機前的記憶體。
 
-**UNDO 如何知道要撤銷什麼？**：以同時保存重做與撤銷資訊的 ARIES 類型日誌為例，系統會從日誌與交易狀態辨識未完成交易，再沿該交易的修改紀錄反向撤銷。帳戶 A 的日誌可簡化理解為「T1 將 A 從 1,000 改成 900」，因而有足夠資訊取消這次扣款。恢復時可把磁碟上的 900 元讀進新的 Buffer Pool，套用撤銷，再寫回；不是只拿 WAL 與資料頁比較數值，也不是看到 900 就憑空猜原值。不同引擎可能使用獨立 Undo Log 或版本可見性機制，不能把這個流程套到所有 DBMS。
+**UNDO：依交易日誌撤銷未完成修改**：以同時保存重做與撤銷資訊的 ARIES 類型日誌為例，系統會從日誌與交易狀態辨識未完成交易，再沿該交易的修改紀錄反向撤銷。帳戶 A 的日誌可簡化理解為「T1 將 A 從 1,000 改成 900」，因而有足夠資訊取消這次扣款。恢復時可把磁碟上的 900 元讀進新的 Buffer Pool，套用撤銷，再寫回；不是只拿 WAL 與資料頁比較數值，也不是看到 900 就憑空猜原值。不同引擎可能使用獨立 Undo Log 或版本可見性機制，不能把這個流程套到所有 DBMS。
 
-**ARIES 是什麼？**：ARIES 的全名是 **Algorithms for Recovery and Isolation Exploiting Semantics**，可理解為「利用操作語意的恢復與隔離演算法」。它是一套以 WAL 為基礎、支援 STEAL + NO-FORCE 的交易恢復設計，不是另一種 Log 名稱，也不是所有 DBMS 都完整採用的固定流程。它將當機恢復分成 **Analysis、REDO、UNDO** 三個階段。
+**ARIES 的三階段恢復**：ARIES 的全名是 **Algorithms for Recovery and Isolation Exploiting Semantics**，可理解為「利用操作語意的恢復與隔離演算法」。它是一套以 WAL 為基礎、支援 STEAL + NO-FORCE 的交易恢復設計，不是另一種 Log 名稱，也不是所有 DBMS 都完整採用的固定流程。它將當機恢復分成 **Analysis、REDO、UNDO** 三個階段。
 
 **Analysis：先辨識恢復範圍與交易狀態**：重新啟動後，從 Checkpoint 及後續日誌重建交易與 Dirty Pages 的追蹤資訊，辨識哪些交易已提交、哪些仍待撤銷，以及日誌應從哪裡開始重做。以上述例子而言，T1 是未完成交易，T2 則已提交。Checkpoint 能縮小掃描範圍，不代表它一定是所有資料頁都完全寫回的瞬間快照。
 
@@ -324,7 +278,7 @@ LFU 也有取捨：若只累計歷史次數，曾經熱門、現在已經不常�
 
 **UNDO：再移除未完成交易的影響**：完成必要的重做後，再撤銷像 T1 這樣未完成交易的修改。這個簡化例子的最終結果，就是 A 回到 1,000 元，B 保留已提交的 2,500 元。UNDO 的目的不是讓未提交交易繼續執行到 Commit，而是取消它不應留下的效果。
 
-**恢復途中再次當機怎麼辦？**：ARIES 在執行撤銷時，會產生 Compensation Log Record（CLR，補償日誌紀錄），記錄已執行的撤銷動作與接下來的撤銷位置，並遵守 WAL 的持久化順序。若恢復過程再次當機，下次可重做已記錄的補償動作，繼續尚未完成的撤銷，避免把同一項修改錯誤地撤銷兩次。參考 [CMU：ARIES 與 Database Recovery](https://15445.courses.cs.cmu.edu/fall2017/notes/22-notes-recovery.pdf)。
+**CLR：讓恢復過程可以再次恢復**：ARIES 在執行撤銷時，會產生 Compensation Log Record（CLR，補償日誌紀錄），記錄已執行的撤銷動作與接下來的撤銷位置，並遵守 WAL 的持久化順序。若恢復過程再次當機，下次可重做已記錄的補償動作，繼續尚未完成的撤銷，避免把同一項修改錯誤地撤銷兩次。參考 [CMU：ARIES 與 Database Recovery](https://15445.courses.cs.cmu.edu/fall2017/notes/22-notes-recovery.pdf)。
 
 **LSN（Log Sequence Number）與持久化進度**：LSN 用來識別日誌中的位置或順序，例如 PostgreSQL 使用 WAL 串流中的位元組位置；它不是 Transaction ID，也不是時間戳。系統可以分別追蹤已產生日誌的位置、已寫出的位置，以及已確保持久化的位置。將 Log 寫到 OS Page Cache，不等於已經 Flush 到能承受當機或斷電的持久化儲存。參考 [PostgreSQL：WAL Internals](https://www.postgresql.org/docs/current/wal-internals.html)。
 
@@ -335,6 +289,28 @@ LFU 也有取捨：若只累計歷史次數，曾經熱門、現在已經不常�
 **Buffer Flush 與 Commit 的關係**：資料頁 Flush 不等於交易 Commit，Commit 也不一定需要立即 Flush 所有 Dirty Pages。在要求本機同步持久化的提交模式下，通常要先將涵蓋該交易必要修改與 Commit Record 的日誌持久化，再向 Client 回報提交成功；資料頁可以稍後寫回，故障時再依日誌恢復。非同步提交模式則可能先回覆，因此可能在故障後遺失近期已回覆的交易，須依實際設定判斷。參考 [PostgreSQL：Write-Ahead Logging](https://www.postgresql.org/docs/current/wal-intro.html)。
 
 ---
+
+## 並行交易：先看異常，再看隔離保證
+
+資料能在故障後恢復，還不足以保證多筆交易交錯執行時的結果正確。先用讀寫異常辨識可能出錯的情況，再看 OCC、PCC、MVCC 與隔離層級如何協調存取。
+
+**Read Anomalies（讀取異常）與 Write Anomalies（寫入異常）**：並行交易交錯執行時，可能讀到尚未提交的修改、在同一筆交易中前後看到不同內容，或覆蓋其他交易的修改。這裡的 Dirty 是相對於其他交易尚未完成提交而言，與 Buffer Pool 中「修改尚未寫回」的 Dirty Page 定義不同；讀到 Dirty Page 並不必然就是 Dirty Read。
+
+**Dirty Read（髒讀）**：T1 把 V 從 100 改成 90，尚未 Commit，T2 就讀到 90，此時已經構成 Dirty Read。若 T1 後來失敗並 Rollback，V 回到 100，T2 便曾依據最後沒有成立的修改做出判斷。但 **T1 後來是否真的失敗，不是髒讀成立的必要條件；重點是 T2 讀取當下，修改尚未提交。**
+
+**Nonrepeatable Read（不可重複讀）**：T1 先讀取某筆資料，得到 V = 100；接著 T2 把同一筆資料改成 120 並 Commit；T1 在自己同一筆交易尚未結束前再次讀取，卻得到 V = 120。兩次讀到的都可以是已提交值，因此不需要發生 Dirty Read。重點是同一交易重讀同一筆資料時，內容因其他已提交交易而改變；資料列被刪除，也可能造成重讀時找不到。若 T1 已結束，再開始另一筆交易讀到新值，則不屬於這裡的不可重複讀。
+
+**Phantom Records 與 Phantom Read（幻讀）**：T1 以相同查詢條件重查時，符合條件的資料列集合因其他交易已提交的修改而改變。例如先查詢 `price < 100` 得到 3 筆，T2 新增一筆符合條件的商品並 Commit，T1 在同一交易重查得到 4 筆，新出現的符合條件資料列就是 Phantom Record，而觀察到集合改變的現象稱為 Phantom Read。刪除符合條件的列，或更新欄位讓列進入、離開查詢集合，也可能造成這種變化；不一定要使用數值範圍，任何符合條件的集合查詢都可能涉及這個問題。通常稱為「幻讀」，不是「換讀」。
+
+**不可重複讀與幻讀的區別**：前者著重同一筆資料重讀時值或存在性改變，後者著重相同查詢條件得到的資料列集合改變；某些具體修改可能同時涉及兩種觀察角度。三種讀取異常不要求所有隔離層級都會發生，實際行為取決於 DBMS 與隔離設定。參考 [PostgreSQL：Transaction Isolation](https://www.postgresql.org/docs/current/transaction-iso.html)。
+
+**Lost Update（遺失更新）**：假設 V = 100，T1、T2 都先讀到這個舊值。T1 計算加 10，寫入 110 並 Commit；T2 卻仍依據自己先前讀到的 100 計算加 20，再寫入 120 並 Commit。原本應保留兩次加值、得到 130，最後卻只剩 120，T1 的更新效果被覆蓋。重點是以過期的讀取結果進行 Read-Modify-Write，而不是任何較晚的寫入都算遺失更新。此例即使 T2 等到 T1 Commit 後才寫入，仍可能發生，所以不能只靠禁止 Dirty Write 解決。依需求可以使用版本檢查、先鎖再讀，或適當的原子更新。參考 [Microsoft：Concurrency Effects](https://learn.microsoft.com/en-us/sql/relational-databases/sql-server-transaction-locking-and-row-versioning-guide)。
+
+**Dirty Write（髒寫）**：T1 把 V 從 100 改成 90，尚未 Commit 或完成 Rollback，T2 就直接覆寫同一個資料項目，例如寫成 80，這就是 Dirty Write。它不要求 T2 已經 Commit，也不要求 T2 曾讀到 T1 的值；判斷重點是 **T2 寫入當下，正在覆寫 T1 尚未結束的修改**。這會讓 Rollback 變得複雜：若 T1 失敗，系統不能只把值改回 100，否則可能又破壞 T2 的修改。實務上常藉由寫入鎖或寫入衝突檢查阻止這類覆寫。
+
+**Lost Update 與 Dirty Write 的區別**：Lost Update 關心某筆更新的效果因並行操作而遺失；Dirty Write 關心寫入是否覆蓋另一筆未結束交易的修改。前面的 Lost Update 範例刻意讓 T1 先 Commit、T2 才寫入，因此不是 Dirty Write；兩者不是單純靠「T2 是否 Commit」區分。參考 [Berenson 等：A Critique of ANSI SQL Isolation Levels](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/tr-95-51.pdf)。
+
+### 並行控制與隔離層級
 
 **Concurrency Control（並行控制）**：多筆交易可能交錯讀寫相同資料，因此需要協調它們能看到什麼、何時可以修改，以及衝突時應等待還是重試。Transaction 是操作的交易單位，不等於悲觀鎖；OCC、PCC 與 MVCC 也不是完全互斥的三選一分類。
 
@@ -375,7 +351,7 @@ LFU 也有取捨：若只累計歷史次數，曾經熱門、現在已經不常�
 
 假設有 T1、T2、T3，忽略其他執行限制，串行排列有 `T1→T2→T3`、`T1→T3→T2`、`T2→T1→T3`、`T2→T3→T1`、`T3→T1→T2`、`T3→T2→T1`，共 `3! = 6` 種。這是交易整體的串行順序，不是全部並行交錯方式，也不代表一定有 6 種不同結果；每筆交易內有多個步驟時，交錯方式可能更多。
 
-**DB 怎麼知道哪個順序才對？**：DB 不需要先選定唯一正確順序，而是透過鎖定或依賴驗證，確保提交的執行歷史能對應到某個合法串行順序。若無法滿足，就讓衝突操作等待，或撤銷交易並要求重試。Serializable 本身也不保證先開始的交易一定先執行完畢或先取得資源。
+**透過等待或驗證維持合法串行順序**：DB 不需要先選定唯一正確順序，而是透過鎖定或依賴驗證，確保提交的執行歷史能對應到某個合法串行順序。若無法滿足，就讓衝突操作等待，或撤銷交易並要求重試。Serializable 本身也不保證先開始的交易一定先執行完畢或先取得資源。
 
 **庫存只剩一件的例子**：T1、T2 都想購買同一件商品，且交易邏輯正確檢查庫存。如果效果等價於 `T1→T2`，T1 可以買到，T2 看到庫存不足；等價於 `T2→T1` 則相反，兩者都合法。若兩筆交易都因讀到庫存 1 而購買成功，就無法等價於這兩種串行執行中的任何一種。OCC 可以利用原子版本檢查或適當驗證讓其中一筆失敗，重試後重新檢查庫存；PCC 可以先鎖住庫存列，讓另一筆取得鎖後再檢查。Serializable 協調並行效果，交易本身仍要寫對庫存檢查與更新邏輯。參考 [PostgreSQL：Transaction Isolation](https://www.postgresql.org/docs/current/transaction-iso.html)。
 
@@ -385,23 +361,9 @@ LFU 也有取捨：若只累計歷史次數，曾經熱門、現在已經不常�
 
 ---
 
-**Read Anomalies（讀取異常）與 Write Anomalies（寫入異常）**：並行交易交錯執行時，可能讀到尚未提交的修改、在同一筆交易中前後看到不同內容，或覆蓋其他交易的修改。這裡的 Dirty 是相對於其他交易尚未完成提交而言，與 Buffer Pool 中「修改尚未寫回」的 Dirty Page 定義不同；讀到 Dirty Page 並不必然就是 Dirty Read。
+## 儲存引擎內部的頁面保護：Latch
 
-**Dirty Read（髒讀）**：T1 把 V 從 100 改成 90，尚未 Commit，T2 就讀到 90，此時已經構成 Dirty Read。若 T1 後來失敗並 Rollback，V 回到 100，T2 便曾依據最後沒有成立的修改做出判斷。但 **T1 後來是否真的失敗，不是髒讀成立的必要條件；重點是 T2 讀取當下，修改尚未提交。**
-
-**Nonrepeatable Read（不可重複讀）**：T1 先讀取某筆資料，得到 V = 100；接著 T2 把同一筆資料改成 120 並 Commit；T1 在自己同一筆交易尚未結束前再次讀取，卻得到 V = 120。兩次讀到的都可以是已提交值，因此不需要發生 Dirty Read。重點是同一交易重讀同一筆資料時，內容因其他已提交交易而改變；資料列被刪除，也可能造成重讀時找不到。若 T1 已結束，再開始另一筆交易讀到新值，則不屬於這裡的不可重複讀。
-
-**Phantom Records 與 Phantom Read（幻讀）**：T1 以相同查詢條件重查時，符合條件的資料列集合因其他交易已提交的修改而改變。例如先查詢 `price < 100` 得到 3 筆，T2 新增一筆符合條件的商品並 Commit，T1 在同一交易重查得到 4 筆，新出現的符合條件資料列就是 Phantom Record，而觀察到集合改變的現象稱為 Phantom Read。刪除符合條件的列，或更新欄位讓列進入、離開查詢集合，也可能造成這種變化；不一定要使用數值範圍，任何符合條件的集合查詢都可能涉及這個問題。通常稱為「幻讀」，不是「換讀」。
-
-**不可重複讀與幻讀的區別**：前者著重同一筆資料重讀時值或存在性改變，後者著重相同查詢條件得到的資料列集合改變；某些具體修改可能同時涉及兩種觀察角度。三種讀取異常不要求所有隔離層級都會發生，實際行為取決於 DBMS 與隔離設定。參考 [PostgreSQL：Transaction Isolation](https://www.postgresql.org/docs/current/transaction-iso.html)。
-
-**Lost Update（遺失更新）**：假設 V = 100，T1、T2 都先讀到這個舊值。T1 計算加 10，寫入 110 並 Commit；T2 卻仍依據自己先前讀到的 100 計算加 20，再寫入 120 並 Commit。原本應保留兩次加值、得到 130，最後卻只剩 120，T1 的更新效果被覆蓋。重點是以過期的讀取結果進行 Read-Modify-Write，而不是任何較晚的寫入都算遺失更新。此例即使 T2 等到 T1 Commit 後才寫入，仍可能發生，所以不能只靠禁止 Dirty Write 解決。依需求可以使用版本檢查、先鎖再讀，或適當的原子更新。參考 [Microsoft：Concurrency Effects](https://learn.microsoft.com/en-us/sql/relational-databases/sql-server-transaction-locking-and-row-versioning-guide)。
-
-**Dirty Write（髒寫）**：T1 把 V 從 100 改成 90，尚未 Commit 或完成 Rollback，T2 就直接覆寫同一個資料項目，例如寫成 80，這就是 Dirty Write。它不要求 T2 已經 Commit，也不要求 T2 曾讀到 T1 的值；判斷重點是 **T2 寫入當下，正在覆寫 T1 尚未結束的修改**。這會讓 Rollback 變得複雜：若 T1 失敗，系統不能只把值改回 100，否則可能又破壞 T2 的修改。實務上常藉由寫入鎖或寫入衝突檢查阻止這類覆寫。
-
-**Lost Update 與 Dirty Write 的區別**：Lost Update 關心某筆更新的效果因並行操作而遺失；Dirty Write 關心寫入是否覆蓋另一筆未結束交易的修改。前面的 Lost Update 範例刻意讓 T1 先 Commit、T2 才寫入，因此不是 Dirty Write；兩者不是單純靠「T2 是否 Commit」區分。參考 [Berenson 等：A Critique of ANSI SQL Isolation Levels](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/tr-95-51.pdf)。
-
----
+交易層協調的是邏輯資料，執行緒實際操作 Page 與索引結構時，還需要更短時間的保護。這也把並行控制接回前面的 B-Tree 分裂與頁面修改。
 
 **Latch 與讀者／寫者問題**：交易的隔離保護邏輯資料，儲存引擎內部還需要保護 Page 內容與 B-Tree 結構，避免執行緒讀到修改或分裂到一半的頁面。這類短時間的保護稱為 Latch，可以使用 Readers–Writer Lock 實作：多個 Readers 以 Shared 模式同時讀取，Writer 則必須取得 Exclusive Latch，才能修改同一個頁面。這與作業系統中的讀者／寫者問題相通，Reader Priority、Writer Priority 與 Semaphore 的完整流程可參考另一篇 [Famous Synchronization Problems](https://blog.walle4561.com/articles/posts/famous-synchronization-problems/)。
 

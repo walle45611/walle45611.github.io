@@ -36,6 +36,24 @@ B-link Tree 在 B-tree／B+ Tree 的結構上加入同層節點的 Right Sibling
 
 ---
 
+### High Key、最右側子指標與橫向連結
+
+**Rightmost Pointer 與 High Key 的配對**：假設 Internal Node 有 20、50 兩個分隔 Key，以及 `P₀`、`P₁`、`P₂` 三個 Child Pointers。採用左閉右開的範圍慣例時，`P₀` 負責小於 20 的子樹，`P₁` 負責 `20 ≤ Key < 50`，`P₂` 則負責 `Key ≥ 50`。例如查詢 30，因為 `20 ≤ 30 < 50`，所以沿 `P₁` 向下查找。`P₂` 稱為 Rightmost Pointer，是因為它指向目前節點最右側的子樹。
+
+如果把每個 Pointer 與其搜尋範圍的上界配對，就會得到`（P₀, 20）`、`（P₁, 50）`，但 `P₂` 在目前節點內沒有下一個一般分隔 Key 可以配對。這不代表它的範圍一定無限延伸；非根節點的整體範圍仍受到祖先節點的分隔條件限制。
+
+假設目前節點管理的範圍上界為 80，可以將這個上界記為 **`High Key = 80`**。在把最右側 Child Pointer 與節點 High Key 放進同一個 Cell 的配置中，三個 Cell 就能統一表示為 **`（P₀, 20）`、`（P₁, 50）`、`（P₂, 80）`**。其中 `P₂` 對應的範圍為 `50 ≤ Key < 80`；所有子樹也都受到目前節點整體下界的限制。
+
+![[Assets/Note/Tech/Database Internals/high-key-pointer-ranges.png]]
+
+圖 a 的 `K₁`、`K₂` 將範圍切成三段，分別由 `P₀`、`P₁`、`P₂` 指向對應子樹；`P₂` 在這個節點內沒有額外的 Key 標示上界，圖中以 `+∞` 表示。圖 b 則加入 `K₃` 作為目前節點的 High Key，讓最右側的 `P₂` 也有明確的範圍上界，可以和 `K₃` 放在同一個 Cell。`K₃` 並沒有增加第四個 Child Pointer，而是為原本的最右側子樹補上上界。
+
+**一般分隔 Key 與 High Key**：20、50 用來區分目前節點內不同子樹的搜尋範圍；80 則表示整個目前節點的範圍上界。在上述配置中，High Key 同時提供最右側子樹的上界，讓 `P₂` 也能採用與其他 Child Pointers 相同的 Cell 格式，不必另外保留獨立的 Rightmost Pointer 欄位。這是另一種頁面配置選擇，與 [Database Internals](https://blog.walle4561.com/articles/posts/database-internals-reading-notes/) 中 SQLite 將 Rightmost Pointer 獨立存放在 Header 的方式不同。
+
+**High Key 與 Right Sibling Pointer**：延續 `High Key = 80`、上界不包含 80 的假設，搜尋 90 時，因為 `90 ≥ 80`，表示目標已超出目前節點的範圍。在 B-link Tree 中，可以沿 Right Sibling Pointer 前往同一層右側的兄弟節點，繼續尋找目標所屬的範圍。
+
+**Rightmost Child Pointer 是向下走，Right Sibling Pointer 則是向右走。**前者指向目前節點最右側的子樹，後者指向同一層的相鄰節點。High Key 的用途是標示節點範圍；把它與 Rightmost Child Pointer 配成一個 Cell，是利用這個上界統一儲存格式，並非 High Key 必須依賴這種配對才能存在，也不是所有 B-link Tree 都必須使用相同的實體配置。此處的比較條件沿用範例的左閉右開慣例，實作時仍須依資料庫對邊界相等值的規則判斷。
+
 ## Copy-on-Write B-Tree
 
 簡單來說，就是**複製受影響的 Page，並複製、更新通往 Root 的必要路徑，其他未修改的頁面繼續共用**；B-Tree 越淺，需要複製的路徑通常越短，舊頁則要等不再被讀者引用後才能重用。

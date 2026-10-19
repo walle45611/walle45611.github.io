@@ -7,6 +7,8 @@ blog_tag: DSA
 blog_topic: 資料結構
 ---
 
+這篇整理多路搜尋樹、B-Tree 與 B+ Tree 的結構規則和基本操作。節點如何編碼成磁碟 Page、如何快取與恢復，延伸閱讀 [Database Internals 閱讀筆記](https://blog.walle4561.com/articles/posts/database-internals-reading-notes/)；更新策略與配置變種則見 [B-Tree Variants](https://blog.walle4561.com/articles/posts/b-tree-variants/)。
+
 # M-Way Search 
 
 ## 定義
@@ -23,6 +25,10 @@ blog_topic: 資料結構
     
 - `search/insert/delete x` 的時間為 $O(h)$，其中 $h$ 是樹高；若結構 skewed，實際效能最壞也取決於 $h$。
     
+
+### 分隔 Key 與子指標
+
+內部節點有 N 個 Key 時，會形成 N+1 個子樹搜尋區間，完整表示時需要 N+1 個子指標。最右側子指標負責大於最後分隔 Key 的區間；在一般 B-Tree 中，若搜尋值等於節點內的 Key，可以直接在該節點命中。後面的 B+ Tree 範例則另外指定邊界相等時的路由規則。
 
 ## **定理**（高度為 $h$ 的 $m$-way search tree）
 
@@ -75,6 +81,10 @@ B-Tree of order m 是一種 **balanced m-way search tree**，主要應用於外�
 2. 除根以外的內部節點 (internal nodes) 的 degree：  $\left\lceil \tfrac{m}{2} \right\rceil \leq \deg(\text{node}) \leq m$
     
 3. 所有葉節點 (leaf nodes) 必須位於同一層，確保樹保持平衡。
+
+## 高 Fanout、樹高與 I/O
+
+令 n 為總 Key 數，m 為每個節點的最大子節點數；當各節點保持足夠的占用量時，B-Tree 的高度為 O(logₘ n)。Fanout 越高，同樣資料量通常需要的層數越少；若節點對應磁碟 Page，從 Root 到 Leaf 經過的頁數也較少，因此適合外部搜尋。這裡是在計算節點存取／I/O，節點內尋找 Key 的比較成本仍須另外考慮。精確的最大、最小高度則可由下面的 Key 數上下界推導。
 
 ## 定理 (Theorem)
 
@@ -206,6 +216,20 @@ $$
 1.  插入 55，但是因為 overflow 最多只能 $\left\lceil \tfrac{m}{2} \right\rceil \leq \deg(\text{node}) \leq m=2$, 所以需要 split action
 	![[Assets/Note/Research/M-Way(Degree) Search tree And B-Tree/02-Example.png|500]]
 2. Insert 5,18 and 12 in the 2-3 tree ![[Assets/Note/Research/M-Way(Degree) Search tree And B-Tree/03-Example.png]]
+## 分裂後如何回到父節點：Breadcrumbs
+
+**Breadcrumbs（麵包屑）與 Parent Pointer**：Node Split 可能需要往上更新父節點，因此搜尋時可以順便記錄從 Root 往下經過的頁面，以及每一層選擇的 Child Pointer 位置。這份路徑紀錄就是 Breadcrumbs，讓操作在需要時能沿原路向上回溯。
+
+![[Assets/Note/Tech/Database Internals/breadcrumbs.png]]
+
+圖中的黑色連線表示往下搜尋的路徑，右側 Breadcrumbs 則記錄各層經過的節點與所選位置。它保存的是「這次從哪裡走下來」，並不是在每個 Child Page 裡永久增加一條指向 Parent 的連結。圖中的 1、2、2 是所選位置的示意，不代表 PostgreSQL 欄位一定使用相同的編號方式。
+
+**Parent Node 存在，不代表 Child 必須保存 Parent Pointer。**除了 Root 以外，B-Tree 的每個節點都有父節點；父節點原本就透過 Child Pointer（Downlink）指向子節點。往上找 Parent 時，可以使用搜尋過程留下的 Breadcrumbs，不必再從 Child 讀取 Parent Pointer。例如下降路徑為 Root `P1`、Internal `P5`、Internal `P8`，最後到達 Leaf `P12`；若 `P12` 發生 Split，就先從 Stack 取得 `P8`，若父節點也分裂，再回到 `P5`，必要時一路處理到 Root。
+
+Breadcrumbs 通常是一次操作或 Cursor 在記憶體中的 **Traversal State（遍歷狀態）**，生命週期結束後可以釋放。它與 Buffer Pool／Page Cache 的用途不同：後者快取資料頁內容，Breadcrumbs 則記錄搜尋路徑。Parent Pointer 是另一種向上定位方式，但當子節點因 Split、Merge 或 Rebalancing 換了父節點，就需要維護對應關係。兩者可以並用，卻不是都必須存在；若沒有保留路徑，也沒有 Parent Pointer，仍可從 Root 重新尋找父節點。
+
+實際 DBMS 的路徑 Stack 例子（PostgreSQL `BTStack`），見 [Database Internals](https://blog.walle4561.com/articles/posts/database-internals-reading-notes/)。
+
 ## Delete X in B-Tree of order m
 
 > 目標：刪除鍵值 xx。先搜尋到包含 xx 的節點 NN。
@@ -268,7 +292,7 @@ $$
 
 - 用途：ISAM（Index Sequential Access Method）。
     
-- 僅分 **兩大層**：Index level、Data blocks level。
+- 分成 **索引部分與葉層資料部分**：Index level、Data blocks level；索引部分本身可以有多層。
 	1.  Index level
 			
 		- 結構：**B-tree of order mm**。
@@ -284,6 +308,22 @@ $$
 		- 容量：每個 block 的資料數 **可依題目/規格自行訂**，**不必**與 index 的 order m 相同，**==但是題目沒有特別說就是一樣==**。
 
 ![[Assets/Note/Research/M-Way(Degree) Search tree And B-Tree/07-定義 (Definition).png]]
+## 葉節點連結與範圍查詢
+
+B+ Tree 的相鄰 Leaf Nodes 可以透過 Leaf Links 串接。範圍查詢先沿樹找到第一個符合條件的 Leaf，再沿葉鏈讀取後續資料，不必每讀下一頁就重新從 Root 搜尋。這與 B-link Tree 在各層用 High Key 與 Right Sibling Link 處理並行分裂的用途不同，後者見 [B-Tree Variants](https://blog.walle4561.com/articles/posts/b-tree-variants/)。
+
+## 分隔範圍與最右側子指標
+
+下圖採 B+ Tree 的分隔 Key 路由示意，相等值往右側區間；不是前面一般 B-Tree 在內部節點直接命中 Key 的規則。
+
+**Rightmost Pointer（最右側子節點指標）**：Internal Node 有 N 個分隔 Key，就需要 `N+1` 個 Child Pointers，因為 N 個 Key 將搜尋範圍分成 `N+1` 段。例如只有 10、20 兩個 Key，仍需要三個 Child Pointers，而不是三個 Key。依圖中的邊界慣例，三段分別是小於 10、大於等於 10 且小於 20，以及大於等於 20。
+
+![[Assets/Note/Tech/Database Internals/rightmost-pointer.png]]
+
+圖中的 `Kₛ` 是 Search Key，也就是正在查找的值；它用來與 `K₁`、`K₂`、`K₃` 比較，決定走哪一個 Child Pointer，並不是額外放到最右側的 Key。當 `Kₛ` 大於等於 `K₃`，就沿 Rightmost Pointer 往下查找。
+
+實際 Page 如何將 Rightmost Pointer 放在 Header，見 [Database Internals](https://blog.walle4561.com/articles/posts/database-internals-reading-notes/)；把它與節點 High Key 配對的另一種格式，見 [B-Tree Variants](https://blog.walle4561.com/articles/posts/b-tree-variants/)。
+
 ## Insert a data 
 ![[Assets/Note/Research/M-Way(Degree) Search tree And B-Tree/08-Insert a data.png]]
 
@@ -304,3 +344,31 @@ $$
 7. 再檢查父節點是否滿足 2 ≤ key ≤ 4，如果不足則繼續合併或往上更新。
     
 8. 若 root 最後只剩一個子節點，則降低樹高，新的 root 成為唯一的子節點。
+
+## Split 後的子指標更新
+
+**Split 與 Rightmost Pointer 更新**：圖中右側子節點分裂後，原本的一個 Child 變成兩個，父節點需要加入分隔 Key `K₄`，以及對應的 Child Pointer。父節點原本的最右側路徑也要調整，讓 Rightmost Pointer 指向分裂後最右邊的新節點，其他搜尋範圍則由相應的 Cell 引導。
+
+![[Assets/Note/Tech/Database Internals/rightmost-pointer-split.png]]
+
+## Rebalancing 與節點占用量
+
+**Rebalancing（重新分配）**：當某個 Page 很滿、相鄰的兄弟 Page 卻還有空間，可以先把部分 Cells 移到較空的 Page，平衡各頁面的空間使用率（Node Occupancy），延後 Split；刪除資料時，也可以從兄弟節點移入資料，避免太早 Merge。這裡關心的是資料占用空間，而不是讀寫請求集中造成的 Hot Spot。
+
+![[Assets/Note/Tech/Database Internals/rebalancing.png]]
+
+圖中調整前，左節點有 `10、13、16`，右節點只有 `18`；調整後把 `16` 移到右節點，變成左邊 `10、13`、右邊 `16、18`。兩個節點負責的搜尋範圍改變，因此父節點的分隔 Key 也從 `18` 更新為 `16`。
+
+這次調整前後的樹高相同。長期提高節點填滿程度，才可能讓相同資料量使用更少的 Pages 與層數；不是每次 Rebalancing 都會降低樹高。另外，跨 Page 重新分配 Cells 是這裡的 Rebalancing，同一個 Page 內搬動 Cells、整理零碎空間則是 Compaction／Defragmentation。
+
+**節點填滿程度不平均，不等於樹高失衡。**B-Tree 的高度平衡要求所有 Leaf 位於同一層，各節點不必有相同 Key 數，但仍須遵守所採模型的最低占用規則。資料庫的追加寫入最佳化可能採取不同的頁面填充策略，相關 Fastpath 與 Quickbalance 實例見 [Database Internals](https://blog.walle4561.com/articles/posts/database-internals-reading-notes/)。
+
+## Bulk Loading：由 Leaf 向上建樹
+
+**Bulk Loading 與 Bottom-Up 建樹**：Bulk Loading 是一次載入整批資料；這裡討論的 B-Tree 建索引方式採用 **Bottom-Up（由下往上）**，先建立 Leaf Pages，再逐層建立 Internal Pages，最後形成 Root。
+
+例如要為 `1～1,000,000` 的資料建立索引，先按 Key 排序，再依序把資料填入 Leaf Pages，接著依各個 Leaf 所負責的範圍，建立上層的分隔 Key 與 Child Pointers。如果一層仍放不下所有指標，就繼續向上建立，直到形成 Root。這與逐筆插入、每次從 Root 尋找目標 Leaf，再於空間不足時進行 Split 的流程不同，可以減少重複搜尋與分裂的成本。
+
+`page-wise` 表示「以 Page 為單位」。在這個情境中，可以理解成一頁一頁建立與填入資料，再從這批頁面建立上一層，而不是每筆資料都重新走完整的插入路徑。實作上也可以保留部分可用空間，供後續插入使用，不一定把每頁填到全滿。
+
+**Bulk Loading 強調整批處理，Bottom-Up 強調建樹方向。**一般的批次匯入不一定採用 Bottom-Up；此處描述的是利用排序後的整批資料，由 Leaf 向上直接建立 B-Tree 索引的方式。

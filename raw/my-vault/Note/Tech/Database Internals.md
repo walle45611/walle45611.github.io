@@ -71,7 +71,59 @@ LSM-Tree 的 MemTable、SSTable、Flush 與 Compaction 流程，接續整理於 
 
 Log-Structured Storage（LSS）將新紀錄或新版本追加到新的儲存位置，再以索引與後續清理管理它們。它描述的是儲存與寫入方式，不等同於某一種搜尋樹，也不代表一定不按 Key 排序；LSM 的 Sorted Runs，以及部分 B-Tree 引擎採用的底層儲存設計，都可以運用 Log-Structured 的思路。
 
+#### In-Place Update 與 Out-of-Place Update
+
+In-Place Update 指更新既有位置的內容，例如 B+ Tree 修改某個 Database Page 後，將它寫回原本的檔案位置。Out-of-Place Update 則把新版本寫到其他位置，再更新指向它的資訊；Copy-on-Write B+ Tree 就是一個例子：複製受影響的 Page 與必要的祖先路徑，發布新的 Root，舊頁面等不再被 Snapshot 使用後才回收。具體流程見 [B-Tree Variants 的 Copy-on-Write B-Tree](https://blog.walle4561.com/articles/posts/b-tree-variants/#copy-on-write-b-tree)。
+
+Out-of-Place Update 是較廣的更新方式，CoW 是其中一種實作；LSS 也採用寫到新位置、之後回收舊內容的思路，但 CoW B+ Tree 不因此等同於 LSM-Tree。
+
+#### LSS、LSM-Tree 與 SSD：從小筆更新到批次寫入
+
+| 層次 | 負責的事情 |
+| --- | --- |
+| LSS：儲存設計方向 | 將更新寫到新位置，再清理不再需要的舊內容。 |
+| LSM-Tree：儲存引擎的具體結構 | 在 MemTable 累積更新，Flush 成有序 SSTable，再透過 Compaction 整理。 |
+| SSD：底下的儲存裝置 | 由控制器管理 NAND Page 的寫入、位置映射與 Block 回收。 |
+
+例如應用程式不斷更新不同 Key，每筆只有幾十 Bytes，LSM-Tree 可以先將這些小筆更新累積在 MemTable，再批次寫出較大的 SSTable；尚未 Flush 的更新則由 WAL 協助故障復原。Key 到達的順序可以很亂，緩衝與排序仍能把它們轉為較大的批次寫入。[RocksDB 官方概述](https://github.com/facebook/rocksdb/wiki/RocksDB-Overview)
+
+SSD 的 NAND 以 Page 為單位寫入，但必須以整個 Block 為單位抹除。更新通常寫到新的 Page，再由 FTL 更新邏輯位址對應，舊 Page 便成為無效資料。下圖的 Live Page 仍保存有效資料，Discarded Page 已失效但尚未抹除，Empty Page 則表示可供寫入的空間。
+
+![[Assets/Note/Tech/Database Internals/ssd-live-discarded-empty-pages.png]]
+
+GC 回收 Block 時，會先把其中仍有效的 Pages 搬到其他有可寫空間的 Block，更新 FTL 映射，再整塊抹除舊 Block，讓它重新供後續寫入使用。下圖的箭頭表示有效資料搬移；無效 Pages 不必複製，也無法單獨抹除。[OSTEP：Flash-Based SSDs](https://pages.cs.wisc.edu/~remzi/OSTEP/file-ssd.pdf)
+
+![[Assets/Note/Tech/Database Internals/ssd-gc-live-page-relocation.png]]
+
+例如一個 Block 有 8 個 Pages，其中 6 個已失效、2 個仍有效，GC 只需搬走這 2 個有效 Pages，再抹除整個 Block。這也說明回收成本與需要搬移多少有效資料有關。
+
+資料庫的 In-Place Update 與 SSD 的實體更新屬於不同層次：即使 B+ Tree 寫回同一個檔案位置，SSD 控制器仍可能把內容寫到新的 NAND Page，再調整 FTL 映射。LSM 的批次寫入也不保證剛好對齊實體 NAND Block；Compaction 與 SSD GC 都可能重寫資料，因此實際效能與耗損仍取決於工作負載、整理策略與 SSD。
+
 Unordered 則描述磁碟內容不維持 Key 順序。Bitcask 使用 KeyDir 定位追加式資料檔，WiscKey 則保留有序的 Key LSM、把 Value 分離到無序 Value Log。查詢、更新與回收方式另見 [Unordered Log-Structured Storage：Bitcask 與 WiscKey](https://blog.walle4561.com/articles/posts/unordered-log-structured-storage/)。
+
+#### 上下層不一致：儲存單位與寫入安排的落差
+
+資料庫、檔案系統與 SSD 各自管理寫入、放置與回收，但各層使用的單位大小、邊界與整理時機不一定一致，因此可能增加 I/O 與資料搬移。
+
+1. 儲存與回收邊界不對齊：上層的 Segment 可能跨越多個下層回收單位。上層丟棄某個 Segment 後，下層單位中仍可能混有其他有效資料，必須先搬走它們，才能回收整個單位。即使單位大小相同，起始位置不同也可能造成這種情況。
+2. 多條寫入流交錯：Data Records 與 Log Records 即使各自循序寫入，到了下層仍可能交錯；記錄大小與 Page 邊界的落差也可能造成碎片。上層的循序寫入，不保證在下層保有相同的連續性。
+3. 各層重複整理：下層可能剛搬移某份資料，上層就將它合併或丟棄。如果各層不了解彼此的安排，就可能做出很快失去用途的搬移。
+
+#### Mindful Stacking：透過 API 協調上下層
+
+Mindful Stacking 保留分層設計，但讓軟體層之間的 API 傳遞足夠的結構與生命週期資訊，協調資料放置、整合與回收。一般讀寫介面主要表達「讀寫這個位置的 Bytes」；以邏輯頁面為單位的介面，則能表達「這份 Delta 是哪個 Page 的更新」及「這份完整新頁面取代哪個舊狀態」。
+
+Bw-tree 與 LLAMA 的協作是具體例子：Bw-tree 管理 Key、樹結構與 Delta 的語意；LLAMA 提供快取、位置映射與 Log-Structured 儲存管理。其 API 包含下列操作，表中僅列核心參數與用途：
+
+| API | 傳遞的資訊與用途 |
+| --- | --- |
+| `Update-D(PID, …)` | 提供邏輯頁面 ID、先前狀態的指標與新 Delta，把更新接到該頁面的狀態鏈前端。 |
+| `Update-R(PID, …)` | 提供整合後的完整頁面，取代該 PID 的既有狀態；Bw-tree 可用它發布 Consolidation 的結果。 |
+| `Read(PID, …)` | 依邏輯頁面 ID 取得資料，由 LLAMA 的 Mapping Table 處理目前位置。 |
+
+例如邏輯頁面 `PID 42` 的狀態是 `Delta 2 → Delta 1 → Base Page`。LLAMA 能追蹤它們屬於同一個邏輯頁面，並在儲存整理時把相關部分集中；Bw-tree 則理解這些 Delta 如何改變 Key-Value 內容，能把它們套用到新的 Base Page，再以 `Update-R` 替換舊狀態。這種分工讓實體位置管理與語意整合可以協作，減少碎片與重複工作。[LLAMA 原論文](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/llama-vldb2013.pdf)
+
+這裡的 API 連接 Bw-tree 與 LLAMA，並不直接控制 SSD 的實體 NAND 配置。Mindful Stacking 是跨層協作的設計原則，沒有一個通用的「Mindful Stacking API」；LLAMA 也不是所有跨層對齊問題的通用解法。每層各自最佳化，仍需要檢視整體是否重複搬移與整理。
 
 ### 儲存結構比較：Buffered、Mutable 與 Ordered
 
@@ -87,12 +139,8 @@ Unordered 則描述磁碟內容不維持 Key 順序。Bitcask 使用 KeyDir 定�
 | Multicomponent LSM Trees | Yes | No | Yes |
 | FD-Trees | Yes | No | Yes |
 | [Bitcask](https://blog.walle4561.com/articles/posts/unordered-log-structured-storage/) | No | No | No |
-| [WiscKey](https://blog.walle4561.com/articles/posts/unordered-log-structured-storage/) | Yes（1） | No | Yes（1） |
-| Bw-Trees | No | No | No（2） |
-
-（1）WiscKey 的緩衝與排序針對 Key；Value 存在無序的 Value Log 中。
-
-（2）Bw-Tree 只有完成 Consolidation 的節點保存有序紀錄，尚未整合的 Delta Updates 可能散落在不同頁面。
+| [WiscKey](https://blog.walle4561.com/articles/posts/unordered-log-structured-storage/) | Yes | No | Yes |
+| Bw-Trees | No | No | No |
 
 B-Tree 類型與緩衝設計的細節見 [B-Tree Variants](https://blog.walle4561.com/articles/posts/b-tree-variants/)；兩種 LSM 模型與 Compaction 流程則見 [LSM-Tree](https://blog.walle4561.com/articles/posts/lsm-tree/)。
 

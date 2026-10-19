@@ -345,6 +345,20 @@ Secondary Index 能降低這類欄位查詢的掃描成本，但建立與維護�
 
 應用程式的一筆更新，可能在 WAL、Flush 與後續 Compaction 中產生多次寫入。Compaction 策略會影響資料被重寫的次數與範圍；比較放大程度時，要先統一是否計入 WAL 等衡量範圍。Compaction 在這裡指資料整理與重寫，和 Compression 是不同機制。
 
+#### Open-Channel SSD：協調資料放置與回收
+
+Open-Channel SSD 將部分原本由 SSD 內部 FTL（Flash Translation Layer）負責的管理工作，開放給主機端軟體控制。主機就是使用 SSD 的電腦或伺服器；主機端軟體則是由其 CPU 執行的驅動程式或儲存管理軟體。
+
+一般 SSD 主要由內部控制器決定資料的實體位置，並處理位址對映、垃圾回收與磨耗管理。Open-Channel SSD 提供更多底層布局資訊與操作能力，讓主機端軟體依資料的存取模式與生命週期，協調資料放置、回收及 I/O 排程。例如將可能一起失效的資料集中存放，回收時就可能減少搬移仍有效資料的成本，降低 SSD 層的寫入放大。[Open-Channel SSD 官方文件](https://openchannelssd.readthedocs.io/en/latest/)
+
+LOCS 是結合 LSM-tree 與 Open-Channel SSD 的 Key-Value 儲存系統，透過暴露 Flash Channels 等底層資訊，協調 LevelDB 的資料布局與 I/O 排程。SDF（Software-Defined Flash）則是軟硬體共同設計的例子，讓寫入單位配合 Flash 的抹除區塊，藉此改善寫入與回收效率。[LOCS 論文介紹](https://www.microsoft.com/en-us/research/publication/an-efficient-design-and-implementation-of-lsm-tree-based-key-value-store-on-open-channel-ssd/)、[SDF 原論文](https://ranger.uta.edu/~sjiang/pubs/papers/ouyang14-SDF.pdf)
+
+這些工作由主機端儲存軟體與裝置協作完成。MMU 負責 CPU 存取記憶體時的虛擬位址轉換與權限檢查；Open-Channel SSD 移交的則是 Flash 儲存管理責任，兩者屬於不同層次。
+
+`O_DIRECT` 也讓應用程式承擔更多管理責任以取得控制權，但它主要繞過 OS Page Cache，不會繞過一般 SSD 的 FTL。快取與直接 I/O 的說明見 [Database Internals](https://blog.walle4561.com/articles/posts/database-internals-reading-notes/)。
+
+這種設計需要相容的裝置與軟體配合，也會增加主機端的實作複雜度。它能改善跨層的資料放置與回收安排，但仍須支付垃圾回收與 LSM Compaction 的寫入成本。
+
 #### 延伸：Key–Value Separation
 
 當 Value 遠大於 Key，WiscKey 透過把 Value 分離到 Value Log，讓 Key LSM 的 Compaction 主要搬移 Key 與位置資訊，減少大型 Value 反覆重寫的成本；Value 的過時資料則另行回收。它與 Bitcask 的設計差異，見 [Unordered Log-Structured Storage：Bitcask 與 WiscKey](https://blog.walle4561.com/articles/posts/unordered-log-structured-storage/)。

@@ -9,7 +9,7 @@ blog_topic: OS
 
 ## TL;DR
 
-**儲存引擎要讓資料找得到、讀寫有效率，並在交易並行與故障後維持正確；資料結構、快取與日誌因此必須一起設計。**
+**儲存引擎要讓資料找得到、讀寫有效率，並在交易並行與故障後維持正確；資料結構、快取與日誌因此必須一起設計**。
 
 - **資料組織與索引**：工作負載影響 Row／Column 配置與索引選擇；B-Tree 定位資料頁，Page／Cell 格式決定內容如何實際儲存。
 - **記憶體與快取**：Buffer Pool 保留常用頁面，置換與准入策略管理有限空間；DBMS Buffer Pool、OS Page Cache 與虛擬位址轉換是不同層次。
@@ -19,13 +19,15 @@ blog_topic: OS
 
 這份閱讀筆記從工作負載與資料配置開始，接著追蹤索引如何定位資料頁、頁面如何進入記憶體，以及修改如何在並行與故障下維持正確。B-Tree 的基本原理與設計變種，於索引段落連結到各自的延伸筆記。
 
+---
+
 ## 工作負載與儲存方式
 
 **OLTP 與 OLAP**：OLTP（Online Transaction Processing）處理日常交易，著重高併發（Concurrency）、低延遲（Low Latency）、短交易（Short Transactions）與 ACID。例如電商建立訂單、扣除庫存、記錄付款、查詢訂單狀態，會頻繁執行 `INSERT`、`UPDATE`、`DELETE`、`SELECT`，每筆交易通常只處理少量資料。OLAP 則著重資料分析，常涉及複雜 `SELECT`、`JOIN` 與聚合，單次查詢可能需要處理大量資料。
 
 **TPC-C 與 TPC-H**：OLTP 是工作負載，TPC-C 則是衡量 OLTP 系統效能的 Benchmark。TPC-C 模擬批發商的訂單與庫存管理，混合執行 New-Order（建立訂單）、Payment（付款）、Order-Status（訂單狀態）、Delivery（出貨）與 Stock-Level（庫存水位）五種交易。
 
-TPC-C 的指標為 tpmC（Transactions per Minute C）。例如 10,000 tpmC，表示在符合測試規範及其他交易負載條件下，每分鐘完成 10,000 筆 New-Order，**不是所有 SQL 操作或交易加總後的 TPS**。TPC-C 成績高，也不代表所有實際應用都比較快。OLAP 的複雜查詢與分析效能則可透過 TPC-H、TPC-DS 等 Benchmark 評估。
+TPC-C 的指標為 tpmC（Transactions per Minute C）。例如 10,000 tpmC，表示在符合測試規範及其他交易負載條件下，每分鐘完成 10,000 筆 New-Order， **不是所有 SQL 操作或交易加總後的 TPS**。TPC-C 成績高，也不代表所有實際應用都比較快。OLAP 的複雜查詢與分析效能則可透過 TPC-H、TPC-DS 等 Benchmark 評估。
 
 ---
 
@@ -63,6 +65,37 @@ FTL 負責邏輯與實體位置的映射，例如 Logical Page 100 對應 Physic
 
 **B+ Tree 與 LSM-Tree**：B+ Tree 使用有序的結構，常見實作傾向於原地更新 Page；LSM-Tree 則先利用記憶體 Buffer 接受寫入，再透過不可變（Immutable）的磁碟檔案與 Compaction 整理資料。Append-Only、Copy-on-Write 都涉及把新版本寫到新位置的思路，但具體更新方式仍取決於儲存引擎。B+ Tree 的高 Fanout 可以降低樹高，減少查找需要經過的節點，進而降低可能發生的 Disk I/O。
 
+LSM-Tree 的 MemTable、SSTable、Flush 與 Compaction 流程，接續整理於 [LSM-Tree](https://blog.walle4561.com/articles/posts/lsm-tree/)。
+
+### LSS：寫入方式與 Key 排序是不同面向
+
+Log-Structured Storage（LSS）將新紀錄或新版本追加到新的儲存位置，再以索引與後續清理管理它們。它描述的是儲存與寫入方式，不等同於某一種搜尋樹，也不代表一定不按 Key 排序；LSM 的 Sorted Runs，以及部分 B-Tree 引擎採用的底層儲存設計，都可以運用 Log-Structured 的思路。
+
+Unordered 則描述磁碟內容不維持 Key 順序。Bitcask 使用 KeyDir 定位追加式資料檔，WiscKey 則保留有序的 Key LSM、把 Value 分離到無序 Value Log。查詢、更新與回收方式另見 [Unordered Log-Structured Storage：Bitcask 與 WiscKey](https://blog.walle4561.com/articles/posts/unordered-log-structured-storage/)。
+
+### 儲存結構比較：Buffered、Mutable 與 Ordered
+
+下表依《Database Internals》Part I Conclusion 的分類整理。Buffered 指先緩衝更新再批次處理；Mutable 指磁碟頁面／既有儲存內容是否採就地更新；Ordered 指資料在儲存配置中是否依 Key 排序，不代表只能使用有序的查詢 API。這些欄位描述不同面向：LSM 的 MemTable 可以修改，表中的 Mutable 仍為 No，因為它描述的是不可變的磁碟資料組織。
+
+| 儲存結構 | Buffered | Mutable | Ordered |
+| --- | --- | --- | --- |
+| B+ Trees | No | Yes | Yes |
+| WiredTiger | Yes | Yes | Yes |
+| LA-Trees | Yes | Yes | Yes |
+| CoW B-Trees | No | No | Yes |
+| Two-component LSM Trees | Yes | No | Yes |
+| Multicomponent LSM Trees | Yes | No | Yes |
+| FD-Trees | Yes | No | Yes |
+| [Bitcask](https://blog.walle4561.com/articles/posts/unordered-log-structured-storage/) | No | No | No |
+| [WiscKey](https://blog.walle4561.com/articles/posts/unordered-log-structured-storage/) | Yes（1） | No | Yes（1） |
+| Bw-Trees | No | No | No（2） |
+
+（1）WiscKey 的緩衝與排序針對 Key；Value 存在無序的 Value Log 中。
+
+（2）Bw-Tree 只有完成 Consolidation 的節點保存有序紀錄，尚未整合的 Delta Updates 可能散落在不同頁面。
+
+B-Tree 類型與緩衝設計的細節見 [B-Tree Variants](https://blog.walle4561.com/articles/posts/b-tree-variants/)；兩種 LSM 模型與 Compaction 流程則見 [LSM-Tree](https://blog.walle4561.com/articles/posts/lsm-tree/)。
+
 ---
 
 ### 樹的基本規則與儲存引擎的實作
@@ -79,7 +112,7 @@ B-link Tree 的 High Key 與橫向連結，以及 CoW／LMDB、WiredTiger、LA-T
 
 例如簡化假設每個 Leaf Page 最多容納 4 筆資料，原本左頁存放 `1、2、3、4`，最右頁存放 `5、6、7、8`。現在新增 `9`，最右頁已經沒有空間；Quickbalance 的做法是保留這兩頁，建立新的最右頁，先只存放 `9`，並讓父節點加入相應的導航資訊。之後再插入 `10、11、12`，新頁就逐步填成 `9、10、11、12`，不必為了這次插入，先把舊頁的 `5、6、7、8` 搬過去平均分配。實際頁面容量取決於 Cell 大小，這裡的 4 筆只是方便理解的假設。
 
-**填滿程度不平均，不等於樹的高度失衡。**上述例子假設父節點仍有空間，因此新增 Leaf Page 後，各 Leaf 的深度相同，樹高不變；若父節點也放不下，仍需要進一步處理，必要時向上傳遞。Quickbalance 只是接受新頁暫時較空，以減少當次搬移資料的成本，並沒有放棄 B-Tree 的結構規則。
+**填滿程度不平均，不等於樹的高度失衡**。上述例子假設父節點仍有空間，因此新增 Leaf Page 後，各 Leaf 的深度相同，樹高不變；若父節點也放不下，仍需要進一步處理，必要時向上傳遞。Quickbalance 只是接受新頁暫時較空，以減少當次搬移資料的成本，並沒有放棄 B-Tree 的結構規則。
 
 前述基本樹操作中的 Rebalancing，與這裡 Quickbalance 的取捨也不同：前者先利用兄弟 Page 的剩餘空間，盡量延後 Split；後者則利用「後續資料很可能繼續往右新增」的特性，保留舊頁面滿載，讓新頁承接後續寫入。Fastpath 解決的是如何更快找到可插入的頁面，Quickbalance 解決的則是特定情況下頁面已滿時如何安排資料，兩者不是完全相同的機制。
 
@@ -122,7 +155,7 @@ SQLite 就採用這種將 Rightmost Pointer 獨立存放的配置：Interior B-T
 
 ---
 
-**Overflow Pages**：B-Tree 的 Node 通常以固定大小的 Page 儲存，但每個 Record 的 Payload 可能是變長的（Variable-Size Payload）。因此，**Key 數量尚未達到概念上的上限，不代表 Page 還有足夠的 Free Space**；少數幾筆很大的 Record，就可能先把 Page 的位元組空間用完。實際上，對變長資料而言，Node 能容納多少 Key 也會受到每個 Cell 大小的影響，不能只看 Key 的數量。
+**Overflow Pages**：B-Tree 的 Node 通常以固定大小的 Page 儲存，但每個 Record 的 Payload 可能是變長的（Variable-Size Payload）。因此， **Key 數量尚未達到概念上的上限，不代表 Page 還有足夠的 Free Space**；少數幾筆很大的 Record，就可能先把 Page 的位元組空間用完。實際上，對變長資料而言，Node 能容納多少 Key 也會受到每個 Cell 大小的影響，不能只看 Key 的數量。
 
 當單筆 Record 太大，可以將部分 Payload 保留在 Primary Page，超出的部分放到 Overflow Page，再由原本的 Cell 透過 Pointer 找到剩餘內容。這樣就不必單純因為一筆 Record 太大，而把它全部擠在同一個 B-Tree Node 裡；即使進行 Node Split，也不一定能解決單筆 Record 本身大於 Page 可容納空間的問題。
 
@@ -146,7 +179,7 @@ SQLite 就採用這種將 Rightmost Pointer 獨立存放的配置：Interior B-T
 
 **Database Page 與 OS Page Cache**：資料庫從 B+ Tree 取得 `Page ID` 後，需要先定位檔案中的位置，再把需要的資料讀進記憶體。以 Linux 使用一般 buffered `pread()` 的情況為例，OS 會先檢查 Page Cache，已有快取就能使用；沒有快取時，通常需要從 Disk 讀入，再將資料複製到資料庫的 `User`-Space Buffer。
 
-假設 Database Page 為 8 KiB（8192 Bytes），OS Memory Page 為 4 KiB（4096 Bytes），且 `Page ID` 從 0 開始、資料頁在檔案中連續排列。讀取 Database Page 5 時，File Offset 為 `5 × 8192 = 40960 Bytes`，也就是 `0xA000`。這個 8 KiB 的資料頁涵蓋 OS File Page 10、11，檔案範圍分別為 `0xA000`–`0xAFFF`、`0xB000`–`0xBFFF`。**一個 Database Page 可以涵蓋多個 OS Pages，載入後對應的實體記憶體也不必連續。**
+假設 Database Page 為 8 KiB（8192 Bytes），OS Memory Page 為 4 KiB（4096 Bytes），且 `Page ID` 從 0 開始、資料頁在檔案中連續排列。讀取 Database Page 5 時，File Offset 為 `5 × 8192 = 40960 Bytes`，也就是 `0xA000`。這個 8 KiB 的資料頁涵蓋 OS File Page 10、11，檔案範圍分別為 `0xA000`–`0xAFFF`、`0xB000`–`0xBFFF`。 **一個 Database Page 可以涵蓋多個 OS Pages，載入後對應的實體記憶體也不必連續**。
 
 **Virtual Memory、TLB 與 Page Table**：資料庫同樣使用虛擬記憶體。Page Cache 查找的是檔案內容是否已在 RAM，TLB 則快取 Virtual Page 到 Physical Frame 的位址映射。兩者雖然都涉及 Page，處理的問題不同；CPU 在核心態存取 Page Cache、複製資料，以及在使用者態存取 Database Buffer 時，都涉及虛擬位址轉換。
 
@@ -156,7 +189,7 @@ OS Page Size 為 4096 Bytes，也就是 2¹² Bytes，因此位址低 12 bits �
 
 CPU 使用這個 Virtual Page Number 查 TLB。若 TLB Hit，就直接取得 Physical Frame；若 TLB Miss，則需要查 Page Table。假設查到的 Physical Frame 起始位址為 `0x009A7000`，加上 Page Offset `0x234`，得到 Physical Address `0x009A7234`。有效映射可以快取到 TLB，供後續存取使用。
 
-**Page Cache Miss、TLB Miss 與 Page Fault**：Page Cache Miss 表示檔案內容沒有快取，通常需要讀取 Disk；TLB Miss 表示沒有快取位址映射，需要查 Page Table；Page Fault 則表示目前頁表映射無法直接滿足存取，需要 OS 處理。**TLB Miss 不等於 Page Fault，也不等於 Page Cache Miss，更不代表一定需要 Disk I/O。**例如 `mmap()` 的檔案頁若已在 Page Cache，可能只需要 Minor Page Fault 建立映射；若還必須從儲存裝置讀入，則可能涉及 Major Page Fault。
+**Page Cache Miss、TLB Miss 與 Page Fault**：Page Cache Miss 表示檔案內容沒有快取，通常需要讀取 Disk；TLB Miss 表示沒有快取位址映射，需要查 Page Table；Page Fault 則表示目前頁表映射無法直接滿足存取，需要 OS 處理。 **TLB Miss 不等於 Page Fault，也不等於 Page Cache Miss，更不代表一定需要 Disk I/O**。例如 `mmap()` 的檔案頁若已在 Page Cache，可能只需要 Minor Page Fault 建立映射；若還必須從儲存裝置讀入，則可能涉及 Major Page Fault。
 
 資料庫層處理 `Page ID` 到 File Offset，Page Cache 處理檔案內容的快取，Virtual Memory 則處理 Virtual Page 到 Physical Frame。把這三層分開，才能理解從 B+ Tree 找到 Page，到 CPU 實際存取資料之間的流程。
 
@@ -178,7 +211,7 @@ Flush 是寫回，Eviction 是移出快取。Flush 後的頁面仍可留在 Buff
 
 **`O_DIRECT` 與自行管理快取**：部分 DBMS 在 Linux 上開啟檔案時使用 `O_DIRECT`，讓資料 I/O 通常繞過 OS Page Cache，直接在儲存裝置與 User-Space Buffer 之間傳輸，減少重複快取，並讓 DBMS 自行安排頁面的快取與讀寫。這並不是繞過整個 Kernel；實際支援與記憶體位址、I/O 長度、File Offset 的對齊要求，仍依檔案系統與裝置而定。
 
-**`O_DIRECT` 本身不代表 Async I/O，也不單獨保證資料已持久化。**是否非同步取決於使用的 I/O 介面；是否達到持久化要求，則還需要考慮同步與儲存裝置的語意。它的取捨是把更多快取與預讀工作交給 DBMS，也增加實作與調校的複雜度；不能直接歸納為所有情境都比較快。參考 [Linux `open(2)`：`O_DIRECT`](https://man7.org/linux/man-pages/man2/open.2.html)。
+**`O_DIRECT` 本身不代表 Async I/O，也不單獨保證資料已持久化**。是否非同步取決於使用的 I/O 介面；是否達到持久化要求，則還需要考慮同步與儲存裝置的語意。它的取捨是把更多快取與預讀工作交給 DBMS，也增加實作與調校的複雜度；不能直接歸納為所有情境都比較快。參考 [Linux `open(2)`：`O_DIRECT`](https://man7.org/linux/man-pages/man2/open.2.html)。
 
 **Read-Ahead 與 `posix_fadvise()`**：DBMS 可能比 Kernel 更清楚接下來會做順序掃描、隨機查找，或讀取哪些 Pages。使用 Buffered I/O 時，可以透過 `posix_fadvise()` 提供存取模式提示，例如 `POSIX_FADV_SEQUENTIAL`、`POSIX_FADV_RANDOM`；`POSIX_FADV_WILLNEED` 可提示近期將使用的範圍，`POSIX_FADV_DONTNEED` 則可請求釋放不再需要的快取。
 
@@ -196,17 +229,17 @@ Flush 是寫回，Eviction 是移出快取。Flush 後的頁面仍可留在 Buff
 
 **FIFO、LRU 與 Belady’s Anomaly**：FIFO（First-In, First-Out）依照頁面進入快取的先後順序淘汰，Hit 不會改變排隊順序；LRU（Least Recently Used）則淘汰最久沒有被存取的頁面，Hit 時也會更新最近使用順序。LRU 關心的是「最近何時使用」，不是單純累計使用次數。
 
-**Belady’s Anomaly（Belady 異常現象）**是指在相同參考序列與置換規則下，增加可容納頁面的 Frame 數量，Miss／Page Fault 反而變多。這裡增加的是 **Page Frames 的數量，不是 Page Size**。例如從空快取開始，依序存取 `1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5`，FIFO 使用 3 個 Frames 時有 9 次 Miss，增加到 4 個 Frames，反而有 10 次。
+**Belady’s Anomaly（Belady 異常現象）** 是指在相同參考序列與置換規則下，增加可容納頁面的 Frame 數量，Miss／Page Fault 反而變多。這裡增加的是 **Page Frames 的數量，不是 Page Size**。例如從空快取開始，依序存取 `1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5`，FIFO 使用 3 個 Frames 時有 9 次 Miss，增加到 4 個 Frames，反而有 10 次。
 
 這裡要區分 OS 與 DBMS 的用語：作業系統教材以 Page Fault 計算缺頁；DBMS Buffer Pool 找不到資料頁時，較精確的說法是 **Buffer Pool Miss**，不代表 CPU 一定發生 OS Page Fault。以下置換範例都以 Hit／Miss 表示是否在所討論的快取中找到頁面。
 
 **Stack Property（堆疊性質）**：對相同參考序列，若容量為 N 的快取內容始終包含於容量 N+1 的快取內容中，增加容量就不會增加 Miss。精確 LRU 具有這個性質；OPT（Optimal Page Replacement）則利用未來資訊，淘汰下一次最晚才會使用的頁面，最優 Miss 數也不會因容量增加而變多。FIFO 不具備這項保證，因此可能出現 Belady’s Anomaly。OPT 需要預知未來，主要用作比較基準。
 
-**LRU 的 Cache Pollution 與 2Q**：LRU 能保留近期使用的頁面，但一次性的大量順序掃描，也可能把原本常用的頁面擠出快取，形成 Cache Pollution（快取污染）或 Sequential Flooding。2Q（Two-Queue Algorithm）把新進頁面與已確認會再次使用的頁面分開管理，避免每個只讀一次的頁面都立即取得主要快取的地位。**2Q 是另一種置換策略，不是精確 LRU 的兩個 Queue 實作，也不能直接沿用 LRU 的 Stack Property 保證。**
+**LRU 的 Cache Pollution 與 2Q**：LRU 能保留近期使用的頁面，但一次性的大量順序掃描，也可能把原本常用的頁面擠出快取，形成 Cache Pollution（快取污染）或 Sequential Flooding。2Q（Two-Queue Algorithm）把新進頁面與已確認會再次使用的頁面分開管理，避免每個只讀一次的頁面都立即取得主要快取的地位。 **2Q 是另一種置換策略，不是精確 LRU 的兩個 Queue 實作，也不能直接沿用 LRU 的 Stack Property 保證**。
 
 **Simplified 2Q 與 Full 2Q**：簡化版使用 FIFO 的 `A1` 與 LRU 的 `Am`，頁面在 `A1` 期間再次被存取，就可升到 `Am`。原論文的 Full 2Q 則拆成 `A1in`、`A1out` 與 `Am`：`A1in` 以 FIFO 保存新進頁面；`A1out` 是 Ghost Queue，只保留已從 `A1in` 淘汰的 Page ID；`Am` 以 LRU 保存通過再次存取判斷的實際頁面。Ghost Queue 仍有少量識別資訊的記憶體成本，但不占用存放完整資料頁的 Frames。
 
-Full 2Q 命中 `A1in` 時，保留 FIFO 順序，不直接升到 `Am`，避免把同一波短時間內的重複存取誤認為長期熱門。若頁面已離開 `A1in`，但 Page ID 仍在 `A1out`，再次存取時才重新載入到 `Am`；此時雖然命中 Ghost 紀錄，**仍是資料頁的 Miss**。命中 `Am` 時，才依 LRU 規則更新到 MRU（Most Recently Used）端。若 Ghost 紀錄也已消失，就當成新進頁面處理。
+Full 2Q 命中 `A1in` 時，保留 FIFO 順序，不直接升到 `Am`，避免把同一波短時間內的重複存取誤認為長期熱門。若頁面已離開 `A1in`，但 Page ID 仍在 `A1out`，再次存取時才重新載入到 `Am`；此時雖然命中 Ghost 紀錄， **仍是資料頁的 Miss**。命中 `Am` 時，才依 LRU 規則更新到 MRU（Most Recently Used）端。若 Ghost 紀錄也已消失，就當成新進頁面處理。
 
 **Full 2Q 的空間回收規則**：有空閒 Frame 時先使用，不會只因 `A1in` 達到某個固定格數，就讓其他空間閒置。整個 Buffer 已滿時，原論文依 `A1in` 的大小與 `Kin` 門檻決定回收來源：`A1in` 大於門檻時，淘汰其 FIFO 最舊頁並把 ID 放入 `A1out`；否則淘汰 `Am` 的 LRU 頁，這個頁面不加入 `A1out`。Ghost 紀錄超過 `Kout` 時，刪除最舊 ID。因此，`Kin` 是選擇回收來源的門檻，不能直接當成不可借用的固定分區容量。參考 [Johnson 與 Shasha：2Q 原論文，Section 2](https://www.cs.cmu.edu/~natassa/courses/15-721/papers/P439.PDF)。
 
@@ -254,7 +287,7 @@ LFU 也有取捨：若只累計歷史次數，曾經熱門、現在已經不常�
 
 **Probation 與 Protected 的升降級**：通過准入的頁面先進入 Probation；在 Probation 中再次 Hit，就可升到 Protected，不需要先累積很多次存取。Protected 內命中時更新最近使用順序；若升級使 Protected 超過容量，就把其中的 LRU 頁面降回 Probation，而不是立即淘汰。Probation 保留待觀察與降級的頁面，需要回收主快取空間時，通常從其 LRU 端挑選 Victim。圖中的雙向箭頭表示這種升級與降級，向下箭頭則表示 Eviction。
 
-例如頁面 A 離開 Admission Window，估計頻率高於 Probation 中的候選 B，就可以取代 B、進入 Probation；之後 A 再次被存取，就升到 Protected。若 Protected 已滿，其中最久沒有被使用的 C 會降回 Probation，仍有機會再次命中後升級。**TinyLFU 的頻率比較決定是否准入，SLRU 的命中與容量規則決定升降級**，兩者合作，並非三個 Queue 都按 LFU 排序。參考 [Caffeine：Window TinyLFU](https://github.com/ben-manes/caffeine/wiki/Efficiency#window-tinylfu)。
+例如頁面 A 離開 Admission Window，估計頻率高於 Probation 中的候選 B，就可以取代 B、進入 Probation；之後 A 再次被存取，就升到 Protected。若 Protected 已滿，其中最久沒有被使用的 C 會降回 Probation，仍有機會再次命中後升級。 **TinyLFU 的頻率比較決定是否准入，SLRU 的命中與容量規則決定升降級**，兩者合作，並非三個 Queue 都按 LFU 排序。參考 [Caffeine：Window TinyLFU](https://github.com/ben-manes/caffeine/wiki/Efficiency#window-tinylfu)。
 
 ---
 
@@ -262,7 +295,7 @@ LFU 也有取捨：若只累計歷史次數，曾經熱門、現在已經不常�
 
 Buffer Pool 中的修改與磁碟資料頁不會隨時一致。交易處理需要同時維持 ACID；這裡先用帳戶例子理解提交、寫回與恢復的關係，再看並行交易的隔離問題。
 
-**WAL、Write-Ahead Log 與 Commit Log**：WAL 可以指 Write-Ahead Logging（預寫式日誌機制），也可以指 Write-Ahead Log（日誌本身）。它的核心規則是：**資料頁寫入持久化儲存之前，必須先持久化足以恢復該頁修改的相關日誌。**資料可以先在 Buffer Pool 中被修改，不必每次都先同步日誌才允許修改記憶體；必須遵守的是 Log 與 Data Page 的持久化順序。
+**WAL、Write-Ahead Log 與 Commit Log**：WAL 可以指 Write-Ahead Logging（預寫式日誌機制），也可以指 Write-Ahead Log（日誌本身）。它的核心規則是： **資料頁寫入持久化儲存之前，必須先持久化足以恢復該頁修改的相關日誌**。資料可以先在 Buffer Pool 中被修改，不必每次都先同步日誌才允許修改記憶體；必須遵守的是 Log 與 Data Page 的持久化順序。
 
 部分系統把這類日誌稱為 Commit Log，例如 Cassandra；名稱仍依系統而定，不能因此理解成日誌只包含已提交交易，或只在 Commit 時才產生記錄。對支援交易的儲存引擎而言，交易進行中的修改與提交狀態，都可能需要記錄。參考 [Cassandra：Storage Engine](https://cassandra.apache.org/doc/stable/cassandra/architecture/storage-engine.html)。
 
@@ -272,7 +305,7 @@ Buffer Pool 中的修改與磁碟資料頁不會隨時一致。交易處理需�
 
 **STEAL 與 NO-STEAL**：STEAL 允許把含有未提交修改的 Dirty Page 提前寫回磁碟，並重用它的 Buffer Frame；它是允許這樣做，不是要求所有修改立即寫回。帳戶 A 就是這種情況。NO-STEAL 則不允許含有未提交修改的頁面以這種方式寫回。因此，STEAL 的好處是減少未完成交易對 Buffer 空間的占用，代價是在傳統恢復模型中需要 UNDO，處理已落盤的未提交修改。
 
-**FORCE 與 NO-FORCE**：FORCE 要求交易完成提交時，其修改的資料頁都已寫回持久化儲存；NO-FORCE 允許提交完成後，資料頁仍留在 Buffer Pool，稍後才寫回。帳戶 B 就是 NO-FORCE 的情況。NO-FORCE 可以降低提交時等待資料頁 I/O 的成本，但在傳統恢復模型中需要 REDO，補回已提交卻尚未落盤的修改。**FORCE 討論的是資料頁，不是只把 WAL Flush。**
+**FORCE 與 NO-FORCE**：FORCE 要求交易完成提交時，其修改的資料頁都已寫回持久化儲存；NO-FORCE 允許提交完成後，資料頁仍留在 Buffer Pool，稍後才寫回。帳戶 B 就是 NO-FORCE 的情況。NO-FORCE 可以降低提交時等待資料頁 I/O 的成本，但在傳統恢復模型中需要 REDO，補回已提交卻尚未落盤的修改。 **FORCE 討論的是資料頁，不是只把 WAL Flush**。
 
 **STEAL + NO-FORCE 的恢復條件**：這組政策允許磁碟上的資料頁暫時包含未提交修改，也暫時缺少已提交修改，因此不能把資料頁本身當成完整的交易結果。正確性要由資料頁、持久化日誌、交易狀態與恢復機制共同保證。關鍵是 WAL 的順序：資料頁落盤之前，相關恢復資訊必須先持久化；在本例要求的同步持久化提交模式下，回覆提交成功之前，必要修改日誌與 Commit Record 也必須先持久化。日誌只留在記憶體或 OS Page Cache，都不足以提供這項保證。
 
@@ -294,7 +327,7 @@ Buffer Pool 中的修改與磁碟資料頁不會隨時一致。交易處理需�
 
 **Page LSN 與 Flushed LSN**：以常見的恢復模型說明，`pageLSN` 表示目前頁面所反映的最新修改日誌位置，`flushedLSN` 表示日誌已持久化到的進度。寫回某個 Dirty Page 之前，必須確保相關日誌已完整持久化，概念上可寫成 **`flushedLSN ≥ pageLSN`**。這個比較沿用教科書把 LSN 視為記錄序號的簡化方式；若實作用 LSN 表示位元組位置，則還必須涵蓋相關記錄的結尾，不能只寫到記錄開頭。
 
-例如某頁面最新修改的日誌序號為 120，而 `flushedLSN = 100`，就不能先把包含該修改的頁面寫回；必須先持久化涵蓋記錄 120 的日誌，再寫回資料頁。因此，「Flush 到目標 LSN」表示確保**直到該目標所需的日誌前綴都已持久化**，不是只刷新單筆記錄，也不是把所有資料頁都刷新到同一個 LSN。日誌已持久化到哪裡，也不代表恢復程序已經重播到哪裡，兩者是不同的進度。
+例如某頁面最新修改的日誌序號為 120，而 `flushedLSN = 100`，就不能先把包含該修改的頁面寫回；必須先持久化涵蓋記錄 120 的日誌，再寫回資料頁。因此，「Flush 到目標 LSN」表示確保 **直到該目標所需的日誌前綴都已持久化**，不是只刷新單筆記錄，也不是把所有資料頁都刷新到同一個 LSN。日誌已持久化到哪裡，也不代表恢復程序已經重播到哪裡，兩者是不同的進度。
 
 **Buffer Flush 與 Commit 的關係**：資料頁 Flush 不等於交易 Commit，Commit 也不一定需要立即 Flush 所有 Dirty Pages。在要求本機同步持久化的提交模式下，通常要先將涵蓋該交易必要修改與 Commit Record 的日誌持久化，再向 Client 回報提交成功；資料頁可以稍後寫回，故障時再依日誌恢復。非同步提交模式則可能先回覆，因此可能在故障後遺失近期已回覆的交易，須依實際設定判斷。參考 [PostgreSQL：Write-Ahead Logging](https://www.postgresql.org/docs/current/wal-intro.html)。
 
@@ -306,7 +339,7 @@ Buffer Pool 中的修改與磁碟資料頁不會隨時一致。交易處理需�
 
 **Read Anomalies（讀取異常）與 Write Anomalies（寫入異常）**：並行交易交錯執行時，可能讀到尚未提交的修改、在同一筆交易中前後看到不同內容，或覆蓋其他交易的修改。這裡的 Dirty 是相對於其他交易尚未完成提交而言，與 Buffer Pool 中「修改尚未寫回」的 Dirty Page 定義不同；讀到 Dirty Page 並不必然就是 Dirty Read。
 
-**Dirty Read（髒讀）**：T1 把 V 從 100 改成 90，尚未 Commit，T2 就讀到 90，此時已經構成 Dirty Read。若 T1 後來失敗並 Rollback，V 回到 100，T2 便曾依據最後沒有成立的修改做出判斷。但 **T1 後來是否真的失敗，不是髒讀成立的必要條件；重點是 T2 讀取當下，修改尚未提交。**
+**Dirty Read（髒讀）**：T1 把 V 從 100 改成 90，尚未 Commit，T2 就讀到 90，此時已經構成 Dirty Read。若 T1 後來失敗並 Rollback，V 回到 100，T2 便曾依據最後沒有成立的修改做出判斷。但 **T1 後來是否真的失敗，不是髒讀成立的必要條件；重點是 T2 讀取當下，修改尚未提交**。
 
 **Nonrepeatable Read（不可重複讀）**：T1 先讀取某筆資料，得到 V = 100；接著 T2 把同一筆資料改成 120 並 Commit；T1 在自己同一筆交易尚未結束前再次讀取，卻得到 V = 120。兩次讀到的都可以是已提交值，因此不需要發生 Dirty Read。重點是同一交易重讀同一筆資料時，內容因其他已提交交易而改變；資料列被刪除，也可能造成重讀時找不到。若 T1 已結束，再開始另一筆交易讀到新值，則不屬於這裡的不可重複讀。
 
@@ -328,7 +361,7 @@ Buffer Pool 中的修改與磁碟資料頁不會隨時一致。交易處理需�
 
 完整交易層級的 OCC 通常分成 **Read、Validation、Write** 三階段：Read Phase 在私有工作區讀取、計算與暫存修改，建立 Read Set 與 Write Set；Validation Phase 檢查與其他交易的讀寫依賴是否衝突；通過後才於 Write Phase 發布修改，失敗則撤銷或重試。驗證可以回頭檢查已提交交易（Backward Validation），或檢查仍在執行的交易（Forward Validation）；驗證與發布仍須協調，避免兩筆交易同時通過卻破壞彼此假設，因此樂觀控制不代表內部完全沒有同步。
 
-例如讀到 `balance = 1000, version = 5`，更新時可以執行 `UPDATE accounts SET balance = 900, version = version + 1 WHERE id = 1 AND version = 5`。若版本已被別人改變，就無法匹配原版本，需要處理衝突；沒有匹配也可能是資料列已被刪除。**版本條件必須和更新放在同一個原子操作中**，不能先查版本、再無條件更新。這是單列樂觀並行控制的例子，不代表已驗證整筆交易的所有讀寫依賴。參考 [Microsoft：Optimistic Concurrency](https://learn.microsoft.com/en-us/ef/core/saving/concurrency)。
+例如讀到 `balance = 1000, version = 5`，更新時可以執行 `UPDATE accounts SET balance = 900, version = version + 1 WHERE id = 1 AND version = 5`。若版本已被別人改變，就無法匹配原版本，需要處理衝突；沒有匹配也可能是資料列已被刪除。 **版本條件必須和更新放在同一個原子操作中**，不能先查版本、再無條件更新。這是單列樂觀並行控制的例子，不代表已驗證整筆交易的所有讀寫依賴。參考 [Microsoft：Optimistic Concurrency](https://learn.microsoft.com/en-us/ef/core/saving/concurrency)。
 
 **PCC（Pessimistic Concurrency Control，悲觀並行控制）**：在交易執行過程中，先對可能衝突的操作進行協調，不安全時就等待或中止，而不是等全部執行完才統一驗證。常見方式是在交易中以 `SELECT ... FOR UPDATE` 鎖住目標資料列，取得存取權後再讀取與修改，其他衝突操作等待鎖釋放。鎖可以保護交易的邏輯資料；前面討論的 Latch 則保護短時間的頁面與索引結構操作，兩者用途不同。參考 [PostgreSQL：Explicit Locking](https://www.postgresql.org/docs/current/explicit-locking.html)。
 
@@ -344,7 +377,7 @@ Buffer Pool 中的修改與磁碟資料頁不會隨時一致。交易處理需�
 
 以 PostgreSQL 為例，可以用 `BEGIN TRANSACTION ISOLATION LEVEL SERIALIZABLE;` 開始交易，執行本次查詢與修改後再 `COMMIT;`；也可以先 `BEGIN;`，再執行 `SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;`。隔離層級必須在該交易第一個查詢或資料修改之前設定，不能讀到一半才提高層級。`SET TRANSACTION` 只影響目前這筆交易，後續交易仍沿用預設值；其他 DBMS 的語法與生效範圍需分別確認。參考 [PostgreSQL：SET TRANSACTION](https://www.postgresql.org/docs/current/sql-set-transaction.html)。
 
-**實務上怎麼選擇？**：常見做法是先確認 DBMS 的預設值與保證，讓一般交易在已驗證正確的預設設定下執行，需要更強隔離的交易再個別指定。例如 PostgreSQL 預設為 Read Committed；單列庫存扣減可以視需求使用帶條件的原子更新、版本檢查或先鎖再讀。若一筆交易包含多次讀取並要求固定快照，可以評估該 DBMS 的 Repeatable Read／Snapshot Isolation；若要保護跨列、範圍或聚合判斷下的不變條件，可以評估 Serializable 或足夠的顯式協調。使用 Serializable 仍需保留正確的業務檢查，並處理 Serialization Failure，必要時從頭重試整筆交易，而不是只重跑最後一條 SQL。隔離層級的選擇應依正確性需求與實測成本決定。參考 [PostgreSQL：Transaction Isolation](https://www.postgresql.org/docs/current/transaction-iso.html)。
+**實務上怎麼選擇**？：常見做法是先確認 DBMS 的預設值與保證，讓一般交易在已驗證正確的預設設定下執行，需要更強隔離的交易再個別指定。例如 PostgreSQL 預設為 Read Committed；單列庫存扣減可以視需求使用帶條件的原子更新、版本檢查或先鎖再讀。若一筆交易包含多次讀取並要求固定快照，可以評估該 DBMS 的 Repeatable Read／Snapshot Isolation；若要保護跨列、範圍或聚合判斷下的不變條件，可以評估 Serializable 或足夠的顯式協調。使用 Serializable 仍需保留正確的業務檢查，並處理 Serialization Failure，必要時從頭重試整筆交易，而不是只重跑最後一條 SQL。隔離層級的選擇應依正確性需求與實測成本決定。參考 [PostgreSQL：Transaction Isolation](https://www.postgresql.org/docs/current/transaction-iso.html)。
 
 **四種標準隔離層級與讀取異常**：下表表示 SQL 標準對三種讀取異常的最低限制；「可能」代表允許發生，不代表每次都會發生。
 

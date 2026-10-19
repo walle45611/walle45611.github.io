@@ -340,13 +340,36 @@ LFU 也有取捨：若只累計歷史次數，曾經熱門、現在已經不常�
 
 **OCC（Optimistic Concurrency Control，樂觀並行控制）**：先執行讀取與計算，再驗證是否與其他交易衝突；未通過就撤銷或重試，而不是先把未驗證的結果正式提交。應用層常見方式是為資料加上會隨修改變動的 `version` 或可靠的版本時間戳。固定不變的 Primary Key 只能識別資料列，不能單獨識別它是否被修改。
 
+完整交易層級的 OCC 通常分成 **Read、Validation、Write** 三階段：Read Phase 在私有工作區讀取、計算與暫存修改，建立 Read Set 與 Write Set；Validation Phase 檢查與其他交易的讀寫依賴是否衝突；通過後才於 Write Phase 發布修改，失敗則撤銷或重試。驗證可以回頭檢查已提交交易（Backward Validation），或檢查仍在執行的交易（Forward Validation）；驗證與發布仍須協調，避免兩筆交易同時通過卻破壞彼此假設，因此樂觀控制不代表內部完全沒有同步。
+
 例如讀到 `balance = 1000, version = 5`，更新時可以執行 `UPDATE accounts SET balance = 900, version = version + 1 WHERE id = 1 AND version = 5`。若版本已被別人改變，就無法匹配原版本，需要處理衝突；沒有匹配也可能是資料列已被刪除。**版本條件必須和更新放在同一個原子操作中**，不能先查版本、再無條件更新。這是單列樂觀並行控制的例子，不代表已驗證整筆交易的所有讀寫依賴。參考 [Microsoft：Optimistic Concurrency](https://learn.microsoft.com/en-us/ef/core/saving/concurrency)。
 
-**PCC（Pessimistic Concurrency Control，悲觀並行控制）**：先取得必要的鎖，再進行受保護的操作。例如在交易中以 `SELECT ... FOR UPDATE` 鎖住目標資料列，其他衝突操作通常需要等待，直到鎖釋放。若 T1 持有 A 的鎖並等待 B，T2 卻持有 B 的鎖並等待 A，就可能形成 Deadlock；DB 通常需要中止其中一筆交易，應用再依需求重試。悲觀控制不代表鎖住整個 DB，鎖的範圍與生命週期依協定而定。參考 [PostgreSQL：Explicit Locking](https://www.postgresql.org/docs/current/explicit-locking.html)。
+**PCC（Pessimistic Concurrency Control，悲觀並行控制）**：在交易執行過程中，先對可能衝突的操作進行協調，不安全時就等待或中止，而不是等全部執行完才統一驗證。常見方式是在交易中以 `SELECT ... FOR UPDATE` 鎖住目標資料列，取得存取權後再讀取與修改，其他衝突操作等待鎖釋放。鎖可以保護交易的邏輯資料；前面討論的 Latch 則保護短時間的頁面與索引結構操作，兩者用途不同。參考 [PostgreSQL：Explicit Locking](https://www.postgresql.org/docs/current/explicit-locking.html)。
+
+**Lock-Based PCC 與 2PL**：Two-Phase Locking 將鎖管理分成 Growing Phase（取得鎖、不釋放）與 Shrinking Phase（釋放鎖、不再取得新鎖），重點是一旦開始釋放，就不能再取得新的交易鎖。它不是要求一開始就拿齊所有鎖，也不是 Two-Phase Commit（2PC）；基本 2PL 提供衝突可序列化，仍需搭配適當的資料列／範圍保護與提交、回滾規則，Strict 2PL 等變體會進一步限制鎖的釋放時機。
+
+**Timestamp Ordering（時間戳排序）**：本書也把執行中逐步檢查的時間戳排序放在 PCC 下，不同教材可能採用不同分類，因此 PCC 不能只理解為「一定使用交易鎖」。每筆交易有 `TS(T)`，每個資料項目維護最大讀取時間戳 `R_TS` 與最大寫入時間戳 `W_TS`：讀取時若 `TS(T) < W_TS`，或寫入時 `TS(T) < R_TS`，表示違反預定邏輯順序，需要中止；基本協定在 `TS(T) < W_TS` 的寫入也會中止，但採用 Thomas Write Rule 時，可以略過這次過時寫入、讓交易繼續，而不是讓舊值覆蓋新值。這裡的時間戳用來排序，不一定是實際時鐘；也不同於僅用一個 `version` 欄位做應用層的樂觀更新檢查。
 
 **OCC／PCC 的選擇：看衝突程度與成本**：讀多寫少的工作負載常適合 OCC，但核心不是只看讀寫比例，而是資料競爭程度（Contention）。大量寫入若分散在不同帳戶，仍可能很少衝突；整體寫入不多，卻集中搶同一筆庫存，也可能高度競爭。衝突少、重試成本低時，OCC 可以減少等待；衝突多、反覆重做成本高時，PCC 可能較合適，但也要付出鎖管理、等待與 Deadlock 處理的成本。這是選擇方向，不是所有實作與工作負載都成立的效能定律。參考 [Microsoft：Concurrency Control](https://learn.microsoft.com/en-us/sql/relational-databases/sql-server-transaction-locking-and-row-versioning-guide)。
 
 **MVCC（Multi-Version Concurrency Control，多版本並行控制）**：保留資料的多個版本，依 Snapshot 與隔離規則，決定交易能讀到哪個版本。單純增加一個 `version` 欄位檢查更新衝突，不等於實作 MVCC；MVCC 還涉及版本可見性與舊版本回收。它可以搭配樂觀驗證或鎖定，採用 MVCC 也不代表寫入永遠不等待、沒有 Deadlock，或自動具備 Serializable。參考 [PostgreSQL：MVCC](https://www.postgresql.org/docs/current/mvcc-intro.html)。
+
+**Isolation Level 可以在 Transaction 中設定**：隔離層級是 DBMS 提供的交易行為設定，不是把 Dirty Read、Phantom Read 等異常逐項打開或關閉。交易未指定時，會沿用連線或資料庫的預設隔離層級；應用程式也可以在開始單筆交易時，透過 SQL、Driver 或 ORM 的 Transaction API 指定本次需要的 Isolation Level。這是在選擇需要的隔離保證，不是直接切換 OCC、PCC 或 MVCC 實作。
+
+以 PostgreSQL 為例，可以用 `BEGIN TRANSACTION ISOLATION LEVEL SERIALIZABLE;` 開始交易，執行本次查詢與修改後再 `COMMIT;`；也可以先 `BEGIN;`，再執行 `SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;`。隔離層級必須在該交易第一個查詢或資料修改之前設定，不能讀到一半才提高層級。`SET TRANSACTION` 只影響目前這筆交易，後續交易仍沿用預設值；其他 DBMS 的語法與生效範圍需分別確認。參考 [PostgreSQL：SET TRANSACTION](https://www.postgresql.org/docs/current/sql-set-transaction.html)。
+
+**實務上怎麼選擇？**：常見做法是先確認 DBMS 的預設值與保證，讓一般交易在已驗證正確的預設設定下執行，需要更強隔離的交易再個別指定。例如 PostgreSQL 預設為 Read Committed；單列庫存扣減可以視需求使用帶條件的原子更新、版本檢查或先鎖再讀。若一筆交易包含多次讀取並要求固定快照，可以評估該 DBMS 的 Repeatable Read／Snapshot Isolation；若要保護跨列、範圍或聚合判斷下的不變條件，可以評估 Serializable 或足夠的顯式協調。使用 Serializable 仍需保留正確的業務檢查，並處理 Serialization Failure，必要時從頭重試整筆交易，而不是只重跑最後一條 SQL。隔離層級的選擇應依正確性需求與實測成本決定。參考 [PostgreSQL：Transaction Isolation](https://www.postgresql.org/docs/current/transaction-iso.html)。
+
+**四種標準隔離層級與讀取異常**：下表表示 SQL 標準對三種讀取異常的最低限制；「可能」代表允許發生，不代表每次都會發生。
+
+| 隔離層級 | Dirty Read | Nonrepeatable Read | Phantom Read |
+| --- | --- | --- | --- |
+| Read Uncommitted | 可能 | 可能 | 可能 |
+| Read Committed | 禁止 | 可能 | 可能 |
+| Repeatable Read | 禁止 | 禁止 | 標準允許 |
+| Serializable | 禁止 | 禁止 | 禁止 |
+
+實際 DBMS 可以提供比標準最低要求更強的保證。例如 PostgreSQL 的 Read Uncommitted 等同 Read Committed，其 Repeatable Read 也禁止 Phantom Read，但仍可能發生 Write Skew 等序列化異常。因此，這三種異常都被禁止，不足以單獨證明已達到 Serializable；上表也未列出所有寫入異常。參考 [PostgreSQL：Transaction Isolation](https://www.postgresql.org/docs/current/transaction-iso.html)。
 
 **Serializable（可序列化）與串行順序**：Serializable 要求已提交交易的並行執行效果，等價於某個逐筆執行的合法順序。交易實際上仍可以交錯執行；要檢查的不只是最後的資料值，也包含交易讀到了什麼、依此做出哪些操作。OCC 與 PCC 都能透過適當設計實現這項保證，但單列版本檢查或局部鎖定不自動保證整筆交易可序列化。應用是否需要選擇 Serializable，取決於要保護的規則與其他協調方式。
 
@@ -359,3 +382,33 @@ LFU 也有取捨：若只累計歷史次數，曾經熱門、現在已經不常�
 **Serializable 與 Eventual Consistency（最終一致性）不同**：前面討論的是交易隔離，不能概括為「DB 最後在意的都是最終一致性」。Eventual Consistency 通常用來描述多副本資料：若沒有新的更新，且更新傳播與衝突處理能持續完成，各副本最終會收斂；在此之前，讀取可能看到舊資料。它本身不保證多筆交易的執行歷史可序列化，也不保證庫存不超賣。例如兩個副本最後都同步成同一個超賣結果，仍不符合庫存業務規則。參考 [AWS：DynamoDB Read Consistency](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html)。
 
 **ACID 的 Consistency 也要分開理解**：ACID 的一致性是交易應維持資料約束與業務不變條件；Serializable 是交易隔離的保證；Eventual Consistency 則描述副本或讀取結果的收斂性質。它們討論的層次不同，可以在同一個系統中分別設計。例如主庫內的交易可要求 Serializable，同時以非同步方式把結果傳給唯讀副本；從副本讀取仍可能落後主庫。
+
+---
+
+**Read Anomalies（讀取異常）與 Write Anomalies（寫入異常）**：並行交易交錯執行時，可能讀到尚未提交的修改、在同一筆交易中前後看到不同內容，或覆蓋其他交易的修改。這裡的 Dirty 是相對於其他交易尚未完成提交而言，與 Buffer Pool 中「修改尚未寫回」的 Dirty Page 定義不同；讀到 Dirty Page 並不必然就是 Dirty Read。
+
+**Dirty Read（髒讀）**：T1 把 V 從 100 改成 90，尚未 Commit，T2 就讀到 90，此時已經構成 Dirty Read。若 T1 後來失敗並 Rollback，V 回到 100，T2 便曾依據最後沒有成立的修改做出判斷。但 **T1 後來是否真的失敗，不是髒讀成立的必要條件；重點是 T2 讀取當下，修改尚未提交。**
+
+**Nonrepeatable Read（不可重複讀）**：T1 先讀取某筆資料，得到 V = 100；接著 T2 把同一筆資料改成 120 並 Commit；T1 在自己同一筆交易尚未結束前再次讀取，卻得到 V = 120。兩次讀到的都可以是已提交值，因此不需要發生 Dirty Read。重點是同一交易重讀同一筆資料時，內容因其他已提交交易而改變；資料列被刪除，也可能造成重讀時找不到。若 T1 已結束，再開始另一筆交易讀到新值，則不屬於這裡的不可重複讀。
+
+**Phantom Records 與 Phantom Read（幻讀）**：T1 以相同查詢條件重查時，符合條件的資料列集合因其他交易已提交的修改而改變。例如先查詢 `price < 100` 得到 3 筆，T2 新增一筆符合條件的商品並 Commit，T1 在同一交易重查得到 4 筆，新出現的符合條件資料列就是 Phantom Record，而觀察到集合改變的現象稱為 Phantom Read。刪除符合條件的列，或更新欄位讓列進入、離開查詢集合，也可能造成這種變化；不一定要使用數值範圍，任何符合條件的集合查詢都可能涉及這個問題。通常稱為「幻讀」，不是「換讀」。
+
+**不可重複讀與幻讀的區別**：前者著重同一筆資料重讀時值或存在性改變，後者著重相同查詢條件得到的資料列集合改變；某些具體修改可能同時涉及兩種觀察角度。三種讀取異常不要求所有隔離層級都會發生，實際行為取決於 DBMS 與隔離設定。參考 [PostgreSQL：Transaction Isolation](https://www.postgresql.org/docs/current/transaction-iso.html)。
+
+**Lost Update（遺失更新）**：假設 V = 100，T1、T2 都先讀到這個舊值。T1 計算加 10，寫入 110 並 Commit；T2 卻仍依據自己先前讀到的 100 計算加 20，再寫入 120 並 Commit。原本應保留兩次加值、得到 130，最後卻只剩 120，T1 的更新效果被覆蓋。重點是以過期的讀取結果進行 Read-Modify-Write，而不是任何較晚的寫入都算遺失更新。此例即使 T2 等到 T1 Commit 後才寫入，仍可能發生，所以不能只靠禁止 Dirty Write 解決。依需求可以使用版本檢查、先鎖再讀，或適當的原子更新。參考 [Microsoft：Concurrency Effects](https://learn.microsoft.com/en-us/sql/relational-databases/sql-server-transaction-locking-and-row-versioning-guide)。
+
+**Dirty Write（髒寫）**：T1 把 V 從 100 改成 90，尚未 Commit 或完成 Rollback，T2 就直接覆寫同一個資料項目，例如寫成 80，這就是 Dirty Write。它不要求 T2 已經 Commit，也不要求 T2 曾讀到 T1 的值；判斷重點是 **T2 寫入當下，正在覆寫 T1 尚未結束的修改**。這會讓 Rollback 變得複雜：若 T1 失敗，系統不能只把值改回 100，否則可能又破壞 T2 的修改。實務上常藉由寫入鎖或寫入衝突檢查阻止這類覆寫。
+
+**Lost Update 與 Dirty Write 的區別**：Lost Update 關心某筆更新的效果因並行操作而遺失；Dirty Write 關心寫入是否覆蓋另一筆未結束交易的修改。前面的 Lost Update 範例刻意讓 T1 先 Commit、T2 才寫入，因此不是 Dirty Write；兩者不是單純靠「T2 是否 Commit」區分。參考 [Berenson 等：A Critique of ANSI SQL Isolation Levels](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/tr-95-51.pdf)。
+
+---
+
+**Latch 與讀者／寫者問題**：交易的隔離保護邏輯資料，儲存引擎內部還需要保護 Page 內容與 B-Tree 結構，避免執行緒讀到修改或分裂到一半的頁面。這類短時間的保護稱為 Latch，可以使用 Readers–Writer Lock 實作：多個 Readers 以 Shared 模式同時讀取，Writer 則必須取得 Exclusive Latch，才能修改同一個頁面。這與作業系統中的讀者／寫者問題相通，Reader Priority、Writer Priority 與 Semaphore 的完整流程可參考另一篇 [Famous Synchronization Problems](https://blog.walle4561.com/articles/posts/famous-synchronization-problems/)。
+
+若採用 **Writer Priority（寫者優先）**，等待中的 Writer 會阻止新 Readers 插隊，待既有 Readers 釋放 Shared Latch 後取得獨占權寫入，期間其他 Readers 與 Writers 都必須等待。
+
+**Latch 的實作方式**：可以使用 Busy-wait（忙等，例如 Spinlock）、Blocking（阻塞等待，由排程器喚醒），或先短暫自旋再阻塞的混合方式；Spinlock 是忙等的一種實作，不是與 Busy-wait 分開的另一類。Readers–Writer Lock 則描述讀共享、寫獨占的存取規則，等待時也能採用上述方式。
+
+**Latch Crabbing（Latch Coupling）**：沿 B-Tree 向下時，先取得子節點的 Latch；若插入空間足夠、不會 Split，或刪除後仍符合占用要求、不需向父節點傳播 Merge／Rebalancing，就可以釋放父節點的 Latch。若可能 Split 或因刪除而需要 Merge／Rebalancing，就保留必要的祖先 Latches，直到確認不再需要向上修改，再及早釋放。
+
+![[Assets/Note/Tech/Database Internals/latch-crabbing.png]]

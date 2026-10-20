@@ -15,7 +15,7 @@ blog_topic: 刷題
 
 <!--more-->
 
-![[Assets/External/imgur/LLJNmPR.png|1. Blog Image]]
+![[Assets/Note/Research/virtual-judge-p2249/1. Blog Image-LLJNmPR.png|1. Blog Image]]
 
 * [P2249 題目連結](https://www.luogu.com.cn/problem/P2249)
 * 這題解題思路主要是使用二分搜尋法來解決問題。透過不斷縮小範圍來尋找目標數字的位置，當找到相同的數字時，即可將其所在的中間位置輸出。

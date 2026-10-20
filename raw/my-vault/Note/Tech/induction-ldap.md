@@ -11,7 +11,7 @@ blog_url: https://blog.walle4561.com/articles/posts/induction-ldap/
 
 <!--more-->
 
-![[Assets/External/imgur/pZv36P7.png|圖 1. : Blog Image]]
+![[Assets/Note/Tech/induction-ldap/圖 1. - Blog Image-pZv36P7.png|圖 1. : Blog Image]]
 
 LDAP 是一個基於訊息的協定，採用主從式架構，定義於 [RFC2251](https://www.ietf.org/rfc/rfc2251.txt) 中。它的非同步特性意味著用戶端可以同時發出多個請求，而伺服器則可以根據重要性來回應，不需要按順序進行，這讓系統運行更加有效率。
 
@@ -44,11 +44,11 @@ LDAP 在很多領域都有應用，以下是一些常見的例子：
 
 ## LDAP 的組件和結構
 
-![[Assets/External/imgur/diYeWxm.png|圖 2. : LDAP 的組件和結構 ]]
+![[Assets/Note/Tech/induction-ldap/圖 2. - LDAP 的組件和結構-diYeWxm.png|圖 2. : LDAP 的組件和結構 ]]
 
 ### 資料結構
 
-![[Assets/External/imgur/J91WtRS.png|圖 3. : LDAP 的資料結構]]
+![[Assets/Note/Tech/induction-ldap/圖 3. - LDAP 的資料結構-J91WtRS.png|圖 3. : LDAP 的資料結構]]
 
 LDAP 的資料結構其實是由三個主要部分組成的：`Schema`、`Object Class` 和 `Attribute Type`。
 
@@ -58,7 +58,7 @@ LDAP 的資料結構其實是由三個主要部分組成的：`Schema`、`Object
 
 ### LDAP 的樹狀結構
 
-![[Assets/External/imgur/24T9wDP.png|圖 4. : LDAP 的樹狀結構]]
+![[Assets/Note/Tech/induction-ldap/圖 4. - LDAP 的樹狀結構-24T9wDP.png|圖 4. : LDAP 的樹狀結構]]
 
 LDAP 的結構就像是一棵樹，每個節點都是一個 `Entry`，每個 `Entry` 只能使用一種 `Object Class` 來表達。而這些 `Entry` 可以無限層級地分層，形成複雜的樹狀結構。
 

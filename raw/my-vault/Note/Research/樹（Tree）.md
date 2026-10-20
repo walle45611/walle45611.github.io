@@ -19,7 +19,7 @@ blog_topic: 資料結構
 
   
 
-![[Assets/External/imgur/LzDtjZ9.png|圖 2. : A sample tree]]
+![[Assets/Note/Research/樹（Tree）/圖 2. - A sample tree-LzDtjZ9.png|圖 2. : A sample tree]]
 
   
 
@@ -47,7 +47,7 @@ blog_topic: 資料結構
 
 * 也可以使用以下方法 $(A(B, C(E, F), D))$ 下圖為資料結構中真實的樣子，以該樹的 degree 為三，所以要開四格一格為自己的資料如下圖：
 
-![[Assets/External/imgur/hiqw0DL.png|圖 3. : List Representtation]]
+![[Assets/Note/Research/樹（Tree）/圖 3. - List Representtation-hiqw0DL.png|圖 3. : List Representtation]]
 
   
 
@@ -81,4 +81,4 @@ $$
 
 * 以 *(A(B, C(E, F), D))* 為例如下圖：
 
-![[Assets/External/imgur/scqhzkk.png|圖 4. : ]]
+![[Assets/Note/Research/樹（Tree）/圖 4-scqhzkk.png|圖 4. : ]]

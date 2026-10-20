@@ -11,7 +11,7 @@ blog_url: https://blog.walle4561.com/articles/posts/rest-with-api/
 
 <!--more-->
 
-![[Assets/External/imgur/ihJNO9r.png|圖 1. : Blog Image]]
+![[Assets/Note/Tech/rest-with-api/圖 1. - Blog Image-ihJNO9r.png|圖 1. : Blog Image]]
 
 ## API 介紹
 
@@ -85,7 +85,7 @@ Web API 可以被視為用戶端和 Web 資源之間的中介。
 
 ### RESTful API 如何運作的
 
-![[Assets/External/imgur/z1kOtxa.png|圖 2. : RESTful API 如何運作的]]
+![[Assets/Note/Tech/rest-with-api/圖 2. - RESTful API 如何運作的-z1kOtxa.png|圖 2. : RESTful API 如何運作的]]
 
 - 透過設計好的 API 格式，由 Client 發送 request 到 Web Server 上 (Application)
 

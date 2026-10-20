@@ -13,7 +13,7 @@ blog_topic: OS
 
 <!--more-->
 
-![[Assets/External/imgur/UkVANiR.png|圖 1. : Blog Image]]
+![[Assets/Note/Tech/race-condition-and-synchronization/圖 1. - Blog Image-UkVANiR.png|圖 1. : Blog Image]]
 
 - Where several processes access and manipulate the same data concurrently, and the outcome of the execution depends on the particular order in which the access takes place, is called a race condition.
   - 當多個 process 同時訪問和操作相同的數據，而執行結果取決於訪問操作的特定順序時，這種情況稱為競爭條件（race condition）。
@@ -21,7 +21,7 @@ blog_topic: OS
 
 ## The Critical-Section Problem (臨界區問題)
 
-![[Assets/External/imgur/DMJmmyv.png|圖 2. : Critical-Section]]
+![[Assets/Note/Tech/race-condition-and-synchronization/圖 2. - Critical-Section-DMJmmyv.png|圖 2. : Critical-Section]]
 
 ### 解決該問題的三個主要條件
 
@@ -40,7 +40,7 @@ blog_topic: OS
 
 ### Peterson’s Solution
 
-![[Assets/External/imgur/vtaZse1.png|圖 3. : Peterson’s Solution]]
+![[Assets/Note/Tech/race-condition-and-synchronization/圖 3. - Peterson’s Solution-vtaZse1.png|圖 3. : Peterson’s Solution]]
 
 - 基於軟體的解決方案。
 - 現代 compiler 的重新排序可能導致此方法失效。
@@ -95,9 +95,9 @@ int main() {
 
 ### Mutex Lock（互斥鎖）
 
-![[Assets/External/imgur/oXER5vp.png|圖 4. : Mutex Lock 1]]
+![[Assets/Note/Tech/race-condition-and-synchronization/圖 4. - Mutex Lock 1-oXER5vp.png|圖 4. : Mutex Lock 1]]
 
-![[Assets/External/imgur/ARKsZva.png|圖 5. : Mutex Lock 2]]
+![[Assets/Note/Tech/race-condition-and-synchronization/圖 5. - Mutex Lock 2-ARKsZva.png|圖 5. : Mutex Lock 2]]
 
 - 其實就是先上鎖在解鎖就這樣很簡單
 - available = true 可用，反之
@@ -167,8 +167,8 @@ int main() {
 - wait() 稱為 P 因為來自荷蘭語 proberen 測試
 - signal() 稱為 V 也是因為荷蘭語 verhogen 增加
 
-![[Assets/External/imgur/RuxzPo1.png|圖 6. : Semaphore wait]]
-![[Assets/External/imgur/E56z8Kf.png|圖 7. : Semaphore signal]]
+![[Assets/Note/Tech/race-condition-and-synchronization/圖 6. - Semaphore wait-RuxzPo1.png|圖 6. : Semaphore wait]]
+![[Assets/Note/Tech/race-condition-and-synchronization/圖 7. - Semaphore signal-E56z8Kf.png|圖 7. : Semaphore signal]]
 
 ```cpp
 #include <semaphore>
@@ -295,7 +295,7 @@ int main(){
 
 ### Producer-consumer problem 或 Bounded-buffer problem
 
-![[Assets/External/imgur/2Io3aEB.png|圖 6. : Producer-consumer problem 2]]
+![[Assets/Note/Tech/race-condition-and-synchronization/圖 6. - Producer-consumer problem 2-2Io3aEB.png|圖 6. : Producer-consumer problem 2]]
 
 **有界緩衝區問題**（Bounded-Buffer Problem）是由**生產者**和**消費者**共同存取同一個**緩衝區**（buffer）所引發的同步問題。由於生產者負責向緩衝區中添加資料，而消費者負責從緩衝區中取出資料，這種「共享資源」的情境可能導致以下問題：
 
@@ -313,7 +313,7 @@ int main(){
 
 為了解決這些問題，**使用了三個 semaphore** 進行同步和資源管理：
 
-![[Assets/External/imgur/zfbspoe.png|圖 7. : semaphore]]
+![[Assets/Note/Tech/race-condition-and-synchronization/圖 7. - semaphore-zfbspoe.png|圖 7. : semaphore]]
 
 1. **`mutex` 信號**：
 
@@ -329,8 +329,8 @@ int main(){
 
 - 範例
   
-  ![[Assets/External/imgur/LUk8O10.png|圖 8.1 : 範例]]
-  ![[Assets/External/imgur/my4R14j.png|圖 8.2 : 範例]]
+  ![[Assets/Note/Tech/race-condition-and-synchronization/圖 8.1 - 範例-LUk8O10.png|圖 8.1 : 範例]]
+  ![[Assets/Note/Tech/race-condition-and-synchronization/圖 8.2 - 範例-my4R14j.png|圖 8.2 : 範例]]
   - 當 t1 是一個 Consumer 發現 wait(full), full == 0 的時候發現所以會 waiting
   - 當 t2 是一個 Producer 的時候 wait(empty), empty ⇒ n - 1 and wait(mutex) mutex ⇒ 0，所以 Entering, when Producer Exiting 經過 Signal 所以 full += 1 和 mutex += 1
   - t4 因為 full 是 1 了所以 Wakeup

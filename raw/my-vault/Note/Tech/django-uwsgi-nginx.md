@@ -13,7 +13,7 @@ blog_url: https://blog.walle4561.com/articles/posts/django-uwsgi-nginx/
 
 <!--more-->
 
-![[Assets/External/imgur/fufoJmK.png|圖 1. : Blog Image]]
+![[Assets/Note/Tech/django-uwsgi-nginx/圖 1. - Blog Image-fufoJmK.png|圖 1. : Blog Image]]
 
 ## 開始實踐
 

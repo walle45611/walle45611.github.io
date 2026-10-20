@@ -11,7 +11,7 @@ DOMjudge 是一個開源的程式設計競賽管理系統，通常用於各類�
 
 <!--more-->
 
-![[Assets/External/imgur/YJsR9lN.png|圖 1. : Blog Image]]
+![[Assets/Note/Tech/domjudge-install-guide/圖 1. - Blog Image-YJsR9lN.png|圖 1. : Blog Image]]
 
 ### 安裝 DOMServer 流程
 

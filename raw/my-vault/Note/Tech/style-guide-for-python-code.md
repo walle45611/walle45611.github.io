@@ -11,7 +11,7 @@ PEP8 是在撰寫 Python 中的一些寫作規範標準，也就是說不遵照�
 
 <!--more-->
 
-![[Assets/External/imgur/DDM5EXN.png|圖 1. : Blog Image]]
+![[Assets/Note/Tech/style-guide-for-python-code/圖 1. - Blog Image-DDM5EXN.png|圖 1. : Blog Image]]
 
 ## PEP 257
 
@@ -63,7 +63,7 @@ PEP8 是在撰寫 Python 中的一些寫作規範標準，也就是說不遵照�
     print(sum(1,2))
     ```
 
-    ![[Assets/External/imgur/MJpNw89.png|圖 2 : Docstring 範例]]
+    ![[Assets/Note/Tech/style-guide-for-python-code/圖 2 - Docstring 範例-MJpNw89.png|圖 2 : Docstring 範例]]
 
 ## PEP8
 

@@ -14,7 +14,7 @@ blog_url: https://blog.walle4561.com/articles/posts/neovim-settings/
 
 <!--more-->
 
-![[Assets/External/imgbb/qWgZZCD-blog.webp|圖 1. Blog Image]]
+![[Assets/Note/Tech/neovim-settings/圖 1. Blog Image-qWgZZCD-blog.webp|圖 1. Blog Image]]
 
 ---
 
@@ -166,7 +166,7 @@ vim.g.snacks_animate = false
 
 ## **5. 測試與驗證**
 
-![[Assets/External/imgur/GdwfzgR.png|圖 2. 設定完成的圖片:]]
+![[Assets/Note/Tech/neovim-settings/圖 2. 設定完成的圖片-GdwfzgR.png|圖 2. 設定完成的圖片:]]
 
 1. 啟動 Neovim，執行：
 

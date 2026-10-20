@@ -11,7 +11,7 @@ blog_url: https://blog.walle4561.com/articles/posts/direct-image/
 
 <!--more-->
 
-![[Assets/External/imgur/XpRufSg.png|1. Blog Image]]
+![[Assets/Note/Research/direct-image/1. Blog Image-XpRufSg.png|1. Blog Image]]
 
 ## 定義
 

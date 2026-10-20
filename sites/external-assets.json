@@ -10,7 +10,7 @@
       "format": "WEBP",
       "width": 1792,
       "height": 1024,
-      "vault_path": "Assets/External/imgbb/qWgZZCD-blog.webp",
+      "vault_path": "Assets/Note/Tech/neovim-settings/圖 1. Blog Image-qWgZZCD-blog.webp",
       "notes": [
         "raw/my-vault/Note/Tech/neovim-settings.md"
       ]
@@ -23,7 +23,7 @@
       "format": "PNG",
       "width": 1118,
       "height": 641,
-      "vault_path": "Assets/External/imgur/2gYt4Pv.png",
+      "vault_path": "Assets/Note/Tech/setting-hoex/GithubAction-2gYt4Pv.png",
       "notes": [
         "raw/my-vault/Note/Tech/setting-hoex.md"
       ]
@@ -36,7 +36,7 @@
       "format": "PNG",
       "width": 2922,
       "height": 1396,
-      "vault_path": "Assets/External/imgur/Qthw6fp.png",
+      "vault_path": "Assets/Note/Tech/setting-hexo-ga/tracking_id-Qthw6fp.png",
       "notes": [
         "raw/my-vault/Note/Tech/setting-hexo-ga.md"
       ]
@@ -49,7 +49,7 @@
       "format": "PNG",
       "width": 2940,
       "height": 1678,
-      "vault_path": "Assets/External/imgur/ZZE6ntN.png",
+      "vault_path": "Assets/Note/Tech/vscode-extension-profile/vscode-extension-1-ZZE6ntN.png",
       "notes": [
         "raw/my-vault/Note/Tech/vscode-extension-profile.md"
       ]
@@ -62,7 +62,7 @@
       "format": "PNG",
       "width": 2826,
       "height": 1386,
-      "vault_path": "Assets/External/imgur/fVXv3Ae.png",
+      "vault_path": "Assets/Note/Tech/setting-hexo-ga/GA_Check-fVXv3Ae.png",
       "notes": [
         "raw/my-vault/Note/Tech/setting-hexo-ga.md"
       ]
@@ -75,7 +75,7 @@
       "format": "PNG",
       "width": 1792,
       "height": 1024,
-      "vault_path": "Assets/External/imgur/fufoJmK.png",
+      "vault_path": "Assets/Note/Tech/django-uwsgi-nginx/圖 1. - Blog Image-fufoJmK.png",
       "notes": [
         "raw/my-vault/Note/Tech/django-uwsgi-nginx.md"
       ]
@@ -88,7 +88,7 @@
       "format": "PNG",
       "width": 586,
       "height": 457,
-      "vault_path": "Assets/External/imgur/0dtk7qI.png",
+      "vault_path": "Assets/Note/Research/二元樹 (Binary Tree)/圖 7. - Strict binary tree-0dtk7qI.png",
       "notes": [
         "raw/my-vault/Note/Research/二元樹 (Binary Tree).md"
       ]
@@ -101,7 +101,7 @@
       "format": "PNG",
       "width": 600,
       "height": 229,
-      "vault_path": "Assets/External/imgur/24T9wDP.png",
+      "vault_path": "Assets/Note/Tech/induction-ldap/圖 4. - LDAP 的樹狀結構-24T9wDP.png",
       "notes": [
         "raw/my-vault/Note/Tech/induction-ldap.md"
       ]
@@ -114,7 +114,7 @@
       "format": "PNG",
       "width": 1112,
       "height": 370,
-      "vault_path": "Assets/External/imgur/2Io3aEB.png",
+      "vault_path": "Assets/Note/Tech/race-condition-and-synchronization/圖 6. - Producer-consumer problem 2-2Io3aEB.png",
       "notes": [
         "raw/my-vault/Note/Tech/race-condition-and-synchronization.md"
       ]
@@ -127,7 +127,7 @@
       "format": "PNG",
       "width": 1920,
       "height": 1080,
-      "vault_path": "Assets/External/imgur/44XrYRw.png",
+      "vault_path": "Assets/Note/Tech/windows-l2tp-connect-error-720/圖 2. - Windows VPN 連接錯誤-44XrYRw.png",
       "notes": [
         "raw/my-vault/Note/Tech/windows-l2tp-connect-error-720.md"
       ]
@@ -140,7 +140,7 @@
       "format": "PNG",
       "width": 2932,
       "height": 1366,
-      "vault_path": "Assets/External/imgur/4KhJy0H.png",
+      "vault_path": "Assets/Note/Tech/setup-openssh-server-in-windows-with-guacamole-sftp/圖 5. 完成圖-4KhJy0H.png",
       "notes": [
         "raw/my-vault/Note/Tech/setup-openssh-server-in-windows-with-guacamole-sftp.md"
       ]
@@ -153,7 +153,7 @@
       "format": "PNG",
       "width": 1376,
       "height": 246,
-      "vault_path": "Assets/External/imgur/7Jka2IQ.png",
+      "vault_path": "Assets/Note/Tech/deadlock-management/圖 3. - Deadlock-7Jka2IQ.png",
       "notes": [
         "raw/my-vault/Note/Tech/deadlock-management.md"
       ]
@@ -166,7 +166,7 @@
       "format": "PNG",
       "width": 962,
       "height": 582,
-      "vault_path": "Assets/External/imgur/ARKsZva.png",
+      "vault_path": "Assets/Note/Tech/race-condition-and-synchronization/圖 5. - Mutex Lock 2-ARKsZva.png",
       "notes": [
         "raw/my-vault/Note/Tech/race-condition-and-synchronization.md"
       ]
@@ -179,7 +179,7 @@
       "format": "PNG",
       "width": 1792,
       "height": 1024,
-      "vault_path": "Assets/External/imgur/DDM5EXN.png",
+      "vault_path": "Assets/Note/Tech/style-guide-for-python-code/圖 1. - Blog Image-DDM5EXN.png",
       "notes": [
         "raw/my-vault/Note/Tech/style-guide-for-python-code.md"
       ]
@@ -192,7 +192,7 @@
       "format": "PNG",
       "width": 480,
       "height": 416,
-      "vault_path": "Assets/External/imgur/DMJmmyv.png",
+      "vault_path": "Assets/Note/Tech/race-condition-and-synchronization/圖 2. - Critical-Section-DMJmmyv.png",
       "notes": [
         "raw/my-vault/Note/Tech/race-condition-and-synchronization.md"
       ]
@@ -205,7 +205,7 @@
       "format": "PNG",
       "width": 320,
       "height": 164,
-      "vault_path": "Assets/External/imgur/E56z8Kf.png",
+      "vault_path": "Assets/Note/Tech/race-condition-and-synchronization/圖 7. - Semaphore signal-E56z8Kf.png",
       "notes": [
         "raw/my-vault/Note/Tech/race-condition-and-synchronization.md"
       ]
@@ -218,7 +218,7 @@
       "format": "PNG",
       "width": 1792,
       "height": 1024,
-      "vault_path": "Assets/External/imgur/EUKBYfy.png",
+      "vault_path": "Assets/Note/Tech/isms-context-leadership-planning/圖 1. - Blog Image-EUKBYfy.png",
       "notes": [
         "raw/my-vault/Note/Tech/isms-context-leadership-planning.md"
       ]
@@ -231,7 +231,7 @@
       "format": "PNG",
       "width": 1920,
       "height": 1080,
-      "vault_path": "Assets/External/imgur/GdwfzgR.png",
+      "vault_path": "Assets/Note/Tech/neovim-settings/圖 2. 設定完成的圖片-GdwfzgR.png",
       "notes": [
         "raw/my-vault/Note/Tech/neovim-settings.md"
       ]
@@ -244,7 +244,7 @@
       "format": "PNG",
       "width": 953,
       "height": 388,
-      "vault_path": "Assets/External/imgur/J91WtRS.png",
+      "vault_path": "Assets/Note/Tech/induction-ldap/圖 3. - LDAP 的資料結構-J91WtRS.png",
       "notes": [
         "raw/my-vault/Note/Tech/induction-ldap.md"
       ]
@@ -257,7 +257,7 @@
       "format": "PNG",
       "width": 1792,
       "height": 1024,
-      "vault_path": "Assets/External/imgur/LLJNmPR.png",
+      "vault_path": "Assets/Note/Research/virtual-judge-p2249/1. Blog Image-LLJNmPR.png",
       "notes": [
         "raw/my-vault/Note/Research/virtual-judge-p2249.md"
       ]
@@ -270,7 +270,7 @@
       "format": "PNG",
       "width": 1300,
       "height": 446,
-      "vault_path": "Assets/External/imgur/LUk8O10.png",
+      "vault_path": "Assets/Note/Tech/race-condition-and-synchronization/圖 8.1 - 範例-LUk8O10.png",
       "notes": [
         "raw/my-vault/Note/Tech/race-condition-and-synchronization.md"
       ]
@@ -283,7 +283,7 @@
       "format": "PNG",
       "width": 1148,
       "height": 822,
-      "vault_path": "Assets/External/imgur/LzDtjZ9.png",
+      "vault_path": "Assets/Note/Research/樹（Tree）/圖 2. - A sample tree-LzDtjZ9.png",
       "notes": [
         "raw/my-vault/Note/Research/樹（Tree）.md"
       ]
@@ -296,7 +296,7 @@
       "format": "PNG",
       "width": 898,
       "height": 381,
-      "vault_path": "Assets/External/imgur/MJpNw89.png",
+      "vault_path": "Assets/Note/Tech/style-guide-for-python-code/圖 2 - Docstring 範例-MJpNw89.png",
       "notes": [
         "raw/my-vault/Note/Tech/style-guide-for-python-code.md"
       ]
@@ -309,7 +309,7 @@
       "format": "PNG",
       "width": 811,
       "height": 935,
-      "vault_path": "Assets/External/imgur/O7DQrVz.png",
+      "vault_path": "Assets/Note/Tech/setup-openssh-server-in-windows-with-guacamole-sftp/圖 3. - 自動啟動 Service GUI-O7DQrVz.png",
       "notes": [
         "raw/my-vault/Note/Tech/setup-openssh-server-in-windows-with-guacamole-sftp.md"
       ]
@@ -322,7 +322,7 @@
       "format": "PNG",
       "width": 1920,
       "height": 1080,
-      "vault_path": "Assets/External/imgur/OTXieNt.png",
+      "vault_path": "Assets/Note/Tech/windows-l2tp-connect-error-720/圖 3. - Windows Events log-OTXieNt.png",
       "notes": [
         "raw/my-vault/Note/Tech/windows-l2tp-connect-error-720.md"
       ]
@@ -335,7 +335,7 @@
       "format": "PNG",
       "width": 1792,
       "height": 1024,
-      "vault_path": "Assets/External/imgur/ROJjLiT.png",
+      "vault_path": "Assets/Note/Research/uva-1586-227/1. Blog Image-ROJjLiT.png",
       "notes": [
         "raw/my-vault/Note/Research/uva-1586-227.md"
       ]
@@ -348,7 +348,7 @@
       "format": "PNG",
       "width": 476,
       "height": 210,
-      "vault_path": "Assets/External/imgur/RuxzPo1.png",
+      "vault_path": "Assets/Note/Tech/race-condition-and-synchronization/圖 6. - Semaphore wait-RuxzPo1.png",
       "notes": [
         "raw/my-vault/Note/Tech/race-condition-and-synchronization.md"
       ]
@@ -361,7 +361,7 @@
       "format": "PNG",
       "width": 1792,
       "height": 1024,
-      "vault_path": "Assets/External/imgur/TpAWGlJ.png",
+      "vault_path": "Assets/Note/Tech/windows-l2tp-connect-error-720/圖 1. - Blog Image-TpAWGlJ.png",
       "notes": [
         "raw/my-vault/Note/Tech/windows-l2tp-connect-error-720.md"
       ]
@@ -374,7 +374,7 @@
       "format": "PNG",
       "width": 860,
       "height": 491,
-      "vault_path": "Assets/External/imgur/UkVANiR.png",
+      "vault_path": "Assets/Note/Tech/race-condition-and-synchronization/圖 1. - Blog Image-UkVANiR.png",
       "notes": [
         "raw/my-vault/Note/Tech/race-condition-and-synchronization.md"
       ]
@@ -387,7 +387,7 @@
       "format": "PNG",
       "width": 2656,
       "height": 1520,
-      "vault_path": "Assets/External/imgur/VG7CGgR.png",
+      "vault_path": "Assets/Note/Tech/setup-openssh-server-in-windows-with-guacamole-sftp/圖 2. - 檢查 Service-VG7CGgR.png",
       "notes": [
         "raw/my-vault/Note/Tech/setup-openssh-server-in-windows-with-guacamole-sftp.md"
       ]
@@ -400,7 +400,7 @@
       "format": "PNG",
       "width": 1792,
       "height": 1024,
-      "vault_path": "Assets/External/imgur/VbrcmEY.png",
+      "vault_path": "Assets/Note/Tech/deadlock-management/圖 1. - Blog Image-VbrcmEY.png",
       "notes": [
         "raw/my-vault/Note/Tech/deadlock-management.md"
       ]
@@ -413,7 +413,7 @@
       "format": "PNG",
       "width": 1792,
       "height": 1024,
-      "vault_path": "Assets/External/imgur/X7H6aOq.png",
+      "vault_path": "Assets/Note/Tech/setup-openssh-server-in-windows-with-guacamole-sftp/圖 1. - Blog Image-X7H6aOq.png",
       "notes": [
         "raw/my-vault/Note/Tech/setup-openssh-server-in-windows-with-guacamole-sftp.md"
       ]
@@ -426,7 +426,7 @@
       "format": "PNG",
       "width": 1792,
       "height": 1024,
-      "vault_path": "Assets/External/imgur/XpRufSg.png",
+      "vault_path": "Assets/Note/Research/direct-image/1. Blog Image-XpRufSg.png",
       "notes": [
         "raw/my-vault/Note/Research/direct-image.md"
       ]
@@ -439,7 +439,7 @@
       "format": "PNG",
       "width": 1792,
       "height": 1024,
-      "vault_path": "Assets/External/imgur/YJsR9lN.png",
+      "vault_path": "Assets/Note/Tech/domjudge-install-guide/圖 1. - Blog Image-YJsR9lN.png",
       "notes": [
         "raw/my-vault/Note/Tech/domjudge-install-guide.md"
       ]
@@ -452,7 +452,7 @@
       "format": "PNG",
       "width": 1118,
       "height": 974,
-      "vault_path": "Assets/External/imgur/YONbogM.png",
+      "vault_path": "Assets/Note/Tech/setup-openssh-server-in-windows-with-guacamole-sftp/圖 4. Guacamole SFTP 設定-YONbogM.png",
       "notes": [
         "raw/my-vault/Note/Tech/setup-openssh-server-in-windows-with-guacamole-sftp.md"
       ]
@@ -465,7 +465,7 @@
       "format": "PNG",
       "width": 1028,
       "height": 356,
-      "vault_path": "Assets/External/imgur/cznWHPR.png",
+      "vault_path": "Assets/Note/Research/queue-1/圖 2. - Linear Array 問題-cznWHPR.png",
       "notes": [
         "raw/my-vault/Note/Research/queue-1.md"
       ]
@@ -478,7 +478,7 @@
       "format": "PNG",
       "width": 553,
       "height": 270,
-      "vault_path": "Assets/External/imgur/diYeWxm.png",
+      "vault_path": "Assets/Note/Tech/induction-ldap/圖 2. - LDAP 的組件和結構-diYeWxm.png",
       "notes": [
         "raw/my-vault/Note/Tech/induction-ldap.md"
       ]
@@ -491,7 +491,7 @@
       "format": "PNG",
       "width": 1524,
       "height": 444,
-      "vault_path": "Assets/External/imgur/fq6lEsr.png",
+      "vault_path": "Assets/Note/Tech/windows-l2tp-connect-error-720/圖 4. - Driver 示意圖-fq6lEsr.png",
       "notes": [
         "raw/my-vault/Note/Tech/windows-l2tp-connect-error-720.md"
       ]
@@ -504,7 +504,7 @@
       "format": "PNG",
       "width": 680,
       "height": 610,
-      "vault_path": "Assets/External/imgur/gmOIGtC.png",
+      "vault_path": "Assets/Note/Tech/deadlock-management/圖 5. - Resource-Allocation Graph-gmOIGtC.png",
       "notes": [
         "raw/my-vault/Note/Tech/deadlock-management.md"
       ]
@@ -517,7 +517,7 @@
       "format": "PNG",
       "width": 1412,
       "height": 608,
-      "vault_path": "Assets/External/imgur/hiqw0DL.png",
+      "vault_path": "Assets/Note/Research/樹（Tree）/圖 3. - List Representtation-hiqw0DL.png",
       "notes": [
         "raw/my-vault/Note/Research/樹（Tree）.md"
       ]
@@ -530,7 +530,7 @@
       "format": "PNG",
       "width": 584,
       "height": 265,
-      "vault_path": "Assets/External/imgur/i0U2n1M.png",
+      "vault_path": "Assets/Note/Research/堆疊 (Stack)/圖 2. - Stack frame pointer-i0U2n1M.png",
       "notes": [
         "raw/my-vault/Note/Research/堆疊 (Stack).md"
       ]
@@ -543,7 +543,7 @@
       "format": "PNG",
       "width": 1792,
       "height": 1024,
-      "vault_path": "Assets/External/imgur/ihJNO9r.png",
+      "vault_path": "Assets/Note/Tech/rest-with-api/圖 1. - Blog Image-ihJNO9r.png",
       "notes": [
         "raw/my-vault/Note/Tech/rest-with-api.md"
       ]
@@ -556,7 +556,7 @@
       "format": "JPEG",
       "width": 1458,
       "height": 1064,
-      "vault_path": "Assets/External/imgur/jrJIbqR.jpg",
+      "vault_path": "Assets/Note/Research/堆疊 (Stack)/圖 4. - 108 台大資工資料結構與演算法-jrJIbqR.jpg",
       "notes": [
         "raw/my-vault/Note/Research/堆疊 (Stack).md"
       ]
@@ -569,7 +569,7 @@
       "format": "PNG",
       "width": 1792,
       "height": 1024,
-      "vault_path": "Assets/External/imgur/lHiUPLR.png",
+      "vault_path": "Assets/Note/Research/queue-1/圖 1. - Blog Image-lHiUPLR.png",
       "notes": [
         "raw/my-vault/Note/Research/queue-1.md"
       ]
@@ -582,7 +582,7 @@
       "format": "PNG",
       "width": 852,
       "height": 308,
-      "vault_path": "Assets/External/imgur/lNmehwp.png",
+      "vault_path": "Assets/Note/Research/二元樹 (Binary Tree)/圖 2. - different tree from binary tree-lNmehwp.png",
       "notes": [
         "raw/my-vault/Note/Research/二元樹 (Binary Tree).md"
       ]
@@ -595,7 +595,7 @@
       "format": "PNG",
       "width": 1374,
       "height": 474,
-      "vault_path": "Assets/External/imgur/my4R14j.png",
+      "vault_path": "Assets/Note/Tech/race-condition-and-synchronization/圖 8.2 - 範例-my4R14j.png",
       "notes": [
         "raw/my-vault/Note/Tech/race-condition-and-synchronization.md"
       ]
@@ -608,7 +608,7 @@
       "format": "PNG",
       "width": 2928,
       "height": 1660,
-      "vault_path": "Assets/External/imgur/ndLKodT.png",
+      "vault_path": "Assets/Note/Tech/vscode-extension-profile/vscode-extension-2-ndLKodT.png",
       "notes": [
         "raw/my-vault/Note/Tech/vscode-extension-profile.md"
       ]
@@ -621,7 +621,7 @@
       "format": "PNG",
       "width": 864,
       "height": 514,
-      "vault_path": "Assets/External/imgur/oXER5vp.png",
+      "vault_path": "Assets/Note/Tech/race-condition-and-synchronization/圖 4. - Mutex Lock 1-oXER5vp.png",
       "notes": [
         "raw/my-vault/Note/Tech/race-condition-and-synchronization.md"
       ]
@@ -634,7 +634,7 @@
       "format": "PNG",
       "width": 1792,
       "height": 1024,
-      "vault_path": "Assets/External/imgur/pZv36P7.png",
+      "vault_path": "Assets/Note/Tech/induction-ldap/圖 1. - Blog Image-pZv36P7.png",
       "notes": [
         "raw/my-vault/Note/Tech/induction-ldap.md"
       ]
@@ -647,7 +647,7 @@
       "format": "PNG",
       "width": 1040,
       "height": 478,
-      "vault_path": "Assets/External/imgur/qo5gxaX.png",
+      "vault_path": "Assets/Note/Tech/deadlock-management/圖 2. - Deadlock-qo5gxaX.png",
       "notes": [
         "raw/my-vault/Note/Tech/deadlock-management.md"
       ]
@@ -660,7 +660,7 @@
       "format": "PNG",
       "width": 1602,
       "height": 674,
-      "vault_path": "Assets/External/imgur/scqhzkk.png",
+      "vault_path": "Assets/Note/Research/樹（Tree）/圖 4-scqhzkk.png",
       "notes": [
         "raw/my-vault/Note/Research/樹（Tree）.md"
       ]
@@ -673,7 +673,7 @@
       "format": "JPEG",
       "width": 1530,
       "height": 535,
-      "vault_path": "Assets/External/imgur/sdxFTPH.jpg",
+      "vault_path": "Assets/Note/Research/堆疊 (Stack)/圖 3. - 107 中央資管資料結構-sdxFTPH.jpg",
       "notes": [
         "raw/my-vault/Note/Research/堆疊 (Stack).md"
       ]
@@ -686,7 +686,7 @@
       "format": "PNG",
       "width": 712,
       "height": 530,
-      "vault_path": "Assets/External/imgur/vtaZse1.png",
+      "vault_path": "Assets/Note/Tech/race-condition-and-synchronization/圖 3. - Peterson’s Solution-vtaZse1.png",
       "notes": [
         "raw/my-vault/Note/Tech/race-condition-and-synchronization.md"
       ]
@@ -699,7 +699,7 @@
       "format": "PNG",
       "width": 1088,
       "height": 544,
-      "vault_path": "Assets/External/imgur/wRXfv0X.png",
+      "vault_path": "Assets/Note/Research/queue-1/圖 3. - Array Circular queue-wRXfv0X.png",
       "notes": [
         "raw/my-vault/Note/Research/queue-1.md"
       ]
@@ -712,7 +712,7 @@
       "format": "PNG",
       "width": 1188,
       "height": 426,
-      "vault_path": "Assets/External/imgur/waVqieK.png",
+      "vault_path": "Assets/Note/Tech/deadlock-management/圖 4. - Circular Wait-waVqieK.png",
       "notes": [
         "raw/my-vault/Note/Tech/deadlock-management.md"
       ]
@@ -725,7 +725,7 @@
       "format": "PNG",
       "width": 2934,
       "height": 1688,
-      "vault_path": "Assets/External/imgur/xhaB7ll.png",
+      "vault_path": "Assets/Note/Tech/vscode-extension-profile/vscode-extension-2-xhaB7ll.png",
       "notes": [
         "raw/my-vault/Note/Tech/vscode-extension-profile.md"
       ]
@@ -738,7 +738,7 @@
       "format": "PNG",
       "width": 823,
       "height": 423,
-      "vault_path": "Assets/External/imgur/yD6e0g4.png",
+      "vault_path": "Assets/Note/Research/二元樹 (Binary Tree)/圖 6. - full binary tree-yD6e0g4.png",
       "notes": [
         "raw/my-vault/Note/Research/二元樹 (Binary Tree).md"
       ]
@@ -751,7 +751,7 @@
       "format": "PNG",
       "width": 1102,
       "height": 612,
-      "vault_path": "Assets/External/imgur/yTPxwCP.png",
+      "vault_path": "Assets/Note/Tech/deadlock-management/圖 6. - wait-for graph-yTPxwCP.png",
       "notes": [
         "raw/my-vault/Note/Tech/deadlock-management.md"
       ]
@@ -764,7 +764,7 @@
       "format": "PNG",
       "width": 1005,
       "height": 488,
-      "vault_path": "Assets/External/imgur/z1kOtxa.png",
+      "vault_path": "Assets/Note/Tech/rest-with-api/圖 2. - RESTful API 如何運作的-z1kOtxa.png",
       "notes": [
         "raw/my-vault/Note/Tech/rest-with-api.md"
       ]
@@ -777,7 +777,7 @@
       "format": "PNG",
       "width": 370,
       "height": 162,
-      "vault_path": "Assets/External/imgur/zfbspoe.png",
+      "vault_path": "Assets/Note/Tech/race-condition-and-synchronization/圖 7. - semaphore-zfbspoe.png",
       "notes": [
         "raw/my-vault/Note/Tech/race-condition-and-synchronization.md"
       ]

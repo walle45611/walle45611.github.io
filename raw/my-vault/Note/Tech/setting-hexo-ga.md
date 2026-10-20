@@ -22,7 +22,7 @@ Google Analytics (GA) 網路分析工具，主要用於追蹤和報告網站流�
 1. 設定 Google Analytics (GA) 帳號，此部步驟可以[參考網址](https://support.google.com/analytics/answer/1009692?hl=zh-Hant)
 
 2. 以下圖可以確認自己的 `tracking_id` 在 GA 面板中。
-    ![[Assets/External/imgur/Qthw6fp.png|tracking_id]]
+    ![[Assets/Note/Tech/setting-hexo-ga/tracking_id-Qthw6fp.png|tracking_id]]
 
 3. 設定 `_config.next.yml` 設定自己的 `tracking_id` (評估 ID) 可以在文件中搜尋關鍵字 `google_analytics`，因為 NexT 使用舊版的 GA 格式所以還是使用 UA 開頭 [參考網址](https://theme-next.js.org/docs/third-party-services/statistics-and-analytics.html?highlight=google+an)。
 
@@ -53,4 +53,4 @@ Google Analytics (GA) 網路分析工具，主要用於追蹤和報告網站流�
 
 6. 確認自己的 GA 是否又成功到自己的 [GA](https://analytics.google.com/) 面板上看
 
-    ![[Assets/External/imgur/fVXv3Ae.png|GA_Check]]
+    ![[Assets/Note/Tech/setting-hexo-ga/GA_Check-fVXv3Ae.png|GA_Check]]

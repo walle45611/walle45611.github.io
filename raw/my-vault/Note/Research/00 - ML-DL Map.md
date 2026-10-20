@@ -64,6 +64,6 @@ flowchart LR
 
 ## 來源與導覽
 
-- [[00_Dashboard/AI Overview|AI Overview]]
+- [[Maps/AI Overview|AI Overview]]
 - [[Assets/Note/Research/ML_DL_Obsidian_Notes.zip|原始筆記 ZIP]]
 - [[Note/Research/99 - Figure Sources|圖片來源與授權]]

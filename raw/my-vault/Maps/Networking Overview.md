@@ -1,6 +1,6 @@
 # TCP/OSI 網路模型完整指南
 
-![[Assets/00_Dashboard/Networking Overview/01-TCP OSI 網路模型完整指南.png]]
+![[Assets/Maps/Networking Overview/01-TCP OSI 網路模型完整指南.png]]
 
 ## 為什麼需要分層
 
@@ -37,7 +37,7 @@ WAN 的操作主要集中在第 1 層和第 2 層：
 - **物理層**：描述連接通信服務提供商所需的設備
 - **數據鏈路層**：協定定義如何封裝向遠端位置的數據以及最終數據 frame 的傳輸機制
 
-![[Assets/00_Dashboard/Networking Overview/02-WAN 在 OSI 模型中的位置.png]]
+![[Assets/Maps/Networking Overview/02-WAN 在 OSI 模型中的位置.png]]
 
 ### WAN 接入方式
 
@@ -69,7 +69,7 @@ WAN 的操作主要集中在第 1 層和第 2 層：
 - **特點**：利用語音模擬信號的電話線傳送數據，須撥號連接
 - **缺點**：數/模轉換、頻寬小、穩定性較差、設定維護複雜
 
-![[Assets/00_Dashboard/Networking Overview/03-2. 電路交換.png]]
+![[Assets/Maps/Networking Overview/03-2. 電路交換.png]]
 
 #### 3. 分組交換
 
@@ -86,22 +86,22 @@ WAN 的操作主要集中在第 1 層和第 2 層：
 - 描述連接 WAN 所需的電氣、機械、操作、功能特性
 - 包括 DTE 與 DCE 之間的連接方式
 
-![[Assets/00_Dashboard/Networking Overview/04-WAN 物理層.png]]
+![[Assets/Maps/Networking Overview/04-WAN 物理層.png]]
 
 ### WAN 常見封裝協定
 
 #### 專線協定
-![[Assets/00_Dashboard/Networking Overview/05-專線協定.png]]
+![[Assets/Maps/Networking Overview/05-專線協定.png]]
 
 參考：
 - [[HDLC 介紹]]
 - [[PPP 和 PPPoE 介紹]]
 
 #### 電路交換協定
-![[Assets/00_Dashboard/Networking Overview/06-電路交換協定.png]]
+![[Assets/Maps/Networking Overview/06-電路交換協定.png]]
 
 #### Frame Relay
-![[Assets/00_Dashboard/Networking Overview/07-Frame Relay.png]]
+![[Assets/Maps/Networking Overview/07-Frame Relay.png]]
 
 參考：[[Frame Relay 介紹]]
 
@@ -119,7 +119,7 @@ WAN 的操作主要集中在第 1 層和第 2 層：
 1. 在設定模式中，利用 `ip address ip_address mask` 將 IP address 設定到 ISP 介面
 2. 設定預設路由 `ip route 0.0.0.0 0.0.0.0 ISP_address`
 
-![[Assets/00_Dashboard/Networking Overview/08-靜態 IP 位址設定.png]]
+![[Assets/Maps/Networking Overview/08-靜態 IP 位址設定.png]]
 
 ```cisco
 R1(config)#ip route 0.0.0.0 0.0.0.0 10.1.1.1
@@ -127,7 +127,7 @@ R1(config)#ip route 0.0.0.0 0.0.0.0 10.1.1.1
 
 ### 動態 IP 指派
 
-![[Assets/00_Dashboard/Networking Overview/09-動態 IP 指派.png]]
+![[Assets/Maps/Networking Overview/09-動態 IP 指派.png]]
 
 ```cisco
 R1(config-if)#ip address dhcp
@@ -148,7 +148,7 @@ R1(config-if)#ip address dhcp
   - 100M/1000M 使用 8 條線芯
 #### RJ45 T568B T568A
 
-![[Assets/00_Dashboard/Networking Overview/01-RJ45 T568B T568A.jpg]]
+![[Assets/Maps/Networking Overview/01-RJ45 T568B T568A.jpg]]
 
 - 兩端一樣的稱為Straight，兩端不一樣的稱為Crossover
 - 做網路線的時候必須把網路線完全進到網路頭中
@@ -259,7 +259,7 @@ R1(config-if)#ip address dhcp
 
 **原理**：利用 TTL 值來達到目的
 
-![[Assets/00_Dashboard/Networking Overview/10-Traceroute 工具.png]]
+![[Assets/Maps/Networking Overview/10-Traceroute 工具.png]]
 
 ##### Traceroute 運作原理
 

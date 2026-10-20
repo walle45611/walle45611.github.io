@@ -37,11 +37,7 @@ fn publishes_only_explicitly_enabled_research_and_tech_notes() {
     let tmp = tempfile::tempdir().unwrap();
     let root = tmp.path();
     write(root, "sites/public/favicon.svg", "<svg/>");
-    write(
-        root,
-        "raw/my-vault/00_Dashboard/資料結構和演算法 Overview.md",
-        "# 演算法\n",
-    );
+    write(root, "raw/my-vault/Maps/DSA Overview.md", "# 演算法\n");
     let research = "raw/my-vault/Note/Research/Research.md";
     write(root, research, &note("blog: true", "research"));
     write(
@@ -66,7 +62,7 @@ fn publishes_only_explicitly_enabled_research_and_tech_notes() {
         "raw/my-vault/Note/Private/Private.md",
         "raw/my-vault/Note/TechOther/Outside.md",
         "raw/my-vault/Note/Root.md",
-        "raw/my-vault/00_Dashboard/Dashboard.md",
+        "raw/my-vault/Maps/Dashboard.md",
         "raw/web-clipper/Enabled.md",
     ] {
         write(root, path, &note("blog: true", "excluded"));

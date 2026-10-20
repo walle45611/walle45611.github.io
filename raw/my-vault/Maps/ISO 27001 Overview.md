@@ -71,13 +71,13 @@
 - 包括風險評估及處理要求，資訊安全管理其實就是風險管理，並且需要找到風險和 Cost 之間最優的一個平衡點。
 - 何謂風險有的組織會依照 $Asset \times Threat \times Vulnerability$，或是等等公式，這個需要依照**程序書**所規定之內容，例如：機房設備-Server 可能會有資訊設備過熱弱點，威脅引發火災。
     
-    ![[Assets/00_Dashboard/ISO 27001 Overview/ISO27001 資訊安全風險三要素示意圖.png|ISO27001 資訊安全風險三要素示意圖.png]]
+    ![[Assets/Maps/ISO 27001 Overview/ISO27001 資訊安全風險三要素示意圖.png|ISO27001 資訊安全風險三要素示意圖.png]]
     
 
 1. **適用範圍（Scope）**
     - 遵循 P-D-C-A（Plan-Do-Check-Act）循環。
         
-        ![[Assets/00_Dashboard/ISO 27001 Overview/ISO27001 PDCA範例圖.png]]
+        ![[Assets/Maps/ISO 27001 Overview/ISO27001 PDCA範例圖.png]]
         
 2. **風險管理方式**
     - **接受 (Accept)：** 接受風險可能性。
@@ -93,7 +93,7 @@
 
 ## **文件形式**
 
-![[Assets/00_Dashboard/ISO 27001 Overview/ISO27001 文件示意圖.png|ISO27001 文件示意圖.png]]
+![[Assets/Maps/ISO 27001 Overview/ISO27001 文件示意圖.png|ISO27001 文件示意圖.png]]
 
 - 文件呈現需要符合組織全景、風險評估及管理策略的需求。
 - 所有文件需基於 ISO 27001 的要求進行版本控制及審核。

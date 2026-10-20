@@ -17,6 +17,9 @@
 [[引線二元樹 (Threaded Binary Tree)]]
 [[延伸二元樹 (Extended Binary Tree)]]
 [[M-Way(Degree) Search tree And B-Tree]]
+[[B-Tree Variants|B-Tree 變種：CoW、LMDB、WiredTiger、LA-Tree 與 FD-Tree]]
+[[LSM-Tree]]
+[[Unordered Log-Structured Storage|Unordered Log-Structured Storage：Bitcask 與 WiscKey]]
 [[Splay Trees]]
 
 [[堆積 (Heap)]]
@@ -55,6 +58,9 @@
 [[Single-Source Shortest Paths Problem]]
 [[All-Pair Shortest Path Problem]]
 
+### Distributed Algorithms
+[[Consensus Algorithms]]
+
 ### NP Completeness
 [[Complexity Classes and P vs NP]]
 [[Reduction & Problem Types]]
@@ -64,5 +70,29 @@
 ### ML
 [[K-means Clustering]]
 
-### 刷題
-[[刷題 Overview]]
+# 刷題
+
+### 圖論與搜尋
+
+- [[codeforces-0815|Codeforces 580C]]：樹上的 DFS。
+- [[virtual-judge-hdu-1232|HDU 1232]]：圖的連通性。
+
+### 二分搜尋
+
+- [[virtual-judge-p2249|Luogu P2249]]：二分搜尋。
+
+### 字串與模擬
+
+- [[uva-1586-227|UVA 227、1586]]：拼圖模擬、字串解析。
+- [[uva-272-340-0816|UVA 340、272]]：Master-Mind、TeX Quotes。
+
+### 貪心與矩陣
+
+- [[leetcode-3106|LeetCode 3106]]：字串操作與貪心。
+- [[codeforces-0815|Codeforces 1996B]]：矩陣處理；與 580C 記在同一篇。
+
+SQL 題目見 [[SQL Overview]]。
+
+# 數學基礎
+
+[[Math Overview|數學基礎：離散數學與線性代數]]

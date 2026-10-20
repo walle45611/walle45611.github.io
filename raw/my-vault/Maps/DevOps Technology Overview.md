@@ -84,11 +84,12 @@
 [[Linux OpenLDAP 設定指南]]
 [[Linux OpenSSL 憑證管理完整指南]]
 
-### VPN 與隧道技術
+### **VPN 與隧道技術**
 [[Linux GRE tunnel 設定指南]]
 [[Windows Server L2TP IPSec 與 IKEv2 VPN 設定指南]]
 [[Linux L2TP over IPSec 設定指南]]
 [[Linux OpenVPN 完整設定與憑證管理指南]]
+[[NetBird 自架設定與存取政策]]
 [[Linux PPTP VPN 安裝與設定教學]]
 
 ### 檔案系統與儲存
@@ -165,3 +166,13 @@
 [[setting-hoex|Hexo 建站]]
 [[setting-hexo-ga|Hexo 與 Google Analytics]]
 [[setup-openssh-server-in-windows-with-guacamole-sftp|Windows OpenSSH 與 Guacamole SFTP]]
+
+## Python
+
+[[Python 專案初始化]]
+[[Python 正規表達式 Regex]]
+[[使用 Nuitka 與 Docker 打造高效能且安全的 Python 應用部署方案]]
+
+### 開發習慣
+
+[[style-guide-for-python-code|Python 程式碼風格]]

@@ -325,7 +325,7 @@ fn normalize_math(body: &str) -> Result<String> {
 pub fn export(vault: &Path, build_dir: &Path) -> Result<()> {
     let mut posts = Vec::<Post>::new();
     let mut all_note_names = HashSet::new();
-    for source in files_under(&vault.join("00_Dashboard"), "md")? {
+    for source in files_under(&vault.join("Maps"), "md")? {
         all_note_names.insert(
             source
                 .file_stem()
@@ -525,10 +525,10 @@ mod tests {
         ));
         let vault = root.join("vault");
         let build = root.join("build");
-        fs::create_dir_all(vault.join("00_Dashboard")).unwrap();
+        fs::create_dir_all(vault.join("Maps")).unwrap();
         fs::create_dir_all(vault.join("Note/Tech")).unwrap();
         fs::write(
-            vault.join("00_Dashboard/DevOps Technology Overview.md"),
+            vault.join("Maps/DevOps Technology Overview.md"),
             "[[Slurm]]\n",
         )
         .unwrap();

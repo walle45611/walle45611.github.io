@@ -65,7 +65,11 @@ struct BuilderConfig {
 fn main() {
     let arguments: Vec<String> = env::args().skip(1).collect();
     if let Some(command) = arguments.first() {
-        if matches!(command.as_str(), "sync-vault" | "archive" | "stage-assets") {
+        if command == "archive" {
+            eprintln!("The archive command has been removed.");
+            std::process::exit(1);
+        }
+        if matches!(command.as_str(), "sync-vault" | "stage-assets") {
             if let Err(error) = maintenance::run(command, &arguments[1..]) {
                 eprintln!("{command} failed: {error}");
                 std::process::exit(1);
@@ -161,7 +165,6 @@ fn print_usage_and_exit(code: i32) -> ! {
 Usage:
   site-builder [--out-dir <path>] [--project-dir <path>]
   site-builder sync-vault [--source <path>]
-  site-builder archive [--check | --refresh-generated]
   site-builder stage-assets
 
 Options:

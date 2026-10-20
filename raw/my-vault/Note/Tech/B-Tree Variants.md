@@ -9,7 +9,7 @@ blog_topic: 資料結構
 
 ## TL;DR
 
-**B-Tree 變種是在交換成本：讓寫入更便宜，可能就要多付出查詢、合併或版本管理的成本，沒有一種設計適合所有工作負載。**
+**B-Tree 變種是在交換成本：讓寫入更便宜，可能就要多付出查詢、合併或版本管理的成本，沒有一種設計適合所有工作負載**。
 
 - **CoW／LMDB**：複製受影響的頁面與必要路徑，保留讀者快照；代價是頁面複製與舊版本空間。
 - **WiredTiger**：修改先進 Update Chain，讀取時選擇可見版本，再透過 Reconciliation 整理磁碟頁面。
@@ -22,9 +22,13 @@ blog_topic: 資料結構
 
 頁面配置、Cell 與交易處理見 [Database Internals 閱讀筆記](https://blog.walle4561.com/articles/posts/database-internals-reading-notes/)，基本結構見 [多路搜尋樹與 B-Tree](https://blog.walle4561.com/articles/posts/m-way-search-tree-and-b-tree/)。
 
+---
+
 ## B+ Tree：Leaf Links
 
 典型的 B+ Tree 會把相鄰 Leaf Nodes 串接起來，讓範圍查詢先沿樹找到起始 Leaf，再沿葉節點連結依序讀取後面的資料，不必反覆回到父節點尋找下一頁。這主要用來提高範圍查詢與順序掃描的效率；只有 Leaf Nodes 相連，並不足以判定這是一棵 B-link Tree。
+
+---
 
 ## B-link Tree：Right Links 與 High Key
 
@@ -52,11 +56,13 @@ B-link Tree 在 B-tree／B+ Tree 的結構上加入同層節點的 Right Sibling
 
 **High Key 與 Right Sibling Pointer**：延續 `High Key = 80`、上界不包含 80 的假設，搜尋 90 時，因為 `90 ≥ 80`，表示目標已超出目前節點的範圍。在 B-link Tree 中，可以沿 Right Sibling Pointer 前往同一層右側的兄弟節點，繼續尋找目標所屬的範圍。
 
-**Rightmost Child Pointer 是向下走，Right Sibling Pointer 則是向右走。**前者指向目前節點最右側的子樹，後者指向同一層的相鄰節點。High Key 的用途是標示節點範圍；把它與 Rightmost Child Pointer 配成一個 Cell，是利用這個上界統一儲存格式，並非 High Key 必須依賴這種配對才能存在，也不是所有 B-link Tree 都必須使用相同的實體配置。此處的比較條件沿用範例的左閉右開慣例，實作時仍須依資料庫對邊界相等值的規則判斷。
+**Rightmost Child Pointer 是向下走，Right Sibling Pointer 則是向右走**。前者指向目前節點最右側的子樹，後者指向同一層的相鄰節點。High Key 的用途是標示節點範圍；把它與 Rightmost Child Pointer 配成一個 Cell，是利用這個上界統一儲存格式，並非 High Key 必須依賴這種配對才能存在，也不是所有 B-link Tree 都必須使用相同的實體配置。此處的比較條件沿用範例的左閉右開慣例，實作時仍須依資料庫對邊界相等值的規則判斷。
+
+---
 
 ## Copy-on-Write B-Tree
 
-簡單來說，就是**複製受影響的 Page，並複製、更新通往 Root 的必要路徑，其他未修改的頁面繼續共用**；B-Tree 越淺，需要複製的路徑通常越短，舊頁則要等不再被讀者引用後才能重用。
+簡單來說，就是 **複製受影響的 Page，並複製、更新通往 Root 的必要路徑，其他未修改的頁面繼續共用**；B-Tree 越淺，需要複製的路徑通常越短，舊頁則要等不再被讀者引用後才能重用。
 
 ![[Assets/Note/Tech/B-Tree Variants/copy-on-write-path.png]]
 
@@ -69,6 +75,8 @@ LMDB（Lightning Memory-Mapped Database）是嵌入式 Key-Value 資料庫，使
 LMDB 由 OpenLDAP 專案維護，可從 [OpenLDAP 官方來源庫頁面](https://www.openldap.org/software/repo.html)找到 LMDB 專案，並參考 [LMDB 官方文件](https://www.lmdb.tech/doc/)；它是資料庫程式庫，不是 LDAP 協定本身。
 
 **Memory Mapping 與 OS 的分工**：它把檔案映射到程式的虛擬位址空間，讓程式透過記憶體存取方式讀取資料，頁面的載入、映射與 OS Page Cache 管理由作業系統處理；資料庫仍須設計並行控制、版本發布、頁面重用與持久化順序。修改映射中的記憶體不等於資料已安全落盤，而且 LMDB 的預設模式不是透過可寫映射直接更新資料；`MDB_WRITEMAP`／`writemap=True` 是另一項選擇，不能與所有 LMDB 寫入流程畫上等號。參考 [LMDB 官方文件](https://www.lmdb.tech/doc/)。
+
+---
 
 ## WiredTiger：Update Chain 與 Reconciliation
 
@@ -90,7 +98,9 @@ WiredTiger 是儲存引擎；以其 B-Tree Row-Store 為例，修改會在葉頁
 2. **讀取時組合可見結果（Composition）**：需要讀取時，依交易 Snapshot 與可見性，從 Update Chain 或原始頁面中取得合適版本；若更新保存的是差異，還需要重建完整值，並不是把所有交易的修改一律相加。
 3. **寫出時做 Reconciliation（頁面整合）**：Checkpoint 或 Dirty Page Eviction 等流程需要寫出頁面時，把原始內容與適合寫出的更新整理成新的 Page Image，再寫到磁碟；仍需保留的歷史版本或尚不能移出的更新，則由 History Store、Update Restore 等機制處理。
 
-簡單記成：**修改先緩衝，讀取時選擇／組合可見版本，需要寫出時再整合成磁碟頁面**；第二步是讀取路徑，第三步是寫出路徑，不是每次更新都必須依序走完三步。Commit 也不等於完成 Reconciliation 或已經寫回資料頁。參考 [WiredTiger：Eviction 與 Reconciliation](https://source.wiredtiger.com/develop/eviction.html)。
+簡單記成： **修改先緩衝，讀取時選擇／組合可見版本，需要寫出時再整合成磁碟頁面**；第二步是讀取路徑，第三步是寫出路徑，不是每次更新都必須依序走完三步。Commit 也不等於完成 Reconciliation 或已經寫回資料頁。參考 [WiredTiger：Eviction 與 Reconciliation](https://source.wiredtiger.com/develop/eviction.html)。
+
+---
 
 ## LA-Tree：子樹緩衝與批次下推
 
@@ -118,9 +128,9 @@ FD-Tree 把更新先集中在小型 Head B+ Tree，再批次合併到容量逐�
 2. **另外新增 15、35，先進入 Head**：Head 變成 `10F、15D、35D`；10F 仍指向 L1，15D 與 35D 是另外新增的兩筆資料，總資料數從 10 增為 12，原本 L2 的兩頁完全沒有改動。
 3. **達到合併條件後，Head 的資料合併到 L1**：Head 達到設定容量時，便觸發與 L1 的合併；若合併結果超過 L1 的容量門檻，則繼續向 L2 合併。本例的「5 個項目」只是單頁容量，沒有另外指定 Head／各層的合併門檻，也不是下層頁面不足 5 筆就合併。將 15D、35D 與 L1 原有的 10F、60F 按 Key 合併，寫出新的 C，內容為 `10F、15D、35D、60F`，並更新 Head 的 10F 指標。L2 仍保持原狀，所以 L1 出現 L2 沒有的 15、35 完全合理：它們還沒有繼續合併到 L2。本例只示範合併結果，不表示插入兩筆就一定達到容量門檻。
 
-**查找 35 與 70**：以上圖第三階段為例，查找 35 時，沿 Head 的 10F 到 L1，直接找到 35D；查找 70 時，沿 Head 到 L1，再選 60F 前往 L2 的 Page B，找到 70D。對落在兩個頁面起始 Key 之間的值，本例使用不大於搜尋值的適當 Fence 導航；一般查詢還需整合各層可能存在的資料與刪除標記。**資料批次向下合併，導航路標則依下層頁面邊界向上建立**，兩個方向不要混淆。
+**查找 35 與 70**：以上圖第三階段為例，查找 35 時，沿 Head 的 10F 到 L1，直接找到 35D；查找 70 時，沿 Head 到 L1，再選 60F 前往 L2 的 Page B，找到 70D。對落在兩個頁面起始 Key 之間的值，本例使用不大於搜尋值的適當 Fence 導航；一般查詢還需整合各層可能存在的資料與刪除標記。 **資料批次向下合併，導航路標則依下層頁面邊界向上建立**，兩個方向不要混淆。
 
-**FD-Tree 是否就地更新？**：Head Tree 是可更新的小型 B+ Tree；下層 Sorted Runs 則不為每筆修改直接覆寫原頁面，而是在合併時產生新的 Run 與頁面，再更新必要的導航資訊。因此應說「下層 Run 以批次合併取代逐筆就地更新」，不能說整個 FD-Tree 完全沒有任何就地修改。參考 [FD-Tree 論文：Tree Indexing on Solid State Drives](https://vldb.org/pvldb/vol3/R106.pdf)。
+**FD-Tree 是否就地更新**？：Head Tree 是可更新的小型 B+ Tree；下層 Sorted Runs 則不為每筆修改直接覆寫原頁面，而是在合併時產生新的 Run 與頁面，再更新必要的導航資訊。因此應說「下層 Run 以批次合併取代逐筆就地更新」，不能說整個 FD-Tree 完全沒有任何就地修改。參考 [FD-Tree 論文：Tree Indexing on Solid State Drives](https://vldb.org/pvldb/vol3/R106.pdf)。
 
 **Tombstone：先記錄刪除，再於合併時消去舊資料**：若要刪除 L2 的 70，不必立刻改寫 Page B；可以在 Head 插入代表刪除的標記。FD-Tree 論文稱這類標記為 **Filter Entry**，以原項目的 `Key + Record ID` 辨識刪除目標；下層尚未物理移除的舊項目稱為 Phantom Entry，這裡不是交易隔離中的 Phantom Read。本例假設 Key 唯一，可簡寫成 `70T`；`T` 表示 Tombstone，避免與圖中表示 Fence 的 `F` 混淆。
 
@@ -133,7 +143,7 @@ FD-Tree 把更新先集中在小型 Head B+ Tree，再批次合併到容量逐�
 3. **Head 與 L1 合併時，墓碑移到 L1**：此時舊 70D 還在 L2，因此 70T 必須繼續保留；若先丟掉標記，下次查詢可能又把舊 70 當成有效資料，造成資料「復活」。
 4. **L1 與 L2 合併時，消去對應項目**：70T 與它標記的舊 70D 相遇後，兩者一起丟棄，不再寫入新的 Run，完成索引項目的物理清除。論文也將 Update 實作為刪除舊項目，再插入新項目。
 
-**Fence 與 Tombstone 的差別**：Fence／Bridge 告訴查詢「下一層要去哪一頁」，Tombstone／Filter Entry 則標記「哪個舊資料項目已被刪除」；刪除必須識別項目類型及 `(Key, Record ID)`，不能刪除所有相同 Key 的項目，也不能把同 Key 的導航 Fence 一起消去。本例假設 70 只有一筆資料，才省略 Record ID，生命週期可以記成：**先標記刪除，查詢排除舊資料，合併時配對清除**。
+**Fence 與 Tombstone 的差別**：Fence／Bridge 告訴查詢「下一層要去哪一頁」，Tombstone／Filter Entry 則標記「哪個舊資料項目已被刪除」；刪除必須識別項目類型及 `(Key, Record ID)`，不能刪除所有相同 Key 的項目，也不能把同 Key 的導航 Fence 一起消去。本例假設 70 只有一筆資料，才省略 Record ID，生命週期可以記成： **先標記刪除，查詢排除舊資料，合併時配對清除**。
 
 ---
 
@@ -153,29 +163,29 @@ Bw-Tree 將頁面修改表示為 Delta Records，接在各邏輯頁面的 Delta 
 
 **Consolidation（整合）補充**：把「底稿＋修改紀錄」整理成新底稿；例如舊 Base Page 是 `10、20、30`，先新增 15、再刪除 20，整合後就成為新的 Base Page `10、15、30`。
 
-整合完成後，再用 CAS 將 Mapping Table 的入口改指向新的 Base Page；若入口在整合期間已改變，不能直接覆蓋，必須依協定處理。成功發布後，後續從新入口進入的查詢就不必走那串舊 Deltas；舊頁面與舊鏈則等到沒有讀者仍可能使用時，才安全回收。**Consolidation 是同一邏輯頁面之內的版本整合，不是把兩個 B-Tree 節點合併，也不是 FD-Tree 的跨層 Run Merge。**
+整合完成後，再用 CAS 將 Mapping Table 的入口改指向新的 Base Page；若入口在整合期間已改變，不能直接覆蓋，必須依協定處理。成功發布後，後續從新入口進入的查詢就不必走那串舊 Deltas；舊頁面與舊鏈則等到沒有讀者仍可能使用時，才安全回收。 **Consolidation 是同一邏輯頁面之內的版本整合，不是把兩個 B-Tree 節點合併，也不是 FD-Tree 的跨層 Run Merge**。
 
 這套節點更新機制支援 Latch-Free 操作，但 Delta Chains 的讀取、整合與記憶體回收仍有成本，也不表示單靠 CAS 就解決完整交易的隔離與持久化。參考 [Microsoft Research：The Bw-Tree](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/bw-tree-icde2013-final.pdf)。
 
-**先分清楚 Node 與 Delta Chain**：一個邏輯 Node 的目前內容，是由 Base Page 加上 Delta Chain 的修改共同決定的，不是只看 Base Page。**Delta Chain 太長 → Consolidation；Node 的有效資料太多 → Split；Node 的有效資料太少 → 考慮 Merge。**例如反覆修改同一筆資料，鏈可以很長，但有效資料仍只有一筆；持續新增不同 Key，才可能讓節點內容超過容量門檻。兩種門檻分別判斷，不要求一定先完成一次獨立的 Consolidation 才能 Split。
+**先分清楚 Node 與 Delta Chain**：一個邏輯 Node 的目前內容，是由 Base Page 加上 Delta Chain 的修改共同決定的，不是只看 Base Page。 **Delta Chain 太長 → Consolidation；Node 的有效資料太多 → Split；Node 的有效資料太少 → 考慮 Merge**。例如反覆修改同一筆資料，鏈可以很長，但有效資料仍只有一筆；持續新增不同 Key，才可能讓節點內容超過容量門檻。兩種門檻分別判斷，不要求一定先完成一次獨立的 Consolidation 才能 Split。
 
 ### SMO（結構修改）：先維持可達，再更新父節點
 
-SMO 是 Structural Modification Operation，處理節點太大或太空時的 Split／Merge；**Consolidation 整理同一個節點，SMO 則改變節點之間的結構**。Bw-Tree 不能用一次 CAS 完成整個結構修改，因此把它分成其他執行緒能辨識、仍可安全導航的步驟。
+SMO 是 Structural Modification Operation，處理節點太大或太空時的 Split／Merge； **Consolidation 整理同一個節點，SMO 則改變節點之間的結構**。Bw-Tree 不能用一次 CAS 完成整個結構修改，因此把它分成其他執行緒能辨識、仍可安全導航的步驟。
 
-**原論文怎麼設定門檻？**：2013 年 Bw-Tree 論文的 Section IV-A 說明，執行緒發現頁面大小超過系統門檻時，會在嘗試本次操作後執行 Split；Section IV-B 則說，節點大小低於某個門檻時會觸發 Merge。這兩節沒有指定通用的固定上限、下限或最低填滿比例；實驗設定中的預設 Page Size 為 8 KiB，也不能直接當成文中已明訂的一組 Split／Merge 門檻。Delta Chain 長度的 Consolidation 門檻另行設定。參考 [Bw-Tree 原論文：Sections III-B、IV-A、IV-B 與 VI-A](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/bw-tree-icde2013-final.pdf)。
+**原論文怎麼設定門檻**？：2013 年 Bw-Tree 論文的 Section IV-A 說明，執行緒發現頁面大小超過系統門檻時，會在嘗試本次操作後執行 Split；Section IV-B 則說，節點大小低於某個門檻時會觸發 Merge。這兩節沒有指定通用的固定上限、下限或最低填滿比例；實驗設定中的預設 Page Size 為 8 KiB，也不能直接當成文中已明訂的一組 Split／Merge 門檻。Delta Chain 長度的 Consolidation 門檻另行設定。參考 [Bw-Tree 原論文：Sections III-B、IV-A、IV-B 與 VI-A](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/bw-tree-icde2013-final.pdf)。
 
-**上下門檻怎麼設？**：為了說明，可以假設本例每節點最多容納 5 筆，超過 5 筆就考慮 Split；少於 2 筆就考慮 Merge，且左右合併後不能超過 5 筆。此時右頁只剩 1 筆，低於合併門檻，而左頁 2 筆加右頁 1 筆共 3 筆、放得下，就符合本例的合併條件。**這組「上限 5、低於 2 考慮合併」是教學假設，不是 Bw-Tree 的固定規格**；實作可以依有效資料的位元組大小、項目數或占用比例設定上下門檻，也不一定要求像教科書 B-Tree 那樣維持固定的最低填滿比例。Delta Chain 長度則是另一個門檻，主要影響 Consolidation，不能與有效資料量混為一談。
+**上下門檻怎麼設**？：為了說明，可以假設本例每節點最多容納 5 筆，超過 5 筆就考慮 Split；少於 2 筆就考慮 Merge，且左右合併後不能超過 5 筆。此時右頁只剩 1 筆，低於合併門檻，而左頁 2 筆加右頁 1 筆共 3 筆、放得下，就符合本例的合併條件。 **這組「上限 5、低於 2 考慮合併」是教學假設，不是 Bw-Tree 的固定規格**；實作可以依有效資料的位元組大小、項目數或占用比例設定上下門檻，也不一定要求像教科書 B-Tree 那樣維持固定的最低填滿比例。Delta Chain 長度則是另一個門檻，主要影響 Consolidation，不能與有效資料量混為一談。
 
 **Split：先讓搜尋能繞到新右頁**。
 
 ![[Assets/Note/Tech/B-Tree Variants/bw-tree-smo-split-zh.png]]
 
-1. **準備右頁**：原頁 P7 有 `10、15、30、40、50、60`，先整理 Base 與 Deltas 的邏輯內容，再用右半部 `40、50、60` 建立新的 Base Page，作為新右側邏輯頁面 P9 的初始內容。**P9 是邏輯頁面 ID，不是 Base Page 這種物件的名稱**；剛建立時它的映射入口可直接指向這份 Base，後續更新仍能在前端接上自己的 Delta Chain。因此可以說右半部已整理成 Base，但不是把 P7 整條鏈原封不動變成 P9，也不必假設先完成一次獨立的 Consolidation 再開始 Split。
+1. **準備右頁**：原頁 P7 有 `10、15、30、40、50、60`，先整理 Base 與 Deltas 的邏輯內容，再用右半部 `40、50、60` 建立新的 Base Page，作為新右側邏輯頁面 P9 的初始內容。 **P9 是邏輯頁面 ID，不是 Base Page 這種物件的名稱**；剛建立時它的映射入口可直接指向這份 Base，後續更新仍能在前端接上自己的 Delta Chain。因此可以說右半部已整理成 Base，但不是把 P7 整條鏈原封不動變成 P9，也不必假設先完成一次獨立的 Consolidation 再開始 Split。
 2. **發布 Split Delta**：在 P7 的入口安裝分界 40 與通往 P9 的連結；父節點雖仍只有 P7 入口，搜尋 50 可以先到 P7，再沿 Split Delta 到 P9，因此不會因父節點尚未更新就找不到資料。P7 的邏輯有效範圍改為小於 40，不代表舊鏈中對應的位元組已立即移除。
 3. **補上父節點入口**：父節點加入分界與 P9 的導航項目，之後搜尋 50 就能直接走向 P9，省去繞路。
 
-**Split 時，Delta Chain 放哪裡？**：不必把舊鏈逐筆拆成左右兩條。以上述分界 40 為例，P9 的新 Base 已包含右半部有效資料 `40、50、60`，剛建立時可以沒有更新 Delta；P7 則在原入口前接上 Split Delta，後面仍接原有的 Delta Chain 與舊 Base。Split Delta 宣告 P7 現在只負責小於 40 的範圍，40 以上改走 P9，因此舊鏈即使還留有右半部的紀錄，也不再作為 P7 的有效內容。之後 P7 做 Consolidation 時，才整理成只含左半部的新 Base；後續左右節點各自新增修改，也各自累積自己的 Delta Chain。
+**Split 時，Delta Chain 放哪裡**？：不必把舊鏈逐筆拆成左右兩條。以上述分界 40 為例，P9 的新 Base 已包含右半部有效資料 `40、50、60`，剛建立時可以沒有更新 Delta；P7 則在原入口前接上 Split Delta，後面仍接原有的 Delta Chain 與舊 Base。Split Delta 宣告 P7 現在只負責小於 40 的範圍，40 以上改走 P9，因此舊鏈即使還留有右半部的紀錄，也不再作為 P7 的有效內容。之後 P7 做 Consolidation 時，才整理成只含左半部的新 Base；後續左右節點各自新增修改，也各自累積自己的 Delta Chain。
 
 **Merge：先接好合併後的內容，再撤掉舊入口**。
 
@@ -189,9 +199,11 @@ SMO 是 Structural Modification Operation，處理節點太大或太空時的 Sp
 
 圖中僅示意 Split／Merge 的流程；Bw-Tree 已發布的 Base Page 與 Delta Records 是不可變的，更新透過建立新版本並以 CAS 切換 Mapping Table 入口來發布，未完成的結構修改可由其他執行緒協助完成。參考 [Bw-Tree 原論文](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/bw-tree-icde2013-final.pdf)。
 
+---
+
 ## Cache-Oblivious B-Tree：vEB Layout 與 Packed Array
 
-前面的變種主要調整更新方式，這裡則改問：**節點怎麼排列，才能減少搜尋時的資料搬移？** Cache-Oblivious 不是不使用快取，而是設計時不必先知道 Cache Line、區塊大小或快取容量，仍透過資料排列改善區域性；它在模型中的傳輸成本保證，也不代表在所有真實硬體上都一定比較快。
+前面的變種主要調整更新方式，這裡則改問： **節點怎麼排列，才能減少搜尋時的資料搬移**？ Cache-Oblivious 不是不使用快取，而是設計時不必先知道 Cache Line、區塊大小或快取容量，仍透過資料排列改善區域性；它在模型中的傳輸成本保證，也不代表在所有真實硬體上都一定比較快。
 
 ### 一般 B-Tree 怎麼放？
 
@@ -204,9 +216,9 @@ SMO 是 Structural Modification Operation，處理節點太大或太空時的 Sp
 
 ### vEB Layout 與 Packed Array：搜尋區域性與插入空間
 
-書中把兩者搭配使用：**上方搜尋索引採用 vEB Layout，讓相關節點靠近，改善 Locality（區域性）；底層有序資料使用 Packed Array，預留空位，讓插入不必每次都搬動大量元素。**索引負責定位底層資料，資料重新分配後，索引也要配合更新。
+書中把兩者搭配使用： **上方搜尋索引採用 vEB Layout，讓相關節點靠近，改善 Locality（區域性）；底層有序資料使用 Packed Array，預留空位，讓插入不必每次都搬動大量元素**。索引負責定位底層資料，資料重新分配後，索引也要配合更新。
 
-**這裡的「切開」只是沿樹的高度分組，方便安排存放順序；父子關係不變，也不是 B-Tree 的 Split。** vEB 是 van Emde Boas 的縮寫，這裡討論的是 Layout，不必先學同名的整數搜尋樹。
+**這裡的「切開」只是沿樹的高度分組，方便安排存放順序；父子關係不變，也不是 B-Tree 的 Split**。 vEB 是 van Emde Boas 的縮寫，這裡討論的是 Layout，不必先學同名的整數搜尋樹。
 
 ![[Assets/Note/Tech/B-Tree Variants/veb-layout-zh.png]]
 
@@ -216,18 +228,18 @@ SMO 是 Structural Modification Operation，處理節點太大或太空時的 Sp
 
 例如搜尋路徑 `A → B → D → I`，讀取 D 所在區塊時，鄰近的 I 可能一起載入。遞迴配置讓小子樹與大子樹都各自連續，因此不同大小的區塊都有機會涵蓋相關節點，而不必先指定區塊大小。這不保證每一步都命中快取。
 
-有了搜尋索引的排列方式，接著還要處理底層資料的新增與刪除。Packed Array 把資料依 Key 排序放在陣列中，並預留空位；例如下表插入 15，就能直接使用 10 和 20 之間的空位。**這些間隙是底層資料的插入空間，不代表在圖中的 A、B、C 索引節點之間固定塞入空格。**
+有了搜尋索引的排列方式，接著還要處理底層資料的新增與刪除。Packed Array 把資料依 Key 排序放在陣列中，並預留空位；例如下表插入 15，就能直接使用 10 和 20 之間的空位。 **這些間隙是底層資料的插入空間，不代表在圖中的 A、B、C 索引節點之間固定塞入空格**。
 
 | 狀態 | 位置 1 | 位置 2 | 位置 3 | 位置 4 | 位置 5 |
 | --- | --- | --- | --- | --- | --- |
 | 插入前 | 10 | 空 | 20 | 空 | 30 |
 | 插入 15 後 | 10 | 15 | 20 | 空 | 30 |
 
-這次插入不用搬動其他資料；若附近沒有空位，仍要在更大範圍重新分配資料與空格。結構依不同範圍的密度門檻決定何時重分配，必要時擴大或縮小陣列；元素移動後，搜尋索引也須配合更新。空位不必固定間隔，也不是越多越好；過多空位會降低每個區塊能容納的有效資料量。兩者搭配的重點是：**vEB 改善搜尋路徑的區域性，Packed Array 則在保留有序資料區域性的同時，用適量空位降低插入的搬動成本。**參考 [Cache-Oblivious B-Trees 原論文](https://erikdemaine.org/papers/FOCS2000b/paper.pdf)。
+這次插入不用搬動其他資料；若附近沒有空位，仍要在更大範圍重新分配資料與空格。結構依不同範圍的密度門檻決定何時重分配，必要時擴大或縮小陣列；元素移動後，搜尋索引也須配合更新。空位不必固定間隔，也不是越多越好；過多空位會降低每個區塊能容納的有效資料量。兩者搭配的重點是： **vEB 改善搜尋路徑的區域性，Packed Array 則在保留有序資料區域性的同時，用適量空位降低插入的搬動成本**。參考 [Cache-Oblivious B-Trees 原論文](https://erikdemaine.org/papers/FOCS2000b/paper.pdf)。
 
 ### 都有 vEB Layout，為什麼還需要 LSM-Tree？
 
-**資料放得近，不等於不同 Key 的更新都能連續寫出。例如先後更新 `10、5000、900000`，vEB 可以改善各自搜尋路徑的區域性，但三筆更新仍可能落在相距很遠的區域。LSM-Tree 則先累積更新，再排序、批次寫出新的 Sorted Runs，降低逐筆修改分散位置的成本；代價是後續合併，以及查詢可能需要考慮多個 Runs。這裡的連續指檔案／區塊的順序存取，不保證 SSD 底層實體位置連續。
+**資料放得近，不等於不同 Key 的更新都能連續寫出**。例如先後更新 `10、5000、900000`，vEB 可以改善各自搜尋路徑的區域性，但三筆更新仍可能落在相距很遠的區域。LSM-Tree 則先累積更新，再排序、批次寫出新的 Sorted Runs，降低逐筆修改分散位置的成本；代價是後續合併，以及查詢可能需要考慮多個 Runs。這裡的連續指檔案／區塊的順序存取，不保證 SSD 底層實體位置連續。
 
 | 機制 | 主要處理的成本 |
 | --- | --- |

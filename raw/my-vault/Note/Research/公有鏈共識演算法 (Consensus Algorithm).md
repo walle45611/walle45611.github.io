@@ -1,5 +1,7 @@
 # B.8 公有鏈共識演算法 (Consensus Algorithm)
 
+通用的共識問題、故障模型、拜占庭容錯與 Raft 閱讀整理，見 [[Consensus Algorithms]]；本篇保留公鏈的 PoW、PoS 與 DPoS。
+
 - **共識演算法 (Consensus algorithm)** 是區塊鏈系統中的關鍵機制，目的是讓參與者在沒有信任基礎與中央控制的情況下，就區塊資料的真實性與有效性達成共識。這確保了分散式帳本能夠一致更新，防止雙重支付與資料偽造。
     
 

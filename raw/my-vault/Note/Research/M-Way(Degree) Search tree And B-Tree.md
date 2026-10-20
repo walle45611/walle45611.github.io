@@ -19,9 +19,9 @@ blog_topic: 資料結構
     
 - 一個節點的 **degree** 介於 $0$ 與 $m$。
     
-- 若節點的 degree 為 $m$，則該節點內的 **keys 數**為 $(m-1)$。
+- 若節點的 degree 為 $m$，則該節點內的 **keys 數** 為 $(m-1)$。
     
-- 同一節點內的 keys 以 **遞增**排序。
+- 同一節點內的 keys 以 **遞增** 排序。
     
 - `search/insert/delete x` 的時間為 $O(h)$，其中 $h$ 是樹高；若結構 skewed，實際效能最壞也取決於 $h$。
     
@@ -30,7 +30,7 @@ blog_topic: 資料結構
 
 內部節點有 N 個 Key 時，會形成 N+1 個子樹搜尋區間，完整表示時需要 N+1 個子指標。最右側子指標負責大於最後分隔 Key 的區間；在一般 B-Tree 中，若搜尋值等於節點內的 Key，可以直接在該節點命中。後面的 B+ Tree 範例則另外指定邊界相等時的路由規則。
 
-## **定理**（高度為 $h$ 的 $m$-way search tree）
+## **定理** （高度為 $h$ 的 $m$-way search tree）
 
 - 節點數上界：  $\sum_{i=1}^{h} (m^{i-1}) \,=\, \frac{m^{h}-1}{m-1}$
     
@@ -164,7 +164,7 @@ $$
         
     - Order 4 → degree = 2, 3, 4 → 2-3-4 Tree
         
-    - Order 5 → degree = 3, 4, 5 (root 可為 2)，**不是 2-3-4-5 Tree**
+    - Order 5 → degree = 3, 4, 5 (root 可為 2)， **不是 2-3-4-5 Tree**
 
 
 ![[Assets/Note/Research/M-Way(Degree) Search tree And B-Tree/diagram-03.png]]
@@ -177,13 +177,13 @@ $$
 |        4 |    2–4    |     2–4     |     2, 3, 4     |         **2-3-4 Tree**          |      **✓**       |
 |        5 |    2–5    |     3–5     |  3, 4, 5（根可 2）  | _order-5 B-Tree_ 或 _3-4-5 Tree_ | **✗ 對「2-3-4-5」** |
 
-> 說明：m=5m=5 時，非根下限為 $\lceil 5/2\rceil=3$。一般節點**不能**有 degree=2，因此**沒有「2-3-4-5 Tree」**這個名稱。
+> 說明：m=5m=5 時，非根下限為 $\lceil 5/2\rceil=3$。一般節點 **不能** 有 degree=2，因此 **沒有「2-3-4-5 Tree」** 這個名稱。
 
 ### 例：2-3 Tree 給定 key 數 n 求高度界
 
-- **最小高度**（最滿）：  $3^{h}-1\ge n\;\Rightarrow\; h=\left\lceil\log_{3}(n+1)\right\rceil$
+- **最小高度** （最滿）：  $3^{h}-1\ge n\;\Rightarrow\; h=\left\lceil\log_{3}(n+1)\right\rceil$
     
-- **最大高度**（最稀）：  $2^{h}-1\ge n\;\Rightarrow\; h=\left\lceil\log_{2}(n+1)\right\rceil$
+- **最大高度** （最稀）：  $2^{h}-1\ge n\;\Rightarrow\; h=\left\lceil\log_{2}(n+1)\right\rceil$
 
 ## 插入 X 到 B 樹 (Order M)
 
@@ -224,7 +224,7 @@ $$
 
 圖中的黑色連線表示往下搜尋的路徑，右側 Breadcrumbs 則記錄各層經過的節點與所選位置。它保存的是「這次從哪裡走下來」，並不是在每個 Child Page 裡永久增加一條指向 Parent 的連結。圖中的 1、2、2 是所選位置的示意，不代表 PostgreSQL 欄位一定使用相同的編號方式。
 
-**Parent Node 存在，不代表 Child 必須保存 Parent Pointer。**除了 Root 以外，B-Tree 的每個節點都有父節點；父節點原本就透過 Child Pointer（Downlink）指向子節點。往上找 Parent 時，可以使用搜尋過程留下的 Breadcrumbs，不必再從 Child 讀取 Parent Pointer。例如下降路徑為 Root `P1`、Internal `P5`、Internal `P8`，最後到達 Leaf `P12`；若 `P12` 發生 Split，就先從 Stack 取得 `P8`，若父節點也分裂，再回到 `P5`，必要時一路處理到 Root。
+**Parent Node 存在，不代表 Child 必須保存 Parent Pointer**。除了 Root 以外，B-Tree 的每個節點都有父節點；父節點原本就透過 Child Pointer（Downlink）指向子節點。往上找 Parent 時，可以使用搜尋過程留下的 Breadcrumbs，不必再從 Child 讀取 Parent Pointer。例如下降路徑為 Root `P1`、Internal `P5`、Internal `P8`，最後到達 Leaf `P12`；若 `P12` 發生 Split，就先從 Stack 取得 `P8`，若父節點也分裂，再回到 `P5`，必要時一路處理到 Root。
 
 Breadcrumbs 通常是一次操作或 Cursor 在記憶體中的 **Traversal State（遍歷狀態）**，生命週期結束後可以釋放。它與 Buffer Pool／Page Cache 的用途不同：後者快取資料頁內容，Breadcrumbs 則記錄搜尋路徑。Parent Pointer 是另一種向上定位方式，但當子節點因 Split、Merge 或 Rebalancing 換了父節點，就需要維護對應關係。兩者可以並用，卻不是都必須存在；若沒有保留路徑，也沒有 Parent Pointer，仍可從 Root 重新尋找父節點。
 
@@ -238,7 +238,7 @@ Breadcrumbs 通常是一次操作或 Cursor 在記憶體中的 **Traversal State
 		
 	1. **刪除**：在 $N$ 直接移除 $x$。t6
 		
-	2. **檢查是否 underflow**（鍵數是否太少）。
+	2. **檢查是否 underflow** （鍵數是否太少）。
 			
 		* **Not underflow**：若 $|N| \ge \lceil m/2\rceil - 1$ → **完成**。
 			
@@ -246,25 +246,25 @@ Breadcrumbs 通常是一次操作或 Cursor 在記憶體中的 **Traversal State
 				
 			1. **Rotation（借鍵）**：
 			
-				* 嘗試向**兄弟節點**（相鄰的左或右）借一鍵；
+				* 嘗試向 **兄弟節點** （相鄰的左或右）借一鍵；
 				
-				* 透過**父節點分隔鍵**旋轉；
+				* 透過 **父節點分隔鍵** 旋轉；
 				
 				* 若成功 → **完成**。
 			
 			2. **Combine / Merge（合併）**：
 			
-				* 若無法旋轉，與相鄰兄弟**合併**，並把父節點中的分隔鍵**下移**到合併後的新節點；
+				* 若無法旋轉，與相鄰兄弟 **合併**，並把父節點中的分隔鍵 **下移** 到合併後的新節點；
 				
-				* 令 $N \leftarrow$ 該**父節點**（父節點少了一鍵），**回到本 Case 的步驟 2** 續檢查（可能向上連鎖）。
+				* 令 $N \leftarrow$ 該 **父節點** （父節點少了一鍵）， **回到本 Case 的步驟 2** 續檢查（可能向上連鎖）。
 
 2. Case II｜$N$ 是 **non-leaf**
 		
 	1. **選替代鍵** $y$：
 		
-		* 取 **前驅**（左子樹中的**最大**鍵），或
+		* 取 **前驅** （左子樹中的 **最大** 鍵），或
 		
-		* 取 **後繼**（右子樹中的**最小**鍵）。
+		* 取 **後繼** （右子樹中的 **最小** 鍵）。
 
 	2. **交換並遞迴刪除**：
 
@@ -275,11 +275,11 @@ Breadcrumbs 通常是一次操作或 Cursor 在記憶體中的 **Traversal State
 		* 因此回到 **Case I** 的 underflow 檢查與修復流程。
 ### 註記
 
-* $\lceil m/2\rceil - 1$ 為**非根節點**允許的最少鍵數。
+* $\lceil m/2\rceil - 1$ 為 **非根節點** 允許的最少鍵數。
 
 * **Rotation** 與 **Merge** 的選擇依鄰接兄弟是否有多於最小鍵數而定。
 
-* 可能需**一路向上**修復直到根；若根空了且只有一個子樹，則將該子樹提升為新根。
+* 可能需 **一路向上** 修復直到根；若根空了且只有一個子樹，則將該子樹提升為新根。
 
 ![[Assets/Note/Research/M-Way(Degree) Search tree And B-Tree/04-註記.png]]
 ### Example 
@@ -295,17 +295,17 @@ Breadcrumbs 通常是一次操作或 Cursor 在記憶體中的 **Traversal State
 - 分成 **索引部分與葉層資料部分**：Index level、Data blocks level；索引部分本身可以有多層。
 	1.  Index level
 			
-		- 結構：**B-tree of order mm**。
+		- 結構： **B-tree of order mm**。
 		    
-		- 功能：**純索引**，不放資料（只放 **key** 與子指標）。
+		- 功能： **純索引**，不放資料（只放 **key** 與子指標）。
 			
 	2. Data blocks level
 			
-		- 作用：**存放資料**（records）。
+		- 作用： **存放資料** （records）。
 		    
 		- 連結：各 **data block 以 linked list 串接**，方便順序讀取。
 		    
-		- 容量：每個 block 的資料數 **可依題目/規格自行訂**，**不必**與 index 的 order m 相同，**==但是題目沒有特別說就是一樣==**。
+		- 容量：每個 block 的資料數 **可依題目/規格自行訂**， **不必** 與 index 的 order m 相同， **==但是題目沒有特別說就是一樣==**。
 
 ![[Assets/Note/Research/M-Way(Degree) Search tree And B-Tree/07-定義 (Definition).png]]
 ## 葉節點連結與範圍查詢
@@ -361,7 +361,7 @@ B+ Tree 的相鄰 Leaf Nodes 可以透過 Leaf Links 串接。範圍查詢先沿
 
 這次調整前後的樹高相同。長期提高節點填滿程度，才可能讓相同資料量使用更少的 Pages 與層數；不是每次 Rebalancing 都會降低樹高。另外，跨 Page 重新分配 Cells 是這裡的 Rebalancing，同一個 Page 內搬動 Cells、整理零碎空間則是 Compaction／Defragmentation。
 
-**節點填滿程度不平均，不等於樹高失衡。**B-Tree 的高度平衡要求所有 Leaf 位於同一層，各節點不必有相同 Key 數，但仍須遵守所採模型的最低占用規則。資料庫的追加寫入最佳化可能採取不同的頁面填充策略，相關 Fastpath 與 Quickbalance 實例見 [Database Internals](https://blog.walle4561.com/articles/posts/database-internals-reading-notes/)。
+**節點填滿程度不平均，不等於樹高失衡**。B-Tree 的高度平衡要求所有 Leaf 位於同一層，各節點不必有相同 Key 數，但仍須遵守所採模型的最低占用規則。資料庫的追加寫入最佳化可能採取不同的頁面填充策略，相關 Fastpath 與 Quickbalance 實例見 [Database Internals](https://blog.walle4561.com/articles/posts/database-internals-reading-notes/)。
 
 ## Bulk Loading：由 Leaf 向上建樹
 
@@ -371,4 +371,4 @@ B+ Tree 的相鄰 Leaf Nodes 可以透過 Leaf Links 串接。範圍查詢先沿
 
 `page-wise` 表示「以 Page 為單位」。在這個情境中，可以理解成一頁一頁建立與填入資料，再從這批頁面建立上一層，而不是每筆資料都重新走完整的插入路徑。實作上也可以保留部分可用空間，供後續插入使用，不一定把每頁填到全滿。
 
-**Bulk Loading 強調整批處理，Bottom-Up 強調建樹方向。**一般的批次匯入不一定採用 Bottom-Up；此處描述的是利用排序後的整批資料，由 Leaf 向上直接建立 B-Tree 索引的方式。
+**Bulk Loading 強調整批處理，Bottom-Up 強調建樹方向**。一般的批次匯入不一定採用 Bottom-Up；此處描述的是利用排序後的整批資料，由 Leaf 向上直接建立 B-Tree 索引的方式。

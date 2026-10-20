@@ -1,28 +1,23 @@
-use std::collections::{BTreeMap, BTreeSet, HashMap};
+use std::collections::{BTreeMap, BTreeSet};
 use std::env;
-use std::fs::{self, File};
-use std::io::Write;
+use std::fs;
 use std::path::{Path, PathBuf};
 
-use regex::Regex;
-use renderer_wasm::render_markdown_to_html;
 use serde::Serialize;
-use serde_yaml::Value;
 use sha2::{Digest, Sha256};
 use unicode_normalization::UnicodeNormalization;
 
 mod maintenance;
+mod renderer;
 mod vault;
 
 const SITE_URL: &str = "https://blog.walle4561.com";
 const GA_ID: &str = "G-G0PYR1QYT5";
 const ADSENSE_CLIENT: &str = "ca-pub-7412528508334178";
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone)]
 struct Article {
-    #[serde(rename = "file")]
     source_file: String,
-    #[serde(rename = "sha256")]
     source_hash: String,
     route: String,
     slug: String,
@@ -30,9 +25,6 @@ struct Article {
     date: Option<String>,
     excerpt: String,
     body_html: String,
-    kind: String,
-    kind_label: String,
-    route_kind: String,
     blog_topic: Option<String>,
     blog_tags: Vec<String>,
 }
@@ -54,7 +46,6 @@ struct ContentArticleManifest {
 #[derive(Debug, Clone)]
 struct BuilderConfig {
     _project_root: PathBuf,
-    vault_posts_dir: PathBuf,
     vault_assets_dir: PathBuf,
     out_dir: PathBuf,
     manifest_path: PathBuf,
@@ -65,11 +56,11 @@ struct BuilderConfig {
 fn main() {
     let arguments: Vec<String> = env::args().skip(1).collect();
     if let Some(command) = arguments.first() {
-        if command == "archive" {
-            eprintln!("The archive command has been removed.");
+        if matches!(command.as_str(), "archive" | "sync-vault") {
+            eprintln!("The {command} command has been removed.");
             std::process::exit(1);
         }
-        if matches!(command.as_str(), "sync-vault" | "stage-assets") {
+        if command == "stage-assets" {
             if let Err(error) = maintenance::run(command, &arguments[1..]) {
                 eprintln!("{command} failed: {error}");
                 std::process::exit(1);
@@ -78,31 +69,14 @@ fn main() {
         }
     }
     let config = load_config();
-    if let Err(error) = vault::export(
+    let articles = vault::load_articles(
         &config._project_root.join("raw/my-vault"),
-        &config._project_root.join(".build/site"),
-    ) {
-        eprintln!("vault export failed: {error}");
+        &config.vault_assets_dir,
+    )
+    .unwrap_or_else(|error| {
+        eprintln!("failed to read vault: {error}");
         std::process::exit(1);
-    }
-    let mut articles = Vec::new();
-    if config.vault_posts_dir.exists() {
-        let vault_articles = read_articles(&config.vault_posts_dir).unwrap_or_else(|err| {
-            eprintln!("failed to read vault posts: {err}");
-            std::process::exit(1);
-        });
-        for mut article in vault_articles {
-            article.source_file = format!("raw/my-vault/{}", article.source_file);
-            let source = config._project_root.join(&article.source_file);
-            let source_bytes = fs::read(&source).unwrap_or_else(|err| {
-                eprintln!("failed to read vault source {}: {err}", source.display());
-                std::process::exit(1);
-            });
-            article.source_hash = sha256_hex(&source_bytes);
-            articles.push(article);
-        }
-        sort_articles(&mut articles);
-    }
+    });
     if let Err(err) = build_site(&config, &articles) {
         eprintln!("build failed: {err}");
         std::process::exit(1);
@@ -138,7 +112,7 @@ fn load_config() -> BuilderConfig {
         .filter(|p| p.exists())
         .unwrap_or_else(|| detect_project_root(&cwd));
 
-    let build_root = project_root.join(".build").join("site");
+    let build_root = build_root(&project_root);
     let out_default = build_root.join("client");
 
     let styles_path = project_root.join("sites").join("styles.css");
@@ -150,7 +124,6 @@ fn load_config() -> BuilderConfig {
 
     BuilderConfig {
         _project_root: project_root.clone(),
-        vault_posts_dir: build_root.join("vault-posts"),
         vault_assets_dir: build_root.join("vault-assets"),
         out_dir: out_dir.unwrap_or(out_default),
         manifest_path,
@@ -164,11 +137,10 @@ fn print_usage_and_exit(code: i32) -> ! {
         "\
 Usage:
   site-builder [--out-dir <path>] [--project-dir <path>]
-  site-builder sync-vault [--source <path>]
   site-builder stage-assets
 
 Options:
-  --out-dir      Output path for static files (default: <project>/.build/site/client)
+  --out-dir      Output path for static files (default: system temp/walle-blog/<project-id>/client)
   --project-dir  Project root for relative references
 "
     );
@@ -196,74 +168,12 @@ fn detect_project_root(cwd: &Path) -> PathBuf {
     cwd.to_path_buf()
 }
 
-fn read_articles(raw_dir: &Path) -> std::io::Result<Vec<Article>> {
-    let mut articles = Vec::new();
-    let mut entries = fs::read_dir(raw_dir)?.collect::<Result<Vec<_>, _>>()?;
-    entries.sort_by_key(|e| e.path().file_name().map(|n| n.to_owned()));
-
-    for entry in entries {
-        let path = entry.path();
-        if path.extension().and_then(|ext| ext.to_str()) != Some("md") {
-            continue;
-        }
-
-        let raw = fs::read_to_string(&path)?;
-        let (front_matter, body) = parse_front_matter(&raw);
-        if front_matter.is_empty() || !has_blog_marker(&front_matter) {
-            continue;
-        }
-        let slug = slug_for(
-            path.file_stem()
-                .and_then(|s| s.to_str())
-                .unwrap_or_default(),
-            &front_matter,
-        );
-        let title = front_matter_value_str(&front_matter, "title")
-            .filter(|s| !s.trim().is_empty())
-            .unwrap_or_else(|| first_heading(&body).unwrap_or_else(|| "Untitled".to_string()));
-
-        let date = front_matter_value_str(&front_matter, "published")
-            .or_else(|| front_matter_value_str(&front_matter, "date"))
-            .or_else(|| front_matter_value_str(&front_matter, "created"))
-            .and_then(|value| date_only(&value));
-        let description = front_matter_value_str(&front_matter, "description");
-        let summary_excerpt = excerpt_for_summary(&body);
-        let excerpt_raw = description
-            .filter(|v| !v.trim().is_empty())
-            .unwrap_or(summary_excerpt);
-        let excerpt = clip_excerpt(&excerpt_raw);
-        let body_html = render_markdown_to_html(&body);
-        let hash = sha256_hex(raw.as_bytes());
-        let source_file =
-            front_matter_value_str(&front_matter, "vault_source").unwrap_or_else(|| {
-                path.file_name()
-                    .map(|s| s.to_string_lossy().to_string())
-                    .unwrap_or_default()
-            });
-        let route = format!("/articles/posts/{slug}/");
-
-        articles.push(Article {
-            source_file,
-            source_hash: hash,
-            route: route.clone(),
-            slug,
-            title,
-            date,
-            excerpt,
-            body_html,
-            kind: "post".to_string(),
-            kind_label: "Post".to_string(),
-            route_kind: "posts".to_string(),
-            blog_topic: front_matter_value_str(&front_matter, "blog_topic"),
-            blog_tags: vault::parse_blog_tags(front_matter.get("blog_tag")).map_err(|error| {
-                std::io::Error::new(std::io::ErrorKind::InvalidData, error.to_string())
-            })?,
-        });
-    }
-
-    sort_articles(&mut articles);
-
-    Ok(articles)
+fn build_root(project: &Path) -> PathBuf {
+    let project = project
+        .canonicalize()
+        .unwrap_or_else(|_| project.to_path_buf());
+    let key = sha256_hex(project.to_string_lossy().as_bytes());
+    env::temp_dir().join("walle-blog").join(&key[..12])
 }
 
 fn sort_articles(articles: &mut [Article]) {
@@ -322,10 +232,9 @@ fn build_site(config: &BuilderConfig, articles: &[Article]) -> std::io::Result<(
     for article in articles {
         let article_page = render_post(article, &navigation);
         write_output(
-            &config.out_dir.join(format!(
-                "articles/{}/{}/index.html",
-                article.route_kind, article.slug
-            )),
+            &config
+                .out_dir
+                .join(format!("articles/posts/{}/index.html", article.slug)),
             &article_page,
         )?;
     }
@@ -351,10 +260,6 @@ fn build_site(config: &BuilderConfig, articles: &[Article]) -> std::io::Result<(
     write_output(
         &config.out_dir.join("_headers"),
         "/styles.css\n  Cache-Control: public, max-age=0, must-revalidate\n",
-    )?;
-    write_output(
-        &config.out_dir.join("_redirects"),
-        include_str!("../../../../public/_redirects"),
     )?;
     fs::copy(&config.favicon_path, config.out_dir.join("favicon.svg"))?;
     if config.vault_assets_dir.exists() {
@@ -513,7 +418,7 @@ fn collect_blog_tags(articles: &[Article]) -> std::io::Result<Vec<BlogTag>> {
     let mut routes = BTreeSet::new();
     let mut tags = Vec::new();
     for name in names {
-        let slug = slug_for(name, &HashMap::new());
+        let slug = slug_for(name);
         if slug.is_empty() || !routes.insert(slug.clone()) {
             return Err(std::io::Error::new(
                 std::io::ErrorKind::InvalidData,
@@ -634,10 +539,7 @@ fn post_meta(article: &Article) -> String {
         Some(value) => format!(r#"<time datetime="{}">{}</time>"#, value, value),
         None => "<span>Undated</span>".to_string(),
     };
-    format!(
-        "<div class=\"post-meta\">{} · {}</div>",
-        date, article.kind_label
-    )
+    format!("<div class=\"post-meta\">{date} · Post</div>")
 }
 
 fn render_page(
@@ -673,9 +575,12 @@ fn render_page(
         const markOverflow = () => {
           pending = false;
           prose.querySelectorAll('.math-tex').forEach((math) => {
+            const formula = math.querySelector('mjx-math');
+            if (!formula) return;
+            const block = math.closest('p, li, h2, h3, h4, h5, h6, blockquote, .prose');
             math.classList.toggle(
               'has-overflow',
-              !math.closest('table') && math.scrollWidth > math.clientWidth + 12
+              !math.closest('table') && formula.getBoundingClientRect().width > block.clientWidth + 12
             );
           });
         };
@@ -687,6 +592,7 @@ fn render_page(
 
         new MutationObserver(scheduleCheck).observe(prose, { childList: true, subtree: true });
         window.addEventListener('resize', scheduleCheck);
+        document.fonts.ready.then(scheduleCheck);
         scheduleCheck();
       });
     </script>"#
@@ -838,50 +744,8 @@ fn page_url(pathname: &str) -> String {
     )
 }
 
-fn parse_front_matter(source: &str) -> (HashMap<String, Value>, String) {
-    let mut lines = source.lines();
-    match lines.next() {
-        Some("---") | Some("---\r") => {}
-        _ => return (HashMap::new(), source.to_string()),
-    }
-    let mut frontmatter_lines = Vec::new();
-    let mut has_delimiter = false;
-    for line in lines.by_ref() {
-        if line.trim() == "---" {
-            has_delimiter = true;
-            break;
-        }
-        frontmatter_lines.push(line);
-    }
-    if !has_delimiter {
-        return (HashMap::new(), source.to_string());
-    }
-    let body = lines.collect::<Vec<_>>().join("\n");
-    let text = frontmatter_lines.join("\n");
-    if text.trim().is_empty() {
-        return (HashMap::new(), body);
-    }
-    let front_matter: HashMap<String, Value> = serde_yaml::from_str(&text).unwrap_or_default();
-    (front_matter, body)
-}
-
-fn has_blog_marker(front_matter: &HashMap<String, Value>) -> bool {
-    front_matter.get("blog").and_then(Value::as_bool) == Some(true)
-}
-
-fn front_matter_value_str(front_matter: &HashMap<String, Value>, key: &str) -> Option<String> {
-    front_matter
-        .get(key)
-        .and_then(|value| value.as_str().map(ToString::to_string))
-}
-
-fn slug_for(file_name: &str, front_matter: &HashMap<String, Value>) -> String {
-    let explicit = front_matter
-        .get("slug")
-        .and_then(|value| value.as_str())
-        .filter(|slug| !slug.is_empty())
-        .unwrap_or(file_name);
-    let normalized = explicit.nfkc().collect::<String>().to_lowercase();
+fn slug_for(name: &str) -> String {
+    let normalized = name.nfkc().collect::<String>().to_lowercase();
     let mut slug = String::new();
     let mut last_was_dash = false;
     for ch in normalized.chars() {
@@ -899,54 +763,6 @@ fn slug_for(file_name: &str, front_matter: &HashMap<String, Value>) -> String {
     slug
 }
 
-fn first_heading(body: &str) -> Option<String> {
-    let re = Regex::new(r"(?m)^#\s+(.+)$").expect("regex");
-    re.captures(body)
-        .and_then(|capture| capture.get(1).map(|m| m.as_str().trim().to_string()))
-}
-
-fn strip_markdown(value: &str) -> String {
-    let mut output = value.to_string();
-    let image = Regex::new(r"!\[[^\]]*\]\([^)]*\)").expect("regex");
-    output = image.replace_all(&output, "").to_string();
-    let link = Regex::new(r"\[([^\]]+)\]\([^)]*\)").expect("regex");
-    output = link.replace_all(&output, "$1").to_string();
-    let fenced = Regex::new(r"(?s)```[\s\S]*?```").expect("regex");
-    output = fenced.replace_all(&output, "").to_string();
-    let inline_code = Regex::new(r"`([^`]+)`").expect("regex");
-    output = inline_code.replace_all(&output, "$1").to_string();
-    let heading = Regex::new(r"(?m)^\s*#+\s+").expect("regex");
-    output = heading.replace_all(&output, "").to_string();
-    let list = Regex::new(r"(?m)^\s*[-*+]\s+").expect("regex");
-    output = list.replace_all(&output, "").to_string();
-    let symbols = Regex::new(r"[>*_~]").expect("regex");
-    output = symbols.replace_all(&output, "").to_string();
-    let spaces = Regex::new(r"\s+").expect("regex");
-    output = spaces.replace_all(&output, " ").to_string();
-    output.trim().to_string()
-}
-
-fn excerpt_for_summary(body: &str) -> String {
-    let heading = Regex::new(r"(?im)^##\s*Summary\s*$").expect("regex");
-    let next_heading = Regex::new(r"(?im)^##\s+").expect("regex");
-
-    let summary = heading
-        .find(body)
-        .map(|start| {
-            let after_heading = &body[start.end()..];
-            let next = next_heading.find(after_heading);
-            let end = next.map_or(after_heading.len(), |m| m.start());
-            after_heading[..end].trim().to_string()
-        })
-        .filter(|text| !text.is_empty())
-        .unwrap_or_else(|| {
-            body.split_once("<!--more-->")
-                .map(|(head, _)| head.to_string())
-                .unwrap_or_else(|| body.to_string())
-        });
-    strip_markdown(&summary)
-}
-
 fn clip_excerpt(input: &str) -> String {
     let mut chars = input.chars();
     let maybe = chars.by_ref().take(187).collect::<String>();
@@ -955,12 +771,6 @@ fn clip_excerpt(input: &str) -> String {
     } else {
         input.to_string()
     }
-}
-
-fn date_only(value: &str) -> Option<String> {
-    let re = Regex::new(r"(\d{4})[-/]?(\d{2})[-/]?(\d{2})").expect("regex");
-    re.captures(value)
-        .map(|cap| format!("{}-{}-{}", &cap[1], &cap[2], &cap[3]))
 }
 
 fn sha256_hex(bytes: &[u8]) -> String {
@@ -973,9 +783,7 @@ fn write_output(path: &Path, content: &str) -> std::io::Result<()> {
     if let Some(parent) = path.parent() {
         fs::create_dir_all(parent)?;
     }
-    let mut file = File::create(path)?;
-    file.write_all(content.as_bytes())?;
-    Ok(())
+    fs::write(path, content)
 }
 
 fn escape_html(value: &str) -> String {
@@ -994,13 +802,14 @@ fn default_styles() -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use std::io::Write;
+    use crate::renderer::render_markdown_to_html;
     use tempfile::tempdir;
 
     #[test]
     fn builds_discovered_tags_topics_and_navigation_without_a_mapping() {
         let tmp = tempdir().unwrap();
-        let posts = tmp.path().join("posts");
+        let vault = tmp.path().join("vault");
+        let posts = vault.join("Note/Tech");
         fs::create_dir_all(&posts).unwrap();
         for (slug, metadata) in [
             (
@@ -1013,16 +822,15 @@ mod tests {
         ] {
             fs::write(
                 posts.join(format!("{slug}.md")),
-                format!("---\nblog: true\ntitle: {slug}\nslug: {slug}\n{metadata}---\nBody\n"),
+                format!("---\nblog: true\nblog_title: {slug}\nblog_url: https://blog.walle4561.com/articles/posts/{slug}/\nblog_date: '2026-10-18'\n{metadata}---\nBody\n"),
             )
             .unwrap();
         }
-        let articles = read_articles(&posts).unwrap();
+        let articles = vault::load_articles(&vault, &tmp.path().join("assets")).unwrap();
         let favicon = tmp.path().join("favicon.svg");
         fs::write(&favicon, "<svg/>").unwrap();
         let config = BuilderConfig {
             _project_root: tmp.path().to_path_buf(),
-            vault_posts_dir: posts,
             vault_assets_dir: tmp.path().join("assets"),
             out_dir: tmp.path().join("client"),
             manifest_path: tmp.path().join("manifest.json"),
@@ -1030,8 +838,6 @@ mod tests {
             favicon_path: favicon,
         };
         build_site(&config, &articles).unwrap();
-        let redirects = fs::read_to_string(config.out_dir.join("_redirects")).unwrap();
-        assert!(redirects.contains("/topics/network-operating-systems/ /topics/os-networking/ 301"));
         let custom =
             fs::read_to_string(config.out_dir.join("topics/custom-systems/index.html")).unwrap();
         let dsa = fs::read_to_string(config.out_dir.join("topics/dsa/index.html")).unwrap();
@@ -1064,58 +870,23 @@ mod tests {
     #[test]
     fn rejects_tag_routes_that_are_empty_or_collide() {
         let tmp = tempdir().unwrap();
+        let posts = tmp.path().join("Note/Tech");
+        fs::create_dir_all(&posts).unwrap();
         for tags in ["['A & B', 'A B']", "['!!!']"] {
             fs::write(
-                tmp.path().join("test.md"),
-                format!("---\nblog: true\ntitle: Test\nblog_tag: {tags}\n---\nBody\n"),
+                posts.join("test.md"),
+                format!("---\nblog: true\nblog_title: Test\nblog_url: https://blog.walle4561.com/articles/posts/test/\nblog_date: '2026-10-18'\nblog_tag: {tags}\n---\nBody\n"),
             )
             .unwrap();
-            let articles = read_articles(tmp.path()).unwrap();
+            let articles = vault::load_articles(tmp.path(), &tmp.path().join("assets")).unwrap();
             assert!(collect_blog_tags(&articles).is_err());
         }
     }
 
     #[test]
-    fn parses_front_matter_and_filters_blog_posts() {
-        let tmp = tempdir().expect("tmp");
-        let raw = tmp.path().join("blog.md");
-        let mut file = File::create(&raw).expect("create");
-        writeln!(
-            file,
-            "---\ntitle: test title\nslug: my-post\nblog: true\npublished: 2024-08-01\n---\n# Title\nHello\n"
-        )
-        .expect("write");
-
-        let raw2 = tmp.path().join("note.md");
-        let mut file2 = File::create(&raw2).expect("create");
-        writeln!(
-            file2,
-            "---\ntitle: other\ntags: [note]\ndate: 2024-01-01\n---\nNo\n"
-        )
-        .expect("write");
-
-        let articles = read_articles(tmp.path()).expect("articles");
-        assert_eq!(articles.len(), 1);
-        assert_eq!(articles[0].slug, "my-post");
-    }
-
-    #[test]
-    fn source_url_alone_does_not_publish() {
-        let mut fm = HashMap::new();
-        fm.insert(
-            "source".to_string(),
-            Value::String("https://blog.walle4561.com/2026".into()),
-        );
-        assert!(!has_blog_marker(&fm));
-    }
-
-    #[test]
-    fn keeps_slug_stable_for_filename_with_unicode() {
-        let mut fm = HashMap::new();
-        fm.insert("slug".to_string(), Value::String("My Title".into()));
-        assert_eq!(slug_for("檔案名稱.md", &fm), "my-title");
-        let route = format!("/articles/posts/{}/", slug_for("檔案名稱.md", &fm));
-        assert!(route.ends_with('/'));
+    fn keeps_tag_slug_stable_with_unicode() {
+        assert_eq!(slug_for("My Title"), "my-title");
+        assert_eq!(slug_for("檔案名稱"), "檔案名稱");
     }
 
     #[test]
@@ -1156,9 +927,6 @@ mod tests {
             date: Some("2026-09-24".into()),
             excerpt: "A < B & C".into(),
             body_html: String::new(),
-            kind: "post".into(),
-            kind_label: "Post".into(),
-            route_kind: "posts".into(),
             blog_topic: None,
             blog_tags: Vec::new(),
         };

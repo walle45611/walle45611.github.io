@@ -1,9 +1,6 @@
 [workspace]
 resolver = "2"
-members = [
-    "crates/site-builder",
-    "crates/renderer-wasm",
-]
+members = ["crates/site-builder"]
 
 [workspace.package]
 edition = "2021"

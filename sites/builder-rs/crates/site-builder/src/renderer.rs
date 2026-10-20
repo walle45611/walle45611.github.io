@@ -86,17 +86,6 @@ fn restore_math_delimiters(html: &str) -> String {
     out
 }
 
-#[cfg(target_arch = "wasm32")]
-#[wasm_bindgen::prelude::wasm_bindgen]
-pub fn render_markdown(markdown: &str) -> String {
-    render_markdown_to_html(markdown)
-}
-
-#[cfg(not(target_arch = "wasm32"))]
-pub fn render_markdown(markdown: &str) -> String {
-    render_markdown_to_html(markdown)
-}
-
 fn comrak_options() -> ComrakOptions<'static> {
     let mut options = ComrakOptions::default();
     options.extension.strikethrough = true;

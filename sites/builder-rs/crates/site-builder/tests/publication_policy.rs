@@ -1,6 +1,14 @@
 use std::fs;
-use std::path::Path;
+use std::path::{Path, PathBuf};
+
+use sha2::{Digest, Sha256};
 use std::process::Command;
+
+fn build_dir(root: &Path) -> PathBuf {
+    let root = root.canonicalize().unwrap();
+    let key = format!("{:x}", Sha256::digest(root.to_string_lossy().as_bytes()));
+    std::env::temp_dir().join("walle-blog").join(&key[..12])
+}
 
 fn write(root: &Path, relative: &str, content: &str) {
     let path = root.join(relative);
@@ -27,7 +35,7 @@ fn build(root: &Path) -> serde_json::Value {
         String::from_utf8_lossy(&output.stderr)
     );
     serde_json::from_str(
-        &fs::read_to_string(root.join(".build/site/content-manifest.json")).unwrap(),
+        &fs::read_to_string(build_dir(root).join("content-manifest.json")).unwrap(),
     )
     .unwrap()
 }
@@ -88,7 +96,9 @@ fn publishes_only_explicitly_enabled_research_and_tech_notes() {
             "raw/my-vault/Note/Research/Research.md" | "raw/my-vault/Note/Tech/Nested/Tech.md"
         ));
     }
-    let client = root.join(".build/site/client");
+    let client = build_dir(root).join("client");
+    assert!(!client.starts_with(root));
+    assert!(!root.join(".build/site/content-manifest.json").exists());
     let page = fs::read_to_string(client.join("articles/posts/research/index.html")).unwrap();
     assert!(page.contains("See Private."));
     assert!(!page.contains("/articles/posts/excluded/"));
@@ -103,4 +113,39 @@ fn publishes_only_explicitly_enabled_research_and_tech_notes() {
     assert_eq!(manifest["articles"].as_array().unwrap().len(), 1);
     assert!(!client.join("articles/posts/research/index.html").exists());
     assert!(client.join("articles/posts/tech/index.html").exists());
+}
+
+#[test]
+fn article_headings_preserve_nesting_without_skipping_levels() {
+    let tmp = tempfile::tempdir().unwrap();
+    let root = tmp.path();
+    write(root, "sites/public/favicon.svg", "<svg/>");
+    write(
+        root,
+        "raw/my-vault/Note/Tech/Headings.md",
+        &format!(
+            "{}\n## First\n#### Child\n##### Detail\n### Sibling\n## Second\n\n```markdown\n# Literal heading\n```\n\n# New section\n## New child\n",
+            note("blog: true", "headings").replace("# headings\n", "").replace("See [[Private]].", "")
+        ),
+    );
+    build(root);
+    let page =
+        fs::read_to_string(build_dir(root).join("client/articles/posts/headings/index.html"))
+            .unwrap();
+    assert_eq!(page.matches("<h1").count(), 1);
+    for (level, id) in [
+        (2, "first"),
+        (3, "child"),
+        (4, "detail"),
+        (3, "sibling"),
+        (2, "second"),
+        (2, "new-section"),
+        (3, "new-child"),
+    ] {
+        assert!(
+            page.contains(&format!("<h{level}><a inert href=\"#{id}\"")),
+            "Expected H{level}: {id}"
+        );
+    }
+    assert!(page.contains("# Literal heading"));
 }

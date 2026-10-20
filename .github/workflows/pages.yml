@@ -10,29 +10,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      CARGO_TARGET_DIR: ${{ github.workspace }}/.build/cargo-target
+      CARGO_TARGET_DIR: ${{ runner.temp }}/walle-blog-cargo
     steps:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          submodules: recursive
 
       - name: Use Rust
         uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
-          targets: wasm32-unknown-unknown
-
-      - name: Build Rust workspace
-        run: cargo build --workspace --release
-        working-directory: ./sites/builder-rs
-
-      - name: Build wasm renderer crate
-        run: cargo build --target wasm32-unknown-unknown -p renderer-wasm --release
-        working-directory: ./sites/builder-rs
 
       - name: Generate static site
-        run: cargo run -p site-builder --release -- --project-dir "$GITHUB_WORKSPACE"
+        run: cargo run -p site-builder --release -- --project-dir "$GITHUB_WORKSPACE" --out-dir "$GITHUB_WORKSPACE/.build/site/client"
         working-directory: ./sites/builder-rs
 
       - name: Run Rust tests

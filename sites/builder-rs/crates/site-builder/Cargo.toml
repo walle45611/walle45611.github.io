@@ -1,7 +1,7 @@
 [package]
 name = "site-builder"
-description = "LLM Wiki static site builder (Rust)."
-authors = ["LLM Wiki"]
+description = "Walle Blog static site builder."
+authors = ["walle45611"]
 edition.workspace = true
 version.workspace = true
 license.workspace = true
@@ -13,7 +13,7 @@ serde_json.workspace = true
 serde_yaml.workspace = true
 regex.workspace = true
 unicode-normalization.workspace = true
-renderer-wasm = { path = "../renderer-wasm" }
+comrak.workspace = true
 rss = "2.0"
 chrono = "0.4"
 walkdir = "2"

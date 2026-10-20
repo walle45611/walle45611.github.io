@@ -7,11 +7,14 @@ use regex::{Captures, Regex};
 use sha2::{Digest, Sha256};
 use walkdir::WalkDir;
 
+use crate::{clip_excerpt, renderer::render_markdown_to_html, sha256_hex, sort_articles, Article};
+
 type Result<T> = std::result::Result<T, Box<dyn Error>>;
 
 #[derive(Clone)]
 struct Post {
     source: PathBuf,
+    source_hash: String,
     name: String,
     title: String,
     slug: String,
@@ -120,6 +123,7 @@ fn parse_post(source: &Path, note: &str) -> Result<Option<Post>> {
     }
     Ok(Some(Post {
         source: source.to_path_buf(),
+        source_hash: sha256_hex(note.as_bytes()),
         name: source
             .file_stem()
             .unwrap_or_default()
@@ -174,11 +178,12 @@ fn fence(line: &str) -> Option<(char, usize)> {
 }
 
 fn convert_format(body: &str) -> Result<String> {
-    let heading = Regex::new(r"^#{1,5}[ \t]+")?;
+    let heading = Regex::new(r"^(#{1,6})[ \t]+")?;
     let callout = Regex::new(r"(?i)^([ \t]*>[ \t]*)\[!(\w+)\][+-]?[ \t]*(.*)$")?;
     let highlight = Regex::new(r"==(.+?)==")?;
     let mut out = Vec::<String>::new();
     let mut active_fence: Option<(char, usize)> = None;
+    let mut heading_stack = Vec::new();
     for line in body.lines() {
         let marker = fence(line);
         if active_fence.is_none() && marker.is_some() {
@@ -206,8 +211,15 @@ fn convert_format(body: &str) -> Result<String> {
             out.push(String::new());
             continue;
         }
-        let mut converted = if heading.is_match(line) {
-            format!("#{line}")
+        let mut converted = if let Some(capture) = heading.captures(line) {
+            let level = capture[1].len();
+            while heading_stack.last().is_some_and(|parent| *parent >= level) {
+                heading_stack.pop();
+            }
+            // The page title is H1; preserve nesting while closing gaps in note headings.
+            let depth = (heading_stack.len() + 2).min(6);
+            heading_stack.push(level);
+            format!("{}{}", "#".repeat(depth), &line[level..])
         } else {
             line.to_string()
         };
@@ -322,7 +334,7 @@ fn normalize_math(body: &str) -> Result<String> {
         .into_owned())
 }
 
-pub fn export(vault: &Path, build_dir: &Path) -> Result<()> {
+pub fn load_articles(vault: &Path, assets_dir: &Path) -> Result<Vec<Article>> {
     let mut posts = Vec::<Post>::new();
     let mut all_note_names = HashSet::new();
     for source in files_under(&vault.join("Maps"), "md")? {
@@ -360,13 +372,10 @@ pub fn export(vault: &Path, build_dir: &Path) -> Result<()> {
         .iter()
         .map(|post| (post.name.clone(), post.slug.clone()))
         .collect();
-    let posts_dir = build_dir.join("vault-posts");
-    let assets_dir = build_dir.join("vault-assets");
-    fs::create_dir_all(&posts_dir)?;
-    fs::create_dir_all(&assets_dir)?;
+    fs::create_dir_all(assets_dir)?;
     let embed = Regex::new(r"!?\[\[(.*?)\]\]")?;
     let tikz = Regex::new(r"(?ms)^```tikz[ \t]*\n(.*?)^```[ \t]*$")?;
-    let mut expected_posts = HashSet::new();
+    let mut articles = Vec::new();
     let mut expected_assets = HashSet::new();
     for post in &posts {
         let mut error = None;
@@ -407,53 +416,25 @@ pub fn export(vault: &Path, build_dir: &Path) -> Result<()> {
         if tikz.is_match(&body) {
             return Err(fail(format!("TikZ remains in {}", post.source.display())));
         }
-        let description = format!("{}的重點整理。", post.title);
-        let relative = post.source.strip_prefix(vault)?.to_string_lossy();
-        let mut front = format!(
-            "---\ntitle: {}\nslug: {}\n",
-            serde_json::to_string(&post.title)?,
-            post.slug
-        );
-        if let Some(topic) = &post.topic {
-            front.push_str(&format!("blog_topic: {}\n", serde_json::to_string(topic)?));
-        }
-        if !post.tags.is_empty() {
-            front.push_str(&format!(
-                "blog_tag: {}\n",
-                serde_json::to_string(&post.tags)?
-            ));
-        }
-        front.push_str(&format!(
-            "description: {}\ndate: {}\nblog: true\nvault_source: {}\n---\n\n",
-            serde_json::to_string(&description)?,
-            post.date,
-            serde_json::to_string(&relative.as_ref())?
-        ));
-        let target = posts_dir.join(format!("{}.md", post.slug));
-        fs::write(&target, format!("{front}{body}\n"))?;
-        expected_posts.insert(
-            target
-                .file_name()
-                .unwrap_or_default()
-                .to_string_lossy()
-                .into_owned(),
-        );
+        let relative = post
+            .source
+            .strip_prefix(vault)?
+            .to_string_lossy()
+            .replace('\\', "/");
+        articles.push(Article {
+            source_file: format!("raw/my-vault/{relative}"),
+            source_hash: post.source_hash.clone(),
+            route: format!("/articles/posts/{}/", post.slug),
+            slug: post.slug.clone(),
+            title: post.title.clone(),
+            date: Some(post.date.clone()),
+            excerpt: clip_excerpt(&format!("{}的重點整理。", post.title)),
+            body_html: render_markdown_to_html(&body),
+            blog_topic: post.topic.clone(),
+            blog_tags: post.tags.clone(),
+        });
     }
-    for entry in fs::read_dir(&posts_dir)? {
-        let path = entry?.path();
-        if path.extension().and_then(|value| value.to_str()) == Some("md")
-            && !expected_posts.contains(
-                &path
-                    .file_name()
-                    .unwrap_or_default()
-                    .to_string_lossy()
-                    .into_owned(),
-            )
-        {
-            fs::remove_file(path)?;
-        }
-    }
-    for entry in fs::read_dir(&assets_dir)? {
+    for entry in fs::read_dir(assets_dir)? {
         let path = entry?.path();
         if path.is_file()
             && !expected_assets.contains(
@@ -467,12 +448,13 @@ pub fn export(vault: &Path, build_dir: &Path) -> Result<()> {
             fs::remove_file(path)?;
         }
     }
+    sort_articles(&mut articles);
     println!(
-        "Exported {} posts and {} assets",
-        expected_posts.len(),
+        "Loaded {} posts and {} assets",
+        articles.len(),
         expected_assets.len()
     );
-    Ok(())
+    Ok(articles)
 }
 
 #[cfg(test)]
@@ -538,11 +520,11 @@ mod tests {
         )
         .unwrap();
 
-        export(&vault, &build).unwrap();
-        let post = fs::read_to_string(build.join("vault-posts/slurm.md")).unwrap();
+        let articles = load_articles(&vault, &build).unwrap();
+        assert_eq!(articles.len(), 1);
+        let post = &articles[0].body_html;
         assert!(post.contains("Back to DevOps Technology Overview."));
         assert!(!post.contains("[["));
-        assert_eq!(fs::read_dir(build.join("vault-posts")).unwrap().count(), 1);
         fs::remove_dir_all(root).unwrap();
     }
 }

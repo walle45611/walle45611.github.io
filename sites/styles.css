@@ -33,8 +33,7 @@ a {
 .site-footer {
   margin: 0 auto;
   max-width: 900px;
-  padding-left: 1.4rem;
-  padding-right: 1.4rem;
+  padding-inline: 1.4rem;
 }
 
 .site-header {
@@ -122,7 +121,8 @@ h1 {
   font-size: 0.84rem;
 }
 
-.post-list {
+.post-list,
+.publication-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -133,21 +133,16 @@ h1 {
   padding: 1.35rem 0 1.5rem;
 }
 
-.post-item h2,
-.post-item h3 {
+.post-item :is(h2, h3) {
   font-size: 1.35rem;
   margin: 0.25rem 0 0;
 }
 
-.post-item h2 a,
-.post-item h3 a {
+.post-item :is(h2, h3) a {
   text-decoration: none;
 }
 
-.post-item h2 a:hover,
-.post-item h2 a:focus-visible,
-.post-item h3 a:hover,
-.post-item h3 a:focus-visible {
+.post-item :is(h2, h3) a:is(:hover, :focus-visible) {
   text-decoration: underline;
 }
 
@@ -172,12 +167,6 @@ h1 {
 
 .publication-section + .publication-section {
   margin-top: 3rem;
-}
-
-.publication-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 .publication-list li {
@@ -215,7 +204,7 @@ h1 {
 }
 
 .post-header h1 {
-  font-size: clamp(2rem, 4.8vw, 2.7rem);
+  font-size: clamp(2rem, 1.5rem + 2vw, 2.5rem);
 }
 
 .prose {
@@ -230,9 +219,9 @@ h1 {
 
 .prose h2 {
   border-bottom: 1px solid var(--line);
-  font-size: 1.55rem;
-  margin: 2.6rem 0 1rem;
-  padding-bottom: 0.35rem;
+  font-size: 1.75rem;
+  margin: 3rem 0 1rem;
+  padding-bottom: 0.5rem;
 }
 
 .prose h3 {
@@ -240,9 +229,7 @@ h1 {
   margin: 2rem 0 0.8rem;
 }
 
-.prose h4,
-.prose h5,
-.prose h6 {
+.prose :is(h4, h5, h6) {
   font-size: 1.08rem;
   margin: 1.7rem 0 0.7rem;
 }
@@ -262,24 +249,21 @@ h1 {
   padding: 0 0.1em;
 }
 
-.prose .math-display {
+.prose .math-display,
+.prose .math-tex.has-overflow {
   max-width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+.prose .math-display {
   overscroll-behavior-inline: contain;
   -webkit-overflow-scrolling: touch;
 }
 
-.prose .math-tex:not(.math-display) {
-  display: inline-block;
-  max-width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-
-.prose table .math-tex:not(.math-display) {
-  max-width: none;
-  overflow: visible;
+.prose .math-tex.has-overflow:not(.math-display) {
+  display: block;
+  margin: 0.5rem 0;
 }
 
 .prose .math-tex.has-overflow {
@@ -360,17 +344,7 @@ h1 {
   .site-header,
   .site-main,
   .site-footer {
-    padding-left: 1.1rem;
-    padding-right: 1.1rem;
-  }
-
-  .post-header h1 {
-    font-size: 1.8rem;
-  }
-
-  .prose .math-tex.has-overflow:not(.math-display) {
-    display: block;
-    margin: 0.5rem 0;
+    padding-inline: 1.1rem;
   }
 
   .post-list.compact .post-item {

@@ -127,7 +127,7 @@ Bw-tree 與 LLAMA 的協作是具體例子：Bw-tree 管理 Key、樹結構與 D
 
 ### 儲存結構比較：Buffered、Mutable 與 Ordered
 
-下表依《Database Internals》Part I Conclusion 的分類整理。Buffered 指先緩衝更新再批次處理；Mutable 指磁碟頁面／既有儲存內容是否採就地更新；Ordered 指資料在儲存配置中是否依 Key 排序，不代表只能使用有序的查詢 API。這些欄位描述不同面向：LSM 的 MemTable 可以修改，表中的 Mutable 仍為 No，因為它描述的是不可變的磁碟資料組織。
+Buffered 指先緩衝更新再批次處理；Mutable 指磁碟頁面／既有儲存內容是否採就地更新；Ordered 指資料在儲存配置中是否依 Key 排序，不代表只能使用有序的查詢 API。這些欄位描述不同面向：LSM 的 MemTable 可以修改，表中的 Mutable 仍為 No，因為它描述的是不可變的磁碟資料組織。
 
 | 儲存結構 | Buffered | Mutable | Ordered |
 | --- | --- | --- | --- |
@@ -249,7 +249,7 @@ CPU 使用這個 Virtual Page Number 查 TLB。若 TLB Hit，就直接取得 Phy
 
 ![[Assets/Note/Tech/Database Internals/buffer-pool-and-disk.png]]
 
-圖中的 B-Tree Pages 對應到 Disk 上的頁面，Buffer Pool 則只容納其中一部分。虛線表示頁面與快取位置之間的對應；讀取某個節點時，若頁面已在 Buffer Pool，就能直接使用，否則才需要載入。圖示本身沒有標示哪些頁面是 Dirty，不能只依灰色填色判斷。
+圖中的 B-Tree Pages 對應到 Disk 上的頁面，Buffer Pool 則只容納其中一部分。虛線表示頁面與快取位置之間的對應；讀取某個節點時，若頁面已在 Buffer Pool，就能直接使用，否則才需要載入。
 
 **Paged In、Dirty、Flushed 與 Evicted**：將需要的頁面從 Disk 載入記憶體，稱為 Paged In。當記憶體中的頁面被修改，而變更尚未寫回對應的儲存位置時，會標記為 **Dirty Page**。將變更寫回的動作稱為 Flush；若寫回期間沒有新的修改，頁面才可以視為 Clean。
 

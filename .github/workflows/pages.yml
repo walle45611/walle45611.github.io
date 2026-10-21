@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      CARGO_TARGET_DIR: ${{ runner.temp }}/walle-blog-cargo
+      CARGO_TARGET_DIR: /tmp/walle-blog-cargo
     steps:
       - uses: actions/checkout@v4
         with:

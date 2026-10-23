@@ -206,6 +206,10 @@ IP、NetworkManager、連線測試與抓包統一整理於 [[Linux networking �
     ```
     
 
+### 忘記密碼與帳號復原
+
+Ubuntu 的 Recovery Mode 重設步驟與 GRUB 排錯見 [[Ubuntu 重設 root 與使用者密碼]]。
+
 ---
 
 ## Permissoins

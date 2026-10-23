@@ -84,70 +84,107 @@ Pod. If you scale an app up or down, you add or remove Pods.
 
 ---
 
-## **Pod 的資源管理和限制資源**
+## Pod 的資源管理和限制資源
 
-- 以下指令可以先建立一個模板
-    
-    ```Shell
-    kubectl run nginx-pod --image=nginx:latest --dry-run=client -o yaml > nginx-pod.yaml
-    ```
-    
-    ```YAML
-    apiVersion: v1
-    kind: Pod
-    metadata:
-    creationTimestamp: null
-    labels:
-        run: nginx-pod
-    name: nginx-pod
-    spec:
-    containers:
+### ResourceQuota 與 LimitRange：總量和個別範圍
+
+| 機制 | 作用範圍 | 用途 |
+|---|---|---|
+| ResourceQuota | 整個 Namespace，亦可設定 scope 篩選適用物件 | 限制資源配額總量，例如 requests／limits 加總、PVC 儲存請求或物件數量 |
+| LimitRange | Namespace 內的個別 Container、Pod、PVC，依資源類型支援的欄位而定 | 限制最小值、最大值或 limit/request 比例；可為 Container 提供預設 requests／limits |
+
+ResourceQuota 的 CPU／Memory 配額計算的是宣告的 requests／limits，不是即時使用量；配額也不代表叢集已替這個 Namespace 預留實體容量。LimitRange 的 `default` 是預設 limit，`defaultRequest` 是預設 request。
+
+兩者主要在 API admission 時檢查或補值：新增／更新超出配額或範圍的資源會被拒絕。修改 LimitRange 不會回頭重寫已執行 Pod 的設定。
+
+來源：[Resource Quotas](https://kubernetes.io/docs/concepts/policy/resource-quotas/)、[Limit Ranges](https://kubernetes.io/docs/concepts/policy/limit-range/)。
+
+### Requests 與 Limits：排程需求和執行上限
+
+| 設定 | 意義 | 超過數值時 |
+|---|---|---|
+| `requests` | 資源需求與排程容量判斷依據；CPU request 也影響競爭時的分配權重 | 資源可用且未受 limit 等限制時，可以使用更多；超過 request 本身不會直接觸發 OOM kill |
+| `limits.cpu` | CPU 使用上限 | 受 CPU throttling 限制，不會單純因為碰到 CPU limit 而被終止 |
+| `limits.memory` | Memory 使用上限 | 可能觸發 OOM kill，容器狀態可能顯示 `OOMKilled` |
+
+`requests.memory` 不是「啟動時必須實際占用的最小記憶體」，也不是使用上限；Scheduler 主要依 requests 與 Node 可分配容量判斷能否排入，而不是看當下空閒量。排程其他限制見 [[K8s 排程：Scheduler、PriorityClass、Affinity、Taint 與 Toleration]]。
+
+若只設定某項資源的 limit，沒有 request，且 admission 沒有提供該項預設 request，Kubernetes 會把 limit 複製為 request。因此要看建立後的實際物件，而不能只看手寫的 YAML。
+
+來源：[Resource Management for Pods and Containers](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)。
+
+### QoS 三種等級
+
+以下先以一般在 Container 層設定 CPU／Memory 的 Pod 為例，依 admission 補值後的實際設定判斷：
+
+| QoS | Requests／Limits 條件 | 記憶體壓力下的驅逐傾向 |
+|---|---|---|
+| Guaranteed | 每個 Container 的 CPU、Memory request 與 limit 都有設定、皆大於 0，且同一資源 request = limit | 通常較不容易被驅逐，但不是絕對不會 |
+| Burstable | 不符合 Guaranteed，且至少一個 Container 有 CPU 或 Memory request／limit | 取決於是否超過 request、Pod Priority 與相對使用量 |
+| BestEffort | 所有 Container 都沒有 CPU、Memory requests／limits | 通常較容易被驅逐 |
+
+若使用支援的 Pod-level resources（`spec.resources`），Pod 層 CPU／Memory 設定也參與 QoS 判斷：Pod 層兩項資源的 request 與 limit 相等可符合 Guaranteed；完全沒設定 CPU／Memory 才可能是 BestEffort。以上表格的逐 Container 規則不能直接套用到所有 Pod-level 設定情況。
+
+> [!important] QoS 是判斷傾向，不是固定排序
+> Node-pressure eviction 並非單純照 BestEffort → Burstable → Guaranteed 排序。kubelet 會考慮相關資源使用是否超過 requests、Pod Priority、使用量相對 requests 的程度。QoS 對記憶體壓力的傾向較有參考性，不能直接套用到 DiskPressure 等所有情境。
+
+`OOMKilled` 和 `Evicted` 也要分開：前者是容器內的程序遭 OOM kill，可能依 restart policy 重啟容器；後者是 kubelet 因節點壓力等原因終止整個 Pod，若由 Deployment 管理，控制器會另外補建 Pod。
+
+來源：[Pod Quality of Service Classes](https://kubernetes.io/docs/concepts/workloads/pods/pod-qos/)、[Node-pressure Eviction](https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/)。
+
+### 實作：產生模板，再設定 requests／limits
+
+```bash
+alias k=kubectl
+k run nginx-pod --image=nginx:latest --dry-run=client -o yaml > nginx-pod.yaml
+```
+
+產生的模板會有 `resources: {}`。編輯為以下設定；這裡省略不必要的空白欄位：
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: nginx-pod
+  name: nginx-pod
+spec:
+  containers:
     - image: nginx:latest
-        name: nginx-pod
-        resources: {}
-    dnsPolicy: ClusterFirst
-    restartPolicy: Always
-    status: {}
-    ```
-    
-- 修改為以下的 yaml
-    
-    ```YAML
-    apiVersion: v1
-    kind: Pod
-    metadata:
-    creationTimestamp: null
-    labels:
-        run: nginx-pod
-    name: nginx-pod
-    spec:
-    containers:
-    - image: nginx:latest
-        name: nginx-pod
-        resources:
+      name: nginx-pod
+      resources:
         requests:
-            memory: "64Mi"
-            cpu: "250m"
+          memory: "64Mi"
+          cpu: "250m"
         limits:
-            memory: "256Mi"
-            cpu: "1"
-    dnsPolicy: ClusterFirst
-    restartPolicy: Always
-    status: {}
-    ```
-    
-    - requests 定義這個 container 需要的最小資源量。K8s 會選擇一個可用的 node，選擇一個能滿足這些請求的 node 來直行這個 container：
-        - `memory : "128Mi"`：表示了這個 container 需要至少 128 Mebibytes 才能啟動。
-        - `CPU : "500m"`：表示該 container 需要 0.5 個 CPU core。
-    - limits 定義了容器能使用的資源上限。如果容器嘗試使用超過這個值的資源：
-        - memory 超過限制：container 會被 kill （Out of memory, OOM）。
-        - CPU 過過限制：container 的 CPU 會被限制不會被 kill，但可能性能會被降低。
-    - 套用以上設定
-        
-        ```Shell
-        kubectl apply -f nginx-pod.yaml
-        ```
-        
+          memory: "256Mi"
+          cpu: "1"
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+```
+
+`64Mi` 是 64 Mebibytes 的記憶體 request；`250m` 是 0.25 CPU core 的 request，CPU limit `1` 則是 1 core。這個 Pod 的 request 與 limit 不相等，因此是 Burstable。
+
+```bash
+k apply -f nginx-pod.yaml
+
+# lab 換成實際 namespace；quota、limits 分別是 ResourceQuota、LimitRange 的資源短名
+k get quota,limits -n lab
+k describe quota -n lab
+k describe limits -n lab
+
+# 查看補值後的 resources、QoS Class，以及 OOMKilled／Evicted 線索
+k get po nginx-pod -o yaml
+k describe po nginx-pod
+
+# 忘記欄位時當場查
+k explain po.spec.containers.resources
+k explain quota.spec.hard
+k explain limits.spec.limits
+```
+
+下方保留先前在 OrbStack 執行的歷史輸出，供對照；當下結果以實際查詢為準。更多常用操作見 [[K8s kubectl 常用指令]]。
+
 - 查看該 Pod 的狀態
     
     ```Shell

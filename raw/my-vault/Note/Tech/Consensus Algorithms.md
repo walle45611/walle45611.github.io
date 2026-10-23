@@ -35,6 +35,34 @@ blog_topic: 演算法
 
 ---
 
+## Quorum：多數決門檻
+
+**在 Raft 這類採用多數決的協議中，Quorum 就是超過一半的 voting members。** 以下以固定成員配置為例；不是所有共識演算法都使用相同門檻。
+
+$$
+\mathrm{quorum}=\lfloor N/2\rfloor+1
+$$
+
+| Voting members | Quorum | 可容忍同時故障數 |
+|---|---|---|
+| 1 | 1 | 0 |
+| 2 | 2 | 0 |
+| 3 | 2 | 1 |
+| 4 | 3 | 1 |
+| 5 | 3 | 2 |
+
+$N$ 是 voting members 的數量，$\lfloor N/2\rfloor$ 表示除以 2 後向下取整，再加 1。**例如 3 個成員需要 2 個，4 個成員需要 3 個**；不能把一般除法的 `N/2 + 1` 算出小數後直接當人數。
+
+任意兩個過半數集合至少有一個共同成員；配合協議的投票與日誌規則，才能避免互相衝突的提交。**奇數成員能以較少成員取得相同故障容忍能力**，例如 3 個與 4 個成員都只能容忍 1 個同時故障。
+
+Raft 選舉時，候選者投給自己的票也計入多數；Leader 複寫新寫入時，自己的日誌副本也計入多數。兩者是不同階段。
+
+Kubernetes 的具體例子與寫入流程圖見 [[K8s HA、Quorum 與 Split-brain#etcd 寫入：Leader 協調，多數確認後提交|etcd 的 3 成員寫入流程]]。Control-plane Node 數量不能直接等同於 datastore voting members，必須確認實際部署。
+
+參考：[Raft 原論文 §5.2、§5.3](https://raft.github.io/raft.pdf)。
+
+---
+
 ## 故障模型：Crash Fault 與 Byzantine Fault
 
 | 模型 | 故障行為 | 演算法例子 |
@@ -58,10 +86,49 @@ Raft 不以容忍任意惡意節點為目標。固定成員的基本模型中，
 
 ## Raft：待閱讀與整理
 
-Raft 管理 Replicated Log，主要可依 Leader Election、Log Replication 與 Safety 三部分理解。以下先保留閱讀順序，細節與例子待閱讀時補上。
+Raft 管理 Replicated Log，主要可依 Leader Election、Log Replication 與 Safety 三部分理解。以下先整理選舉流程，其餘細節依閱讀進度補上。
 
-- [ ] Follower、Candidate、Leader 的角色與 Term。
-- [ ] Leader Election：投票、Election Timeout 與 Heartbeat。
+### Leader Election：隨機逾時、投票與心跳
+
+**隨機的是選舉等待時間，不是直接隨機指定 Leader。先成為 Candidate（候選者），取得過半票數，才成為 Leader。**
+
+| 角色／名詞 | 意思 |
+|---|---|
+| Follower | 平常接收 Leader 的心跳與日誌；選舉逾時後可成為候選者 |
+| Candidate | 發起選舉、先投自己，再向其他成員要票 |
+| Leader | 取得過半票數後當選，持續發送心跳並協調日誌複寫 |
+| Term | 選舉任期編號；候選者發起新一輪選舉時，將自己的 Term 加 1 |
+
+以 3 個 voting members A、B、C 為例，假設第一次選舉成功是 Term 1，下一次選舉成功是 Term 2：
+
+```mermaid
+flowchart TD
+    I[起初 A、B、C 都是 Follower] --> A[A 最先選舉逾時，開始 Term 1]
+    A --> V[A 成為候選者，投自己並向 B、C 要票]
+    V --> L[B 投給 A，A 取得 2／3 票而當選]
+    L --> H[A 持續發送心跳，B、C 保持 Follower]
+    H --> F[A 故障或失聯，B、C 收不到心跳]
+    F --> T[B 最先選舉逾時，開始 Term 2]
+    T --> Q[B 投自己，向 A、C 要票]
+    Q --> W[A 無回應，C 投給 B]
+    W --> N[B 自己 ＋ C = 2／3 票，B 成為 Leader]
+    N --> P[B 開始發送心跳並協調寫入]
+```
+
+- **每個成員在同一個 Term 最多投給一位候選者**，投給自己也算。因此 B 投自己、C 也投自己時，兩人各只有 1 票，不能算成 B 有 2 票。
+- 投票者會檢查候選者的日誌是否至少與自己一樣新；不是最先逾時就保證當選。
+- 選舉逾時時間會隨機化，減少同時參選。若分票而無人過半，等待新的逾時後，再開始下一輪選舉。
+- **Term 是選舉輪次的編號，不是 Leader 人數或心跳次數**；一個 Term 可能沒有選出 Leader。因此第二位 Leader 不保證一定出現在 Term 2。
+- 不必真的死亡才會重選；網路中斷、延遲或程序卡住，也可能造成心跳逾時。
+
+**記法：選舉是「過半投票選 Leader」；寫入是「過半記錄日誌才提交」。** 兩者都包含自己，但確認的是不同事情。
+
+參考：[Raft 原論文 §5.2 Leader Election、§5.4.1 Election Restriction](https://raft.github.io/raft.pdf)。此處整理基本 Raft 流程，實作可另外加入 Pre-Vote 等機制。
+
+### 後續閱讀
+
+- [x] Follower、Candidate、Leader 的角色與 Term。
+- [x] Leader Election：投票、Election Timeout 與 Heartbeat。
 - [ ] Log Replication：AppendEntries、Log Index 與 Term。
 - [ ] Commit 與 Apply 的差別，以及多數副本如何參與確認。
 - [ ] Safety：Leader 更替後，如何保留已提交的紀錄。
@@ -69,3 +136,5 @@ Raft 管理 Replicated Log，主要可依 Leader Election、Log Replication 與 
 - [ ] 後續延伸：Snapshot／Log Compaction 與成員變更。
 
 閱讀入口：[Raft 原論文（Extended Version）](https://raft.github.io/raft.pdf)，先從 §2 Replicated State Machines，再讀 §5 的選舉、日誌複寫與安全性。
+
+Kubernetes 應用情境：[[K8s HA、Quorum 與 Split-brain]]，可對照 etcd quorum、Stacked／External etcd 拓撲，以及 controller-manager 的 Lease 選主；Lease 選主與 etcd 的 Raft 共識是不同層次的機制。

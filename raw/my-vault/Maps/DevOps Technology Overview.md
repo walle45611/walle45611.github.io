@@ -62,7 +62,9 @@
 
 ### 基礎系統管理
 [[Linux 基本觀念和指令]]
+[[Ubuntu 重設 root 與使用者密碼]]
 [[Linux networking 常用指令]]
+[[Linux Network Namespace：netns、veth 與 Bridge]]
 [[Linux Fedora 設定 IP 指南]]
 [[Linux Ubuntu or Debian Set hostname and IP address]]
 [[Linux Debian DLBD ISO]]
@@ -89,7 +91,7 @@
 [[Windows Server L2TP IPSec 與 IKEv2 VPN 設定指南]]
 [[Linux L2TP over IPSec 設定指南]]
 [[Linux OpenVPN 完整設定與憑證管理指南]]
-[[NetBird 自架設定與存取政策]]
+[[NetBird Self-hosted and Access Policy]]
 [[Linux PPTP VPN 安裝與設定教學]]
 
 ### 檔案系統與儲存
@@ -114,13 +116,22 @@
 [[K8s kubelet 與 Pod 執行流程]]
 [[K8s Container Runtime 與 dockershim 遷移]]
 [[K8s CNI 比較：Cilium、Calico 與 Flannel]]
+[[K8s Calico 安裝與網路判讀小抄]]
+[[K8s CoreDNS、kubelet 與 resolv.conf]]
+[[K8s Ingress 與 Gateway API]]
+[[K8s Metrics Server、Prometheus 與 Heapster]]
 [[K8s Cilium 與 Containerlab 網路實驗]]
 [[K8s CSI、PV、PVC 與雲端儲存]]
-[[K8s 基本排錯指令]]
+[[K8s kubectl 常用指令]]
+[[K8s kubectl 常用指令#Rollout 與回滾：不要只看 roll|Rollout 與回滾]]
+[[K8s kubelet 與 Pod 執行流程#ImagePolicyWebhook：映像政策驗證小抄|ImagePolicyWebhook 映像政策驗證]]
+[[K8s 排程：Scheduler、PriorityClass、Affinity、Taint 與 Toleration]]
 [[MicroK8s 高可用安裝與設定]]
 [[K8s HA、Quorum 與 Split-brain]]
 
 ## 容器與系統部署
+
+[[Docker ENTRYPOINT、CMD 與 K8s command、args]]
 
 [[Colima + containerd 指令小抄]]
 [[Oracle Database 19c 在 Oracle Linux 安裝指南]]

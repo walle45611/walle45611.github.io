@@ -1,15 +1,13 @@
 ---
 blog: true
-blog_title: NetBird 自架設定與存取政策
+blog_title: NetBird Self-hosted and Access Policy
 blog_date: '2026-10-20'
 blog_url: https://blog.walle4561.com/articles/posts/netbird-self-hosted-guide/
 blog_tag: OS & Networking
 blog_topic: Networking
 ---
 
-# NetBird 自架設定與存取政策
-
-以下以 [https://netbird.example.com/](https://netbird.example.com/) 為例。
+# NetBird Self-hosted and Access Policy
 
 ## Topology
 
@@ -55,6 +53,8 @@ show ip nat statistics
 [正式語法參考](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr_nat/configuration/xe-3s/nat-xe-3s-book/iadnat-addr-consv.html)
 
 ## 架構與範例值
+
+以下以 [https://netbird.example.com/](https://netbird.example.com/) 為例。
 
 | 項目 | 範例 |
 | --- | --- |
@@ -176,8 +176,6 @@ server:
     encryptionKey: "<STORE_ENCRYPTION_KEY_BASE64>"
 ```
 
-三個金鑰欄位及 `trustedHTTPProxies` 沿用安裝產生的值，不要覆蓋成範例。
-
 ### dashboard.env
 
 ```dotenv
@@ -197,8 +195,6 @@ AUTH_SILENT_REDIRECT_URI=/nb-silent-auth
 NGINX_SSL_PORT=443
 LETSENCRYPT_DOMAIN=none
 ```
-
-`AUTH_AUTHORITY` 與 Server 的 `issuer` 一致；`AUTH_CLIENT_SECRET` 留空。
 
 ### 套用與檢查
 

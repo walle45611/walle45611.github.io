@@ -116,6 +116,8 @@ Homebrew 的 `wireshark` formula 提供命令列工具；GUI 是另外的 cask�
 | `ip netns list` | 已命名的 network namespace |
 | `sudo ip netns exec ns1 ip addr` | 在既有 `ns1` namespace 中查看位址 |
 
+netns、veth 與 bridge 的拓撲、建立步驟和封包路徑見 [[Linux Network Namespace：netns、veth 與 Bridge]]。
+
 以下會修改網路設定，通常不會持久保存；遠端主機修改時可能影響目前連線。
 
 ```bash

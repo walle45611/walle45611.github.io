@@ -103,6 +103,12 @@ fn publishes_only_explicitly_enabled_research_and_tech_notes() {
     assert!(page.contains("See Private."));
     assert!(!page.contains("/articles/posts/excluded/"));
     assert!(!client.join("articles/posts/stale/index.html").exists());
+    let llms = fs::read_to_string(client.join("llms.txt")).unwrap();
+    assert!(llms.starts_with("# Walle Blog\n"));
+    assert!(llms.contains("/articles/posts/research/"));
+    assert!(llms.contains("/articles/posts/tech/"));
+    assert!(!llms.contains("/articles/posts/excluded/"));
+    assert!(!llms.contains("/articles/posts/stale/"));
 
     write(
         root,
@@ -113,6 +119,8 @@ fn publishes_only_explicitly_enabled_research_and_tech_notes() {
     assert_eq!(manifest["articles"].as_array().unwrap().len(), 1);
     assert!(!client.join("articles/posts/research/index.html").exists());
     assert!(client.join("articles/posts/tech/index.html").exists());
+    let llms = fs::read_to_string(client.join("llms.txt")).unwrap();
+    assert!(!llms.contains("/articles/posts/research/"));
 }
 
 #[test]

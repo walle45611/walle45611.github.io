@@ -243,6 +243,10 @@ fn build_site(config: &BuilderConfig, articles: &[Article]) -> std::io::Result<(
     write_output(&config.out_dir.join("styles.css"), &styles)?;
     write_output(&config.out_dir.join("feed.xml"), &render_feed(articles))?;
     write_output(
+        &config.out_dir.join("llms.txt"),
+        &render_llms(articles, &tags),
+    )?;
+    write_output(
         &config.out_dir.join("robots.txt"),
         &format!(
             "User-agent: *\nAllow: /\nSitemap: {}/sitemap.xml\n",
@@ -338,6 +342,40 @@ fn render_feed(articles: &[Article]) -> String {
         .items(items)
         .build()
         .to_string()
+}
+
+fn render_llms(articles: &[Article], tags: &[BlogTag]) -> String {
+    let mut text = String::from(
+        "# Walle Blog\n\n\
+> walle45611 的個人技術與研究閱讀筆記，涵蓋資料結構、演算法、作業系統、網路、資料庫與語言模型。\n\n\
+內容以繁體中文為主，包含英文術語與程式碼。這些是學習筆記與實作紀錄；涉及指令、套件或部署設定時，請對照文章日期、版本與文中引用的原始來源。論文狀態以 Publications 頁的標示為準。\n\n\
+以下連結指向公開 HTML 頁面。\n\n\
+## 網站入口\n\n",
+    );
+    text.push_str(&llms_link("文章總覽", "/articles/"));
+    text.push_str(&llms_link("Publications：論文與投稿狀態", "/publications/"));
+    if !tags.is_empty() {
+        text.push_str("\n## 分類\n\n");
+        for tag in tags {
+            text.push_str(&llms_link(&tag.name, &tag.route));
+        }
+    }
+    if !articles.is_empty() {
+        text.push_str("\n## 近期文章\n\n");
+        for article in articles.iter().take(10) {
+            text.push_str(&llms_link(&article.title, &article.route));
+        }
+    }
+    text
+}
+
+fn llms_link(title: &str, route: &str) -> String {
+    let title = title
+        .replace('\\', "\\\\")
+        .replace('[', "\\[")
+        .replace(']', "\\]")
+        .replace(['\r', '\n'], " ");
+    format!("- [{title}](<{}>)\n", page_url(route))
 }
 
 fn render_sitemap(articles: &[Article]) -> String {
@@ -633,6 +671,7 @@ fn render_page(
     <title>{}</title>
     <meta name="description" content="{}">
     <link rel="canonical" href="{}">
+    <link rel="describedby" href="/llms.txt">
     <link rel="alternate" type="application/rss+xml" title="Walle Blog RSS" href="{}/feed.xml">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://www.googletagmanager.com">

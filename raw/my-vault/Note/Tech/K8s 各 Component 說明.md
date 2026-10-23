@@ -1,6 +1,5 @@
 ## Kubernetes 設計原則
 
-來源：KubeCon + CloudNativeCon North America 2018 投影片〈Kubernetes Principles Introduced〉。
 
 1. **宣告式優先於命令式（Kube API declarative over imperative）**：描述系統應達到的期望狀態，由 Kubernetes 持續協調實際狀態與期望狀態之間的差異。
 2. **沒有隱藏的內部 API（No hidden internal APIs）**：系統內部使用的 API 也應對外開放，讓外部工具能透過相同介面整合。
@@ -76,6 +75,22 @@
     - Pod 網路連通由 CNI 等網路元件提供；具備替代能力的實作可接手 kube-proxy 的 Service 功能，見 [[K8s CNI 比較：Cilium、Calico 與 Flannel]]。
 
 ---
+
+## 叢集部署方式：Turnkey、Hosted 與 kubeadm
+
+**Turnkey 是整套準備好交給你用；Hosted 是由供應商持續託管。** 前者強調整合與交付程度，後者強調代管責任，兩者可以重疊。
+
+| 類型 | 核心差別 | 例子 |
+|---|---|---|
+| Turnkey solution（交鑰匙方案） | 安裝、設定與元件整合成一套，後續可能仍由你維護 | 舊教材的 VMware Enterprise PKS |
+| Hosted／Managed solution（託管方案） | 供應商代管部分或全部叢集，範圍依服務而定 | EKS、GKE、AKS；舊教材的 VMware Cloud PKS |
+| kubeadm | 協助自行初始化／加入 Kubernetes 叢集的工具，本身不是完整整套方案 | kubeadm init／kubeadm join |
+
+kubeadm 不會包辦主機、作業系統、Container Runtime、CNI 與完整後續維運；Turnkey 方案可以在底層使用 kubeadm。Hosted 也不代表應用、資料與所有工作節點維護都交給供應商。
+
+**VMware Cloud PKS 與 Enterprise PKS 是不同舊產品名稱**：Cloud PKS 強調代管服務，Enterprise PKS 是整合交付方案；這裡用來理解教材分類，不代表現行產品清單。
+
+參考：[kubeadm 官方範圍](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/)、[VMware PKS 家族比較（歷史文件）](https://blogs.vmware.com/tanzu/meet-the-pks-family-flexibility-for-your-kubernetes-architectures/)、[Cloud PKS 託管服務介紹（歷史文件）](https://blogs.vmware.com/cloud/2018/11/13/securing-vmware-cloud-pks-workloads-aporeto/)。
 
 ## Packaging Apps for Kubernetes
 

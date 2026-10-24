@@ -1,3 +1,6 @@
+> [!info] 先看觀念
+> [[PKI (Public key infrastructure)公鑰基礎設施#SSL/TLS 建立過程|TLS 完整流程、CSR／PFX 與金鑰分工]]。現代網站名稱驗證看 SAN，CN 不能取代 SAN；CSR 不含私鑰，PFX 則可包含私鑰。
+
 ## 概述
 
 本指南說明如何使用 OpenSSL 產生憑證並在 Windows Web 伺服器（IIS）中使用，包括建立 Root CA、申請憑證、簽署憑證，以及在 Windows 系統中匯入和設定憑證。
@@ -257,7 +260,7 @@ $cert.BaseResponse.ServicePoint.Certificate
 
 **解決方案**：
 
-- 檢查憑證的 CN 和 SAN 設定
+- 檢查憑證的 SAN 是否涵蓋正在連線的網域；CN 不能取代 SAN
 - 確認 IIS 繫結的主機名稱正確
 - 使用萬用字元憑證 (`*.skills39.com`)
 

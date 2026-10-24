@@ -1,3 +1,82 @@
+> [!info] 先看觀念
+> [[PKI (Public key infrastructure)公鑰基礎設施#SSL/TLS 建立過程|TLS 完整流程、CSR／PFX 與金鑰分工]]。現代網站名稱驗證看 SAN，CN 不能取代 SAN；CSR 不含私鑰，PFX 則可包含私鑰。
+
+## 先記兩條路：CA 簽發與 Self-sign
+
+**先產生私鑰，再決定要交 CSR 給 CA，還是直接產生自簽憑證。** CSR 是自己製作的申請書，不是先向 CA 領取的檔案。
+
+```mermaid
+flowchart TD
+    K[產生自己的 Private Key：.key]
+    K --> A[請 CA 簽發]
+    K --> B[自己簽署 Self-sign]
+    A --> R[openssl req -new：產生 .csr]
+    R --> C[只將 CSR 交給 CA]
+    C --> D[CA 驗證後，用 CA 私鑰簽發]
+    D --> F[收到 X.509 憑證：.crt]
+    B --> X[openssl req -new -x509]
+    X --> S[直接得到自簽 X.509 憑證：.crt]
+    F --> I[部署：自己的私鑰＋憑證]
+    S --> I
+```
+
+### 路線 A：Private key → CSR → CA 簽發
+
+```bash
+# 1. 產生 RSA 私鑰
+openssl genrsa -out server.key 2048
+
+# 2. 使用私鑰製作 CSR；不加 -x509
+openssl req -new -key server.key \
+  -subj "/CN=example.com" \
+  -addext "subjectAltName=DNS:example.com" \
+  -out server.csr
+```
+
+接著把 **`server.csr` 交給 CA**，CA 驗證後回傳 `server.crt` 與所需中繼憑證。`server.key` 留在自己這邊；CSR 裡有公鑰、主體／擴展申請與簽章，沒有私鑰。CA 會依政策核准 SAN 等內容，不保證完整照抄申請。
+
+如果自己也管理 CA，CA 端如何用 `openssl x509 -req` 簽署 CSR，見 [[#3. 簽署憑證]]。**申請者的 `req -new` 與 CA 端的 `x509 -req` 是不同步驟。**
+
+### 路線 B：Private key → 自簽憑證
+
+以下沿用路線 A 第一步產生的 `server.key`，不需要先建立 CSR 檔：
+
+```bash
+openssl req -new -x509 -key server.key \
+  -subj "/CN=example.com" \
+  -addext "subjectAltName=DNS:example.com" \
+  -days 365 -out server-self.crt
+```
+
+**直接得到自簽網站憑證 `server-self.crt`，由對應的 `server.key` 簽署。** 這是自簽服務憑證的示範；若要建立能簽發其他憑證的 Root CA，還需要 CA 的 Basic Constraints／Key Usage 等設定，不能只靠檔名叫 `ca.crt`。CA 建立範例見 [[#CA (Certificate Authority) 建立]]。
+
+兩條路最後都得到 X.509 憑證；**自簽不等於自動被其他人信任**，而由 CA 簽發也要確認對方是否信任該 CA。自簽 Root CA 簽發的網站憑證，仍是「CA 簽發」，不是網站自己的 self-sign。
+
+### 指令不用整串背：先看動作，再看輸入與輸出
+
+| 指令／參數 | 怎麼記 |
+|---|---|
+| `genrsa` | generate RSA：產生 RSA 私鑰 |
+| `req -new` | new request：製作新的 CSR 申請書 |
+| `req -new -x509` | 輸出憑證而非 CSR；未指定其他 CA 時，使用自己的私鑰自簽 |
+| `x509 -req` | `x509` 子命令讀入 CSR，用來簽發憑證；與 `req -x509` 不同 |
+| `-key` | 使用哪把私鑰 |
+| `-subj` | subject：申請者／憑證主體；`/CN=` 後面要有名稱 |
+| `-addext` | 加入 SAN 等擴展；網站名稱驗證看 SAN，CN 不能取代 SAN |
+| `-in`／`-out` | 讀入什麼／輸出到哪裡 |
+| `-days` | 憑證有效天數 |
+
+**X.509 是憑證標準，PKCS#10 是 CSR 標準；PEM／DER 是編碼。** `.crt`、`.csr`、`.key` 只是常見副檔名，真正內容由指令決定；PFX 是憑證與私鑰等資料的打包格式，通常用於部署，不是交給 CA 的申請書。
+
+```bash
+# 忘記參數時，查子命令；查看憑證只顯示公開資訊
+openssl req -help
+openssl x509 -help
+openssl x509 -in server-self.crt -noout -text
+```
+
+參考：[OpenSSL genrsa](https://docs.openssl.org/3.5/man1/openssl-genrsa/)、[OpenSSL req](https://docs.openssl.org/3.5/man1/openssl-req/)、[OpenSSL x509](https://docs.openssl.org/3.5/man1/openssl-x509/)。
+
 ## 原理說明
 
 > [!important] 必須先理解原理 必須先了解這個架構，不然會不知道自己在做什麼，而且這樣比較方便記住流程
@@ -341,7 +420,7 @@ done
 
 **解決方案**：
 
-- 確保 CN 或 SAN 包含正確的域名
+- 確保 SAN 包含正確的域名；不能只設定 CN
 - 使用萬用字元憑證 (*.domain.com)
 - 添加所有需要的域名到 SAN
 

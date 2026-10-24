@@ -84,6 +84,98 @@ Pod. If you scale an app up or down, you add or remove Pods.
 
 ---
 
+## SecurityContext：執行身分與 Linux 權限
+
+**UID 決定「你是誰」；Capabilities 決定「你額外能做什麼」；`securityContext` 把安全設定放在一起。**
+
+| 設定 | 用途 | 可設定層級 |
+|---|---|---|
+| `runAsUser` | 指定 Linux UID；`0` 是 root | Pod、container |
+| `runAsGroup` | 指定主要 GID | Pod、container |
+| `runAsNonRoot: true` | 要求不能以 root 執行，不會自動選 UID | Pod、container |
+| `capabilities.add`／`drop` | 增加／移除 Linux 特殊權限 | 只能 container |
+| `privileged: true` | 啟用特權容器，大幅放寬隔離與權限限制 | 只能 container |
+| `readOnlyRootFilesystem: true` | 容器根檔案系統唯讀 | 只能 container |
+
+非 root UID 通常較安全，但映像與掛載目錄必須支援該 UID。需要特殊權限時才增加必要的 Capability。
+
+### Pod 與 container 同時設定：重複欄位以 container 為準
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-sleeper
+spec:
+  securityContext:             # Pod 層級：提供容器共用的預設值
+    runAsUser: 1000
+    runAsGroup: 3000
+  containers:
+  - name: ubuntu
+    image: ubuntu
+    command: ["sleep", "4800"]
+    securityContext:           # 與這個 container 的 name、image、command 同層
+      runAsUser: 2000
+      capabilities:
+        add: ["SYS_TIME"]      # 示範特殊權限；僅在需求明確時授予
+```
+
+這個 container 最後使用 **UID 2000、GID 3000**。是重複欄位個別覆蓋，不是整份 Pod `securityContext` 被取代。Deployment 的 Pod 設定則放在 `spec.template.spec`。
+
+### Capabilities 與 privileged
+
+| Linux 名稱 | K8s `add` 寫法 | 用途 |
+|---|---|---|
+| `CAP_NET_ADMIN` | `NET_ADMIN` | 修改網路介面、IP、路由、iptables 等網路設定 |
+| `CAP_SYS_TIME` | `SYS_TIME` | 修改系統時鐘；可能影響主機，謹慎授予 |
+| `CAP_SYS_ADMIN` | `SYS_ADMIN` | 包含掛載／卸載檔案系統、部分 namespace 操作等，權限非常廣 |
+
+實際操作仍受 namespace 與其他安全限制影響。`NET_ADMIN` 通常管理容器所在的網路 namespace，不會自動取得主機網路的控制權。
+
+Docker 對照：
+
+```bash
+docker run --user 1000 ubuntu id
+docker run --cap-add=NET_ADMIN -it ubuntu bash
+docker run --privileged -it ubuntu bash
+```
+
+`--privileged` 會授予所有 Linux Capabilities、主機裝置存取並放寬多項安全限制；不只是以 root 執行。K8s 對應 container 的 `securityContext.privileged: true`。若只需特定能力，使用 `capabilities.add`；也可先 `drop: ["ALL"]` 再加入必要能力。
+
+Linux 上若已安裝標頭檔，可查看定義清單；這不代表目前程序擁有這些權限：
+
+```bash
+grep '^#define CAP_' /usr/include/linux/capability.h
+man 7 capabilities
+```
+
+### 常見錯誤：capabilities 放錯層級或 YAML 縮排錯誤
+
+> [!important] `capabilities` 只能放在個別 container 裡
+> 正確：`spec.containers[].securityContext.capabilities`。
+> 錯誤：`spec.securityContext.capabilities`，會收到 `unknown field "spec.securityContext.capabilities"`。
+> `containers:` 是清單，`securityContext` 必須放進 `- name: ...` 那個項目裡，與該 container 的 `image`、`command` 同層；不能放在清單項目的 `-` 外面。
+
+重要查詢與驗證指令：
+
+```bash
+kubectl explain pod.spec.securityContext
+kubectl explain pod.spec.containers.securityContext.capabilities
+kubectl apply --dry-run=server -f pod.yaml
+kubectl apply -f pod.yaml
+kubectl exec ubuntu-sleeper -- id
+```
+
+`id` 確認 UID／GID，不會列出 Capabilities。`--dry-run=server` 可先檢查 API 欄位與 admission，但不會真的啟動容器。
+
+`kubectl replace --force` 會先刪除舊 Pod，再建立新的；若新檔案有錯，舊 Pod 已不存在。先修正與驗證檔案，再重新建立，不要反覆強制刪除。
+
+官方範例：[Configure a Security Context for a Pod or Container](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)。搜尋關鍵詞：`security context`、`set capabilities container`；頁內找 `Set the security context for a Container`、`Set capabilities for a Container`。
+
+參考：[Linux capabilities](https://man7.org/linux/man-pages/man7/capabilities.7.html)、[Docker runtime privilege and Linux capabilities](https://docs.docker.com/engine/containers/run/#runtime-privilege-and-linux-capabilities)。
+
+---
+
 ## Pod 的資源管理和限制資源
 
 ### ResourceQuota 與 LimitRange：總量和個別範圍

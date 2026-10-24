@@ -10,6 +10,8 @@
 
 ## API Server
 
+元件間的 Server／Client／Peer 憑證與連線角色見 [[K8s 的 Certificate]]。
+
 - **功能**：
     - Kubernetes 元件透過 API Server 存取叢集資源與狀態；CRI、CSI 等元件間介面則有各自的通訊路徑。
     - 提供 RESTful API，允許通過 HTTPS 傳送 YAML 配置。

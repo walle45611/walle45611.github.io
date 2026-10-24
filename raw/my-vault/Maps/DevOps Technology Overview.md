@@ -112,10 +112,15 @@
 ## Kubernetes
 
 [[K8s 各 Component 說明]]
+[[K8s 的 Certificate]]
+[[K8s RBAC 與 ServiceAccount]]
+[[K8s ConfigMap、Secret 與 Sealed Secrets]]
+[[K8s CRD、Custom Resource 與 Controller]]
 [[K8s 中的 Pod 是什麼]]
 [[K8s kubelet 與 Pod 執行流程]]
 [[K8s Container Runtime 與 dockershim 遷移]]
 [[K8s CNI 比較：Cilium、Calico 與 Flannel]]
+[[K8s NetworkPolicy 網路存取控制]]
 [[K8s Calico 安裝與網路判讀小抄]]
 [[K8s CoreDNS、kubelet 與 resolv.conf]]
 [[K8s Ingress 與 Gateway API]]
@@ -123,6 +128,7 @@
 [[K8s Cilium 與 Containerlab 網路實驗]]
 [[K8s CSI、PV、PVC 與雲端儲存]]
 [[K8s kubectl 常用指令]]
+[[K8s kubeconfig、Context 與多叢集管理]]
 [[K8s kubectl 常用指令#Rollout 與回滾：不要只看 roll|Rollout 與回滾]]
 [[K8s kubelet 與 Pod 執行流程#ImagePolicyWebhook：映像政策驗證小抄|ImagePolicyWebhook 映像政策驗證]]
 [[K8s 排程：Scheduler、PriorityClass、Affinity、Taint 與 Toleration]]

@@ -38,13 +38,15 @@ Cilium、Calico、Flannel 是 Kubernetes 網路方案；eBPF、VXLAN、BGP 是�
 | BGP | 交換可達前綴與路徑資訊，讓路由器知道網段位置 |
 | Native routing | 不用 overlay 封裝，底層網路需要能轉送 Pod IP |
 
+政策 YAML、Ingress／Egress 與 selector 範例見 [[K8s NetworkPolicy 網路存取控制]]。
+
 ## 三種方案比較
 
 | 方案 | 主要特性 | 跨 Node 網路 | 注意事項 |
 |---|---|---|---|
 | Cilium | eBPF 資料平面、policy、可觀測性 | VXLAN／Geneve 或 native routing | 可搭配 BGP 宣告 Pod／Service 路由；替代 kube-proxy 需對應設定 |
 | Calico | L3 networking、NetworkPolicy | 無封裝路由、VXLAN、IP-in-IP，依模式配置 BGP | 不能把 Calico 等同於 BGP；也有 eBPF 資料平面選項 |
-| Flannel | 提供 Pod 網路連通 | VXLAN、host-gw 等 backend | policy 需搭配控制器；官方 Helm chart 有整合選項，不能一概說完全不支援 |
+| Flannel | 提供 Pod 網路連通 | VXLAN、host-gw 等 backend | 單獨 flanneld 不執行 NetworkPolicy；需搭配政策控制器，官方 Helm chart 可用 netpol.enabled 整合 |
 
 參考：[Cilium Routing](https://docs.cilium.io/en/stable/network/concepts/routing/)、[Calico networking](https://docs.tigera.io/calico/latest/networking/determine-best-networking)、[Flannel](https://github.com/flannel-io/flannel)。
 

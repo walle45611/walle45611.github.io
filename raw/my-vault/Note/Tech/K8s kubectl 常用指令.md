@@ -26,6 +26,91 @@ alias k=kubectl
 
 資源縮寫不一定能套到每個子命令；例如建立 Service 使用 `k create service`。
 
+## kubeconfig 與操作目標
+
+**Context＝Cluster＋User＋預設 Namespace。** `kubectl config get-contexts` 查看、`kubectl config use-context <名稱>` 切換；單次指定用 `kubectl --context <名稱> ...`。完整 YAML、KUBECONFIG 持久設定與 kubectx／kubens 見 [[K8s kubeconfig、Context 與多叢集管理]]。
+
+## API Group 與 apiVersion：資源屬於哪一組
+
+**API Group 是資源種類的分組；`apiVersion` 通常寫成「群組／版本」，`kind` 再指定這一組裡的資源種類。** 不是使用者群組，也不是 Namespace。
+
+```yaml
+apiVersion: certificates.k8s.io/v1
+kind: CertificateSigningRequest
+```
+
+上例表示使用 `certificates.k8s.io` 群組、`v1` 版本中的 CSR。**Core 核心群組是特例，`apiVersion` 直接寫 `v1`，不是 `core/v1`。**
+
+### 常見資源對照
+
+| 資源 kind | API Group | apiVersion |
+|---|---|---|
+| Pod、Service、Secret、ConfigMap、Namespace、Node | Core（群組名稱為空） | `v1` |
+| PersistentVolume、PersistentVolumeClaim | Core（群組名稱為空） | `v1` |
+| Deployment、ReplicaSet、StatefulSet、DaemonSet | `apps` | `apps/v1` |
+| Job、CronJob | `batch` | `batch/v1` |
+| Ingress、NetworkPolicy | `networking.k8s.io` | `networking.k8s.io/v1` |
+| CertificateSigningRequest | `certificates.k8s.io` | `certificates.k8s.io/v1` |
+| Role、ClusterRole、RoleBinding、ClusterRoleBinding | `rbac.authorization.k8s.io` | `rbac.authorization.k8s.io/v1` |
+| StorageClass、CSIDriver | `storage.k8s.io` | `storage.k8s.io/v1` |
+| PriorityClass | `scheduling.k8s.io` | `scheduling.k8s.io/v1` |
+| Gateway、HTTPRoute | `gateway.networking.k8s.io` | 常見 `gateway.networking.k8s.io/v1`；需先安裝對應 API 資源與 Controller |
+
+表格是常用版本，**以目前叢集實際提供的版本為準**；有些資源可同時提供多個版本。API 版本的 `v1` 也不是指 Kubernetes 叢集版本。
+
+### 查詢：api-resources 與 api-versions
+
+```bash
+k api-resources                             # 查資源、縮寫、版本、是否有 Namespace
+k api-resources --api-group=certificates.k8s.io
+k api-resources --api-group=apps
+k api-resources --api-group=''               # Core 核心群組
+k api-versions                              # 列出支援的群組／版本
+```
+
+**`api-resources` 查「有哪些資源」；`api-versions` 查「有哪些群組／版本」。** 查到資源後再用 `k explain` 查欄位。命令是複數 `api-resources`，不是 `api-resource`。
+
+### curl 連 API Server 6443：/api 與 /apis
+
+API Server 常見 HTTPS port 是 **6443**，但實際也可能透過其他 port 的 LB／Endpoint 連線。以下 `127.0.0.1` 是在控制平面本機的示例；其他主機改成可達的 API Server 位址。
+
+```bash
+curl -k https://127.0.0.1:6443/               # 根路徑，權限允許時可列 API 路徑
+curl -k https://127.0.0.1:6443/api            # Core 群組的版本
+curl -k https://127.0.0.1:6443/api/v1         # Core v1 的資源清單
+curl -k https://127.0.0.1:6443/apis           # Named API Groups
+curl -k https://127.0.0.1:6443/apis/apps/v1   # apps/v1 的資源清單
+```
+
+| API 類型 | URL 結構 | 例子 |
+|---|---|---|
+| Core | `/api/<版本>` | `/api/v1` |
+| Named Group | `/apis/<群組>/<版本>` | `/apis/certificates.k8s.io/v1` |
+| 取得資源物件 | 在版本路徑後指定資源／Namespace | `/api/v1/namespaces/default/pods` |
+
+**`-k`（`--insecure`）只跳過伺服器憑證的信任鏈／名稱驗證，HTTPS 仍加密；它不會跳過身分驗證與授權。** 若出現 `401 Unauthorized` 或 `403 Forbidden`，不代表 `-k` 沒作用。匿名能否讀取 discovery 端點取決於叢集設定，不能保證只打 `curl -k` 就能列出內容。
+
+有 Client 憑證與私鑰時，可以明確帶入；下列檔案路徑皆為示意：
+
+```bash
+curl --cacert /path/to/ca.crt \
+  --cert /path/to/client.crt \
+  --key /path/to/client.key \
+  https://API_SERVER_IP:6443/apis
+```
+
+`--cacert` 用來驗證 Server；`--cert`／`--key` 是自己的 Client 身分。URL 的名稱／IP 仍需符合 Server 憑證 SAN。**curl 不會自動讀 kubeconfig 的登入設定。** 憑證角色見 [[K8s 的 Certificate]]。
+
+若已有可用 kubeconfig，更直接用目前身分查看原始 API 回應：
+
+```bash
+k get --raw /api
+k get --raw /apis
+k get --raw /apis/apps/v1
+```
+
+參考：[API Groups](https://kubernetes.io/docs/reference/using-api/#api-groups)、[API Resource URI](https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-uris)、[直接存取 Kubernetes API](https://kubernetes.io/docs/tasks/administer-cluster/access-cluster-api/)、[curl 憑證驗證與 -k](https://curl.se/docs/sslcerts.html)。搜尋詞：`Kubernetes API groups apiVersion`、`access cluster API curl`。
+
 ## explain：忘記 YAML 欄位時查什麼
 
 ```bash
@@ -318,7 +403,13 @@ DNS 與 Headless 的解析關係見 [[K8s CoreDNS、kubelet 與 resolv.conf]]；
 
 參考：[Service 類型與 Headless](https://kubernetes.io/docs/concepts/services-networking/service/)、[MetalLB 的用途](https://metallb.io/)、[MetalLB 設定](https://metallb.io/configuration/)。
 
+## RBAC 與 ServiceAccount
+
+**Role／ClusterRole 定義能做什麼，Binding 決定授予誰。** 完整範例、ClusterRole 範圍、ServiceAccount、`kubectl auth can-i` 與建立指令見 [[K8s RBAC 與 ServiceAccount]]。
+
 ## ConfigMap：-f 和 --from-file 不一樣
+
+ConfigMap／Secret 的用途、Pod 注入設定與 Sealed Secrets 見 [[K8s ConfigMap、Secret 與 Sealed Secrets]]。
 
 ```bash
 # 檔案本身是 kind: ConfigMap 的完整資源定義
@@ -338,6 +429,101 @@ k api-resources
 ```
 
 ServiceAccount 用 `sa`；ClusterRoleBinding、ClusterRole、RoleBinding、Role 沒有內建資源短名，不能自行假定 `crb` 可用。忘記資源縮寫就查 api-resources 的 SHORTNAMES 欄；忘記子命令參數則用 `k create cm -h`、`k create pc -h`。
+
+## Secret docker-registry：登入私有 Registry 拉取 image
+
+> [!important] 重要官方範例：私有 Registry 拉取 image
+> [Pull an Image from a Private Registry](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)
+> 查 Registry Secret 建立、`.dockerconfigjson` 登入資料與 `imagePullSecrets`。搜尋關鍵詞：`pull image private registry`；頁內找 `Create a Secret`、`imagePullSecrets`。
+
+**`kubectl create secret docker-registry` 建立的是 K8s 的 Registry 登入 Secret，讓 Node 拉取私有 image。** 不是安裝 Docker Registry，也不是 Docker Swarm 的 `docker secret`。
+
+| 設定 | 代表什麼 |
+|---|---|
+| Secret 名稱，如 `registry-cred` | 自訂的 K8s 物件名稱 |
+| Secret type：`kubernetes.io/dockerconfigjson` | 儲存 Docker 相容 Registry 登入設定 |
+| data key：`.dockerconfigjson` | Registry 位址與登入資料的 JSON，儲存時為 Base64；Base64 不是加密 |
+| Pod 的 `imagePullSecrets` | 告訴 kubelet 拉 image 時使用哪個 Secret |
+
+### 1. 建立 Registry 登入 Secret
+
+假設工作負載在 `default`，以下 Registry、帳號與密碼皆為示意，需換成實際值：
+
+```bash
+kubectl create secret docker-registry registry-cred \
+  --docker-server=registry.example.com \
+  --docker-username=example-user \
+  --docker-password='EXAMPLE_PASSWORD_OR_TOKEN' \
+  -n default
+```
+
+- `--docker-server`：image 所在 Registry 的位址，有非預設 port 時需包含 port。
+- `--docker-username`／`--docker-password`：Registry 接受的帳號及密碼／Token，不是 K8s 管理者帳密。
+- `--docker-email`：選用欄位，通常不用為了建立 Secret 特別填。
+- 可在指令末尾加 `--dry-run=client -o yaml` 先產生 YAML，不建立物件。
+
+若已經有包含有效登入資料的 Docker 設定檔，也可擇一匯入：
+
+```bash
+kubectl create secret generic registry-cred \
+  --from-file=.dockerconfigjson=/path/to/config.json \
+  --type=kubernetes.io/dockerconfigjson -n default
+```
+
+此檔案需真的有可用 credentials；若只指定本機 credential helper，不能假設 Node 也能取得登入資料。
+
+### 2. Pod／Deployment 引用 imagePullSecrets
+
+Pod 的例子：
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: private-app
+  namespace: default
+spec:
+  imagePullSecrets:
+    - name: registry-cred
+  containers:
+    - name: app
+      image: registry.example.com/team/app:v1
+```
+
+**`imagePullSecrets` 和 `containers` 同層，不是放在容器的 env 或 volumeMounts。** Deployment 則寫在 `spec.template.spec.imagePullSecrets`。Secret 必須和 Pod 在同一 Namespace，不能直接引用另一個 Namespace 的同名 Secret。
+
+```mermaid
+flowchart TD
+    P[Pod 指定私有 image] --> S[imagePullSecrets 引用 registry-cred]
+    S --> K[kubelet 取得 Registry 登入資料]
+    K --> R[Container Runtime 向 Registry 驗證並拉取 image]
+    R --> C[啟動容器]
+```
+
+**程式還沒啟動就可能需要登入 Registry**，所以不是靠容器內掛載的 ServiceAccount API Token 拉 image，也不是靠 RoleBinding 授予 Registry 帳號權限。
+
+### 3. 可透過 ServiceAccount 提供預設 imagePullSecrets
+
+多個 Pod 都使用同一個 SA 時，可在 SA 設定 `imagePullSecrets`。以下是要合併進既有 ServiceAccount 的欄位示意：
+
+```yaml
+imagePullSecrets:
+  - name: registry-cred
+```
+
+新 Pod 使用該 SA、且沒有自己指定 imagePullSecrets 時，ServiceAccount admission 可把這份清單帶入 Pod。**這是 Registry credentials 的引用，不是 SA 的 API Token。** `automountServiceAccountToken: false` 不會因此取消 imagePullSecrets；詳見 [[K8s RBAC 與 ServiceAccount#關閉自動掛載，再明確投射 Token]]。
+
+### 4. 查看與排錯
+
+```bash
+kubectl get secret registry-cred -n default
+kubectl describe secret registry-cred -n default
+kubectl describe pod private-app -n default
+```
+
+Secret 的 TYPE 應是 `kubernetes.io/dockerconfigjson`；`describe secret` 可看欄位名稱，不必印出密碼。Pod 的 Events 若有 `ErrImagePull`／`ImagePullBackOff`，檢查 Secret 名稱與 Namespace、Registry 帳密／Token、image 路徑與 tag，以及 DNS／網路／Registry TLS；不是看到 ImagePullBackOff 就一定是 Secret 錯。
+
+指令參考：[kubectl create secret docker-registry](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_create/kubectl_create_secret_docker-registry/)。搜尋詞：`Kubernetes pull image private registry`、`kubectl create secret docker-registry imagePullSecrets`。
 
 ## 檢查與排錯
 
@@ -371,6 +557,35 @@ k logs deploy/argocd-image-updater -n argocd
 ## 排程：Scheduler、PriorityClass 與節點條件
 
 PriorityClass 建立與指定、搶占、`priority: 0` 排錯，以及 Node Selector、Affinity、Taint／Toleration 的觀念和操作統一見 [[K8s 排程：Scheduler、PriorityClass、Affinity、Taint 與 Toleration]]。
+
+## Node 維護：cordon、drain、uncordon
+
+**cordon 暫停接新 Pod，drain 暫停接新 Pod 並撤離既有應用 Pod，uncordon 恢復接受新 Pod。** 三者都不會將機器關機或刪除 Node。
+
+| 指令 | 一般新 Pod 能否排入 | 既有 Pod |
+|---|---|---|
+| `kubectl cordon node-1` | 不可 | 繼續執行 |
+| `kubectl drain node-1 --ignore-daemonsets` | 不可 | 驅逐可撤離的 Pod；保留 DaemonSet 與 mirror Pod |
+| `kubectl uncordon node-1` | 恢復可排程 | 繼續執行；撤離的 Pod 不會自動搬回來 |
+
+常見維護流程：
+
+```bash
+kubectl drain node-1 --ignore-daemonsets
+# 確認 drain 成功，再進行升級、重開機等維護
+kubectl uncordon node-1
+kubectl get nodes
+```
+
+- `drain` 已包含 cordon 的效果，不必先執行一次 cordon。只想暫停新排程、保留現有工作時才單獨用 cordon。
+- 撤離不是把原 Pod 搬走：Deployment／ReplicaSet 等控制器建立替代 Pod，再由 Scheduler 選擇合適 Node；沒有控制器的獨立 Pod 不會自動重建，drain 預設也會拒絕刪除它。
+- `--ignore-daemonsets` 是略過並保留 DaemonSet Pod，不是刪除它們；mirror Pod 對應的 static Pod 也不會由 drain 移除。
+- PodDisruptionBudget（PDB）可能讓驅逐等待或受阻；其他 Node 的資源、排程或儲存條件不合時，替代 Pod 仍可能 Pending。CSI／PVC 不代表資料會自動移到另一台 Node，見 [[K8s CSI、PV、PVC 與雲端儲存]]。
+- `kubectl get nodes` 可看到 `Ready,SchedulingDisabled`：Node 仍健康，但已禁止一般新排程。直接指定 `nodeName` 等情況可繞過 Scheduler，因此不是全面封鎖所有 Pod。
+
+名稱別混淆：**cordon** 是節點維護操作；**CoreDNS** 是叢集 DNS 元件，見 [[K8s CoreDNS、kubelet 與 resolv.conf]]。
+
+參考：[Safely Drain a Node](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/)、[kubectl drain](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_drain/)。
 
 ## 資源配額與 QoS
 

@@ -11,11 +11,299 @@ Pod 是可以在 K8s 創建和管理的最小單位。
 一個 Pod 是一個群組，裡面可以有一個或是多個 containers, 共享 storage 和 resource 和怎麼運行這個 Pod 的相關 specification (規格，設定)，Pod 內的容器在同一個節點被調度和運行，，形成一個應用程序的「邏輯主機」，類似於在非雲端環境下同一實體機或虛擬機中的應用。  
   
 
-- Pod 可以包含以下幾種容器：  
-    1. Application pod：執行主要的應用程序邏輯。  
-    2. init containers：在 Pod 啟動過程中執行。  
-    3. Ephemeral Containers：用排查問題。  
-    
+- Pod 可以包含以下幾種容器：
+    1. Application Containers：執行主要的應用程式邏輯。
+    2. Init Containers：先執行初始化工作，成功結束後才繼續。
+    3. Native Sidecar Containers：以可重啟的 Init Container 形式宣告，持續協助主要容器。
+    4. Ephemeral Containers：用於排查問題。
+
+
+---
+
+## Multi-container、Init Container 與 Native Sidecar
+
+**Multi-container 是一個 Pod 有多個容器；Init Container 負責先做完準備；Sidecar 負責在主容器運作時持續協助。** 它們不是三個互斥的 Pod 類型，同一個 Pod 可以同時包含這些角色。
+
+| 概念 | YAML 位置 | 啟動與結束行為 | 常見用途 |
+|---|---|---|---|
+| 多個一般容器 | `spec.containers[]` | 通過初始化階段後啟動，彼此沒有由清單順序保證的啟動先後 | 緊密合作的應用與輔助程式；傳統 Sidecar 也常放這裡 |
+| 一般 Init Container | `spec.initContainers[]` | 依序執行，上一個成功結束才執行下一個；全部完成後才啟動一般容器 | 產生設定檔、準備資料、等待外部依賴 |
+| Native Sidecar | `spec.initContainers[]`，該項設定 `restartPolicy: Always` | 依初始化順序先啟動，被判定 started 後可繼續下一步；持續陪伴主容器；Pod 終止時在主容器停止後關閉 | 日誌收集、代理、持續同步檔案 |
+
+同 Pod 的容器位於同一 Node，共用 Pod 網路，可透過 `localhost` 通訊；要共享檔案，需明確掛載共同 volume，不是自動共用所有容器檔案系統。
+
+### Native 是什麼？
+
+**Native 是「Kubernetes 原生支援 Sidecar 的生命週期」**，不必自行用 entrypoint 等方式協調啟動與關閉。此功能在 v1.33 成為 stable，v1.29 起預設啟用，並非 v1.33 才首次出現。
+
+Native Sidecar 放在 `initContainers`，但**不需要先結束**才能啟動主容器。若有多個原生 Sidecar，Pod 終止時會在主容器停止後，依宣告的相反順序停止 Sidecar；Job 也不會因這些 Sidecar 持續執行而無法完成。
+
+### 完整例子：先準備檔案，再啟動 logger 與主容器
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sidecar-demo
+spec:
+  restartPolicy: Never
+  initContainers:
+  - name: prepare
+    image: busybox:1.36
+    command: ["sh", "-c", "touch /shared/app.log"]
+    volumeMounts:
+    - name: logs
+      mountPath: /shared
+  - name: logger
+    image: busybox:1.36
+    restartPolicy: Always
+    command: ["sh", "-c", "tail -F /shared/app.log"]
+    startupProbe:
+      exec:
+        command: ["sh", "-c", "test -f /shared/app.log"]
+      periodSeconds: 1
+      failureThreshold: 30
+    volumeMounts:
+    - name: logs
+      mountPath: /shared
+  containers:
+  - name: main-app
+    image: busybox:1.36
+    command: ["sh", "-c", "echo 'Main app started' >> /shared/app.log; sleep 60"]
+    volumeMounts:
+    - name: logs
+      mountPath: /shared
+  volumes:
+  - name: logs
+    emptyDir: {}
+```
+
+```mermaid
+flowchart TD
+    A[prepare：建立共用日誌檔] --> B[prepare 成功結束]
+    B --> C[logger 原生 Sidecar 啟動]
+    C --> D[startupProbe 成功，logger 判定為 started]
+    D --> E[main-app 啟動並寫入日誌；logger 持續讀取]
+    E --> F[main-app 完成；Pod restartPolicy 為 Never]
+    F --> G[kubelet 結束 logger]
+```
+
+此 `startupProbe` 只是示範檔案檢查；實際代理／服務應檢查它真正完成啟動所需的條件。
+
+### restartPolicy 與 Probe：執行／重啟策略和健康檢查
+
+**Sidecar 是做事的容器，Probe 是檢查機制；Probe 不能取代日誌收集或代理程式。`restartPolicy: Always` 也不會檢查程式是否卡住。**
+
+| 設定 | 決定什麼 | 失敗／退出時的行為 |
+|---|---|---|
+| `spec.restartPolicy` | Pod 層級的容器重啟預設策略 | `Always`、`OnFailure`、`Never` 控制容器退出後如何處理，不是重新建立整個 Pod |
+| `initContainers[].restartPolicy: Always` | 將這個 Init Container 設成 Native Sidecar | 容器退出時獨立重啟，不論 Pod 層級策略；Pod 終止階段仍會停止 |
+| `startupProbe` | 是否完成啟動 | 達失敗門檻會終止該容器，後續依重啟策略處理；成功前不執行它的 liveness／readiness 檢查 |
+| `livenessProbe` | 運作中是否健康，例如程序卡住 | 達失敗門檻會終止該容器，後續依重啟策略處理 |
+| `readinessProbe` | 是否可接收流量 | 失敗影響 Pod Ready，Service 通常不再把新流量送給它；不直接重啟容器 |
+
+本例 Pod 設 `Never`，但 logger 設 `Always`：主容器完成後不重跑；logger 若在 Pod 運作期間退出則可重啟，直到 Pod 結束。
+
+**Native Sidecar 的 `started` 不等於 `Ready`。** 沒有 startupProbe 時，容器程序開始執行即可判定 started；有 startupProbe 時，需等該檢查成功才繼續下一個初始化步驟。Sidecar 的 readinessProbe 會影響 Pod Ready，不能把它當成主容器啟動前的等待條件。
+
+一般 Init Container 不支援 startup／liveness／readiness Probe；它以是否成功執行完畢作為完成條件。Native Sidecar 支援這些 Probe。
+
+### 重要指令與官方關鍵詞
+
+```bash
+kubectl explain pod.spec.initContainers
+kubectl explain pod.spec.initContainers.restartPolicy
+kubectl explain pod.spec.containers.startupProbe
+kubectl apply --dry-run=server -f sidecar-demo.yaml
+kubectl describe pod sidecar-demo
+kubectl logs sidecar-demo -c prepare
+kubectl logs sidecar-demo -c logger
+kubectl logs sidecar-demo -c main-app
+```
+
+- [Init Containers](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/)：`init containers`、`run to completion`。
+- [Sidecar Containers](https://kubernetes.io/docs/concepts/workloads/pods/sidecar-containers/)：`restartPolicy Always`、`started`、`SidecarContainers`。
+- [Liveness, Readiness, and Startup Probes](https://kubernetes.io/docs/concepts/workloads/pods/probes/)：`startupProbe`、`readinessProbe`、`livenessProbe`。
+
+---
+
+## Probe 實作：HTTP、TCP、exec 與重要參數
+
+**先決定「檢查用途」，再決定「怎麼檢查」。startup／liveness／readiness 是用途，HTTP／TCP／exec 是檢查方式，不是固定配對。** Probe 寫在個別 container 裡，與 `image`、`command` 同層，由 kubelet 執行檢查。
+
+### 三種用途：失敗後做什麼？
+
+| Probe | 檢查什麼 | 失敗達門檻後 | 成功後 |
+|---|---|---|---|
+| `startupProbe` | 是否完成啟動 | 終止該容器，依 restartPolicy 處理 | 本次容器啟動不再執行 startupProbe，開始 liveness／readiness 檢查 |
+| `livenessProbe` | 運作中是否健康、是否卡住 | 終止該容器，依 restartPolicy 處理 | 繼續定期檢查 |
+| `readinessProbe` | 是否可接收請求 | 標記未就緒，Service 通常不再送新流量；不直接終止容器 | 符合恢復門檻後可重新就緒 |
+
+- startupProbe 成功前，不執行**同一個容器**的 liveness／readiness；不是所有 Pod 容器一起暫停。
+- liveness 與 readiness 各自檢查，不是 readiness 成功後才執行 liveness。
+- 沒設定 readinessProbe，不代表 Kubernetes 懂你的業務健康狀態。
+
+### 三種方式：成功條件不同
+
+| 方式 | YAML 欄位 | 成功條件 | 注意事項 |
+|---|---|---|---|
+| HTTP | `httpGet` | 回應碼 200～399 | path／port 必須是應用實際提供的；通常由 kubelet 連 Pod IP |
+| TCP | `tcpSocket` | 指定 port 能建立 TCP 連線 | 只證明可連線，不代表業務功能正常 |
+| exec | `exec.command` | 容器內指令 exit code 為 0 | 工具必須存在；不會自動使用 shell，需條件／管線時明寫 `sh -c` |
+
+每個 Probe 只選一個檢查方式，不要同時放 httpGet 和 exec。Kubernetes 也支援 gRPC health probe；這裡先整理最常用的 HTTP／TCP／exec。
+
+### 範例一：HTTP startup／readiness，加上 TCP liveness
+
+儲存為 `probe-web.yaml`。此例 NGINX 實際提供 `/` 與 TCP 80；真實應用可改用實作好的 `/startupz`、`/livez`、`/readyz` 等端點，不能只改 YAML 就期待程式自動產生它們。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: probe-web
+  namespace: default
+spec:
+  restartPolicy: Always
+  containers:
+  - name: web
+    image: nginx:stable
+    ports:
+    - name: http
+      containerPort: 80
+    startupProbe:
+      httpGet:
+        path: /
+        port: http
+      periodSeconds: 2
+      timeoutSeconds: 1
+      failureThreshold: 30
+    livenessProbe:
+      tcpSocket:
+        port: http
+      periodSeconds: 10
+      timeoutSeconds: 1
+      failureThreshold: 3
+    readinessProbe:
+      httpGet:
+        path: /
+        port: http
+      periodSeconds: 5
+      timeoutSeconds: 1
+      failureThreshold: 3
+      successThreshold: 1
+```
+
+| 本例設定 | 解讀 |
+|---|---|
+| startup：每 2 秒、連續失敗 30 次 | 約 60 秒的啟動容忍範圍；不是固定等 60 秒才啟動其他 Probe |
+| startup 提早成功 | 立刻完成本次 startup 檢查階段，再依設定開始其他 Probe |
+| liveness：TCP 80、失敗門檻 3 | 連不上且達連續失敗門檻，終止並依 Always 重啟 web 容器 |
+| readiness：HTTP `/`、失敗門檻 3 | 未就緒時不直接重啟；此處只示範 HTTP 檢查，不是完整業務驗證 |
+| `port: http` | 引用同 container 內宣告的命名 port，也可直接填 80 |
+
+Probe 的 port 是應用監聽的容器 port，不是 Service port 或 NodePort。`containerPort` 宣告不會讓程式自動開啟監聽。
+
+### 範例二：exec 檢查檔案，觀察 liveness 重啟
+
+儲存為 `probe-exec.yaml`：
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: probe-exec
+  namespace: default
+spec:
+  restartPolicy: Always
+  containers:
+  - name: app
+    image: busybox:1.36
+    command: ["sh", "-c", "touch /tmp/healthy; sleep 3600"]
+    livenessProbe:
+      exec:
+        command: ["cat", "/tmp/healthy"]
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 1
+      failureThreshold: 3
+```
+
+- 檔案存在：cat 回傳 0，檢查成功。
+- 檔案不存在：cat 回傳非 0；連續失敗 3 次後終止容器，依 Always 重啟。
+- 重啟後 command 再次建立檔案；這是容器重啟，不是建立新 Pod。
+
+在 lab 可這樣觀察（僅刪範例容器的檢查檔）：
+
+```bash
+kubectl apply -f probe-exec.yaml
+kubectl wait --for=condition=Ready pod/probe-exec --timeout=60s
+kubectl exec probe-exec -c app -- rm /tmp/healthy
+kubectl get pod probe-exec -w
+```
+
+等 RESTARTS 增加後，按 Ctrl+C 離開 watch，再看 Events：
+
+```bash
+kubectl describe pod probe-exec
+kubectl logs probe-exec -c app --previous
+```
+
+前一次 logs 可能沒有輸出，因為此例只有 touch／sleep；失敗 Probe 訊息看 Events，而非期待程式一定印出錯誤。
+
+### 重要參數：預設值與記法
+
+| 參數 | 預設 | 用途／易錯處 |
+|---|---|---|
+| `initialDelaySeconds` | 0 秒 | 開始該 Probe 前等待；有 startupProbe 時，liveness／readiness 的等待在 startup 成功後才開始 |
+| `periodSeconds` | 10 秒 | 檢查週期；未 Ready 時 readiness 可能更頻繁執行 |
+| `timeoutSeconds` | 1 秒 | 每次檢查最多等多久 |
+| `failureThreshold` | 3 次 | 連續失敗幾次，才判定該檢查整體失敗 |
+| `successThreshold` | 1 次 | 失敗後要連續成功幾次才算恢復；startup／liveness 必須為 1，readiness 可調高 |
+
+- `failureThreshold × periodSeconds` 用來估算啟動／失敗容忍時間，不是精準的重啟倒數；還有檢查耗時、初始延遲及終止寬限等因素。
+- liveness 不宜因資料庫等外部依賴短暫失效就判定主程式死亡，避免大量無效重啟；需依應用設計區分「不健康」與「暫時不能服務」。
+
+### 執行順序
+
+```mermaid
+flowchart TD
+    A[容器程序啟動] --> B[執行 startupProbe]
+    B -->|尚未成功且未達失敗門檻| B
+    B -->|達失敗門檻| F[終止容器，依 restartPolicy 處理]
+    B -->|成功| C[liveness 與 readiness 各自持續檢查]
+    C --> D[liveness：是否健康]
+    C --> E[readiness：是否可接收流量]
+    D -->|失敗達門檻| F
+    E -->|失敗達門檻| G[Pod 未 Ready；不直接重啟容器]
+    G -->|之後檢查恢復| H[重新判斷 Pod Ready]
+```
+
+此圖假設有設定 startupProbe；沒有時，其他 Probe 直接依各自參數開始，不會多出一個必要的 startup 階段。
+
+### 查欄位與排錯
+
+```bash
+kubectl explain pod.spec.containers.livenessProbe
+kubectl explain pod.spec.containers.readinessProbe.httpGet
+kubectl explain pod.spec.containers.startupProbe
+kubectl apply --dry-run=server -f probe-web.yaml
+kubectl apply -f probe-web.yaml
+kubectl describe pod probe-web
+kubectl get pod probe-web -w
+```
+
+| 現象 | 查什麼 |
+|---|---|
+| YAML unknown field | Probe 是否放在 container 裡；httpGet／tcpSocket／exec 名稱與縮排 |
+| HTTP 404 | path 是否真的存在；404 是檢查失敗 |
+| connection refused／timeout | 程式是否監聽正確 IP／port、啟動時間與網路可達性 |
+| Ready=0，但 RESTARTS 沒增加 | readiness 失敗可能正是預期行為 |
+| 反覆重啟 | describe Events 查 startup／liveness；也查程式自行退出與前一次 logs |
+
+更新既有 Deployment 時，把 Probe 放在 `spec.template.spec.containers[]`，會觸發 rollout。不要假設既有一般 Pod 的 Probe 欄位能直接原地修改，也不要用 `replace --force` 當作預設解法。
+
+官方：[Configure Liveness, Readiness and Startup Probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)、[Probe 設定欄位與預設值](https://kubernetes.io/docs/concepts/workloads/pods/probes/#configuration-fields)。搜尋關鍵詞：`httpGet`、`tcpSocket`、`exec`、`failureThreshold`、`startupProbe`。
 
 ---
 

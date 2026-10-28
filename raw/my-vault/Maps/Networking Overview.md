@@ -314,6 +314,7 @@ $ traceroute 8.8.8.8
 參考資料：
 - [[防火牆基本術語]]
 - [[DNS (Domain Name Service)]]
+- [[Linux DNS Bind9 相關設定]]
 - [[DHCP (Dynamic Host Configuration Protocol)]]
 - [[HTTP (Hypertext Transfer Protocol)]]
 - [[LDAP (Light-weight Directory Access Protocol)]]

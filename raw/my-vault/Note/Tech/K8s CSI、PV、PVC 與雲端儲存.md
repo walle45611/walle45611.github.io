@@ -132,6 +132,94 @@ StatefulSet 不會自動提供資料庫複寫、主從切換，也不會保存�
 
 參考：[StatefulSet 官方說明](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)。
 
+#### Deployment 直接掛 PVC vs StatefulSet 的專屬 PVC
+
+**只有一個 PostgreSQL 時，Deployment 直接掛 PVC 也能保存資料；StatefulSet 額外管理每個副本的固定身分與儲存對應。** 持久化來自 PVC 與底層儲存，不是只有 StatefulSet 才能保存資料。
+
+| 比較 | Deployment 直接引用既有 PVC | StatefulSet 使用 volumeClaimTemplates |
+|---|---|---|
+| 資料持久化 | 可以 | 可以 |
+| Pod 重建 | 新 Pod 名稱通常不同，仍可引用原本的 PVC | 新 Pod 保留編號名稱，接回對應 PVC；UID／IP 可能改變 |
+| 增加 replicas | 共用同一份 Pod template，固定 claimName 的副本都引用同一份 PVC | 每個編號可由模板建立自己的 PVC |
+| 多個成員 | 專屬 PVC 與身分對應需自行設計，例如不同 Deployment 各引用不同 PVC | 自動維持成員編號與專屬 PVC 的對應 |
+| 複寫與選主 | 不會自動提供 | 也不會自動提供，需資料庫或 Operator 管理 |
+
+| Deployment 的 Pod 模板 | 建立出來的副本 |
+|---|---|
+| 所有副本固定 `claimName: pg-data` | Pod A、Pod B 都引用 pg-data；只改 Pod 名稱不會改 PVC |
+| 兩個不同 Deployment 分別引用不同 claimName | 各自使用 pg-data-a、pg-data-b，底層也須是獨立資料目錄 |
+
+StatefulSet 也能直接引用固定 PVC；**每副本各有 PVC 是 volumeClaimTemplates 提供的行為，不是只改 kind 就會自動分開。** 不同 PVC 名稱也不保證後端沒有被人設定成同一個 NFS 目錄等共享位置，仍須核對實際儲存。
+
+#### volumeClaimTemplates：一份 PVC 模板，各成員各一份
+
+以下是名為 postgres 的 StatefulSet `spec` 片段，不是完整 PostgreSQL 複寫設定；my-storage 需換成實際 StorageClass：
+
+```yaml
+serviceName: postgres-headless
+replicas: 3
+template:
+  spec:
+    containers:
+      - name: postgres
+        volumeMounts:
+          - name: data
+            mountPath: /var/lib/postgresql/data
+volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      storageClassName: my-storage
+      resources:
+        requests:
+          storage: 5Gi
+```
+
+此處只展示欄位關係，完整物件仍需 selector、labels、image、初始化參數等；掛載目錄也要符合使用的 PostgreSQL image 大版本。不能直接套用片段。
+
+| 欄位 | 意義 |
+|---|---|
+| StatefulSet metadata.name: postgres | 決定成員名稱 postgres-0、postgres-1、postgres-2 |
+| volumeClaimTemplates[].metadata.name: data | PVC 模板名；PVC 通常為 data-postgres-0、data-postgres-1、data-postgres-2 |
+| volumeMounts[].name: data | 對應模板名稱，掛載該成員自己的 PVC，不是寫某顆完整 PVC 名稱 |
+| serviceName: postgres-headless | 對應另外建立的 Headless Service，提供穩定網路身分；Service selector 須匹配 Pod labels |
+
+#### PostgreSQL：各自儲存，再透過 replication 同步
+
+**replicas=3 代表三個 Pod，不代表已經完成 PostgreSQL replication。** 如果只是把官方 PostgreSQL image 啟動三次，且沒有複寫設定，會得到三個獨立資料庫。
+
+| 範例成員 | 自己的 PVC | 資料庫角色（由複寫系統設定） |
+|---|---|---|
+| postgres-0 | data-postgres-0 | Primary，示意角色 |
+| postgres-1 | data-postgres-1 | Standby，接收並重播 WAL |
+| postgres-2 | data-postgres-2 | Standby，接收並重播 WAL |
+
+角色並非由 StatefulSet 編號決定；postgres-0 不會因為是 0 就自動成為 Primary，故障接手後角色也可能改變。
+
+```mermaid
+flowchart TD
+    P[Primary 程序：示意 postgres-0]
+    P --> D[自己的 PVC：data-postgres-0]
+    P --> W[透過 PostgreSQL replication 傳送 WAL]
+    W --> S1[Standby postgres-1：套用至自己的 PVC]
+    W --> S2[Standby postgres-2：套用至自己的 PVC]
+```
+
+| 誰負責 | 工作 |
+|---|---|
+| StatefulSet | 維持副本、固定名稱與專屬 PVC 對應 |
+| CSI／儲存後端 | 配置與掛載卷，持久化檔案；跨 Node 能力依後端而定 |
+| PostgreSQL | 複寫、WAL 傳送與重播等資料庫行為 |
+| 資料庫 Operator／HA 管理工具 | 依實作協助初始化、成員加入、故障接手與備份等流程 |
+
+**多個獨立 PostgreSQL 程序不能同時使用同一個資料目錄，即使卷支援 ReadWriteMany 也一樣。** RWO／RWX 是卷的掛載能力，不會替資料庫協調並行寫入；RWO 也不是限制只給一個 Pod，RWOP 才是單 Pod 使用限制且需實作支援。
+
+postgres-1 重建後使用原 PVC，但 TopoLVM 等本機卷不會因此自動搬到其他 Node；固定身分、資料持久化、跨節點可用性、資料庫複寫是不同層次。單副本可恢復不等於持續可用，replication 也不能取代獨立備份。
+
+參考：[PostgreSQL Streaming Replication](https://www.postgresql.org/docs/current/warm-standby.html#STREAMING-REPLICATION)。搜尋關鍵詞：`volumeClaimTemplates`、`stable storage`、`streaming replication`。
+
+
 ### accessModes 必須滿足需求，不必完全相同
 
 **PV 宣告支援的 accessModes 必須包含 PVC 要求的所有模式**，不是兩邊清單必須完全相同。

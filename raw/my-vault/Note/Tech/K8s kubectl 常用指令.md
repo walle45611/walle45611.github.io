@@ -133,6 +133,78 @@ k explain po.spec.containers -R
 
 參數忘記時先查 `k explain -h`。本機 kubectl v1.37.1 支援 `-R`；其他環境若沒有這個短參數，就用 `--recursive`。
 
+## JSONPath 與 custom-columns：大量資源只取需要的欄位
+
+**先用 YAML 找欄位，再用 custom-columns 做表格；需要精確輸出、迴圈或陣列條件時才用 JSONPath。** 不必一次背完所有語法。
+
+### 入門三步：先看一台，再處理多台
+
+```bash
+kubectl get node node01 -o yaml
+```
+
+找到 YAML 中的 status → nodeInfo → kubeletVersion，就把層級用點串起來：
+
+```bash
+kubectl get node node01 -o jsonpath='{.status.nodeInfo.kubeletVersion}{"\n"}'
+```
+
+node01 要換成實際名稱。查全部 Nodes 的同一欄位，因為回傳清單有 items 外層，改成：
+
+```bash
+kubectl get nodes -o jsonpath='{.items[*].status.nodeInfo.kubeletVersion}{"\n"}'
+```
+
+### items、索引、range 與欄位篩選
+
+| 語法 | 用途 |
+|---|---|
+| `.metadata.name` | 單一物件的名稱 |
+| `.items` | List 回應的物件清單；單一 Node 不用 items |
+| `.items[*]` | 清單中的每個物件 |
+| `.items[0]` | 第一個物件，index 從 0 開始；不是保證固定某一台 Node |
+| `{range .items[*]}`…`{end}` | 逐一處理每個物件，range 裡的欄位相對於當前物件 |
+| `{"\t"}`／`{"\n"}` | 插入 Tab／換行；Linux／macOS 常用外層單引號保留內容 |
+| `[?(@.type=="InternalIP")]` | 篩選目前陣列中 type 符合的項目；@ 是當前項目 |
+
+每台 Node 一行：名稱、可分配 CPU、kubelet 版本：
+
+```bash
+kubectl get nodes -o jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.status.allocatable.cpu}{"\t"}{.status.nodeInfo.kubeletVersion}{"\n"}{end}'
+```
+
+查名稱與 InternalIP，不假設位址陣列的第一個一定是內部 IP：
+
+```bash
+kubectl get nodes -o jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.status.addresses[?(@.type=="InternalIP")].address}{"\n"}{end}'
+```
+
+### 表格需求先用 custom-columns
+
+```bash
+kubectl get nodes -o custom-columns='NAME:.metadata.name,CPU:.status.allocatable.cpu,VERSION:.status.nodeInfo.kubeletVersion'
+```
+
+| 方法 | 適合用途 | 注意 |
+|---|---|---|
+| `-o yaml`／`-o json` | 先查看資料結構、找欄位路徑 | 不必靠記憶猜欄位 |
+| `-o custom-columns` | 直接列出幾個欄位的表格 | `欄名:路徑`，逗號分欄；此種清單表格寫每個物件路徑，不加 items |
+| `-o jsonpath` | 自訂字串輸出、range、陣列條件篩選 | 清單通常從 items 開始；不支援正規表示式篩選 |
+| `-l key=value` | 先請 API Server 按 labels 篩選物件 | 與輸出格式可一起使用，縮小大量 Nodes 查詢範圍 |
+| `--field-selector` | 依該資源支援的欄位在伺服器端篩選 | 不是任何 JSON 欄位都能用 |
+
+例如先查具有 environment=prod label 的 Node，再列名稱與版本：
+
+```bash
+kubectl get nodes -l environment=prod -o custom-columns='NAME:.metadata.name,VERSION:.status.nodeInfo.kubeletVersion'
+```
+
+**JSONPath 是 kubectl 取回資料後擷取輸出，不是要求 API Server 只回傳那幾欄。** CPU allocatable 是可供配置的資源，不是 kubectl top 顯示的即時使用量。
+
+JSONPath 的 `.spec.replicas` 是查詢表達式；JSON Patch 的 `/spec/replicas` 是 JSON Pointer 路徑，兩者用途不同。複雜統計、資料轉換或不支援的篩選可考慮另用 jq，不必把所有處理塞進 JSONPath。
+
+官方：[JSONPath Support](https://kubernetes.io/docs/reference/kubectl/jsonpath/)。關鍵詞：`range end`、`items`、`filter`、`custom-columns`。
+
 ## 產生 YAML：先產生、再修改、再套用
 
 最值得練熟的組合是 `--dry-run=client -o yaml`：產生物件定義，不建立資源；加上 `> 檔名.yaml` 存成檔案。
@@ -560,7 +632,7 @@ PriorityClass 建立與指定、搶占、`priority: 0` 排錯，以及 Node Sele
 
 ## Node 維護：cordon、drain、uncordon
 
-**cordon 暫停接新 Pod，drain 暫停接新 Pod 並撤離既有應用 Pod，uncordon 恢復接受新 Pod。** 三者都不會將機器關機或刪除 Node。
+**cordon＝封住新排程；drain＝封住並排空可驅逐的工作負載；uncordon＝解封，恢復排程。** cordon 不是解除封鎖，只有 uncordon 才是恢復。三者都不會將機器關機或刪除 Node。
 
 | 指令 | 一般新 Pod 能否排入 | 既有 Pod |
 |---|---|---|
@@ -568,7 +640,45 @@ PriorityClass 建立與指定、搶占、`priority: 0` 排錯，以及 Node Sele
 | `kubectl drain node-1 --ignore-daemonsets` | 不可 | 驅逐可撤離的 Pod；保留 DaemonSet 與 mirror Pod |
 | `kubectl uncordon node-1` | 恢復可排程 | 繼續執行；撤離的 Pod 不會自動搬回來 |
 
-常見維護流程：
+### hr-app：保留既有 Pod，只封住新排程
+
+需求：`hr-app` 正在 `node01` 執行，不能移除它，但不想讓一般新 Pod 排入 `node01`。**使用 cordon，不使用 drain。**
+
+```bash
+kubectl cordon node01
+kubectl get nodes
+kubectl get pod hr-app -n default -o wide
+```
+
+| 驗證位置 | 預期結果 | 代表什麼 |
+|---|---|---|
+| node01 的 STATUS | `Ready,SchedulingDisabled` | Node 健康，但已封住一般新排程 |
+| describe node 的 Unschedulable | `true` | 暫停排程已生效 |
+| hr-app 的 STATUS／NODE | `Running`／`node01` | 既有 Pod 仍在原節點運作，不會因 cordon 被驅逐 |
+
+完成維護，需要恢復接受新排程時：
+
+```bash
+kubectl uncordon node01
+kubectl get nodes
+```
+
+此時 `SchedulingDisabled` 應消失；`Unschedulable` 變成 `false`。**Ready 是節點健康狀態，可不可排程是另一件事。** uncordon 也不會自動搬回先前已被 drain 驅逐的 Pod。
+
+### drain 的略過、強制與失敗狀態
+
+| 情況／參數 | 意思 |
+|---|---|
+| 預設 drain 遇到 DaemonSet Pod | 拒絕繼續，需明確指定略過，例如 flannel、kube-proxy |
+| `--ignore-daemonsets` | 保留並略過 DaemonSet Pod，不是刪掉它們 |
+| 遇到沒有管理控制器的 Pod | 預設拒絕；先查 `describe pod` 的 Controlled By 或 ownerReferences |
+| `--force` | 允許處理無管理控制器或控制器已不存在的 Pod；不是立刻強殺，也不保證在別台重建 |
+| cordoned 後 drain 報錯 | 節點可能已不可排程，但 drain 尚未完成；不能因看到 cordoned 就直接開始維護 |
+
+`hr-app` 是否會重建，要根據它的控制器查詢結果判斷，不能只看題目寫 forcefully 就認定它是獨立 Pod。
+
+### 常見維護流程
+
 
 ```bash
 kubectl drain node-1 --ignore-daemonsets

@@ -14,6 +14,8 @@ CRI 是 kubelet 與 runtime 的介面；containerd 管理映像及容器生命�
 
 依據：[Migrating from dockershim](https://kubernetes.io/docs/tasks/administer-cluster/migrating-from-dockershim/)。
 
+從空白節點安裝 containerd、設定 config.toml，再執行 kubeadm init／join，見 [[K8s kubeadm 安裝：containerd、init 與 join]]。
+
 ## 管理員盤點與遷移
 
 | 檢查項目 | 要確認的內容 |

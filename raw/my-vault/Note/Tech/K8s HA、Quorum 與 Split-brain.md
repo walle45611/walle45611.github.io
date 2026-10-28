@@ -86,3 +86,90 @@ CP-1／CP-2／CP-3 的 API Servers
 兩者的 etcd 都需 quorum，**External 不代表 etcd 不用選主，也不代表自動具有更高故障容忍數**；3 個 voting members 仍需至少 2 個才能提交寫入。API Server 可多副本提供服務；controller-manager 的 Lease 選主與 etcd 的 Raft leader 是不同機制。
 
 參考：[Kubernetes HA Topology 官方對照圖](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/ha-topology/)。
+
+## etcd 備份與還原：etcdctl、etcdutl
+
+**備份用 `etcdctl snapshot save`；檢查與還原用 `etcdutl snapshot status／restore`。備份完成後不需要立即還原，只有需要回復資料時才 restore。**
+
+| 操作 | 工具與指令 | 是否連線到 etcd |
+|---|---|---|
+| 匯出部分 Resource 設定 | `kubectl get all -A -o yaml > all.yml` | 透過 API Server 讀取資源 |
+| 備份 etcd 資料庫 | `etcdctl snapshot save snapshot.db` | 是，從運作中的 etcd 取得快照 |
+| 檢查快照 metadata | `etcdutl snapshot status snapshot.db -w table` | 否，讀取本機檔案 |
+| 還原到新資料目錄 | `etcdutl snapshot restore snapshot.db --data-dir=/var/lib/etcd-restored` | 否，讀取本機檔案並建立資料目錄 |
+
+- `kubectl get all` 的 `all` 不是所有資源，不包含 Secret、ConfigMap、PVC、Ingress、RBAC 等；匯出 YAML 不是完整 etcd 備份。
+- etcd snapshot 保存叢集狀態，包括 PV／PVC 物件設定，**不包含儲存卷內的檔案或資料庫內容**。
+- `etcdctl` 是網路用戶端；`etcdutl` 直接處理本機資料檔。**官方 etcdutl 3.5／3.6 沒有 `etcdutl backup` 指令**，不要記成能自動複製 data directory 與 WAL。
+- `etcdctl snapshot status` 在 3.5 已棄用、3.6 移除；統一記 `etcdutl snapshot status`。
+
+### 備份：連線、驗證，再儲存快照
+
+先確認工具版本：
+
+```bash
+etcdctl version
+etcdutl version
+```
+
+官方簡化範例（`$ENDPOINT` 須先設為實際位址）：
+
+```bash
+ETCDCTL_API=3 etcdctl --endpoints=$ENDPOINT snapshot save snapshot.db
+```
+
+**省略 TLS 參數不代表不用驗證。** kubeadm 常見環境啟用 HTTPS 與用戶端憑證驗證，使用下列完整範例；工具需已安裝，路徑與位址須符合實際環境：
+
+```bash
+sudo etcdctl \
+  --endpoints=https://127.0.0.1:2379 \
+  --cacert=/etc/kubernetes/pki/etcd/ca.crt \
+  --cert=/etc/kubernetes/pki/etcd/healthcheck-client.crt \
+  --key=/etc/kubernetes/pki/etcd/healthcheck-client.key \
+  snapshot save /opt/etcd-backup.db
+```
+
+| 參數 | 用途 |
+|---|---|
+| `--endpoints` | etcd 的位址，常見 client port 為 2379 |
+| `--cacert` | etcdctl 用來驗證 etcd Server 的 CA 憑證 |
+| `--cert`、`--key` | etcd Server 用來驗證用戶端身分的憑證與私鑰 |
+| `snapshot save` | 將快照寫入指定檔案 |
+
+課程範例有時用 `server.crt／server.key`；是否可當 client 使用，取決於憑證用途與伺服器驗證設定。這裡使用 kubeadm 常見的 `healthcheck-client` 憑證組；不能只憑檔名假設任意 Server 憑證都能當 Client 憑證。
+
+### 檢查與還原
+
+```bash
+sudo etcdutl snapshot status /opt/etcd-backup.db --write-out=table
+```
+
+查看 hash、revision、total keys、size 等 metadata；這不等於已驗證整個叢集能成功還原。
+
+建立還原資料目錄的基本語法：
+
+```bash
+sudo etcdutl snapshot restore /opt/etcd-backup.db \
+  --data-dir=/var/lib/etcd-restored
+```
+
+**這只建立還原資料目錄，不會自動切換正在運作的 etcd。** 實際恢復叢集還需要：
+
+1. 停止所有 API Server 的寫入與要替換的 etcd instance。
+2. 依成員名稱、peer URL 與叢集拓撲還原；多成員使用同一份快照並設定各自 membership。
+3. 讓 etcd 使用還原後的目錄。kubeadm Static Pod 常見要調整 `etcd.yaml` 中 `etcd-data` 的 `hostPath.path`，對齊容器內的 `--data-dir` 與掛載位置。
+4. 啟動 etcd，確認健康後恢復 API Server 與其他控制元件並驗證資源。
+
+Kubernetes 還原也要處理舊 revision 對 informer cache 的影響：官方建議搭配 `--bump-revision` 與 `--mark-compacted`，數值與完整參數依對應版本的 recovery 文件決定。
+
+還原從本機快照讀取資料，不需要備份時的 TLS 連線參數。快照包含敏感叢集資料，需妥善保存；CA 私鑰、節點設定、Secret 儲存加密金鑰與卷內資料也要另外備份。
+
+### 官方文件與查詢關鍵詞
+
+| 連結 | 重點／關鍵詞 |
+|---|---|
+| [Kubernetes：Backing up an etcd cluster](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#backing-up-an-etcd-cluster) | `backing up etcd`、`snapshot save`、TLS 憑證參數 |
+| [etcd v3.5：Disaster recovery 原始文件](https://github.com/etcd-io/website/blob/main/content/en/docs/v3.5/op-guide/recovery.md) | `snapshot status`、`snapshot restore`、`revision bump`、`data-dir` |
+| [etcd v3.6：Disaster recovery](https://etcd.io/docs/v3.6/op-guide/recovery/) | 依實際 etcd 版本查還原流程 |
+| [etcdutl v3.6 指令說明](https://github.com/etcd-io/etcd/blob/v3.6.0/etcdutl/README.md) | 本機檔案操作與支援的子指令 |
+| [補充影片](https://www.youtube.com/watch?v=qRPNuT080Hk) | 保留影片連結供複習；指令版本以官方文件為準 |

@@ -3,8 +3,8 @@ blog: true
 blog_title: 'Docker ENTRYPOINT、CMD 與 K8s command、args'
 blog_date: '2026-10-29'
 blog_url: https://blog.walle4561.com/articles/posts/docker-entrypoint-cmd-k8s-command-args/
-blog_tag: OS
-blog_topic: Kubernetes
+blog_tag: OS & Networking
+blog_topic: K8s
 ---
 
 # Docker ENTRYPOINT、CMD 與 K8s command、args

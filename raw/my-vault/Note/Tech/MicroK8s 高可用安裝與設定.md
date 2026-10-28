@@ -3,8 +3,8 @@ blog: true
 blog_title: 'MicroK8s 完整部署指南：從安裝到生產級應用'
 blog_date: '2025-08-08'
 blog_url: https://blog.walle4561.com/articles/posts/microk8s-完整部署指南-從安裝到生產級應用/
-blog_tag: OS
-blog_topic: Kubernetes
+blog_tag: OS & Networking
+blog_topic: K8s
 ---
 
 

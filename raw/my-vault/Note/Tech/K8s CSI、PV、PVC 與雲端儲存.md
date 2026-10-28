@@ -3,8 +3,8 @@ blog: true
 blog_title: 'K8s CSI、PV、PVC 與雲端儲存'
 blog_date: '2026-10-29'
 blog_url: https://blog.walle4561.com/articles/posts/k8s-csi-pv-pvc-cloud-storage/
-blog_tag: OS
-blog_topic: Kubernetes
+blog_tag: OS & Networking
+blog_topic: K8s
 ---
 
 # K8s CSI、PV、PVC 與雲端儲存

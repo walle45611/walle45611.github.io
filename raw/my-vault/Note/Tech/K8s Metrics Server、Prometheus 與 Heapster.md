@@ -3,8 +3,8 @@ blog: true
 blog_title: 'K8s Metrics Server、Prometheus 與 Heapster'
 blog_date: '2026-10-29'
 blog_url: https://blog.walle4561.com/articles/posts/k8s-metrics-server-prometheus-heapster/
-blog_tag: OS
-blog_topic: Kubernetes
+blog_tag: OS & Networking
+blog_topic: K8s
 ---
 
 # K8s Metrics Server、Prometheus 與 Heapster

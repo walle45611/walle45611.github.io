@@ -3,8 +3,8 @@ blog: true
 blog_title: 'K8s HA、Quorum 與 Split-brain'
 blog_date: '2026-10-29'
 blog_url: https://blog.walle4561.com/articles/posts/k8s-ha-quorum-split-brain/
-blog_tag: OS
-blog_topic: Kubernetes
+blog_tag: OS & Networking
+blog_topic: K8s
 ---
 
 # K8s HA、Quorum 與 Split-brain

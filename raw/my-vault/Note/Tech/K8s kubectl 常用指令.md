@@ -3,8 +3,8 @@ blog: true
 blog_title: 'K8s kubectl 常用指令'
 blog_date: '2026-10-29'
 blog_url: https://blog.walle4561.com/articles/posts/k8s-kubectl-common-commands/
-blog_tag: OS
-blog_topic: Kubernetes
+blog_tag: OS & Networking
+blog_topic: K8s
 ---
 
 # K8s kubectl 常用指令

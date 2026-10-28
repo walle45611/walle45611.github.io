@@ -1,8 +1,10 @@
 ---
 blog: true
-blog_title: K8s 中的 Pod 是什麼
-blog_date: 2024-11-28
+blog_title: 'K8s 中的 Pod 是什麼'
+blog_date: '2024-11-28'
 blog_url: https://blog.walle4561.com/articles/posts/k8s-introduction-pods/
+blog_tag: Kubernetes
+blog_topic: Kubernetes
 ---
 
 ## Pod 是什麼

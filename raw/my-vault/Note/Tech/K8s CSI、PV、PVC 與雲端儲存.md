@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: 'K8s CSI、PV、PVC 與雲端儲存'
+blog_date: '2026-10-29'
+blog_url: https://blog.walle4561.com/articles/posts/k8s-csi-pv-pvc-cloud-storage/
+blog_tag: Kubernetes
+blog_topic: Kubernetes
+---
+
 # K8s CSI、PV、PVC 與雲端儲存
 
 > [!tip] 儲存先分清楚三件事
@@ -22,7 +31,7 @@
 
 以下指令以 `k` 代表 `kubectl`，使用前先設定 `alias k=kubectl`。
 
-快速入口：[[#PV、PVC、Pod：供給、需求與使用者]]、[[#跨節點使用：CSI／PVC 不代表資料會自動搬家]]、[[#Docker 的 Storage Driver、Volume Driver 與掛載]]、[[#CSI RPC 與 Sidecars：誰通知、誰執行]]、[[#TopoLVM 與 LVM：本機磁碟變成卷]]、[[#PVC 與 Pod：最小使用範例]]、[[#PVC 擴容：底層卷與檔案系統分兩階段]]。
+快速入口：[PV、PVC、Pod：供給、需求與使用者](#pvpvcpod供給需求與使用者)、[跨節點使用：CSI／PVC 不代表資料會自動搬家](#跨節點使用csipvc-不代表資料會自動搬家)、[Docker 的 Storage Driver、Volume Driver 與掛載](#docker-的-storage-drivervolume-driver-與掛載)、[CSI RPC 與 Sidecars：誰通知、誰執行](#csi-rpc-與-sidecars誰通知誰執行)、[TopoLVM 與 LVM：本機磁碟變成卷](#topolvm-與-lvm本機磁碟變成卷)、[PVC 與 Pod：最小使用範例](#pvc-與-pod最小使用範例)、[PVC 擴容：底層卷與檔案系統分兩階段](#pvc-擴容底層卷與檔案系統分兩階段)。
 
 ## 元件與宣告的分工
 

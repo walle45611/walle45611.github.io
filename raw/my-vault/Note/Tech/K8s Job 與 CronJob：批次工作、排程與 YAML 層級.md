@@ -1,8 +1,10 @@
 ---
-tags:
-  - Kubernetes
-aliases:
-  - Job 與 CronJob 小抄
+blog: true
+blog_title: 'K8s Job 與 CronJob：批次工作、排程與 YAML 層級'
+blog_date: '2026-10-29'
+blog_url: https://blog.walle4561.com/articles/posts/k8s-job-cronjob/
+blog_tag: Kubernetes
+blog_topic: Kubernetes
 ---
 
 # K8s Job 與 CronJob：批次工作、排程與 YAML 層級

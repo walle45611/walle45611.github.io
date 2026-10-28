@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: 'K8s CoreDNS、kubelet 與 resolv.conf'
+blog_date: '2026-10-29'
+blog_url: https://blog.walle4561.com/articles/posts/k8s-coredns-kubelet-resolv-conf/
+blog_tag: Kubernetes
+blog_topic: Kubernetes
+---
+
 # K8s CoreDNS、kubelet 與 resolv.conf
 
 > [!tip] 先背角色

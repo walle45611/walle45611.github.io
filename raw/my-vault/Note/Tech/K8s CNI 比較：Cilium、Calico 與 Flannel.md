@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: 'K8s CNI 比較：Cilium、Calico 與 Flannel'
+blog_date: '2026-10-29'
+blog_url: https://blog.walle4561.com/articles/posts/k8s-cni-cilium-calico-flannel/
+blog_tag: Kubernetes
+blog_topic: Kubernetes
+---
+
 # K8s CNI 比較：Cilium、Calico 與 Flannel
 
 ## Bridge 與 CNI：考前先看

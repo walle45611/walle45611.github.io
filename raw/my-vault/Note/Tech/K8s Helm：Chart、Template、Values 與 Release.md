@@ -1,9 +1,10 @@
 ---
-tags:
-  - Kubernetes
-  - Helm
-aliases:
-  - Helm 小抄
+blog: true
+blog_title: 'K8s Helm：Chart、Template、Values 與 Release'
+blog_date: '2026-10-29'
+blog_url: https://blog.walle4561.com/articles/posts/k8s-helm-chart-template-values-release/
+blog_tag: Kubernetes
+blog_topic: Kubernetes
 ---
 
 # K8s Helm：Chart、Template、Values 與 Release

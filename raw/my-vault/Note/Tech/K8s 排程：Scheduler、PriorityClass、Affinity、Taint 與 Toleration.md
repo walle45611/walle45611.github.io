@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: 'K8s 排程：Scheduler、PriorityClass、Affinity、Taint 與 Toleration'
+blog_date: '2026-10-29'
+blog_url: https://blog.walle4561.com/articles/posts/k8s-scheduler-priority-affinity-taints/
+blog_tag: Kubernetes
+blog_topic: Kubernetes
+---
+
 # K8s 排程：Scheduler、PriorityClass、Affinity、Taint 與 Toleration
 
 > [!tip] 排程題先判斷四件事
@@ -11,7 +20,7 @@
 | 合格 Node 中偏好哪台？ | Scheduler Score、Preferred Affinity 等 |
 | 移除低優先權 Pod 能否騰出合法位置？ | Preemption；不能排除節點本身的硬限制 |
 
-閱讀順序：[[#Scheduler：選 Pod、篩 Node、評分與綁定|Scheduler 流程]] → [[#先分清楚：Pod 想去哪裡、Node 允許誰進來|節點選擇與 Taint／Toleration]] → [[#PriorityClass：Pod 有多重要|PriorityClass 與搶占、操作及排錯]] → [[#Multi-scheduler：多個程序，不一定是不同二進位檔|多排程器]]。
+閱讀順序：[Scheduler 流程](#scheduler選-pod篩-node評分與綁定) → [節點選擇與 Taint／Toleration](#先分清楚pod-想去哪裡node-允許誰進來) → [PriorityClass 與搶占、操作及排錯](#priorityclasspod-有多重要) → [多排程器](#multi-scheduler多個程序不一定是不同二進位檔)。
 
 以下指令使用 `k` 代表 `kubectl`，先設定 `alias k=kubectl`。Pod 建立、Admission 與 Node 執行的全貌見 [[K8s kubelet 與 Pod 執行流程]]。
 

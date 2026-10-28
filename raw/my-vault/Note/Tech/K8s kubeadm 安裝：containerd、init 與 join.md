@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: 'K8s kubeadm 安裝：containerd、init 與 join'
+blog_date: '2026-10-29'
+blog_url: https://blog.walle4561.com/articles/posts/k8s-kubeadm-containerd-init-join/
+blog_tag: Kubernetes
+blog_topic: Kubernetes
+---
+
 # K8s kubeadm 安裝：containerd、init 與 join
 
 ## TL;DR

@@ -38,7 +38,7 @@ kubectl explain deployment.spec.template.spec
 kubectl create deployment web-app --image=nginx --dry-run=client -o yaml > app.yaml
 ```
 
-詳見 [[K8s kubectl 常用指令]]、[[K8s kubeconfig、Context 與多叢集管理]]。
+詳見 [K8s kubectl 常用指令](https://blog.walle4561.com/articles/posts/k8s-kubectl-common-commands/)、[K8s kubeconfig、Context 與多叢集管理](https://blog.walle4561.com/articles/posts/k8s-kubeconfig-context-multicluster/)。
 
 ### 操作目標與 API 查詢補充
 
@@ -74,7 +74,7 @@ kubectl create deployment web-app --image=nginx --dry-run=client -o yaml > app.y
 kubectl get nodes -o custom-columns='NAME:.metadata.name,CPU:.status.allocatable.cpu,VERSION:.status.nodeInfo.kubeletVersion'
 ```
 
-完整短例：[[K8s kubectl 常用指令#JSONPath 與 custom-columns：大量資源只取需要的欄位]]。
+完整短例：[JSONPath 與 custom-columns：大量資源只取需要的欄位](https://blog.walle4561.com/articles/posts/k8s-kubectl-common-commands/#jsonpath-與-custom-columns大量資源只取需要的欄位)。
 
 ## 2. 控制平面、kubelet 與排錯位置
 
@@ -122,7 +122,7 @@ flowchart TD
 - **Scheduler 不拉 image**；映像由目標 Node 的 kubelet 協調 runtime 處理。`Always` 也不代表每次重新下載所有快取 layers。
 - 單獨用 run 建立的 Pod 沒有 Deployment／ReplicaSet 幫忙補建；容器重啟與整個 Pod 刪除後重建是兩件事。
 
-詳細流程與排錯：[[K8s kubelet 與 Pod 執行流程#Big Picture：從 k run 到容器執行]]。
+詳細流程與排錯：[Big Picture：從 k run 到容器執行](https://blog.walle4561.com/articles/posts/k8s-kubelet-pod-execution/#big-picture從-k-run-到容器執行)。
 
 | 現象 | 優先查哪裡 |
 |---|---|
@@ -142,7 +142,7 @@ sudo crictl ps -a
 sudo journalctl -u kubelet -n 80 --no-pager
 ```
 
-詳見 [[K8s 各 Component 說明]]、[[K8s kubelet 與 Pod 執行流程]]、[[K8s Container Runtime 與 dockershim 遷移]]。
+詳見 [K8s 各 Component 說明](https://blog.walle4561.com/articles/posts/k8s-components/)、[K8s kubelet 與 Pod 執行流程](https://blog.walle4561.com/articles/posts/k8s-kubelet-pod-execution/)、[K8s Container Runtime 與 dockershim 遷移](https://blog.walle4561.com/articles/posts/k8s-container-runtime-dockershim/)。
 
 ### Admission、Static Pod 與 Runtime
 
@@ -158,7 +158,7 @@ sudo journalctl -u kubelet -n 80 --no-pager
 | kubectl／crictl | 經 API 管 Kubernetes 物件／Node 上直接查 CRI runtime；API 壞掉時可用後者排錯 |
 | `docker pull` 與 runtime 映像 | image store／namespace 不一定相同，不能假設 Kubernetes 一定看得到 |
 
-政策設定與排錯：[[K8s kubelet 與 Pod 執行流程#ImagePolicyWebhook：映像政策驗證小抄]]；Runtime 細節：[[K8s Container Runtime 與 dockershim 遷移]]。
+政策設定與排錯：[ImagePolicyWebhook：映像政策驗證小抄](https://blog.walle4561.com/articles/posts/k8s-kubelet-pod-execution/#imagepolicywebhook映像政策驗證小抄)；Runtime 細節：[K8s Container Runtime 與 dockershim 遷移](https://blog.walle4561.com/articles/posts/k8s-container-runtime-dockershim/)。
 
 ## 3. 容器啟動、Init Container、Sidecar 與 Probe
 
@@ -175,7 +175,7 @@ sudo journalctl -u kubelet -n 80 --no-pager
 | livenessProbe | 是否健康；失敗達門檻會終止容器，後續依重啟策略處理 |
 | readinessProbe | 是否能接收流量；失敗不直接重啟容器，會影響 Pod Ready |
 
-詳見 [[K8s 中的 Pod 是什麼]]、[[Docker ENTRYPOINT、CMD 與 K8s command、args]]。
+詳見 [K8s 中的 Pod 是什麼](https://blog.walle4561.com/articles/posts/k8s-introduction-pods/)、[Docker ENTRYPOINT、CMD 與 K8s command、args](https://blog.walle4561.com/articles/posts/docker-entrypoint-cmd-k8s-command-args/)。
 
 | Probe 實作 | 快速記法 |
 |---|---|
@@ -184,7 +184,7 @@ sudo journalctl -u kubelet -n 80 --no-pager
 | timeoutSeconds／failureThreshold | 單次逾時／連續失敗門檻 |
 | successThreshold | 連續成功門檻；startup、liveness 必須為 1 |
 
-詳細 YAML：[[K8s 中的 Pod 是什麼#Probe 實作：HTTP、TCP、exec 與重要參數]]。
+詳細 YAML：[Probe 實作：HTTP、TCP、exec 與重要參數](https://blog.walle4561.com/articles/posts/k8s-introduction-pods/#probe-實作httptcpexec-與重要參數)。
 
 ## 4. SecurityContext、排程與 Node 維護
 
@@ -216,7 +216,7 @@ kubectl uncordon node-1
 - drain 受 PDB 等條件影響，不是直接把主機關機；不要把刪除 emptyDir 資料的參數當固定選項。
 - Node 能排程不代表一定有足夠資源；Pod 的多種硬性條件仍需一起符合。
 
-詳見 [[K8s 排程：Scheduler、PriorityClass、Affinity、Taint 與 Toleration]]、[[K8s 中的 Pod 是什麼]]、[[K8s kubectl 常用指令#Node 維護：cordon、drain、uncordon]]。
+詳見 [K8s 排程：Scheduler、PriorityClass、Affinity、Taint 與 Toleration](https://blog.walle4561.com/articles/posts/k8s-scheduler-priority-affinity-taints/)、[K8s 中的 Pod 是什麼](https://blog.walle4561.com/articles/posts/k8s-introduction-pods/)、[Node 維護：cordon、drain、uncordon](https://blog.walle4561.com/articles/posts/k8s-kubectl-common-commands/#node-維護cordondrainuncordon)。
 
 
 ### 資源、QoS、Affinity 與 PriorityClass
@@ -246,7 +246,7 @@ kubectl uncordon node-1
 | Pod 的 schedulerName | 對應 Scheduler profile 名稱，不是 Scheduler Pod 名稱；沒對應程序就等待，不自動轉交預設 Scheduler |
 | Multi-scheduler／multi-profile／HA | 多個邏輯排程程序／同程序多 profiles／同邏輯排程器副本選 Leader |
 
-資源與 QoS：[[K8s 中的 Pod 是什麼#Pod 的資源管理和限制資源]]。Affinity、PriorityClass、多排程器：[[K8s 排程：Scheduler、PriorityClass、Affinity、Taint 與 Toleration]]。
+資源與 QoS：[Pod 的資源管理和限制資源](https://blog.walle4561.com/articles/posts/k8s-introduction-pods/#pod-的資源管理和限制資源)。Affinity、PriorityClass、多排程器：[K8s 排程：Scheduler、PriorityClass、Affinity、Taint 與 Toleration](https://blog.walle4561.com/articles/posts/k8s-scheduler-priority-affinity-taints/)。
 
 ### Taint／Toleration：先排除已容忍的，再看剩下的限制
 
@@ -298,7 +298,7 @@ tolerations:
 
 不設 `tolerationSeconds` 表示無期限容忍這個匹配的 NoExecute Taint，不代表不會因其他原因停止。
 
-詳見 [[K8s 排程：Scheduler、PriorityClass、Affinity、Taint 與 Toleration#第三層：Taint 與 Toleration 獨立檢查]]；[官方 Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)。
+詳見 [第三層：Taint 與 Toleration 獨立檢查](https://blog.walle4561.com/articles/posts/k8s-scheduler-priority-affinity-taints/#第三層taint-與-toleration-獨立檢查)；[官方 Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)。
 
 ## 5. Deployment、Rollout 與擴縮
 
@@ -330,7 +330,7 @@ kubectl top pods
 - 回滾 Deployment 不會回滾獨立 Secret、ConfigMap 或資料庫內容。
 - HPA 若以 CPU utilization 百分比為目標，對應 CPU requests 是重要計算基準；HPA 也可能改回手動設定的副本數。
 
-詳見 [[K8s HPA 與水平、垂直擴縮]]、[[K8s Metrics Server、Prometheus 與 Heapster]]、[[K8s kubectl 常用指令#Rollout 與回滾：不要只看 roll]]。
+詳見 [K8s HPA 與水平、垂直擴縮](https://blog.walle4561.com/articles/posts/k8s-hpa-horizontal-vertical-scaling/)、[K8s Metrics Server、Prometheus 與 Heapster](https://blog.walle4561.com/articles/posts/k8s-metrics-server-prometheus-heapster/)、[Rollout 與回滾：不要只看 roll](https://blog.walle4561.com/articles/posts/k8s-kubectl-common-commands/#rollout-與回滾不要只看-roll)。
 
 ### 更新策略：Rolling Update、Blue-green 與 Canary
 
@@ -367,7 +367,7 @@ kubectl top pods
 | 三個查詢 | `kubectl api-resources --api-group=autoscaling` 看 API；`kubectl top pods` 看資源指標；`kubectl get hpa` 看規則 |
 | top 的用量 | 不是 requests／limits，也不能單憑它判定 Scheduler 應該排在哪 |
 
-詳細比較：[[K8s HPA 與水平、垂直擴縮]]、[[K8s Metrics Server、Prometheus 與 Heapster]]。
+詳細比較：[K8s HPA 與水平、垂直擴縮](https://blog.walle4561.com/articles/posts/k8s-hpa-horizontal-vertical-scaling/)、[K8s Metrics Server、Prometheus 與 Heapster](https://blog.walle4561.com/articles/posts/k8s-metrics-server-prometheus-heapster/)。
 
 ## 6. Service、CNI 與 DNS
 
@@ -399,7 +399,7 @@ kubectl exec app -- cat /etc/resolv.conf
 kubectl exec app -- nslookup web-service.payroll
 ```
 
-詳見 [[K8s CoreDNS、kubelet 與 resolv.conf]]、[[K8s CNI 比較：Cilium、Calico 與 Flannel]]、[[K8s Calico 安裝與網路判讀小抄]]、[[K8s Cilium 與 Containerlab 網路實驗]]、[[K8s kubectl 常用指令#Service]]。
+詳見 [K8s CoreDNS、kubelet 與 resolv.conf](https://blog.walle4561.com/articles/posts/k8s-coredns-kubelet-resolv-conf/)、[K8s CNI 比較：Cilium、Calico 與 Flannel](https://blog.walle4561.com/articles/posts/k8s-cni-cilium-calico-flannel/)、[K8s Calico 安裝與網路判讀小抄](https://blog.walle4561.com/articles/posts/k8s-calico-install-network-troubleshooting/)、[K8s Cilium 與 Containerlab 網路實驗](https://blog.walle4561.com/articles/posts/k8s-cilium-containerlab-network-lab/)、[Service](https://blog.walle4561.com/articles/posts/k8s-kubectl-common-commands/#service)。
 
 ### DNS 與 Service 連線排錯
 
@@ -412,7 +412,7 @@ kubectl exec app -- nslookup web-service.payroll
 | Service 沒有就緒後端 | `kubectl get endpointslices -n default`，再看 Pod labels、Ready 與 selector |
 | 測指定 Host 的 HTTP 入口 | curl 帶正確 Host header，避免把不匹配的路由當成應用故障 |
 
-完整設定：[[K8s CoreDNS、kubelet 與 resolv.conf]]；Service 排錯：[[K8s kubectl 常用指令#Service 有建立，但連不到：先查什麼]]。
+完整設定：[K8s CoreDNS、kubelet 與 resolv.conf](https://blog.walle4561.com/articles/posts/k8s-coredns-kubelet-resolv-conf/)；Service 排錯：[Service 有建立，但連不到：先查什麼](https://blog.walle4561.com/articles/posts/k8s-kubectl-common-commands/#service-有建立但連不到先查什麼)。
 
 ### CNI 比較：Cilium、Calico、Flannel
 
@@ -433,7 +433,7 @@ kubectl exec app -- nslookup web-service.payroll
 
 快速檢查：`kubectl get pods -A -o wide` 看網路元件，`kubectl get nodes` 看 Ready；元件名稱只能提供線索，仍須檢查設定、Events 與實際連線。
 
-詳見 [[K8s CNI 比較：Cilium、Calico 與 Flannel]]。官方：[Cilium kube-proxy replacement](https://docs.cilium.io/en/stable/network/kubernetes/kubeproxy-free/)、[Calico eBPF 與標準資料平面](https://docs.tigera.io/calico/latest/about/kubernetes-training/about-ebpf)、[Flannel 與政策元件](https://github.com/flannel-io/flannel)。
+詳見 [K8s CNI 比較：Cilium、Calico 與 Flannel](https://blog.walle4561.com/articles/posts/k8s-cni-cilium-calico-flannel/)。官方：[Cilium kube-proxy replacement](https://docs.cilium.io/en/stable/network/kubernetes/kubeproxy-free/)、[Calico eBPF 與標準資料平面](https://docs.tigera.io/calico/latest/about/kubernetes-training/about-ebpf)、[Flannel 與政策元件](https://github.com/flannel-io/flannel)。
 
 ## 7. NetworkPolicy：選誰、允許誰、AND／OR
 
@@ -460,7 +460,7 @@ kubectl get pods -n default -l name=internal
 - 設定 Ingress 隔離但沒有 allow 規則：該方向 default-deny，其他政策仍可放行。
 - Policy 建立成功不等於真的執行：要有支援元件，並從允許／禁止的來源實測。
 
-詳見 [[K8s NetworkPolicy 網路存取控制]]。
+詳見 [K8s NetworkPolicy 網路存取控制](https://blog.walle4561.com/articles/posts/k8s-networkpolicy-network-access-control/)。
 
 ## 8. Ingress 與 Gateway API
 
@@ -491,7 +491,7 @@ kubectl get gatewayclass,gateway,httproute -A
 - Ingress 標準 API 主要處理 HTTP／HTTPS；不代表實作完全不能透過擴充提供其他功能。
 - 檢查 Gateway／Route 的 Accepted、Programmed、ResolvedRefs 等適用狀態，不只確認物件存在。
 
-詳見 [[K8s Ingress 與 Gateway API]]。
+詳見 [K8s Ingress 與 Gateway API](https://blog.walle4561.com/articles/posts/k8s-ingress-gateway-api/)。
 
 ### Gateway 跨 Namespace 與入口檢查
 
@@ -504,7 +504,7 @@ kubectl get gatewayclass,gateway,httproute -A
 | API 查不到 gateway | 先查 `kubectl api-resources --api-group=gateway.networking.k8s.io`，確認 CRDs；還需支援的 Controller 才能實際轉送 |
 | Controller 專屬 annotation | 不是 API 標準行為；物件能建立不代表功能有效，要查 Controller 設定與狀態 |
 
-詳見 [[K8s Ingress 與 Gateway API#Gateway 與 Route 綁定：入口與規則是獨立資源]]。
+詳見 [Gateway 與 Route 綁定：入口與規則是獨立資源](https://blog.walle4561.com/articles/posts/k8s-ingress-gateway-api/#gateway-與-route-綁定入口與規則是獨立資源)。
 
 ## 9. RBAC 與 ServiceAccount
 
@@ -533,7 +533,7 @@ kubectl set serviceaccount deployment/web-dashboard dashboard-sa -n default
 - RBAC 裡 Pod 的 API Group 是 `""`；Deployment 是 `apps`；StorageClass 是 `storage.k8s.io`。
 - API credentials 常見路徑：`/var/run/secrets/kubernetes.io/serviceaccount/`，包含 token、ca.crt、namespace；只投射 token 不會自動補其他檔案。
 
-詳見 [[K8s RBAC 與 ServiceAccount]]。
+詳見 [K8s RBAC 與 ServiceAccount](https://blog.walle4561.com/articles/posts/k8s-rbac-serviceaccount/)。
 
 ### 授權、Token 與建立指令補充
 
@@ -555,7 +555,7 @@ kubectl set serviceaccount deployment/web-dashboard dashboard-sa -n default
 | 將 Role 授予 SA | `kubectl create rolebinding app-read-pods --role=pod-reader --serviceaccount=dev:app-reader -n dev` |
 | 取得短期 Token | `kubectl create token app-reader -n dev --duration=10m`；實際期限依 API Server 政策 |
 
-前提是 Namespace 已存在；建立類指令可加 `--dry-run=client -o yaml` 產生模板。完整範例：[[K8s RBAC 與 ServiceAccount]]。
+前提是 Namespace 已存在；建立類指令可加 `--dry-run=client -o yaml` 產生模板。完整範例：[K8s RBAC 與 ServiceAccount](https://blog.walle4561.com/articles/posts/k8s-rbac-serviceaccount/)。
 
 ## 10. ConfigMap、Secret 與兩層加密
 
@@ -581,7 +581,7 @@ kubectl describe secret db-credentials
 - 改 Secret／ConfigMap 不一定讓 Deployment 自動 rollout。
 - `kubectl get secret -o yaml` 走 API Server 解密，不能據此判斷 etcd 原始資料是否加密。
 
-詳見 [[K8s ConfigMap、Secret 與 Sealed Secrets]]、[[K8s kubectl 常用指令#Secret docker-registry：登入私有 Registry 拉取 image]]。
+詳見 [K8s ConfigMap、Secret 與 Sealed Secrets](https://blog.walle4561.com/articles/posts/k8s-configmap-secret-sealed-secrets/)、[Secret docker-registry：登入私有 Registry 拉取 image](https://blog.walle4561.com/articles/posts/k8s-kubectl-common-commands/#secret-docker-registry登入私有-registry-拉取-image)。
 
 ### Secret 與 Registry：設定要放在哪裡
 
@@ -596,7 +596,7 @@ kubectl describe secret db-credentials
 | SealedSecret 的名稱／Namespace | 預設 strict scope 下參與加密範圍，不能任意改名搬 Namespace |
 | 儲存加密的第一個 provider | 決定新寫入的加密方式；讀取舊資料仍需保留對應解密能力與金鑰 |
 
-指令與欄位：[[K8s ConfigMap、Secret 與 Sealed Secrets]]、[[K8s kubectl 常用指令#Secret docker-registry：登入私有 Registry 拉取 image]]。
+指令與欄位：[K8s ConfigMap、Secret 與 Sealed Secrets](https://blog.walle4561.com/articles/posts/k8s-configmap-secret-sealed-secrets/)、[Secret docker-registry：登入私有 Registry 拉取 image](https://blog.walle4561.com/articles/posts/k8s-kubectl-common-commands/#secret-docker-registry登入私有-registry-拉取-image)。
 
 ## 11. PV、PVC、StorageClass 與 CSI
 
@@ -631,7 +631,7 @@ kubectl patch pvc lab-data -p '{"spec":{"resources":{"requests":{"storage":"1Gi"
 - 驗證擴容：檔案系統容量、payload／checksum、Pod UID 與 restartCount；RESTARTS=0 不能單獨證明沒重建過。
 - reclaimPolicy 不會阻止容器對已掛載目錄執行刪檔，Retain 也不是備份。
 
-詳見 [[K8s CSI、PV、PVC 與雲端儲存]]。
+詳見 [K8s CSI、PV、PVC 與雲端儲存](https://blog.walle4561.com/articles/posts/k8s-csi-pv-pvc-cloud-storage/)。
 
 ### StatefulSet、Deployment 與 PostgreSQL 的 PVC
 
@@ -650,7 +650,7 @@ kubectl patch pvc lab-data -p '{"spec":{"resources":{"requests":{"storage":"1Gi"
 | 直接用不同 PVC | 可以分離卷，但同一 Deployment 的副本不會自動替換 claimName；仍要核對實際後端是否獨立 |
 | StatefulSet 不保證什麼 | 不自動同步資料、選主或搬移本機卷；replication 也不是備份 |
 
-完整比較與欄位關係：[[K8s CSI、PV、PVC 與雲端儲存#StatefulSet：穩定身分與對應的 PVC]]。
+完整比較與欄位關係：[StatefulSet：穩定身分與對應的 PVC](https://blog.walle4561.com/articles/posts/k8s-csi-pv-pvc-cloud-storage/#statefulset穩定身分與對應的-pvc)。
 
 ### CSI 與儲存：誰發起、誰執行？
 
@@ -668,7 +668,7 @@ kubectl patch pvc lab-data -p '{"spec":{"resources":{"requests":{"storage":"1Gi"
 | PVC 申請小於既有 PV | 綁定整顆符合條件的 PV，不是磁碟配額；可見容量仍依底層卷與檔案系統 |
 | Storage Driver／Volume Driver | image 與容器可寫層／獨立持久資料卷，不能混成同一層 |
 
-具體 RPC、TopoLVM 與掛載 YAML：[[K8s CSI、PV、PVC 與雲端儲存]]。
+具體 RPC、TopoLVM 與掛載 YAML：[K8s CSI、PV、PVC 與雲端儲存](https://blog.walle4561.com/articles/posts/k8s-csi-pv-pvc-cloud-storage/)。
 
 ## 12. 憑證、CA 與 kubeconfig
 
@@ -691,7 +691,7 @@ kubectl get csr
 kubectl certificate approve <CSR名稱>
 ```
 
-詳見 [[K8s 的 Certificate]]、[[K8s kubeconfig、Context 與多叢集管理]]。
+詳見 [K8s 的 Certificate](https://blog.walle4561.com/articles/posts/k8s-certificate/)、[K8s kubeconfig、Context 與多叢集管理](https://blog.walle4561.com/articles/posts/k8s-kubeconfig-context-multicluster/)。
 
 ### 憑證持有者與連線方向
 
@@ -704,7 +704,7 @@ kubectl certificate approve <CSR名稱>
 | kubeadm External CA | 外部簽發並準備所需憑證；CA 私鑰留在外部，不是把私鑰塞進 CSR |
 | AD CS | 產生 key／CSR → 依正確模板簽發 → 驗證用途與 SAN → 放回預期位置 |
 
-詳見 [[K8s 的 Certificate]]。
+詳見 [K8s 的 Certificate](https://blog.walle4561.com/articles/posts/k8s-certificate/)。
 
 ## 13. kubeadm、HA 與 etcd
 
@@ -731,7 +731,7 @@ kubectl get lease kube-controller-manager -n kube-system -o yaml
 
 產生 containerd 設定會覆寫檔案；這是新節點設定例子，不要對既有 runtime 直接重置。
 
-詳見 [[K8s kubeadm 安裝：containerd、init 與 join]]、[[K8s HA、Quorum 與 Split-brain]]、[[MicroK8s 高可用安裝與設定]]。
+詳見 [K8s kubeadm 安裝：containerd、init 與 join](https://blog.walle4561.com/articles/posts/k8s-kubeadm-containerd-init-join/)、[K8s HA、Quorum 與 Split-brain](https://blog.walle4561.com/articles/posts/k8s-ha-quorum-split-brain/)、[MicroK8s 高可用安裝與設定](https://blog.walle4561.com/articles/posts/microk8s-完整部署指南-從安裝到生產級應用/)。
 
 ### 叢集交付方式
 
@@ -741,7 +741,7 @@ kubectl get lease kube-controller-manager -n kube-system -o yaml
 | Hosted／Managed | 供應商代管部分或全部叢集；實際責任看服務，不包含所有應用與資料維運 |
 | kubeadm | 初始化／加入叢集的工具，不包辦 OS、runtime、CNI 與完整維運 |
 
-分類可重疊，歷史產品名稱不當作現行產品清單。詳見 [[K8s 各 Component 說明#叢集部署方式：Turnkey、Hosted 與 kubeadm]]。
+分類可重疊，歷史產品名稱不當作現行產品清單。詳見 [叢集部署方式：Turnkey、Hosted 與 kubeadm](https://blog.walle4561.com/articles/posts/k8s-components/#叢集部署方式turnkeyhosted-與-kubeadm)。
 
 ### 叢集升級：先 Control Plane，再逐台 Worker
 
@@ -755,7 +755,7 @@ kubectl get lease kube-controller-manager -n kube-system -o yaml
 | 更新 kubelet | 安裝指定版本 → `systemctl daemon-reload` → `systemctl restart kubelet` |
 | 驗證與恢復 | `kubectl get nodes` 確認 Ready 與版本 → `kubectl uncordon node01` |
 
-`kubeadm` 工具、控制平面元件、`kubelet` 是不同更新步驟；`kubectl get nodes` 的 VERSION 是 kubelet。完整順序與套件指令：[[K8s kubeadm 叢集升級：Control Plane 與 Worker]]。
+`kubeadm` 工具、控制平面元件、`kubelet` 是不同更新步驟；`kubectl get nodes` 的 VERSION 是 kubelet。完整順序與套件指令：[K8s kubeadm 叢集升級：Control Plane 與 Worker](https://blog.walle4561.com/articles/posts/k8s-kubeadm-cluster-upgrade/)。
 
 - **升級必查官方文件**：[切換套件來源](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/change-package-repository/) → [kubeadm 升級流程](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)。
 
@@ -772,7 +772,7 @@ kubectl get lease kube-controller-manager -n kube-system -o yaml
 
 **備份後不必立即 restore；還原是恢復叢集的操作，需處理 API Server、etcd 與成員設定，不是只執行一條指令。**
 
-完整 TLS 指令、還原步驟與官方文件：[[K8s HA、Quorum 與 Split-brain#etcd 備份與還原：etcdctl、etcdutl]]。
+完整 TLS 指令、還原步驟與官方文件：[etcd 備份與還原：etcdctl、etcdutl](https://blog.walle4561.com/articles/posts/k8s-ha-quorum-split-brain/#etcd-備份與還原etcdctletcdutl)。
 
 ### Version Skew Policy：元件可以差幾個版本？
 
@@ -814,7 +814,7 @@ kubectl get crd
 kubectl api-resources --api-group=example.com
 ```
 
-詳見 [[K8s CRD、Custom Resource 與 Controller]]。
+詳見 [K8s CRD、Custom Resource 與 Controller](https://blog.walle4561.com/articles/posts/k8s-crd-custom-resource-controller/)。
 
 ## 15. Helm：套件、安裝實例與修訂版本
 
@@ -836,7 +836,7 @@ kubectl api-resources --api-group=example.com
 
 **Release revision、Chart 版本、應用版本是三件事；rollback 不會自動回復 PVC 裡的資料。** Release 在其他 namespace，查詢與操作時加 `-n`。
 
-詳見 [[K8s Helm：Chart、Template、Values 與 Release]]。
+詳見 [K8s Helm：Chart、Template、Values 與 Release](https://blog.walle4561.com/articles/posts/k8s-helm-chart-template-values-release/)。
 
 ## 16. Kustomize：Base 與 Overlay
 
@@ -851,7 +851,7 @@ kubectl api-resources --api-group=example.com
 | `-f`／`-k` | 讀資源檔／讀 Kustomization 目錄並建置；建置不改寫原本 Base 檔案 |
 | Helm／Kustomize | Chart 模板與 Values／Base YAML 與環境差異；Kustomize 本身不管理 Helm Release 歷史 |
 
-詳見 [[K8s Kustomize：Base 與 Overlay]]，含目錄結構與 prod 將副本數從 1 改成 3 的完整範例。
+詳見 [K8s Kustomize：Base 與 Overlay](https://blog.walle4561.com/articles/posts/k8s-kustomize-base-overlay/)，含目錄結構與 prod 將副本數從 1 改成 3 的完整範例。
 
 ### Kustomize 分層與 Common transformations
 
@@ -868,7 +868,7 @@ kubectl api-resources --api-group=example.com
 | commonLabels 注意事項 | 舊教材常見，也影響 selector；不要不經檢查就改已建立 Deployment 的 selector |
 | 預覽／部署根目錄 | `kubectl kustomize .`／`kubectl apply -k .` |
 
-目錄結構與 YAML：[[K8s Kustomize：Base 與 Overlay#分層組合：子目錄管資源，上層引用資料夾]]；共同設定：[[K8s Kustomize：Base 與 Overlay#Common transformations：對一組資源套用共同調整]]。
+目錄結構與 YAML：[分層組合：子目錄管資源，上層引用資料夾](https://blog.walle4561.com/articles/posts/k8s-kustomize-base-overlay/#分層組合子目錄管資源上層引用資料夾)；共同設定：[Common transformations：對一組資源套用共同調整](https://blog.walle4561.com/articles/posts/k8s-kustomize-base-overlay/#common-transformations對一組資源套用共同調整)。
 
 ### Base／Overlay／Component：基本款、環境、可選配件
 
@@ -886,7 +886,7 @@ kubectl api-resources --api-group=example.com
 | 不是自動啟用服務 | 名為 logging 的 Component 若只加 annotation，不會自己安裝 logging 系統 |
 | 本機建置 | 不必安裝 Component CRD；支援能力看使用的 Kustomize 版本 |
 
-短 YAML 與目錄：[[K8s Kustomize：Base 與 Overlay#Component：多個環境可選用的共用配件]]。
+短 YAML 與目錄：[Component：多個環境可選用的共用配件](https://blog.walle4561.com/articles/posts/k8s-kustomize-base-overlay/#component多個環境可選用的共用配件)。
 
 ### Kustomize images：名稱、tag、digest
 
@@ -900,7 +900,7 @@ kubectl api-resources --api-group=example.com
 | 短例 | name=nginx、newName=registry.example.com/team/nginx、newTag="1.27" → `registry.example.com/team/nginx:1.27` |
 | 預覽限制 | `kubectl kustomize .` 可驗證產出，但不確認 Registry 中的 image 是否存在或可拉取 |
 
-短 YAML 範例：[[K8s Kustomize：Base 與 Overlay#Images transformation：換映像名稱、tag 或 digest]]。
+短 YAML 範例：[Images transformation：換映像名稱、tag 或 digest](https://blog.walle4561.com/articles/posts/k8s-kustomize-base-overlay/#images-transformation換映像名稱tag-或-digest)。
 
 ### Helm vs Kustomize：套件管理與 YAML 客製化
 
@@ -936,7 +936,7 @@ kubectl api-resources --api-group=example.com
 | name 改成 web-app-1 | 改找另一個物件，不是把 web-app 改名；找不到通常建置失敗 |
 | 兩種 path | patches[].path 是檔案；JSON Patch 操作的 path 是物件欄位路徑 |
 
-短例：[[K8s Kustomize：Base 與 Overlay#Separate file：Patch 可以放在獨立檔案]]。
+短例：[Separate file：Patch 可以放在獨立檔案](https://blog.walle4561.com/articles/posts/k8s-kustomize-base-overlay/#separate-filepatch-可以放在獨立檔案)。
 
 | Patch 類型／存放方式 | Inline patch | Separate file |
 |---|---|---|
@@ -975,15 +975,15 @@ kubectl api-resources --api-group=example.com
 | `$patch` 在 map／list | map 直接寫；list 放在對應清單項目並帶匹配 key；`-` 只是 YAML 清單符號 |
 | 不可混用 | JSON Patch 沒有 op: delete；Strategic Merge 不寫 $patch: remove |
 
-短例：[[K8s Kustomize：Base 與 Overlay#陣列 index 與刪除操作：不要混用 remove／delete]]。
+短例：[陣列 index 與刪除操作：不要混用 remove／delete](https://blog.walle4561.com/articles/posts/k8s-kustomize-base-overlay/#陣列-index-與刪除操作不要混用-removedelete)。
 
-**YAML 的 `-` 是清單項目；JSON Pointer 的 `/-` 才是 add 追加末尾。** 短例：[[K8s Kustomize：Base 與 Overlay#刪欄位與新增 list：null、remove、/- 與依 name 合併]]。
+**YAML 的 `-` 是清單項目；JSON Pointer 的 `/-` 才是 add 追加末尾。** 短例：[刪欄位與新增 list：null、remove、/- 與依 name 合併](https://blog.walle4561.com/articles/posts/k8s-kustomize-base-overlay/#刪欄位與新增-listnullremove--與依-name-合併)。
 
-短例：[[K8s Kustomize：Base 與 Overlay#兩種 replace：路徑替換 vs 合併指示]]。操作依序執行；陣列移除會影響後續索引。
+短例：[兩種 replace：路徑替換 vs 合併指示](https://blog.walle4561.com/articles/posts/k8s-kustomize-base-overlay/#兩種-replace路徑替換-vs-合併指示)。操作依序執行；陣列移除會影響後續索引。
 
 **不是一定要另開 Patch 檔案；Overlay 是位置，Patch 是方法。** 上例 replace 要求路徑已存在，containers/0 指第一個容器。
 
-短 YAML：[[K8s Kustomize：Base 與 Overlay#Patches：直接寫在環境 Overlay 裡做局部修改]]；模板對照：[[K8s Helm：Chart、Template、Values 與 Release#Values 要有模板讀取才會生效]]。
+短 YAML：[Patches：直接寫在環境 Overlay 裡做局部修改](https://blog.walle4561.com/articles/posts/k8s-kustomize-base-overlay/#patches直接寫在環境-overlay-裡做局部修改)；模板對照：[Values 要有模板讀取才會生效](https://blog.walle4561.com/articles/posts/k8s-helm-chart-template-values-release/#values-要有模板讀取才會生效)。
 
 ## 17. Job 與 CronJob：完成工作與定時觸發
 
@@ -1015,7 +1015,7 @@ kubectl api-resources --api-group=example.com
 
 **不能只改 kind：Pod spec 包進 Job 的 template.spec；Job spec 再包進 CronJob 的 jobTemplate.spec。**
 
-詳見 [[K8s Job 與 CronJob：批次工作、排程與 YAML 層級]]，含完整 Job／CronJob YAML、排程、清理與錯誤對照。
+詳見 [K8s Job 與 CronJob：批次工作、排程與 YAML 層級](https://blog.walle4561.com/articles/posts/k8s-job-cronjob/)，含完整 Job／CronJob YAML、排程、清理與錯誤對照。
 
 ## 18. 目前還值得補成完整實作的項目
 

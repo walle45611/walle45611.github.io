@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: 'K8s RBAC 與 ServiceAccount'
+blog_date: '2026-10-29'
+blog_url: https://blog.walle4561.com/articles/posts/k8s-rbac-serviceaccount/
+blog_tag: Kubernetes
+blog_topic: Kubernetes
+---
+
 # K8s RBAC 與 ServiceAccount
 
 **ServiceAccount 是「程式用誰的身分」；Role／ClusterRole 定義「能做什麼」；Binding 把權限交給身分。** 建立 ServiceAccount 不等於取得管理權限。
@@ -15,7 +24,7 @@
 | RoleBinding → Role | RoleBinding 的 `roleRef` | 使用哪份權限清單 |
 | Role → 可做的操作 | Role 的 `rules` | 可以對哪些資源執行哪些動作 |
 
-例如：**`reader-app` Pod 使用 `dev/app-reader`，RoleBinding `app-read-pods` 將 `pod-reader` 的權限授予它，因此 Pod 內程式用該 SA 的有效 Token 呼叫 API 時，可以讀取 dev 的 Pods。** 完整 YAML 與流程圖見 [[#完整範例：dev 的 app-reader 只能讀取 dev 的 Pods]]。
+例如：**`reader-app` Pod 使用 `dev/app-reader`，RoleBinding `app-read-pods` 將 `pod-reader` 的權限授予它，因此 Pod 內程式用該 SA 的有效 Token 呼叫 API 時，可以讀取 dev 的 Pods。** 完整 YAML 與流程圖見 [完整範例：dev 的 app-reader 只能讀取 dev 的 Pods](#完整範例dev-的-app-reader-只能讀取-dev-的-pods)。
 
 Role 與 SA 誰先建立都可以；**只有 Role、沒有相關 Binding，SA 不會因此取得這份權限。** Deployment 則在 `spec.template.spec.serviceAccountName` 指定 SA，讓建立的 Pod 使用它；不是把 Role 直接綁在 Deployment 或 Pod 上。
 
@@ -444,7 +453,7 @@ kubectl create rolebinding app-read-pods --role=pod-reader --serviceaccount=dev:
 
 每個 `create` 指令可加 `--dry-run=client -o yaml` 先產生 YAML；套用完整範例則用 `kubectl apply -f app-reader-rbac.yaml`。
 
-ClusterRole 與兩種 Binding 的建立、範圍比較及 `can-i` 驗證，見 [[#範例比較：同一個 ClusterRole，兩種 Binding]]。
+ClusterRole 與兩種 Binding 的建立、範圍比較及 `can-i` 驗證，見 [範例比較：同一個 ClusterRole，兩種 Binding](#範例比較同一個-clusterrole兩種-binding)。
 
 ```bash
 kubectl get sa,roles,rolebindings -n dev

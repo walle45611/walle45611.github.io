@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: 'K8s kubeconfig、Context 與多叢集管理'
+blog_date: '2026-10-29'
+blog_url: https://blog.walle4561.com/articles/posts/k8s-kubeconfig-context-multicluster/
+blog_tag: Kubernetes
+blog_topic: Kubernetes
+---
+
 # K8s kubeconfig、Context 與多叢集管理
 
 **kubeconfig 記錄「連哪個叢集、用誰的身分、預設哪個 Namespace」；Context 把這三件事組合起來。** 同一份設定可以管理 dev／prod 多個叢集，也能讓同一叢集有多個 Context。

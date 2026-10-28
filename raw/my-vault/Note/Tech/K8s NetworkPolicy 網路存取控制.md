@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: 'K8s NetworkPolicy 網路存取控制'
+blog_date: '2026-10-29'
+blog_url: https://blog.walle4561.com/articles/posts/k8s-networkpolicy-network-access-control/
+blog_tag: Kubernetes
+blog_topic: Kubernetes
+---
+
 # K8s NetworkPolicy 網路存取控制
 
 ## TL;DR

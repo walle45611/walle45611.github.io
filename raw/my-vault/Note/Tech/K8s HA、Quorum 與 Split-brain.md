@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: 'K8s HA、Quorum 與 Split-brain'
+blog_date: '2026-10-29'
+blog_url: https://blog.walle4561.com/articles/posts/k8s-ha-quorum-split-brain/
+blog_tag: Kubernetes
+blog_topic: Kubernetes
+---
+
 # K8s HA、Quorum 與 Split-brain
 
 Split-brain 是分散式系統因網路分割而出現互相衝突的 active side，不專指 Kubernetes master。對使用 Raft 的 datastore，提交新寫入需要多數 voting members，少數派不能自行形成合法的提交多數。

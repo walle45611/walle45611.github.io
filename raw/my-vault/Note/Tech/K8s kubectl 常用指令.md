@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: 'K8s kubectl 常用指令'
+blog_date: '2026-10-29'
+blog_url: https://blog.walle4561.com/articles/posts/k8s-kubectl-common-commands/
+blog_tag: Kubernetes
+blog_topic: Kubernetes
+---
+
 # K8s kubectl 常用指令
 
 以現場能記住、直接打出來為原則：優先使用內建縮寫，每個情境先記一個主要寫法。

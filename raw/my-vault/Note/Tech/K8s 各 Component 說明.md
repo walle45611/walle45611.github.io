@@ -3,7 +3,7 @@ blog: true
 blog_title: 'K8s 各 Component 說明'
 blog_date: '2026-10-29'
 blog_url: https://blog.walle4561.com/articles/posts/k8s-components/
-blog_tag: Kubernetes
+blog_tag: OS
 blog_topic: Kubernetes
 ---
 

@@ -3,7 +3,7 @@ blog: true
 blog_title: 'K8s HPA 與水平、垂直擴縮'
 blog_date: '2026-10-29'
 blog_url: https://blog.walle4561.com/articles/posts/k8s-hpa-horizontal-vertical-scaling/
-blog_tag: Kubernetes
+blog_tag: OS
 blog_topic: Kubernetes
 ---
 

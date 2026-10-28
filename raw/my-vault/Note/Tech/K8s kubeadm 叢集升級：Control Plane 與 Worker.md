@@ -3,7 +3,7 @@ blog: true
 blog_title: 'K8s kubeadm 叢集升級：Control Plane 與 Worker'
 blog_date: '2026-10-29'
 blog_url: https://blog.walle4561.com/articles/posts/k8s-kubeadm-cluster-upgrade/
-blog_tag: Kubernetes
+blog_tag: OS
 blog_topic: Kubernetes
 ---
 

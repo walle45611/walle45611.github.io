@@ -11,6 +11,7 @@
 [[樹（Tree）]]
 
 [[二元樹 (Binary Tree)]]
+[[Segment Tree]]
 [[二元搜尋樹 (Binary Search Tree)]]
 [[Adelson-Velsky and Landis tree(AVL Tree)]]
 [[Red-Black tree]]

@@ -65,7 +65,9 @@ Refresh Token 則用來向 Authorization Server 取得新的 Access Token，而�
 
 ### Access Token 放在前端記憶體
 
-如果前端要直接呼叫 API，可以把短效 Access Token 放在 JavaScript 記憶體，例如模組內的變數。呼叫 API 時，前端再把它放進 `Authorization: Bearer …`。和 `localStorage` 相比，記憶體裡的 Token 會隨頁面重新載入消失，也沒有一個固定的儲存介面讓同源腳本直接讀取。 [RFC 10017 §8.4](https://www.rfc-editor.org/rfc/rfc10017.html#section-8.4)
+如果前端要直接呼叫 API，可以把短效 Access Token 放在 JavaScript 記憶體，例如模組內的變數。呼叫 API 時，前端再把它放進 `Authorization: Bearer …`。和 `localStorage`、`sessionStorage` 相比，記憶體裡的 Token 會隨頁面重新載入消失，也沒有一個固定的儲存介面讓同源腳本直接讀取。 [RFC 10017 §8.4](https://www.rfc-editor.org/rfc/rfc10017.html#section-8.4)
+
+按照 [OWASP Session Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#the-localstorage-api) 的建議，**Access Token、Refresh Token 和 Session ID 都不應存入 `localStorage` 或 `sessionStorage`**。即使 `sessionStorage` 通常只在該分頁的工作階段內保留，重新整理後資料仍在。兩種儲存都能被頁面中的 JavaScript 讀取，因此一旦發生 XSS，惡意腳本就可能直接把憑證讀走。
 
 重新整理頁面或 Access Token 到期後，前端可以向同源後端請求新的 Access Token。例如，由瀏覽器送出 `HttpOnly` Cookie，讓後端查到該 Session 對應的 Refresh Token，再向 Authorization Server 換發。這種做法仍會把 Access Token 回傳給前端。後面提到的 OAuth BFF 則會把 Token 留在後端，由 BFF 代為呼叫 API。 [RFC 10017 §6.2](https://www.rfc-editor.org/rfc/rfc10017.html#section-6.2)
 

@@ -5,7 +5,7 @@ blog_date: 2026-11-06
 blog_url: https://blog.walle4561.com/articles/posts/jwt-cookie-session-oauth-bff/
 ---
 
-最近在研究 JWT Authentication 時，我一直有一個疑問：
+使用 JWT 那麼久了，我一直有一個疑問：
 
 **為什麼不直接使用一個 Cookie 搭配 Token 來維持登入狀態，而要額外拆分成 Access Token 和 Refresh Token？**
 

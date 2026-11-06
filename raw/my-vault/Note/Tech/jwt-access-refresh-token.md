@@ -99,6 +99,16 @@ Refresh Token 則用來向 Authorization Server 取得新的 Access Token，而�
 
 當然，這個選擇也有代價，例如 Access Token 在過期前可能無法立即撤銷，除非另外導入撤銷檢查或縮短 Token 的有效期限。
 
+### DPoP：只有 Token，還能呼叫 API 嗎？
+
+前面提到 Rotation 會在續期時換掉舊的 Refresh Token，並藉由舊 Token 再次出現來偵測重放。DPoP（Demonstrating Proof of Possession）則在使用 Token 時多驗一件事：**送出請求的 Client 能不能用和這個 Token 綁定的私鑰簽名？** [RFC 9449 §3](https://www.rfc-editor.org/rfc/rfc9449.html#section-3)
+
+假設攻擊者只複製到一個還沒過期的 Access Token。如果它是 Bearer Token，攻擊者可以拿它從自己的電腦呼叫 API。如果它有做 DPoP 綁定，Client 每次呼叫 API 都要附上一份用私鑰簽出的 DPoP Proof。API 會檢查簽章、Token 綁定的公鑰，以及 Proof 是否對應這次請求的方法、網址與 Access Token。攻擊者只有 Token，手上又沒有對應的私鑰或可用的 Proof，API 就會拒絕請求。 [RFC 9449 §7.1](https://www.rfc-editor.org/rfc/rfc9449.html#section-7.1)
+
+同樣的做法也用在 Public Client 的 Refresh Token。Authorization Server 把 Refresh Token 綁到公鑰，續期時要求 Client 用同一把私鑰產生 Proof。只拿到 Refresh Token 的攻擊者就無法自行換發。這就是前面提到的 Sender-Constrained Refresh Token 的一種做法。 [RFC 9449 §5](https://www.rfc-editor.org/rfc/rfc9449.html#section-5)
+
+如果攻擊者已經能在前端執行 JavaScript，就仍可能借用原本的 Client 產生 Proof 並發出請求，即使私鑰本身無法匯出。對我來說，這和把 Access Token 放在記憶體是兩個不同的取捨：記憶體影響 Token 在瀏覽器裡留多久，DPoP 影響外洩的 Token 能不能單獨拿到別處重放。 [RFC 9449 §11.4](https://www.rfc-editor.org/rfc/rfc9449.html#section-11.4)
+
 ## 四、如果只是一般 Web App，Cookie Session 不就夠了？
 
 其實很多情況下，確實足夠。

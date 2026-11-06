@@ -116,7 +116,11 @@ BFF（Backend for Frontend）本身是一種架構模式，通常用於建立專
 
 在這種架構中：
 
-Browser → Session Cookie → BFF → Access Token → Resource Server
+```mermaid
+flowchart TD
+    Browser["Browser"] -->|Session Cookie| BFF["BFF"]
+    BFF -->|Access Token| ResourceServer["Resource Server"]
+```
 
 瀏覽器只接觸 Session Cookie，而 BFF 作為 OAuth Confidential Client，負責 OAuth 授權流程、Token 管理與 API Request Forwarding。
 
@@ -146,7 +150,11 @@ Browser → Session Cookie → BFF → Access Token → Resource Server
 
 另一種設計是：
 
-Browser → Session Cookie → BFF / Gateway → Internal Access Token → Microservices
+```mermaid
+flowchart TD
+    Browser["Browser"] -->|Session Cookie| Gateway["BFF / Gateway"]
+    Gateway -->|Internal Access Token| Services["Microservices"]
+```
 
 在這個架構中，瀏覽器與 BFF 之間使用 Cookie Session。
 

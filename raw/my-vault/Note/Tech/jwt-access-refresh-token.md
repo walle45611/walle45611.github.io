@@ -13,7 +13,7 @@ blog_url: https://blog.walle4561.com/articles/posts/jwt-cookie-session-oauth-bff
 
 進一步延伸，如果使用 Cookie Session 就能解決問題，我們是否還需要 JWT？而這種設計又是否適合 Microservices Architecture？
 
-閱讀 RFC 6749、RFC 9700、RFC 10017 與 OWASP 相關文件之後，我發現這些問題其實涉及不同層次的設計決策。
+閱讀 [RFC 6749](https://www.rfc-editor.org/rfc/rfc6749.html)、[RFC 9700](https://www.rfc-editor.org/rfc/rfc9700.html)、[RFC 10017](https://www.rfc-editor.org/rfc/rfc10017.html) 與 OWASP 相關文件之後，我發現這些問題其實涉及不同層次的設計決策。
 
 ## 一、Cookie、JWT 與 Stateful 並不是同一個層次的概念
 
@@ -25,7 +25,7 @@ blog_url: https://blog.walle4561.com/articles/posts/jwt-cookie-session-oauth-bff
 
 **JWT 是一種 Token 格式。**
 
-依據 RFC 7519，JWT 用於表示一組 Claims。它可以透過數位簽章確保完整性，讓接收端在具備可信任金鑰的情況下驗證 Token，而不必每次都向中央伺服器查詢。
+依據 [RFC 7519](https://www.rfc-editor.org/rfc/rfc7519.html)，JWT 用於表示一組 Claims。它可以透過數位簽章確保完整性，讓接收端在具備可信任金鑰的情況下驗證 Token，而不必每次都向中央伺服器查詢。
 
 **Stateful / Stateless 則描述伺服器管理或驗證狀態的方式。**
 
@@ -58,15 +58,24 @@ Refresh Token 則用來向 Authorization Server 取得新的 Access Token，而�
 
 不過，短效 Token 只能降低外洩後的利用時間，並不能避免有效期限內的濫用。
 
-另外，RFC 6749 並沒有要求所有系統都必須發放 Refresh Token。
+另外，[RFC 6749 §1.5](https://www.rfc-editor.org/rfc/rfc6749.html#section-1.5) 並沒有要求所有系統都必須發放 Refresh Token。
 
 換句話說，**雙 Token 是一種 Token Lifecycle Design，而不是 JWT 的必要組成。**
+
+
+### Access Token 放在前端記憶體
+
+如果前端要直接呼叫 API，可以把短效 Access Token 放在 JavaScript 記憶體，例如模組內的變數。呼叫 API 時，前端再把它放進 `Authorization: Bearer …`。和 `localStorage` 相比，記憶體裡的 Token 會隨頁面重新載入消失，也沒有一個固定的儲存介面讓同源腳本直接讀取。 [RFC 10017 §8.4](https://www.rfc-editor.org/rfc/rfc10017.html#section-8.4)
+
+重新整理頁面或 Access Token 到期後，前端可以向同源後端請求新的 Access Token。例如，由瀏覽器送出 `HttpOnly` Cookie，讓後端查到該 Session 對應的 Refresh Token，再向 Authorization Server 換發。這種做法仍會把 Access Token 回傳給前端。後面提到的 OAuth BFF 則會把 Token 留在後端，由 BFF 代為呼叫 API。 [RFC 10017 §6.2](https://www.rfc-editor.org/rfc/rfc10017.html#section-6.2)
+
+如果發生 XSS，惡意腳本仍可能攔截 API 請求、向後端取得新的 Access Token，或直接以使用者身分操作。即使 `HttpOnly` 擋住腳本直接讀取 Cookie 的值，瀏覽器仍會在符合條件的請求上附帶它。把 Token 放在記憶體，能減少憑證留在瀏覽器裡的時間。短效 Token 則限制了單次外洩後的可用時間。 [RFC 10017 §5](https://www.rfc-editor.org/rfc/rfc10017.html#section-5)
 
 ## 三、Refresh Token Rotation 是否讓系統重新變成 Stateful？
 
 這是我原本最困惑的地方。
 
-RFC 9700 §4.14.2 對 Public Client 的 Refresh Token Replay Detection 提出明確要求：如果發放 Refresh Token，Authorization Server 必須採用 Sender-Constrained Refresh Token 或 Refresh Token Rotation。
+[RFC 9700 §4.14.2](https://www.rfc-editor.org/rfc/rfc9700.html#section-4.14.2) 對 Public Client 的 Refresh Token Replay Detection 提出明確要求：如果發放 Refresh Token，Authorization Server 必須採用 Sender-Constrained Refresh Token 或 Refresh Token Rotation。
 
 使用 Rotation 時，每次成功續期都會發放新的 Refresh Token，讓舊 Token 失效，並保留 Token 之間必要的關聯資訊。
 
@@ -100,7 +109,7 @@ RFC 9700 §4.14.2 對 Public Client 的 Refresh Token Replay Detection 提出明
 
 如果沒有跨應用程式授權、第三方 API 存取或獨立的 Resource Server，未必需要引入完整的 OAuth 2.0 與 Refresh Token 機制。
 
-但 Cookie Session 仍需要考慮 CSRF、防止 Session Fixation、Session Expiration 與安全的 Cookie 設定。
+但 Cookie Session 仍需要考慮 [CSRF、Session Fixation、Session Expiration 與安全的 Cookie 設定](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html)。
 
 HttpOnly 也不能阻止 XSS 惡意程式碼直接以使用者身分發送請求。
 
@@ -108,11 +117,11 @@ HttpOnly 也不能阻止 XSS 惡意程式碼直接以使用者身分發送請求
 
 ## 五、BFF 是不是就回到了傳統 Web Authentication？
 
-研究 RFC 10017 時，我發現這裡有一個容易混淆的地方。
+研究 [RFC 10017](https://www.rfc-editor.org/rfc/rfc10017.html) 時，我發現這裡有一個容易混淆的地方。
 
 BFF（Backend for Frontend）本身是一種架構模式，通常用於建立專門服務某一種前端的後端介面層。
 
-但 RFC 10017 §6.1 所描述的 OAuth BFF，有更具體的定義。
+但 [RFC 10017 §6.1](https://www.rfc-editor.org/rfc/rfc10017.html#section-6.1) 所描述的 OAuth BFF，有更具體的定義。
 
 在這種架構中：
 
@@ -132,7 +141,7 @@ flowchart TD
 
 另一方面，如果系統採用自己的登入機制，建立傳統 Session，再由 BFF 對後端 API 發出請求，也可以構成一般意義上的 BFF 架構。
 
-但這就不是 RFC 10017 所定義的 OAuth BFF 流程。
+但這就不是 [RFC 10017 §6.1](https://www.rfc-editor.org/rfc/rfc10017.html#section-6.1) 所定義的 OAuth BFF 流程。
 
 **兩種架構的瀏覽器端體驗可能很類似，內部的身分與授權機制卻不相同。**
 
@@ -160,9 +169,9 @@ flowchart TD
 
 BFF 驗證 Session 後，再透過可信任的內部身分機制，向下游服務傳遞必要的使用者身分與授權資訊。
 
-例如，可以使用短效、限制 Audience 與 Scope 的 JWT Access Token，讓不同的 Microservice 本地驗證 Token。
+例如，可以使用短效、限制 Audience 與 Scope 的 [JWT Access Token](https://www.rfc-editor.org/rfc/rfc9068.html)，讓不同的 Microservice 本地驗證 Token。
 
-也可以在 OAuth 架構下透過 Token Exchange 處理服務間的委派需求，或使用 mTLS 驗證服務身分。
+也可以在 OAuth 架構下透過 [Token Exchange（RFC 8693）](https://www.rfc-editor.org/rfc/rfc8693.html) 處理服務間的委派需求，或使用 [mTLS](https://cheatsheetseries.owasp.org/cheatsheets/Microservices_Security_Cheat_Sheet.html) 驗證服務身分。
 
 這些做法的重點，是不要讓每個 Microservice 都直接依賴瀏覽器 Session。
 
@@ -221,16 +230,3 @@ BFF 則可以在瀏覽器與後端資源之間建立一道邊界，隔離不同�
 **Stateless 不是 JWT 架構的必然結果；雙 Token 也不是所有 Web Authentication 的標準答案。**
 
 真正重要的是，為了哪些需求接受了哪些複雜度，以及這些複雜度是否有實際價值。
-
----
-
-## References
-
-- [RFC 6749 — OAuth 2.0 Authorization Framework](https://www.rfc-editor.org/rfc/rfc6749.html)
-- [RFC 7519 — JSON Web Token](https://www.rfc-editor.org/rfc/rfc7519.html)
-- [RFC 9068 — JWT Profile for OAuth 2.0 Access Tokens](https://www.rfc-editor.org/rfc/rfc9068.html)
-- [RFC 9700 — OAuth 2.0 Security Best Current Practice](https://www.rfc-editor.org/rfc/rfc9700.html)
-- [RFC 10017 — OAuth 2.0 for Browser-Based Applications](https://www.rfc-editor.org/rfc/rfc10017.html)
-- [RFC 8693 — OAuth 2.0 Token Exchange](https://www.rfc-editor.org/rfc/rfc8693.html)
-- [OWASP Microservices Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Microservices_Security_Cheat_Sheet.html)
-- [OWASP Session Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html)

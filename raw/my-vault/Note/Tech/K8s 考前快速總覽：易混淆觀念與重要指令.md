@@ -1017,9 +1017,3 @@ kubectl api-resources --api-group=example.com
 
 詳見 [K8s Job 與 CronJob：批次工作、排程與 YAML 層級](https://blog.walle4561.com/articles/posts/k8s-job-cronjob/)，含完整 Job／CronJob YAML、排程、清理與錯誤對照。
 
-## 18. 目前還值得補成完整實作的項目
-
-| 尚未完成的部分 | 下一步 |
-|---|---|
-| HPA 完整實作 | 觀念與安裝需求已收錄；仍缺可套用的 autoscaling/v2 完整 YAML 與擴縮驗證 |
-| PDB | 已有 drain 阻擋的提醒與查詢；仍缺 minAvailable／maxUnavailable 設定與驅逐驗證例子 |

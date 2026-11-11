@@ -16,6 +16,7 @@ fn protect_display_math(markdown: &str) -> String {
             fence = !fence;
         }
         if !fence && line.trim() == "$$" {
+            let indent = &line[..line.len() - line.trim_start().len()];
             let mut math = Vec::new();
             let mut closed = false;
             while let Some(next) = lines.peek() {
@@ -34,16 +35,24 @@ fn protect_display_math(markdown: &str) -> String {
                 }
                 break;
             }
-            out.push_str("\n<div class=\"math-tex math-display\">\\[\n");
+            out.push('\n');
+            out.push_str(indent);
+            out.push_str("<div class=\"math-tex math-display\">\\[\n");
             for math_line in math {
+                if math_line.trim().is_empty() {
+                    continue;
+                }
+                out.push_str(indent);
                 out.push_str(
                     &math_line
+                        .trim_start()
                         .replace('&', "&amp;")
                         .replace('<', "&lt;")
                         .replace('>', "&gt;"),
                 );
                 out.push('\n');
             }
+            out.push_str(indent);
             out.push_str("\\]</div>\n\n");
         } else {
             out.push_str(line);

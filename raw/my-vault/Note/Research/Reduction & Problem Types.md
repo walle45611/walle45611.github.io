@@ -7,7 +7,6 @@ blog_tag: DSA
 blog_topic: 演算法
 ---
 
-
 ## 1. 決策問題 vs. 優化問題 (Decision vs. Optimization)
 
 在計算複雜度理論中，我們通常關注「決策問題」，但實際應用常遇到「優化問題」。
@@ -39,7 +38,7 @@ blog_topic: 演算法
     
     - **從優化解決策 ($A_{opt} \to P_{dec}$)**：若能算出最佳解（如最短路徑長度），只需檢查該值是否 $\le k$ 即可回答決策問題。
         
-    - **從決策解優化 ($A_{dec} \to P_{opt}$)**：利用二分搜尋法 (Binary Search) 配合決策演算法。透過不斷詢問「最佳值是否 $\le X$？」來逼近並找出最佳解。
+    - **從決策解優化 ($A_{dec} \to P_{opt}$)**：利用二分搜尋法 (Binary Search) 配合決策演算法。對 TSP 這類具有整數成本、且搜尋上下界的位元長度為輸入規模多項式的問題，可透過不斷詢問「最佳值是否 $\le X$？」找出最佳值；若還要實際的最佳解，則需要進一步的自我歸約。不能無條件套用到所有最佳化問題。
         
 
 ## 2. 多項式時間 Reduction (Polynomial-time Reduction)
@@ -75,7 +74,7 @@ blog_topic: 演算法
     
 - **Reduction 過程 $f$**：
     
-    - 建構轉換函數 $f(\alpha) = (\alpha, 2)$。這可以在 $O(1)$ 時間內完成。
+    - 建構轉換函數 $f(\alpha) = (\alpha, 2)$。只需保留 $\alpha$ 的編碼並附上常數 2，可在輸入編碼長度的多項式時間內完成。
         
     - 如此一來，解決通用的除法問題 B，就能解決特定的除以 2 問題 A。
         
@@ -103,3 +102,5 @@ Reduction 主要有三種用途：
         - 證明：$A \le_p B$ (將難題 $A$ **Reduction** 為 $B$)。
             
         - 結論：因為 $B$ 能解決 $A$，所以 $B$ 至少跟 $A$ 一樣難，故 $B$ 也是 NP-Hard。
+
+NP 的驗證條件見 [[Complexity Classes and P vs NP]]，NP-complete 證明步驟見 [[Proving NP-Completeness]]，近似演算法的具體證明見 [[Approximation Algorithm]]。

@@ -190,7 +190,7 @@ $$
 \frac{\partial x_{\ell+1}}{\partial x_\ell}=I+J_{F_\ell}J_{\operatorname{LN}}
 $$
 
-Post-Norm 則為 $J_{\operatorname{LN}}(I+J_{F_\ell})$。這有助理解兩者的梯度路徑差異，但不保證 Pre-Norm 永遠更好或完全不需 warm-up。延伸：[On Layer Normalization in the Transformer Architecture](https://arxiv.org/abs/2002.04745)。
+Post-Norm 則為 $J_{\operatorname{LN}}(I+J_{F_\ell})$。這有助理解兩者的梯度路徑差異，但不保證 Pre-Norm 永遠更好或完全不需 warm-up。延伸：[[@onlayernormtransformer2020|On Layer Normalization in the Transformer Architecture]]（[PMLR 正式論文頁](https://proceedings.mlr.press/v119/xiong20b.html)）。
 
 ## Sinusoidal Positional Encoding
 

@@ -6,6 +6,7 @@
 
 [[@efficientwordrepresentations2013|Efficient Estimation of Word Representations in Vector Space]]
 [[@attention2017|Attention Is All You Need]]
+[[@transformertransducer2019|Transformer-Transducer: End-to-End Speech Recognition with Self-Attention]]
 
 [[@bert2019|BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding]]
 [[@chainofthought2022|Chain-of-Thought Prompting Elicits Reasoning in Large Language Models]]
@@ -59,6 +60,8 @@
 
 ### Clinical AI and Traditional Chinese Medicine
 
+[[@multistageretrievererank2024|Multi-stage Retrieve and Re-rank Model for Automatic Medical Coding Recommendation]]
+
 [[@medicaltextreview2026|Artificial Intelligence Language Models for Medical Text Analysis: A Systematic Review]]
 [[@cprs2025|CPRS: A Clinical Protocol Recommendation System Based on LLMs]]
 [[@kgapg2021|KGAPG: Knowledge-Aware Neural Group Representation Learning for Attentive Prescription Generation of Traditional Chinese Medicine]]
@@ -70,18 +73,21 @@
 
 ### Computer Vision and Edge AI
 
+[[@animageisworth16x16words2021|An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale]]
 [[@residuallearning2015|Deep Residual Learning for Image Recognition]]
 [[@yolov8riscv2024|Energy-efficient implementation of YOLOv8, instance segmentation, and pose detection on RISC-V SoC]]
 [[@fpgacnnyolo2026|Low-Cost FPGA-Enhanced CNN Accelerator for Real-Time YOLO Object Detection & Classification]]
 
-### Evaluation and Benchmarks
+### Evaluation and **Benchmarks**
 
+[[@releasingtheinnerjev2026|Releasing the Inner Jev: Jeff 開放決策模型]]
 [[@llmjudge2023|Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena]]
 [[@bfcl2025|The Berkeley Function Calling Leaderboard (BFCL): From Tool Use to Agentic Evaluation of Large Language Models]]
 
 ### Neural Network Architecture
 
 [[@layernorm2016|Layer Normalization]]
+[[@onlayernormtransformer2020|On Layer Normalization in the Transformer Architecture（Pre-Norm）]]
 
 ## Concept Notes
 
@@ -101,6 +107,11 @@
 [[Note/Research/02 - Hidden Layers and Multiple Features|Hidden Layers and Multiple Features]]
 [[Note/Research/03 - Activation Functions|Sigmoid and ReLU]]
 [[Note/Research/04 - Batch Normalization|Batch Normalization]]
+
+### Neural Network Architectures
+
+[[Convolutional Neural Network (CNN)]]
+[[Truncated Self-Attention]]
 
 ### Gradient Descent and Optimization Basics
 

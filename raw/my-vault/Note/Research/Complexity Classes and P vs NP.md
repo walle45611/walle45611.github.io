@@ -17,13 +17,13 @@ blog_topic: 演算法
         
 - **Class P (Polynomial Time)**
     
-    - **定義**：能夠在多項式時間 $O(n^k)$ 內被**解決 (Solved)** 的問題。
+    - **定義**：能夠在多項式時間 $O(n^k)$ 內被**解決 (Solved)** 的決策問題；$n$ 是輸入編碼長度，$k$ 是固定常數。
         
     - **特徵**：被視為「易解的」或「有效率的」(Tractable/Efficient)。
         
 - **Class NP (Non-deterministic Polynomial Time)**
     
-    - **定義**：能夠在多項式時間 $O(n^k)$ 內被**驗證 (Verified)** 的問題。
+    - **定義**：對於答案為 Yes 的實例，存在長度為輸入規模多項式的 Certificate，且能在多項式時間內被**驗證 (Verified)** 的決策問題；No-instance 不能有任何 Certificate 通過驗證。
         
     - **關係**：$P \subseteq NP$。
         
@@ -34,7 +34,7 @@ blog_topic: 演算法
 
 - **什麼是「難」問題 (Hard Problem)**
     
-    - 目前沒有已知的多項式時間演算法可以解決（例如：K-colorability, Knapsack problem）。
+    - 「目前沒有已知的多項式時間演算法」不等於 NP-hard 的定義；NP-hard 必須透過歸約等方式證明。例如固定 $k \geq 3$ 的圖著色決策問題與 0/1 Knapsack 決策問題是 NP-complete，但 2-colorability 屬於 P。
         
     - **多項式時間歸約 (Polynomial-time reduction)**：這是判斷難度的核心方法。
         
@@ -75,7 +75,7 @@ blog_topic: 演算法
     
     - **若 $P \neq NP$**：P 是 NP 內的一個小圓圈，NPC 與 P 完全不重疊（這是主流觀點）。
         
-    - **若 $P = NP$**：P、NP、NPC 三者邊界消失，全部重疊在一起。
+    - **若 $P = NP$**：所有 NP 問題都能在多項式時間內解決，NP-complete 問題也包含在內。嚴格來說，NPC 不等於整個 P／NP，因為永遠回答 Yes 或永遠回答 No 的兩個平凡語言不是 NP-complete。
         
 
 ## 4. 不可判定性 (Undecidability) 與 停機問題
@@ -108,7 +108,7 @@ blog_topic: 演算法
 ## 5. 複雜度層級總結 (The Hierarchy)
 
 ![[Assets/Note/Research/Complexity Classes and P vs NP/02-5. 複雜度層級總結 (The Hierarchy).png|400]]
-根據計算資源與可判定性，由內而外（由簡入難）的同心圓層級關係：
+計算資源類別有包含關係 $P \subseteq NP \subseteq PSPACE \subseteq EXPTIME \subseteq Decidable \subseteq Recognizable$，但不能假定每一層都已證明是嚴格包含。不可判定問題則不是包含這些類別的最外層：
 
 1. **P** (Polynomial Time)：最內層，多項式時間可解。
     
@@ -122,4 +122,6 @@ blog_topic: 演算法
     
 6. **Recognizable** (Recursively Enumerable)：可識別問題，若答案為 Yes 可停機，若為 No 可能無窮迴圈。
     
-7. **Undecidable**：最外層，無法用演算法解決的問題（如 Halting Problem）。
+7. **Undecidable**：不屬於 Decidable 的問題。部分仍是 Recognizable（如 Halting Problem），部分連 Recognizable 都不是，因此不能畫成包含以上所有類別的外圈。
+
+決策與最佳化的區別見 [[Reduction & Problem Types]]；證明流程見 [[Proving NP-Completeness]]；WVC、TSP 與 MAX-CUT 的應用見 [[Approximation Algorithm]]。

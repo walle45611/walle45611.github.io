@@ -67,6 +67,7 @@
 [[Reduction & Problem Types]]
 [[Proving NP-Completeness]]
 [[NP-C常見的問題]]
+[[Approximation Algorithm]]
 
 ### ML
 [[K-means Clustering]]

@@ -57,7 +57,7 @@ $L \in \text{NP-Complete} \iff (L \in \text{NP}) \text{ 且 } (L \in \text{NP-ha
 
 - **目標**：證明存在 certificate $y$ 與 verification algorithm $V$，使得對所有輸入 $x$：
     
-    - 若 $x \in L$（YES instance），則存在某個 $y$ 讓 $V(x,y)=1$。
+    - 若 $x \in L$（YES instance），則存在長度為 $|x|$ 多項式的 $y$ 讓 $V(x,y)=1$；若 $x \notin L$（NO instance），則不能有任何 $y$ 通過驗證。
         
     - $V(x,y)$ 的執行時間是 polynomial time（多項式時間）。
         
@@ -108,7 +108,7 @@ $L \in \text{NP-Complete} \iff (L \in \text{NP}) \text{ 且 } (L \in \text{NP-ha
 
 ### 結論
 
-若第 3 點完成（$L \in \text{NP}$），且第 4 點完成（$C \le_p L \Rightarrow L$ NP-hard），則可推出 $L$ 是 NP-Complete。
+先證明 $L \in \text{NP}$，再完成以上四步，建立 $C \le_p L$ 且 $C$ 是已知 NPC 問題，才能推出 $L$ 是 NP-Complete。
 
 ---
 
@@ -118,8 +118,10 @@ $L \in \text{NP-Complete} \iff (L \in \text{NP}) \text{ 且 } (L \in \text{NP-ha
 
 $$Known\ NPC\ Problem\ (A) \xrightarrow{Reduction\ f} New\ Problem\ (B)$$
 
-- **正確**：$A \le_p B$ (證明 $B$ 至少跟 $A$ 一樣難 $\to$ $B$ 是 NPC)。
+- **正確**：已知 $A$ 是 NPC，證明 $A \le_p B$ 可推出 $B$ 是 NP-hard；再證明 $B \in NP$，才得到 $B$ 是 NPC。
     
-- **錯誤**：$B \le_p A$ (這只能證明 $B$ 屬於 NP，無法證明 $B$ 很難)。
+- **方向不足**：若已知 $A \in NP$，則 $B \le_p A$ 可推出 $B \in NP$，但無法單憑這個歸約證明 $B$ 是 NP-hard。
 ## 4. 一些經典問題的 reduction 方向 
 ![[Assets/Note/Research/Proving NP-Completeness/03-4. 一些經典問題的 reduction 方向.png]]
+
+WVC 與 Metric TSP 的完整例子見 [[Approximation Algorithm]]。NP-complete 證明說明問題難度；近似比證明則說明演算法的解品質，兩者要分開。

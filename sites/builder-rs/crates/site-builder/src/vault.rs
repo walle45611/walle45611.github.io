@@ -279,6 +279,7 @@ fn convert_format(body: &str) -> Result<String> {
 fn normalize_math(body: &str) -> Result<String> {
     let mut output = Vec::<String>::new();
     let mut in_math = false;
+    let list_prefix = Regex::new(r"^[ \t]*(?:[-+*]|[0-9]+[.)])[ \t]+")?;
     let mut active_fence: Option<char> = None;
     for line in body.lines() {
         if let Some((symbol, _)) = fence(line) {
@@ -311,7 +312,26 @@ fn normalize_math(body: &str) -> Result<String> {
         if !before.trim().is_empty() {
             output.push(before.trim_end().to_string());
         }
-        output.push("$$".to_string());
+        // A display formula must stay inside its surrounding list item.
+        // For an opening delimiter after list text, use the item's content column.
+        let prefix = if !in_math && !before.trim().is_empty() {
+            list_prefix.find(before).map_or_else(
+                || before.chars().take_while(|ch| ch.is_whitespace()).collect(),
+                |prefix| {
+                    let columns = prefix.as_str().chars().fold(0, |column, ch| {
+                        if ch == '\t' {
+                            column + 4 - column % 4
+                        } else {
+                            column + 1
+                        }
+                    });
+                    " ".repeat(columns)
+                },
+            )
+        } else {
+            before.chars().take_while(|ch| ch.is_whitespace()).collect()
+        };
+        output.push(format!("{prefix}$$"));
         if !after.trim().is_empty() {
             output.push(if in_math {
                 after.trim_end().to_string()
@@ -460,6 +480,43 @@ pub fn load_articles(vault: &Path, assets_dir: &Path) -> Result<Vec<Article>> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn display_math_preserves_nested_list_explanations() {
+        // Hashing uses tabs plus spaces; Heap uses tabs at both list levels.
+        for (indent, child_indent) in [("\t", "\t    "), ("\t", "\t\t"), ("    ", "        ")] {
+            let markdown = format!(
+                "- 範例\n\n{indent}- 計算：\n{child_indent}$$\n{child_indent}\\frac{{n}}{{m}} = 0.6\n{child_indent}$$\n\n{indent}- 解讀：填滿 $60\\%$。\n\n- 下一節\n"
+            );
+            let html = render_markdown_to_html(&normalize_math(&markdown).unwrap());
+            assert!(!html.contains("<pre"), "{html}");
+            assert!(
+                html.contains("<p>解讀：填滿 <span class=\"math-tex\">"),
+                "{html}"
+            );
+            let formula = html.find("math-display").unwrap();
+            let explanation = html.find("<p>解讀").unwrap();
+            assert!(
+                html[formula..explanation].contains("</div>\n</li>"),
+                "{html}"
+            );
+            assert_eq!(html.matches("<ul>").count(), 2, "{html}");
+        }
+    }
+
+    #[test]
+    fn display_math_after_list_text_keeps_proof_and_following_item() {
+        let markdown = "- 定理\n\n    - **證明：** $$\\begin{aligned}\n        a &= b \\\\\n\n        c &= d\n        \\end{aligned}$$\n\n    - 性質：成立。\n";
+        let html = render_markdown_to_html(&normalize_math(markdown).unwrap());
+        assert!(!html.contains("<pre"), "{html}");
+        assert!(html.contains("<li>\n<p>性質：成立。</p>\n</li>"), "{html}");
+        assert!(html.contains("\\begin{aligned}"), "{html}");
+        assert!(html.contains("\\end{aligned}"), "{html}");
+        assert!(!html.contains("$$"), "{html}");
+        let formula = html.find("math-display").unwrap();
+        let property = html.find("<p>性質").unwrap();
+        assert!(html[formula..property].contains("</div>\n</li>"), "{html}");
+    }
 
     #[test]
     fn classification_uses_only_blog_metadata_and_validates_types() {

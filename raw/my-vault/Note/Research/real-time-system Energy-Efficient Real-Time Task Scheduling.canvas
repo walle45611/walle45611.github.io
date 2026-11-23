@@ -1,14 +1,6 @@
 {
-	"nodes": [
-		{
-			"id": "5d5a99f5990d9983",
-			"x": -240,
-			"y": -220,
-			"width": 400,
-			"height": 258,
-			"type": "file",
-			"file": "Assets/Note/Research/real-time-system Energy-Efficient Real-Time Task Scheduling/01-real-time-system Energy.png"
-		}
+	"nodes":[
+		{"id":"5d5a99f5990d9983","type":"file","file":"raw/my-vault/Maps/作業系統 Overview.md","x":-240,"y":-220,"width":400,"height":258}
 	],
-	"edges": []
+	"edges":[]
 }

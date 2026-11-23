@@ -27,7 +27,7 @@ blog_topic: Networking
     - loopback : 用介面的迴路檢測
     - pagp-flap : 偵測etherchannel狀態協議不一致
     - pppoe-ia-rate-limit : 偵測pppoe relay的速率限制所發生的錯誤
-    - psecure-violatin : 偵測有關SW安全性觸發條件
+    - psecure-violation : 偵測到 port security 違規
     - psp : 偵測有關協定風暴保護的錯誤
     - security-violation : 偵測有關802.1X安全錯誤
 - 錯誤狀態自動恢復
@@ -48,6 +48,8 @@ blog_topic: Networking
         - 當偵測到PoE錯誤停用，1 hr重新啟用
             
             ```Plain
-            Switch(config)#errdiable recovery cause inline-power
-            Switch(config)#errdiable recovery interval 3600
+            Switch(config)#errdisable recovery cause inline-power
+            Switch(config)#errdisable recovery interval 3600
             ```
+
+可用的偵測原因與恢復原因依交換器型號及 IOS/IOS XE 版本而異；請用裝置的 CLI 說明確認支援項目。port-security 的恢復原因名稱為 psecure-violation。

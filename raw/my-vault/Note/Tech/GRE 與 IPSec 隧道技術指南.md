@@ -9,6 +9,8 @@ blog_topic: Networking
 
 ## GRE Over IPSec
 
+本篇設定是舊式 IOS CLI 教學範例，使用 IKEv1、DH group 2 與 ESP 3DES。Cisco 已不建議使用 3DES 和 DH group 2；在部分新版 IOS XE 中，弱演算法已停用。新部署應依平台文件選擇支援的 IKEv2、AES、SHA-256 與 DH group 14 或更高組態。參考：[Cisco IPsec guidance](https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/sec-vpn/b-security-vpn/m_sec-cfg-vpn-ipsec-0.html)。
+
 ### 理論概念
 
 GRE Over IPSec 是把 IPSec 在最外面，意思就是在 R1 和 R2 建立 IPSec tunnel，把 GRE tunnel 加密。Routing Protocol 在 GRE Tunnel 裡面完成 Route 交換，最後 Data 在 GRE Tunnel 裡面傳送，所以 Routing Protocol 和 Data 都會被加密。
@@ -168,7 +170,7 @@ router eigrp 1
 
 ### 理論概念
 
-把 GRE 放在最外面，R1 與 R2 建立 GRE Tunnel，在 GRE Tunnel 裡面建立 IPSec。由於 IPSec 沒辦法支援組播，因此通常把 Routing Protocol 建立在 GRE tunnel 進行交換，沒有加密，只有在 Data 有經過 IPSec tunnel 加密。如堅持把 Routing 放入到 IPSec tunnel 中可以使用單播建立鄰居，如果這樣設定會很痛苦，因為要自己設定鄰居。
+IPSec over GRE 是先建立 GRE tunnel，再在 tunnel 介面上對符合 crypto ACL 的流量套用 IPsec。本範例的 ACL 只選取兩端 loopback 之間的單播資料，因此 EIGRP 組播封包仍由 GRE 承載，但不會被這條 IPsec policy 加密。傳統 IOS crypto-map 組態對組播的支援有限；若需要保護組播路由流量，常見作法是 GRE over IPsec，實際能力仍依平台和 IPsec 功能而異。
 
 ![[Assets/Note/Tech/GRE 與 IPSec 隧道技術指南/02-理論概念.png]]
 
@@ -328,10 +330,10 @@ interface: Tunnel0
 
 |特性|GRE Over IPSec|IPSec Over GRE|
 |---|---|---|
-|**加密範圍**|Routing Protocol + Data|僅 Data|
+|**加密範圍**|GRE tunnel 承載的路由與資料流量|由 crypto ACL 選取；本範例只加密 loopback 間的資料|
 |**設定複雜度**|中等|較複雜|
 |**效能**|較低（雙重封裝）|較高|
-|**路由協定支援**|完全支援組播|完全支援組播|
+|**路由協定支援**|GRE 可承載組播路由封包；本範例由 IPsec 保護 GRE 封包|GRE 可承載組播；本範例的 EIGRP 組播不在 IPsec ACL 中，因此不加密|
 |**建立順序**|先 IPSec，後 GRE|先 GRE，後 IPSec|
 |**使用場景**|需要完全加密時|僅需資料加密時|
 
@@ -377,5 +379,8 @@ debug crypto isakmp
     - 確認網路宣告正確
 
 ## 參考資料
+
+- [Cisco GRE over IPsec](https://www.cisco.com/c/en/us/td/docs/switches/lan/c9000/lyr3-fwd/gre/gre-configuration-guide/m-gre-over-ipsec.html)
+- [Cisco IPsec configuration guidance](https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/sec-vpn/b-security-vpn/m_sec-cfg-vpn-ipsec-0.html)
 
 > [!info] 延伸閱讀 詳細的技術比較和實作範例，請參考： https://www.jannet.hk/gre-over-ipsec-vs-ipsec-over-gre-zh-hant/

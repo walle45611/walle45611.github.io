@@ -26,7 +26,7 @@ blog_topic: Networking
     
     ```Plain
     R1(config)#logging monitor
-    R1(config)#terminal monitor
+    R1#terminal monitor
     ```
     
 - 比賽常出現，可以關閉log顯示在螢幕上，防止打斷打指令
@@ -48,15 +48,15 @@ blog_topic: Networking
     
     ```Plain
     R1(config)#logging buffered
-    R1#show logging EXEC
+    R1#show logging
     ```
     
-- 另一種常見的作法是讓所有裝置把他們的log訊息儲存到syslog server上，RFC 5424定義了syslog協定，讓路由器交換這類的裝置可以利用UDP協定傳送到syslog server加以儲存，也可以利用web介面更方便的查詢log訊息
+- 另一種常見作法是將設備的訊息送到 syslog server。RFC 5424 定義 syslog 訊息格式，並未規定傳輸層；RFC 5426 定義 UDP 傳輸，RFC 5425 則定義 TLS 傳輸。設備可用的傳輸方式依平台與版本而異。
     
     ![[Assets/Note/Tech/Cisco Syslog 設定/02-儲存log以便事後檢視.png|02-儲存log以便事後檢視.png]]
     
     ```Plain
-    R1(config)#loggin {address|hostname}
+    R1(config)#logging host {ip-address | hostname}
     R1(config)#logging trap severity
     ```
     
@@ -77,7 +77,7 @@ IOS定義了log訊息格式。一開始與訊息有關的某些資料欄位後�
 - 訊息助記符號 : UPDOWN
 - 訊息說明 : Line protocol on Interface Ethernet0/0, changed state to up
 
-我們可以自訂一些訊息內容例如時間戳記(default open)或是log序列號(default close)
+可以設定訊息時間戳記與序列號；預設值依平台和版本而異。
 
 ```Plain
 R1(config)#no service timestamps
@@ -96,16 +96,16 @@ SW(config)#service timestamps log datetime [localtime] [show-timezone] [msec] [y
     
     |關鍵字|等級|說明|
     |---|---|---|
-    |警報 (emergencies)|0 嚴重|需要立即處理|
-    |緊急 (alerts)|1 嚴重|系統無法使用|
-    |重大 (Critical)|2 有影響|重大事件 (最高為3)|
-    |錯誤 (Error)|3 有影響|重大事件 (中間為3)|
-    |警告 (Warring)|4 有影響|重大事件 (最低為3)|
-    |提醒 (notifications)|5 正常|正常，比較重要|
-    |資訊 (informational)|6 正常|正常，不太重要|
-    |除錯 (debugging)|7 除錯|使用者要求除錯|
+    |Emergency|0|系統無法使用|
+    |Alert|1|必須立即採取動作|
+    |Critical|2|嚴重狀況|
+    |Error|3|錯誤狀況|
+    |Warning|4|警告狀況|
+    |Notice|5|正常但重要的狀況|
+    |Informational|6|資訊訊息|
+    |Debugging|7|除錯訊息|
     
-    等級為**有影響**的代表並非非常急迫的事件，通常常見的有介面異常down的log訊息會顯示嚴重等級為3的訊息
+    數字越小代表嚴重程度越高。Cisco 的訊息代碼可能使用不同等級，請以實際事件定義為準。
     
 - 設定每個log服務的紀錄訊息等級
     
@@ -128,3 +128,5 @@ SW(config)#service timestamps log datetime [localtime] [show-timezone] [msec] [y
     ```Plain
     R1#show logging
     ```
+
+參考：[RFC 5424：Syslog Protocol](https://www.rfc-editor.org/rfc/rfc5424.html)、[RFC 5426：Syslog over UDP](https://www.rfc-editor.org/rfc/rfc5426.html)、[RFC 5425：Syslog over TLS](https://www.rfc-editor.org/rfc/rfc5425.html)。

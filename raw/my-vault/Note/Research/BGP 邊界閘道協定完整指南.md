@@ -107,7 +107,7 @@ BGP 會使用 TCP 在 BGP 鄰居之間傳送訊息，使用 port 179。BGP 路�
 
 兩台 BGP 路由器互相傳送 BGP 訊息，對參數一一檢查，以判斷兩台是否要成為鄰居。如果都檢查對了，就會成為 BGP peer（也就是鄰居），之後就可以交換路由資訊。
 
-> [!warning] 重要限制 在建立 BGP peer 時需要有一方的路由是明細路由，兩邊都是預設路由是無法建立 BGP peer
+> [!info] 鄰居可達性 建立 BGP peer 的必要條件是能以 IP 到達設定的 neighbor address；可由直連、靜態或預設路由提供可達性，因此不要求先有特定明細路由。直接相連的 eBGP 鄰居預設使用一跳 TTL；以 loopback 或多跳建立時，需依拓樸設定 eBGP multihop 並確認回程路由。
 
 ![[Assets/Note/Research/BGP 邊界閘道協定完整指南/04-觀念說明.png]]
 
@@ -320,16 +320,15 @@ network 4.4.4.4 mask 255.255.255.255
 
 #### 2. Redistribute 重分發
 
-- 將 OSPF 重分發進 BGP 時，預設只能將 internal 的重分發進 BGP
+- 配置 OSPF 到 BGP 的重分發時，IOS 的預設 match 類型是 internal；若要納入其他 OSPF 外部路由，需依需求指定 match 類型並使用 route-map 篩選。
     - **解決辦法**：
         
         ```cisco
         redistribute ospf 1 match internal external 1 external 2 nssa-external 1 nssa-external 2
         ```
         
-- 預設情況 eBGP 的路由重分發進 IGP
-    - **原因**：因為 iBGP 建立時就應該要有路由，如果沒有路由就沒辦法建立 TCP 連線，所以 eBGP 的路由才會重分發到 IGP
-- 重分發進 OSPF 或 EIGRP 時，會將 AS-path 中最前面一個 ASN 作為 TAG
+- 只有在明確設定 BGP 到 IGP 的 redistribute 後，路由才會被重分發。預設允許重分發 eBGP 路由；iBGP 路由通常不會重分發，若啟用需額外設定且小心路由迴圈。
+- 重分發時的 route tag 預設與協定及平台有關；若要以 tag 防止回饋，請明確設定並驗證 tag 值，不要假設它一定等於 AS-path 的第一個 ASN。
 
 #### 3. 下發
 
@@ -397,9 +396,11 @@ R1#show ip bgp neighbors 1.1.1.1 received-routes
 
 ### 概念說明
 
-- BGP 的 next hop 並不意味著下一台路由器，而是到下一個 AS 的 IP 地址
+- BGP NEXT_HOP 是到達該前綴時應使用的下一跳路由器 IP，不一定是下一個 AS 的位址。
 - **eBGP**：預設 next-hop 為發送更新的鄰居路由器 IP 地址
 - **iBGP**：從 eBGP 傳來的 next-hop 屬性在 iBGP 中保持不變傳遞下去
+
+參考：[RFC 4271 BGP-4 的 NEXT_HOP 定義](https://www.rfc-editor.org/rfc/rfc4271.html)。
 
 這個也是屬於 BGP 的屬性之一，是因為在 BGP 傳遞路由時會把自己的外部介面 IP 通告成 next hop，但是在 eBGP 因為兩個是 connected 的鏈路所以可以正常溝通，但是內部的 peer 不知道怎麼到達 eBGP 鄰居，所以就可以將內部向外部 AS 的設備設定為 next hop self，這樣 iBGP peer 就會知道 next hop 可以先經過內部向外部 AS 的設備。
 
@@ -624,6 +625,10 @@ router bgp 65100
 ```
 
 ## Synchronization (同步規則)
+
+Synchronization 是為了避免 AS 內不執行 BGP 的路由器尚未學到路由時，BGP 就把該路由通告到外部。它是舊式設計；Cisco IOS 將此功能預設關閉，現代網路通常以適當的 IGP 路由設計處理內部可達性。只有在理解其限制且平台仍支援時，才考慮啟用。
+
+參考：[Cisco BGP synchronization command](https://www.cisco.com/c/en/us/td/docs/ios/iproute_bgp/command/reference/irg_bgp5.pdf)、[Cisco BGP 路由重分發說明](https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/5242-bgp-ospf-redis.html)。
 
 ### 路由黑洞問題
 

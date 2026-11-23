@@ -771,10 +771,10 @@ area number filter-list prefix name {in | out}
 	
     ```Plain
     R2(config)#ip prefix-list filter-into-area-0 seq 5 deny 10.16.2.0/23 ge 24 le 24
-    R2(config)#ip prefix-list filter-into-arae-0 seq 10 premit 0.0.0.0/0 le 32
+    R2(config)#ip prefix-list filter-into-area-0 seq 10 permit 0.0.0.0/0 le 32
     !
     R2(config)#router ospf 1
-    R2(config-router)#area 34 filter-list prefix filter-ito-area-0 out
+    R2(config-router)#area 34 filter-list prefix filter-into-area-0 out
     ```
     
     ![[Assets/Note/Research/OSPFv2 與 OSPFv3 全面整理：原理、流程、LSA 類型與實作案例/36-case.png|36-case.png]]

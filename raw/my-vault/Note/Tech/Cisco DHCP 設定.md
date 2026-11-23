@@ -27,7 +27,7 @@ blog_topic: Networking
     SW(config)#ip dhcp pool pool-name
     SW(dhcp-config)#network ip-address subnet-mask
     SW(dhcp-config)#default-router ip-address [ip-address2]
-    SW(dhcp-config)#lease {infininte | {days [hours [min]]}}
+    SW(dhcp-config)#lease {days [hours [minutes]] | infinite}
     SW(dhcp-config)#exit
     ```
     
@@ -129,5 +129,5 @@ R1(config-if)#ipv6 enable
 ### DHCPv6 Relay
 
 ```Plain
-SW(config-if)#ipv6 dhcp relayu destination ipv6-address
+SW(config-if)#ipv6 dhcp relay destination ipv6-address
 ```

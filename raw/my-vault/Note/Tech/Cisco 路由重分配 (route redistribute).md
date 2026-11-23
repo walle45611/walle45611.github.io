@@ -63,16 +63,16 @@ blog_topic: Networking
 
 ---
 
-## redistrbute type
+## redistribute type
 
-### redistrbute直連路由
+### redistribute 直連路由
 
 - 所有直連接口，物理狀態up protocol up的情況才會重發布
 - 當我不想要在R1上連接switch的介面上設定路由，有可能是因為設定動態路由協定會發送hello太佔網路頻寬或是其他考慮不設定靜態路由，就可以使用這個方法
     
     ![[Assets/Note/Tech/Cisco 路由重分配 (route redistribute)/02-redistrbute直連路由.png|02-redistrbute直連路由.png]]
     
-- 這樣connected ，當L3SW redistrbute所有connected 介面時會把所有路由注入到自己的routing table中
+- 當 L3SW 執行 redistribute connected 時，會將符合條件的直連路由注入其他路由協定。
 
 ![[Assets/Note/Tech/Cisco 路由重分配 (route redistribute)/03-redistrbute直連路由.png|03-redistrbute直連路由.png]]
 
@@ -80,14 +80,14 @@ blog_topic: Networking
     
     ```Plain
     R1(config)#router ospf 1
-    R1(config)#redistrbute connected ....
+    R1(config-router)#redistribute connected
     ```
     
 
-### redistrbute動態路由
+### redistribute 動態路由
 
 - 當路由表內有該協議的路由訊息才會被重發布
-- redistrbute 到 OSPF
+- redistribute 到 OSPF
     
     - command
         
@@ -207,7 +207,7 @@ blog_topic: Networking
 
 ---
 
-### redistrbute靜態路由
+### redistribute 靜態路由
 
 - 可以用在這種情況，可能某些路由沒有對應的動態路由協定時可以使用這種方式將static發布到OSPF區域內
     
@@ -217,7 +217,7 @@ blog_topic: Networking
     
     ```Plain
     R1(config)#router ospf 1
-    R1(config)#redistrbute static ....
+    R1(config-router)#redistribute static
     ```
     
 
@@ -266,7 +266,7 @@ blog_topic: Networking
 
 ![[Assets/Note/Tech/Cisco 路由重分配 (route redistribute)/26-case 1.png|26-case 1.png]]
 
-- redistrbute 到 EIGRP
+- redistribute 到 EIGRP
     - command
         
         ```Plain
@@ -288,18 +288,18 @@ blog_topic: Networking
         |tag|表示要將指數值只配給重分配的路徑，tag可以跟route-map給出的tag去做比對|
         |route-map|表示要參數照到某個route-map並透過對比來過濾路徑|
         
-    - methob 1 指定某條
+    - method 1：在 redistribute 命令上指定這次重分配使用的 metric
         
         ```Plain
         RD1(config)#router eigrp 1
-        RD1(config-router)#redistrbute ospf 1 metric 1544 2000 255 1 1500 
+        RD1(config-router)#redistribute ospf 1 metric 1544 2000 255 1 1500
         ```
         
-    - methob 2 全部
+    - method 2：以 default-metric 設定重分配路由的預設 metric
         
         ```Plain
         RD1(config)#router eigrp 1
-        RD1(config-router)#redistrbute ospf 1 
+        RD1(config-router)#redistribute ospf 1
         RD1(config-router)#default-metric 1544 2000 255 1 1500 
         ```
         
@@ -313,8 +313,8 @@ blog_topic: Networking
         
         ![[Assets/Note/Tech/Cisco 路由重分配 (route redistribute)/29-case 1.png|29-case 1.png]]
         
-- redistrbute 到 OSPF
-    - methob
+- redistribute 到 OSPF
+    - command
         
         ```Plain
         RD1(config)#router ospf 1

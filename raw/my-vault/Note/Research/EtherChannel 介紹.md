@@ -9,47 +9,30 @@ blog_topic: Networking
 
 ## 概觀
 
-在很多的時候要做冗餘的設計，也就是多拉幾條線，但是這樣STP會把路徑blocking掉造成花費更多的錢買更多高級的線材就只是為了冗餘(Redundancy)的設計，這樣有點浪費了，所以有了ehterchannel這項技術的時候就可以將多條線邏輯成一條線路並將所有線材的STP status從blocking轉到forwarding狀態，這樣不只線材損壞時有多的備用路徑，還可以有更大的BW。
+EtherChannel 將多條實體連線組成一個邏輯連線，讓 STP 將整個 port-channel 視為一條路徑，而不是把每條平行連線分開阻擋。只要成員連線正常，流量可分散到多條鏈路；若 port-channel 本身被 STP 阻擋，成員鏈路也不會因此全部轉為 forwarding。
 
 ## EtherChannel限制
 
-一般來說，必須是屬於通一個VLAN或是trunk的交換port必須楚瑜在trunking mode，且必須要有相同的navtive vlan。每個交換port在aggregate的時候speed和duplex需要一樣才能設定成功。
+成員埠的設定必須相容。Access 埠需屬於相同 VLAN；Trunk 埠需使用相容的 trunk 設定（包括 native VLAN 與允許 VLAN）。成員埠的速度和 duplex 也需一致；具體限制依平台而異。
 
 ## EtherChannel流量分配
 
-在EtherChannel中的資料以特定的方式在鏈路之間的分配，而是以hash演算法的結果，但附載並不需要等量的負載均衡，hash演算法可以採用source ip，或是destination ip，source ip and destination ip，source mac address、destination address組合或是TCP/UDP通訊編號。
-
-若hash僅使用一個位置或通訊port，則交換器使用hash vlaue一個以上的LSB當作索引，並以索引每個訊框轉送至連結鏈路，使用兩個位址或port number計算hash則switch或TCP/UDP port number一個以上的LSB做XOR運算，將運算結果作為引索，並據此將每個data轉送到對應的鏈路
-
-EtherChannel需要一個位元作為index。引索為0，則選擇鏈路0若為1則使用鏈路1。
-
-間單來說就是幾個線路做成一個channel，如果是兩個做成一個channel表示只需要一位做xor，如果是4條線代表需要2位做xor，但是如果有其他設備干擾的話，最後1位的0與1來平均分配
-
-|二進位| |
-|---|---|
-|位址 1: …..xxxxxxx0 位址 2: …..xxxxxxx0|…..xxxxxxx0 : 使用鏈路0|
-|位址 1: …..xxxxxxx0 位址 2: …..xxxxxxx1|…..xxxxxxx1 : 使用鏈路1|
-|位址 1: …..xxxxxxx1 位址 2: …..xxxxxxx0|…..xxxxxxx1 : 使用鏈路1|
-|位址 1: …..xxxxxxx1 位址 2: …..xxxxxxx1|…..xxxxxxx0 : 使用鏈路0|
+交換器會依平台支援的欄位計算雜湊，為每個流量選擇一條成員鏈路。常見欄位包括來源/目的 MAC、IP 或 TCP/UDP port。這是依流量計算的分配方式，不保證每條鏈路的負載平均；雜湊欄位與演算法細節依平台而異。
 
 ## EtherChannel load-balance設定
 
-|method vlaue|hash input|hash運算|交換型號|
-|---|---|---|---|
-|src-ip|來源IP|位元|all|
-|dst-ip|目的地IP|位元|all|
-|src-dst-ip|來源與目的地IP|xor|all|
-|src-mac|來源mac address|位元|all|
-|dst-mac|目的地Mac addresss|位元|all|
-|src-dst-mac|來源與目的地MAC|xor|all|
-|src-port|來源port編號|位元|4500、6500|
-|dst-port|目的port number|位元|4500、6500|
-|src-dst-port|來源與目的port|xor|4500、6500|
+|常見選項|參與雜湊的欄位|
+|---|---|
+|src-ip、dst-ip、src-dst-ip|來源和/或目的 IP|
+|src-mac、dst-mac、src-dst-mac|來源和/或目的 MAC|
+|src-port、dst-port、src-dst-port|來源和/或目的 TCP/UDP port（僅部分平台支援）|
+
+命令選項會依交換器型號和軟體版本而異，設定前請查看該設備的 CLI 說明。
 
 - 設定方式
     
     ```Plain
-    Switch(config)#port-channel load-balance methob
+    Switch(config)#port-channel load-balance src-dst-ip
     ```
     
 - 查看方式
@@ -65,11 +48,11 @@ EtherChannel需要一個位元作為index。引索為0，則選擇鏈路0若為1
 
 如果設定完成後，會有Po這個新的邏輯介面，這個接面做設定會動態的給實體介面。
 
-| |被動，直到要求建立|主動建立通道|是否有協商封包|使否是公開標準|
+| |被動，直到要求建立|主動建立通道|是否有協商封包|是否為公開標準|
 |---|---|---|---|---|
 |LACP|passive|active|yes|yes|
 |PAgP|auto|desirable|yes|no cisco 私有|
-|on|N/A|N/A|no||
+|on|N/A|N/A|no|N/A|
 
 ### PAgP
 
@@ -81,20 +64,20 @@ EtherChannel需要一個位元作為index。引索為0，則選擇鏈路0若為1
 - command
     
     ```Plain
-    Switch(config)#interface type member/module/number
-    Switch(config-if)#channel-protocol pagp
-    Switch(config-if)#channel-protocol number mode {no | {{auto | desirable} [non了
+    Switch(config)#interface range GigabitEthernet1/0/1-4
+    Switch(config-if-range)#channel-protocol pagp
+    Switch(config-if-range)#channel-group number mode {auto | desirable}
     ```
     
 - example
     
-    這樣代表了 g1/0/1-4做成pagp的通道，且模式是desirable 且不聆聽等待silent夥伴
+    這會將 g1/0/1-4 加入 PAgP channel-group 1，並使用 desirable 模式。
     
     ```Plain
     SW(config)#port-channel load-balance src-dst-port
     SW(config)#interface range gig 1/0/1-4
-    SW(config-if)#channel-protocol pagp
-    SW(config-if)#channel-group 1 mode desirable non-silent
+    SW(config-if-range)#channel-protocol pagp
+    SW(config-if-range)#channel-group 1 mode desirable
     ```
     
 
@@ -105,27 +88,27 @@ EtherChannel需要一個位元作為index。引索為0，則選擇鏈路0若為1
 |Active|V|V|
 |Passive|V|X|
 
-priority預設是32768最高可以到65535，priority越低用高優先權，最多支持16條線其中8條會hot standby，
+LACP system priority 預設為 32768，數值越低代表優先權越高。Cisco 常見 CLI 的 port priority 範圍為 1–65535，預設 32768；平台行為仍須查該機型文件。部分 Catalyst 平台的 LACP channel 最多可設定 16 條相容鏈路，其中最多 8 條同時 active，其餘作為 hot standby；其他平台限制可能不同。
 
 - command
     
     ```Plain
     SW(config)#lacp system-priority priority
-    SW(config)#interface type member/modul/number
-    SW(config-if)#channel-protocol lacp
-    SW(confgi-if)#channel-group number mode {on | passive | active}
-    SW(config-if)#lacp prot-priority priority
+    SW(config)#interface range GigabitEthernet1/0/1-4
+    SW(config-if-range)#channel-protocol lacp
+    SW(config-if-range)#channel-group 1 mode active
+    SW(config-if-range)#lacp port-priority 100
     ```
     
 - 範例
     
     ```Plain
     SW(config)#lacp system-priority 100
-    SW(config)#interface range gig 1/0/1-4 ，gig 2/0/1-4
-    SW(config-if)#channel-protocol lacp
-    SW(config-if)#channel-group 1 mode active
-    SW(config-if)#lacp port-priority 100
-    SW(config-if)#exit
+    SW(config)#interface range GigabitEthernet1/0/1-4, GigabitEthernet2/0/1-4
+    SW(config-if-range)#channel-protocol lacp
+    SW(config-if-range)#channel-group 1 mode active
+    SW(config-if-range)#lacp port-priority 100
+    SW(config-if-range)#exit
     ```
     
 
@@ -133,13 +116,14 @@ priority預設是32768最高可以到65535，priority越低用高優先權，最
 
 ## EtherChannel error
 
-假設有兩台switch和Switch a and Switch b，兩台都設定了etherChannel，但是插錯兩個介面，可能會產生bridge loop，因為STP設定不同調，為了降低錯誤預設系統中有開etherchannel guard
+若兩端 EtherChannel 成員或設定不一致，可能造成迴圈或轉送異常；EtherChannel misconfiguration guard 可偵測部分此類錯誤，實際支援與預設行為依平台而異。
 
 ```Plain
-sw(config)# [no] spanning-tree etherchannel guard missconfig
+sw(config)#spanning-tree etherchannel guard misconfig
+sw(config)#no spanning-tree etherchannel guard misconfig
 ```
 
-可以使用show interface status err-disable查看當前有沒有錯誤的port，如果發現可以使用，sh no sh重啟介面
+可使用 show interfaces status err-disabled 檢查進入 err-disabled 的埠；排除原因後，在介面設定模式執行 shutdown，再執行 no shutdown 重新啟用。
 
 ---
 
@@ -154,3 +138,5 @@ sw(config)# [no] spanning-tree etherchannel guard missconfig
 |每個switch port使用的load balance索引|show etherchannel port-channel|
 |每個switch port上 etherChannel neighbor|show { lacp \| pagp } neighbor|
 |LACP系統ID|show lacp sys-id|
+
+參考：[Cisco IOS XE EtherChannel guide](https://www.cisco.com/c/en/us/td/docs/switches/lan/c9000/lyr2-fwd/etherchannel/etherchannel-configuration-guide/etherchannels.html)。

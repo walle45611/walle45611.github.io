@@ -10,16 +10,16 @@ blog_topic: Networking
 ## 設定時間及時區
 
 - 日光節約時間DST一種在夏季月份犧牲正常的日出時間，而將時間調快的做法。通常使用夏令時間的地區，會在接近春季開始的時候，將時間調快一小時，並在秋季調回正常時間。實際上，夏令時間會造成在春季轉換當日的睡眠時間減少一小時，而在秋季轉換當日則會多出一小時的睡眠時間。
-- 在設定NTP前應該要先將此設備較時，和把時區設定相同，這樣效果較佳，假設設定的時間為8.25 p.m.要先設定時區，甚至要告訴其DST，才啟用NTP
+- NTP 的同步不要求各設備使用相同的顯示時區。Cisco IOS 以 UTC 作為內部時間基準；時區與夏令時間設定用於顯示本地時間。若沒有有效的時間來源，才用 clock set 設定軟體時鐘。
     
     ```Plain
     R1(config)#clock timezone EST -5
-    R1(config)#clock summer-time EST recurring
+    R1(config)#clock summer-time EDT recurring 2 Sunday March 2:00 1 Sunday November 2:00
     R1#clock set 20:52:49 21 October 2022
     ```
     
-    1. 第一條指令**clock timezone EST -5**，EST這個參數可以隨意打，但是還是希望可以選用有意的值，最後**-5**是指比UTC(國際標準時間)前5個小時
-    2. **clock summer-time EST recurring**，EST這個參數可以隨意打，但是還是希望可以選用有意的值，**recurring**表示在此期間時間會往前調整1小時
+    1. clock timezone 後的時區名稱是顯示標籤；-5 表示 UTC-5，也就是比 UTC 慢 5 小時。
+    2. clock summer-time 的時區標籤用 EDT 表示夏令時間。本範例採用美國夏令時間規則；其他地區要依當地規則設定，沒有使用夏令時間的地區不需設定此命令。
 - 最後可以使用此命令查看時間時區
     
     ```Plain
@@ -29,7 +29,7 @@ blog_topic: Networking
 
 ## NTP用戶端、伺服器、用戶端\伺服器設定
 
-NTP採用lookback interface會有更好的效果
+若要讓 NTP 請求固定使用某個來源位址，可設定 ntp source interface；使用 loopback 前，須確認路由可達且 ACL 允許該來源。Loopback 並非所有拓樸下都較佳。
 
 ![[Assets/Note/Tech/Cisco NTP 設定/01-NTP用戶端、伺服器、用戶端 伺服器設定.png|01-NTP用戶端、伺服器、用戶端 伺服器設定.png]]
 
@@ -46,7 +46,7 @@ NTP採用lookback interface會有更好的效果
     ```
     
     ```Plain
-    !Configuration on R1:
+    !Configuration on R3:
     ntp master 2
     ```
     
@@ -72,18 +72,20 @@ NTP採用lookback interface會有更好的效果
 - ACL
     
     ```Plain
-    Switch(config)#access-list acl-num permit ip-address mask
-    SWitch(config)#ntp access-group {server-only | server | peer |query-only} acl-num
+    Switch(config)#access-list acl-num permit ip-address wildcard-mask
+    Switch(config)#ntp access-group {peer | serve | serve-only | query-only} acl-num
     ```
     
-    - server-only : 只允許同步
-    - server : 允許同步化與控制請求 ; 不允許與裝置同步期本身的時間時鐘
-    - peer : 允許同步化與控制請求 ; 不允許裝置同步其本身的時間時鐘
-    - query-only : 只允許控制請求
+    - peer：允許時間請求與 NTP 控制查詢，也允許本機與符合 ACL 的系統同步。
+    - serve：允許時間請求與控制查詢，但不允許本機與該系統同步。
+    - serve-only：只允許時間請求。
+    - query-only：只允許 NTP 控制查詢。
+
+設定 NTP access-group 後，僅允許符合 ACL 且符合所選存取類型的請求。參考：[Cisco IOS XE NTP](https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/syst-mgmt/b-system-management/m_bsm-time-calendar-set.html)。
 
 ## SNTP (simplified network time protocol)
 
-只是將ntp指令變成sntp
+部分平台提供獨立的 SNTP 命令；SNTP 是功能較精簡的時間同步協定，命令集不能一概視為將每個 ntp 命令替換成 sntp。請依平台文件確認支援的功能。
 
 ```Plain
 SW(config)#sntp authentication-key key-number md5 key-string

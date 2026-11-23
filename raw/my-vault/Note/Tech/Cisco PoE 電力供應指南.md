@@ -22,26 +22,29 @@ Inline power 利用 Ethernet UTP 線路提供 DC 48V 電力，讓網路設備可
 
 ## PoE 協定規格
 
-|方法|一般名稱|功率|
-|---|---|---|
-|Cisco inline power|ILP|7W|
-|IEEE 802.3af|PoE|15.4W|
-|IEEE 802.3at|PoE+|25.5W|
-|Cisco Universal PoE|UPoE|60W|
+|方法|一般名稱|PSE 連接埠最大輸出|PD 可用最大功率|
+|---|---|---:|---:|
+|IEEE 802.3af|PoE|15.4W|12.95W|
+|IEEE 802.3at|PoE+|30W|25.5W|
+|Cisco Universal PoE|UPoE|60W|約 51W|
+
+PSE 是供電設備（例如交換器），PD 是受電設備。線纜損耗使 PD 可用功率低於 PSE 輸出功率；各機型的供電能力也可能不同。
 
 ## PoE 功率等級
 
-|功率等級|48V DC 最大輸出功率|
-|---|---|
-|0 (default)|15.4W|
-|1|4.0W|
-|2|7.0W|
-|3|15.4W|
-|4 (802.3at)|最高 30W|
+|IEEE 功率等級|PSE 最大輸出|PD 最大可用功率|
+|---|---:|---:|
+|0（預設類別）|15.4W|12.95W|
+|1|4.0W|3.84W|
+|2|7.0W|6.49W|
+|3|15.4W|12.95W|
+|4（802.3at）|30W|25.5W|
 
 ## 設定指令
 
 ### 啟用 PoE
+
+以下為部分 Cisco IOS/IOS XE 平台的介面命令範例；可用選項依型號與軟體版本而異。
 
 ```cisco
 SW(config-if)#power inline {auto | static} [max milliwatts]

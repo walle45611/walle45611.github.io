@@ -19,16 +19,17 @@ blog_topic: Networking
 |---|---|---|
 |TELNET|TCP|23|
 |SSH|TCP|22|
-|DHCP|UDP|67|
+|DHCP server|UDP|67|
+|DHCP client|UDP|68|
 |SNMP|UDP|161|
-|DHCP|UDP|67|
 |HTTP|TCP|80|
 |HTTPS|TCP|443|
+|SNMP trap/inform receiver|UDP|162|
 
 - 全部關閉CDP
     
     ```Shell
-    Router(config)no cdp run
+    Router(config)#no cdp run
     ```
     
 - 在某些街口上關閉CDP，經常使用在連接其他廠商設備上也可以在連上ISP的那台設備關閉，以免設備資訊外流。
@@ -37,10 +38,10 @@ blog_topic: Networking
     Router(config-if)#no cdp enable
     ```
     
-- 把不必要的DHCP關閉，默認是開的
+- Cisco IOS XE 的 DHCP service 功能預設啟用；只有設定 DHCP pool 或 relay 等功能時才會提供對應服務。設備不需要 DHCP 功能時可關閉
     
     ```Plain
-    Router(config)#no ip service dhcp
+    Router(config)#no service dhcp
     ```
     
 - 關閉HTTP服務，HTTP服務用於讓管理員使用Web葉面設備進行管理沒必要Cisco不推薦，所以就把關閉吧。
@@ -52,15 +53,15 @@ blog_topic: Networking
 - 關閉HTTPS服務，跟HTTP一樣，所以就關吧，沒啥意義
     
     ```Plain
-    Router(config)#no ip http server security
+    Router(config)#no ip http secure-server
     ```
     
-- 如果要開啟http可以做驗證，但是密碼只是base64編碼…
+- 若啟用 Web 管理，使用 HTTPS 與本機驗證。HTTP Basic 認證使用 Base64 編碼傳送帳密，Base64 不是加密。
     
     ```Plain
-    R(config)#ip http server
+    R(config)#ip http secure-server
     R(config)#ip http authentication local
-    R(config)#username admin privilege 15 password ccna
+    R(config)#username admin privilege 15 secret use-a-unique-secret
     ```
     
 
@@ -68,7 +69,7 @@ blog_topic: Networking
 
 - service password-encryption
     
-    某些舊式的IOS密碼安全會產生問題，可以使用service password-encryption這條global。對明文的密碼進行加密會加密以下密碼，加密後的編碼類型為 「7」，但是這種方法早已被破解，這種方法如果使用no service password-encryption不會立即顯示出明文的密碼需要等到更改密碼後:
+    service password-encryption 會把部分明文密碼以 Type 7 可逆混淆形式存入設定，不是安全的雜湊。移除這項設定不會自動還原既有密碼；重新設定密碼後才會以目前設定方式儲存。
     
     - password password (console port 或是 vty mode)
     - enable name password password (global)
@@ -79,24 +80,26 @@ blog_topic: Networking
         R1(config)#service password-encryption
         ```
         
-- hash encryption
+- 單向密碼雜湊
     
-    - MD5 加密後的編碼類型為 「5」
+    - enable secret 會使用該 IOS/IOS XE 版本預設的 secret 格式；若要指定雜湊類型，可明確設定 algorithm-type。
         
         ```Plain
-        R1(config)#enable secret [password]
+        R1(config)#enable algorithm-type md5 secret [password]
         ```
         
-    - sha256 MD5 加密後的編碼類型為 「7」
+    - Type 7 是可逆混淆；Type 8 使用 PBKDF2-SHA-256，Type 9 使用 scrypt。
         
         ```Plain
-        R1(config)#enable algorithm-type-sha-256 secret [password]
+        R1(config)#enable algorithm-type sha256 secret [password]
         ```
         
     - 比較
         
         |命令|類型|演算法|
         |---|---|---|
-        |enable [algorithm-type md5] secret [password]|5|md5|
-        |enable algorithm-type sha-256 secret [password]|8|sha256|
-        |enable algorithm-type scrypt secret [password]|9|sha256|
+        |enable algorithm-type md5 secret [password]|5|MD5（舊式雜湊）|
+        |enable algorithm-type sha256 secret [password]|8|PBKDF2-SHA-256|
+        |enable algorithm-type scrypt secret [password]|9|scrypt|
+
+Type 5（MD5）與 Type 7 都不建議用於新設定；演算法可用性會依 IOS/IOS XE 平台與版本而異。參考：[Cisco Protecting Secrets](https://www.cisco.com/c/en/us/about/trust-center/resilient-infrastructure/protecting-secrets.html)、[Cisco IOS XE Hardening Guide](https://sec.cloudapps.cisco.com/security/center/resources/IOS_XE_hardening)。

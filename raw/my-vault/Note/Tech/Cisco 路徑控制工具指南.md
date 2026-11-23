@@ -13,7 +13,7 @@ blog_topic: Networking
 
 ## Prefix-list
 
-Prefix-list 是抓取路由的專業工具，預設 seq 從 5 開始，每多一條 prefix-list 遞增 10。
+Prefix-list 常用於比對路由前綴。省略 sequence number 時，預設從 5 開始，每新增一條遞增 5。
 
 ### 基本語法
 
@@ -25,8 +25,8 @@ Router(config)#ip prefix-list {list-name [seq number] {deny | permit} network/le
 
 |參數|描述|
 |---|---|
-|`ge ge-value`|匹配遮罩範圍，greater than 到 32|
-|`le le-value`|匹配遮罩範圍，less than|
+|`ge ge-value`|允許的最短前綴長度（大於或等於此值）|
+|`le le-value`|允許的最長前綴長度（小於或等於此值）|
 
 ### 常用範例
 
@@ -84,9 +84,7 @@ D(config-router)#offset-list 1 out 2 serial 0/0
 - **用途**：在接收或發出路由時，過濾不想要的路由
 - **DV 路由協定**：在發出和接收方向都有效果
 - **LS 路由協定**：
-    - 指定介面（out 方向）過濾不被允許，除非預設全部介面
-    - 在 OSPF 中傳送資料使用 LSA 而非路由訊息，除非是 ASBR 上的 type 5 LSA 外部路由
-    - in 方向：接收方有效，但下游鄰居不會刪除此路由
+    - OSPF 以 LSA 傳播路由資訊。常見的 distribute-list in 用法會影響本機是否將路由安裝到 routing table，不會停止 LSA flooding，也不會替鄰居刪除該 LSA。外部路由的產生與傳播應在 ASBR 等適當位置控制；具體行為依 IOS/IOS XE 版本而異。
 
 ### 基本語法
 
@@ -134,12 +132,12 @@ Route-map 類似於程式語言中的 if-then-else 邏輯：
 **RD1 設定**：
 
 ```cisco
-ip access-list extended match-101
-    permit ip host 172.16.101.0 host 255.255.255.0
+ip access-list standard match-101
+ permit 172.16.101.0
 !
-ip access-list extended match-104-105
-    permit ip host 172.16.104.0 host 255.255.255.224
-    permit ip host 172.16.105.0 host 255.255.255.240
+ip access-list standard match-104-105
+ permit 172.16.104.0
+ permit 172.16.105.0
 !
 route-map option1 deny 10
     match ip address match-101
@@ -152,6 +150,8 @@ route-map option1 permit 100
 router eigrp 1
     redistribute ospf 1 route-map option1
 ```
+
+此 ACL 範例依路由的網路位址比對，無法區分相同網路位址的不同 prefix length；若要精確比對前綴長度，請改用 prefix-list。
 
 #### 設定方案二：使用 Prefix-list
 
@@ -240,9 +240,9 @@ PBR 可以選擇性地控制封包的路徑，不依賴傳統的路由表進行�
 |指令|說明|
 |---|---|
 |`set ip next-hop ip-address [...]`|指定 next hop|
-|`set ip default next-hop ip-address [...]`|功能與上一個相同，只是優先順序問題|
+|`set ip default next-hop ip-address [...]`|只有一般路由表沒有目的地的明確路由時，才指定 next hop|
 |`set interface interface-type interface-number [...]`|指定出路由介面|
-|`set default interface interface-type interface-number [...]`|功能與上一個相同，只是優先順序問題|
+|`set default interface interface-type interface-number [...]`|只有一般路由表沒有目的地的明確路由時，才指定出路由介面|
 
 ### 運作邏輯
 
@@ -254,10 +254,9 @@ PBR 可以選擇性地控制封包的路徑，不依賴傳統的路由表進行�
 2. 如果 set 的出境介面為 up 或可以到達 next hop，使用 PBR 路徑
 3. 如果 PBR 失敗，Cisco 會採用原本的路徑嘗試
 
-#### 有 default 參數
+#### 使用 default next-hop 或 default interface
 
-1. 先使用標準路徑
-2. 如果標準路徑壞掉了，才會走 PBR
+只有一般路由表沒有目的地的明確路由時，才套用 default next-hop 或 default interface；若已找到明確路由，便使用一般路由表的結果。
 
 ### 實際案例
 

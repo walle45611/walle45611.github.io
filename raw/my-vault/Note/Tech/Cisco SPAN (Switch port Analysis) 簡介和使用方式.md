@@ -25,9 +25,9 @@ blog_topic: Networking
 
 ## Local SPAN
 
-可以支援etherchannel，但是要以portchannel介面指定SPAN，如果要監控多個VLAN，則可以指定VLAN當作SPAN來源，在來源VLAN所有的port都會變成來源，且不會引響原本的forwarding，因為SPAN來源或鏡射的資料會複製到SPAN目的port的egress queue。
+部分平台可用 Port-channel 作為 SPAN source；也可指定 VLAN 監控該 VLAN 的流量。支援的來源與目的組合依型號和版本而異。SPAN 複製封包會使用交換器資源；若目的埠頻寬不足，鏡像封包可能被丟棄，原始流量通常仍照常轉送。
 
-頻寬問題，如果port很壅塞，鏡射的資料可能會，而不會從目的port傳出去，SPAN來源的資料超過SPAN目的port可能無法看到鏡射的資料。
+若來源流量總量超過目的埠可承載的頻寬，目的埠可能無法收到全部鏡像封包。
 
 可以支援的SPAN數量是由switch的型號而定的。
 
@@ -38,8 +38,8 @@ blog_topic: Networking
 1. 設定SPAN session，指定SPAN session data來源
     
     ```Plain
-    SW(config)#monitor session sessin-number source 
-    {interface type member/mod/num | vlan vlan-id } {rx | tx | both}
+    SW(config)#monitor session session-number source
+    {interface interface-id | vlan vlan-id} {rx | tx | both}
     ```
     
     - 如果需要多個SPAN來源編號可以重複使用
@@ -48,11 +48,11 @@ blog_topic: Networking
 2. 設定SPAN目的地
     
     ```Plain
-    SW(config)#monitor session session-number destination interface type member/mode/num [encapsulation relicate]
+    SW(config)#monitor session session-number destination interface interface-id [encapsulation replicate]
     ```
     
-    - 每個SPAN只可以指定一個目的地，不同SPAN不能分享共同目的地，必須使用物理界面。
-    - 通常不會複製L2的協定，STP，BPDUs，CDP，VTP，DTP，PAgP，如果要可以將上encapsulate replicate
+    - 每個 session 可用的目的埠數量、目的埠能否共用，依平台與版本而異；許多 Catalyst 平台支援在同一 session 設定多個目的埠。
+    - encapsulation replicate 用來保留來源封包的封裝形式，不是啟用 CDP、STP、VTP 等控制封包鏡像的開關；控制封包是否可作為來源需查平台文件。
 3. 以上面的圖
     
     ```Plain
@@ -76,7 +76,7 @@ RSPAN需要設定特殊用途的VLAN成為RSPAN VLAN，如果VTP server上設定
     
     ```Plain
     SW(config)#monitor session session-number source 
-    {interface typemember/mode/num | vlan vlan-id} {rx | tx | both} }
+    {interface interface-id | vlan vlan-id} {rx | tx | both}
     ```
     
     ```Plain

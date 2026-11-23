@@ -74,7 +74,7 @@ blog_topic: Networking
 
 - default Hello interval
     - 發送hello間隔時間
-    - 對於低速T1線路以下為 60 秒，所有其他網絡為 5 秒
+    - 低速 NBMA 網路（依介面 bandwidth 設定為 T1 或更慢）預設為 60 秒；其他網路預設為 5 秒。
     - command
         
         ```Plain
@@ -84,7 +84,7 @@ blog_topic: Networking
         
 - default Hold interval
     - 如果在這期間沒有收到hello就停止鄰居關係
-    - 對於低速T1線路以下，EIGRP Hold time為 180 秒，對於所有其他網路，EIGRP 保持時間為 15 秒。
+    - 低速 NBMA 網路預設為 180 秒；其他網路預設為 15 秒。
     - command
         
         ```Plain
@@ -95,11 +95,11 @@ blog_topic: Networking
 - 查看Hello interval 和 Hold interval
     
     ```Plain
-    Router#sh ip eigrp interface detial f0/1
+    Router#show ip eigrp interfaces f0/1 detail
     ```
     
 
-> [!important] Cisco IOS並不會阻止Hold time比Hello time來的低，如果真的這麼做的話路由表會一下子出現，一下消失。
+> [!important] 鄰居兩端的 hello 與 hold timer 不必相同；每台路由器會在 Hello 中通告自己的 hold time。若 hold time 設得過短，丟失 Hello 時鄰居可能提早逾時。
 
 ### update : 傳送routing要更新
 

@@ -7,16 +7,17 @@ blog_tag: OS & Networking
 blog_topic: Networking
 ---
 
-- 比賽常用禁止定時斷開，ssh或是telnet連線
+- 以下設定會停用 VTY 閒置逾時，SSH 或 Telnet 連線可能一直占用 VTY。正式環境通常保留合理的逾時值。
     
     ```Plain
-    Router#no exec-timeout
+    Router(config)#line vty 0 4
+    Router(config-line)#exec-timeout 0 0
     ```
     
 - 限制遠端控制
     
     ```Plain
-    switch(config)# access-list 99 premit host 192.168.1.100
+    switch(config)# access-list 99 permit host 192.168.1.100
     switch(config)#line vty 0 4
     switch(config-line)# access-class 99 in
     ```

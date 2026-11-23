@@ -1,9 +1,18 @@
-- [[#多層交換機概述(MLS，multilayer switching)]]
-    - [[#CAM]]
-    - [[#TCAM]]
-- [[#實現多層交換]]
-    - [[#RoS (單臂路由)]]
-    - [[#L3交換]]
+---
+blog: true
+blog_title: "MLS (MLS，multilayer switching)"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/cisco-multilayer-switching/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
+- [多層交換機概述(MLS，multilayer switching)](#多層交換機概述mlsmultilayer-switching)
+    - [CAM](#cam)
+    - [TCAM](#tcam)
+- [實現多層交換](#實現多層交換)
+    - [RoS (單臂路由)](#ros-單臂路由)
+    - [L3交換](#l3交換)
 
 ## 多層交換機概述(MLS，multilayer switching)
 

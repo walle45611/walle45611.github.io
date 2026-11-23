@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "Cisco Syslog 設定"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/cisco-syslog-guide/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 ## 概念
 
 對於IT人員，log訊息極為重要，因為可以查看在一個時間發生的事件，但是訊息很多有重要的也有不太重要的訊息，所以做好log訊息的整理是一件很重要的事情，還有當裝置OS發生event的時候亦要怎麼通知管理人員也是相當重要的議題。

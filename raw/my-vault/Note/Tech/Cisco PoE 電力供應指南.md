@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "Cisco PoE 電力供應指南"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/cisco-poe-guide/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 
 ## Cisco 無線 AP 和 IP Phone 電力供應方式
 

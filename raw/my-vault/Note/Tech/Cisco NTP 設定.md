@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "Cisco NTP 設定"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/cisco-ntp-guide/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 ## 設定時間及時區
 
 - 日光節約時間DST一種在夏季月份犧牲正常的日出時間，而將時間調快的做法。通常使用夏令時間的地區，會在接近春季開始的時候，將時間調快一小時，並在秋季調回正常時間。實際上，夏令時間會造成在春季轉換當日的睡眠時間減少一小時，而在秋季轉換當日則會多出一小時的睡眠時間。

@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "Cisco QinQ 802.1Q tunneling"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/cisco-qinq-guide/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 - 這個技術等於是因為沒有這麼多vlan id或是可以隔離內部使用的vlan id跟ISP是不同的。
 - 這個也可以讓ISP隱藏自己
 

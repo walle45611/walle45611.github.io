@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "Cisco IP SLA (IP Service-Level Agreement) 使用方式和設定"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/cisco-ip-sla-guide/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 ## 為什麼需要IP SLA
 
 - 使用ping-echo檢測鏈路的是否連通，或是支持多種協定TCP，UDP檢測鏈路

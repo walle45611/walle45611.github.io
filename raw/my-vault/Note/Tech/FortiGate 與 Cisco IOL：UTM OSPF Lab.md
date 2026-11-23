@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "FortiGate 與 Cisco IOL：UTM OSPF Lab"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/fortigate-cisco-iol-ospf-lab/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 # FortiGate 與 Cisco IOL：UTM OSPF Lab
 
 這次實驗把 UTM 中的 FortiGate ARM64 VM 接到 Debian ARM64 內的 Containerlab，串接 R1、R2，再由 R2 連接 PC1 與 Server。目標是先建立 OSPF 路由交換，並記錄 FortiGate 安裝、介面設定與路由監看。
@@ -72,7 +81,7 @@ bridge link
 
 若 bridge 已存在，跳過建立指令；若介面原本有 IP／NetworkManager profile，先檢查用途，再將主機 IP 配置到 bridge 或取消實驗介面的三層設定，避免留下衝突。這段橋接不需要把 `10.0.12.1` 配在 Debian；該位址屬於 FortiGate。
 
-接線路徑：`FortiGate port2 → Debian enp0s2 → br-fgt → R1 Ethernet0/1`。先建立 bridge，再部署引用 `br-fgt` 的 Containerlab 拓樸。Debian 上的 Docker、Containerlab 與 IOL 執行環境安裝見 [[Containerlab 安裝與設定指南#UTM Debian ARM64：安裝與排錯]]。
+接線路徑：`FortiGate port2 → Debian enp0s2 → br-fgt → R1 Ethernet0/1`。先建立 bridge，再部署引用 `br-fgt` 的 Containerlab 拓樸。Debian 上的 Docker、Containerlab 與 IOL 執行環境安裝見 [Containerlab 安裝與設定指南](https://blog.walle4561.com/articles/posts/containerlab-installation-guide/#utm-debian-arm64安裝與排錯)。
 
 ## 3. 本次 Containerlab 拓樸與 Cisco Routing 設定
 

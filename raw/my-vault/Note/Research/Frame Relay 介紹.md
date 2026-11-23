@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "Frame Relay 介紹"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/frame-relay-guide/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 ![[Assets/Note/Research/Frame Relay 介紹/00-Frame Relay WAN 雲端拓撲.png|00-Frame Relay WAN 雲端拓撲.png]]
 
 ![[Assets/Note/Research/Frame Relay 介紹/01-Frame Relay 介紹.png|01-Frame Relay 介紹.png]]

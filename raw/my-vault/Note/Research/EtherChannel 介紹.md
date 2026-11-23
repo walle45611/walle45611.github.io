@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "EtherChannel 介紹"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/etherchannel-guide/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 ## 概觀
 
 在很多的時候要做冗餘的設計，也就是多拉幾條線，但是這樣STP會把路徑blocking掉造成花費更多的錢買更多高級的線材就只是為了冗餘(Redundancy)的設計，這樣有點浪費了，所以有了ehterchannel這項技術的時候就可以將多條線邏輯成一條線路並將所有線材的STP status從blocking轉到forwarding狀態，這樣不只線材損壞時有多的備用路徑，還可以有更大的BW。

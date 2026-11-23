@@ -1,9 +1,18 @@
-- [[#為什麼需要]]
-- [[#SPAN分類]]
-- [[#Local SPAN]]
-    - [[# Local SPAN設定]]
-    - [[#Remote SPAN]]
-    - [[#show ]]
+---
+blog: true
+blog_title: "Cisco SPAN (Switch port Analysis) 簡介和使用方式"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/cisco-span-guide/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
+- [為什麼需要](#為什麼需要)
+- [SPAN分類](#span分類)
+- [Local SPAN](#local-span)
+    - [Local SPAN設定](#local-span設定)
+    - [Remote SPAN](#remote-span)
+    - [show](#show)
 
 ## 為什麼需要
 

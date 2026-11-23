@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "VRF-Lite (Virtual Routing and Forwarding)"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/cisco-vrf-lite-guide/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 
 # VRF-Lite (Virtual Routing and Forwarding)
 

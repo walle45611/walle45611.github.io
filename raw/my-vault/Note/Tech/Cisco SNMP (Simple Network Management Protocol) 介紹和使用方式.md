@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "Cisco SNMP (Simple Network Management Protocol) 介紹和使用方式"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/cisco-snmp-guide/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 
 ## SNMP概述
 

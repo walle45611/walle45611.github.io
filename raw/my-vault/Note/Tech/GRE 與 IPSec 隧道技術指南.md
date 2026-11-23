@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "GRE 與 IPSec 隧道技術指南"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/gre-ipsec-tunnel-guide/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 ## GRE Over IPSec
 
 ### 理論概念

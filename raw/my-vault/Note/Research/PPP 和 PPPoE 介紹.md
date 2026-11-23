@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "PPP 和 PPPoE 介紹"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/ppp-pppoe-guide/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 # PPP (Point to Point)
 
 ## PPP簡述

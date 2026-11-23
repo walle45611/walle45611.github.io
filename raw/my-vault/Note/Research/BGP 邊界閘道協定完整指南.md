@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "BGP 邊界閘道協定完整指南"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/bgp-routing-guide/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 ## 概念使用原因
 
 ### AS (Autonomous System) 自治系統

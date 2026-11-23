@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "Cisco 監控模組與路由處理器備援"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/cisco-supervisor-engine-redundancy/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 ## 概述
 
 HSRP、VRRP 和 GLBP 提供 Gateway 位址的高可用性機制。當主要路由器故障時，備援路由器會自動接替角色。

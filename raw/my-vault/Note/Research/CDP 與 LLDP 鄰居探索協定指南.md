@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "CDP 與 LLDP 鄰居探索協定指南"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/cdp-lldp-neighbor-discovery/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 ## CDP (Cisco Discovery Protocol)
 
 ### 功能說明

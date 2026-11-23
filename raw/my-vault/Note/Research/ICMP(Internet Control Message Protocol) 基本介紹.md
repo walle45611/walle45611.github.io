@@ -1,7 +1,16 @@
-- [[#ICMP概述]]
-- [[#ICMP header]]
-- [[#ICMP type]]
-- [[#icmp unreachable packet ]]
+---
+blog: true
+blog_title: "ICMP(Internet Control Message Protocol) 基本介紹"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/icmp-troubleshooting-guide/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
+- [ICMP概述](#icmp概述)
+- [ICMP header](#icmp-header)
+- [ICMP type](#icmp-type)
+- [icmp unreachable packet](#icmp-unreachable-packet)
 
 ## ICMP概述
 

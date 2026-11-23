@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "Cisco StackWise FlexStack"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/cisco-stackwise-flexstack/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 ## 概述
 
 在傳統設備呢，都是獨立一台交換機，如果希望把交換機犯在同一個地方，就可以設定stackwise，就是讓很多台實體的Switch變成一個邏輯的switch

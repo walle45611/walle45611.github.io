@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "Cisco ACL 存取控制清單指南"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/cisco-acl-guide/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 
 ## ACL 概念
 

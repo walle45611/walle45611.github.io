@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "GLBP  熱備份路由協定指南"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/glbp-guide/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 ## GLBP (Gateway Load Balancing Protocol) 概述
 
 也是Cisco私有的協定，用來克服現有的備援路由協定的缺點，其中有些概念跟HSRP/VRRP相同，且行為更為動態和完整，但術語有些不同。

@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "Linux FreeRADIUS 設定指南"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/cisco-freeradius-guide/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 ## Cisco With Free**RADIUS**
 
 > [!important] 模擬器非常難模擬，問題一堆

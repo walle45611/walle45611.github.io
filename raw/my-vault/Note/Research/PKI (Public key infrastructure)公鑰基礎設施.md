@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "PKI (Public key infrastructure)公鑰基礎設施"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/cisco-pki-guide/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 # PKI 公鑰基礎設施與 TLS 流程
 
 > [!tip] 先記住整體流程
@@ -5,10 +14,10 @@
 > **連線：ECDHE 建立共同祕密 → HKDF 推導金鑰；憑證與握手簽章驗證身分 → 使用對稱金鑰加密通訊。**
 > TLS 1.3 在 ServerHello 之後就開始加密後續握手訊息，並非所有加密都等到憑證驗證完成才開始。
 
-- [[#SSL/TLS 建立過程|完整流程與時序圖]]
-- [[#Public／Private：加密與簽章是兩種用途|公私鑰的用途]]
-- [[#DH 算法（Diffie-Hellman）|DH 計算範例]]
-- [[#HKDF：真正的加密金鑰從哪裡來|HKDF 與資料加密]]
+- [完整流程與時序圖](#ssltls-建立過程)
+- [公私鑰的用途](#publicprivate加密與簽章是兩種用途)
+- [DH 計算範例](#dh-算法diffie-hellman)
+- [HKDF 與資料加密](#hkdf真正的加密金鑰從哪裡來)
 - 實作：[[Linux OpenSSL 憑證管理完整指南]]、[[Linux OpenSSL With Windows Web 憑證設定指南]]。
 
 ## 加密技術概述

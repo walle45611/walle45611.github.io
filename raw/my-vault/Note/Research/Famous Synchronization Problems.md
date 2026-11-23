@@ -7,7 +7,6 @@ blog_tag: OS & Networking
 blog_topic: OS
 ---
 
-[]d
 ## 1. Bounded-Buffer Problem (Producer-Consumer)
 
 此問題描述生產者 (Producer) 將資料放入有限大小的緩衝區，消費者 (Consumer) 從中取出資料。必須確保：

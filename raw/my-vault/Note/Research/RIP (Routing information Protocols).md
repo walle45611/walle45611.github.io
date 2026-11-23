@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "RIP (Routing information Protocols)"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/rip-routing-guide/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 ### 摘要
 
 這個動態路由協定是一種基於距離的路由協定，它已經被其他協定所取代，但它是動態路由協定的經典之一。了解這個協定的運作方式可以幫助學習者更好地理解和學習更複雜的路由協定。除此之外，學習這個協定還有助於理解網路路由的基本原理，以及如何更好地設計和管理網絡架構。

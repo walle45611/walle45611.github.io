@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "EIGRP (Enhanced interior Gateway Routing Protocol)"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/eigrp-routing-guide/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 
 # EIGRPv4
 

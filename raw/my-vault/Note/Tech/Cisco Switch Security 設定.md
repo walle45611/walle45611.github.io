@@ -1,4 +1,13 @@
-- [[#Port Protect]]
+---
+blog: true
+blog_title: "Cisco Switch Security 設定"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/cisco-switch-security/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
+- [Port Protect](#port-protect)
 
 ---
 

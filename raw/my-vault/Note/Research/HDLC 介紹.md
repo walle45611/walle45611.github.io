@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "HDLC 介紹"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/hdlc-guide/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 ## 概念
 
 - 專線線路在數據鏈路層一般採用HDLC或是PPP封裝

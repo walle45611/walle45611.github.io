@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "Cisco 路由重分配 (route redistribute)"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/cisco-route-redistribution/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 
 ![[Assets/Note/Tech/Cisco 路由重分配 (route redistribute)/01-Cisco 路由重分配 (route redistribute).png]]
 

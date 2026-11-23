@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "IS-IS (Intermediate System - Intermediate System)"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/is-is-routing-guide/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 - 可以先看
     
     [[OSPFv2 與 OSPFv3 全面整理：原理、流程、LSA 類型與實作案例]]

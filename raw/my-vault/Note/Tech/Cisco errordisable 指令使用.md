@@ -1,3 +1,12 @@
+---
+blog: true
+blog_title: "Cisco errordisable 指令使用"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/cisco-errdisable-guide/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 如果錯誤狀態被檢測到，switch port會進入errdisable狀態並關閉可以在全域模式下設定
 
 - command

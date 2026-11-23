@@ -1,13 +1,22 @@
+---
+blog: true
+blog_title: "Cisco DHCP 設定"
+blog_date: '2026-11-23'
+blog_url: https://blog.walle4561.com/articles/posts/cisco-dhcp-guide/
+blog_tag: OS & Networking
+blog_topic: Networking
+---
+
 - 可以先看這個
     
 
-- [[#DHCP]]
-    - [[#DHCP綁定mac address]]
-    - [[#DHCP relay]]
-- [[#DHCPv6]]
-    - [[#stateless dhcpv6]]
-    - [[#stateful dhcpv6]]
-    - [[#DHCPv6 Relay]]
+- [DHCP](#dhcp)
+    - [DHCP綁定mac address](#dhcp綁定mac-address)
+    - [DHCP relay](#dhcp-relay)
+- [DHCPv6](#dhcpv6)
+    - [stateless dhcpv6](#stateless-dhcpv6)
+    - [stateful dhcpv6](#stateful-dhcpv6)
+    - [DHCPv6 Relay](#dhcpv6-relay)
 
 ## DHCP
 

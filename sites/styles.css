@@ -14,6 +14,11 @@
   box-sizing: border-box;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   background: var(--paper);
   color: var(--ink);
@@ -313,14 +318,24 @@ h1 {
 .prose table {
   border-collapse: collapse;
   display: block;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  max-width: 100%;
   overflow-x: auto;
+  overscroll-behavior-inline: contain;
 }
 
 .prose th,
 .prose td {
   border: 1px solid var(--line);
+  min-width: 6em;
   padding: 0.45rem 0.65rem;
   text-align: left;
+  vertical-align: top;
+}
+
+.prose :is(th, td) code {
+  overflow-wrap: anywhere;
 }
 
 .source,

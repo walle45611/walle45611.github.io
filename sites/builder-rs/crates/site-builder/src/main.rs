@@ -678,7 +678,7 @@ fn render_page(
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous">
     <meta name="color-scheme" content="light">
     <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="/styles.css?v=8">
+    <link rel="stylesheet" href="/styles.css?v=9">
     <meta property="og:type" content="{}">
     <meta property="og:title" content="{}">
     <meta property="og:description" content="{}">

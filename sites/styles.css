@@ -35,8 +35,7 @@ a {
 
 .site-header,
 .site-main,
-.site-footer,
-.site-ad {
+.site-footer {
   margin: 0 auto;
   max-width: 900px;
   padding-inline: 1.4rem;
@@ -346,6 +345,10 @@ h1 {
   font-size: 0.84rem;
   margin-top: 3rem;
   padding-top: 1rem;
+}
+
+.site-ad {
+  margin-top: 2rem;
 }
 
 .site-footer {

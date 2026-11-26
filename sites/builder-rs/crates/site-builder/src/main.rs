@@ -13,7 +13,7 @@ mod vault;
 
 const SITE_URL: &str = "https://blog.walle4561.com";
 const ADSENSE_CLIENT: &str = "ca-pub-7412528508334178";
-/// AdSense `blog-post-top` display unit shown at the very bottom of each post page.
+/// AdSense `blog-post-top` display unit shown under each post's "Back to the archive" link.
 const ADSENSE_POST_TOP_SLOT: &str = "1288305479";
 
 #[derive(Debug, Clone)]
@@ -529,12 +529,13 @@ fn render_post(article: &Article, navigation: &str) -> String {
       {}
     </header>
     <div class="prose">{}</div>
-    <footer class="post-footer"><a href="/articles/">Back to the archive</a></footer>
+    <footer class="post-footer"><a href="/articles/">Back to the archive</a></footer>{}
   </article>"#,
         post_meta(article),
         escape_html(&article.title),
         deck,
-        article.body_html
+        article.body_html,
+        post_ad_markup()
     );
     render_page(
         &article.title,
@@ -547,7 +548,7 @@ fn render_post(article: &Article, navigation: &str) -> String {
 }
 
 /// AdSense's own snippet for the `blog-post-top` unit, pasted as given;
-/// it sits below the site footer so loading it never pushes the content down.
+/// it sits after the article so loading it never pushes the content down.
 fn post_ad_markup() -> String {
     format!(
         r#"
@@ -699,7 +700,7 @@ fn render_page(
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <meta name="color-scheme" content="light">
     <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="/styles.css?v=11">
+    <link rel="stylesheet" href="/styles.css?v=12">
     <meta property="og:type" content="{}">
     <meta property="og:title" content="{}">
     <meta property="og:description" content="{}">
@@ -720,7 +721,7 @@ fn render_page(
     </nav>
   </header>
     <main class="site-main">{}</main>
-    <footer class="site-footer">Walle Blog · Notes for later.</footer>{}
+    <footer class="site-footer">Walle Blog · Notes for later.</footer>
     {}
   </body>
 </html>
@@ -735,11 +736,6 @@ fn render_page(
         page_url(pathname),
         math_markup,
         body,
-        if page_type == "article" {
-            post_ad_markup()
-        } else {
-            String::new()
-        },
         mermaid_markup
     )
 }
@@ -909,8 +905,7 @@ mod tests {
     fn adsense_snippet_only_appears_in_posts() {
         let index = render_page("Index", "", "/", "<p>list</p>", "website", "");
         assert!(!index.contains("adsbygoogle"));
-        let post = render_page("Post", "", "/p/", "<p>text</p>", "article", "");
-        assert!(post.find("site-footer") < post.find("adsbygoogle"));
+
         assert!(post_ad_markup().contains(r#"data-ad-slot="1288305479""#));
     }
 

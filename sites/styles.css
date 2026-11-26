@@ -35,7 +35,8 @@ a {
 
 .site-header,
 .site-main,
-.site-footer {
+.site-footer,
+.site-ad {
   margin: 0 auto;
   max-width: 900px;
   padding-inline: 1.4rem;
@@ -108,12 +109,6 @@ h1 {
   color: var(--muted);
   margin-bottom: 0;
   max-width: 680px;
-}
-
-/* Reserve the ad's height up front so filling it never shifts the article. */
-.ad-slot {
-  margin-top: 1.5rem;
-  min-height: 100px;
 }
 
 .section-heading {

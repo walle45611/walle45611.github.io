@@ -13,7 +13,7 @@ mod vault;
 
 const SITE_URL: &str = "https://blog.walle4561.com";
 const ADSENSE_CLIENT: &str = "ca-pub-7412528508334178";
-/// AdSense display ad unit shown under each post's deck. Empty disables the slot.
+/// AdSense `blog-post-top` display unit shown at the very bottom of each post page.
 const ADSENSE_POST_TOP_SLOT: &str = "1288305479";
 
 #[derive(Debug, Clone)]
@@ -526,7 +526,7 @@ fn render_post(article: &Article, navigation: &str) -> String {
     <header class="post-header">
       {}
       <h1>{}</h1>
-      {}{}
+      {}
     </header>
     <div class="prose">{}</div>
     <footer class="post-footer"><a href="/articles/">Back to the archive</a></footer>
@@ -534,7 +534,6 @@ fn render_post(article: &Article, navigation: &str) -> String {
         post_meta(article),
         escape_html(&article.title),
         deck,
-        post_ad_markup(),
         article.body_html
     );
     render_page(
@@ -547,13 +546,25 @@ fn render_post(article: &Article, navigation: &str) -> String {
     )
 }
 
+/// AdSense's own snippet for the `blog-post-top` unit, pasted as given;
+/// it sits below the site footer so loading it never pushes the content down.
 fn post_ad_markup() -> String {
-    if ADSENSE_POST_TOP_SLOT.is_empty() {
-        return String::new();
-    }
     format!(
         r#"
-      <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="{ADSENSE_CLIENT}" data-ad-slot="{ADSENSE_POST_TOP_SLOT}" data-ad-format="horizontal" data-full-width-responsive="false"></ins></div>"#
+    <div class="site-ad">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}"
+     crossorigin="anonymous"></script>
+<!-- blog-post-top -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="{ADSENSE_CLIENT}"
+     data-ad-slot="{ADSENSE_POST_TOP_SLOT}"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({{}});
+</script>
+    </div>"#
     )
 }
 
@@ -688,7 +699,7 @@ fn render_page(
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <meta name="color-scheme" content="light">
     <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="/styles.css?v=10">
+    <link rel="stylesheet" href="/styles.css?v=11">
     <meta property="og:type" content="{}">
     <meta property="og:title" content="{}">
     <meta property="og:description" content="{}">
@@ -709,8 +720,7 @@ fn render_page(
     </nav>
   </header>
     <main class="site-main">{}</main>
-    <footer class="site-footer">Walle Blog · Notes for later.</footer>
-    {}
+    <footer class="site-footer">Walle Blog · Notes for later.</footer>{}
     {}
   </body>
 </html>
@@ -725,29 +735,12 @@ fn render_page(
         page_url(pathname),
         math_markup,
         body,
-        ads_markup(body),
+        if page_type == "article" {
+            post_ad_markup()
+        } else {
+            String::new()
+        },
         mermaid_markup
-    )
-}
-
-/// Loads AdSense after the page settles, and only on pages that have an ad slot.
-fn ads_markup(body: &str) -> String {
-    if !body.contains(r#"class="adsbygoogle""#) {
-        return String::new();
-    }
-    format!(
-        r#"<script>
-window.addEventListener("load", function () {{
-  (window.requestIdleCallback || setTimeout)(function () {{
-    (window.adsbygoogle = window.adsbygoogle || []).push({{}});
-    var tag = document.createElement("script");
-    tag.async = true;
-    tag.crossOrigin = "anonymous";
-    tag.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}";
-    document.head.appendChild(tag);
-  }});
-}});
-</script>"#
     )
 }
 
@@ -913,20 +906,12 @@ mod tests {
     }
 
     #[test]
-    fn loads_adsense_only_on_pages_with_an_ad_slot() {
+    fn adsense_snippet_only_appears_in_posts() {
         let index = render_page("Index", "", "/", "<p>list</p>", "website", "");
-        assert!(!index.contains("<script"));
-
-        let post = render_page(
-            "Post",
-            "",
-            "/p/",
-            r#"<ins class="adsbygoogle"></ins>"#,
-            "article",
-            "",
-        );
-        assert!(post.contains("pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"));
-        assert!(!post.contains("googletagmanager"));
+        assert!(!index.contains("adsbygoogle"));
+        let post = render_page("Post", "", "/p/", "<p>text</p>", "article", "");
+        assert!(post.find("site-footer") < post.find("adsbygoogle"));
+        assert!(post_ad_markup().contains(r#"data-ad-slot="1288305479""#));
     }
 
     #[test]

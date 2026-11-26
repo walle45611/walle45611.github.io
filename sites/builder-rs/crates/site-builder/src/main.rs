@@ -12,6 +12,8 @@ mod renderer;
 mod vault;
 
 const SITE_URL: &str = "https://blog.walle4561.com";
+/// Inlined into every page so the stylesheet never blocks the first render.
+const STYLES: &str = include_str!("../../../../styles.css");
 const ADSENSE_CLIENT: &str = "ca-pub-7412528508334178";
 /// AdSense `blog-post-top` display unit shown under each post's "Back to the archive" link.
 const ADSENSE_POST_TOP_SLOT: &str = "1288305479";
@@ -50,7 +52,6 @@ struct BuilderConfig {
     vault_assets_dir: PathBuf,
     out_dir: PathBuf,
     manifest_path: PathBuf,
-    styles_path: PathBuf,
     favicon_path: PathBuf,
 }
 
@@ -116,7 +117,6 @@ fn load_config() -> BuilderConfig {
     let build_root = build_root(&project_root);
     let out_default = build_root.join("client");
 
-    let styles_path = project_root.join("sites").join("styles.css");
     let favicon_path = project_root
         .join("sites")
         .join("public")
@@ -128,7 +128,6 @@ fn load_config() -> BuilderConfig {
         vault_assets_dir: build_root.join("vault-assets"),
         out_dir: out_dir.unwrap_or(out_default),
         manifest_path,
-        styles_path,
         favicon_path,
     }
 }
@@ -240,8 +239,6 @@ fn build_site(config: &BuilderConfig, articles: &[Article]) -> std::io::Result<(
         )?;
     }
 
-    let styles = fs::read_to_string(&config.styles_path).unwrap_or_else(|_| default_styles());
-    write_output(&config.out_dir.join("styles.css"), &styles)?;
     write_output(&config.out_dir.join("feed.xml"), &render_feed(articles))?;
     write_output(
         &config.out_dir.join("llms.txt"),
@@ -261,10 +258,6 @@ fn build_site(config: &BuilderConfig, articles: &[Article]) -> std::io::Result<(
     write_output(
         &config.out_dir.join("sitemap.xml"),
         &render_sitemap(articles),
-    )?;
-    write_output(
-        &config.out_dir.join("_headers"),
-        "/styles.css\n  Cache-Control: public, max-age=0, must-revalidate\n",
     )?;
     fs::copy(&config.favicon_path, config.out_dir.join("favicon.svg"))?;
     if config.vault_assets_dir.exists() {
@@ -700,7 +693,7 @@ fn render_page(
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <meta name="color-scheme" content="light">
     <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="/styles.css?v=12">
+    <style>{STYLES}</style>
     <meta property="og:type" content="{}">
     <meta property="og:title" content="{}">
     <meta property="og:description" content="{}">
@@ -800,10 +793,6 @@ fn escape_html(value: &str) -> String {
         .replace('\'', "&#39;")
 }
 
-fn default_styles() -> String {
-    String::from(":root { color-scheme: light; }\n")
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -839,7 +828,6 @@ mod tests {
             vault_assets_dir: tmp.path().join("assets"),
             out_dir: tmp.path().join("client"),
             manifest_path: tmp.path().join("manifest.json"),
-            styles_path: tmp.path().join("styles.css"),
             favicon_path: favicon,
         };
         build_site(&config, &articles).unwrap();

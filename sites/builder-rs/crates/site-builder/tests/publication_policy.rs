@@ -6,7 +6,10 @@ use std::process::Command;
 
 fn build_dir(root: &Path) -> PathBuf {
     let root = root.canonicalize().unwrap();
-    let key = format!("{:x}", Sha256::digest(root.to_string_lossy().as_bytes()));
+    let key: String = Sha256::digest(root.to_string_lossy().as_bytes())
+        .iter()
+        .map(|byte| format!("{byte:02x}"))
+        .collect();
     std::env::temp_dir().join("walle-blog").join(&key[..12])
 }
 
@@ -151,7 +154,7 @@ fn article_headings_preserve_nesting_without_skipping_levels() {
         (3, "new-child"),
     ] {
         assert!(
-            page.contains(&format!("<h{level}><a inert href=\"#{id}\"")),
+            page.contains(&format!("<h{level} id=\"{id}\">")),
             "Expected H{level}: {id}"
         );
     }

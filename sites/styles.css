@@ -110,6 +110,12 @@ h1 {
   max-width: 680px;
 }
 
+/* Reserve the ad's height up front so filling it never shifts the article. */
+.ad-slot {
+  margin-top: 1.5rem;
+  min-height: 100px;
+}
+
 .section-heading {
   align-items: baseline;
   display: flex;

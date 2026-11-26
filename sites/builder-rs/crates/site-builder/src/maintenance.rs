@@ -6,7 +6,6 @@ use std::process::Command;
 
 use regex::Regex;
 use serde::Deserialize;
-use sha2::{Digest, Sha256};
 
 type Result<T> = std::result::Result<T, Box<dyn Error>>;
 
@@ -30,10 +29,6 @@ fn relative(path: &Path, root: &Path) -> Result<String> {
         .strip_prefix(root)?
         .to_string_lossy()
         .replace('\\', "/"))
-}
-
-fn sha256(bytes: &[u8]) -> String {
-    format!("{:x}", Sha256::digest(bytes))
 }
 
 pub fn run(command: &str, args: &[String]) -> Result<()> {
@@ -84,7 +79,7 @@ fn stage_assets(project: &Path) -> Result<()> {
             continue;
         }
         let source = project.join(&article.file);
-        if !source.is_file() || sha256(&fs::read(&source)?) != article.sha256 {
+        if !source.is_file() || crate::sha256_hex(&fs::read(&source)?) != article.sha256 {
             return Err(invalid(format!(
                 "Missing or changed source (rebuild first): {}",
                 article.file

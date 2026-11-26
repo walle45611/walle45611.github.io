@@ -9,35 +9,33 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      CARGO_TARGET_DIR: /tmp/walle-blog-cargo
+    defaults:
+      run:
+        working-directory: ./sites/builder-rs
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+
+      - uses: dtolnay/rust-toolchain@stable
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          components: rustfmt, clippy
 
-      - name: Use Rust
-        uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
         with:
-          toolchain: stable
+          workspaces: sites/builder-rs
 
-      - name: Generate static site
-        run: cargo run -p site-builder --release -- --project-dir "$GITHUB_WORKSPACE" --out-dir "$GITHUB_WORKSPACE/.build/site/client"
-        working-directory: ./sites/builder-rs
-
-      - name: Run Rust tests
-        run: cargo test --workspace
-        working-directory: ./sites/builder-rs
-
-      - name: Run Rust lints
+      - name: Lint
         run: |
           cargo fmt --all -- --check
           cargo clippy --workspace --all-targets --all-features -- -D warnings
-        working-directory: ./sites/builder-rs
+
+      - name: Test
+        run: cargo test --workspace
+
+      - name: Generate static site
+        run: cargo run -p site-builder --release -- --project-dir "$GITHUB_WORKSPACE" --out-dir "$GITHUB_WORKSPACE/.build/site/client"
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v4
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy ./.build/site/client --project-name=walle45611-github-io
+        run: npx --yes wrangler@4 pages deploy "$GITHUB_WORKSPACE/.build/site/client" --project-name=walle45611-github-io --branch=main
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

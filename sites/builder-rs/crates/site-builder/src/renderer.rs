@@ -1,4 +1,4 @@
-use comrak::{markdown_to_html, ComrakOptions};
+use comrak::{markdown_to_html, Options};
 
 pub fn render_markdown_to_html(markdown: &str) -> String {
     let protected = protect_display_math(markdown);
@@ -95,16 +95,16 @@ fn restore_math_delimiters(html: &str) -> String {
     out
 }
 
-fn comrak_options() -> ComrakOptions<'static> {
-    let mut options = ComrakOptions::default();
+fn comrak_options() -> Options<'static> {
+    let mut options = Options::default();
     options.extension.strikethrough = true;
     options.extension.table = true;
     options.extension.tasklist = true;
     options.extension.autolink = true;
     options.extension.superscript = true;
-    options.extension.header_ids = Some("".to_string());
+    options.extension.header_id_prefix = Some("".to_string());
     options.parse.smart = true;
-    options.render.unsafe_ = true;
+    options.render.r#unsafe = true;
     options.render.github_pre_lang = true;
     options.extension.footnotes = true;
     options.extension.math_dollars = true;

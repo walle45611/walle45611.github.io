@@ -4,7 +4,6 @@ use std::fs;
 use std::path::{Path, PathBuf};
 
 use regex::{Captures, Regex};
-use sha2::{Digest, Sha256};
 use walkdir::WalkDir;
 
 use crate::{clip_excerpt, renderer::render_markdown_to_html, sha256_hex, sort_articles, Article};
@@ -414,7 +413,7 @@ pub fn load_articles(vault: &Path, assets_dir: &Path) -> Result<Vec<Article>> {
                 Ok(image) => image,
                 Err(_) => { error = Some(format!("Missing asset: {}", asset.display())); return String::new(); }
             };
-            let digest = format!("{:x}", Sha256::digest(&image));
+            let digest = sha256_hex(&image);
             let suffix = asset.extension().and_then(|value| value.to_str()).unwrap_or_default().to_ascii_lowercase();
             let name = format!("{}.{}", &digest[..20], suffix);
             let target = assets_dir.join(&name);

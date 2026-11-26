@@ -12,8 +12,9 @@ mod renderer;
 mod vault;
 
 const SITE_URL: &str = "https://blog.walle4561.com";
-const GA_ID: &str = "G-G0PYR1QYT5";
 const ADSENSE_CLIENT: &str = "ca-pub-7412528508334178";
+/// AdSense display ad unit shown under each post's deck. Empty disables the slot.
+const ADSENSE_POST_TOP_SLOT: &str = "1288305479";
 
 #[derive(Debug, Clone)]
 struct Article {
@@ -525,7 +526,7 @@ fn render_post(article: &Article, navigation: &str) -> String {
     <header class="post-header">
       {}
       <h1>{}</h1>
-      {}
+      {}{}
     </header>
     <div class="prose">{}</div>
     <footer class="post-footer"><a href="/articles/">Back to the archive</a></footer>
@@ -533,6 +534,7 @@ fn render_post(article: &Article, navigation: &str) -> String {
         post_meta(article),
         escape_html(&article.title),
         deck,
+        post_ad_markup(),
         article.body_html
     );
     render_page(
@@ -542,6 +544,16 @@ fn render_post(article: &Article, navigation: &str) -> String {
         &body,
         "article",
         navigation,
+    )
+}
+
+fn post_ad_markup() -> String {
+    if ADSENSE_POST_TOP_SLOT.is_empty() {
+        return String::new();
+    }
+    format!(
+        r#"
+      <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="{ADSENSE_CLIENT}" data-ad-slot="{ADSENSE_POST_TOP_SLOT}" data-ad-format="horizontal" data-full-width-responsive="false"></ins></div>"#
     )
 }
 
@@ -674,11 +686,9 @@ fn render_page(
     <link rel="describedby" href="/llms.txt">
     <link rel="alternate" type="application/rss+xml" title="Walle Blog RSS" href="{}/feed.xml">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="preconnect" href="https://www.googletagmanager.com">
-    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin="anonymous">
     <meta name="color-scheme" content="light">
     <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="/styles.css?v=9">
+    <link rel="stylesheet" href="/styles.css?v=10">
     <meta property="og:type" content="{}">
     <meta property="og:title" content="{}">
     <meta property="og:description" content="{}">
@@ -715,63 +725,29 @@ fn render_page(
         page_url(pathname),
         math_markup,
         body,
-        analytics_markup(),
+        ads_markup(body),
         mermaid_markup
     )
 }
 
-fn analytics_markup() -> String {
+/// Loads AdSense after the page settles, and only on pages that have an ad slot.
+fn ads_markup(body: &str) -> String {
+    if !body.contains(r#"class="adsbygoogle""#) {
+        return String::new();
+    }
     format!(
         r#"<script>
-(function () {{
-  function loadScript(src, withCrossOrigin) {{
+window.addEventListener("load", function () {{
+  (window.requestIdleCallback || setTimeout)(function () {{
+    (window.adsbygoogle = window.adsbygoogle || []).push({{}});
     var tag = document.createElement("script");
     tag.async = true;
-    tag.src = src;
-    tag.referrerPolicy = "strict-origin-when-cross-origin";
-    if (withCrossOrigin) {{
-      tag.crossOrigin = "anonymous";
-    }}
+    tag.crossOrigin = "anonymous";
+    tag.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}";
     document.head.appendChild(tag);
-  }}
-
-  function boot() {{
-    if (window.__walleAnalyticsBooted) {{
-      return;
-    }}
-    window.__walleAnalyticsBooted = true;
-
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {{
-      window.dataLayer.push(arguments);
-    }}
-    window.gtag = window.gtag || gtag;
-    window.gtag("js", new Date());
-    window.gtag("config", "{ga}");
-
-    loadScript("https://www.googletagmanager.com/gtag/js?id={ga}");
-    loadScript("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ads}", true);
-  }}
-
-  if (document.readyState === "complete") {{
-    if ("requestIdleCallback" in window) {{
-      window.requestIdleCallback(boot, {{ timeout: 1200 }});
-    }} else {{
-      window.setTimeout(boot, 900);
-    }}
-    return;
-  }}
-  window.addEventListener("load", function () {{
-    if ("requestIdleCallback" in window) {{
-      window.requestIdleCallback(boot, {{ timeout: 1200 }});
-    }} else {{
-      window.setTimeout(boot, 900);
-    }}
-  }}, {{ once: true }});
-}})();
-</script>"#,
-        ga = GA_ID,
-        ads = ADSENSE_CLIENT
+  }});
+}});
+</script>"#
     )
 }
 
@@ -813,9 +789,10 @@ fn clip_excerpt(input: &str) -> String {
 }
 
 fn sha256_hex(bytes: &[u8]) -> String {
-    let mut hasher = Sha256::new();
-    hasher.update(bytes);
-    format!("{:x}", hasher.finalize())
+    Sha256::digest(bytes)
+        .iter()
+        .map(|byte| format!("{byte:02x}"))
+        .collect()
 }
 
 fn write_output(path: &Path, content: &str) -> std::io::Result<()> {
@@ -933,6 +910,23 @@ mod tests {
         let html = render_markdown_to_html("# Heading\n\n`code`");
         assert!(html.contains("<h1"));
         assert!(html.contains("<code>code</code>"));
+    }
+
+    #[test]
+    fn loads_adsense_only_on_pages_with_an_ad_slot() {
+        let index = render_page("Index", "", "/", "<p>list</p>", "website", "");
+        assert!(!index.contains("<script"));
+
+        let post = render_page(
+            "Post",
+            "",
+            "/p/",
+            r#"<ins class="adsbygoogle"></ins>"#,
+            "article",
+            "",
+        );
+        assert!(post.contains("pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"));
+        assert!(!post.contains("googletagmanager"));
     }
 
     #[test]
